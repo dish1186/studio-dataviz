@@ -1,0 +1,11 @@
+city,stations,station_hours_in,city_hours_out,hours_both_airports,hours_only_BFL,hours_only_BOS,hours_only_BRO,hours_only_DET,hours_only_DTW,hours_only_EUG,hours_only_PAFA,hours_only_FAT,hours_only_LAX,hours_only_AGC,hours_only_PIT,hours_only_SFO
+bakersfield,BFL,37312,37312,0,,,,,,,,,,,,
+boston,BOS,32986,32986,0,,,,,,,,,,,,
+brownsville,BRO,35115,35115,0,,,,,,,,,,,,
+detroit,DET DTW,66702,35065,31637,,,,2271.0,1157.0,,,,,,,
+eugene,EUG,31593,31593,0,,,,,,,,,,,,
+fairbanks,PAFA,30575,30575,0,,,,,,,,,,,,
+fresno,FAT,36656,36656,0,,,,,,,,,,,,
+losangeles,LAX,36641,36641,0,,,,,,,,,,,,
+pittsburgh,AGC PIT,64074,34173,29901,,,,,,,,,,2276.0,1996.0,
+sanfrancisco,SFO,36943,36943,0,,,,,,,,,,,,
