@@ -209,111 +209,118 @@ Step · dataset · date · who ran it | What (plain language) | Why | Input file
   - **Airport coordinates copied by hand** from IEM pages (source URL pattern in the script). **Claude's choice, approved by Dish.**
   - "In city limits" filled only where the handoff states it; others are "not checked" until city-limits shapefiles are available (gridMET step). **Claude's choice, approved by Dish.**
 
+### Decision D5 · METAR · 2026-09-27 · Dish
+- **What:** Added 4 cities to the METAR pipeline. Stations were chosen from IEM station pages by Claude and approved by Dish:
+  - **Ann Arbor MI → ARB** (Ann Arbor Municipal), MI_ASOS, America/New_York.
+  - **Delano CA → DLO** (Delano Municipal), CA_ASOS, America/Los_Angeles. **Changed by Dish:** kept DLO despite its gaps, rather than PTV (Porterville, ~20 mi, full record).
+  - **San Diego CA → SAN** (Lindbergh Field), CA_ASOS, America/Los_Angeles.
+  - **Warren MI → VLL** (Troy). Chosen instead of DET so Warren doesn't share Detroit's station. **Claude's choice, approved by Dish.**
+- **Added later the same day** (approved by Dish):
+  - **Phoenix AZ → PHX** (Sky Harbor), AZ_ASOS. IEM's timezone menu has no America/Phoenix (Arizona stays on MST, UTC−7, with no daylight saving), so it was **downloaded in UTC** as `metar_phoenix_raw_utc.csv`, to be converted with a logged script (local = UTC − 7 h, all year). **Claude's choice, approved by Dish.** Raw check: 96,974 rows, 2016-01-01 00:51 → 2026-09-24 23:51 **UTC**, which in local time is 2015-12-31 17:51 → 2026-09-24 16:51. The Sep 24 5 pm hour is therefore missing, and the Dec 31, 2015 evening rows fall outside the study period.
+  - **Raymondville TX → HRL** (Harlingen, ~18 mi; Raymondville has no ASOS), TX_ASOS, America/Chicago. Raw check: 124,319 rows, 2016-01-01 → **2026-09-24** 23:52, 3,920 days; 711 blank visibility, 625 blank RH.
+  - **Springfield OR → EUG, shared with Eugene.** Springfield has no ASOS, so its visibility row is Eugene's. `metar_springfield_raw.csv` is a Finder duplicate of `metar_eugene_raw.csv` made by Dish. Verified **byte-identical**: SHA-256 `f2be2750…37e6dd` for both files. Ends 2026-09-25, like Eugene's.
+- **Total: 17 cities, 17 raw files** (one per city; Phoenix in UTC), covering **18 distinct stations**: the original 12 plus ARB, DLO, SAN, VLL, PHX and HRL. EUG is used by both Eugene and Springfield.
+- **Raw files:** `data/raw/metar/metar_{annarbor,delano,sandiego,warren}_raw.csv`, downloaded by Dish (same IEM settings as the original 10).
+- **Raw check (read-only, before processing):**
+  - All four end **2026-09-23 23:5x local**. The IEM end date was set to 2026-09-24 and IEM leaves out the end date itself, so Sep 24 is missing. **Changed by Dish:** accepted as is; no re-download.
+  - ARB: 134,489 rows from 2016-01-01, 3,906 days with data; 3,267 blank visibility and 3,136 blank RH (much higher than the original 12 stations).
+  - DLO: 223,183 rows, **starts 2017-01-15** (IEM lists the archive as beginning 2017-01-05), 3,173 days with data (~10% of days missing after the start), 9,674 blank RH. **Changed by Dish:** DLO accepted with 2016 and early January 2017 missing.
+  - SAN: 116,238 rows, 3,919 days with data.
+  - VLL: 292,804 rows, 3,910 days with data.
+
+### Decision D6 · METAR · 2026-09-27 · Dish
+- **What:** DLO (Delano) and VLL (Warren) are automated stations reporting at **:15, :35 and :55** past each hour (~70–75 reports/day), vs one routine report (~:51–:56) plus occasional specials at the other stations. Keeping the haziest of three reports every hour (Step 3) would make these two cities look slightly hazier than the others, by construction. **Decision: for DLO and VLL, use only the :55 report** (closest to the big airports' routine :5x timing); all other reports from these two stations are set aside before Step 3.
+- **Who chose it:** proposed by Claude, **approved by Dish**. Alternative considered: keep the haziest of the three and log the bias.
+
+### Step 1b · METAR (Phoenix) · 2026-09-27 · Dish + Claude
+- **What:** Converted Phoenix timestamps from UTC to local time: **local = UTC − 7 hours, fixed all year** (Arizona is on MST with no daylight saving). The original UTC time is kept as a new column `valid_utc`. No rows dropped; other columns unchanged.
+- **Why:** Every other city's timestamps are local, and Steps 3–4 (clock hour, 8am–6pm window) need local time. IEM's menu has no America/Phoenix (D5).
+- **Input:** `data/raw/metar/metar_phoenix_raw_utc.csv` (not modified)
+- **Script:** `scripts/metar/01b_phoenix_utc_to_local.py`
+- **Rows in → out:** 96,974 → 96,974. Built-in check passed: every row shifted by exactly 7 h.
+- **Result:** local range 2015-12-31 17:51 → 2026-09-24 16:51. 7 rows fall on 2015-12-31 (before the study period; left in, and excluded by Step 9's date range). Routine reports land at :51 local, as expected.
+- **Output:** `data/processed/metar/step01b_phoenix_local/metar_phoenix_local.csv`
+- **Judgment calls:** none new (UTC download + fixed −7 h approved under D5).
+
+### Step 1 (rerun, 17 cities) · METAR · 2026-09-27 · Dish + Claude
+- **What:** Reran the read-only inventory on all 17 cities. **Script edit:** `01_inventory.py` now reads Phoenix from the Step 1b local-time file instead of the UTC raw file, and strips `_local.csv` from the city name. Nothing else changed (see git diff of the script).
+- **Input:** 16 raw files in `data/raw/metar/` + `data/processed/metar/step01b_phoenix_local/metar_phoenix_local.csv`
+- **Rows in → out:** 2,454,137 reports read → 19-row summary (18 stations; EUG appears under both Eugene and Springfield). 0 rows removed.
+- **Check:** compared to the committed version, the original 12 rows are **identical**; git shows 7 rows added, 0 changed.
+- **New stations:** ARB 134,489 rows, 3,906 days, **3,267 blank visibility**, 3,136 blank RH · DLO 223,183 rows from 2017-01-15, 3,173 days, **9,674 blank RH** · SAN 116,238 rows, 3,919 days · VLL 292,804 rows, 3,910 days · HRL 124,319 rows, 3,920 days, 711 blank visibility · PHX 96,974 rows, 3,921 local dates (including 2015-12-31).
+- **Output:** `data/processed/metar/metar_inventory.csv` (overwritten; the previous version is in git history)
+- **Judgment calls:** none (counting only).
+
+### Step 2 (rerun, 17 cities) · METAR · 2026-09-27 · Dish + Claude
+- **What:** Reran "throw out broken readings" (blank or exactly 0-mile visibility) on all 17 cities. **Script edit:** `02_drop_broken.py` reads Phoenix from the Step 1b local-time file and strips `_local.csv` from the city name. Rules unchanged.
+- **Input:** 16 raw files + `step01b_phoenix_local/metar_phoenix_local.csv`
+- **Rows in → out:** 2,454,137 → **2,447,990**. Removed 6,147: 6,035 blank, 112 zero. **New cities only:** 4,409 blank + 24 zero = 4,433 removed. ARB 3,268 (2.43%, the highest of any station), HRL 711 (0.57%), EUG/Springfield 220 (same as Eugene), DLO 97, VLL 98, PHX 23, SAN 16. Built-in check passed.
+- **Check:** git shows **no changes** to any of the original 10 cities' `_valid`/`_removed` files; `step02_summary.csv` gained 7 rows, 0 changed; 14 new files added.
+- **Output:** `data/processed/metar/step02_valid/` (same file pattern as before)
+- **Judgment calls:** none new. Rerun overwrites processed outputs in place; previous versions are in git history. **Claude's choice, flagged to Dish.**
+- **Correction:** Claude's pre-run estimate of "~5,500 more rows removed" was high; the actual count is 4,433.
+
+### Step 3 (rerun, 17 cities, D6 rule) · METAR · 2026-09-27 · Dish + Claude
+- **What:** Reran "one reading per airport per hour" on all 17 cities. **Script edit (D6):** for DLO and VLL, only reports at minute :55 are used. All other reports from those two stations (routine :15/:35 and specials) are saved to `metar_<city>_awos_set_aside.csv` before hourly grouping. The summary gains an `awos_set_aside` column, and the self-check now includes set-aside rows. All other stations are processed exactly as before.
+- **Input:** `data/processed/metar/step02_valid/metar_<city>_valid.csv`
+- **Rows in → out:** 2,447,990 reports → **1,745,831 station-hours** (361,088 set aside at DLO/VLL; 341,071 merged into their hour). Built-in check passed.
+  - DLO: 223,086 in → 149,144 set aside → 73,933 hours. VLL: 292,706 in → 211,944 set aside → 80,754 hours.
+  - New ASOS stations: ARB 90,239 hours · HRL 93,542 · SAN 94,026 · PHX 93,981 · EUG/Springfield 93,691 (same as Eugene).
+- **Check:** git shows no changes to the original 10 cities' hourly files. `step03_summary.csv` changed because of the new column and the 7 new rows.
+- **Approved side effects:** (1) no fallback when an hour lacks a :55 report; (2) DLO/VLL specials are set aside, so a sudden event between routine reports can register at the other airports but not at these two. **Claude's choices, approved by Dish.**
+- **Finding after running (needs a decision):** hours that had reports but no :55 report: **DLO 1,155** (1.5%), **VLL 12,569** (13.5%). The VLL losses cluster in **2016 (3,025), 2017 (5,088) and 2019 (2,085)**, when its schedule ran a minute off (:14/:34/**:54**, sometimes :56). So strict ":55" is dropping real routine reports, not missing data. Claude proposed amending D6 to accept :54–:56 (one report per hour); awaiting Dish's decision. **These Step 3 outputs for Delano and Warren may be rerun.**
+
+### Decision D6 amended + Step 3 rerun (Delano, Warren) · METAR · 2026-09-27 · Dish + Claude
+- **Amendment:** for DLO and VLL, accept one report per hour at **:54, :55 or :56**. If an hour has more than one, the one closest to :55 wins (tie → earliest). All other reports are set aside to the audit file. **Proposed by Claude after the Step 3 finding above, approved by Dish.**
+- **Script:** `scripts/metar/03_one_per_hour.py` (D6 block and docstring updated; see git diff). Other stations unchanged.
+- **Rows in → out (all 17 cities):** 2,447,990 → **1,754,636 station-hours** (352,300 set aside; 341,054 merged). Built-in check passed.
+  - **DLO:** 73,938 hours (was 73,933 under strict :55). Picked minutes: :55 × 73,933, :56 × 5. Hours with reports but none at :54–:56: **1,150** (1.5%).
+  - **VLL:** **89,554 hours** (was 80,754). Picked minutes: :55 × 80,754, **:54 × 7,606**, :56 × 1,194. Hours still lost: **3,769** (4.0%; those hours had only off-cycle reports, e.g. :14/:34).
+  - No hour had more than one accepted report at either station.
+- **Check:** original 10 cities' hourly files unchanged (git). Only the Delano/Warren files and `step03_summary.csv` changed vs the previous rerun.
+- **Output:** `data/processed/metar/step03_hourly/` (Delano and Warren hourly and set-aside files overwritten)
+- **Caveat for the appendix:** Warren and Delano use one routine report per hour with no specials, while the other stations keep the haziest of all reports, specials included. So short events between routine reports are less likely to register at these two.
+
+### Steps 4 + 5a (rerun, 17 cities) · METAR · 2026-09-27 · Dish + Claude
+- **What:** Reran Step 4 (daytime only, 8:00–17:59 local) and Step 5a (read-only weather-code and humidity audit) on all 17 cities. **Scripts unchanged** (`04_daytime_only.py`, `05a_audit_weather_codes.py`; no git diff). Run back to back with Dish's approval, pausing before 5b.
+- **Step 4 rows in → out:** 1,754,636 → **731,800 daytime station-hours** (1,022,836 night hours removed). Daytime coverage of the 39,210 possible hours (3,921 days × 10): ARB 96.3%, **DLO 78.4%** (record starts 2017-01-15, plus gaps), VLL 95.2%, HRL 99.7%, SAN 99.9%, PHX 99.9%, EUG/Springfield 99.9%.
+- **Check:** original 10 cities' daytime files and all three 5a tables are **identical** for the original cities. Only the summaries gained rows for the new cities.
+- **Step 5a findings for the new cities** (daytime hours at the airport):
+  - **Haze:** ARB 1,253 · DLO 769 · HRL 632 · SAN 571 · VLL 335 · EUG/Springfield 249 · **PHX only 40**.
+  - **Smoke:** EUG/Springfield 312 (as Eugene); ≤ 6 elsewhere; DLO 0.
+  - **Dust:** PHX 26 hours dust + 2 hours heavy duststorm (+DS); SAN 3. Dust is kept under 5b decision 5.
+  - **Wet codes:** mist and rain are the most common everywhere. Snow at ARB 1,574 and VLL 1,404. Fog at ARB 510, EUG/Springfield 878.
+  - **RH ≥ 90% (hour max):** HRL 3,825 (~10% of daytime hours), ARB 3,637, VLL 2,876, SAN 550, **PHX 140**.
+  - **Blank RH for the whole hour:** **DLO 1,394** (4.5% of its daytime hours); ≤ 106 elsewhere. These are kept and flagged under 5b decision 7.
+  - **Codes not seen in the original 10 cities:** `+DS` (heavy duststorm, PHX, 2 hours) → kept as dust; `TSFZRA` (thunderstorm with freezing rain, ARB, 1 hour) → removed as rain. Both are covered by the existing 5b rules; no new decision needed.
+- **Output:** `data/processed/metar/step04_daytime/`, `data/processed/metar/step05a_wx_audit/`
+- **Judgment calls:** none new.
+
+### Steps 5b, 6–7, 8 (rerun, 17 cities) · METAR · 2026-09-27 · Dish + Claude
+- **What:** Reran Step 5b (remove wet hours), Steps 6–7 (10-mi ceiling check and conversion to extinction) and Step 8 (combine airports) on all 17 cities, back to back with Dish's approval, pausing before Step 9. **Scripts unchanged** (no git diff).
+- **Rows in → out:**
+  - 5b: 731,800 → **643,101** dry daytime station-hours (88,699 removed). New cities: PHX 1.2% removed · SAN 4.3% · DLO 5.3% · HRL 12.3% · VLL 14.0% · ARB 17.2% · EUG/Springfield 19.3% (= Eugene). Kept with blank RH: **DLO 1,373**, HRL 99, ARB 64; ≤ 26 elsewhere among the new cities.
+  - 6–7: no values above 10 mi (check passed). 643,101 hours converted.
+  - 8: 643,101 station-hours → **581,563 city-hours**. The new cities all have one station, so they pass through as `point_sample = 1`. Detroit and Pittsburgh are unchanged.
+- **Check:** for the original 10 cities, all data files in `step05_dry/`, `step07_extinction/` and `step08_city_hourly/` are **unchanged** (git). Only the three summary files changed, by gaining rows for the new cities.
+- **Ceiling effect, new cities** (share of dry daytime hours at exactly 10 mi): ARB 84.7% · SAN 91.5% · DLO 93.9% · HRL 94.6% · EUG/Springfield 94.9% · VLL 97.0% · **PHX 99.3%**.
+- **Caveat for the story/appendix:** Phoenix's airport visibility almost never drops below 10 mi on dry daytime hours (0.7% of hours; minimum 1.25 mi). Only 40 haze hours and 0 smoke hours are coded. So the METAR "embodied air quality" row will be nearly flat for Phoenix, even though Phoenix has real ozone and dust problems. Ozone doesn't reduce visibility much, and the 10-mi cap hides moderate haze. For Phoenix, the visibility row says little about air quality.
+- **Output:** `data/processed/metar/step05_dry/`, `step07_extinction/`, `step08_city_hourly/`
+- **Judgment calls:** none new.
+
+### Steps 9a + 9b (rerun, 17 cities, D4 end date) · METAR · 2026-09-27 · Dish + Claude
+- **What:** Reran the hours-per-day audit (9a) and the final daily visibility build (9b) on all 17 cities. **Script edit (D4):** the day range in both scripts now ends **2026-09-24** (3,920 days) instead of 2026-09-25; docstrings and comments updated. Minimum-hours rule (3), formulas and columns unchanged.
+- **Input:** `data/processed/metar/step08_city_hourly/metar_<city>_cityhour.csv` (581,563 city-hours). City-hours outside the study period (Sep 25 for the original 10 and Springfield; Phoenix's Dec 31, 2015 evening) are not used.
+- **Output:** `data/processed/metar/final/vis_<city>_daily.csv` — **17 files × 3,920 days** — plus `step09_summary.csv`; `step09a_hours_per_day/` tables.
+- **Valid days (≥ 3 dry daytime hours), new cities:** PHX 3,915 · SAN 3,896 · HRL 3,810 · VLL 3,610 · EUG/Springfield 3,661 (= Eugene) · ARB 3,523 · **DLO 3,079** (78.5%; no data before 2017-01-15 and ~10% of later days missing). Original 10: one fewer day each, the dropped Sep 25.
+- **Sep 24:** blank (`valid_day = 0`) for ARB, DLO, SAN and VLL, whose raw data ends Sep 23 (D5); valid for PHX and HRL.
+- **Checks after running:**
+  - Original 10 cities: each new file equals the previous committed file minus its final Sep 25 row. **Row-for-row identical otherwise.**
+  - Hours used + hours in short days = all study-period city-hours, for every city.
+  - Valid-day counts match 9a's "minimum 3" counts exactly.
+  - `vis_springfield_daily.csv` is identical to `vis_eugene_daily.csv`.
+- **Plausibility (worst days, new cities):** Ann Arbor 2023-06-28/29 (1.3–1.4 mi) lines up with the June 2023 Canadian wildfire smoke; San Diego 2020-09-14/15 (3.4–4.0 mi) with the September 2020 West Coast fires. **To review:** Ann Arbor 2016-07-25 (0.66 mi), Warren 2026-07-16/17 (1.05–1.66 mi) and Delano 2024-11-11 (1.69 mi) have no obvious explanation yet. Phoenix's worst valid day is 5.59 mi, and it has **0 days below 5 mi** (see the ceiling caveat above).
+- **Judgment calls:** none new (D4 end date was set in the gridMET chat and applied here).
+
 ---
-**METAR pipeline status (2026-09-27):** Steps 0–9b complete. Open items: (1) ~~airport distances (Step 8b)~~ done, city-hall coordinates pending Dish's spot-check; in-city-limits check pending shapefiles; (2) review of the Boston 2024-02-23 and Bakersfield 2020-12-17/18 low days; (3) ASOS internal visibility algorithm (M1).
-
-### Decision D2 · gridMET · 2026-09-27 · Dish
-- **What:** gridMET actual temperature will be pulled over **city-limits boundaries** (Census TIGER/Line "Places") for all 9 continental-US cities, not ClimateEngine's built-in county regions.
-- **Why:** For most of the cities the county is far larger and takes in mountains or desert: LA County (San Gabriels, Mojave), Kern (Sierra Nevada, Tehachapis, Mojave), Fresno (Sierra peaks near 14,000 ft), Lane (Cascades to the coast). A county average would blend in those cooler or different climates and misstate city highs. City limits also match the handoff's city-scale rule and the METAR airport-nearest-city approach.
-- **Options considered:** (A) city limits for all 9; (B) ClimateEngine county regions for all 9 (faster, no download); (C) county only where it matches the city (San Francisco, Suffolk/Boston), city limits elsewhere. **Approved by Dish: chose A** (Claude's recommendation).
-- **Consequence:** Dish downloads the TIGER/Line Places state files by hand (the network proxy blocks www2.census.gov from both shells). Per-city shapefiles for upload to ClimateEngine are made in a later step.
-
-### Step 1 · gridMET · 2026-09-27 · Dish (download) + Claude (check)
-- **What:** Dish downloaded the Census **TIGER/Line 2025 "Places"** shapefiles by hand for 7 states from census.gov/cgi-bin/geo/shapefiles/index.php (Year 2025 → Layer type: Places → state → Download). Claude checked that each zip is complete. **Files kept exactly as downloaded (not renamed, not unzipped).**
-- **Why:** City-limits boundaries for the gridMET pull (Decision D2), plus the "is the airport inside city limits" check for the METAR stations. Alaska is included only for that check at Fairbanks (gridMET doesn't cover Alaska).
-- **Output (raw):** `data/raw/gridmet/tiger_places/tl_2025_<FIPS>_place.zip` for FIPS 02 AK · 06 CA · 25 MA · 26 MI · 41 OR · 42 PA · 48 TX
-- **Check:** every zip has .shp, .shx, .dbf, .prj, .cpg and the two ISO metadata .xml files (7 files each). Shapefiles dated 2025-09-12/13 by Census.
-- **SHA-256 (so anyone can confirm the raw files are unchanged):**
-  - 02 `582c37f2fe680af15d7508e222153d5aa163867f47f2d96fbacd05695b0d985d`
-  - 06 `2b59dc5d54c69c7a451795401fc2a1c1c68b172f1d912d3486080e04a83e23e8`
-  - 25 `950f7d0a669caf721f770d1cc58883560b1cf84f5d7be845e6e3d05a855c86fa`
-  - 26 `91cd708b8f9809a50ebed360fe7242969ba357a542481da81d9edc5821d35d3b`
-  - 41 `d05814de06701cca35df9e160017cd11d5ffe43a2530a8fa7f4b3a521e9e1f0f`
-  - 42 `b9b8a25b906bc0c338cc4cfea45d8e5de12247a913cbd821b93368c55e2e9dc5`
-  - 48 `5a0c4d49641f69028ee9f5c343bf09936ec00a378e5e6393115b106bab935e13`
-- **Judgment calls:**
-  - **TIGER/Line (full-detail legal boundaries), vintage 2025**, rather than the simplified cartographic-boundary files. **Claude's choice, approved by Dish** (Dish picked 2025, the latest listed).
-  - Raw folder `data/raw/gridmet/tiger_places/`; the same boundaries will be reused for UTCI. **Claude's choice, approved by Dish.**
-  - Downloaded by hand because the network proxy blocks www2.census.gov from both shells.
-
-### Step 2 · gridMET · 2026-09-27 · Dish + Claude
-- **What:** Read-only audit of the city-limits boundaries. For each city: Census land and water area, number of separate polygon pieces and distance of the farthest piece, approximate number of gridMET cells inside. Also checked whether each of the 12 METAR airports lies inside its city's limits. **Nothing changed.**
-- **Why:** To decide, with real numbers, how to prepare each city's polygon for ClimateEngine; and to close METAR open item 4 (airports in city limits).
-- **Input:** `data/raw/gridmet/tiger_places/*.zip` (not modified) · `data/processed/metar/metar_station_distances.csv`
-- **Script:** `scripts/gridmet/02_boundary_audit.py` (needs geopandas 1.1.4, installed in the local workspace)
-- **Output:** `data/processed/gridmet/step02_boundary_audit/` → `boundary_audit.csv` (10 cities), `boundary_parts.csv` (one row per polygon piece), `airport_in_city.csv` (12 airports)
-- **Findings (boundaries):**
-  - Land / water km², pieces, approx. gridMET cells: Bakersfield 390 / 4 · 4 pieces · 20 · Fresno 300 / 3 · 4 · 14 · Los Angeles 1,219 / 82 · 1 · 74 · **San Francisco 121 / 480 (80% water) · 2 pieces, second one 248 km² at 30.7 km (Farallon Islands and surrounding ocean)** · 37 · Eugene 116 / 0.2 · **178 pieces** (mostly slivers, largest detached 0.47 km²) · 8 · Brownsville 316 / 17 · 4 · 19 · Detroit 359 / 11 · 1 · 24 · Pittsburgh 143 / 8 · 1 · 10 · **Boston 125 / 107 (46% water)** · 1 · 15 · Fairbanks 82 / 2 · 1 · n/a.
-- **Findings (airports in city limits):** **inside:** FAT, BRO, BOS, LAX, DET. **Outside:** BFL 1.9 km · EUG 0.9 km · AGC 1.2 km · PAFA 4.3 km · SFO 10.0 km · PIT 12.1 km · DTW 13.6 km (km beyond the boundary, not from city hall). Handoff notes for LAX, SFO, DET, DTW, AGC, PIT confirmed.
-- **Judgment calls:**
-  - Checked all 12 airports, not just the 6 Dish listed. **Claude's choice, approved by Dish.**
-  - gridMET cell count = cell centres (1/24° grid) inside the boundary; a rough size check, not what ClimateEngine computes. **Claude's choice, approved by Dish.**
-  - Places matched by Census NAME + "<name> city"; exactly one match required. **Claude's choice, approved by Dish.**
-  - Equal-area projections EPSG:5070 (CONUS) and EPSG:3338 (Alaska) for areas and distances. **Claude's choice, approved by Dish.**
-- **Open decision:** how to handle water (SF, Boston), the Farallon piece, and Eugene's slivers before making the ClimateEngine polygons.
-
-### Housekeeping · repo · 2026-09-27 · Claude (approved by Dish)
-- Added `.gitignore` (`.DS_Store`, plus `__pycache__/` as Claude's addition) and a full `README.md`. The two `.DS_Store` files already tracked by git (`data/`, `data/raw/`) are to be untracked with `git rm --cached` at commit time (files stay on disk).
-
-### Decision D3 · gridMET · 2026-09-27 · Dish
-- **What:** Use the Census city-limits shapes as they are (water included, Eugene's slivers kept), **except San Francisco: drop the detached Farallon Islands piece** (248 km², 30.7 km offshore).
-- **Why:** gridMET is a land dataset, so water cells are expected to be blank and skipped in ClimateEngine's average (to be confirmed visually in ClimateEngine). The Farallones are not part of the lived city, and an ocean-cooled island cell could bias SF's average. Eugene's slivers are tiny (largest 0.47 km²) and inside or next to the city.
-- **Options considered:** (A) all shapes as-is; (B) as-is but drop SF's Farallon piece; (C) clip every city to land using Census cartographic-boundary files. **Approved by Dish: chose B** (Claude's recommendation).
-- **To confirm:** after upload, check in ClimateEngine's gridMET map layer that bay and harbor water (SF, Boston) show no data.
-
-### Step 3 · gridMET · 2026-09-27 · Dish + Claude
-- **What:** Pulled each of the 9 continental cities' city-limits shape out of its state file and saved it as its own zipped shapefile for ClimateEngine upload. San Francisco keeps only its main piece (Decision D3). Converted coordinates from NAD83 to WGS84.
-- **Why:** ClimateEngine's "Custom Polygon from Shapefile" needs a zip with .shp/.shx/.dbf/.prj; one city per zip avoids ambiguity.
-- **Input:** `data/raw/gridmet/tiger_places/tl_2025_{06,25,26,41,42,48}_place.zip` (not modified; `git status` shows no change to raw files)
-- **Script:** `scripts/gridmet/03_city_polygons.py`
-- **Rows/values in → out:** 9 city shapes → 9 zips. Pieces and area unchanged for 8 cities. **San Francisco: 2 pieces → 1; 600.62 → 352.69 km² (247.92 km² removed, the Farallon Islands piece).** SF's remaining shape still includes bay and ocean water (lat 37.71–37.93, lon −122.61 to −122.28).
-- **Output:** `data/processed/gridmet/step03_city_polygons/<city>_citylimits.zip` (9 files: .shp .shx .dbf .prj .cpg), `step03_summary.csv`
-- **Judgment calls:**
-  - Reprojected NAD83 (EPSG:4269) → WGS84 (EPSG:4326), Earth Engine's standard; shift ≈ 1 m. **Claude's choice, approved by Dish.**
-  - SF "main piece" = largest piece by area. **Claude's choice, approved by Dish** (implements D3).
-  - Kept columns GEOID, NAME, NAMELSAD, ALAND, AWATER in the upload copies only. **Claude's choice, approved by Dish.**
-  - File names `<city>_citylimits.zip`. **Claude's choice, approved by Dish.**
-
-### Decision D4 · all datasets · 2026-09-27 · Dish
-- **What:** The study period now ends **2026-09-24** for all three datasets (replaces D1's end date of 2026-09-25).
-- **Why:** gridMET's period of record in ClimateEngine currently ends 2026-09-24 (it runs a day or two behind). Ending everything on the 24th keeps all three datasets aligned without waiting for a re-pull.
-- **Options considered:** (A) pull gridMET through 09-24 now, add 09-25 later as a separate raw file; (B) end only gridMET on 09-24, one-day mismatch with METAR; (C) move the whole study end to 09-24. **Changed by Dish: chose C** (Claude had leaned A).
-- **Follow-on (open, METAR):** the METAR final files (`data/processed/metar/final/vis_<city>_daily.csv`) still run to 2026-09-25 (3,921 days) and need a small trim step to drop 09-25 (→ 3,920 days). Not done in the gridMET work. UTCI will be pulled through 09-24.
-
-### Step 4 · gridMET · 2026-09-27 · Dish (downloads) + Claude (check)
-- **Downloads (Dish, ClimateEngine, Boston pilot):** Native Time Series · One Variable Analysis · Region: Custom Polygon from Shapefile → `boston_citylimits.zip` (feature 2507000 selected in the region dropdown) · Climate & Hydrology · GridMET 4km Daily · Maximum Temperature · deg F · 4000 m · Statistic over region: Mean · **Masking: No masking of data** · Custom Date Range. Saved to `data/raw/gridmet/climateengine/` and named at save time `gridmet_tmax_<city>_<period>.csv` (file contents untouched).
-  - Troubleshooting on the way (for the record): masking was initially set to "Mask by category → Valley Bottom Extraction Tool" (left over from the Map tab), and ClimateEngine refused to run; switched to No masking. A generic server error ("Expecting value: line 1 column 1") came from no region being selected in the "Pick a Region!" dropdown after the upload.
-  - **Mistaken download replaced:** the first baseline file covered 1999-01-01 to 2020-12-31 (start date typed as 1999). Dish re-ran it from 1991-01-01 and saved over it under the same name. The mistaken file was not processed.
-- **Water check (for D3):** the gridMET Map layer shows no values over the Atlantic, Massachusetts Bay, Lake Ontario or the Bay of Fundy; colour stops at the coastline in 4 km steps. So water inside city limits is empty in gridMET and doesn't enter ClimateEngine's regional mean. D3 holds.
-- **What (check):** read-only check of each raw file: header, date range, day count, gaps, duplicates, blanks, implausible values (outside −60 to 130 °F), and whether the 2016–2020 days common to both pulls have identical values.
-- **Input:** `data/raw/gridmet/climateengine/gridmet_tmax_boston_2016-2026.csv` (SHA-256 `8a043cc9317264b2da10cb76778ebcacbc53b58e59251a1a3f9a8f53c89cb394`) · `gridmet_tmax_boston_1991-2020.csv` (SHA-256 `0f682e54c6d4750674d86351a618e0ce904f12221700b607aea345af22a1370c`)
-- **Script:** `scripts/gridmet/04_raw_check.py`
-- **Output:** `data/processed/gridmet/step04_raw_check/raw_check.csv`
-- **Results (Boston):** 2016-2026: 3,920 of 3,920 days (2016-01-01 to 2026-09-24); 1991-2020: 10,958 of 10,958 days. 0 missing, 0 duplicate, 0 blank, 0 implausible. **Overlap 2016–2020: identical values (max difference 0.0 °F)**, so both pulls used the same polygon and settings. Range: 8.2 °F (2019-01-21) to 101.9 °F (2025-06-24, the June 2025 heat wave); baseline 6.5 to 98.9 °F.
-- **Judgment calls:**
-  - Plausible range −60 to 130 °F (flag only, nothing removed). **Claude's choice, approved by Dish.**
-  - Renaming ClimateEngine downloads at save time so the 18 files are distinguishable. **Claude's choice, approved by Dish.**
-  - Boston downloaded first as a pilot before the other 8 cities. **Claude's choice, approved by Dish.**
-
-### Step 4 (final) · gridMET · 2026-09-27 · Dish (downloads) + Claude (check)
-- **What:** Dish downloaded the remaining 8 cities from ClimateEngine with the Boston pilot settings (one city polygon per request, its GEOID picked in the region dropdown, No masking, 2016-01-01 → 2026-09-24 and 1991-01-01 → 2020-12-31). Claude ran the raw check on all **18 files** after each city came in, then once more on all of them after adding three header checks (below). **Read-only: nothing changed.**
-- **Script change (approved by Dish before running):** `scripts/gridmet/04_raw_check.py` now also records `geoid_in_header`, `geoid_matches_city` (header GEOID vs the city in the filename, using the Step 3 GEOIDs) and `header_dates_match` (header date range vs the expected range; would have caught the 1999 mix-up).
-- **Output:** `data/processed/gridmet/step04_raw_check/raw_check.csv` (18 rows)
-- **Results:** every file has the right GEOID and date range; 3,920 of 3,920 study days and 10,958 of 10,958 baseline days; 0 missing, 0 duplicate, 0 bad dates, 0 blank, 0 implausible, 0 outside range. **2016–2020 overlap identical in all 9 cities (max difference 0.0 °F).**
-- **Hottest study-period days (2016-01-01 to 2026-09-24):** Bakersfield 113.8 °F (2022-09-06) · Fresno 113.4 °F (2022-09-06) · Eugene 110.1 °F (2021-06-27, Pacific NW heat dome) · Los Angeles 109.3 °F (2018-07-06) · Brownsville 102.7 °F · Boston 101.9 °F (2025-06-24) · San Francisco 97.9 °F (2020-09-06) · Detroit 97.2 °F · Pittsburgh 96.8 °F. Cold ends match known events (Detroit −1.4 °F on 2019-01-30, polar vortex; Brownsville 34.0 °F, likely the Feb 2021 freeze).
-- **Flags for later (nothing changed):**
-  - **Detroit 2013-09-10 = 104.8 °F** (baseline). Real hot spell (neighbouring days 89 and 99 °F), but Claude's understanding is that the airport recorded mid-90s that day, so gridMET may run ~8–10 °F hot on this day. Not verified (METAR pulls didn't include temperature). Affects only early-September normals; candidate for an outlier audit before the normals step.
-  - **Area averaging flattens extremes (appendix caveat):** San Francisco's hottest gridMET day in 2017 is 95.3 °F (09-02), while downtown SF officially hit ~106 °F on 2017-09-01. The city mean includes the cooler foggy west side.
-- **SHA-256 of raw files** (`data/raw/gridmet/climateengine/`):
-  - bakersfield 1991-2020 `c09960f59715601a9cd10d0e87148b254c218caed59e3c87cdbff1648eb6b70b` · 2016-2026 `2ae64c2a7830c3e70fa7b18a374d21fbf6ec72287bdff8af720c0de23552480b`
-  - boston 1991-2020 `0f682e54c6d4750674d86351a618e0ce904f12221700b607aea345af22a1370c` · 2016-2026 `8a043cc9317264b2da10cb76778ebcacbc53b58e59251a1a3f9a8f53c89cb394`
-  - brownsville 1991-2020 `57c129af19bb4a8baea4105c16590852d7a425f373a8f3d7271575069abeed75` · 2016-2026 `44c7be1de0a742b4fd011c16ec0b2f52861a946b075c48c314140046d73ff40c`
-  - detroit 1991-2020 `289697e61b46ccd46aba6f88a036414857e6d5a13eadcbfee5c4c602313059cf` · 2016-2026 `23b99a51719cfd46119ae9c216664c5ffd0d99ecff3d84387c34fb1313c7a4b8`
-  - eugene 1991-2020 `f4248f0a6e442015b7c2b9bd9ba5390cb77236b406d96bb8634bf706138b56e8` · 2016-2026 `1fc690435505f0013d7557e4c0bc40d771c2078872c4e7d85fe2e3f6974a00d3`
-  - fresno 1991-2020 `0378ed17f7c4440d637c80983a8e72f3b49efc82bf4e9f3f8970a3fd5b645c28` · 2016-2026 `58eefa65bffd9c7ea4684f426e726214bdf60db82856fc01d2166add2126632b`
-  - losangeles 1991-2020 `fe4b8b45cdcb22e29118be7fead545b2ef92ad6b81dfc0f25b9b0a7451268a34` · 2016-2026 `bb64c2829a1f01b68f556efe447a0588c1b7e063cceef4ced184c1059a6721ea`
-  - pittsburgh 1991-2020 `1e384e4fa16d9c623ee2a8bdefdc934bcaf1beb8d7a195575e6d6e4b8352437b` · 2016-2026 `b8920f10078f69e80d352c5aa2c000a9d2127da96091680239a1df00ed396d9d`
-  - sanfrancisco 1991-2020 `6ed70bd8bc7fb4e8a0d75c0fe0b288c4babb33e078cd770ca6d24340cc17dd87` · 2016-2026 `d3b51456d12e35ee117a042ff39e1da4d07316da9740f52bd9389097f1c680e0`
-- **Judgment calls:**
-  - GEOID and header-date checks added. **Claude's choice, approved by Dish.**
-  - Detroit 2013-09-10 and the SF smoothing example flagged but not acted on. **Claude's choice, approved by Dish.**
+**METAR pipeline status (2026-09-27, updated):** 17 cities, Steps 0–9b complete, ending 2026-09-24 (D4). Open items: (1) Step 8b distances for the 6 new stations (ARB, DLO, SAN, VLL, PHX, HRL) and the city-hall spot-check; (2) review of unexplained low days: Boston 2024-02-23, Bakersfield 2020-12-17/18, Ann Arbor 2016-07-25, Warren 2026-07-16/17, Delano 2024-11-11; (3) ASOS internal visibility algorithm (M1); (4) Phoenix visibility row is nearly flat (99.3% of hours at the 10-mi cap); decide how to use it in the story.
