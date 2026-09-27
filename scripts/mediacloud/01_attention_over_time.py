@@ -5,19 +5,20 @@
 # from 2016-01-01 to 2026-09-25, daily story counts (Media Cloud "Attention over time", /api/search/count-over-time).
 # Quoted phrases and parentheses follow Media Cloud's query syntax (same form as city-selection Step 6).
 # The collection's current source count is looked up at run time.
-# Outputs (data/raw/mediacloud-attention/):
-#   json/<slug>_count_over_time.json   raw API responses, exactly as received
-#   json/<slug>_collection.json        raw collection record (source count)
-#   mediacloud_attention_<slug>.csv    one row per day: date, stories, total_stories_in_collection, ratio (values as returned)
-#   queries.csv                        one row per city: query, collection, sources, totals
+# Outputs:
+#   data/raw/mediacloud-attention/json/<slug>_count_over_time.json   raw API responses, exactly as received
+#   data/raw/mediacloud-attention/json/<slug>_collection.json        raw collection record (source count)
+#   data/processed/mediacloud-attention/mediacloud_attention_<slug>.csv  one row per day (flattened; values as returned)
+#   data/processed/mediacloud-attention/queries.csv                    one row per city: query, collection, sources, totals
+# (The CSVs were first written to data/raw/ and moved to data/processed/ at Gina's request, 2026-09-27.)
 # If the full-period request fails, the period is requested one calendar year at a time and the days joined.
 # Run from the repo root:  MEDIACLOUD_API_KEY=... python3 scripts/mediacloud/01_attention_over_time.py
 import csv, json, os, subprocess, sys, time, urllib.parse
 
 KEY = os.environ["MEDIACLOUD_API_KEY"]
 START, END = "2016-01-01", "2026-09-25"
-OUT = "data/raw/mediacloud-attention"; RAW = f"{OUT}/json"
-os.makedirs(RAW, exist_ok=True)
+RAW = "data/raw/mediacloud-attention/json"; OUT = "data/processed/mediacloud-attention"
+os.makedirs(RAW, exist_ok=True); os.makedirs(OUT, exist_ok=True)
 CITIES = [  # rank order as listed by Gina; slug, city, state, collection id (State & Local)
     ("losangeles", "Los Angeles", "California", 38380550),
     ("phoenix", "Phoenix", "Arizona", 38381317),

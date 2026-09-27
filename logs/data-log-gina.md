@@ -53,7 +53,11 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
   | 10 | Fairbanks | Alaska (38381315) | 77 | 743 | **3,886** |
   | 11 | Brownsville | Texas (38381323) | 593 | 158 | 3,921 |
   | 12 | Ann Arbor | Michigan (38381374) | 203 | 451 | 3,921 |
-- **Output:** `data/raw/mediacloud-attention/`: `mediacloud_attention_<city>.csv` (12), `queries.csv`, and `json/` (raw responses and collection records); 16 description rows added.
+- **Output:**
+  - **Raw:** `data/raw/mediacloud-attention/json/` (raw API responses and collection records, exactly as received).
+  - **Processed:** `data/processed/mediacloud-attention/`: `mediacloud_attention_<city>.csv` (12) and `queries.csv`.
+  - 16 description rows added.
+  - **Moved:** the CSVs were first saved in `data/raw/` and moved to `data/processed/` at Gina's request (flattening is a transformation, so only the JSON is raw). Moved with `git mv`, contents unchanged; the script now writes the CSVs to `processed/`. **Changed by Gina.**
 - **Checks:**
   - **Totals match an independent query.** For every city with a city-selection Step 6 count (all but Boston), the stories from 2024-09-25 to 2026-09-25 equal Step 6's total exactly (e.g. Los Angeles 6,442, San Francisco 2,422, Brownsville 30). Step 6 used the `total-count` endpoint, not `count-over-time`.
   - `ratio` = stories ÷ collection total on every row, and every returned day has a collection total ≥ 1.
@@ -61,7 +65,6 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 - **Fairbanks:** Media Cloud returned 3,886 of 3,921 days. The 35 missing days (2016-01-05 to 2017-08-06) are days when the whole Alaska collection published nothing: every returned day has ≥ 1 collection story, and early 2016–17 days often have only 1. The raw file is left as received; when used, those days count as 0 stories.
 - **Judgment calls:**
   - **Massachusetts collection = "Massachusetts, United States - State & Local" (38381372, 307 sources)**, the same kind as the other states (not the "(Faster)" or "Local Papers" collections). **Claude's choice, flagged to Gina in chat.**
-  - **Flattened CSVs kept in `data/raw/`,** as Gina asked, next to the untouched JSON; no values changed in flattening. **Specified by Gina.**
   - **Source counts are the collections' counts at download time** (unchanged since 2026-09-26 for the 11 collections looked up then). **Claude's choice.**
   - **Only 12 of the 16 explorer cities**, as listed by Gina: Springfield, Delano, Warren and Raymondville were not requested. **Specified by Gina.**
 
