@@ -30,6 +30,53 @@ Step · dataset · date · who ran it | What (plain language) | Why | Input file
 
 ---
 
+### Step 4 · OpenAQ · 2026-09-27 · Gina + Claude
+- **What:** Downloaded OpenAQ's daily PM2.5 values for all 549 kept sensors (Step 3), 2016-03-06 to 2026-09-25, one calendar year per request. Flattened them into one CSV per city: one row per sensor per local day, with the day's mean, hourly min/median/max/sd, hours observed and flags. `valid_day` = 1 when at least 18 hours were observed. **No values changed, no days removed.**
+- **Why:** The data for the site and city averages (Step 5).
+- **Input:** `data/processed/openaq/step03_final/openaq_sensors_final.csv` (kept sensors); OpenAQ API v3 `/v3/sensors/{id}/days`. OpenAQ Docs: the daily value is "computed from the hourly average values from 01:00 to 0:00 in local time".
+- **Script:** `scripts/openaq/04_download_daily.py`
+- **Rows in → out:** 549 sensors → **549 downloaded, 0 failed**, 0 rate-limit errors. **466,458 sensor-days** in the study period (3,856 days), **387,836 valid** (≥ 18 h). 15 sensors have no valid day.
+
+  | City | Days with ≥ 1 valid reference sensor | Low-cost valid days (first day) |
+  |---|---|---|
+  | Ann Arbor | 3,043 (78.9%) | 752 (2024-06-25) |
+  | Bakersfield | 2,949 (76.5%) | 176 (2025-09-30) |
+  | Boston | 2,656 (68.9%) | 922 (2023-07-18) |
+  | Brownsville | **1,147 (29.7%)** | 12 (2026-09-12) |
+  | Delano | 0 | 525 (2025-04-17) |
+  | Detroit | 3,042 (78.9%) | 440 (2025-07-10) |
+  | Eugene | 3,203 (83.1%) | 0 |
+  | Fairbanks | 2,907 (75.4%) | 0 |
+  | Fresno | 3,009 (78.0%) | 824 (2024-05-07) |
+  | Los Angeles | 3,031 (78.6%) | 1,586 (2022-01-21) |
+  | Phoenix | 3,070 (79.6%) | 911 (2024-02-17) |
+  | San Diego | 2,428 (63.0%) | 859 (2024-04-26) |
+  | San Francisco | 2,729 (70.8%) | 1,649 (2021-10-30) |
+  | Springfield | 2,926 (75.9%) | 0 |
+  | Warren | 0 | 924 (2023-12-21) |
+- **Output:**
+  - Raw: `data/raw/openaq/daily_json/sensor_<id>.json.gz` (549 files, 44 MB)
+  - Flattened: `data/processed/openaq/step04_daily/openaq_pm25_<city>_daily_sensors.csv` (15 files, 95 MB; Los Angeles alone is 67 MB)
+  - `step04_sensor_summary.csv`, `step04_failed.csv` (empty)
+  - Descriptions: 9 rows added
+- **Checks:**
+  - Day alignment: each daily record runs from local midnight to the next local midnight (e.g. 2024-06-24T00:00−04:00 → 2024-06-25T00:00−04:00), so `date_local` is the correct local day.
+  - `date_to` is inclusive, so year-boundary days came back twice; one copy is kept per sensor and date.
+  - Days with 25 hours are daylight-saving fall-back days (e.g. Bakersfield 2016-11-06).
+- **Findings for Step 5:**
+  - **Implausible low-cost values.** 35 valid low-cost sensor-days exceed 1,000 µg/m³ and 64 exceed 500; no reference day exceeds 542. Ann Arbor low-cost sensor 13667130 read 3,870–5,330 µg/m³ daily from Nov to Dec 2025, clearly a malfunction. **Open item: an outlier rule for low-cost sensors.**
+  - **Reference extremes match known events:** Eugene/Springfield in the Sept 2020 wildfires (up to 542); Phoenix on New Year's Day 2021 and 2025 (fireworks); Fairbanks in summer smoke (2022-06-28, 2024-06-30); Detroit and Ann Arbor on 2026-07-16/17 (7 Detroit monitors 224–327 on the same day). The Detroit event is not yet explained.
+  - **Flags:** 10.6% of valid reference sensor-days and 0.1% of low-cost ones have `hasFlags = true`. Meaning not yet checked. **Open item.**
+  - **Negative daily means:** 26 sensor-days (24 Fairbanks, 2 San Francisco). **Open item.**
+  - **First valid reference day is 2016-03-12** in most cities (2016-03-15 Fairbanks, 2016-03-30 San Francisco), not 2016-03-06. OpenAQ's first days have fewer than 18 hours.
+  - **Brownsville's reference coverage is low (29.7%)**, including the 2023–2024 gap found in Step 1.
+- **Judgment calls:**
+  - **One calendar year per request**, because OpenAQ warns long ranges can time out. **Claude's choice, approved by Gina.**
+  - **Flattened CSVs in `processed`, not `raw`** (they are a transformation of the raw JSON). **Claude's choice, approved by Gina.**
+  - **Raw JSON gzip-compressed** to keep the repo manageable (content unchanged). **Claude's choice, approved by Gina.**
+  - **No filtering in this step;** invalid, negative and extreme values kept and flagged. **Claude's choice, approved by Gina.**
+- **Change during the step:** After 32 sensors, the run was stopped and restarted with faster pacing: a 0.3 s pause plus a self-imposed budget of 55 requests/minute and 1,850/hour, under OpenAQ's free-tier limits of 60/minute and 2,000/hour. **Changed by Gina** (chose this from Claude's two options). The run resumed without re-downloading the 32. The Mac was kept awake with `caffeinate` for the run, at Gina's request. Total run time about 35 minutes after the restart.
+
 ### Decision OA-D4 · OpenAQ · 2026-09-27 · Gina
 - **What:** A fallback sensor must be **closer to its own city's limits than to any other study city's limits**; otherwise no city uses it. Step 3 was rerun with this rule; its outputs were overwritten and the Step 3 entry below is updated.
 - **Why:** Step 3's traceability columns showed that 4 of Warren's fallback sensors were much closer to Detroit's limits than to Warren's. **Oak Park** (reference): 2.0 km from Detroit vs 8.1 km from Warren. **HFH CURES 6, 17, 18** (low-cost): 0.2–1.3 km vs 7.4–9.4 km. They measure air at Detroit's edge, not Warren's. (Measured from city hall, Oak Park is closer to Warren, 14.1 km vs 18.7 km, because Detroit's city hall is far south; the rule uses city limits.)
