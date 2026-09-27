@@ -71,6 +71,13 @@ Step · dataset · date · who ran it | What (plain language) | Why | Input file
   | Above 1,000 µg/m³ | 6 |
 
   Negative daily values set to 0: 26. Most extreme low-cost days were removed by the flag rule (OA-D7) before the outlier rule (OA-D6) ran, so OA-D6 removed 42 days, not the ~140 estimated beforehand.
+
+  **About the 78,622 short days** (fewer than 18 of 24 hours; the threshold is EPA's standard for a valid 24-hour PM2.5 average, 40 CFR Part 50 Appendix N §3.0(c), see Decision OA-D3):
+  - **Both types lose days at about the same rate:** 16,618 of 101,883 reference sensor-days (16%) and 62,004 of 364,575 low-cost sensor-days (17%). Routine data loss, not a problem with one type.
+  - **Most are near misses:** 48,609 had 12–17 hours, 22,471 had 6–11, and 7,542 had 0–5. Likely causes are partial-day outages, maintenance or calibration hours, power or connection drops, and a sensor's first or last day. The cause is not recorded in the data.
+  - **Most are in Los Angeles** (47,683), which has by far the most sensors (276 used), then Phoenix 7,055, San Francisco 6,033 and Detroit 3,344.
+  - **A short day loses one sensor's reading, not usually the city's day.** Where a city has several sites, the others still give that day's value. A city-day is blank only when no site has a valid sensor-day.
+  - **Trade-off, if the threshold is revisited:** 12 hours would bring back ~48,600 sensor-days, but daily values would then rest on half a day and could miss a smoky afternoon (cf. Springfield 2020-09-12). Kept at 18 (OA-D3).
 - **Days with data per city** (of 3,856; reference / low-cost / overall; days with both types):
 
   | City | Reference | Low-cost | Overall | Both |
@@ -284,7 +291,7 @@ Step · dataset · date · who ran it | What (plain language) | Why | Input file
   1. **Fallback cap: 10 km beyond city limits.** Ann Arbor gets the Ypsilanti reference monitor (6.9 km). Warren gets Oak Park (reference, 8.1 km, from Dec 2024) and 7 low-cost sensors. **Claude's recommendation, approved by Gina** after seeing the Step 2 cap options.
   2. **US monitors only.** Canadian (Windsor) monitors are excluded. **Claude's recommendation, approved by Gina.**
   3. **Average by site, not by sensor.** Each day, the sensors at a site are averaged first, then the sites are averaged into the city value, so a site with several sensors counts once. **Claude's recommendation, approved by Gina.**
-  4. **A sensor-day is valid with at least 18 of 24 hours** (EPA's usual completeness rule for a daily average). **Claude's recommendation, approved by Gina.**
+  4. **A sensor-day is valid with at least 18 of 24 hours.** This is EPA's completeness rule for a daily PM2.5 average: EPA, 40 CFR Part 50, Appendix N (Interpretation of the National Ambient Air Quality Standards for PM2.5), section 3.0(c): "A 24-hour average concentration shall be considered valid if at least 75 percent of the hourly averages (i.e., 18 hourly values) for the 24-hour period are available." https://www.ecfr.gov/current/title-40/chapter-I/subchapter-C/part-50/appendix-Appendix%20N%20to%20Part%2050 (text checked 2026-09-27 via https://www.law.cornell.edu/cfr/text/40/appendix-N_to_part_50). **Claude's recommendation, approved by Gina.**
   5. **Three city averages** (reference, low-cost, overall), each with the mean, min and max across sites, the number of sites and the site IDs used. **Specified by Gina.** "Overall" = the mean of the reference average and the low-cost average (each type weighted 50%); on days with only one type, overall = that type. **Changed by Gina** (chose option b from Claude's two options).
 - **Still open:** min/max are the lowest and highest site value of the day (spread across the city). OpenAQ's within-day hourly min/max will also be kept in the raw daily files. **Claude's choice, not yet approved.**
 
