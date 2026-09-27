@@ -30,6 +30,18 @@ Step · dataset · date · who ran it | What (plain language) | Why | Input file
 
 ---
 
+### Step 2 · Google Trends · 2026-09-27 · Gina + Claude
+- **What:** Added one more Google Trends download, `boston MA-Manchester-NH-heat-search.csv` (metro area **Boston MA-Manchester NH**), the same way as Step 1: copied **unchanged** (checked byte-for-byte), added to `trends_sources.csv` (now 17 rows), and the file count updated in the data descriptions. **No data values changed.**
+- **Why:** Gina added the Boston file to `~/Desktop/MDE/dataviz/trends-heat-search/` after Step 1.
+- **Input:** `~/Desktop/MDE/dataviz/trends-heat-search/boston MA-Manchester-NH-heat-search.csv` (file time 2026-09-27 14:45)
+- **Script:** `scripts/google-trends/01_sources_table.py` (one line added to its geography list; rerun rewrites `trends_sources.csv` for all 17 files)
+- **Rows in → out:** 1 file, 128 months (2016-01 to 2026-09) × the same 5 terms → copied unchanged; `trends_sources.csv` 16 → 17 rows.
+- **Output:** `data/raw/google-trends/heat-search/boston MA-Manchester-NH-heat-search.csv`; `trends_sources.csv`; descriptions row updated (17 files: 6 states, 4 metro areas, 7 cities)
+- **Judgment calls:**
+  - **Level recorded as "metro area"**, from the name (it matches the Google Trends metro naming, like the other 3 metros). **Claude's choice, flagged to Gina in chat.**
+  - **Same settings assumed as Step 1** (search terms, All categories, Web Search, downloaded 2026-09-27 by Gina). **Claude's assumption, flagged to Gina in chat; not yet confirmed.**
+- **Note:** Boston is covered by a **metro** file, while most other study cities are covered by city (or state) files, so the geographic level differs.
+
 ### Step 1 · Google Trends · 2026-09-27 · Gina + Claude
 - **What:** Added Gina's 16 Google Trends downloads to the repo **unchanged**, and wrote `trends_sources.csv` next to them, with one row per file: source, geography selected, level, date range, search terms and settings. **No data values changed.**
 - **Why:** Gina asked for the files to be in the raw data folder, labelled with their source (Google Trends), date range and geography. The files themselves contain no metadata, so the geography is only in the file name.
@@ -39,7 +51,7 @@ Step · dataset · date · who ran it | What (plain language) | Why | Input file
   - **US states (6):** Arizona, California, Alaska, Michigan, Oregon, Texas
   - **Metro areas (3):** Fresno-Visalia CA; Harlingen-Weslaco-Brownsville-McAllen TX; San Francisco-Oakland-San Jose CA
   - **Cities, per Gina (7):** Bakersfield CA, Detroit MI, Eugene OR, Fairbanks AK, Los Angeles CA, Phoenix AZ, San Diego CA
-- **Output:** `data/raw/google-trends/heat-search/` (16 CSVs + `trends_sources.csv`); 19 rows added to `data/descriptions/data_descriptions.csv`
+- **Output:** `data/raw/google-trends/heat-search/` (16 CSVs + `trends_sources.csv`; a 17th file, Boston, added in Step 2); 19 rows added to `data/descriptions/data_descriptions.csv`
 - **Settings (from Gina):** search terms (not topics), All categories, Web Search, downloaded 2026-09-27.
 - **Judgment calls:**
   - **Metadata in a companion file, not inside the CSVs**, because Rule 2 says raw files are never edited and title rows would break the CSV format. Gina had asked for "a page in the csv or a title". **Claude's proposal; Gina did not object.**

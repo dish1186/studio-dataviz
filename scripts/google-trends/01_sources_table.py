@@ -14,6 +14,7 @@ GEO = {  # file -> (geography as selected in Google Trends, level)
     "Fresno-Visalia CA-ca-heat-search.csv": ("Fresno-Visalia CA", "metro area"),
     "Harlingen-Weslaco-Brownsville-McAllen TX-tx-heat-search.csv": ("Harlingen-Weslaco-Brownsville-McAllen TX", "metro area"),
     "San Francisco-Oakland-San Jose CA-ca-heat-search.csv": ("San Francisco-Oakland-San Jose CA", "metro area"),
+    "boston MA-Manchester-NH-heat-search.csv": ("Boston MA-Manchester NH", "metro area"),   # added 2026-09-27 (Google Trends Step 2)
     "bakersfield-ca-heat-search.csv": ("Bakersfield, CA", "city (per Gina)"),
     "detroit-mi-heat-search.csv": ("Detroit, MI", "city (per Gina)"),
     "eugene-or-heat-search.csv": ("Eugene, OR", "city (per Gina)"),
