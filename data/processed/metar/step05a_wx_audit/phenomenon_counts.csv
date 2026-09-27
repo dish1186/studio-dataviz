@@ -1,4 +1,14 @@
 city,phenomenon,name,hours_at_airport,hours_vicinity_only
+annarbor,BR,mist,3855,0
+annarbor,DZ,drizzle,4,0
+annarbor,FG,fog,510,0
+annarbor,FU,smoke,2,0
+annarbor,HZ,haze,1253,0
+annarbor,RA,rain,2316,0
+annarbor,SN,snow,1574,0
+annarbor,SQ,squalls,4,0
+annarbor,TS,TS,78,265
+annarbor,UP,unknown precip,124,0
 bakersfield,BR,mist,965,0
 bakersfield,DU,dust,18,0
 bakersfield,FG,fog,159,0
@@ -29,6 +39,11 @@ brownsville,SN,snow,9,0
 brownsville,SQ,squalls,2,0
 brownsville,TS,TS,166,435
 brownsville,UP,unknown precip,3,0
+delano,BR,mist,610,0
+delano,DZ,drizzle,92,0
+delano,FG,fog,185,0
+delano,HZ,haze,769,0
+delano,RA,rain,494,0
 detroit,BR,mist,5919,0
 detroit,DZ,drizzle,300,0
 detroit,FG,fog,629,0
@@ -84,6 +99,15 @@ losangeles,HZ,haze,2172,0
 losangeles,RA,rain,920,0
 losangeles,SQ,squalls,1,0
 losangeles,TS,TS,13,14
+phoenix,BR,mist,125,0
+phoenix,DS,duststorm,2,0
+phoenix,DU,dust,26,0
+phoenix,FC,funnel cloud,1,0
+phoenix,FG,fog,12,0
+phoenix,HZ,haze,40,0
+phoenix,RA,rain,427,0
+phoenix,SQ,squalls,3,0
+phoenix,TS,TS,54,79
 pittsburgh,BR,mist,6357,0
 pittsburgh,DZ,drizzle,595,0
 pittsburgh,FG,fog,719,0
@@ -97,6 +121,23 @@ pittsburgh,SN,snow,3643,0
 pittsburgh,SQ,squalls,11,0
 pittsburgh,TS,TS,324,410
 pittsburgh,UP,unknown precip,63,0
+raymondville,BR,mist,1938,0
+raymondville,FG,fog,196,0
+raymondville,FU,smoke,6,0
+raymondville,HZ,haze,632,0
+raymondville,RA,rain,1960,0
+raymondville,SN,snow,12,0
+raymondville,SQ,squalls,8,0
+raymondville,TS,TS,159,505
+raymondville,UP,unknown precip,11,0
+sandiego,BR,mist,1040,0
+sandiego,DU,dust,3,0
+sandiego,DZ,drizzle,15,0
+sandiego,FG,fog,33,3
+sandiego,FU,smoke,1,0
+sandiego,HZ,haze,571,0
+sandiego,RA,rain,909,0
+sandiego,TS,TS,5,4
 sanfrancisco,BR,mist,942,0
 sanfrancisco,DZ,drizzle,7,0
 sanfrancisco,FG,fog,68,3
@@ -106,3 +147,23 @@ sanfrancisco,HZ,haze,447,0
 sanfrancisco,RA,rain,1511,0
 sanfrancisco,SQ,squalls,5,0
 sanfrancisco,TS,TS,3,11
+springfield,BR,mist,3162,0
+springfield,DZ,drizzle,64,0
+springfield,FC,funnel cloud,1,0
+springfield,FG,fog,878,0
+springfield,FU,smoke,312,0
+springfield,GR,hail,9,0
+springfield,GS,small hail,5,0
+springfield,HZ,haze,249,0
+springfield,PL,ice pellets,9,0
+springfield,RA,rain,4111,0
+springfield,SN,snow,99,0
+springfield,TS,TS,20,6
+springfield,UP,unknown precip,1,0
+warren,BR,mist,1111,0
+warren,DZ,drizzle,263,0
+warren,FG,fog,102,0
+warren,HZ,haze,335,0
+warren,RA,rain,1740,0
+warren,SN,snow,1404,0
+warren,UP,unknown precip,138,0
