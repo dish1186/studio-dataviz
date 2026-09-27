@@ -30,12 +30,19 @@ Step · dataset · date · who ran it | What (plain language) | Why | Input file
 
 ---
 
+### Decision OA-D4 · OpenAQ · 2026-09-27 · Gina
+- **What:** A fallback sensor must be **closer to its own city's limits than to any other study city's limits**; otherwise no city uses it. Step 3 was rerun with this rule; its outputs were overwritten and the Step 3 entry below is updated.
+- **Why:** Step 3's traceability columns showed that 4 of Warren's fallback sensors were much closer to Detroit's limits than to Warren's. **Oak Park** (reference): 2.0 km from Detroit vs 8.1 km from Warren. **HFH CURES 6, 17, 18** (low-cost): 0.2–1.3 km vs 7.4–9.4 km. They measure air at Detroit's edge, not Warren's. (Measured from city hall, Oak Park is closer to Warren, 14.1 km vs 18.7 km, because Detroit's city hall is far south; the rule uses city limits.)
+- **Options:** (a) keep the Step 2 rule, "nearest city that needs it"; (b) the stricter rule. **Changed by Gina: chose (b)**, as recommended by Claude.
+- **These 4 sensors don't go to Detroit either.** Detroit has its own sensors of both types, and fallbacks are only for cities with none of that type. They're recorded as "fallback closer to another study city". **Claude's explanation, confirmed by Gina's question in chat; not separately approved.**
+- **Effect:** Warren: reference 1 → **0** sites; low-cost 7 → **4** sites (Madison Heights, S Campbell Rd & E 3rd St, Royal Oak, Dodge Park & Utica). Ann Arbor unchanged (Ypsilanti has no other study city within 10 km). Totals: 560 → **556 sensors, 496 → 492 sites**. **Cities with no reference average: Warren, Delano, Raymondville.**
+
 ### Step 3 · OpenAQ · 2026-09-27 · Gina + Claude
 - **What:** Made the final list of sensors per city and grouped them into sites. Kept sensors inside city limits, plus fallback sensors within the 10 km cap, US only (Decision OA-D3). Sensors of the same type in the same city within 50 m of each other were grouped into one site (chained). Added traceability columns: other study cities within 10 km of each sensor, and the cities whose Step 1 search circle it fell in. **No measurements downloaded.**
 - **Why:** Decision OA-D3, and Gina's requirement that it be traceable which sensors go into which calculation, and why.
 - **Input:** `data/processed/openaq/step02_assignment/openaq_sensors_assigned.csv` and `city_boundaries.geojson`; `data/processed/openaq/step01_inventory/openaq_sensors_inventory.csv`; country codes from the raw `data/raw/openaq/json/locations_*.json`
 - **Script:** `scripts/openaq/03_final_sensors_and_sites.py` (local files only; no API calls)
-- **Rows in → out:** 948 sensors → **560 kept at 496 sites**; 388 not kept, each with a reason: 358 outside every study city and not needed as fallback, 23 with no data in the study period, 7 fallback beyond the 10 km cap.
+- **Rows in → out (after the Decision OA-D4 rerun):** 948 sensors → **556 kept at 492 sites**; 392 not kept, each with a reason: 358 outside every study city and not needed as fallback, 23 with no data in the study period, 7 fallback beyond the 10 km cap, 4 fallback closer to another study city (OA-D4). First run: 560 sensors at 496 sites.
 
   | City | Reference sites (sensors) | Low-cost sites (sensors) |
   |---|---|---|
@@ -54,7 +61,7 @@ Step · dataset · date · who ran it | What (plain language) | Why | Input file
   | San Diego | 10 (13) | 22 (22) |
   | San Francisco | 1 (1) | 61 (72) |
   | Springfield | 2 (4) | 0 |
-  | Warren | 1 (1), fallback: Oak Park | 7 (7), all fallback |
+  | Warren | 0 (Oak Park dropped, OA-D4) | 4 (4), all fallback |
 - **Output:** `data/processed/openaq/step03_final/`
   - `openaq_sensors_final.csv`: all 948 sensors, with kept, reason, site_id, us_basis, other_study_cities_nearby, step01_within_25km_of
   - `openaq_sites.csv`: 496 sites, with member sensors, location and spread
@@ -69,11 +76,11 @@ Step · dataset · date · who ran it | What (plain language) | Why | Input file
   - **Site IDs made by the script:** "S" + the lowest OpenAQ location ID in the site. **Claude's choice, approved by Gina.**
   - **A station that moved more than 50 m counts as two sites**, e.g. San Ysidro (San Diego), 184 m apart, never reporting on the same day. City averages aren't affected, because only sites with data that day are used. **Claude's choice, approved by Gina.**
   - **US test:** in-city sensors count as US by the Census boundary; fallback sensors use OpenAQ's country. **Claude's fix, flagged to Gina in chat; not yet approved.**
-- **Finding (open item):** Some of Warren's fallback sensors are much closer to Detroit than to Warren. The "nearest city that needs it" rule (Step 2) gives them to Warren because Detroit doesn't use fallbacks.
+- **Finding (resolved by Decision OA-D4):** Some of Warren's fallback sensors are much closer to Detroit than to Warren. The "nearest city that needs it" rule (Step 2) gives them to Warren because Detroit doesn't use fallbacks.
   - HFH CURES 6, 17 and 18: 0.2–1.3 km from Detroit's limits, 7.4–9.4 km from Warren's.
   - **Oak Park**, Warren's only reference monitor: 2.0 km from Detroit, 8.1 km from Warren.
 
-  **Decision needed from Gina.**
+  Gina chose to exclude them (OA-D4).
 
 ### Decision OA-D3 · OpenAQ · 2026-09-27 · Gina
 - **What:**

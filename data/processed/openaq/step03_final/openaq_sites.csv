@@ -489,9 +489,5 @@ S1857,springfield,reference,Springfield City Hal,3,3278; 1331071; 5087784,1857; 
 S3362212,springfield,reference,SPS Farm,1,11976039,3362212,44.07636,-123.0369,0.0,2025-01-09T22:00:00Z,2026-09-27T14:00:00Z,in city limits,0.0
 S1989140,warren,low-cost,Madison Heights,1,7570748,1989140,42.495536,-83.097828,0.0,2023-12-20T23:00:00Z,2026-09-02T17:00:00Z,fallback within 10 km of city limits,1.03
 S5186042,warren,low-cost,S Campbell Rd & E 3rd St,1,14153303,5186042,42.489184,-83.124388,0.0,2025-09-19T00:00:00Z,2026-09-19T22:00:00Z,fallback within 10 km of city limits,3.22
-S6157226,warren,low-cost,HFH CURES 6,1,14970245,6157226,42.38629,-82.92684,0.0,2025-12-23T18:00:00Z,2026-09-22T15:00:00Z,fallback within 10 km of city limits,7.93
-S6208756,warren,low-cost,HFH CURES 17,1,15215913,6208756,42.373634,-82.920955,0.0,2026-01-20T19:00:00Z,2026-02-24T17:00:00Z,fallback within 10 km of city limits,9.4
-S6217721,warren,low-cost,HFH CURES 18,1,15282158,6217721,42.388369,-82.935308,0.0,2026-01-27T18:00:00Z,2026-01-27T18:00:00Z,fallback within 10 km of city limits,7.42
 S6448278,warren,low-cost,Royal Oak,1,16949959,6448278,42.515259,-83.138816,0.0,2026-07-17T13:00:00Z,2026-09-27T14:00:00Z,fallback within 10 km of city limits,4.32
 S6460119,warren,low-cost,Dodge Park & Utica,1,17037119,6460119,42.591779,-83.011103,0.0,2026-07-25T16:00:00Z,2026-09-27T14:00:00Z,fallback within 10 km of city limits,6.07
-S2124,warren,reference,Oak Park,1,11522336,2124,42.4631,-83.183296,0.0,2024-12-02T20:00:00Z,2026-09-27T14:00:00Z,fallback within 10 km of city limits,8.14

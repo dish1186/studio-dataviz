@@ -8,6 +8,8 @@
 #   3. Group each city's sensors into sites (Decision OA-D3): sensors of the same type within 50 m of each other are
 #      one site (chained: A-B and B-C within 50 m puts A, B and C in one site). Site ID = the lowest OpenAQ location ID
 #      in the group. The daily site value (Step 5) will be the mean of that site's valid sensors.
+#   3b. Fallback sensors must be closer to their own city's limits than to any other study city's limits
+#      (Decision OA-D4). Otherwise not used by any city: cities with their own sensors of that type don't take fallbacks.
 #   4. Traceability columns for every sensor: other study cities whose limits are within 10 km of it
 #      (other_study_cities_nearby, with distances), and the cities whose Step 1 search circle (25 km) it fell in.
 # Every Step 2 sensor gets a row in the output, kept or not, with the reason.
@@ -60,10 +62,24 @@ for r in csv.DictReader(open("data/processed/openaq/step01_inventory/openaq_sens
     step1.setdefault(r["sensor_id"], []).append(r["city_slug"])
 for s in S:
     s["country"] = country.get(s["location_id"], "")
+    lon, lat = float(s["lon"]), float(s["lat"])
+    near = []
+    for c, rs in limits.items():
+        if c == s["assigned_city"]: continue
+        d = 0.0 if inside(lon, lat, rs) else dist_km(lon, lat, rs)
+        if d <= CAP_KM: near.append((d, c))
+    s["other_study_cities_nearby"] = "; ".join(f"{c} ({d:.1f} km)" for d, c in sorted(near))
+    s["step01_within_25km_of"] = "; ".join(step1.get(s["sensor_id"], [])) or "(found in Step 2 extra search)"
+    s["_near"] = sorted(near)
     if s["assignment_rule"] == "in_city_limits":
         s["kept"], s["reason"] = True, "in city limits"
     elif s["assignment_rule"] == "fallback_candidate" and float(s["distance_km_to_assigned_limits"]) <= CAP_KM:
-        s["kept"], s["reason"] = True, f"fallback within {CAP_KM:g} km of city limits"
+        own = float(s["distance_km_to_assigned_limits"])
+        closer = [(d, c) for d, c in s["_near"] if d < own]
+        if closer:
+            s["kept"], s["reason"] = False, f"fallback closer to another study city ({closer[0][1]}, {closer[0][0]:.1f} km vs {own:.1f} km)"
+        else:
+            s["kept"], s["reason"] = True, f"fallback within {CAP_KM:g} km of city limits"
     elif s["assignment_rule"] == "fallback_candidate":
         s["kept"], s["reason"] = False, f"fallback beyond {CAP_KM:g} km cap"
     elif s["overlaps_study_period"] != "True":
@@ -74,14 +90,6 @@ for s in S:
     if s["kept"] and s["assignment_rule"] != "in_city_limits" and s["country"] != "US":
         s["kept"], s["reason"] = False, f"not in the US (OpenAQ country {s['country'] or 'blank'})"
     if not s["kept"]: s["assigned_city"] = s["assigned_city"] if s["assignment_rule"] == "fallback_candidate" else ""
-    lon, lat = float(s["lon"]), float(s["lat"])
-    near = []
-    for c, rs in limits.items():
-        if c == s["assigned_city"]: continue
-        d = 0.0 if inside(lon, lat, rs) else dist_km(lon, lat, rs)
-        if d <= CAP_KM: near.append((d, c))
-    s["other_study_cities_nearby"] = "; ".join(f"{c} ({d:.1f} km)" for d, c in sorted(near))
-    s["step01_within_25km_of"] = "; ".join(step1.get(s["sensor_id"], [])) or "(found in Step 2 extra search)"
 
 # Sites: same city, same type, chained within 50 m
 kept = [s for s in S if s["kept"]]
