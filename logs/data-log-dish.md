@@ -650,5 +650,36 @@ Step · dataset · date · who ran it | What (plain language) | Why | Input file
   - **Each band includes its upper edge** (e.g. moderate heat = above 26 up to and including 32 °C). **Changed by Dish: chose this** (Claude's suggestion). Only 0–9 days per city since 2016 sit exactly on an edge.
   - **Full 10-band scale, including cold-stress bands** (Option A). **Changed by Dish: chose A** (Claude's recommendation). **Caveat for the appendix:** categories come from the day's *warmest* hour, so cold stress is understated ("slight cold stress" = even the warmest hour was slightly cold).
 
+### Step 6 · UTCI · 2026-09-27 · Dish + Claude
+- **What:** For each calendar date, built the 1991–2020 "normal" felt heat from the daily maximum UTCI (°F, D13), then compared every 2016+ day with it. Wrote the **final UTCI files**.
+- **Method (the recipe gridMET Step 5 should copy for Step 7):**
+  1. Pool = every **valid** baseline day (1991-01-01 → 2020-12-31) whose calendar date is within **±7 days** of the target date, across all 30 years; the window wraps around New Year (Jan 1 uses Dec 25 – Jan 8).
+  2. Calendar = 365 days; **Feb 29 counts as Feb 28** (in the pool and as a target date). Pools are 450 values, **458** for windows containing Feb 28 (8 leap years in 1991–2020, incl. 2020).
+  3. normal_f = mean of the pool; p10_f / p90_f = 10th / 90th percentile (numpy default, linear interpolation).
+  4. anomaly_f = utci_max_f − normal_f; **abnormally_high = 1 if utci_max_f > p90_f** (strictly greater), else 0; blank on invalid days.
+- **Input:** `data/processed/utci/step05_stress/utci_<city>_stress.csv` (not modified; SHA-256 re-checked) · `data/processed/utci/step02_cell_weights/cell_weights.csv` (for `cells_used`)
+- **Script:** `scripts/utci/06_normals_final.py`
+- **Output:** `data/processed/utci/final/utci_<city>_daily.csv` (12 files; columns: date, utci_max_f, utci_max_c, stress_level, stress_category, stress_range_f, normal_f, p10_f, p90_f, anomaly_f, abnormally_high, n_baseline_values, valid, cells_used) and `step06_summary.csv`
+- **Rows:** **3,920 per city, 2016-01-01 → 2026-09-24** (same days as METAR and gridMET, D4); **3,814 valid**. Blank rows: 2021-04-28/29 (D12) and **2026-06-13 → 2026-09-24** (UTCI data end; **changed by Dish:** keep blank rows so the three datasets line up). Blank rows still carry the date's normal, p10 and p90.
+- **Checks:** share of baseline days above their own p90 = 9.2–9.9% per city (≈ 10% expected; slightly lower because "above" is strict). Hand calculation for Phoenix 2023-07-15 matches the file (450 values; normal 110.28 °F, p10 102.75, p90 117.01; that day 120.32 °F → abnormally high, extreme heat stress). 2016-02-29 uses the 458-value Feb 28 pool. Brownsville's smallest pool is 448 (its two hurricane days, 2005-07-20 and 2008-07-23, fall in overlapping windows).
+- **Results, valid days 2016-01-01 → 2026-06-12 (share abnormally high / mean anomaly):** LA 11.7% / +0.79 °F · Phoenix 15.7% / +1.40 °F · San Diego 12.3% / +0.79 °F · Detroit 12.2% / +1.29 °F · Bakersfield 16.1% / +1.61 °F · SF 10.5% / +0.59 °F · Fresno 17.7% / +2.19 °F · Boston 11.7% / +1.13 °F · Eugene 12.3% / +0.85 °F · Fairbanks 9.9% / +0.66 °F · Brownsville 17.6% / +1.56 °F · Ann Arbor 12.3% / +1.27 °F. Every city except Fairbanks is above the 10% expected from the baseline, and every city's mean anomaly is positive: felt heat since 2016 runs warmer than 1991–2020.
+- **Judgment calls:**
+  - Blank baseline days left out of the pool; no minimum pool size (smallest is 448). **Claude's choice, approved by Dish.**
+  - Percentile method = numpy default (linear). **Claude's choice, approved by Dish.**
+  - Values rounded to 2 decimals; anomaly computed before rounding the normal. **Claude's choice, approved by Dish.**
+- **SHA-256 of the final files:**
+  - losangeles `53ce50c391848325afc829ca66f98cdb78d94cca67ad081c1e53833aa4c59d53`
+  - phoenix `8e91d2730750e88969731441822556926afddb22c1b1674faef95ae784ea62ba`
+  - sandiego `e4c676dd341d94264ffc3403c1b69036d77c8270ef493fd4387478f36e98e464`
+  - detroit `5018861a6eb8fa6ecf996df1fe46ff5a35317c54f2e7afa0b1d1db0440c22a3d`
+  - bakersfield `6e207646e52f33496c5dd457e056d37896e59fc04f0e7682e6d30baa7d598b38`
+  - sanfrancisco `eefa156416dcc282a3c8ee279ea1319962b769e60f7439ea1e36f88bfb5b7e56`
+  - fresno `f604438a692916aa13ba1a133dcceee6e65d576f6c48e4cef8279260cec6ece7`
+  - boston `41c13e1112da822f1570dab664e1c1934ee7b8dfbf61b6c6c2e45f154b00431d`
+  - eugene `056e3191eaf4282b32ec73f46d143e9ee9db52a05fac0016560c218cee5dd0ba`
+  - fairbanks `713e0d2d2cd6c77fb2374f793236610f65cd138ca56c1d1834d2a08cb1b5d192`
+  - brownsville `201dc8107b16962dc11b64df86c9233e145e4c28d17ef311c1a0f76af6f5f689`
+  - annarbor `61ce4decf6b10fd5b0d70615c6b102c68225abecd7f4aa78b6ef1e2d63c257e0`
+
 ---
 **METAR pipeline status (2026-09-27, final):** **Closed (D8).** 17 cities, Steps 0–9b complete, ending 2026-09-24 (D4); final files frozen. Step 8b distances cover all 18 stations. Not done, by choice: in-city check for the new stations (D7), review of 7 low days, ASOS algorithm citation (appendix), Phoenix story decision; city-hall spot-check pending with Dish. New caveat: Ann Arbor outage from ~2026-06-17 (last valid day 2026-08-05).
