@@ -1,7 +1,7 @@
 """
 Step 3 · gridMET · Write one zipped city-limits shapefile per city for ClimateEngine upload.
 Input : data/raw/gridmet/tiger_places/tl_2025_<FIPS>_place.zip (not modified)
-Output: data/processed/gridmet/step03_city_polygons/<city>_citylimits.zip   (9 files)
+Output: data/processed/gridmet/step03_city_polygons/<city>_citylimits.zip   (16 files; existing zips are never overwritten)
         data/processed/gridmet/step03_city_polygons/step03_summary.csv
 Decision D3: shapes used as-is, except San Francisco keeps only its main piece
 (drops the Farallon Islands piece ~31 km offshore).
@@ -22,6 +22,11 @@ CITIES = {  # city key -> (state FIPS, Census NAME); Fairbanks excluded (no grid
     "eugene": ("41", "Eugene"), "brownsville": ("48", "Brownsville"),
     "detroit": ("26", "Detroit"), "pittsburgh": ("42", "Pittsburgh"),
     "boston": ("25", "Boston"),
+    # Added 2026-09-27 (gridMET extension to METAR's D5 cities); shapes kept as-is (D3 rule)
+    "annarbor": ("26", "Ann Arbor"), "warren": ("26", "Warren"),
+    "delano": ("06", "Delano"), "sandiego": ("06", "San Diego"),
+    "phoenix": ("04", "Phoenix"), "raymondville": ("48", "Raymondville"),
+    "springfield": ("41", "Springfield"),
 }
 KEEP_MAIN_PIECE_ONLY = {"sanfrancisco"}   # Decision D3
 
@@ -44,12 +49,18 @@ for city, (fips, name) in CITIES.items():
     n_after = len(g2.geoms) if isinstance(g2, MultiPolygon) else 1
     area_after = c.to_crs(5070).area.iloc[0] / 1e6
 
-    with tempfile.TemporaryDirectory() as tmp:
-        base = f"{city}_citylimits"
-        c.to_file(os.path.join(tmp, f"{base}.shp"))
-        with zipfile.ZipFile(os.path.join(OUT, f"{base}.zip"), "w", zipfile.ZIP_DEFLATED) as z:
-            for ext in ["shp", "shx", "dbf", "prj", "cpg"]:
-                z.write(os.path.join(tmp, f"{base}.{ext}"), f"{base}.{ext}")
+    base = f"{city}_citylimits"
+    zip_path = os.path.join(OUT, f"{base}.zip")
+    if os.path.exists(zip_path):   # never overwrite an existing upload zip (zip timestamps would change its bytes)
+        status = "kept (already exists)"
+    else:
+        with tempfile.TemporaryDirectory() as tmp:
+            c.to_file(os.path.join(tmp, f"{base}.shp"))
+            with zipfile.ZipFile(zip_path, "w", zipfile.ZIP_DEFLATED) as z:
+                for ext in ["shp", "shx", "dbf", "prj", "cpg"]:
+                    z.write(os.path.join(tmp, f"{base}.{ext}"), f"{base}.{ext}")
+        status = "written"
+    print(f"{city}: {status}")
 
     summary.append({"city": city, "geoid": c["GEOID"].iloc[0], "pieces_before": n_before,
                     "pieces_after": n_after, "area_before_km2": round(area_before, 2),

@@ -504,5 +504,16 @@ Step · dataset · date · who ran it | What (plain language) | Why | Input file
   - Rewrote the three Step 2 CSVs with all 17 cities (rather than separate files), after verifying the original rows are unchanged. **Claude's choice, approved by Dish.**
   - Airport check for the 7 new stations included (reopens D7). **Approved by Dish.**
 
+### Step 3b (7 added cities) · gridMET · 2026-09-27 · Dish + Claude
+- **What:** Saved each new city's city-limits shape from its state file as its own zipped shapefile for ClimateEngine upload (same method as Step 3: WGS84, columns GEOID/NAME/NAMELSAD/ALAND/AWATER). **All 7 shapes kept as-is**, following D3's rule (water kept, small pieces kept).
+- **Why:** ClimateEngine needs one uploadable polygon per city.
+- **Input:** `data/raw/gridmet/tiger_places/tl_2025_{04,06,26,41,48}_place.zip` (not modified)
+- **Script:** `scripts/gridmet/03_city_polygons.py` (7 cities added; now **never overwrites an existing zip**)
+- **Rows/values in → out:** 7 shapes → 7 zips; pieces and area unchanged (Ann Arbor 6 pieces 75.80 km² · Warren 1 · 89.18 · Delano 3 · 38.25 · San Diego 3 · 886.48 · Phoenix 2 · 1,345.28 · Raymondville 1 · 10.68 · Springfield 21 · 41.59). `step03_summary.csv` 9 → 16 rows; original 9 rows byte-identical. **Original 9 zips untouched (SHA-256 unchanged).**
+- **Output:** `data/processed/gridmet/step03_city_polygons/<city>_citylimits.zip` for annarbor, warren, delano, sandiego, phoenix, raymondville, springfield
+- **D3 review for the new cities (Dish):** no piece comparable to SF's Farallones. Delano has 2 detached pieces (1.65 + 0.29 km²) ~7 km west of downtown (possibly the annexed state-prison area; not verified). San Diego: 0.26 km² piece near Otay Reservoir, 2.7 km from the main shape; water 42 km² (4.8%: bays, reservoirs, near-shore ocean), blank in gridMET. Phoenix, Springfield, Ann Arbor: slivers touching the main shape. **Approved by Dish: keep all as-is** (Claude's suggestion).
+- **Judgment calls:**
+  - Existing zips are skipped rather than rewritten, because zip timestamps would change their bytes even with identical shapes. **Claude's choice, approved by Dish.**
+
 ---
 **METAR pipeline status (2026-09-27, final):** **Closed (D8).** 17 cities, Steps 0–9b complete, ending 2026-09-24 (D4); final files frozen. Step 8b distances cover all 18 stations. Not done, by choice: in-city check for the new stations (D7), review of 7 low days, ASOS algorithm citation (appendix), Phoenix story decision; city-hall spot-check pending with Dish. New caveat: Ann Arbor outage from ~2026-06-17 (last valid day 2026-08-05).
