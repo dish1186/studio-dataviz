@@ -633,5 +633,22 @@ Step · dataset · date · who ran it | What (plain language) | Why | Input file
   - Values rounded to 2 decimals; °F computed from unrounded °C. **Claude's choice, approved by Dish.**
   - Found while checking this step: the corrupt UTC day 2021-04-29 → D12. The first run of this step (before D12) was replaced.
 
+### Decision D13 · UTCI units · 2026-09-27 · Dish
+- **What:** UTCI is reported in **°F** from here on (stress-band ranges in Step 5; normal, 10th/90th percentiles and anomaly in Step 6 and later), matching gridMET (°F). `utci_max_c` is kept as a reference column. Stress bands are still assigned on °C, the scale's native unit, so 2-decimal rounding in °F cannot move a day across a band edge.
+- **Who chose it:** **Dish** ("I need all of these to be in F"); the classify-on-°C detail is **Claude's choice, approved by Dish.**
+
+### Step 5 · UTCI · 2026-09-27 · Dish + Claude
+- **What:** Gave every valid day a heat/cold-stress category from its daily maximum UTCI, using the standard 10-band UTCI assessment scale (Bröde et al. 2012). Edges in °C (°F): −40 (−40.0) · −27 (−16.6) · −13 (8.6) · 0 (32.0) · 9 (48.2) · 26 (78.8) · 32 (89.6) · 38 (100.4) · 46 (114.8). Levels −5 (extreme cold) … 0 (no thermal stress) … +4 (extreme heat).
+- **Why:** Procedure 3, step 5: a readable label for how the day felt.
+- **Input:** `data/processed/utci/step04_daily_max/utci_<city>_daily_max.csv` (not modified; SHA-256 re-checked)
+- **Script:** `scripts/utci/05_stress_category.py`
+- **Output:** `data/processed/utci/step05_stress/utci_<city>_stress.csv` (Step 4 columns + stress_level, stress_category, stress_range_f) and `step05_summary.csv`
+- **Rows in → out:** 12,948 days per city in and out; every valid day has exactly one category, blank days (3 per city, 5 in Brownsville) stay blank.
+- **Results, heat side, valid days 2016-01-01 → 2026-06-12 (moderate / strong / very strong / extreme):** LA 1,592 / 858 / 112 / 5 · Phoenix 903 / 730 / 1,032 / 215 · San Diego 1,506 / 562 / 26 / 0 · Detroit 730 / 358 / 3 / 0 · Bakersfield 933 / 738 / 834 / 5 · San Francisco 103 / 1 / 0 / 0 · Fresno 848 / 684 / 898 / 86 · Boston 660 / 301 / 7 / 0 · Eugene 747 / 257 / 36 / 1 · Fairbanks 329 / 43 / 0 / 0 · Brownsville 998 / 1,504 / 553 / 0 · Ann Arbor 734 / 407 / 5 / 0. Fairbanks also has 8 days of extreme cold stress (warmest hour below −40 °F).
+- **Checks:** edge values land as decided (26.00 °C → no thermal stress; 32.00 → moderate heat; 0.00 → moderate cold; 9.00 → slight cold).
+- **Judgment calls:**
+  - **Each band includes its upper edge** (e.g. moderate heat = above 26 up to and including 32 °C). **Changed by Dish: chose this** (Claude's suggestion). Only 0–9 days per city since 2016 sit exactly on an edge.
+  - **Full 10-band scale, including cold-stress bands** (Option A). **Changed by Dish: chose A** (Claude's recommendation). **Caveat for the appendix:** categories come from the day's *warmest* hour, so cold stress is understated ("slight cold stress" = even the warmest hour was slightly cold).
+
 ---
 **METAR pipeline status (2026-09-27, final):** **Closed (D8).** 17 cities, Steps 0–9b complete, ending 2026-09-24 (D4); final files frozen. Step 8b distances cover all 18 stations. Not done, by choice: in-city check for the new stations (D7), review of 7 low days, ASOS algorithm citation (appendix), Phoenix story decision; city-hall spot-check pending with Dish. New caveat: Ann Arbor outage from ~2026-06-17 (last valid day 2026-08-05).
