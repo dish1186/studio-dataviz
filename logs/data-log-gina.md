@@ -32,6 +32,31 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Visualization V1 · version 6: news row · Media Cloud · 2026-09-27 19:16 EDT · Gina + Claude
+- **What:** Added an **"In the news"** row to each city panel in the explorer, between "Haze you can see" and "Searching for air-quality help": the percentage of local stories mentioning the city that are about air pollution or air quality (Media Cloud Step 2). Own scale per city (0 to the highest share in view). **No repo files changed**; the calculation runs in the page.
+- **Why:** Gina asked to chart the daily `air_share` for each city.
+- **Input:** `data/processed/mediacloud-attention/mediacloud_attention_<city>.csv` (`stories`, `city_stories`) for the 12 queried cities. Springfield, Delano, Warren and Raymondville show "No news data for this city (not queried)".
+- **Calculation (in the page):**
+  - **Daily:** share = stories ÷ city_stories × 100; blank when city_stories = 0.
+  - **7-day / 30-day:** trailing window sums, sum(stories) ÷ sum(city_stories).
+  - **Monthly:** calendar-month sums, the same ratio.
+  - A window is blank only when it has no city story.
+  - **Fairbanks's 35 days missing from the file** (the Alaska collection published nothing) count as 0 air and 0 city stories.
+
+  **Approved by Gina** ("% malleable based on the settings of the explorer"; ratio of sums, not an average of daily shares).
+- **Tooltip:** e.g. "News: 28% of city stories about air quality (111 of 395)". The coverage table gained a column with the share over the selected period (the same ratio of sums).
+- **Checks:**
+  - Page vs CSV: Bakersfield 2016-01-04 = 0 of 9; Eugene Sep 2020 monthly = 111 of 395 (28%).
+  - Whole-period shares in the table match `queries.csv` (e.g. Bakersfield 1.8%, Fairbanks 1.9%, Detroit 0.42%).
+  - Bundle totals equal `total_stories` and `total_city_stories` for all 12.
+- **Judgment calls:**
+  - **Line in magenta** (Cove slot 5, a darker step for contrast on light backgrounds). **Claude's choice.**
+  - **Own y-scale per city**, like the search row, since shares differ a lot between cities. **Claude's choice, flagged to Gina in chat.**
+  - A **zero share is shown as "0%"**, not "0.00%". **Claude's choice.**
+- **Not done (still open from earlier):** renaming the page to "Air quality: measurement, perception & reaction", and making the haze axis follow the per-city / shared toggle. Gina interrupted that request; not applied.
+
+---
+
 ### Step 2 · Media Cloud attention · 2026-09-27 18:55 EDT · Gina + Claude
 - **What:** For each of the 12 cities, counted daily stories mentioning the city at all (`"<city>"`), in the **same state collection and dates** as Step 1. Added two columns to each processed CSV:
   - **`city_stories`** (the denominator)
