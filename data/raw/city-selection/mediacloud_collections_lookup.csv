@@ -1,0 +1,16 @@
+search_name,collection_id,collection_name,source_count,kept
+California,38380550,"California, United States -State & Local",1283,yes
+California,38380331,"Baja California, Mexico - State & Local",13,no (Mexico)
+California,38380338,"Baja California Sur, Mexico - State & Local",6,no (Mexico)
+Oregon,38381398,"Oregon, United States - State & Local",145,yes
+Texas,38381323,"Texas, United States - State & Local",593,yes
+Alaska,38381315,"Alaska, United States - State & Local",77,yes
+Michigan,38381374,"Michigan, United States - State & Local",203,yes
+Indiana,38381358,"Indiana, United States - State & Local",167,yes
+Pennsylvania,38381340,"Pennsylvania, United States - State & Local",249,yes
+Ohio,38381394,"Ohio, United States - State & Local",256,yes
+West Virginia,38381408,"West Virginia, United States - State & Local",81,yes
+Arizona,38381317,"Arizona, United States - State & Local",139,yes
+United States,34412234,United States - National,246,yes (Step 4)
+United States,214609438,United States (Conspiracies),216,no
+United States,214598068,United States (Far-Right),215,no

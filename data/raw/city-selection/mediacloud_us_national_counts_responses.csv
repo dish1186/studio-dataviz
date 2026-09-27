@@ -1,0 +1,11 @@
+state_term,collection_id,query,start,end,platform,relevant_total_stories,total_stories_in_collection,raw_response
+California,34412234,"(""air pollution"" OR ""air quality"") AND ""California""",2024-09-25,2026-09-25,onlinenews-mediacloud,4953,8048412,"{""count"": {""relevant"": 4953, ""total"": 8048412}}"
+Oregon,34412234,"(""air pollution"" OR ""air quality"") AND ""Oregon""",2024-09-25,2026-09-25,onlinenews-mediacloud,905,8048412,"{""count"": {""relevant"": 905, ""total"": 8048412}}"
+Texas,34412234,"(""air pollution"" OR ""air quality"") AND ""Texas""",2024-09-25,2026-09-25,onlinenews-mediacloud,2153,8048412,"{""count"": {""relevant"": 2153, ""total"": 8048412}}"
+Alaska,34412234,"(""air pollution"" OR ""air quality"") AND ""Alaska""",2024-09-25,2026-09-25,onlinenews-mediacloud,345,8048412,"{""count"": {""relevant"": 345, ""total"": 8048412}}"
+Michigan,34412234,"(""air pollution"" OR ""air quality"") AND ""Michigan""",2024-09-25,2026-09-25,onlinenews-mediacloud,1408,8048412,"{""count"": {""relevant"": 1408, ""total"": 8048412}}"
+Indiana,34412234,"(""air pollution"" OR ""air quality"") AND ""Indiana""",2024-09-25,2026-09-25,onlinenews-mediacloud,720,8048412,"{""count"": {""relevant"": 720, ""total"": 8048412}}"
+Pennsylvania,34412234,"(""air pollution"" OR ""air quality"") AND ""Pennsylvania""",2024-09-25,2026-09-25,onlinenews-mediacloud,1032,8048412,"{""count"": {""relevant"": 1032, ""total"": 8048412}}"
+Ohio,34412234,"(""air pollution"" OR ""air quality"") AND ""Ohio""",2024-09-25,2026-09-25,onlinenews-mediacloud,986,8048412,"{""count"": {""relevant"": 986, ""total"": 8048412}}"
+West Virginia,34412234,"(""air pollution"" OR ""air quality"") AND ""West Virginia""",2024-09-25,2026-09-25,onlinenews-mediacloud,335,8048412,"{""count"": {""relevant"": 335, ""total"": 8048412}}"
+Arizona,34412234,"(""air pollution"" OR ""air quality"") AND ""Arizona""",2024-09-25,2026-09-25,onlinenews-mediacloud,1063,8048412,"{""count"": {""relevant"": 1063, ""total"": 8048412}}"

@@ -1,0 +1,73 @@
+level,group,rank_in_group,city,state,pollution_score,coverage_index,group_size
+state,High pollution / High coverage,1,Bakersfield,CA,2,20.4061,11
+state,High pollution / High coverage,2,Delano,CA,2,20.4061,11
+state,High pollution / High coverage,3,Fresno,CA,5,20.4061,11
+state,High pollution / High coverage,4,Hanford,CA,5,20.4061,11
+state,High pollution / High coverage,5,Corcoran,CA,5,20.4061,11
+state,High pollution / High coverage,6,Visalia,CA,5,20.4061,11
+state,High pollution / High coverage,7,San Diego,CA,5,20.4061,11
+state,High pollution / High coverage,8,Chula Vista,CA,5,20.4061,11
+state,High pollution / High coverage,9,Carlsbad,CA,5,20.4061,11
+state,High pollution / High coverage,10,Los Angeles,CA,7,20.4061,11
+state,High pollution / High coverage,11,Long Beach,CA,7,20.4061,11
+state,High pollution / Low coverage,1,Eugene,OR,2.5,12.7241,7
+state,High pollution / Low coverage,2,Springfield,OR,2.5,12.7241,7
+state,High pollution / Low coverage,3,Brownsville,TX,3,10.9174,7
+state,High pollution / Low coverage,4,Harlingen,TX,3,10.9174,7
+state,High pollution / Low coverage,5,Raymondville,TX,3,10.9174,7
+state,High pollution / Low coverage,6,Fairbanks,AK,5,7.2987,7
+state,High pollution / Low coverage,7,College,AK,5,7.2987,7
+state,Low pollution / High coverage,1,Detroit,MI,10,23.0148,11
+state,Low pollution / High coverage,2,Warren,MI,10,23.0148,11
+state,Low pollution / High coverage,3,Ann Arbor,MI,10,23.0148,11
+state,Low pollution / High coverage,4,Weirton,WV,13.5,21.6543,11
+state,Low pollution / High coverage,5,San Jose,CA,16.5,20.4061,11
+state,Low pollution / High coverage,6,San Francisco,CA,16.5,20.4061,11
+state,Low pollution / High coverage,7,Oakland,CA,16.5,20.4061,11
+state,Low pollution / High coverage,8,Pittsburgh,PA,13.5,20.2651,11
+state,Low pollution / High coverage,9,Indianapolis,IN,12.5,12.8743,11
+state,Low pollution / High coverage,10,Carmel,IN,12.5,12.8743,11
+state,Low pollution / High coverage,11,Muncie,IN,12.5,12.8743,11
+state,Low pollution / Low coverage,1,Phoenix,AZ,16,8.7122,7
+state,Low pollution / Low coverage,2,Mesa,AZ,16,8.7122,7
+state,Low pollution / Low coverage,3,McAllen,TX,13.5,10.9174,7
+state,Low pollution / Low coverage,4,Edinburg,TX,13.5,10.9174,7
+state,Low pollution / Low coverage,5,Houston,TX,8,10.9174,7
+state,Low pollution / Low coverage,6,Pasadena,TX,8,10.9174,7
+state,Low pollution / Low coverage,7,Steubenville,OH,13.5,11.7578,7
+city,High pollution / High coverage,1,Los Angeles,CA,7,5.021,7
+city,High pollution / High coverage,2,Fairbanks,AK,5,1.8701,7
+city,High pollution / High coverage,3,San Diego,CA,5,1.4965,7
+city,High pollution / High coverage,4,Long Beach,CA,7,0.5651,7
+city,High pollution / High coverage,5,Eugene,OR,2.5,0.5586,7
+city,High pollution / High coverage,6,Springfield,OR,2.5,0.3103,7
+city,High pollution / High coverage,7,Fresno,CA,5,0.3001,7
+city,High pollution / Low coverage,1,Delano,CA,2,0.0335,11
+city,High pollution / Low coverage,2,Bakersfield,CA,2,0.2377,11
+city,High pollution / Low coverage,3,Raymondville,TX,3,0.0067,11
+city,High pollution / Low coverage,4,Harlingen,TX,3,0.0337,11
+city,High pollution / Low coverage,5,Brownsville,TX,3,0.0506,11
+city,High pollution / Low coverage,6,Corcoran,CA,5,0.0421,11
+city,High pollution / Low coverage,7,Visalia,CA,5,0.0491,11
+city,High pollution / Low coverage,8,Hanford,CA,5,0.0522,11
+city,High pollution / Low coverage,9,Carlsbad,CA,5,0.0834,11
+city,High pollution / Low coverage,10,Chula Vista,CA,5,0.1426,11
+city,High pollution / Low coverage,11,College,AK,5,0.2338,11
+city,Low pollution / High coverage,1,Detroit,MI,10,3.9557,11
+city,Low pollution / High coverage,2,Phoenix,AZ,16,3.1511,11
+city,Low pollution / High coverage,3,San Francisco,CA,16.5,1.8878,11
+city,Low pollution / High coverage,4,Pittsburgh,PA,13.5,1.8193,11
+city,Low pollution / High coverage,5,Indianapolis,IN,12.5,1.1018,11
+city,Low pollution / High coverage,6,Houston,TX,8,1.0523,11
+city,Low pollution / High coverage,7,Oakland,CA,16.5,0.8496,11
+city,Low pollution / High coverage,8,San Jose,CA,16.5,0.6259,11
+city,Low pollution / High coverage,9,Ann Arbor,MI,10,0.5714,11
+city,Low pollution / High coverage,10,Mesa,AZ,16,0.5324,11
+city,Low pollution / High coverage,11,Warren,MI,10,0.2512,11
+city,Low pollution / Low coverage,1,Edinburg,TX,13.5,0.0084,7
+city,Low pollution / Low coverage,2,Steubenville,OH,13.5,0.0195,7
+city,Low pollution / Low coverage,3,McAllen,TX,13.5,0.0304,7
+city,Low pollution / Low coverage,4,Weirton,WV,13.5,0.0864,7
+city,Low pollution / Low coverage,5,Pasadena,TX,8,0.1366,7
+city,Low pollution / Low coverage,6,Carmel,IN,12.5,0.1557,7
+city,Low pollution / Low coverage,7,Muncie,IN,12.5,0.2335,7
