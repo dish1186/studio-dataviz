@@ -681,5 +681,30 @@ Step · dataset · date · who ran it | What (plain language) | Why | Input file
   - brownsville `201dc8107b16962dc11b64df86c9233e145e4c28d17ef311c1a0f76af6f5f689`
   - annarbor `61ce4decf6b10fd5b0d70615c6b102c68225abecd7f4aa78b6ef1e2d63c257e0`
 
+### Step 4b (7 added cities) · gridMET · 2026-09-27 · Dish (downloads) + Claude (check)
+- **What:** Dish downloaded 14 ClimateEngine CSVs for the 7 added cities with the Step 4 settings (one city-limits polygon per request, its GEOID picked in the region dropdown, GridMET 4km Daily · Maximum Temperature · deg F · 4000 m · Mean · No masking; 2016-01-01 → 2026-09-24 and 1991-01-01 → 2020-12-31). Claude ran the raw check on all 32 files. **Read-only: nothing changed.**
+- **Upload note:** the Step 3b zips showed greyed out in the browser's file picker (likely a macOS attribute on files written by the Claude session). Dish uploaded plain Terminal copies (`cp`) from `~/Desktop/ce_upload/`; a copy is byte-identical, so the polygons are unchanged.
+- **Script change (approved by Dish before running):** `scripts/gridmet/04_raw_check.py` — the 7 GEOIDs added to the expected list; nothing else changed.
+- **Output:** `data/processed/gridmet/step04_raw_check/raw_check.csv` (18 → 32 rows). **Original 18 rows identical to the previous file; original 18 raw files' SHA-256 unchanged.**
+- **Results (new 14):** right GEOID and date range in every header; 3,920/3,920 and 10,958/10,958 days; 0 missing, duplicate, bad-date, blank or implausible; **2016–2020 overlap identical in all 7 (max difference 0.0 °F).**
+- **Hottest study-period days:** Phoenix 117.5 °F (2016-06-19) · Delano 112.0 °F (2022-09-06, same day as Bakersfield/Fresno) · Springfield 109.5 °F (2021-06-27, heat dome) · Raymondville 107.4 °F (2026-07-22) · San Diego 102.5 °F (2020-09-06) · Warren 98.4 °F (2026-07-14) · Ann Arbor 96.4 °F (2026-07-01).
+- **Note on D10 (decided in the UTCI chat):** the visualization uses 12 cities. Of the 7 added here, **Phoenix, San Diego and Ann Arbor are used; Warren, Delano, Raymondville and Springfield are pulled and checked but dropped at the visualization stage** (files kept, per D10).
+- **Flags for later (nothing changed):**
+  - **Warren 2013-09-10 = 104.7 °F** (baseline max), the same day as Detroit's flagged 104.8 °F. Neighbouring cities, so most likely the same gridMET feature; supports the Detroit outlier-audit item.
+  - Springfield is not a copy of Eugene (mean ~0.4 °F cooler in 2016–2026) despite sharing edge cells.
+- **SHA-256 of new raw files** (`data/raw/gridmet/climateengine/`):
+  - annarbor 1991-2020 `561168597916315e44de093b528a00b64c64a47a7884f7db21dc4644d4657bb2` · 2016-2026 `9f60d57019555b8332bb294d7fc99390a2f0ca6d88334d356db3cccce4dbeecb`
+  - delano 1991-2020 `15a2f3f66baaeac4294915e395a16557c281ccd96a2c3a74c39fff7cc9f248ed` · 2016-2026 `06495a883e5bea2b2a1a8d319347523c3c5ba3f2cd3ba1284eab1a52f917dc5f`
+  - phoenix 1991-2020 `39af3dfac0a8617e56efa6fd611990d881215a2d0f0ef92f013f4e7aecc91f02` · 2016-2026 `6304dff1f202be86ac4aa68d21e33eec6e5fa09ddac58cca7eeac79d04ed244c`
+  - raymondville 1991-2020 `7b64eaa9576ae6879864747c4309de0d763989d13329fb4528a20d03b1f0afc7` · 2016-2026 `09dbfc8be261e6393cf3fc2c27771a0430236e9ca8a9ea727db3f01943588dd9`
+  - sandiego 1991-2020 `d0513df795492cab0f1c4553a43474961359077037d3d81c24e88ffa7552c80b` · 2016-2026 `144f68309dae3687401dc86aa7fc3645ff6074db04ec3e7f5210e3d5be6834d3`
+  - springfield 1991-2020 `425d7e0c7a097ff848ac0ed5886147de8d4edcf72b2072ae17dcdcab05c42afa` · 2016-2026 `dff2f5f9751ab46291ca812692b1a5bc0cf0db787465dee3994b0982b1b3aec8`
+  - warren 1991-2020 `aa1c3ca4fc675f17602371f31dbf824f6f9130853bd7f2e603bf24314a0a7ded` · 2016-2026 `3dd7225543d8c15ef26a252b9272b8f46970661db72c575d79e182487111351f`
+- **Judgment calls:**
+  - Original rows compared by file name (the output is sorted by file name, so new rows are interleaved). **Claude's choice, approved by Dish.**
+  - Warren 2013-09-10 flagged, not acted on. **Claude's choice, approved by Dish.**
+
 ---
+**gridMET pipeline status (2026-09-27):** Steps 1–4 done for 16 continental cities (original 9 + 7 from D5; 11 of them used in the visualization per D10, plus Fairbanks from another source); 32 raw files pass the check. Next: optional outlier audit (Detroit/Warren 2013-09-10), then Step 5 (1991–2020 normals, anomalies, monthly roll-up). Open: Fairbanks (no gridMET in AK), N1 (boundary file vs OpenAQ), common end date with UTCI (ends 2026-06-13, D9).
+
 **METAR pipeline status (2026-09-27, final):** **Closed (D8).** 17 cities, Steps 0–9b complete, ending 2026-09-24 (D4); final files frozen. Step 8b distances cover all 18 stations. Not done, by choice: in-city check for the new stations (D7), review of 7 low days, ASOS algorithm citation (appendix), Phoenix story decision; city-hall spot-check pending with Dish. New caveat: Ann Arbor outage from ~2026-06-17 (last valid day 2026-08-05).

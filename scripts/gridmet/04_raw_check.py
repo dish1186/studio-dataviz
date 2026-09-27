@@ -18,6 +18,10 @@ EXPECTED_GEOID = {
     "bakersfield": "0603526", "fresno": "0627000", "losangeles": "0644000",
     "sanfrancisco": "0667000", "eugene": "4123850", "brownsville": "4810768",
     "detroit": "2622000", "pittsburgh": "4261000", "boston": "2507000",
+    # Added 2026-09-27 (7 cities from METAR D5), GEOIDs from Step 2b/3b
+    "annarbor": "2603000", "warren": "2684000", "delano": "0618394",
+    "sandiego": "0666000", "phoenix": "0455000", "raymondville": "4860836",
+    "springfield": "4169600",
 }
 
 def read(path):
