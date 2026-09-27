@@ -612,5 +612,26 @@ Step · dataset · date · who ran it | What (plain language) | Why | Input file
   - Output as gzip-compressed CSV (~2 MB per city instead of ~12 MB), values written to 4 decimals of a kelvin. **Claude's choice, approved by Dish.**
   - Missing-cell and 50% coverage rules as decided in D11. **Claude's choice, approved by Dish.**
 
+### Decision D12 · UTCI bad day · 2026-09-27 · Dish
+- **What:** All 24 UTC hours of **2021-04-29** are treated as missing in every city. Applied in Step 4; raw files and Step 3 files unchanged.
+- **Why:** In all 12 cities that UTC day's hourly pattern runs opposite to the days on either side (correlation −0.71 to −0.96), so UTCI "peaks" in the middle of the night (e.g. Brownsville 45.3 °C at 3 am local, which had become its all-time record; LA 38.0 °C at 3 am). It is also the only day on which the duplicate cells from Step 1 differ, which points to a processing fault in the CDS time series. A scan of every day 1991 → 2026-06-13 (median across cities of each day's correlation with its neighbours) found no other such day; the next-lowest days (0.09–0.26) are winter days with a flat daily cycle.
+- **Effect:** with the all-hours rule (Step 4), local days **2021-04-28 and 2021-04-29** become blank in all 12 cities (both contain hours of UTC 2021-04-29). The day is in the study period, not the 1991–2020 baseline.
+- **Options considered:** (A) set the day aside; (B) keep it and flag it. **Changed by Dish: chose A** (Claude's recommendation).
+- **Follow-up (optional):** report the day to Copernicus/ECMWF support.
+
+### Step 4 · UTCI · 2026-09-27 · Dish + Claude
+- **What:** Converted each city's hourly UTCI from UTC to local time, grouped hours into local calendar days (midnight to midnight), took each day's **highest hourly UTCI**, and converted kelvin → °C → °F. Also recorded the local hour of the maximum.
+- **Why:** Procedure 3, step 4: daily maximum felt heat in local time, comparable with the daily gridMET high.
+- **Input:** `data/processed/utci/step03_city_hourly/utci_<city>_hourly.csv.gz` (12 files, not modified; SHA-256 re-checked)
+- **Script:** `scripts/utci/04_daily_max.py`
+- **Output:** `data/processed/utci/step04_daily_max/utci_<city>_daily_max.csv` (columns: date, utci_max_c, utci_max_f, hour_of_max_local, n_hours, n_hours_expected, valid) and `step04_summary.csv`
+- **Time zones (same as METAR):** America/Los_Angeles (LA, San Diego, Bakersfield, SF, Fresno, Eugene) · America/Phoenix (MST, UTC−7 all year) · America/Chicago (Brownsville) · America/Detroit (Detroit, Ann Arbor) · America/New_York (Boston) · America/Anchorage (Fairbanks).
+- **Rows in → out:** 310,752 hours → **12,948 local days per city** (1991-01-01 → 2026-06-13). Valid days: 12,945 in 11 cities, 12,943 in Brownsville. **Blank days:** 2021-04-28 and 2021-04-29 (D12) and 2026-06-13 (data end at 23:00 UTC, mid-afternoon or evening locally), all cities; plus Brownsville 2005-07-20 and 2008-07-23 (hurricane hours missing, Step 3). Last complete day: **2026-06-12**. DST days: 36 with 23 hours, 35 with 25 (none in Phoenix). The UTC hours of 1990-12-31 local are not used.
+- **Checks:** typical local hour of the daily max: San Diego 11, SF 12, LA 13, Detroit/Boston/Eugene/Fairbanks/Brownsville/Ann Arbor 14, Phoenix 15, Bakersfield/Fresno 16. Hottest days: LA 2018-07-06 (47.6 °C) · Phoenix 1995-07-28 (51.5) · San Diego 2020-09-06 (42.6) · Detroit 2012-07-06 (42.4) · Bakersfield 2022-09-06 (48.0) · SF 2017-09-02 (32.3) · Fresno 2022-09-06 (51.6) · Boston 2011-07-22 (41.4) · Eugene 2021-06-27 (46.3) · Fairbanks 2004-06-28 (36.1) · Brownsville 2024-05-09 (44.8) · Ann Arbor 2012-07-06 (43.2).
+- **Judgment calls:**
+  - **A day counts only if every local hour has a value** (Option 1). **Changed by Dish: chose Option 1** over "≥ 20 hours" (Claude's recommendation was Option 1). Reason: a missing hour can be the daily peak (Brownsville 2008-07-23 lacks 3–5 pm).
+  - Values rounded to 2 decimals; °F computed from unrounded °C. **Claude's choice, approved by Dish.**
+  - Found while checking this step: the corrupt UTC day 2021-04-29 → D12. The first run of this step (before D12) was replaced.
+
 ---
 **METAR pipeline status (2026-09-27, final):** **Closed (D8).** 17 cities, Steps 0–9b complete, ending 2026-09-24 (D4); final files frozen. Step 8b distances cover all 18 stations. Not done, by choice: in-city check for the new stations (D7), review of 7 low days, ASOS algorithm citation (appendix), Phoenix story decision; city-hall spot-check pending with Dish. New caveat: Ann Arbor outage from ~2026-06-17 (last valid day 2026-08-05).
