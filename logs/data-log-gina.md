@@ -30,6 +30,23 @@ Step · dataset · date · who ran it | What (plain language) | Why | Input file
 
 ---
 
+### Step 5a · OpenAQ · 2026-09-27 · Gina + Claude
+- **What:** Read-only audit of what OpenAQ's `hasFlags` means. Downloaded all flags for the 95 kept sensors with at least one flagged day, counted flag types, and checked 2 flagged days hour by hour against the daily value. **Nothing removed or changed.**
+- **Why:** 10.6% of valid reference sensor-days are flagged (Step 4); Gina asked to understand what that means before deciding whether flagged days count.
+- **Input:** `data/processed/openaq/step04_daily/`; OpenAQ API v3 `/v3/sensors/{id}/flags` and, for the 2 checks, `/v3/sensors/{id}/measurements`
+- **Script:** `scripts/openaq/05a_flags_audit.py`. The 2 hour-by-hour checks were run as one-off commands in chat, not saved as a script; their results are below.
+- **Rows in → out:** 95 sensors → **55,531 flags** (16,470 reference, 39,061 low-cost). Valid flagged sensor-days: **9,009 reference, 523 low-cost**.
+- **Output:** raw `data/raw/openaq/flags_json/sensor_<id>_flags.json` (95); `data/processed/openaq/step05a_flags/flags_list.csv`, `flag_types_summary.csv`; 5 description rows added and the `hasFlags` description updated.
+- **Findings:**
+  - **Every flag is "Limits exceeded" (level ERROR)**, one flag per hour.
+  - **Reference:** all flags with values are **negative hours** (−0.1 to −10). **Low-cost:** all flags with values are hours **above 1,000 µg/m³** (1,000.32 to 7,242.94), or have the note "Added as part of ingestion". This implies OpenAQ treats 0–1,000 µg/m³ as the plausible hourly range; that is inferred from the notes, not stated in the docs.
+  - **Check 1, reference sensor 890, 2016-08-17:** the flagged hour is blank in the hourly data; the daily value (3.23) equals the mean of the 10 remaining hours. `observedCount` is 11, so the blanked hour is still counted as observed.
+  - **Check 2, low-cost sensor 13667130, 2025-12-09:** all 51 raw values that day are blank and flagged, but the daily value is still 5,330 µg/m³. OpenAQ did not recompute the daily value.
+  - Flagged reference days have a median daily mean of 6.2 µg/m³; they are ordinary clean-air days with one or two slightly negative hours.
+- **Correction:** Earlier in chat, Claude said OpenAQ "still included those hours in the daily mean". Check 1 shows that for reference monitors the flagged hour is **excluded**. The earlier statement was a Claude assumption, not checked at the time.
+- **Judgment calls:** Only 2 days were checked hour by hour; the pattern is consistent with all 55,531 flag notes but not verified on every day. **Claude's choice, flagged to Gina in chat.**
+- **Problem during the step:** The flags endpoint ignores `limit` and `page` and returns all flags every time (sensor 2436: 1,130 flags returned for page 1, 2 and 50). The first run treated a full page as "more pages to come" and looped on the 14th sensor for ~25 minutes. Claude stopped it, changed the script to one request per sensor (checked against `meta.found`), and reran, reusing the 13 files already saved (all under 1,000 flags, so complete).
+
 ### Decision OA-D6 · OpenAQ · 2026-09-27 · Gina
 - **What:** A rule for removing **low-cost** sensor-day readings that are glitches, applied in Step 5 before any average. Reference monitors are not subject to it. Values are checked after negatives are set to 0 (OA-D5). "Reference average" = the mean of the city's valid reference sensor-days that day; "other low-cost median" = the median of the city's other valid low-cost sensor-days that day.
 
