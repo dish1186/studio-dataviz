@@ -30,7 +30,21 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 **Note on Steps 1–8:** these were run on 2026-09-26/27 before this log existed, and logged retroactively in Step 9. They did not follow Rule 1 (no step-by-step approval before running), and Rule 2/3 files were assembled afterwards. Judgment calls in them are marked **Claude's choice, flagged to Gina in chat; not yet approved**, unless Gina specified or changed them. Gina to review.
 
----
+--
+
+### Visualization V1 · OpenAQ · 2026-09-27 17:00 EDT · Gina + Claude
+- **What:** Built an exploratory chart page, **"PM2.5 City Explorer"** (private Claude artifact: https://claude.ai/artifact/NRvuFdqDZZioQHkL1RnB8Q). One panel per selected city, with the date on the horizontal axis and daily PM2.5 on the vertical.
+  - **Controls:** select or unselect cities; sensors (reference vs low-cost overlaid, reference, low-cost, overall); smoothing (daily, 7-day, 30-day trailing mean); linear or log scale; per-city or shared y axis; date range (with drag to zoom); optional site min–max band; optional EPA 35 µg/m³ line.
+  - Hover shows each day's values, number of sites and the low-cost − reference difference. A table gives days with data per type and the median low-cost − reference difference in the selected period.
+- **Why:** Gina wanted to get a feel for the shape of the data and compare reference and low-cost sensors, with cities she can switch on and off. (She asked for no calendar view.)
+- **Input:** `data/processed/openaq/step05_averages/pm25_<city>_daily.csv` (16 files), bundled into the page (mean, min, max and site counts, rounded to 0.1 µg/m³). **No data files changed or added in the repo.**
+- **Judgment calls:**
+  - **Smoothing** is a trailing mean of the available days, shown only when at least half the window has data. **Claude's choice, flagged to Gina in chat.**
+  - **Log scale** uses a symmetric log (so 0 can be shown). **Claude's choice.**
+  - **EPA line:** 35 µg/m³ is the level of the 24-hour PM2.5 standard (40 CFR 50.13, https://www.law.cornell.edu/cfr/text/40/50.13, checked 2026-09-27). The page notes that the standard is judged on the 98th percentile over three years, so one day above it is not a violation. **Claude's choice, flagged to Gina in chat.**
+  - **Default view:** 6 cities (Bakersfield, Fresno, Los Angeles, Eugene, Fairbanks, Detroit), reference vs low-cost, 7-day smoothing, per-city y axis. **Claude's choice.**
+- **Note:** the page is a view of the Step 5 files, not a new dataset. Numbers read from it are rounded to 0.1 µg/m³.
+
 
 ### Step 16 · descriptions · 2026-09-27 15:14 EDT · Gina + Claude
 - **What:** Added two columns to `data/descriptions/data_descriptions.csv`: **`name`** (who added the row) = `gina` for all 206 existing rows, and **`date-added`** (date the row was first added).
