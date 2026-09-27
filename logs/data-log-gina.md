@@ -30,6 +30,13 @@ Step · dataset · date · who ran it | What (plain language) | Why | Input file
 
 ---
 
+### Decision OA-D7 · OpenAQ · 2026-09-27 · Gina
+- **What:** How OpenAQ-flagged days are treated in Step 5.
+  - **Reference sensor-days with `hasFlags = true` are kept.** The flagged hour (negative) is already excluded from OpenAQ's daily value (Step 5a); the rest of the day is valid. Dropping them would remove 9,009 mostly clean-air days and bias reference averages upward.
+  - **Low-cost sensor-days with `hasFlags = true` are removed.** The flagged hour is above 1,000 µg/m³ and is still inside OpenAQ's daily value (Step 5a), a sign of malfunction. This affects 523 valid sensor-days (0.2% of valid low-cost sensor-days), overlapping with OA-D6.
+- **Who:** **Claude's recommendation, approved by Gina.**
+- **Order in Step 5:** valid-day check (≥ 18 h) → negatives set to 0 (OA-D5) → flagged low-cost removed (OA-D7) → outlier rule (OA-D6, using only sensor-days still included) → site average → city averages.
+
 ### Step 5a · OpenAQ · 2026-09-27 · Gina + Claude
 - **What:** Read-only audit of what OpenAQ's `hasFlags` means. Downloaded all flags for the 95 kept sensors with at least one flagged day, counted flag types, and checked 2 flagged days hour by hour against the daily value. **Nothing removed or changed.**
 - **Why:** 10.6% of valid reference sensor-days are flagged (Step 4); Gina asked to understand what that means before deciding whether flagged days count.
