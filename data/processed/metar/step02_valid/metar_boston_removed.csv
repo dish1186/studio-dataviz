@@ -1,0 +1,43 @@
+station,valid,relh,vsby,wxcodes,removed_reason
+BOS,2016-12-31 19:00,67.06,,,blank visibility
+BOS,2017-06-16 18:25,96.10,,+RA BR,blank visibility
+BOS,2017-07-16 18:54,64.31,,,blank visibility
+BOS,2017-07-23 23:54,77.97,,,blank visibility
+BOS,2017-07-24 00:54,77.97,,,blank visibility
+BOS,2017-07-24 01:54,77.45,,,blank visibility
+BOS,2017-07-24 03:54,83.78,,,blank visibility
+BOS,2017-08-13 00:54,81.19,,,blank visibility
+BOS,2017-09-04 03:54,81.19,,,blank visibility
+BOS,2017-12-31 19:00,49.72,,,blank visibility
+BOS,2018-04-23 16:54,36.52,,,blank visibility
+BOS,2018-05-10 06:54,95.98,,BR,blank visibility
+BOS,2018-11-21 16:54,52.78,,,blank visibility
+BOS,2018-11-23 10:00,36.01,,,blank visibility
+BOS,2018-12-31 19:00,59.69,,-RA,blank visibility
+BOS,2019-02-26 20:54,28.35,,,blank visibility
+BOS,2019-03-22 02:54,85.54,,,blank visibility
+BOS,2019-05-30 16:54,74.93,,,blank visibility
+BOS,2019-06-11 20:54,37.96,,,blank visibility
+BOS,2019-07-20 13:37,,,,blank visibility
+BOS,2019-07-25 18:54,70.87,,,blank visibility
+BOS,2019-08-19 13:54,44.15,,,blank visibility
+BOS,2019-11-21 06:25,69.67,,,blank visibility
+BOS,2019-12-25 19:54,69.73,,,blank visibility
+BOS,2020-04-02 20:00,85.48,,-RA,blank visibility
+BOS,2020-04-21 17:54,85.06,,+RA BR,blank visibility
+BOS,2020-07-02 06:12,96.55,,BR,blank visibility
+BOS,2020-10-09 18:40,41.13,,,blank visibility
+BOS,2020-12-12 18:54,100.00,,BR,blank visibility
+BOS,2020-12-31 19:00,50.14,,,blank visibility
+BOS,2021-01-28 13:54,85.14,,-SNBR,blank visibility
+BOS,2021-09-07 11:00,43.29,,,blank visibility
+BOS,2022-02-02 12:54,85.76,,,blank visibility
+BOS,2022-02-19 17:45,78.30,,SN,blank visibility
+BOS,2022-02-19 17:49,79.92,,-SN,blank visibility
+BOS,2023-09-12 09:08,96.64,,-RA BR,blank visibility
+BOS,2024-01-09 17:54,96.14,,-RA,blank visibility
+BOS,2024-03-05 16:54,100.00,,-RA BR,blank visibility
+BOS,2024-03-26 15:50,93.14,,-DZ BR,blank visibility
+BOS,2024-03-26 15:54,92.39,,-DZ BR,blank visibility
+BOS,2026-03-16 18:46,86.68,0.00,-RA FG,zero visibility (sensor glitch)
+BOS,2026-06-27 09:43,93.24,,BR,blank visibility

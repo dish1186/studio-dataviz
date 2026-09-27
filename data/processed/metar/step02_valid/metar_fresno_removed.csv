@@ -1,0 +1,28 @@
+station,valid,relh,vsby,wxcodes,removed_reason
+FAT,2016-01-14 12:53,89.65,,BR,blank visibility
+FAT,2016-01-14 13:01,89.65,,BR,blank visibility
+FAT,2016-12-20 10:17,96.52,,BR,blank visibility
+FAT,2016-12-20 10:53,82.04,,HZ,blank visibility
+FAT,2017-11-28 10:53,,,,blank visibility
+FAT,2017-11-30 08:53,92.65,,BR,blank visibility
+FAT,2018-01-15 07:30,89.49,0.00,BR,zero visibility (sensor glitch)
+FAT,2018-11-12 08:53,,,HZ FU,blank visibility
+FAT,2018-11-17 01:53,56.74,,HZ FU,blank visibility
+FAT,2019-07-20 11:28,,,,blank visibility
+FAT,2020-10-31 04:53,,,HZ,blank visibility
+FAT,2021-03-31 14:53,19.57,,,blank visibility
+FAT,2021-04-10 11:53,42.88,,,blank visibility
+FAT,2021-04-10 17:53,,,,blank visibility
+FAT,2021-11-12 04:59,96.69,,BR,blank visibility
+FAT,2022-01-07 01:54,92.58,,,blank visibility
+FAT,2022-01-13 08:53,,,,blank visibility
+FAT,2022-01-13 22:53,,,BR,blank visibility
+FAT,2022-05-25 11:53,17.79,,,blank visibility
+FAT,2022-05-26 09:53,26.82,,,blank visibility
+FAT,2024-01-01 02:53,92.74,,BR,blank visibility
+FAT,2024-01-01 03:53,96.31,,BR,blank visibility
+FAT,2024-12-15 07:42,92.45,0.00,FG,zero visibility (sensor glitch)
+FAT,2024-12-15 07:47,100.00,0.00,FG,zero visibility (sensor glitch)
+FAT,2024-12-15 07:53,96.14,0.00,FG,zero visibility (sensor glitch)
+FAT,2024-12-15 08:53,100.00,0.00,FG,zero visibility (sensor glitch)
+FAT,2026-01-31 05:15,96.23,,FG,blank visibility

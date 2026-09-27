@@ -1,0 +1,13 @@
+city,station,rows_in,removed_blank,removed_zero,rows_out,pct_removed
+bakersfield,BFL,102393,87,0,102306,0.085
+boston,BOS,112456,41,1,112414,0.037
+brownsville,BRO,124186,575,0,123611,0.463
+detroit,DET,118945,107,0,118838,0.09
+detroit,DTW,116636,35,15,116586,0.043
+eugene,EUG,117803,206,14,117583,0.187
+fairbanks,PAFA,105233,26,1,105206,0.026
+fresno,FAT,99682,22,5,99655,0.027
+losangeles,LAX,109221,27,31,109163,0.053
+pittsburgh,AGC,128205,467,1,127737,0.365
+pittsburgh,PIT,109488,7,20,109461,0.025
+sanfrancisco,SFO,104079,26,0,104053,0.025

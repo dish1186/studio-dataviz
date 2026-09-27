@@ -1,0 +1,28 @@
+station,valid,relh,vsby,wxcodes,removed_reason
+PAFA,2016-02-24 19:53,83.33,,,blank visibility
+PAFA,2016-12-31 15:00,80.85,,,blank visibility
+PAFA,2017-04-30 18:53,63.34,,,blank visibility
+PAFA,2017-12-31 15:00,83.27,,,blank visibility
+PAFA,2018-12-08 20:53,91.57,,,blank visibility
+PAFA,2018-12-08 21:53,91.64,,,blank visibility
+PAFA,2018-12-31 15:00,80.93,,,blank visibility
+PAFA,2019-07-20 09:20,,,,blank visibility
+PAFA,2019-08-03 14:25,89.93,,-RA BR,blank visibility
+PAFA,2019-08-29 14:53,53.15,,,blank visibility
+PAFA,2019-12-31 15:00,74.72,,,blank visibility
+PAFA,2020-01-07 14:53,67.61,,-SN BR,blank visibility
+PAFA,2020-03-21 08:57,84.66,,+SN FZFG,blank visibility
+PAFA,2020-04-02 16:00,47.08,,,blank visibility
+PAFA,2020-10-14 23:53,64.75,,-SN,blank visibility
+PAFA,2020-12-31 15:00,78.10,,,blank visibility
+PAFA,2021-03-29 22:00,78.07,,,blank visibility
+PAFA,2021-12-31 15:00,61.96,,,blank visibility
+PAFA,2022-12-31 15:00,82.10,,,blank visibility
+PAFA,2023-11-30 11:53,,,,blank visibility
+PAFA,2024-06-15 18:53,33.19,,,blank visibility
+PAFA,2024-07-28 04:53,86.17,,,blank visibility
+PAFA,2024-07-28 15:53,58.13,,,blank visibility
+PAFA,2024-11-12 08:53,75.36,,-SN,blank visibility
+PAFA,2025-10-27 03:53,92.31,0.00,FZFG,zero visibility (sensor glitch)
+PAFA,2026-01-19 11:53,91.20,,,blank visibility
+PAFA,2026-02-25 06:25,,,-SN,blank visibility
