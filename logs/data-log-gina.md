@@ -35,11 +35,12 @@ Step · dataset · date · who ran it | What (plain language) | Why | Input file
 - **Why:** Gina added the Boston file to `~/Desktop/MDE/dataviz/trends-heat-search/` after Step 1.
 - **Input:** `~/Desktop/MDE/dataviz/trends-heat-search/boston MA-Manchester-NH-heat-search.csv` (file time 2026-09-27 14:45)
 - **Script:** `scripts/google-trends/01_sources_table.py` (one line added to its geography list; rerun rewrites `trends_sources.csv` for all 17 files)
-- **Rows in → out:** 1 file, 128 months (2016-01 to 2026-09) × the same 5 terms → copied unchanged; `trends_sources.csv` 16 → 17 rows.
+- **Rows in → out:** 1 file, 129 months (2016-01 to 2026-09) × the same 5 terms → copied unchanged; `trends_sources.csv` 16 → 17 rows.
 - **Output:** `data/raw/google-trends/heat-search/boston MA-Manchester-NH-heat-search.csv`; `trends_sources.csv`; descriptions row updated (17 files: 6 states, 4 metro areas, 7 cities)
 - **Judgment calls:**
   - **Level recorded as "metro area"**, from the name (it matches the Google Trends metro naming, like the other 3 metros). **Claude's choice, flagged to Gina in chat.**
   - **Same settings assumed as Step 1** (search terms, All categories, Web Search, downloaded 2026-09-27 by Gina). **Claude's assumption, flagged to Gina in chat; not yet confirmed.**
+- **Correction:** Steps 1 and 2 first said each file has 128 months; the correct count is **129** (Jan 2016 to Sep 2026 = 10 × 12 + 9). Claude had read the number from a line count (`wc -l`) that misses the files' last line, which has no line ending. `trends_sources.csv` was always correct (n_months = 129 for all 17 files); only the log and description text were wrong, now fixed.
 - **Note:** Boston is covered by a **metro** file, while most other study cities are covered by city (or state) files, so the geographic level differs.
 
 ### Step 1 · Google Trends · 2026-09-27 · Gina + Claude
@@ -47,7 +48,7 @@ Step · dataset · date · who ran it | What (plain language) | Why | Input file
 - **Why:** Gina asked for the files to be in the raw data folder, labelled with their source (Google Trends), date range and geography. The files themselves contain no metadata, so the geography is only in the file name.
 - **Input:** `~/Desktop/MDE/dataviz/trends-heat-search/*.csv` (16 files, downloaded by Gina from Google Trends on 2026-09-27)
 - **Script:** `scripts/google-trends/01_sources_table.py` (writes `trends_sources.csv`); the files were copied with `cp -p` and checked byte-for-byte against the originals (16/16 identical).
-- **Rows in → out:** 16 files, each 128 months (2016-01 to 2026-09) × 5 terms ("air conditioner", "cooling center", "fan", "AC", "cooling fan") → 16 files unchanged + a 16-row sources table.
+- **Rows in → out:** 16 files, each 129 months (2016-01 to 2026-09) × 5 terms ("air conditioner", "cooling center", "fan", "AC", "cooling fan") → 16 files unchanged + a 16-row sources table.
   - **US states (6):** Arizona, California, Alaska, Michigan, Oregon, Texas
   - **Metro areas (3):** Fresno-Visalia CA; Harlingen-Weslaco-Brownsville-McAllen TX; San Francisco-Oakland-San Jose CA
   - **Cities, per Gina (7):** Bakersfield CA, Detroit MI, Eugene OR, Fairbanks AK, Los Angeles CA, Phoenix AZ, San Diego CA
