@@ -35,6 +35,9 @@ Step · dataset · date · who ran it | What (plain language) | Why | Input file
 - **Why:** Gina asked where reference vs low-cost is defined. The definition existed, but only under the raw field `isMonitor`, and other key terms were spread across rows and log entries.
 - **Script:** none (documentation, written by Claude).
 - **Judgment calls:** Key terms placed as rows at the top of the same CSV (not a separate file), so the definitions file stays one document. **Claude's choice, flagged to Gina in chat.**
+- **Sources checked after writing:**
+  - The AirNow definition (preliminary data, validated data in EPA's AQS) was checked against AirNow's "About the Data" page (https://www.airnow.gov/about-the-data/) and the link added.
+  - The first version of "low-cost sensor" said these sensors "can read high, especially in humid air"; this is widely reported but was not sourced here, so Claude removed it. It can be restored with a citation (e.g. EPA material on low-cost sensor corrections) if the appendix needs it.
 
 ### Step 14 · descriptions · 2026-09-27 · Gina + Claude
 - **What:** Added the Step 5 audit files and coverage summary to `data/descriptions/data_descriptions.csv`, each with description, units, source and formula. **Documentation only: no data changed.**
