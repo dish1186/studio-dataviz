@@ -30,6 +30,12 @@ Step · dataset · date · who ran it | What (plain language) | Why | Input file
 
 ---
 
+### Step 15 · descriptions · 2026-09-27 · Gina + Claude
+- **What:** Added a **key terms** section at the top of `data/descriptions/data_descriptions.csv`: 21 rows with `file` = "KEY TERM", one per term (PM2.5, reference monitor, low-cost sensor, AirNow, sensor, location, site, city limits, city center, fallback sensor, study period, sensor-day, valid day, flag, negative values, low-cost outlier rule, counted sensor-day, site-day, city daily mean, overall city daily mean, min / max). Each has a plain definition, units, source (with links), formula where relevant, and pointers to the detailed rows, steps and decisions. **Documentation only: no data changed.**
+- **Why:** Gina asked where reference vs low-cost is defined. The definition existed, but only under the raw field `isMonitor`, and other key terms were spread across rows and log entries.
+- **Script:** none (documentation, written by Claude).
+- **Judgment calls:** Key terms placed as rows at the top of the same CSV (not a separate file), so the definitions file stays one document. **Claude's choice, flagged to Gina in chat.**
+
 ### Step 14 · descriptions · 2026-09-27 · Gina + Claude
 - **What:** Added the Step 5 audit files and coverage summary to `data/descriptions/data_descriptions.csv`, each with description, units, source and formula. **Documentation only: no data changed.**
   - `audit/sensor_day_audit_<city>.csv`: 1 file row + 16 columns
