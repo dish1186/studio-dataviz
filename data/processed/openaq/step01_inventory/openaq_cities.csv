@@ -1,0 +1,17 @@
+city_slug,city,state,center_address,center_lat,center_lon,center_source,search_radius_km,n_locations_found,n_pm25_sensors_found,n_reference,n_lowcost,n_overlapping_study_period
+annarbor,Ann Arbor,MI,"301 E Huron St, Ann Arbor, MI 48104",42.281404326395,-83.74590872391,"US Census Geocoder: 301 E HURON ST, ANN ARBOR, MI, 48104",25.0,27,27,1,26,27
+bakersfield,Bakersfield,CA,"1600 Truxtun Ave, Bakersfield CA",35.3752,-119.0209,"Dish, METAR Step 8b",25.0,10,10,5,5,9
+boston,Boston,MA,"1 City Hall Square, Boston MA",42.3603,-71.058,"Dish, METAR Step 8b",25.0,54,55,20,35,54
+brownsville,Brownsville,TX,"1001 E Elizabeth St, Brownsville TX",25.9016,-97.4958,"Dish, METAR Step 8b",25.0,12,12,2,10,12
+delano,Delano,CA,"1015 11th Ave, Delano, CA 93215",35.770696940918,-119.244393666204,"US Census Geocoder: 1015 11TH AVE, DELANO, CA, 93215",25.0,22,22,0,22,22
+detroit,Detroit,MI,"2 Woodward Ave, Detroit MI",42.3294,-83.0445,"Dish, METAR Step 8b",25.0,57,57,15,42,57
+eugene,Eugene,OR,"101 W 10th Ave, Eugene OR",44.0497,-123.093,"Dish, METAR Step 8b",25.0,8,8,8,0,8
+fairbanks,Fairbanks,AK,"800 Cushman St, Fairbanks AK",64.8355,-147.7164,"Dish, METAR Step 8b",25.0,3,3,3,0,3
+fresno,Fresno,CA,"2600 Fresno St, Fresno CA",36.7375,-119.7867,"Dish, METAR Step 8b",25.0,12,12,5,7,12
+losangeles,Los Angeles,CA,"200 N Spring St, Los Angeles CA",34.0537,-118.2428,"Dish, METAR Step 8b",25.0,282,282,13,269,276
+phoenix,Phoenix,AZ,"200 W Washington St, Phoenix, AZ 85003",33.448302410199,-112.076397995695,"US Census Geocoder: 200 W WASHINGTON ST, PHOENIX, AZ, 85003",25.0,37,37,11,26,37
+raymondville,Raymondville,TX,"142 S 7th St, Raymondville, TX 78580",26.481627868486,-97.782600369986,"US Census Geocoder: 142 S 7TH ST, RAYMONDVILLE, TX, 78580",25.0,0,0,0,0,0
+sandiego,San Diego,CA,"202 C St, San Diego, CA 92101",32.716808305283,-117.162829467563,"US Census Geocoder: 202 C ST, SAN DIEGO, CA, 92101",25.0,35,35,12,23,34
+sanfrancisco,San Francisco,CA,"1 Dr Carlton B Goodlett Pl, San Francisco CA",37.7793,-122.4192,"Dish, METAR Step 8b",25.0,258,258,7,251,237
+springfield,Springfield,OR,"225 5th St, Springfield, OR 97477",44.047303120511,-123.019443621169,"US Census Geocoder: 225 5TH ST, SPRINGFIELD, OR, 97477",25.0,8,8,8,0,8
+warren,Warren,MI,"1 City Square, Warren, MI 48093",42.5118008,-83.0249714,"Gina, Google Maps place pin (address not in Census Geocoder)",25.0,55,55,12,43,55

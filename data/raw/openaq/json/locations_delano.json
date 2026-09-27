@@ -1,0 +1,2473 @@
+[
+ {
+  "meta": {
+   "name": "openaq-api",
+   "website": "/",
+   "page": 1,
+   "limit": 1000,
+   "found": 22
+  },
+  "results": [
+   {
+    "id": 2919681,
+    "name": "Allensworth Ave 32",
+    "locality": null,
+    "timezone": "America/Los_Angeles",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 10998,
+     "name": "SEEN"
+    },
+    "provider": {
+     "id": 66,
+     "name": "AirGradient"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 7,
+      "name": "Unknown AirGradient Sensor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 9753064,
+      "name": "pm1 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 19,
+       "name": "pm1",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM1"
+      }
+     },
+     {
+      "id": 9753092,
+      "name": "pm10 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 1,
+       "name": "pm10",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM10"
+      }
+     },
+     {
+      "id": 9753088,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     },
+     {
+      "id": 9753066,
+      "name": "relativehumidity %",
+      "parameter": {
+       "id": 98,
+       "name": "relativehumidity",
+       "units": "%",
+       "displayName": "RH"
+      }
+     },
+     {
+      "id": 9753062,
+      "name": "temperature c",
+      "parameter": {
+       "id": 100,
+       "name": "temperature",
+       "units": "c",
+       "displayName": "Temperature (C)"
+      }
+     },
+     {
+      "id": 9753072,
+      "name": "um003 particles/cm\u00b3",
+      "parameter": {
+       "id": 125,
+       "name": "um003",
+       "units": "particles/cm\u00b3",
+       "displayName": "PM0.3 count"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 35.848831,
+     "longitude": -119.38804
+    },
+    "licenses": [
+     {
+      "id": 41,
+      "name": "CC BY 4.0",
+      "attribution": {
+       "name": "SEEN",
+       "url": null
+      },
+      "dateFrom": "2023-07-15",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -119.38804,
+     35.848831,
+     -119.38804,
+     35.848831
+    ],
+    "distance": 15624.2148912,
+    "datetimeFirst": {
+     "utc": "2024-06-28T00:00:00Z",
+     "local": "2024-06-27T17:00:00-07:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-09-27T14:00:00Z",
+     "local": "2026-09-27T07:00:00-07:00"
+    }
+   },
+   {
+    "id": 2919686,
+    "name": "Allensworth Community Center",
+    "locality": null,
+    "timezone": "America/Los_Angeles",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 10998,
+     "name": "SEEN"
+    },
+    "provider": {
+     "id": 66,
+     "name": "AirGradient"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 7,
+      "name": "Unknown AirGradient Sensor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 9753078,
+      "name": "pm1 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 19,
+       "name": "pm1",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM1"
+      }
+     },
+     {
+      "id": 9753093,
+      "name": "pm10 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 1,
+       "name": "pm10",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM10"
+      }
+     },
+     {
+      "id": 9753083,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     },
+     {
+      "id": 9753070,
+      "name": "relativehumidity %",
+      "parameter": {
+       "id": 98,
+       "name": "relativehumidity",
+       "units": "%",
+       "displayName": "RH"
+      }
+     },
+     {
+      "id": 9753071,
+      "name": "temperature c",
+      "parameter": {
+       "id": 100,
+       "name": "temperature",
+       "units": "c",
+       "displayName": "Temperature (C)"
+      }
+     },
+     {
+      "id": 9753065,
+      "name": "um003 particles/cm\u00b3",
+      "parameter": {
+       "id": 125,
+       "name": "um003",
+       "units": "particles/cm\u00b3",
+       "displayName": "PM0.3 count"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 35.854701,
+     "longitude": -119.390205
+    },
+    "licenses": [
+     {
+      "id": 41,
+      "name": "CC BY 4.0",
+      "attribution": {
+       "name": "SEEN",
+       "url": null
+      },
+      "dateFrom": "2023-07-15",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -119.390205,
+     35.854701,
+     -119.390205,
+     35.854701
+    ],
+    "distance": 16154.15767094,
+    "datetimeFirst": {
+     "utc": "2024-06-28T00:00:00Z",
+     "local": "2024-06-27T17:00:00-07:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-03-12T15:00:00Z",
+     "local": "2026-03-12T08:00:00-07:00"
+    }
+   },
+   {
+    "id": 3205612,
+    "name": "Richgrove Community Park & District Services",
+    "locality": null,
+    "timezone": "America/Los_Angeles",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 10998,
+     "name": "SEEN"
+    },
+    "provider": {
+     "id": 66,
+     "name": "AirGradient"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 7,
+      "name": "Unknown AirGradient Sensor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 11134943,
+      "name": "pm1 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 19,
+       "name": "pm1",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM1"
+      }
+     },
+     {
+      "id": 11134957,
+      "name": "pm10 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 1,
+       "name": "pm10",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM10"
+      }
+     },
+     {
+      "id": 11134962,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     },
+     {
+      "id": 11134942,
+      "name": "relativehumidity %",
+      "parameter": {
+       "id": 98,
+       "name": "relativehumidity",
+       "units": "%",
+       "displayName": "RH"
+      }
+     },
+     {
+      "id": 11134955,
+      "name": "temperature c",
+      "parameter": {
+       "id": 100,
+       "name": "temperature",
+       "units": "c",
+       "displayName": "Temperature (C)"
+      }
+     },
+     {
+      "id": 11134964,
+      "name": "um003 particles/cm\u00b3",
+      "parameter": {
+       "id": 125,
+       "name": "um003",
+       "units": "particles/cm\u00b3",
+       "displayName": "PM0.3 count"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 35.7986601,
+     "longitude": -119.1035209
+    },
+    "licenses": [
+     {
+      "id": 41,
+      "name": "CC BY 4.0",
+      "attribution": {
+       "name": "SEEN",
+       "url": null
+      },
+      "dateFrom": "2023-07-15",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -119.1035209,
+     35.7986601,
+     -119.1035209,
+     35.7986601
+    ],
+    "distance": 13102.85151255,
+    "datetimeFirst": {
+     "utc": "2024-10-30T23:00:00Z",
+     "local": "2024-10-30T16:00:00-07:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-01-28T19:00:00Z",
+     "local": "2026-01-28T11:00:00-08:00"
+    }
+   },
+   {
+    "id": 3214521,
+    "name": "Richgrove Ave 8",
+    "locality": null,
+    "timezone": "America/Los_Angeles",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 10998,
+     "name": "SEEN"
+    },
+    "provider": {
+     "id": 66,
+     "name": "AirGradient"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 7,
+      "name": "Unknown AirGradient Sensor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 11159416,
+      "name": "pm1 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 19,
+       "name": "pm1",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM1"
+      }
+     },
+     {
+      "id": 11159437,
+      "name": "pm10 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 1,
+       "name": "pm10",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM10"
+      }
+     },
+     {
+      "id": 11159427,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     },
+     {
+      "id": 11159439,
+      "name": "relativehumidity %",
+      "parameter": {
+       "id": 98,
+       "name": "relativehumidity",
+       "units": "%",
+       "displayName": "RH"
+      }
+     },
+     {
+      "id": 11159431,
+      "name": "temperature c",
+      "parameter": {
+       "id": 100,
+       "name": "temperature",
+       "units": "c",
+       "displayName": "Temperature (C)"
+      }
+     },
+     {
+      "id": 11159424,
+      "name": "um003 particles/cm\u00b3",
+      "parameter": {
+       "id": 125,
+       "name": "um003",
+       "units": "particles/cm\u00b3",
+       "displayName": "PM0.3 count"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 35.805244,
+     "longitude": -119.102532
+    },
+    "licenses": [
+     {
+      "id": 41,
+      "name": "CC BY 4.0",
+      "attribution": {
+       "name": "SEEN",
+       "url": null
+      },
+      "dateFrom": "2023-07-15",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -119.102532,
+     35.805244,
+     -119.102532,
+     35.805244
+    ],
+    "distance": 13380.4871028,
+    "datetimeFirst": {
+     "utc": "2024-11-01T23:00:00Z",
+     "local": "2024-11-01T16:00:00-07:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-06-15T22:00:00Z",
+     "local": "2026-06-15T15:00:00-07:00"
+    }
+   },
+   {
+    "id": 4069042,
+    "name": "Cecil Avenue - Colocated (SJVAir)",
+    "locality": null,
+    "timezone": "America/Los_Angeles",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 11028,
+     "name": "SJVAir.com"
+    },
+    "provider": {
+     "id": 66,
+     "name": "AirGradient"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 7,
+      "name": "Unknown AirGradient Sensor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 12799543,
+      "name": "pm1 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 19,
+       "name": "pm1",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM1"
+      }
+     },
+     {
+      "id": 12799544,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     },
+     {
+      "id": 12799545,
+      "name": "relativehumidity %",
+      "parameter": {
+       "id": 98,
+       "name": "relativehumidity",
+       "units": "%",
+       "displayName": "RH"
+      }
+     },
+     {
+      "id": 12799546,
+      "name": "temperature c",
+      "parameter": {
+       "id": 100,
+       "name": "temperature",
+       "units": "c",
+       "displayName": "Temperature (C)"
+      }
+     },
+     {
+      "id": 12799547,
+      "name": "um003 particles/cm\u00b3",
+      "parameter": {
+       "id": 125,
+       "name": "um003",
+       "units": "particles/cm\u00b3",
+       "displayName": "PM0.3 count"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 35.7750369,
+     "longitude": -119.2385315
+    },
+    "licenses": [
+     {
+      "id": 41,
+      "name": "CC BY 4.0",
+      "attribution": {
+       "name": "SJVAir.com",
+       "url": null
+      },
+      "dateFrom": "2023-07-15",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -119.2385315,
+     35.7750369,
+     -119.2385315,
+     35.7750369
+    ],
+    "distance": 717.22938544,
+    "datetimeFirst": {
+     "utc": "2025-04-16T20:00:00Z",
+     "local": "2025-04-16T13:00:00-07:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-07-28T21:00:00Z",
+     "local": "2026-07-28T14:00:00-07:00"
+    }
+   },
+   {
+    "id": 5123080,
+    "name": "Delano West",
+    "locality": null,
+    "timezone": "America/Los_Angeles",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 10998,
+     "name": "SEEN"
+    },
+    "provider": {
+     "id": 66,
+     "name": "AirGradient"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 7,
+      "name": "Unknown AirGradient Sensor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 14153805,
+      "name": "pm1 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 19,
+       "name": "pm1",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM1"
+      }
+     },
+     {
+      "id": 14153806,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     },
+     {
+      "id": 14153807,
+      "name": "relativehumidity %",
+      "parameter": {
+       "id": 98,
+       "name": "relativehumidity",
+       "units": "%",
+       "displayName": "RH"
+      }
+     },
+     {
+      "id": 14153808,
+      "name": "temperature c",
+      "parameter": {
+       "id": 100,
+       "name": "temperature",
+       "units": "c",
+       "displayName": "Temperature (C)"
+      }
+     },
+     {
+      "id": 14153809,
+      "name": "um003 particles/cm\u00b3",
+      "parameter": {
+       "id": 125,
+       "name": "um003",
+       "units": "particles/cm\u00b3",
+       "displayName": "PM0.3 count"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 35.775837,
+     "longitude": -119.294303
+    },
+    "licenses": [
+     {
+      "id": 41,
+      "name": "CC BY 4.0",
+      "attribution": {
+       "name": "SEEN",
+       "url": null
+      },
+      "dateFrom": "2023-07-15",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -119.294303,
+     35.775837,
+     -119.294303,
+     35.775837
+    ],
+    "distance": 4558.51345999,
+    "datetimeFirst": {
+     "utc": "2025-09-19T00:00:00Z",
+     "local": "2025-09-18T17:00:00-07:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-09-27T14:00:00Z",
+     "local": "2026-09-27T07:00:00-07:00"
+    }
+   },
+   {
+    "id": 6110246,
+    "name": "Harvest & La Vina (DUESD)",
+    "locality": null,
+    "timezone": "America/Los_Angeles",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 11028,
+     "name": "SJVAir.com"
+    },
+    "provider": {
+     "id": 66,
+     "name": "AirGradient"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 7,
+      "name": "Unknown AirGradient Sensor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 14486250,
+      "name": "pm1 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 19,
+       "name": "pm1",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM1"
+      }
+     },
+     {
+      "id": 14486251,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     },
+     {
+      "id": 14486252,
+      "name": "relativehumidity %",
+      "parameter": {
+       "id": 98,
+       "name": "relativehumidity",
+       "units": "%",
+       "displayName": "RH"
+      }
+     },
+     {
+      "id": 14486253,
+      "name": "temperature c",
+      "parameter": {
+       "id": 100,
+       "name": "temperature",
+       "units": "c",
+       "displayName": "Temperature (C)"
+      }
+     },
+     {
+      "id": 14486254,
+      "name": "um003 particles/cm\u00b3",
+      "parameter": {
+       "id": 125,
+       "name": "um003",
+       "units": "particles/cm\u00b3",
+       "displayName": "PM0.3 count"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 35.77413,
+     "longitude": -119.2272491
+    },
+    "licenses": [
+     {
+      "id": 41,
+      "name": "CC BY 4.0",
+      "attribution": {
+       "name": "SJVAir.com",
+       "url": null
+      },
+      "dateFrom": "2023-07-15",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -119.2272491,
+     35.77413,
+     -119.2272491,
+     35.77413
+    ],
+    "distance": 1590.74989586,
+    "datetimeFirst": {
+     "utc": "2025-10-27T20:00:00Z",
+     "local": "2025-10-27T13:00:00-07:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-09-27T14:00:00Z",
+     "local": "2026-09-27T07:00:00-07:00"
+    }
+   },
+   {
+    "id": 6110247,
+    "name": "Cecil Ave (DUESD)",
+    "locality": null,
+    "timezone": "America/Los_Angeles",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 11028,
+     "name": "SJVAir.com"
+    },
+    "provider": {
+     "id": 66,
+     "name": "AirGradient"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 7,
+      "name": "Unknown AirGradient Sensor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 14486255,
+      "name": "pm1 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 19,
+       "name": "pm1",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM1"
+      }
+     },
+     {
+      "id": 14486256,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     },
+     {
+      "id": 14486257,
+      "name": "relativehumidity %",
+      "parameter": {
+       "id": 98,
+       "name": "relativehumidity",
+       "units": "%",
+       "displayName": "RH"
+      }
+     },
+     {
+      "id": 14486258,
+      "name": "temperature c",
+      "parameter": {
+       "id": 100,
+       "name": "temperature",
+       "units": "c",
+       "displayName": "Temperature (C)"
+      }
+     },
+     {
+      "id": 14486259,
+      "name": "um003 particles/cm\u00b3",
+      "parameter": {
+       "id": 125,
+       "name": "um003",
+       "units": "particles/cm\u00b3",
+       "displayName": "PM0.3 count"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 35.7751342,
+     "longitude": -119.2386646
+    },
+    "licenses": [
+     {
+      "id": 41,
+      "name": "CC BY 4.0",
+      "attribution": {
+       "name": "SJVAir.com",
+       "url": null
+      },
+      "dateFrom": "2023-07-15",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -119.2386646,
+     35.7751342,
+     -119.2386646,
+     35.7751342
+    ],
+    "distance": 716.06819832,
+    "datetimeFirst": {
+     "utc": "2025-10-27T20:00:00Z",
+     "local": "2025-10-27T13:00:00-07:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-09-27T14:00:00Z",
+     "local": "2026-09-27T07:00:00-07:00"
+    }
+   },
+   {
+    "id": 6110282,
+    "name": "Princeton Street (DUESD)",
+    "locality": null,
+    "timezone": "America/Los_Angeles",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 11028,
+     "name": "SJVAir.com"
+    },
+    "provider": {
+     "id": 66,
+     "name": "AirGradient"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 7,
+      "name": "Unknown AirGradient Sensor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 14486505,
+      "name": "pm1 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 19,
+       "name": "pm1",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM1"
+      }
+     },
+     {
+      "id": 14486506,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     },
+     {
+      "id": 14486507,
+      "name": "relativehumidity %",
+      "parameter": {
+       "id": 98,
+       "name": "relativehumidity",
+       "units": "%",
+       "displayName": "RH"
+      }
+     },
+     {
+      "id": 14486508,
+      "name": "temperature c",
+      "parameter": {
+       "id": 100,
+       "name": "temperature",
+       "units": "c",
+       "displayName": "Temperature (C)"
+      }
+     },
+     {
+      "id": 14486509,
+      "name": "um003 particles/cm\u00b3",
+      "parameter": {
+       "id": 125,
+       "name": "um003",
+       "units": "particles/cm\u00b3",
+       "displayName": "PM0.3 count"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 35.7815614,
+     "longitude": -119.2372383
+    },
+    "licenses": [
+     {
+      "id": 41,
+      "name": "CC BY 4.0",
+      "attribution": {
+       "name": "SJVAir.com",
+       "url": null
+      },
+      "dateFrom": "2023-07-15",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -119.2372383,
+     35.7815614,
+     -119.2372383,
+     35.7815614
+    ],
+    "distance": 1373.63741782,
+    "datetimeFirst": {
+     "utc": "2025-10-27T21:00:00Z",
+     "local": "2025-10-27T14:00:00-07:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-09-27T14:00:00Z",
+     "local": "2026-09-27T07:00:00-07:00"
+    }
+   },
+   {
+    "id": 6110283,
+    "name": "Terrace (DUESD)",
+    "locality": null,
+    "timezone": "America/Los_Angeles",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 11028,
+     "name": "SJVAir.com"
+    },
+    "provider": {
+     "id": 66,
+     "name": "AirGradient"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 7,
+      "name": "Unknown AirGradient Sensor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 14486510,
+      "name": "pm1 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 19,
+       "name": "pm1",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM1"
+      }
+     },
+     {
+      "id": 14486511,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     },
+     {
+      "id": 14486512,
+      "name": "relativehumidity %",
+      "parameter": {
+       "id": 98,
+       "name": "relativehumidity",
+       "units": "%",
+       "displayName": "RH"
+      }
+     },
+     {
+      "id": 14486513,
+      "name": "temperature c",
+      "parameter": {
+       "id": 100,
+       "name": "temperature",
+       "units": "c",
+       "displayName": "Temperature (C)"
+      }
+     },
+     {
+      "id": 14486514,
+      "name": "um003 particles/cm\u00b3",
+      "parameter": {
+       "id": 125,
+       "name": "um003",
+       "units": "particles/cm\u00b3",
+       "displayName": "PM0.3 count"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 35.7822678,
+     "longitude": -119.241158
+    },
+    "licenses": [
+     {
+      "id": 41,
+      "name": "CC BY 4.0",
+      "attribution": {
+       "name": "SJVAir.com",
+       "url": null
+      },
+      "dateFrom": "2023-07-15",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -119.241158,
+     35.7822678,
+     -119.241158,
+     35.7822678
+    ],
+    "distance": 1325.40372624,
+    "datetimeFirst": {
+     "utc": "2025-10-27T21:00:00Z",
+     "local": "2025-10-27T14:00:00-07:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-09-27T14:00:00Z",
+     "local": "2026-09-27T07:00:00-07:00"
+    }
+   },
+   {
+    "id": 6110284,
+    "name": "Morningside (DUESD)",
+    "locality": null,
+    "timezone": "America/Los_Angeles",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 11028,
+     "name": "SJVAir.com"
+    },
+    "provider": {
+     "id": 66,
+     "name": "AirGradient"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 7,
+      "name": "Unknown AirGradient Sensor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 14486515,
+      "name": "pm1 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 19,
+       "name": "pm1",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM1"
+      }
+     },
+     {
+      "id": 14486516,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     },
+     {
+      "id": 14486517,
+      "name": "relativehumidity %",
+      "parameter": {
+       "id": 98,
+       "name": "relativehumidity",
+       "units": "%",
+       "displayName": "RH"
+      }
+     },
+     {
+      "id": 14486518,
+      "name": "temperature c",
+      "parameter": {
+       "id": 100,
+       "name": "temperature",
+       "units": "c",
+       "displayName": "Temperature (C)"
+      }
+     },
+     {
+      "id": 14486519,
+      "name": "um003 particles/cm\u00b3",
+      "parameter": {
+       "id": 125,
+       "name": "um003",
+       "units": "particles/cm\u00b3",
+       "displayName": "PM0.3 count"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 35.7862159,
+     "longitude": -119.2273792
+    },
+    "licenses": [
+     {
+      "id": 41,
+      "name": "CC BY 4.0",
+      "attribution": {
+       "name": "SJVAir.com",
+       "url": null
+      },
+      "dateFrom": "2023-07-15",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -119.2273792,
+     35.7862159,
+     -119.2273792,
+     35.7862159
+    ],
+    "distance": 2311.42850189,
+    "datetimeFirst": {
+     "utc": "2025-10-27T21:00:00Z",
+     "local": "2025-10-27T14:00:00-07:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-09-27T14:00:00Z",
+     "local": "2026-09-27T07:00:00-07:00"
+    }
+   },
+   {
+    "id": 6110320,
+    "name": "Del Vista (DUESD)",
+    "locality": null,
+    "timezone": "America/Los_Angeles",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 11028,
+     "name": "SJVAir.com"
+    },
+    "provider": {
+     "id": 66,
+     "name": "AirGradient"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 7,
+      "name": "Unknown AirGradient Sensor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 14486765,
+      "name": "pm1 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 19,
+       "name": "pm1",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM1"
+      }
+     },
+     {
+      "id": 14486766,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     },
+     {
+      "id": 14486767,
+      "name": "relativehumidity %",
+      "parameter": {
+       "id": 98,
+       "name": "relativehumidity",
+       "units": "%",
+       "displayName": "RH"
+      }
+     },
+     {
+      "id": 14486768,
+      "name": "temperature c",
+      "parameter": {
+       "id": 100,
+       "name": "temperature",
+       "units": "c",
+       "displayName": "Temperature (C)"
+      }
+     },
+     {
+      "id": 14486769,
+      "name": "um003 particles/cm\u00b3",
+      "parameter": {
+       "id": 125,
+       "name": "um003",
+       "units": "particles/cm\u00b3",
+       "displayName": "PM0.3 count"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 35.7670365,
+     "longitude": -119.2339067
+    },
+    "licenses": [
+     {
+      "id": 41,
+      "name": "CC BY 4.0",
+      "attribution": {
+       "name": "SJVAir.com",
+       "url": null
+      },
+      "dateFrom": "2023-07-15",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -119.2339067,
+     35.7670365,
+     -119.2339067,
+     35.7670365
+    ],
+    "distance": 1019.60936411,
+    "datetimeFirst": {
+     "utc": "2025-10-27T22:00:00Z",
+     "local": "2025-10-27T15:00:00-07:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-09-27T14:00:00Z",
+     "local": "2026-09-27T07:00:00-07:00"
+    }
+   },
+   {
+    "id": 6110321,
+    "name": "Almond Tree (DUESD)",
+    "locality": null,
+    "timezone": "America/Los_Angeles",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 11028,
+     "name": "SJVAir.com"
+    },
+    "provider": {
+     "id": 66,
+     "name": "AirGradient"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 7,
+      "name": "Unknown AirGradient Sensor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 14487509,
+      "name": "pm1 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 19,
+       "name": "pm1",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM1"
+      }
+     },
+     {
+      "id": 14487510,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     },
+     {
+      "id": 14487511,
+      "name": "relativehumidity %",
+      "parameter": {
+       "id": 98,
+       "name": "relativehumidity",
+       "units": "%",
+       "displayName": "RH"
+      }
+     },
+     {
+      "id": 14487512,
+      "name": "temperature c",
+      "parameter": {
+       "id": 100,
+       "name": "temperature",
+       "units": "c",
+       "displayName": "Temperature (C)"
+      }
+     },
+     {
+      "id": 14487513,
+      "name": "um003 particles/cm\u00b3",
+      "parameter": {
+       "id": 125,
+       "name": "um003",
+       "units": "particles/cm\u00b3",
+       "displayName": "PM0.3 count"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 35.7735584,
+     "longitude": -119.2620186
+    },
+    "licenses": [
+     {
+      "id": 41,
+      "name": "CC BY 4.0",
+      "attribution": {
+       "name": "SJVAir.com",
+       "url": null
+      },
+      "dateFrom": "2023-07-15",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -119.2620186,
+     35.7735584,
+     -119.2620186,
+     35.7735584
+    ],
+    "distance": 1635.4385824,
+    "datetimeFirst": {
+     "utc": "2025-10-27T23:00:00Z",
+     "local": "2025-10-27T16:00:00-07:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-09-27T14:00:00Z",
+     "local": "2026-09-27T07:00:00-07:00"
+    }
+   },
+   {
+    "id": 6110322,
+    "name": "Pioneer (DUESD)",
+    "locality": null,
+    "timezone": "America/Los_Angeles",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 11028,
+     "name": "SJVAir.com"
+    },
+    "provider": {
+     "id": 66,
+     "name": "AirGradient"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 7,
+      "name": "Unknown AirGradient Sensor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 14486770,
+      "name": "pm1 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 19,
+       "name": "pm1",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM1"
+      }
+     },
+     {
+      "id": 14486771,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     },
+     {
+      "id": 14486772,
+      "name": "relativehumidity %",
+      "parameter": {
+       "id": 98,
+       "name": "relativehumidity",
+       "units": "%",
+       "displayName": "RH"
+      }
+     },
+     {
+      "id": 14486773,
+      "name": "temperature c",
+      "parameter": {
+       "id": 100,
+       "name": "temperature",
+       "units": "c",
+       "displayName": "Temperature (C)"
+      }
+     },
+     {
+      "id": 14486774,
+      "name": "um003 particles/cm\u00b3",
+      "parameter": {
+       "id": 125,
+       "name": "um003",
+       "units": "particles/cm\u00b3",
+       "displayName": "PM0.3 count"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 35.766219,
+     "longitude": -119.2681632
+    },
+    "licenses": [
+     {
+      "id": 41,
+      "name": "CC BY 4.0",
+      "attribution": {
+       "name": "SJVAir.com",
+       "url": null
+      },
+      "dateFrom": "2023-07-15",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -119.2681632,
+     35.766219,
+     -119.2681632,
+     35.766219
+    ],
+    "distance": 2211.93971632,
+    "datetimeFirst": {
+     "utc": "2025-10-27T22:00:00Z",
+     "local": "2025-10-27T15:00:00-07:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-09-27T14:00:00Z",
+     "local": "2026-09-27T07:00:00-07:00"
+    }
+   },
+   {
+    "id": 6110323,
+    "name": "Nueva Vista (DUESD)",
+    "locality": null,
+    "timezone": "America/Los_Angeles",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 11028,
+     "name": "SJVAir.com"
+    },
+    "provider": {
+     "id": 66,
+     "name": "AirGradient"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 7,
+      "name": "Unknown AirGradient Sensor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 14486775,
+      "name": "pm1 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 19,
+       "name": "pm1",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM1"
+      }
+     },
+     {
+      "id": 14486776,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     },
+     {
+      "id": 14486777,
+      "name": "relativehumidity %",
+      "parameter": {
+       "id": 98,
+       "name": "relativehumidity",
+       "units": "%",
+       "displayName": "RH"
+      }
+     },
+     {
+      "id": 14486778,
+      "name": "temperature c",
+      "parameter": {
+       "id": 100,
+       "name": "temperature",
+       "units": "c",
+       "displayName": "Temperature (C)"
+      }
+     },
+     {
+      "id": 14486779,
+      "name": "um003 particles/cm\u00b3",
+      "parameter": {
+       "id": 125,
+       "name": "um003",
+       "units": "particles/cm\u00b3",
+       "displayName": "PM0.3 count"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 35.7609245,
+     "longitude": -119.2551082
+    },
+    "licenses": [
+     {
+      "id": 41,
+      "name": "CC BY 4.0",
+      "attribution": {
+       "name": "SJVAir.com",
+       "url": null
+      },
+      "dateFrom": "2023-07-15",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -119.2551082,
+     35.7609245,
+     -119.2551082,
+     35.7609245
+    ],
+    "distance": 1451.8145197,
+    "datetimeFirst": {
+     "utc": "2025-10-27T22:00:00Z",
+     "local": "2025-10-27T15:00:00-07:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-09-27T14:00:00Z",
+     "local": "2026-09-27T07:00:00-07:00"
+    }
+   },
+   {
+    "id": 6110423,
+    "name": "Fremont (DUESD)",
+    "locality": null,
+    "timezone": "America/Los_Angeles",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 11028,
+     "name": "SJVAir.com"
+    },
+    "provider": {
+     "id": 66,
+     "name": "AirGradient"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 7,
+      "name": "Unknown AirGradient Sensor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 14487514,
+      "name": "pm1 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 19,
+       "name": "pm1",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM1"
+      }
+     },
+     {
+      "id": 14487515,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     },
+     {
+      "id": 14487516,
+      "name": "relativehumidity %",
+      "parameter": {
+       "id": 98,
+       "name": "relativehumidity",
+       "units": "%",
+       "displayName": "RH"
+      }
+     },
+     {
+      "id": 14487517,
+      "name": "temperature c",
+      "parameter": {
+       "id": 100,
+       "name": "temperature",
+       "units": "c",
+       "displayName": "Temperature (C)"
+      }
+     },
+     {
+      "id": 14487518,
+      "name": "um003 particles/cm\u00b3",
+      "parameter": {
+       "id": 125,
+       "name": "um003",
+       "units": "particles/cm\u00b3",
+       "displayName": "PM0.3 count"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 35.7724782,
+     "longitude": -119.2549982
+    },
+    "licenses": [
+     {
+      "id": 41,
+      "name": "CC BY 4.0",
+      "attribution": {
+       "name": "SJVAir.com",
+       "url": null
+      },
+      "dateFrom": "2023-07-15",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -119.2549982,
+     35.7724782,
+     -119.2549982,
+     35.7724782
+    ],
+    "distance": 989.55594163,
+    "datetimeFirst": {
+     "utc": "2025-10-27T23:00:00Z",
+     "local": "2025-10-27T16:00:00-07:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-09-27T14:00:00Z",
+     "local": "2026-09-27T07:00:00-07:00"
+    }
+   },
+   {
+    "id": 6110424,
+    "name": "Albany Park (DUESD)",
+    "locality": null,
+    "timezone": "America/Los_Angeles",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 11028,
+     "name": "SJVAir.com"
+    },
+    "provider": {
+     "id": 66,
+     "name": "AirGradient"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 7,
+      "name": "Unknown AirGradient Sensor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 14487519,
+      "name": "pm1 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 19,
+       "name": "pm1",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM1"
+      }
+     },
+     {
+      "id": 14487520,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     },
+     {
+      "id": 14487521,
+      "name": "relativehumidity %",
+      "parameter": {
+       "id": 98,
+       "name": "relativehumidity",
+       "units": "%",
+       "displayName": "RH"
+      }
+     },
+     {
+      "id": 14487522,
+      "name": "temperature c",
+      "parameter": {
+       "id": 100,
+       "name": "temperature",
+       "units": "c",
+       "displayName": "Temperature (C)"
+      }
+     },
+     {
+      "id": 14487523,
+      "name": "um003 particles/cm\u00b3",
+      "parameter": {
+       "id": 125,
+       "name": "um003",
+       "units": "particles/cm\u00b3",
+       "displayName": "PM0.3 count"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 35.7835758,
+     "longitude": -119.262142
+    },
+    "licenses": [
+     {
+      "id": 41,
+      "name": "CC BY 4.0",
+      "attribution": {
+       "name": "SJVAir.com",
+       "url": null
+      },
+      "dateFrom": "2023-07-15",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -119.262142,
+     35.7835758,
+     -119.262142,
+     35.7835758
+    ],
+    "distance": 2162.2400101,
+    "datetimeFirst": {
+     "utc": "2025-10-27T23:00:00Z",
+     "local": "2025-10-27T16:00:00-07:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-09-27T14:00:00Z",
+     "local": "2026-09-27T07:00:00-07:00"
+    }
+   },
+   {
+    "id": 6127063,
+    "name": "SJVAir-8bc4",
+    "locality": null,
+    "timezone": "America/Los_Angeles",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 12,
+     "name": "AirGradient"
+    },
+    "provider": {
+     "id": 66,
+     "name": "AirGradient"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 7,
+      "name": "Unknown AirGradient Sensor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 14610534,
+      "name": "pm1 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 19,
+       "name": "pm1",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM1"
+      }
+     },
+     {
+      "id": 14610535,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     },
+     {
+      "id": 14610536,
+      "name": "relativehumidity %",
+      "parameter": {
+       "id": 98,
+       "name": "relativehumidity",
+       "units": "%",
+       "displayName": "RH"
+      }
+     },
+     {
+      "id": 14610537,
+      "name": "temperature c",
+      "parameter": {
+       "id": 100,
+       "name": "temperature",
+       "units": "c",
+       "displayName": "Temperature (C)"
+      }
+     },
+     {
+      "id": 14610538,
+      "name": "um003 particles/cm\u00b3",
+      "parameter": {
+       "id": 125,
+       "name": "um003",
+       "units": "particles/cm\u00b3",
+       "displayName": "PM0.3 count"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 35.9697139,
+     "longitude": -119.2828493
+    },
+    "licenses": [
+     {
+      "id": 41,
+      "name": "CC BY 4.0",
+      "attribution": {
+       "name": "AirGradient",
+       "url": null
+      },
+      "dateFrom": "2023-07-15",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -119.2828493,
+     35.9697139,
+     -119.2828493,
+     35.9697139
+    ],
+    "distance": 22365.62174148,
+    "datetimeFirst": {
+     "utc": "2025-11-11T19:00:00Z",
+     "local": "2025-11-11T11:00:00-08:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-09-27T14:00:00Z",
+     "local": "2026-09-27T07:00:00-07:00"
+    }
+   },
+   {
+    "id": 6309096,
+    "name": "Pixley Elementary School",
+    "locality": null,
+    "timezone": "America/Los_Angeles",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 11028,
+     "name": "SJVAir.com"
+    },
+    "provider": {
+     "id": 66,
+     "name": "AirGradient"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 7,
+      "name": "Unknown AirGradient Sensor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 15961451,
+      "name": "pm1 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 19,
+       "name": "pm1",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM1"
+      }
+     },
+     {
+      "id": 15961452,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     },
+     {
+      "id": 15961453,
+      "name": "relativehumidity %",
+      "parameter": {
+       "id": 98,
+       "name": "relativehumidity",
+       "units": "%",
+       "displayName": "RH"
+      }
+     },
+     {
+      "id": 15961454,
+      "name": "temperature c",
+      "parameter": {
+       "id": 100,
+       "name": "temperature",
+       "units": "c",
+       "displayName": "Temperature (C)"
+      }
+     },
+     {
+      "id": 15961455,
+      "name": "um003 particles/cm\u00b3",
+      "parameter": {
+       "id": 125,
+       "name": "um003",
+       "units": "particles/cm\u00b3",
+       "displayName": "PM0.3 count"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 35.9738147,
+     "longitude": -119.2801922
+    },
+    "licenses": [
+     {
+      "id": 41,
+      "name": "CC BY 4.0",
+      "attribution": {
+       "name": "SJVAir.com",
+       "url": null
+      },
+      "dateFrom": "2023-07-15",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -119.2801922,
+     35.9738147,
+     -119.2801922,
+     35.9738147
+    ],
+    "distance": 22779.80946875,
+    "datetimeFirst": {
+     "utc": "2026-04-15T18:00:00Z",
+     "local": "2026-04-15T11:00:00-07:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-09-27T14:00:00Z",
+     "local": "2026-09-27T07:00:00-07:00"
+    }
+   },
+   {
+    "id": 6446042,
+    "name": "CSET Pixley",
+    "locality": null,
+    "timezone": "America/Los_Angeles",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 12,
+     "name": "AirGradient"
+    },
+    "provider": {
+     "id": 66,
+     "name": "AirGradient"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 7,
+      "name": "Unknown AirGradient Sensor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 16934148,
+      "name": "pm1 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 19,
+       "name": "pm1",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM1"
+      }
+     },
+     {
+      "id": 16934149,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     },
+     {
+      "id": 16934150,
+      "name": "relativehumidity %",
+      "parameter": {
+       "id": 98,
+       "name": "relativehumidity",
+       "units": "%",
+       "displayName": "RH"
+      }
+     },
+     {
+      "id": 16934151,
+      "name": "temperature c",
+      "parameter": {
+       "id": 100,
+       "name": "temperature",
+       "units": "c",
+       "displayName": "Temperature (C)"
+      }
+     },
+     {
+      "id": 16934152,
+      "name": "um003 particles/cm\u00b3",
+      "parameter": {
+       "id": 125,
+       "name": "um003",
+       "units": "particles/cm\u00b3",
+       "displayName": "PM0.3 count"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 35.965892211470546,
+     "longitude": -119.29176121504939
+    },
+    "licenses": [
+     {
+      "id": 41,
+      "name": "CC BY 4.0",
+      "attribution": {
+       "name": "AirGradient",
+       "url": null
+      },
+      "dateFrom": "2023-07-15",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -119.29176121504939,
+     35.965892211470546,
+     -119.29176121504939,
+     35.965892211470546
+    ],
+    "distance": 22088.8327744,
+    "datetimeFirst": {
+     "utc": "2026-07-15T19:00:00Z",
+     "local": "2026-07-15T12:00:00-07:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-08-06T03:00:00Z",
+     "local": "2026-08-05T20:00:00-07:00"
+    }
+   },
+   {
+    "id": 6446109,
+    "name": "SJVAir-0dec",
+    "locality": null,
+    "timezone": "America/Los_Angeles",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 12,
+     "name": "AirGradient"
+    },
+    "provider": {
+     "id": 66,
+     "name": "AirGradient"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 7,
+      "name": "Unknown AirGradient Sensor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 16934913,
+      "name": "pm1 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 19,
+       "name": "pm1",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM1"
+      }
+     },
+     {
+      "id": 16934914,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     },
+     {
+      "id": 16934915,
+      "name": "relativehumidity %",
+      "parameter": {
+       "id": 98,
+       "name": "relativehumidity",
+       "units": "%",
+       "displayName": "RH"
+      }
+     },
+     {
+      "id": 16934916,
+      "name": "temperature c",
+      "parameter": {
+       "id": 100,
+       "name": "temperature",
+       "units": "c",
+       "displayName": "Temperature (C)"
+      }
+     },
+     {
+      "id": 16934917,
+      "name": "um003 particles/cm\u00b3",
+      "parameter": {
+       "id": 125,
+       "name": "um003",
+       "units": "particles/cm\u00b3",
+       "displayName": "PM0.3 count"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 35.9643259,
+     "longitude": -119.3004141
+    },
+    "licenses": [
+     {
+      "id": 41,
+      "name": "CC BY 4.0",
+      "attribution": {
+       "name": "AirGradient",
+       "url": null
+      },
+      "dateFrom": "2023-07-15",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -119.3004141,
+     35.9643259,
+     -119.3004141,
+     35.9643259
+    ],
+    "distance": 22084.50531161,
+    "datetimeFirst": {
+     "utc": "2026-07-15T21:00:00Z",
+     "local": "2026-07-15T14:00:00-07:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-09-27T14:00:00Z",
+     "local": "2026-09-27T07:00:00-07:00"
+    }
+   },
+   {
+    "id": 6505481,
+    "name": "SJVAir-26dc",
+    "locality": null,
+    "timezone": "America/Los_Angeles",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 12,
+     "name": "AirGradient"
+    },
+    "provider": {
+     "id": 66,
+     "name": "AirGradient"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 7,
+      "name": "Unknown AirGradient Sensor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 17369494,
+      "name": "pm1 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 19,
+       "name": "pm1",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM1"
+      }
+     },
+     {
+      "id": 17369495,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     },
+     {
+      "id": 17369496,
+      "name": "relativehumidity %",
+      "parameter": {
+       "id": 98,
+       "name": "relativehumidity",
+       "units": "%",
+       "displayName": "RH"
+      }
+     },
+     {
+      "id": 17369497,
+      "name": "temperature c",
+      "parameter": {
+       "id": 100,
+       "name": "temperature",
+       "units": "c",
+       "displayName": "Temperature (C)"
+      }
+     },
+     {
+      "id": 17369498,
+      "name": "um003 particles/cm\u00b3",
+      "parameter": {
+       "id": 125,
+       "name": "um003",
+       "units": "particles/cm\u00b3",
+       "displayName": "PM0.3 count"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 35.9680549,
+     "longitude": -119.295394
+    },
+    "licenses": [
+     {
+      "id": 41,
+      "name": "CC BY 4.0",
+      "attribution": {
+       "name": "AirGradient",
+       "url": null
+      },
+      "dateFrom": "2023-07-15",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -119.295394,
+     35.9680549,
+     -119.295394,
+     35.9680549
+    ],
+    "distance": 22389.58544046,
+    "datetimeFirst": {
+     "utc": "2026-08-24T23:00:00Z",
+     "local": "2026-08-24T16:00:00-07:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-09-27T14:00:00Z",
+     "local": "2026-09-27T07:00:00-07:00"
+    }
+   }
+  ]
+ }
+]

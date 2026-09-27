@@ -1,0 +1,42 @@
+{
+ "result": {
+  "input": {
+   "address": {
+    "address": "301 E Huron St, Ann Arbor, MI 48104"
+   },
+   "benchmark": {
+    "isDefault": true,
+    "benchmarkDescription": "Public Address Ranges - Current Benchmark",
+    "id": "4",
+    "benchmarkName": "Public_AR_Current"
+   }
+  },
+  "addressMatches": [
+   {
+    "tigerLine": {
+     "side": "L",
+     "tigerLineId": "26014541"
+    },
+    "coordinates": {
+     "x": -83.74590872391,
+     "y": 42.281404326395
+    },
+    "addressComponents": {
+     "zip": "48104",
+     "streetName": "HURON",
+     "preType": "",
+     "city": "ANN ARBOR",
+     "preDirection": "E",
+     "suffixDirection": "",
+     "fromAddress": "301",
+     "state": "MI",
+     "suffixType": "ST",
+     "toAddress": "401",
+     "suffixQualifier": "",
+     "preQualifier": ""
+    },
+    "matchedAddress": "301 E HURON ST, ANN ARBOR, MI, 48104"
+   }
+  ]
+ }
+}

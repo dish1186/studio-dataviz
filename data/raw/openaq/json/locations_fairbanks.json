@@ -1,0 +1,263 @@
+[
+ {
+  "meta": {
+   "name": "openaq-api",
+   "website": "/",
+   "page": 1,
+   "limit": 1000,
+   "found": 3
+  },
+  "results": [
+   {
+    "id": 1510,
+    "name": "Hurst Road",
+    "locality": "Fairbanks",
+    "timezone": "America/Anchorage",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 4,
+     "name": "Unknown Governmental Organization"
+    },
+    "provider": {
+     "id": 119,
+     "name": "AirNow"
+    },
+    "isMobile": false,
+    "isMonitor": true,
+    "instruments": [
+     {
+      "id": 2,
+      "name": "Government Monitor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 2666,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 64.762973,
+     "longitude": -147.310297
+    },
+    "licenses": [
+     {
+      "id": 33,
+      "name": "US Public Domain",
+      "attribution": {
+       "name": "Unknown Governmental Organization",
+       "url": null
+      },
+      "dateFrom": "2016-01-30",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -147.310297,
+     64.762973,
+     -147.310297,
+     64.762973
+    ],
+    "distance": 20927.03160652,
+    "datetimeFirst": {
+     "utc": "2016-03-06T20:00:00Z",
+     "local": "2016-03-06T11:00:00-09:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-09-27T14:00:00Z",
+     "local": "2026-09-27T06:00:00-08:00"
+    }
+   },
+   {
+    "id": 1880,
+    "name": "NCore",
+    "locality": "Fairbanks",
+    "timezone": "America/Anchorage",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 4,
+     "name": "Unknown Governmental Organization"
+    },
+    "provider": {
+     "id": 119,
+     "name": "AirNow"
+    },
+    "isMobile": false,
+    "isMonitor": true,
+    "instruments": [
+     {
+      "id": 2,
+      "name": "Government Monitor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 3326,
+      "name": "co ppm",
+      "parameter": {
+       "id": 8,
+       "name": "co",
+       "units": "ppm",
+       "displayName": "CO"
+      }
+     },
+     {
+      "id": 3327,
+      "name": "o3 ppm",
+      "parameter": {
+       "id": 10,
+       "name": "o3",
+       "units": "ppm",
+       "displayName": "O\u2083"
+      }
+     },
+     {
+      "id": 3329,
+      "name": "pm10 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 1,
+       "name": "pm10",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM10"
+      }
+     },
+     {
+      "id": 3330,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     },
+     {
+      "id": 3328,
+      "name": "so2 ppm",
+      "parameter": {
+       "id": 9,
+       "name": "so2",
+       "units": "ppm",
+       "displayName": "SO\u2082"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 64.8458,
+     "longitude": -147.72727
+    },
+    "licenses": [
+     {
+      "id": 33,
+      "name": "US Public Domain",
+      "attribution": {
+       "name": "Unknown Governmental Organization",
+       "url": null
+      },
+      "dateFrom": "2016-01-30",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -147.72727,
+     64.8458,
+     -147.72727,
+     64.8458
+    ],
+    "distance": 1258.89147818,
+    "datetimeFirst": {
+     "utc": "2016-03-06T20:00:00Z",
+     "local": "2016-03-06T11:00:00-09:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-09-27T14:00:00Z",
+     "local": "2026-09-27T06:00:00-08:00"
+    }
+   },
+   {
+    "id": 7089,
+    "name": "A Street",
+    "locality": "Fairbanks",
+    "timezone": "America/Anchorage",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 4,
+     "name": "Unknown Governmental Organization"
+    },
+    "provider": {
+     "id": 119,
+     "name": "AirNow"
+    },
+    "isMobile": false,
+    "isMonitor": true,
+    "instruments": [
+     {
+      "id": 2,
+      "name": "Government Monitor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 20507,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 64.845931,
+     "longitude": -147.693278
+    },
+    "licenses": [
+     {
+      "id": 33,
+      "name": "US Public Domain",
+      "attribution": {
+       "name": "Unknown Governmental Organization",
+       "url": null
+      },
+      "dateFrom": "2016-01-30",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -147.693278,
+     64.845931,
+     -147.693278,
+     64.845931
+    ],
+    "distance": 1598.90403989,
+    "datetimeFirst": {
+     "utc": "2019-06-19T12:00:00Z",
+     "local": "2019-06-19T04:00:00-08:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-09-27T12:00:00Z",
+     "local": "2026-09-27T04:00:00-08:00"
+    }
+   }
+  ]
+ }
+]

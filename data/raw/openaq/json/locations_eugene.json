@@ -1,0 +1,583 @@
+[
+ {
+  "meta": {
+   "name": "openaq-api",
+   "website": "/",
+   "page": 1,
+   "limit": 1000,
+   "found": 8
+  },
+  "results": [
+   {
+    "id": 1857,
+    "name": "Springfield City Hal",
+    "locality": "Eugene-Springfield",
+    "timezone": "America/Los_Angeles",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 4,
+     "name": "Unknown Governmental Organization"
+    },
+    "provider": {
+     "id": 119,
+     "name": "AirNow"
+    },
+    "isMobile": false,
+    "isMonitor": true,
+    "instruments": [
+     {
+      "id": 2,
+      "name": "Government Monitor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 3278,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 44.046683,
+     "longitude": -123.017736
+    },
+    "licenses": [
+     {
+      "id": 33,
+      "name": "US Public Domain",
+      "attribution": {
+       "name": "Unknown Governmental Organization",
+       "url": null
+      },
+      "dateFrom": "2016-01-30",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -123.017736,
+     44.046683,
+     -123.017736,
+     44.046683
+    ],
+    "distance": 6041.05875681,
+    "datetimeFirst": {
+     "utc": "2016-03-06T20:00:00Z",
+     "local": "2016-03-06T12:00:00-08:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-03-13T23:00:00Z",
+     "local": "2026-03-13T16:00:00-07:00"
+    }
+   },
+   {
+    "id": 2068,
+    "name": "Eugene - Highway 99",
+    "locality": "Eugene-Springfield",
+    "timezone": "America/Los_Angeles",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 4,
+     "name": "Unknown Governmental Organization"
+    },
+    "provider": {
+     "id": 119,
+     "name": "AirNow"
+    },
+    "isMobile": false,
+    "isMonitor": true,
+    "instruments": [
+     {
+      "id": 2,
+      "name": "Government Monitor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 3683,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 44.067223,
+     "longitude": -123.14135
+    },
+    "licenses": [
+     {
+      "id": 33,
+      "name": "US Public Domain",
+      "attribution": {
+       "name": "Unknown Governmental Organization",
+       "url": null
+      },
+      "dateFrom": "2016-01-30",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -123.14135,
+     44.067223,
+     -123.14135,
+     44.067223
+    ],
+    "distance": 4335.90540035,
+    "datetimeFirst": {
+     "utc": "2016-03-06T20:00:00Z",
+     "local": "2016-03-06T12:00:00-08:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-09-27T14:00:00Z",
+     "local": "2026-09-27T07:00:00-07:00"
+    }
+   },
+   {
+    "id": 2069,
+    "name": "Eugene - Amazon Park",
+    "locality": "Eugene-Springfield",
+    "timezone": "America/Los_Angeles",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 4,
+     "name": "Unknown Governmental Organization"
+    },
+    "provider": {
+     "id": 119,
+     "name": "AirNow"
+    },
+    "isMobile": false,
+    "isMonitor": true,
+    "instruments": [
+     {
+      "id": 2,
+      "name": "Government Monitor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 3685,
+      "name": "o3 ppm",
+      "parameter": {
+       "id": 10,
+       "name": "o3",
+       "units": "ppm",
+       "displayName": "O\u2083"
+      }
+     },
+     {
+      "id": 3684,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 44.0263,
+     "longitude": -123.08377
+    },
+    "licenses": [
+     {
+      "id": 33,
+      "name": "US Public Domain",
+      "attribution": {
+       "name": "Unknown Governmental Organization",
+       "url": null
+      },
+      "dateFrom": "2016-01-30",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -123.08377,
+     44.0263,
+     -123.08377,
+     44.0263
+    ],
+    "distance": 2703.25304813,
+    "datetimeFirst": {
+     "utc": "2016-03-06T20:00:00Z",
+     "local": "2016-03-06T12:00:00-08:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-09-27T14:00:00Z",
+     "local": "2026-09-27T07:00:00-07:00"
+    }
+   },
+   {
+    "id": 8576,
+    "name": "Eugene - Wilkes Dr.",
+    "locality": "Eugene-Springfield",
+    "timezone": "America/Los_Angeles",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 4,
+     "name": "Unknown Governmental Organization"
+    },
+    "provider": {
+     "id": 119,
+     "name": "AirNow"
+    },
+    "isMobile": false,
+    "isMonitor": true,
+    "instruments": [
+     {
+      "id": 2,
+      "name": "Government Monitor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 24924,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 44.1158,
+     "longitude": -123.12107
+    },
+    "licenses": [
+     {
+      "id": 33,
+      "name": "US Public Domain",
+      "attribution": {
+       "name": "Unknown Governmental Organization",
+       "url": null
+      },
+      "dateFrom": "2016-01-30",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -123.12107,
+     44.1158,
+     -123.12107,
+     44.1158
+    ],
+    "distance": 7681.02763985,
+    "datetimeFirst": {
+     "utc": "2018-08-08T20:00:00Z",
+     "local": "2018-08-08T13:00:00-07:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-09-27T14:00:00Z",
+     "local": "2026-09-27T07:00:00-07:00"
+    }
+   },
+   {
+    "id": 26426,
+    "name": "Eugene - Highway 99",
+    "locality": "Eugene-Springfield",
+    "timezone": "America/Los_Angeles",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 4,
+     "name": "Unknown Governmental Organization"
+    },
+    "provider": {
+     "id": 119,
+     "name": "AirNow"
+    },
+    "isMobile": false,
+    "isMonitor": true,
+    "instruments": [
+     {
+      "id": 2,
+      "name": "Government Monitor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 5087771,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 44.067223,
+     "longitude": -123.14135
+    },
+    "licenses": [
+     {
+      "id": 33,
+      "name": "US Public Domain",
+      "attribution": {
+       "name": "Unknown Governmental Organization",
+       "url": null
+      },
+      "dateFrom": "2016-01-30",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -123.14135,
+     44.067223,
+     -123.14135,
+     44.067223
+    ],
+    "distance": 4335.90540035,
+    "datetimeFirst": {
+     "utc": "2022-10-04T18:00:00Z",
+     "local": "2022-10-04T11:00:00-07:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-09-21T17:00:00Z",
+     "local": "2026-09-21T10:00:00-07:00"
+    }
+   },
+   {
+    "id": 26430,
+    "name": "Springfield City Hal",
+    "locality": "Eugene-Springfield",
+    "timezone": "America/Los_Angeles",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 4,
+     "name": "Unknown Governmental Organization"
+    },
+    "provider": {
+     "id": 119,
+     "name": "AirNow"
+    },
+    "isMobile": false,
+    "isMonitor": true,
+    "instruments": [
+     {
+      "id": 2,
+      "name": "Government Monitor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 1331071,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 44.046683,
+     "longitude": -123.017736
+    },
+    "licenses": [
+     {
+      "id": 33,
+      "name": "US Public Domain",
+      "attribution": {
+       "name": "Unknown Governmental Organization",
+       "url": null
+      },
+      "dateFrom": "2016-01-30",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -123.017736,
+     44.046683,
+     -123.017736,
+     44.046683
+    ],
+    "distance": 6041.05875681,
+    "datetimeFirst": {
+     "utc": "2021-08-07T10:00:00Z",
+     "local": "2021-08-07T03:00:00-07:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-09-21T17:00:00Z",
+     "local": "2026-09-21T10:00:00-07:00"
+    }
+   },
+   {
+    "id": 53109,
+    "name": "Springfield City Hal",
+    "locality": "Eugene-Springfield",
+    "timezone": "America/Los_Angeles",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 4,
+     "name": "Unknown Governmental Organization"
+    },
+    "provider": {
+     "id": 119,
+     "name": "AirNow"
+    },
+    "isMobile": false,
+    "isMonitor": true,
+    "instruments": [
+     {
+      "id": 2,
+      "name": "Government Monitor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 5087784,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 44.046683,
+     "longitude": -123.017736
+    },
+    "licenses": [
+     {
+      "id": 33,
+      "name": "US Public Domain",
+      "attribution": {
+       "name": "Unknown Governmental Organization",
+       "url": null
+      },
+      "dateFrom": "2016-01-30",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -123.017736,
+     44.046683,
+     -123.017736,
+     44.046683
+    ],
+    "distance": 6041.05875681,
+    "datetimeFirst": {
+     "utc": "2022-10-04T18:00:00Z",
+     "local": "2022-10-04T11:00:00-07:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-09-27T14:00:00Z",
+     "local": "2026-09-27T07:00:00-07:00"
+    }
+   },
+   {
+    "id": 3362212,
+    "name": "SPS Farm",
+    "locality": "Eugene-Springfield",
+    "timezone": "America/Los_Angeles",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 4,
+     "name": "Unknown Governmental Organization"
+    },
+    "provider": {
+     "id": 119,
+     "name": "AirNow"
+    },
+    "isMobile": false,
+    "isMonitor": true,
+    "instruments": [
+     {
+      "id": 2,
+      "name": "Government Monitor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 11976039,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 44.07636,
+     "longitude": -123.0369
+    },
+    "licenses": [
+     {
+      "id": 33,
+      "name": "US Public Domain",
+      "attribution": {
+       "name": "Unknown Governmental Organization",
+       "url": null
+      },
+      "dateFrom": "2016-01-30",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -123.0369,
+     44.07636,
+     -123.0369,
+     44.07636
+    ],
+    "distance": 5383.15610497,
+    "datetimeFirst": {
+     "utc": "2025-01-09T22:00:00Z",
+     "local": "2025-01-09T14:00:00-08:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-09-27T14:00:00Z",
+     "local": "2026-09-27T07:00:00-07:00"
+    }
+   }
+  ]
+ }
+]

@@ -1,0 +1,1253 @@
+[
+ {
+  "meta": {
+   "name": "openaq-api",
+   "website": "/",
+   "page": 1,
+   "limit": 1000,
+   "found": 12
+  },
+  "results": [
+   {
+    "id": 790,
+    "name": "Clovis - N. Villa Av",
+    "locality": "Fresno",
+    "timezone": "America/Los_Angeles",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 4,
+     "name": "Unknown Governmental Organization"
+    },
+    "provider": {
+     "id": 119,
+     "name": "AirNow"
+    },
+    "isMobile": false,
+    "isMonitor": true,
+    "instruments": [
+     {
+      "id": 2,
+      "name": "Government Monitor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 24606,
+      "name": "co ppm",
+      "parameter": {
+       "id": 8,
+       "name": "co",
+       "units": "ppm",
+       "displayName": "CO"
+      }
+     },
+     {
+      "id": 4272204,
+      "name": "no ppm",
+      "parameter": {
+       "id": 35,
+       "name": "no",
+       "units": "ppm",
+       "displayName": "NO"
+      }
+     },
+     {
+      "id": 24603,
+      "name": "no2 ppm",
+      "parameter": {
+       "id": 7,
+       "name": "no2",
+       "units": "ppm",
+       "displayName": "NO\u2082"
+      }
+     },
+     {
+      "id": 4272263,
+      "name": "nox ppm",
+      "parameter": {
+       "id": 19840,
+       "name": "nox",
+       "units": "ppm",
+       "displayName": "NOx"
+      }
+     },
+     {
+      "id": 1367,
+      "name": "o3 ppm",
+      "parameter": {
+       "id": 10,
+       "name": "o3",
+       "units": "ppm",
+       "displayName": "O\u2083"
+      }
+     },
+     {
+      "id": 1557308,
+      "name": "pm10 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 1,
+       "name": "pm10",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM10"
+      }
+     },
+     {
+      "id": 20543,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 36.819199,
+     "longitude": -119.7164
+    },
+    "licenses": [
+     {
+      "id": 33,
+      "name": "US Public Domain",
+      "attribution": {
+       "name": "Unknown Governmental Organization",
+       "url": null
+      },
+      "dateFrom": "2016-01-30",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -119.7164,
+     36.819199,
+     -119.7164,
+     36.819199
+    ],
+    "distance": 11026.49689509,
+    "datetimeFirst": {
+     "utc": "2016-03-10T08:00:00Z",
+     "local": "2016-03-10T00:00:00-08:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-09-27T13:00:00Z",
+     "local": "2026-09-27T06:00:00-07:00"
+    }
+   },
+   {
+    "id": 895,
+    "name": "Fresno - Garland",
+    "locality": "FRESNO",
+    "timezone": "America/Los_Angeles",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 4,
+     "name": "Unknown Governmental Organization"
+    },
+    "provider": {
+     "id": 119,
+     "name": "AirNow"
+    },
+    "isMobile": false,
+    "isMonitor": true,
+    "instruments": [
+     {
+      "id": 2,
+      "name": "Government Monitor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 1631,
+      "name": "co ppm",
+      "parameter": {
+       "id": 8,
+       "name": "co",
+       "units": "ppm",
+       "displayName": "CO"
+      }
+     },
+     {
+      "id": 4272346,
+      "name": "no ppm",
+      "parameter": {
+       "id": 35,
+       "name": "no",
+       "units": "ppm",
+       "displayName": "NO"
+      }
+     },
+     {
+      "id": 1632,
+      "name": "no2 ppm",
+      "parameter": {
+       "id": 7,
+       "name": "no2",
+       "units": "ppm",
+       "displayName": "NO\u2082"
+      }
+     },
+     {
+      "id": 4272087,
+      "name": "nox ppm",
+      "parameter": {
+       "id": 19840,
+       "name": "nox",
+       "units": "ppm",
+       "displayName": "NOx"
+      }
+     },
+     {
+      "id": 1634,
+      "name": "o3 ppm",
+      "parameter": {
+       "id": 10,
+       "name": "o3",
+       "units": "ppm",
+       "displayName": "O\u2083"
+      }
+     },
+     {
+      "id": 1638,
+      "name": "pm10 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 1,
+       "name": "pm10",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM10"
+      }
+     },
+     {
+      "id": 1639,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     },
+     {
+      "id": 1635,
+      "name": "so2 ppm",
+      "parameter": {
+       "id": 9,
+       "name": "so2",
+       "units": "ppm",
+       "displayName": "SO\u2082"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 36.78538,
+     "longitude": -119.77321
+    },
+    "licenses": [
+     {
+      "id": 33,
+      "name": "US Public Domain",
+      "attribution": {
+       "name": "Unknown Governmental Organization",
+       "url": null
+      },
+      "dateFrom": "2016-01-30",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -119.77321,
+     36.78538,
+     -119.77321,
+     36.78538
+    ],
+    "distance": 5448.21199982,
+    "datetimeFirst": {
+     "utc": "2016-03-06T20:00:00Z",
+     "local": "2016-03-06T12:00:00-08:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-09-27T13:00:00Z",
+     "local": "2026-09-27T06:00:00-07:00"
+    }
+   },
+   {
+    "id": 234614,
+    "name": "Fresno-Foundry Park",
+    "locality": "Fresno",
+    "timezone": "America/Los_Angeles",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 4,
+     "name": "Unknown Governmental Organization"
+    },
+    "provider": {
+     "id": 119,
+     "name": "AirNow"
+    },
+    "isMobile": false,
+    "isMonitor": true,
+    "instruments": [
+     {
+      "id": 2,
+      "name": "Government Monitor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 1349823,
+      "name": "no2 ppm",
+      "parameter": {
+       "id": 7,
+       "name": "no2",
+       "units": "ppm",
+       "displayName": "NO\u2082"
+      }
+     },
+     {
+      "id": 1349599,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 36.71088,
+     "longitude": -119.77743
+    },
+    "licenses": [
+     {
+      "id": 33,
+      "name": "US Public Domain",
+      "attribution": {
+       "name": "Unknown Governmental Organization",
+       "url": null
+      },
+      "dateFrom": "2016-01-30",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -119.77743,
+     36.71088,
+     -119.77743,
+     36.71088
+    ],
+    "distance": 3067.96299255,
+    "datetimeFirst": {
+     "utc": "2021-09-03T19:00:00Z",
+     "local": "2021-09-03T12:00:00-07:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-09-27T13:00:00Z",
+     "local": "2026-09-27T06:00:00-07:00"
+    }
+   },
+   {
+    "id": 921008,
+    "name": "Fresno-Pacific",
+    "locality": "Fresno",
+    "timezone": "America/Los_Angeles",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 4,
+     "name": "Unknown Governmental Organization"
+    },
+    "provider": {
+     "id": 119,
+     "name": "AirNow"
+    },
+    "isMobile": false,
+    "isMonitor": true,
+    "instruments": [
+     {
+      "id": 2,
+      "name": "Government Monitor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 5077593,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 36.72622,
+     "longitude": -119.73249
+    },
+    "licenses": [
+     {
+      "id": 33,
+      "name": "US Public Domain",
+      "attribution": {
+       "name": "Unknown Governmental Organization",
+       "url": null
+      },
+      "dateFrom": "2016-01-30",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -119.73249,
+     36.72622,
+     -119.73249,
+     36.72622
+    ],
+    "distance": 5001.39618968,
+    "datetimeFirst": {
+     "utc": "2022-10-04T18:00:00Z",
+     "local": "2022-10-04T11:00:00-07:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-09-27T13:00:00Z",
+     "local": "2026-09-27T06:00:00-07:00"
+    }
+   },
+   {
+    "id": 2104606,
+    "name": "MMCA82045",
+    "locality": "CA8 - ARB",
+    "timezone": "America/Los_Angeles",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 4,
+     "name": "Unknown Governmental Organization"
+    },
+    "provider": {
+     "id": 119,
+     "name": "AirNow"
+    },
+    "isMobile": false,
+    "isMonitor": true,
+    "instruments": [
+     {
+      "id": 2,
+      "name": "Government Monitor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 7703166,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 36.73193,
+     "longitude": -119.508784
+    },
+    "licenses": [
+     {
+      "id": 33,
+      "name": "US Public Domain",
+      "attribution": {
+       "name": "Unknown Governmental Organization",
+       "url": null
+      },
+      "dateFrom": "2016-01-30",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -119.508784,
+     36.73193,
+     -119.508784,
+     36.73193
+    ],
+    "distance": 24831.12867374,
+    "datetimeFirst": {
+     "utc": "2024-01-15T21:00:00Z",
+     "local": "2024-01-15T13:00:00-08:00"
+    },
+    "datetimeLast": {
+     "utc": "2024-01-15T21:00:00Z",
+     "local": "2024-01-15T13:00:00-08:00"
+    }
+   },
+   {
+    "id": 2832269,
+    "name": "Root Access Hackerspace",
+    "locality": null,
+    "timezone": "America/Los_Angeles",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 11509,
+     "name": "Unknown Person"
+    },
+    "provider": {
+     "id": 66,
+     "name": "AirGradient"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 7,
+      "name": "Unknown AirGradient Sensor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 9112204,
+      "name": "pm1 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 19,
+       "name": "pm1",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM1"
+      }
+     },
+     {
+      "id": 9112215,
+      "name": "pm10 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 1,
+       "name": "pm10",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM10"
+      }
+     },
+     {
+      "id": 9112205,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     },
+     {
+      "id": 9112208,
+      "name": "relativehumidity %",
+      "parameter": {
+       "id": 98,
+       "name": "relativehumidity",
+       "units": "%",
+       "displayName": "RH"
+      }
+     },
+     {
+      "id": 9112190,
+      "name": "temperature c",
+      "parameter": {
+       "id": 100,
+       "name": "temperature",
+       "units": "c",
+       "displayName": "Temperature (C)"
+      }
+     },
+     {
+      "id": 9112214,
+      "name": "um003 particles/cm\u00b3",
+      "parameter": {
+       "id": 125,
+       "name": "um003",
+       "units": "particles/cm\u00b3",
+       "displayName": "PM0.3 count"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 36.762704138392245,
+     "longitude": -119.79863491443308
+    },
+    "licenses": [
+     {
+      "id": 41,
+      "name": "CC BY 4.0",
+      "attribution": {
+       "name": "Unknown Person",
+       "url": null
+      },
+      "dateFrom": "2023-07-15",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -119.79863491443308,
+     36.762704138392245,
+     -119.79863491443308,
+     36.762704138392245
+    ],
+    "distance": 2993.1661122,
+    "datetimeFirst": {
+     "utc": "2024-05-07T04:00:00Z",
+     "local": "2024-05-06T21:00:00-07:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-05-22T00:00:00Z",
+     "local": "2026-05-21T17:00:00-07:00"
+    }
+   },
+   {
+    "id": 3009053,
+    "name": "sjvair-ac7c",
+    "locality": null,
+    "timezone": "America/Los_Angeles",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 11509,
+     "name": "Unknown Person"
+    },
+    "provider": {
+     "id": 66,
+     "name": "AirGradient"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 7,
+      "name": "Unknown AirGradient Sensor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 10206345,
+      "name": "pm1 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 19,
+       "name": "pm1",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM1"
+      }
+     },
+     {
+      "id": 10206364,
+      "name": "pm10 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 1,
+       "name": "pm10",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM10"
+      }
+     },
+     {
+      "id": 10206363,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     },
+     {
+      "id": 10206370,
+      "name": "relativehumidity %",
+      "parameter": {
+       "id": 98,
+       "name": "relativehumidity",
+       "units": "%",
+       "displayName": "RH"
+      }
+     },
+     {
+      "id": 10206347,
+      "name": "temperature c",
+      "parameter": {
+       "id": 100,
+       "name": "temperature",
+       "units": "c",
+       "displayName": "Temperature (C)"
+      }
+     },
+     {
+      "id": 10206372,
+      "name": "um003 particles/cm\u00b3",
+      "parameter": {
+       "id": 125,
+       "name": "um003",
+       "units": "particles/cm\u00b3",
+       "displayName": "PM0.3 count"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 36.76269822455787,
+     "longitude": -119.79880474690714
+    },
+    "licenses": [
+     {
+      "id": 41,
+      "name": "CC BY 4.0",
+      "attribution": {
+       "name": "Unknown Person",
+       "url": null
+      },
+      "dateFrom": "2023-07-15",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -119.79880474690714,
+     36.76269822455787,
+     -119.79880474690714,
+     36.76269822455787
+    ],
+    "distance": 2997.98796299,
+    "datetimeFirst": {
+     "utc": "2024-08-08T19:00:00Z",
+     "local": "2024-08-08T12:00:00-07:00"
+    },
+    "datetimeLast": {
+     "utc": "2025-12-21T21:00:00Z",
+     "local": "2025-12-21T13:00:00-08:00"
+    }
+   },
+   {
+    "id": 5956915,
+    "name": "Fresno",
+    "locality": null,
+    "timezone": "America/Los_Angeles",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 9,
+     "name": "Clarity"
+    },
+    "provider": {
+     "id": 166,
+     "name": "Clarity"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 4,
+      "name": "Clarity Sensor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 14244950,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 36.70308,
+     "longitude": -119.75934
+    },
+    "licenses": [
+     {
+      "id": 38,
+      "name": "CC0 1.0",
+      "attribution": {
+       "name": "Clarity",
+       "url": null
+      },
+      "dateFrom": "2021-10-20",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -119.75934,
+     36.70308,
+     -119.75934,
+     36.70308
+    ],
+    "distance": 4534.78147259,
+    "datetimeFirst": {
+     "utc": "2025-09-29T18:50:32Z",
+     "local": "2025-09-29T11:50:32-07:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-09-27T12:58:21Z",
+     "local": "2026-09-27T05:58:21-07:00"
+    }
+   },
+   {
+    "id": 6111327,
+    "name": "Fresno-Garland",
+    "locality": null,
+    "timezone": "America/Los_Angeles",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 11028,
+     "name": "SJVAir.com"
+    },
+    "provider": {
+     "id": 66,
+     "name": "AirGradient"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 7,
+      "name": "Unknown AirGradient Sensor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 14494110,
+      "name": "pm1 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 19,
+       "name": "pm1",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM1"
+      }
+     },
+     {
+      "id": 14494111,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     },
+     {
+      "id": 14494112,
+      "name": "relativehumidity %",
+      "parameter": {
+       "id": 98,
+       "name": "relativehumidity",
+       "units": "%",
+       "displayName": "RH"
+      }
+     },
+     {
+      "id": 14494113,
+      "name": "temperature c",
+      "parameter": {
+       "id": 100,
+       "name": "temperature",
+       "units": "c",
+       "displayName": "Temperature (C)"
+      }
+     },
+     {
+      "id": 14494114,
+      "name": "um003 particles/cm\u00b3",
+      "parameter": {
+       "id": 125,
+       "name": "um003",
+       "units": "particles/cm\u00b3",
+       "displayName": "PM0.3 count"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 36.78518901804637,
+     "longitude": -119.7729740195641
+    },
+    "licenses": [
+     {
+      "id": 41,
+      "name": "CC BY 4.0",
+      "attribution": {
+       "name": "SJVAir.com",
+       "url": null
+      },
+      "dateFrom": "2023-07-15",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -119.7729740195641,
+     36.78518901804637,
+     -119.7729740195641,
+     36.78518901804637
+    ],
+    "distance": 5432.25976436,
+    "datetimeFirst": {
+     "utc": "2025-10-28T20:00:00Z",
+     "local": "2025-10-28T13:00:00-07:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-02-18T22:00:00Z",
+     "local": "2026-02-18T14:00:00-08:00"
+    }
+   },
+   {
+    "id": 6169761,
+    "name": "SJVAir-f3e4",
+    "locality": null,
+    "timezone": "America/Los_Angeles",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 12,
+     "name": "AirGradient"
+    },
+    "provider": {
+     "id": 66,
+     "name": "AirGradient"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 7,
+      "name": "Unknown AirGradient Sensor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 14927953,
+      "name": "pm1 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 19,
+       "name": "pm1",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM1"
+      }
+     },
+     {
+      "id": 14927954,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     },
+     {
+      "id": 14927955,
+      "name": "relativehumidity %",
+      "parameter": {
+       "id": 98,
+       "name": "relativehumidity",
+       "units": "%",
+       "displayName": "RH"
+      }
+     },
+     {
+      "id": 14927956,
+      "name": "temperature c",
+      "parameter": {
+       "id": 100,
+       "name": "temperature",
+       "units": "c",
+       "displayName": "Temperature (C)"
+      }
+     },
+     {
+      "id": 14927957,
+      "name": "um003 particles/cm\u00b3",
+      "parameter": {
+       "id": 125,
+       "name": "um003",
+       "units": "particles/cm\u00b3",
+       "displayName": "PM0.3 count"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 36.834221086722344,
+     "longitude": -119.66851577998828
+    },
+    "licenses": [
+     {
+      "id": 41,
+      "name": "CC BY 4.0",
+      "attribution": {
+       "name": "AirGradient",
+       "url": null
+      },
+      "dateFrom": "2023-07-15",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -119.66851577998828,
+     36.834221086722344,
+     -119.66851577998828,
+     36.834221086722344
+    ],
+    "distance": 15049.69743281,
+    "datetimeFirst": {
+     "utc": "2025-12-18T23:00:00Z",
+     "local": "2025-12-18T15:00:00-08:00"
+    },
+    "datetimeLast": {
+     "utc": "2025-12-26T20:00:00Z",
+     "local": "2025-12-26T12:00:00-08:00"
+    }
+   },
+   {
+    "id": 6172496,
+    "name": "SJVAir-af04",
+    "locality": null,
+    "timezone": "America/Los_Angeles",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 11028,
+     "name": "SJVAir.com"
+    },
+    "provider": {
+     "id": 66,
+     "name": "AirGradient"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 7,
+      "name": "Unknown AirGradient Sensor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 14947719,
+      "name": "pm1 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 19,
+       "name": "pm1",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM1"
+      }
+     },
+     {
+      "id": 14947720,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     },
+     {
+      "id": 14947721,
+      "name": "relativehumidity %",
+      "parameter": {
+       "id": 98,
+       "name": "relativehumidity",
+       "units": "%",
+       "displayName": "RH"
+      }
+     },
+     {
+      "id": 14947722,
+      "name": "temperature c",
+      "parameter": {
+       "id": 100,
+       "name": "temperature",
+       "units": "c",
+       "displayName": "Temperature (C)"
+      }
+     },
+     {
+      "id": 14947723,
+      "name": "um003 particles/cm\u00b3",
+      "parameter": {
+       "id": 125,
+       "name": "um003",
+       "units": "particles/cm\u00b3",
+       "displayName": "PM0.3 count"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 36.821894255074376,
+     "longitude": -119.66648590037425
+    },
+    "licenses": [
+     {
+      "id": 41,
+      "name": "CC BY 4.0",
+      "attribution": {
+       "name": "SJVAir.com",
+       "url": null
+      },
+      "dateFrom": "2023-07-15",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -119.66648590037425,
+     36.821894255074376,
+     -119.66648590037425,
+     36.821894255074376
+    ],
+    "distance": 14243.34058016,
+    "datetimeFirst": {
+     "utc": "2025-12-21T01:00:00Z",
+     "local": "2025-12-20T17:00:00-08:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-03-19T20:00:00Z",
+     "local": "2026-03-19T13:00:00-07:00"
+    }
+   },
+   {
+    "id": 6180249,
+    "name": "SJVAir-7740",
+    "locality": null,
+    "timezone": "America/Los_Angeles",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 11028,
+     "name": "SJVAir.com"
+    },
+    "provider": {
+     "id": 66,
+     "name": "AirGradient"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 7,
+      "name": "Unknown AirGradient Sensor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 15005247,
+      "name": "pm1 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 19,
+       "name": "pm1",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM1"
+      }
+     },
+     {
+      "id": 15005248,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     },
+     {
+      "id": 15005249,
+      "name": "relativehumidity %",
+      "parameter": {
+       "id": 98,
+       "name": "relativehumidity",
+       "units": "%",
+       "displayName": "RH"
+      }
+     },
+     {
+      "id": 15005250,
+      "name": "temperature c",
+      "parameter": {
+       "id": 100,
+       "name": "temperature",
+       "units": "c",
+       "displayName": "Temperature (C)"
+      }
+     },
+     {
+      "id": 15005251,
+      "name": "um003 particles/cm\u00b3",
+      "parameter": {
+       "id": 125,
+       "name": "um003",
+       "units": "particles/cm\u00b3",
+       "displayName": "PM0.3 count"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 36.8183862,
+     "longitude": -119.7625496
+    },
+    "licenses": [
+     {
+      "id": 41,
+      "name": "CC BY 4.0",
+      "attribution": {
+       "name": "SJVAir.com",
+       "url": null
+      },
+      "dateFrom": "2023-07-15",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -119.7625496,
+     36.8183862,
+     -119.7625496,
+     36.8183862
+    ],
+    "distance": 9231.49512805,
+    "datetimeFirst": {
+     "utc": "2025-12-27T18:00:00Z",
+     "local": "2025-12-27T10:00:00-08:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-09-27T14:00:00Z",
+     "local": "2026-09-27T07:00:00-07:00"
+    }
+   }
+  ]
+ }
+]

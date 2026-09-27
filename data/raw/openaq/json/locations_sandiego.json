@@ -1,0 +1,2797 @@
+[
+ {
+  "meta": {
+   "name": "openaq-api",
+   "website": "/",
+   "page": 1,
+   "limit": 1000,
+   "found": 35
+  },
+  "results": [
+   {
+    "id": 237,
+    "name": "San Ysidro",
+    "locality": null,
+    "timezone": "America/Los_Angeles",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 4,
+     "name": "Unknown Governmental Organization"
+    },
+    "provider": {
+     "id": 119,
+     "name": "AirNow"
+    },
+    "isMobile": false,
+    "isMonitor": true,
+    "instruments": [
+     {
+      "id": 2,
+      "name": "Government Monitor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 401,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 32.543475,
+     "longitude": -117.029028
+    },
+    "licenses": [
+     {
+      "id": 33,
+      "name": "US Public Domain",
+      "attribution": {
+       "name": "Unknown Governmental Organization",
+       "url": null
+      },
+      "dateFrom": "2016-01-30",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -117.029028,
+     32.543475,
+     -117.029028,
+     32.543475
+    ],
+    "distance": 22957.50397524,
+    "datetimeFirst": {
+     "utc": "2016-03-06T20:00:00Z",
+     "local": "2016-03-06T12:00:00-08:00"
+    },
+    "datetimeLast": {
+     "utc": "2016-03-22T15:00:00Z",
+     "local": "2016-03-22T08:00:00-07:00"
+    }
+   },
+   {
+    "id": 1854,
+    "name": "Chula Vista",
+    "locality": "San Diego-Carlsbad-San Marcos",
+    "timezone": "America/Los_Angeles",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 4,
+     "name": "Unknown Governmental Organization"
+    },
+    "provider": {
+     "id": 119,
+     "name": "AirNow"
+    },
+    "isMobile": false,
+    "isMonitor": true,
+    "instruments": [
+     {
+      "id": 2,
+      "name": "Government Monitor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 3275,
+      "name": "o3 ppm",
+      "parameter": {
+       "id": 10,
+       "name": "o3",
+       "units": "ppm",
+       "displayName": "O\u2083"
+      }
+     },
+     {
+      "id": 6455621,
+      "name": "pm10 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 1,
+       "name": "pm10",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM10"
+      }
+     },
+     {
+      "id": 6455622,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 32.631229,
+     "longitude": -117.059074
+    },
+    "licenses": [
+     {
+      "id": 33,
+      "name": "US Public Domain",
+      "attribution": {
+       "name": "Unknown Governmental Organization",
+       "url": null
+      },
+      "dateFrom": "2016-01-30",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -117.059074,
+     32.631229,
+     -117.059074,
+     32.631229
+    ],
+    "distance": 13590.74466076,
+    "datetimeFirst": {
+     "utc": "2016-03-06T20:00:00Z",
+     "local": "2016-03-06T12:00:00-08:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-09-27T14:00:00Z",
+     "local": "2026-09-27T07:00:00-07:00"
+    }
+   },
+   {
+    "id": 2011,
+    "name": "San Diego - Kearny V",
+    "locality": "San Diego-Carlsbad-San Marcos",
+    "timezone": "America/Los_Angeles",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 4,
+     "name": "Unknown Governmental Organization"
+    },
+    "provider": {
+     "id": 119,
+     "name": "AirNow"
+    },
+    "isMobile": false,
+    "isMonitor": true,
+    "instruments": [
+     {
+      "id": 2,
+      "name": "Government Monitor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 3572,
+      "name": "o3 ppm",
+      "parameter": {
+       "id": 10,
+       "name": "o3",
+       "units": "ppm",
+       "displayName": "O\u2083"
+      }
+     },
+     {
+      "id": 6455625,
+      "name": "pm10 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 1,
+       "name": "pm10",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM10"
+      }
+     },
+     {
+      "id": 6455626,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 32.845467,
+     "longitude": -117.123894
+    },
+    "licenses": [
+     {
+      "id": 33,
+      "name": "US Public Domain",
+      "attribution": {
+       "name": "Unknown Governmental Organization",
+       "url": null
+      },
+      "dateFrom": "2016-01-30",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -117.123894,
+     32.845467,
+     -117.123894,
+     32.845467
+    ],
+    "distance": 14727.39517713,
+    "datetimeFirst": {
+     "utc": "2016-03-06T20:00:00Z",
+     "local": "2016-03-06T12:00:00-08:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-09-27T14:00:00Z",
+     "local": "2026-09-27T07:00:00-07:00"
+    }
+   },
+   {
+    "id": 2012,
+    "name": "San Diego - Beardsle",
+    "locality": null,
+    "timezone": "America/Los_Angeles",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 4,
+     "name": "Unknown Governmental Organization"
+    },
+    "provider": {
+     "id": 119,
+     "name": "AirNow"
+    },
+    "isMobile": false,
+    "isMonitor": true,
+    "instruments": [
+     {
+      "id": 2,
+      "name": "Government Monitor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 3574,
+      "name": "o3 ppm",
+      "parameter": {
+       "id": 10,
+       "name": "o3",
+       "units": "ppm",
+       "displayName": "O\u2083"
+      }
+     },
+     {
+      "id": 3573,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 32.701492,
+     "longitude": -117.149651
+    },
+    "licenses": [
+     {
+      "id": 33,
+      "name": "US Public Domain",
+      "attribution": {
+       "name": "Unknown Governmental Organization",
+       "url": null
+      },
+      "dateFrom": "2016-01-30",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -117.149651,
+     32.701492,
+     -117.149651,
+     32.701492
+    ],
+    "distance": 2098.06546963,
+    "datetimeFirst": {
+     "utc": "2016-03-06T20:00:00Z",
+     "local": "2016-03-06T12:00:00-08:00"
+    },
+    "datetimeLast": {
+     "utc": "2016-10-20T17:00:00Z",
+     "local": "2016-10-20T10:00:00-07:00"
+    }
+   },
+   {
+    "id": 2630,
+    "name": "San Ysidro",
+    "locality": null,
+    "timezone": "America/Los_Angeles",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 4,
+     "name": "Unknown Governmental Organization"
+    },
+    "provider": {
+     "id": 119,
+     "name": "AirNow"
+    },
+    "isMobile": false,
+    "isMonitor": true,
+    "instruments": [
+     {
+      "id": 2,
+      "name": "Government Monitor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 5489,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 32.542679,
+     "longitude": -117.030749
+    },
+    "licenses": [
+     {
+      "id": 33,
+      "name": "US Public Domain",
+      "attribution": {
+       "name": "Unknown Governmental Organization",
+       "url": null
+      },
+      "dateFrom": "2016-01-30",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -117.030749,
+     32.542679,
+     -117.030749,
+     32.542679
+    ],
+    "distance": 22943.86551576,
+    "datetimeFirst": {
+     "utc": "2016-08-16T21:00:00Z",
+     "local": "2016-08-16T14:00:00-07:00"
+    },
+    "datetimeLast": {
+     "utc": "2016-08-24T15:00:00Z",
+     "local": "2016-08-24T08:00:00-07:00"
+    }
+   },
+   {
+    "id": 7488,
+    "name": "MMCA82059",
+    "locality": null,
+    "timezone": "America/Los_Angeles",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 4,
+     "name": "Unknown Governmental Organization"
+    },
+    "provider": {
+     "id": 119,
+     "name": "AirNow"
+    },
+    "isMobile": false,
+    "isMonitor": true,
+    "instruments": [
+     {
+      "id": 2,
+      "name": "Government Monitor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 21721,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 32.8095,
+     "longitude": -117.139599
+    },
+    "licenses": [
+     {
+      "id": 33,
+      "name": "US Public Domain",
+      "attribution": {
+       "name": "Unknown Governmental Organization",
+       "url": null
+      },
+      "dateFrom": "2016-01-30",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -117.139599,
+     32.8095,
+     -117.139599,
+     32.8095
+    ],
+    "distance": 10507.80270791,
+    "datetimeFirst": {
+     "utc": "2020-03-03T22:00:00Z",
+     "local": "2020-03-03T14:00:00-08:00"
+    },
+    "datetimeLast": {
+     "utc": "2020-04-30T18:00:00Z",
+     "local": "2020-04-30T11:00:00-07:00"
+    }
+   },
+   {
+    "id": 7669,
+    "name": "MMCA82023",
+    "locality": "CA8 - ARB",
+    "timezone": "America/Los_Angeles",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 4,
+     "name": "Unknown Governmental Organization"
+    },
+    "provider": {
+     "id": 119,
+     "name": "AirNow"
+    },
+    "isMobile": false,
+    "isMonitor": true,
+    "instruments": [
+     {
+      "id": 2,
+      "name": "Government Monitor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 22304,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 32.81009,
+     "longitude": -117.119193
+    },
+    "licenses": [
+     {
+      "id": 33,
+      "name": "US Public Domain",
+      "attribution": {
+       "name": "Unknown Governmental Organization",
+       "url": null
+      },
+      "dateFrom": "2016-01-30",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -117.119193,
+     32.81009,
+     -117.119193,
+     32.81009
+    ],
+    "distance": 11123.54109987,
+    "datetimeFirst": {
+     "utc": "2020-05-15T10:00:00Z",
+     "local": "2020-05-15T03:00:00-07:00"
+    },
+    "datetimeLast": {
+     "utc": "2024-03-19T18:00:00Z",
+     "local": "2024-03-19T11:00:00-07:00"
+    }
+   },
+   {
+    "id": 7956,
+    "name": "EBAM 0",
+    "locality": "GBU",
+    "timezone": "America/Los_Angeles",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 4,
+     "name": "Unknown Governmental Organization"
+    },
+    "provider": {
+     "id": 119,
+     "name": "AirNow"
+    },
+    "isMobile": false,
+    "isMonitor": true,
+    "instruments": [
+     {
+      "id": 2,
+      "name": "Government Monitor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 23060,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 32.810122,
+     "longitude": -117.119193
+    },
+    "licenses": [
+     {
+      "id": 33,
+      "name": "US Public Domain",
+      "attribution": {
+       "name": "Unknown Governmental Organization",
+       "url": null
+      },
+      "dateFrom": "2016-01-30",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -117.119193,
+     32.810122,
+     -117.119193,
+     32.810122
+    ],
+    "distance": 11126.84164024,
+    "datetimeFirst": {
+     "utc": "2020-09-21T20:00:00Z",
+     "local": "2020-09-21T13:00:00-07:00"
+    },
+    "datetimeLast": {
+     "utc": "2023-10-19T20:00:00Z",
+     "local": "2023-10-19T13:00:00-07:00"
+    }
+   },
+   {
+    "id": 8591,
+    "name": "El Cajon - Lexington",
+    "locality": "San Diego-Carlsbad-San Marcos",
+    "timezone": "America/Los_Angeles",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 4,
+     "name": "Unknown Governmental Organization"
+    },
+    "provider": {
+     "id": 119,
+     "name": "AirNow"
+    },
+    "isMobile": false,
+    "isMonitor": true,
+    "instruments": [
+     {
+      "id": 2,
+      "name": "Government Monitor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 24961,
+      "name": "o3 ppm",
+      "parameter": {
+       "id": 10,
+       "name": "o3",
+       "units": "ppm",
+       "displayName": "O\u2083"
+      }
+     },
+     {
+      "id": 4485565,
+      "name": "pm10 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 1,
+       "name": "pm10",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM10"
+      }
+     },
+     {
+      "id": 24960,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 32.789561,
+     "longitude": -116.944222
+    },
+    "licenses": [
+     {
+      "id": 33,
+      "name": "US Public Domain",
+      "attribution": {
+       "name": "Unknown Governmental Organization",
+       "url": null
+      },
+      "dateFrom": "2016-01-30",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -116.944222,
+     32.789561,
+     -116.944222,
+     32.789561
+    ],
+    "distance": 22015.57548505,
+    "datetimeFirst": {
+     "utc": "2016-07-14T20:00:00Z",
+     "local": "2016-07-14T13:00:00-07:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-09-27T14:00:00Z",
+     "local": "2026-09-27T07:00:00-07:00"
+    }
+   },
+   {
+    "id": 8805,
+    "name": "San Diego - Sherman",
+    "locality": "San Diego-Carlsbad-San Marcos",
+    "timezone": "America/Los_Angeles",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 4,
+     "name": "Unknown Governmental Organization"
+    },
+    "provider": {
+     "id": 119,
+     "name": "AirNow"
+    },
+    "isMobile": false,
+    "isMonitor": true,
+    "instruments": [
+     {
+      "id": 2,
+      "name": "Government Monitor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 25670,
+      "name": "o3 ppm",
+      "parameter": {
+       "id": 10,
+       "name": "o3",
+       "units": "ppm",
+       "displayName": "O\u2083"
+      }
+     },
+     {
+      "id": 4485562,
+      "name": "pm10 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 1,
+       "name": "pm10",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM10"
+      }
+     },
+     {
+      "id": 25671,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 32.710177,
+     "longitude": -117.142665
+    },
+    "licenses": [
+     {
+      "id": 33,
+      "name": "US Public Domain",
+      "attribution": {
+       "name": "Unknown Governmental Organization",
+       "url": null
+      },
+      "dateFrom": "2016-01-30",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -117.142665,
+     32.710177,
+     -117.142665,
+     32.710177
+    ],
+    "distance": 2025.59316568,
+    "datetimeFirst": {
+     "utc": "2019-08-14T23:00:00Z",
+     "local": "2019-08-14T16:00:00-07:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-09-27T14:00:00Z",
+     "local": "2026-09-27T07:00:00-07:00"
+    }
+   },
+   {
+    "id": 648882,
+    "name": "EBAM 0",
+    "locality": null,
+    "timezone": "America/Los_Angeles",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 4,
+     "name": "Unknown Governmental Organization"
+    },
+    "provider": {
+     "id": 119,
+     "name": "AirNow"
+    },
+    "isMobile": false,
+    "isMonitor": true,
+    "instruments": [
+     {
+      "id": 2,
+      "name": "Government Monitor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 3565930,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 32.812815,
+     "longitude": -117.118742
+    },
+    "licenses": [
+     {
+      "id": 33,
+      "name": "US Public Domain",
+      "attribution": {
+       "name": "Unknown Governmental Organization",
+       "url": null
+      },
+      "dateFrom": "2016-01-30",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -117.118742,
+     32.812815,
+     -117.118742,
+     32.812815
+    ],
+    "distance": 11420.34487783,
+    "datetimeFirst": null,
+    "datetimeLast": null
+   },
+   {
+    "id": 1638531,
+    "name": "San Ysidro",
+    "locality": "San Diego-Carlsbad-San Marcos",
+    "timezone": "America/Los_Angeles",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 4,
+     "name": "Unknown Governmental Organization"
+    },
+    "provider": {
+     "id": 119,
+     "name": "AirNow"
+    },
+    "isMobile": false,
+    "isMonitor": true,
+    "instruments": [
+     {
+      "id": 2,
+      "name": "Government Monitor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 7071548,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 32.552794,
+     "longitude": -117.047286
+    },
+    "licenses": [
+     {
+      "id": 33,
+      "name": "US Public Domain",
+      "attribution": {
+       "name": "Unknown Governmental Organization",
+       "url": null
+      },
+      "dateFrom": "2016-01-30",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -117.047286,
+     32.552794,
+     -117.047286,
+     32.552794
+    ],
+    "distance": 21172.94328148,
+    "datetimeFirst": {
+     "utc": "2023-09-29T09:00:00Z",
+     "local": "2023-09-29T02:00:00-07:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-09-27T14:00:00Z",
+     "local": "2026-09-27T07:00:00-07:00"
+    }
+   },
+   {
+    "id": 2812598,
+    "name": "Price Center",
+    "locality": null,
+    "timezone": "America/Los_Angeles",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 9,
+     "name": "Clarity"
+    },
+    "provider": {
+     "id": 166,
+     "name": "Clarity"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 4,
+      "name": "Clarity Sensor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 8966949,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 32.87976,
+     "longitude": -117.23575
+    },
+    "licenses": [
+     {
+      "id": 38,
+      "name": "CC0 1.0",
+      "attribution": {
+       "name": "Clarity",
+       "url": null
+      },
+      "dateFrom": "2021-10-20",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -117.23575,
+     32.87976,
+     -117.23575,
+     32.87976
+    ],
+    "distance": 19320.97551656,
+    "datetimeFirst": {
+     "utc": "2024-04-24T16:00:00Z",
+     "local": "2024-04-24T09:00:00-07:00"
+    },
+    "datetimeLast": {
+     "utc": "2025-03-06T21:06:27Z",
+     "local": "2025-03-06T13:06:27-08:00"
+    }
+   },
+   {
+    "id": 2812610,
+    "name": "CRSF (EHS Bldg)",
+    "locality": null,
+    "timezone": "America/Los_Angeles",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 9,
+     "name": "Clarity"
+    },
+    "provider": {
+     "id": 166,
+     "name": "Clarity"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 4,
+      "name": "Clarity Sensor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 8967345,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 32.87364,
+     "longitude": -117.23616
+    },
+    "licenses": [
+     {
+      "id": 38,
+      "name": "CC0 1.0",
+      "attribution": {
+       "name": "Clarity",
+       "url": null
+      },
+      "dateFrom": "2021-10-20",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -117.23616,
+     32.87364,
+     -117.23616,
+     32.87364
+    ],
+    "distance": 18701.81810328,
+    "datetimeFirst": {
+     "utc": "2024-04-24T16:00:00Z",
+     "local": "2024-04-24T09:00:00-07:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-09-27T13:04:51Z",
+     "local": "2026-09-27T06:04:51-07:00"
+    }
+   },
+   {
+    "id": 2812829,
+    "name": "RIMAC Arena",
+    "locality": null,
+    "timezone": "America/Los_Angeles",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 9,
+     "name": "Clarity"
+    },
+    "provider": {
+     "id": 166,
+     "name": "Clarity"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 4,
+      "name": "Clarity Sensor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 8967137,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 32.88556,
+     "longitude": -117.23928
+    },
+    "licenses": [
+     {
+      "id": 38,
+      "name": "CC0 1.0",
+      "attribution": {
+       "name": "Clarity",
+       "url": null
+      },
+      "dateFrom": "2021-10-20",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -117.23928,
+     32.88556,
+     -117.23928,
+     32.88556
+    ],
+    "distance": 20039.65602502,
+    "datetimeFirst": {
+     "utc": "2024-04-24T16:00:00Z",
+     "local": "2024-04-24T09:00:00-07:00"
+    },
+    "datetimeLast": {
+     "utc": "2025-03-24T21:08:25Z",
+     "local": "2025-03-24T14:08:25-07:00"
+    }
+   },
+   {
+    "id": 2877111,
+    "name": "Chamber of Commerce",
+    "locality": null,
+    "timezone": "America/Los_Angeles",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 9,
+     "name": "Clarity"
+    },
+    "provider": {
+     "id": 166,
+     "name": "Clarity"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 4,
+      "name": "Clarity Sensor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 9446873,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 32.5473,
+     "longitude": -117.03227
+    },
+    "licenses": [
+     {
+      "id": 38,
+      "name": "CC0 1.0",
+      "attribution": {
+       "name": "Clarity",
+       "url": null
+      },
+      "dateFrom": "2021-10-20",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -117.03227,
+     32.5473,
+     -117.03227,
+     32.5473
+    ],
+    "distance": 22435.86961317,
+    "datetimeFirst": {
+     "utc": "2024-06-03T18:00:00Z",
+     "local": "2024-06-03T11:00:00-07:00"
+    },
+    "datetimeLast": {
+     "utc": "2025-09-19T20:01:45Z",
+     "local": "2025-09-19T13:01:45-07:00"
+    }
+   },
+   {
+    "id": 2877112,
+    "name": "Vista Lane",
+    "locality": null,
+    "timezone": "America/Los_Angeles",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 9,
+     "name": "Clarity"
+    },
+    "provider": {
+     "id": 166,
+     "name": "Clarity"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 4,
+      "name": "Clarity Sensor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 9446867,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 32.56193,
+     "longitude": -117.05775
+    },
+    "licenses": [
+     {
+      "id": 38,
+      "name": "CC0 1.0",
+      "attribution": {
+       "name": "Clarity",
+       "url": null
+      },
+      "dateFrom": "2021-10-20",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -117.05775,
+     32.56193,
+     -117.05775,
+     32.56193
+    ],
+    "distance": 19802.36220932,
+    "datetimeFirst": {
+     "utc": "2024-06-03T18:00:00Z",
+     "local": "2024-06-03T11:00:00-07:00"
+    },
+    "datetimeLast": {
+     "utc": "2025-09-03T04:06:05Z",
+     "local": "2025-09-02T21:06:05-07:00"
+    }
+   },
+   {
+    "id": 2877113,
+    "name": "Howard Lane/Nicoloff Elementary",
+    "locality": null,
+    "timezone": "America/Los_Angeles",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 9,
+     "name": "Clarity"
+    },
+    "provider": {
+     "id": 166,
+     "name": "Clarity"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 4,
+      "name": "Clarity Sensor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 9446863,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 32.56676,
+     "longitude": -117.06452
+    },
+    "licenses": [
+     {
+      "id": 38,
+      "name": "CC0 1.0",
+      "attribution": {
+       "name": "Clarity",
+       "url": null
+      },
+      "dateFrom": "2021-10-20",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -117.06452,
+     32.56676,
+     -117.06452,
+     32.56676
+    ],
+    "distance": 19023.60681553,
+    "datetimeFirst": {
+     "utc": "2024-06-03T18:00:00Z",
+     "local": "2024-06-03T11:00:00-07:00"
+    },
+    "datetimeLast": {
+     "utc": "2025-09-03T04:32:13Z",
+     "local": "2025-09-02T21:32:13-07:00"
+    }
+   },
+   {
+    "id": 2877114,
+    "name": "Larsen Field",
+    "locality": null,
+    "timezone": "America/Los_Angeles",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 9,
+     "name": "Clarity"
+    },
+    "provider": {
+     "id": 166,
+     "name": "Clarity"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 4,
+      "name": "Clarity Sensor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 9446871,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 32.54631,
+     "longitude": -117.04527
+    },
+    "licenses": [
+     {
+      "id": 38,
+      "name": "CC0 1.0",
+      "attribution": {
+       "name": "Clarity",
+       "url": null
+      },
+      "dateFrom": "2021-10-20",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -117.04527,
+     32.54631,
+     -117.04527,
+     32.54631
+    ],
+    "distance": 21888.63487928,
+    "datetimeFirst": {
+     "utc": "2024-06-03T18:00:00Z",
+     "local": "2024-06-03T11:00:00-07:00"
+    },
+    "datetimeLast": {
+     "utc": "2025-09-19T19:58:42Z",
+     "local": "2025-09-19T12:58:42-07:00"
+    }
+   },
+   {
+    "id": 2877115,
+    "name": "Health Center",
+    "locality": null,
+    "timezone": "America/Los_Angeles",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 9,
+     "name": "Clarity"
+    },
+    "provider": {
+     "id": 166,
+     "name": "Clarity"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 4,
+      "name": "Clarity Sensor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 9446869,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 32.55865,
+     "longitude": -117.04821
+    },
+    "licenses": [
+     {
+      "id": 38,
+      "name": "CC0 1.0",
+      "attribution": {
+       "name": "Clarity",
+       "url": null
+      },
+      "dateFrom": "2021-10-20",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -117.04821,
+     32.55865,
+     -117.04821,
+     32.55865
+    ],
+    "distance": 20572.13503784,
+    "datetimeFirst": {
+     "utc": "2024-06-03T18:00:00Z",
+     "local": "2024-06-03T11:00:00-07:00"
+    },
+    "datetimeLast": {
+     "utc": "2025-09-19T19:56:18Z",
+     "local": "2025-09-19T12:56:18-07:00"
+    }
+   },
+   {
+    "id": 2877116,
+    "name": "Willow Elementary",
+    "locality": null,
+    "timezone": "America/Los_Angeles",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 9,
+     "name": "Clarity"
+    },
+    "provider": {
+     "id": 166,
+     "name": "Clarity"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 4,
+      "name": "Clarity Sensor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 9446875,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 32.54931,
+     "longitude": -117.04225
+    },
+    "licenses": [
+     {
+      "id": 38,
+      "name": "CC0 1.0",
+      "attribution": {
+       "name": "Clarity",
+       "url": null
+      },
+      "dateFrom": "2021-10-20",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -117.04225,
+     32.54931,
+     -117.04225,
+     32.54931
+    ],
+    "distance": 21747.87089462,
+    "datetimeFirst": {
+     "utc": "2024-06-03T18:00:00Z",
+     "local": "2024-06-03T11:00:00-07:00"
+    },
+    "datetimeLast": {
+     "utc": "2025-09-19T20:03:32Z",
+     "local": "2025-09-19T13:03:32-07:00"
+    }
+   },
+   {
+    "id": 2877117,
+    "name": "San Ysidro High School",
+    "locality": null,
+    "timezone": "America/Los_Angeles",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 9,
+     "name": "Clarity"
+    },
+    "provider": {
+     "id": 166,
+     "name": "Clarity"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 4,
+      "name": "Clarity Sensor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 9446861,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 32.56663,
+     "longitude": -117.01885
+    },
+    "licenses": [
+     {
+      "id": 38,
+      "name": "CC0 1.0",
+      "attribution": {
+       "name": "Clarity",
+       "url": null
+      },
+      "dateFrom": "2021-10-20",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -117.01885,
+     32.56663,
+     -117.01885,
+     32.56663
+    ],
+    "distance": 21442.2938931,
+    "datetimeFirst": {
+     "utc": "2024-06-03T18:00:00Z",
+     "local": "2024-06-03T11:00:00-07:00"
+    },
+    "datetimeLast": {
+     "utc": "2025-09-19T19:59:37Z",
+     "local": "2025-09-19T12:59:37-07:00"
+    }
+   },
+   {
+    "id": 2877118,
+    "name": "Community Activity Center",
+    "locality": null,
+    "timezone": "America/Los_Angeles",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 9,
+     "name": "Clarity"
+    },
+    "provider": {
+     "id": 166,
+     "name": "Clarity"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 4,
+      "name": "Clarity Sensor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 9446865,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 32.56513,
+     "longitude": -117.04539
+    },
+    "licenses": [
+     {
+      "id": 38,
+      "name": "CC0 1.0",
+      "attribution": {
+       "name": "Clarity",
+       "url": null
+      },
+      "dateFrom": "2021-10-20",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -117.04539,
+     32.56513,
+     -117.04539,
+     32.56513
+    ],
+    "distance": 20106.56694485,
+    "datetimeFirst": {
+     "utc": "2024-06-03T18:00:00Z",
+     "local": "2024-06-03T11:00:00-07:00"
+    },
+    "datetimeLast": {
+     "utc": "2025-02-27T22:50:40Z",
+     "local": "2025-02-27T14:50:40-08:00"
+    }
+   },
+   {
+    "id": 3155452,
+    "name": "Tierrasanta, San Diego",
+    "locality": null,
+    "timezone": "America/Los_Angeles",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 11509,
+     "name": "Unknown Person"
+    },
+    "provider": {
+     "id": 66,
+     "name": "AirGradient"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 24,
+      "name": "AirGradient Open Air Generation 1 (O-1PST)"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 11011532,
+      "name": "pm1 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 19,
+       "name": "pm1",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM1"
+      }
+     },
+     {
+      "id": 11011529,
+      "name": "pm10 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 1,
+       "name": "pm10",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM10"
+      }
+     },
+     {
+      "id": 11011530,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     },
+     {
+      "id": 11011502,
+      "name": "relativehumidity %",
+      "parameter": {
+       "id": 98,
+       "name": "relativehumidity",
+       "units": "%",
+       "displayName": "RH"
+      }
+     },
+     {
+      "id": 11011504,
+      "name": "temperature c",
+      "parameter": {
+       "id": 100,
+       "name": "temperature",
+       "units": "c",
+       "displayName": "Temperature (C)"
+      }
+     },
+     {
+      "id": 11011521,
+      "name": "um003 particles/cm\u00b3",
+      "parameter": {
+       "id": 125,
+       "name": "um003",
+       "units": "particles/cm\u00b3",
+       "displayName": "PM0.3 count"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 32.829321,
+     "longitude": -117.103342
+    },
+    "licenses": [
+     {
+      "id": 41,
+      "name": "CC BY 4.0",
+      "attribution": {
+       "name": "Unknown Person",
+       "url": null
+      },
+      "dateFrom": "2023-07-15",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -117.103342,
+     32.829321,
+     -117.103342,
+     32.829321
+    ],
+    "distance": 13665.61590003,
+    "datetimeFirst": {
+     "utc": "2024-10-19T20:00:00Z",
+     "local": "2024-10-19T13:00:00-07:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-09-27T14:00:00Z",
+     "local": "2026-09-27T07:00:00-07:00"
+    }
+   },
+   {
+    "id": 3263275,
+    "name": "Grossmont Center",
+    "locality": null,
+    "timezone": "America/Los_Angeles",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 9,
+     "name": "Clarity"
+    },
+    "provider": {
+     "id": 166,
+     "name": "Clarity"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 4,
+      "name": "Clarity Sensor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 11283884,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 32.7876,
+     "longitude": -117.01352
+    },
+    "licenses": [
+     {
+      "id": 38,
+      "name": "CC0 1.0",
+      "attribution": {
+       "name": "Clarity",
+       "url": null
+      },
+      "dateFrom": "2021-10-20",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -117.01352,
+     32.7876,
+     -117.01352,
+     32.7876
+    ],
+    "distance": 16042.36106065,
+    "datetimeFirst": {
+     "utc": "2024-11-12T23:02:31Z",
+     "local": "2024-11-12T15:02:31-08:00"
+    },
+    "datetimeLast": {
+     "utc": "2025-07-24T23:00:43Z",
+     "local": "2025-07-24T16:00:43-07:00"
+    }
+   },
+   {
+    "id": 3406946,
+    "name": "San Diego - Bay Ho",
+    "locality": null,
+    "timezone": "America/Los_Angeles",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 11509,
+     "name": "Unknown Person"
+    },
+    "provider": {
+     "id": 66,
+     "name": "AirGradient"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 24,
+      "name": "AirGradient Open Air Generation 1 (O-1PST)"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 12217152,
+      "name": "pm1 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 19,
+       "name": "pm1",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM1"
+      }
+     },
+     {
+      "id": 12217153,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     },
+     {
+      "id": 12217154,
+      "name": "relativehumidity %",
+      "parameter": {
+       "id": 98,
+       "name": "relativehumidity",
+       "units": "%",
+       "displayName": "RH"
+      }
+     },
+     {
+      "id": 12217155,
+      "name": "temperature c",
+      "parameter": {
+       "id": 100,
+       "name": "temperature",
+       "units": "c",
+       "displayName": "Temperature (C)"
+      }
+     },
+     {
+      "id": 12217156,
+      "name": "um003 particles/cm\u00b3",
+      "parameter": {
+       "id": 125,
+       "name": "um003",
+       "units": "particles/cm\u00b3",
+       "displayName": "PM0.3 count"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 32.806765018838554,
+     "longitude": -117.20624147941732
+    },
+    "licenses": [
+     {
+      "id": 41,
+      "name": "CC BY 4.0",
+      "attribution": {
+       "name": "Unknown Person",
+       "url": null
+      },
+      "dateFrom": "2023-07-15",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -117.20624147941732,
+     32.806765018838554,
+     -117.20624147941732,
+     32.806765018838554
+    ],
+    "distance": 10775.58748151,
+    "datetimeFirst": {
+     "utc": "2025-02-17T03:00:00Z",
+     "local": "2025-02-16T19:00:00-08:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-09-27T14:00:00Z",
+     "local": "2026-09-27T07:00:00-07:00"
+    }
+   },
+   {
+    "id": 3531499,
+    "name": "Southwest Middle School",
+    "locality": null,
+    "timezone": "America/Los_Angeles",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 9,
+     "name": "Clarity"
+    },
+    "provider": {
+     "id": 166,
+     "name": "Clarity"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 4,
+      "name": "Clarity Sensor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 12337366,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 32.56921,
+     "longitude": -117.07333
+    },
+    "licenses": [
+     {
+      "id": 38,
+      "name": "CC0 1.0",
+      "attribution": {
+       "name": "Clarity",
+       "url": null
+      },
+      "dateFrom": "2021-10-20",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -117.07333,
+     32.56921,
+     -117.07333,
+     32.56921
+    ],
+    "distance": 18394.71681459,
+    "datetimeFirst": {
+     "utc": "2025-02-28T18:17:12Z",
+     "local": "2025-02-28T10:17:12-08:00"
+    },
+    "datetimeLast": {
+     "utc": "2025-09-19T20:03:24Z",
+     "local": "2025-09-19T13:03:24-07:00"
+    }
+   },
+   {
+    "id": 3933765,
+    "name": "Smythe Avenue",
+    "locality": null,
+    "timezone": "America/Los_Angeles",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 9,
+     "name": "Clarity"
+    },
+    "provider": {
+     "id": 166,
+     "name": "Clarity"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 4,
+      "name": "Clarity Sensor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 12663086,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 32.56347,
+     "longitude": -117.05027
+    },
+    "licenses": [
+     {
+      "id": 38,
+      "name": "CC0 1.0",
+      "attribution": {
+       "name": "Clarity",
+       "url": null
+      },
+      "dateFrom": "2021-10-20",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -117.05027,
+     32.56347,
+     -117.05027,
+     32.56347
+    ],
+    "distance": 20015.58436029,
+    "datetimeFirst": {
+     "utc": "2025-04-02T20:14:36Z",
+     "local": "2025-04-02T13:14:36-07:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-09-27T12:52:27Z",
+     "local": "2026-09-27T05:52:27-07:00"
+    }
+   },
+   {
+    "id": 3933766,
+    "name": "International Border ",
+    "locality": null,
+    "timezone": "America/Los_Angeles",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 9,
+     "name": "Clarity"
+    },
+    "provider": {
+     "id": 166,
+     "name": "Clarity"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 4,
+      "name": "Clarity Sensor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 12663084,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 32.54439,
+     "longitude": -117.03399
+    },
+    "licenses": [
+     {
+      "id": 38,
+      "name": "CC0 1.0",
+      "attribution": {
+       "name": "Clarity",
+       "url": null
+      },
+      "dateFrom": "2021-10-20",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -117.03399,
+     32.54439,
+     -117.03399,
+     32.54439
+    ],
+    "distance": 22620.37120171,
+    "datetimeFirst": {
+     "utc": "2025-04-02T20:12:32Z",
+     "local": "2025-04-02T13:12:32-07:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-09-27T12:50:41Z",
+     "local": "2026-09-27T05:50:41-07:00"
+    }
+   },
+   {
+    "id": 3933767,
+    "name": "Ocean View Hills",
+    "locality": null,
+    "timezone": "America/Los_Angeles",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 9,
+     "name": "Clarity"
+    },
+    "provider": {
+     "id": 166,
+     "name": "Clarity"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 4,
+      "name": "Clarity Sensor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 12663085,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 32.5718,
+     "longitude": -117.02389
+    },
+    "licenses": [
+     {
+      "id": 38,
+      "name": "CC0 1.0",
+      "attribution": {
+       "name": "Clarity",
+       "url": null
+      },
+      "dateFrom": "2021-10-20",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -117.02389,
+     32.5718,
+     -117.02389,
+     32.5718
+    ],
+    "distance": 20698.88353993,
+    "datetimeFirst": {
+     "utc": "2025-04-02T20:11:25Z",
+     "local": "2025-04-02T13:11:25-07:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-09-27T13:00:15Z",
+     "local": "2026-09-27T06:00:15-07:00"
+    }
+   },
+   {
+    "id": 4346166,
+    "name": "Nierenberg Hall",
+    "locality": null,
+    "timezone": "America/Los_Angeles",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 9,
+     "name": "Clarity"
+    },
+    "provider": {
+     "id": 166,
+     "name": "Clarity"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 4,
+      "name": "Clarity Sensor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 13000639,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 32.86989,
+     "longitude": -117.25125
+    },
+    "licenses": [
+     {
+      "id": 38,
+      "name": "CC0 1.0",
+      "attribution": {
+       "name": "Clarity",
+       "url": null
+      },
+      "dateFrom": "2021-10-20",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -117.25125,
+     32.86989,
+     -117.25125,
+     32.86989
+    ],
+    "distance": 18891.51669786,
+    "datetimeFirst": {
+     "utc": "2025-05-10T11:43:12Z",
+     "local": "2025-05-10T04:43:12-07:00"
+    },
+    "datetimeLast": {
+     "utc": "2025-05-10T12:06:38Z",
+     "local": "2025-05-10T05:06:38-07:00"
+    }
+   },
+   {
+    "id": 6202538,
+    "name": "La Mesa, CA",
+    "locality": null,
+    "timezone": "America/Los_Angeles",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 12,
+     "name": "AirGradient"
+    },
+    "provider": {
+     "id": 66,
+     "name": "AirGradient"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 24,
+      "name": "AirGradient Open Air Generation 1 (O-1PST)"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 15170989,
+      "name": "pm1 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 19,
+       "name": "pm1",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM1"
+      }
+     },
+     {
+      "id": 15170990,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     },
+     {
+      "id": 15170991,
+      "name": "relativehumidity %",
+      "parameter": {
+       "id": 98,
+       "name": "relativehumidity",
+       "units": "%",
+       "displayName": "RH"
+      }
+     },
+     {
+      "id": 15170992,
+      "name": "temperature c",
+      "parameter": {
+       "id": 100,
+       "name": "temperature",
+       "units": "c",
+       "displayName": "Temperature (C)"
+      }
+     },
+     {
+      "id": 15170993,
+      "name": "um003 particles/cm\u00b3",
+      "parameter": {
+       "id": 125,
+       "name": "um003",
+       "units": "particles/cm\u00b3",
+       "displayName": "PM0.3 count"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 32.752888,
+     "longitude": -117.019429
+    },
+    "licenses": [
+     {
+      "id": 41,
+      "name": "CC BY 4.0",
+      "attribution": {
+       "name": "AirGradient",
+       "url": null
+      },
+      "dateFrom": "2023-07-15",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -117.019429,
+     32.752888,
+     -117.019429,
+     32.752888
+    ],
+    "distance": 14021.70261152,
+    "datetimeFirst": {
+     "utc": "2026-01-15T19:00:00Z",
+     "local": "2026-01-15T11:00:00-08:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-09-27T14:00:00Z",
+     "local": "2026-09-27T07:00:00-07:00"
+    }
+   },
+   {
+    "id": 6254733,
+    "name": "North Park",
+    "locality": null,
+    "timezone": "America/Los_Angeles",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 12,
+     "name": "AirGradient"
+    },
+    "provider": {
+     "id": 66,
+     "name": "AirGradient"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 7,
+      "name": "Unknown AirGradient Sensor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 15555235,
+      "name": "pm1 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 19,
+       "name": "pm1",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM1"
+      }
+     },
+     {
+      "id": 15555236,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     },
+     {
+      "id": 15555237,
+      "name": "relativehumidity %",
+      "parameter": {
+       "id": 98,
+       "name": "relativehumidity",
+       "units": "%",
+       "displayName": "RH"
+      }
+     },
+     {
+      "id": 15555238,
+      "name": "temperature c",
+      "parameter": {
+       "id": 100,
+       "name": "temperature",
+       "units": "c",
+       "displayName": "Temperature (C)"
+      }
+     },
+     {
+      "id": 15555239,
+      "name": "um003 particles/cm\u00b3",
+      "parameter": {
+       "id": 125,
+       "name": "um003",
+       "units": "particles/cm\u00b3",
+       "displayName": "PM0.3 count"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 32.755273,
+     "longitude": -117.130214
+    },
+    "licenses": [
+     {
+      "id": 41,
+      "name": "CC BY 4.0",
+      "attribution": {
+       "name": "AirGradient",
+       "url": null
+      },
+      "dateFrom": "2023-07-15",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -117.130214,
+     32.755273,
+     -117.130214,
+     32.755273
+    ],
+    "distance": 5247.19311782,
+    "datetimeFirst": {
+     "utc": "2026-02-27T18:00:00Z",
+     "local": "2026-02-27T10:00:00-08:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-09-27T14:00:00Z",
+     "local": "2026-09-27T07:00:00-07:00"
+    }
+   },
+   {
+    "id": 6354808,
+    "name": "Normal Heights",
+    "locality": null,
+    "timezone": "America/Los_Angeles",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 12,
+     "name": "AirGradient"
+    },
+    "provider": {
+     "id": 66,
+     "name": "AirGradient"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 7,
+      "name": "Unknown AirGradient Sensor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 16303571,
+      "name": "pm1 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 19,
+       "name": "pm1",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM1"
+      }
+     },
+     {
+      "id": 16303572,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     },
+     {
+      "id": 16303573,
+      "name": "relativehumidity %",
+      "parameter": {
+       "id": 98,
+       "name": "relativehumidity",
+       "units": "%",
+       "displayName": "RH"
+      }
+     },
+     {
+      "id": 16303574,
+      "name": "temperature c",
+      "parameter": {
+       "id": 100,
+       "name": "temperature",
+       "units": "c",
+       "displayName": "Temperature (C)"
+      }
+     },
+     {
+      "id": 16303575,
+      "name": "um003 particles/cm\u00b3",
+      "parameter": {
+       "id": 125,
+       "name": "um003",
+       "units": "particles/cm\u00b3",
+       "displayName": "PM0.3 count"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 32.768010606135064,
+     "longitude": -117.12639541462805
+    },
+    "licenses": [
+     {
+      "id": 41,
+      "name": "CC BY 4.0",
+      "attribution": {
+       "name": "AirGradient",
+       "url": null
+      },
+      "dateFrom": "2023-07-15",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -117.12639541462805,
+     32.768010606135064,
+     -117.12639541462805,
+     32.768010606135064
+    ],
+    "distance": 6625.36567263,
+    "datetimeFirst": {
+     "utc": "2026-05-18T20:00:00Z",
+     "local": "2026-05-18T13:00:00-07:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-09-27T14:00:00Z",
+     "local": "2026-09-27T07:00:00-07:00"
+    }
+   },
+   {
+    "id": 6407575,
+    "name": "National City E 2nd & D Ave",
+    "locality": null,
+    "timezone": "America/Los_Angeles",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 12,
+     "name": "AirGradient"
+    },
+    "provider": {
+     "id": 66,
+     "name": "AirGradient"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 7,
+      "name": "Unknown AirGradient Sensor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 16651716,
+      "name": "pm1 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 19,
+       "name": "pm1",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM1"
+      }
+     },
+     {
+      "id": 16651717,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     },
+     {
+      "id": 16651718,
+      "name": "relativehumidity %",
+      "parameter": {
+       "id": 98,
+       "name": "relativehumidity",
+       "units": "%",
+       "displayName": "RH"
+      }
+     },
+     {
+      "id": 16651719,
+      "name": "temperature c",
+      "parameter": {
+       "id": 100,
+       "name": "temperature",
+       "units": "c",
+       "displayName": "Temperature (C)"
+      }
+     },
+     {
+      "id": 16651720,
+      "name": "um003 particles/cm\u00b3",
+      "parameter": {
+       "id": 125,
+       "name": "um003",
+       "units": "particles/cm\u00b3",
+       "displayName": "PM0.3 count"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 32.6821811,
+     "longitude": -117.1048409
+    },
+    "licenses": [
+     {
+      "id": 41,
+      "name": "CC BY 4.0",
+      "attribution": {
+       "name": "AirGradient",
+       "url": null
+      },
+      "dateFrom": "2023-07-15",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -117.1048409,
+     32.6821811,
+     -117.1048409,
+     32.6821811
+    ],
+    "distance": 6654.02279684,
+    "datetimeFirst": {
+     "utc": "2026-06-18T00:00:00Z",
+     "local": "2026-06-17T17:00:00-07:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-09-27T14:00:00Z",
+     "local": "2026-09-27T07:00:00-07:00"
+    }
+   }
+  ]
+ }
+]

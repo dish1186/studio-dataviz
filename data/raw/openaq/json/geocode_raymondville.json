@@ -1,0 +1,42 @@
+{
+ "result": {
+  "input": {
+   "address": {
+    "address": "142 S 7th St, Raymondville, TX 78580"
+   },
+   "benchmark": {
+    "isDefault": true,
+    "benchmarkDescription": "Public Address Ranges - Current Benchmark",
+    "id": "4",
+    "benchmarkName": "Public_AR_Current"
+   }
+  },
+  "addressMatches": [
+   {
+    "tigerLine": {
+     "side": "L",
+     "tigerLineId": "88260500"
+    },
+    "coordinates": {
+     "x": -97.782600369986,
+     "y": 26.481627868486
+    },
+    "addressComponents": {
+     "zip": "78580",
+     "streetName": "7TH",
+     "preType": "",
+     "city": "RAYMONDVILLE",
+     "preDirection": "S",
+     "suffixDirection": "",
+     "fromAddress": "198",
+     "state": "TX",
+     "suffixType": "ST",
+     "toAddress": "124",
+     "suffixQualifier": "",
+     "preQualifier": ""
+    },
+    "matchedAddress": "142 S 7TH ST, RAYMONDVILLE, TX, 78580"
+   }
+  ]
+ }
+}

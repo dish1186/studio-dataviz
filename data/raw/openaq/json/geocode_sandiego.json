@@ -1,0 +1,42 @@
+{
+ "result": {
+  "input": {
+   "address": {
+    "address": "202 C St, San Diego, CA 92101"
+   },
+   "benchmark": {
+    "isDefault": true,
+    "benchmarkDescription": "Public Address Ranges - Current Benchmark",
+    "id": "4",
+    "benchmarkName": "Public_AR_Current"
+   }
+  },
+  "addressMatches": [
+   {
+    "tigerLine": {
+     "side": "L",
+     "tigerLineId": "195343586"
+    },
+    "coordinates": {
+     "x": -117.162829467563,
+     "y": 32.716808305283
+    },
+    "addressComponents": {
+     "zip": "92101",
+     "streetName": "C",
+     "preType": "",
+     "city": "SAN DIEGO",
+     "preDirection": "",
+     "suffixDirection": "",
+     "fromAddress": "200",
+     "state": "CA",
+     "suffixType": "ST",
+     "toAddress": "298",
+     "suffixQualifier": "",
+     "preQualifier": ""
+    },
+    "matchedAddress": "202 C ST, SAN DIEGO, CA, 92101"
+   }
+  ]
+ }
+}

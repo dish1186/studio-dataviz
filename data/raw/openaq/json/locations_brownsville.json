@@ -1,0 +1,863 @@
+[
+ {
+  "meta": {
+   "name": "openaq-api",
+   "website": "/",
+   "page": 1,
+   "limit": 1000,
+   "found": 12
+  },
+  "results": [
+   {
+    "id": 833,
+    "name": "Brownsville C80",
+    "locality": null,
+    "timezone": "America/Chicago",
+    "country": {
+     "id": 157,
+     "code": "MX",
+     "name": "Mexico"
+    },
+    "owner": {
+     "id": 4,
+     "name": "Unknown Governmental Organization"
+    },
+    "provider": {
+     "id": 119,
+     "name": "AirNow"
+    },
+    "isMobile": false,
+    "isMonitor": true,
+    "instruments": [
+     {
+      "id": 2,
+      "name": "Government Monitor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 2799,
+      "name": "o3 ppm",
+      "parameter": {
+       "id": 10,
+       "name": "o3",
+       "units": "ppm",
+       "displayName": "O\u2083"
+      }
+     },
+     {
+      "id": 1481,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 25.8925,
+     "longitude": -97.4936
+    },
+    "licenses": [
+     {
+      "id": 33,
+      "name": "US Public Domain",
+      "attribution": {
+       "name": "Unknown Governmental Organization",
+       "url": null
+      },
+      "dateFrom": "2016-01-30",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -97.4936,
+     25.8925,
+     -97.4936,
+     25.8925
+    ],
+    "distance": 1031.97761282,
+    "datetimeFirst": {
+     "utc": "2016-03-06T20:00:00Z",
+     "local": "2016-03-06T14:00:00-06:00"
+    },
+    "datetimeLast": {
+     "utc": "2023-04-04T13:00:00Z",
+     "local": "2023-04-04T08:00:00-05:00"
+    }
+   },
+   {
+    "id": 2360514,
+    "name": "Brownsville East 6th",
+    "locality": "CAMERON",
+    "timezone": "America/Chicago",
+    "country": {
+     "id": 157,
+     "code": "MX",
+     "name": "Mexico"
+    },
+    "owner": {
+     "id": 4,
+     "name": "Unknown Governmental Organization"
+    },
+    "provider": {
+     "id": 119,
+     "name": "AirNow"
+    },
+    "isMobile": false,
+    "isMonitor": true,
+    "instruments": [
+     {
+      "id": 2,
+      "name": "Government Monitor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 7798853,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 25.900911,
+     "longitude": -97.507784
+    },
+    "licenses": [
+     {
+      "id": 33,
+      "name": "US Public Domain",
+      "attribution": {
+       "name": "Unknown Governmental Organization",
+       "url": null
+      },
+      "dateFrom": "2016-01-30",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -97.507784,
+     25.900911,
+     -97.507784,
+     25.900911
+    ],
+    "distance": 1203.23561727,
+    "datetimeFirst": {
+     "utc": "2024-02-01T19:00:00Z",
+     "local": "2024-02-01T13:00:00-06:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-09-25T16:00:00Z",
+     "local": "2026-09-25T11:00:00-05:00"
+    }
+   },
+   {
+    "id": 6533712,
+    "name": "Brownsville Sensor #2",
+    "locality": null,
+    "timezone": "America/Chicago",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 9,
+     "name": "Clarity"
+    },
+    "provider": {
+     "id": 166,
+     "name": "Clarity"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 4,
+      "name": "Clarity Sensor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 17576526,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 25.97887,
+     "longitude": -97.51765
+    },
+    "licenses": [
+     {
+      "id": 38,
+      "name": "CC0 1.0",
+      "attribution": {
+       "name": "Clarity",
+       "url": null
+      },
+      "dateFrom": "2021-10-20",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -97.51765,
+     25.97887,
+     -97.51765,
+     25.97887
+    ],
+    "distance": 8835.87964357,
+    "datetimeFirst": {
+     "utc": "2026-09-10T18:14:41Z",
+     "local": "2026-09-10T13:14:41-05:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-09-27T12:57:46Z",
+     "local": "2026-09-27T07:57:46-05:00"
+    }
+   },
+   {
+    "id": 6533713,
+    "name": "Brownsville Sensor #5",
+    "locality": null,
+    "timezone": "America/Chicago",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 9,
+     "name": "Clarity"
+    },
+    "provider": {
+     "id": 166,
+     "name": "Clarity"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 4,
+      "name": "Clarity Sensor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 17576522,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 25.90735,
+     "longitude": -97.49778
+    },
+    "licenses": [
+     {
+      "id": 38,
+      "name": "CC0 1.0",
+      "attribution": {
+       "name": "Clarity",
+       "url": null
+      },
+      "dateFrom": "2021-10-20",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -97.49778,
+     25.90735,
+     -97.49778,
+     25.90735
+    ],
+    "distance": 667.20129227,
+    "datetimeFirst": {
+     "utc": "2026-09-10T18:09:59Z",
+     "local": "2026-09-10T13:09:59-05:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-09-27T12:58:25Z",
+     "local": "2026-09-27T07:58:25-05:00"
+    }
+   },
+   {
+    "id": 6533714,
+    "name": "Brownsville Sensor #4",
+    "locality": null,
+    "timezone": "America/Chicago",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 9,
+     "name": "Clarity"
+    },
+    "provider": {
+     "id": 166,
+     "name": "Clarity"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 4,
+      "name": "Clarity Sensor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 17576528,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 25.93709,
+     "longitude": -97.52057
+    },
+    "licenses": [
+     {
+      "id": 38,
+      "name": "CC0 1.0",
+      "attribution": {
+       "name": "Clarity",
+       "url": null
+      },
+      "dateFrom": "2021-10-20",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -97.52057,
+     25.93709,
+     -97.52057,
+     25.93709
+    ],
+    "distance": 4649.47271113,
+    "datetimeFirst": {
+     "utc": "2026-09-10T18:07:49Z",
+     "local": "2026-09-10T13:07:49-05:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-09-27T12:57:14Z",
+     "local": "2026-09-27T07:57:14-05:00"
+    }
+   },
+   {
+    "id": 6533715,
+    "name": "Brownsville Sensor #10",
+    "locality": null,
+    "timezone": "America/Chicago",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 9,
+     "name": "Clarity"
+    },
+    "provider": {
+     "id": 166,
+     "name": "Clarity"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 4,
+      "name": "Clarity Sensor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 17576525,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 25.93675,
+     "longitude": -97.39255
+    },
+    "licenses": [
+     {
+      "id": 38,
+      "name": "CC0 1.0",
+      "attribution": {
+       "name": "Clarity",
+       "url": null
+      },
+      "dateFrom": "2021-10-20",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -97.39255,
+     25.93675,
+     -97.39255,
+     25.93675
+    ],
+    "distance": 11052.93007395,
+    "datetimeFirst": {
+     "utc": "2026-09-10T18:07:20Z",
+     "local": "2026-09-10T13:07:20-05:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-09-27T12:50:35Z",
+     "local": "2026-09-27T07:50:35-05:00"
+    }
+   },
+   {
+    "id": 6533716,
+    "name": "Brownsville Sensor #7",
+    "locality": null,
+    "timezone": "America/Chicago",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 9,
+     "name": "Clarity"
+    },
+    "provider": {
+     "id": 166,
+     "name": "Clarity"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 4,
+      "name": "Clarity Sensor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 17576527,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 25.93287,
+     "longitude": -97.47463
+    },
+    "licenses": [
+     {
+      "id": 38,
+      "name": "CC0 1.0",
+      "attribution": {
+       "name": "Clarity",
+       "url": null
+      },
+      "dateFrom": "2021-10-20",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -97.47463,
+     25.93287,
+     -97.47463,
+     25.93287
+    ],
+    "distance": 4062.00881459,
+    "datetimeFirst": {
+     "utc": "2026-09-10T18:05:23Z",
+     "local": "2026-09-10T13:05:23-05:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-09-27T13:05:24Z",
+     "local": "2026-09-27T08:05:24-05:00"
+    }
+   },
+   {
+    "id": 6533717,
+    "name": "Brownsville Sensor #3",
+    "locality": null,
+    "timezone": "America/Chicago",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 9,
+     "name": "Clarity"
+    },
+    "provider": {
+     "id": 166,
+     "name": "Clarity"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 4,
+      "name": "Clarity Sensor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 17576529,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 25.96309,
+     "longitude": -97.53959
+    },
+    "licenses": [
+     {
+      "id": 38,
+      "name": "CC0 1.0",
+      "attribution": {
+       "name": "Clarity",
+       "url": null
+      },
+      "dateFrom": "2021-10-20",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -97.53959,
+     25.96309,
+     -97.53959,
+     25.96309
+    ],
+    "distance": 8102.47511918,
+    "datetimeFirst": {
+     "utc": "2026-09-10T18:05:36Z",
+     "local": "2026-09-10T13:05:36-05:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-09-27T13:02:08Z",
+     "local": "2026-09-27T08:02:08-05:00"
+    }
+   },
+   {
+    "id": 6533718,
+    "name": "Brownsville Sensor #6",
+    "locality": null,
+    "timezone": "America/Chicago",
+    "country": {
+     "id": 157,
+     "code": "MX",
+     "name": "Mexico"
+    },
+    "owner": {
+     "id": 9,
+     "name": "Clarity"
+    },
+    "provider": {
+     "id": 166,
+     "name": "Clarity"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 4,
+      "name": "Clarity Sensor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 17576524,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 25.89002,
+     "longitude": -97.48231
+    },
+    "licenses": [
+     {
+      "id": 38,
+      "name": "CC0 1.0",
+      "attribution": {
+       "name": "Clarity",
+       "url": null
+      },
+      "dateFrom": "2021-10-20",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -97.48231,
+     25.89002,
+     -97.48231,
+     25.89002
+    ],
+    "distance": 1863.63903398,
+    "datetimeFirst": {
+     "utc": "2026-09-10T18:02:57Z",
+     "local": "2026-09-10T13:02:57-05:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-09-27T13:03:52Z",
+     "local": "2026-09-27T08:03:52-05:00"
+    }
+   },
+   {
+    "id": 6533719,
+    "name": "Brownsville Sensor #1",
+    "locality": null,
+    "timezone": "America/Chicago",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 9,
+     "name": "Clarity"
+    },
+    "provider": {
+     "id": 166,
+     "name": "Clarity"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 4,
+      "name": "Clarity Sensor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 17576530,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 26.00436,
+     "longitude": -97.51581
+    },
+    "licenses": [
+     {
+      "id": 38,
+      "name": "CC0 1.0",
+      "attribution": {
+       "name": "Clarity",
+       "url": null
+      },
+      "dateFrom": "2021-10-20",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -97.51581,
+     26.00436,
+     -97.51581,
+     26.00436
+    ],
+    "distance": 11559.56177806,
+    "datetimeFirst": {
+     "utc": "2026-09-10T18:17:20Z",
+     "local": "2026-09-10T13:17:20-05:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-09-27T13:04:09Z",
+     "local": "2026-09-27T08:04:09-05:00"
+    }
+   },
+   {
+    "id": 6533720,
+    "name": "Brownsville Sensor #8",
+    "locality": null,
+    "timezone": "America/Chicago",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 9,
+     "name": "Clarity"
+    },
+    "provider": {
+     "id": 166,
+     "name": "Clarity"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 4,
+      "name": "Clarity Sensor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 17576531,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 25.8953,
+     "longitude": -97.45058
+    },
+    "licenses": [
+     {
+      "id": 38,
+      "name": "CC0 1.0",
+      "attribution": {
+       "name": "Clarity",
+       "url": null
+      },
+      "dateFrom": "2021-10-20",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -97.45058,
+     25.8953,
+     -97.45058,
+     25.8953
+    ],
+    "distance": 4584.64719738,
+    "datetimeFirst": {
+     "utc": "2026-09-10T18:01:06Z",
+     "local": "2026-09-10T13:01:06-05:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-09-27T13:03:41Z",
+     "local": "2026-09-27T08:03:41-05:00"
+    }
+   },
+   {
+    "id": 6533721,
+    "name": "Brownsville Sensor #9",
+    "locality": null,
+    "timezone": "America/Chicago",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 9,
+     "name": "Clarity"
+    },
+    "provider": {
+     "id": 166,
+     "name": "Clarity"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 4,
+      "name": "Clarity Sensor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 17576523,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 25.86647,
+     "longitude": -97.40981
+    },
+    "licenses": [
+     {
+      "id": 38,
+      "name": "CC0 1.0",
+      "attribution": {
+       "name": "Clarity",
+       "url": null
+      },
+      "dateFrom": "2021-10-20",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -97.40981,
+     25.86647,
+     -97.40981,
+     25.86647
+    ],
+    "distance": 9455.65047434,
+    "datetimeFirst": {
+     "utc": "2026-09-10T18:11:00Z",
+     "local": "2026-09-10T13:11:00-05:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-09-27T13:04:03Z",
+     "local": "2026-09-27T08:04:03-05:00"
+    }
+   }
+  ]
+ }
+]

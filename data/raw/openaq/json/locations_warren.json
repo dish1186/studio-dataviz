@@ -1,0 +1,5687 @@
+[
+ {
+  "meta": {
+   "name": "openaq-api",
+   "website": "/",
+   "page": 1,
+   "limit": 1000,
+   "found": 55
+  },
+  "results": [
+   {
+    "id": 1385,
+    "name": "Windsor Downtown",
+    "locality": "ONTARIO",
+    "timezone": "America/Toronto",
+    "country": {
+     "id": 156,
+     "code": "CA",
+     "name": "Canada"
+    },
+    "owner": {
+     "id": 4,
+     "name": "Unknown Governmental Organization"
+    },
+    "provider": {
+     "id": 119,
+     "name": "AirNow"
+    },
+    "isMobile": false,
+    "isMonitor": true,
+    "instruments": [
+     {
+      "id": 2,
+      "name": "Government Monitor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 6553683,
+      "name": "co ppm",
+      "parameter": {
+       "id": 8,
+       "name": "co",
+       "units": "ppm",
+       "displayName": "CO"
+      }
+     },
+     {
+      "id": 6553691,
+      "name": "no2 ppm",
+      "parameter": {
+       "id": 7,
+       "name": "no2",
+       "units": "ppm",
+       "displayName": "NO\u2082"
+      }
+     },
+     {
+      "id": 2480,
+      "name": "o3 ppm",
+      "parameter": {
+       "id": 10,
+       "name": "o3",
+       "units": "ppm",
+       "displayName": "O\u2083"
+      }
+     },
+     {
+      "id": 2479,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     },
+     {
+      "id": 6553652,
+      "name": "so2 ppm",
+      "parameter": {
+       "id": 9,
+       "name": "so2",
+       "units": "ppm",
+       "displayName": "SO\u2082"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 42.3144,
+     "longitude": -83.0433
+    },
+    "licenses": [
+     {
+      "id": 33,
+      "name": "US Public Domain",
+      "attribution": {
+       "name": "Unknown Governmental Organization",
+       "url": null
+      },
+      "dateFrom": "2016-01-30",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -83.0433,
+     42.3144,
+     -83.0433,
+     42.3144
+    ],
+    "distance": 21979.6945031,
+    "datetimeFirst": {
+     "utc": "2016-03-06T20:00:00Z",
+     "local": "2016-03-06T15:00:00-05:00"
+    },
+    "datetimeLast": {
+     "utc": "2023-07-17T16:00:00Z",
+     "local": "2023-07-17T12:00:00-04:00"
+    }
+   },
+   {
+    "id": 1998,
+    "name": "Dearborn",
+    "locality": "Detroit-Warren-Livonia",
+    "timezone": "America/Detroit",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 4,
+     "name": "Unknown Governmental Organization"
+    },
+    "provider": {
+     "id": 119,
+     "name": "AirNow"
+    },
+    "isMobile": false,
+    "isMonitor": true,
+    "instruments": [
+     {
+      "id": 2,
+      "name": "Government Monitor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 3546,
+      "name": "pm10 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 1,
+       "name": "pm10",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM10"
+      }
+     },
+     {
+      "id": 3547,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 42.3075,
+     "longitude": -83.15
+    },
+    "licenses": [
+     {
+      "id": 33,
+      "name": "US Public Domain",
+      "attribution": {
+       "name": "Unknown Governmental Organization",
+       "url": null
+      },
+      "dateFrom": "2016-01-30",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -83.15,
+     42.3075,
+     -83.15,
+     42.3075
+    ],
+    "distance": 24921.05740486,
+    "datetimeFirst": {
+     "utc": "2016-03-06T20:00:00Z",
+     "local": "2016-03-06T15:00:00-05:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-09-27T14:00:00Z",
+     "local": "2026-09-27T10:00:00-04:00"
+    }
+   },
+   {
+    "id": 2124,
+    "name": "Oak Park",
+    "locality": "Detroit-Warren-Livonia",
+    "timezone": "America/Detroit",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 4,
+     "name": "Unknown Governmental Organization"
+    },
+    "provider": {
+     "id": 119,
+     "name": "AirNow"
+    },
+    "isMobile": false,
+    "isMonitor": true,
+    "instruments": [
+     {
+      "id": 2,
+      "name": "Government Monitor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 3817,
+      "name": "o3 ppm",
+      "parameter": {
+       "id": 10,
+       "name": "o3",
+       "units": "ppm",
+       "displayName": "O\u2083"
+      }
+     },
+     {
+      "id": 11522336,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 42.4631,
+     "longitude": -83.183296
+    },
+    "licenses": [
+     {
+      "id": 33,
+      "name": "US Public Domain",
+      "attribution": {
+       "name": "Unknown Governmental Organization",
+       "url": null
+      },
+      "dateFrom": "2016-01-30",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -83.183296,
+     42.4631,
+     -83.183296,
+     42.4631
+    ],
+    "distance": 14101.53033188,
+    "datetimeFirst": {
+     "utc": "2016-04-04T15:00:00Z",
+     "local": "2016-04-04T11:00:00-04:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-09-27T14:00:00Z",
+     "local": "2026-09-27T10:00:00-04:00"
+    }
+   },
+   {
+    "id": 2140,
+    "name": "Detroit-E7 Mile",
+    "locality": "Detroit-Warren-Livonia",
+    "timezone": "America/Detroit",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 4,
+     "name": "Unknown Governmental Organization"
+    },
+    "provider": {
+     "id": 119,
+     "name": "AirNow"
+    },
+    "isMobile": false,
+    "isMonitor": true,
+    "instruments": [
+     {
+      "id": 2,
+      "name": "Government Monitor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 7786503,
+      "name": "no ppm",
+      "parameter": {
+       "id": 35,
+       "name": "no",
+       "units": "ppm",
+       "displayName": "NO"
+      }
+     },
+     {
+      "id": 3845,
+      "name": "no2 ppm",
+      "parameter": {
+       "id": 7,
+       "name": "no2",
+       "units": "ppm",
+       "displayName": "NO\u2082"
+      }
+     },
+     {
+      "id": 3847,
+      "name": "o3 ppm",
+      "parameter": {
+       "id": 10,
+       "name": "o3",
+       "units": "ppm",
+       "displayName": "O\u2083"
+      }
+     },
+     {
+      "id": 7786854,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 42.430801,
+     "longitude": -83.000801
+    },
+    "licenses": [
+     {
+      "id": 33,
+      "name": "US Public Domain",
+      "attribution": {
+       "name": "Unknown Governmental Organization",
+       "url": null
+      },
+      "dateFrom": "2016-01-30",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -83.000801,
+     42.430801,
+     -83.000801,
+     42.430801
+    ],
+    "distance": 9213.24132986,
+    "datetimeFirst": {
+     "utc": "2016-03-06T20:00:00Z",
+     "local": "2016-03-06T15:00:00-05:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-09-27T14:00:00Z",
+     "local": "2026-09-27T10:00:00-04:00"
+    }
+   },
+   {
+    "id": 2143,
+    "name": "Detroit-Southwest",
+    "locality": "Detroit-Warren-Livonia",
+    "timezone": "America/Detroit",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 4,
+     "name": "Unknown Governmental Organization"
+    },
+    "provider": {
+     "id": 119,
+     "name": "AirNow"
+    },
+    "isMobile": false,
+    "isMonitor": true,
+    "instruments": [
+     {
+      "id": 2,
+      "name": "Government Monitor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 11530247,
+      "name": "no ppm",
+      "parameter": {
+       "id": 35,
+       "name": "no",
+       "units": "ppm",
+       "displayName": "NO"
+      }
+     },
+     {
+      "id": 20272,
+      "name": "no2 ppm",
+      "parameter": {
+       "id": 7,
+       "name": "no2",
+       "units": "ppm",
+       "displayName": "NO\u2082"
+      }
+     },
+     {
+      "id": 11530246,
+      "name": "nox ppm",
+      "parameter": {
+       "id": 19840,
+       "name": "nox",
+       "units": "ppm",
+       "displayName": "NOx"
+      }
+     },
+     {
+      "id": 15377771,
+      "name": "pm10 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 1,
+       "name": "pm10",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM10"
+      }
+     },
+     {
+      "id": 20277,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     },
+     {
+      "id": 3853,
+      "name": "so2 ppm",
+      "parameter": {
+       "id": 9,
+       "name": "so2",
+       "units": "ppm",
+       "displayName": "SO\u2082"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 42.3042,
+     "longitude": -83.1072
+    },
+    "licenses": [
+     {
+      "id": 33,
+      "name": "US Public Domain",
+      "attribution": {
+       "name": "Unknown Governmental Organization",
+       "url": null
+      },
+      "dateFrom": "2016-01-30",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -83.1072,
+     42.3042,
+     -83.1072,
+     42.3042
+    ],
+    "distance": 24035.05188561,
+    "datetimeFirst": {
+     "utc": "2016-03-06T20:00:00Z",
+     "local": "2016-03-06T15:00:00-05:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-09-27T14:00:00Z",
+     "local": "2026-09-27T10:00:00-04:00"
+    }
+   },
+   {
+    "id": 2144,
+    "name": "DETROIT - W LAFAYETT",
+    "locality": null,
+    "timezone": "America/Detroit",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 4,
+     "name": "Unknown Governmental Organization"
+    },
+    "provider": {
+     "id": 119,
+     "name": "AirNow"
+    },
+    "isMobile": false,
+    "isMonitor": true,
+    "instruments": [
+     {
+      "id": 2,
+      "name": "Government Monitor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 3855,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 42.3231,
+     "longitude": -83.0689
+    },
+    "licenses": [
+     {
+      "id": 33,
+      "name": "US Public Domain",
+      "attribution": {
+       "name": "Unknown Governmental Organization",
+       "url": null
+      },
+      "dateFrom": "2016-01-30",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -83.0689,
+     42.3231,
+     -83.0689,
+     42.3231
+    ],
+    "distance": 21271.60803021,
+    "datetimeFirst": {
+     "utc": "2016-03-06T20:00:00Z",
+     "local": "2016-03-06T15:00:00-05:00"
+    },
+    "datetimeLast": {
+     "utc": "2019-01-08T15:00:00Z",
+     "local": "2019-01-08T10:00:00-05:00"
+    }
+   },
+   {
+    "id": 2194,
+    "name": "Eliza Howell - Near",
+    "locality": "Detroit-Warren-Livonia",
+    "timezone": "America/Detroit",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 4,
+     "name": "Unknown Governmental Organization"
+    },
+    "provider": {
+     "id": 119,
+     "name": "AirNow"
+    },
+    "isMobile": false,
+    "isMonitor": true,
+    "instruments": [
+     {
+      "id": 2,
+      "name": "Government Monitor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 3957,
+      "name": "co ppm",
+      "parameter": {
+       "id": 8,
+       "name": "co",
+       "units": "ppm",
+       "displayName": "CO"
+      }
+     },
+     {
+      "id": 4272178,
+      "name": "no ppm",
+      "parameter": {
+       "id": 35,
+       "name": "no",
+       "units": "ppm",
+       "displayName": "NO"
+      }
+     },
+     {
+      "id": 3955,
+      "name": "no2 ppm",
+      "parameter": {
+       "id": 7,
+       "name": "no2",
+       "units": "ppm",
+       "displayName": "NO\u2082"
+      }
+     },
+     {
+      "id": 4272114,
+      "name": "nox ppm",
+      "parameter": {
+       "id": 19840,
+       "name": "nox",
+       "units": "ppm",
+       "displayName": "NOx"
+      }
+     },
+     {
+      "id": 14386,
+      "name": "o3 ppm",
+      "parameter": {
+       "id": 10,
+       "name": "o3",
+       "units": "ppm",
+       "displayName": "O\u2083"
+      }
+     },
+     {
+      "id": 14013,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 42.38599,
+     "longitude": -83.266319
+    },
+    "licenses": [
+     {
+      "id": 33,
+      "name": "US Public Domain",
+      "attribution": {
+       "name": "Unknown Governmental Organization",
+       "url": null
+      },
+      "dateFrom": "2016-01-30",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -83.266319,
+     42.38599,
+     -83.266319,
+     42.38599
+    ],
+    "distance": 24284.72393868,
+    "datetimeFirst": {
+     "utc": "2016-03-06T20:00:00Z",
+     "local": "2016-03-06T15:00:00-05:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-09-27T14:00:00Z",
+     "local": "2026-09-27T10:00:00-04:00"
+    }
+   },
+   {
+    "id": 7001,
+    "name": "Detroit-DP4th",
+    "locality": "Detroit-Warren-Livonia",
+    "timezone": "America/Detroit",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 4,
+     "name": "Unknown Governmental Organization"
+    },
+    "provider": {
+     "id": 119,
+     "name": "AirNow"
+    },
+    "isMobile": false,
+    "isMonitor": true,
+    "instruments": [
+     {
+      "id": 2,
+      "name": "Government Monitor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 20285,
+      "name": "co ppm",
+      "parameter": {
+       "id": 8,
+       "name": "co",
+       "units": "ppm",
+       "displayName": "CO"
+      }
+     },
+     {
+      "id": 7179763,
+      "name": "no ppm",
+      "parameter": {
+       "id": 35,
+       "name": "no",
+       "units": "ppm",
+       "displayName": "NO"
+      }
+     },
+     {
+      "id": 20274,
+      "name": "no2 ppm",
+      "parameter": {
+       "id": 7,
+       "name": "no2",
+       "units": "ppm",
+       "displayName": "NO\u2082"
+      }
+     },
+     {
+      "id": 7753935,
+      "name": "nox ppm",
+      "parameter": {
+       "id": 19840,
+       "name": "nox",
+       "units": "ppm",
+       "displayName": "NOx"
+      }
+     },
+     {
+      "id": 20275,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     },
+     {
+      "id": 20276,
+      "name": "so2 ppm",
+      "parameter": {
+       "id": 9,
+       "name": "so2",
+       "units": "ppm",
+       "displayName": "SO\u2082"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 42.312158,
+     "longitude": -83.091943
+    },
+    "licenses": [
+     {
+      "id": 33,
+      "name": "US Public Domain",
+      "attribution": {
+       "name": "Unknown Governmental Organization",
+       "url": null
+      },
+      "dateFrom": "2016-01-30",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -83.091943,
+     42.312158,
+     -83.091943,
+     42.312158
+    ],
+    "distance": 22852.82228596,
+    "datetimeFirst": {
+     "utc": "2018-09-24T13:00:00Z",
+     "local": "2018-09-24T09:00:00-04:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-09-27T14:00:00Z",
+     "local": "2026-09-27T10:00:00-04:00"
+    }
+   },
+   {
+    "id": 7002,
+    "name": "Detroit-Military Par",
+    "locality": "Detroit-Warren-Livonia",
+    "timezone": "America/Detroit",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 4,
+     "name": "Unknown Governmental Organization"
+    },
+    "provider": {
+     "id": 119,
+     "name": "AirNow"
+    },
+    "isMobile": false,
+    "isMonitor": true,
+    "instruments": [
+     {
+      "id": 2,
+      "name": "Government Monitor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 11511300,
+      "name": "no ppm",
+      "parameter": {
+       "id": 35,
+       "name": "no",
+       "units": "ppm",
+       "displayName": "NO"
+      }
+     },
+     {
+      "id": 5077657,
+      "name": "no2 ppm",
+      "parameter": {
+       "id": 7,
+       "name": "no2",
+       "units": "ppm",
+       "displayName": "NO\u2082"
+      }
+     },
+     {
+      "id": 11511301,
+      "name": "nox ppm",
+      "parameter": {
+       "id": 19840,
+       "name": "nox",
+       "units": "ppm",
+       "displayName": "NOx"
+      }
+     },
+     {
+      "id": 5077836,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     },
+     {
+      "id": 5077631,
+      "name": "so2 ppm",
+      "parameter": {
+       "id": 9,
+       "name": "so2",
+       "units": "ppm",
+       "displayName": "SO\u2082"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 42.312078,
+     "longitude": -83.103469
+    },
+    "licenses": [
+     {
+      "id": 33,
+      "name": "US Public Domain",
+      "attribution": {
+       "name": "Unknown Governmental Organization",
+       "url": null
+      },
+      "dateFrom": "2016-01-30",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -83.103469,
+     42.312078,
+     -83.103469,
+     42.312078
+    ],
+    "distance": 23108.81675383,
+    "datetimeFirst": {
+     "utc": "2022-10-04T18:00:00Z",
+     "local": "2022-10-04T14:00:00-04:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-09-27T14:00:00Z",
+     "local": "2026-09-27T10:00:00-04:00"
+    }
+   },
+   {
+    "id": 1206910,
+    "name": "Windsor West",
+    "locality": "ONTARIO",
+    "timezone": "America/Toronto",
+    "country": {
+     "id": 156,
+     "code": "CA",
+     "name": "Canada"
+    },
+    "owner": {
+     "id": 4,
+     "name": "Unknown Governmental Organization"
+    },
+    "provider": {
+     "id": 119,
+     "name": "AirNow"
+    },
+    "isMobile": false,
+    "isMonitor": true,
+    "instruments": [
+     {
+      "id": 2,
+      "name": "Government Monitor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 6553646,
+      "name": "no2 ppm",
+      "parameter": {
+       "id": 7,
+       "name": "no2",
+       "units": "ppm",
+       "displayName": "NO\u2082"
+      }
+     },
+     {
+      "id": 6502764,
+      "name": "o3 ppm",
+      "parameter": {
+       "id": 10,
+       "name": "o3",
+       "units": "ppm",
+       "displayName": "O\u2083"
+      }
+     },
+     {
+      "id": 6502763,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     },
+     {
+      "id": 6553651,
+      "name": "so2 ppm",
+      "parameter": {
+       "id": 9,
+       "name": "so2",
+       "units": "ppm",
+       "displayName": "SO\u2082"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 42.2917,
+     "longitude": -83.075
+    },
+    "licenses": [
+     {
+      "id": 33,
+      "name": "US Public Domain",
+      "attribution": {
+       "name": "Unknown Governmental Organization",
+       "url": null
+      },
+      "dateFrom": "2016-01-30",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -83.075,
+     42.2917,
+     -83.075,
+     42.2917
+    ],
+    "distance": 24794.42298998,
+    "datetimeFirst": {
+     "utc": "2023-07-11T20:00:00Z",
+     "local": "2023-07-11T16:00:00-04:00"
+    },
+    "datetimeLast": {
+     "utc": "2023-07-17T17:00:00Z",
+     "local": "2023-07-17T13:00:00-04:00"
+    }
+   },
+   {
+    "id": 1275380,
+    "name": "Windsor Downtown",
+    "locality": "ONTARIO",
+    "timezone": "America/Toronto",
+    "country": {
+     "id": 156,
+     "code": "CA",
+     "name": "Canada"
+    },
+    "owner": {
+     "id": 4,
+     "name": "Unknown Governmental Organization"
+    },
+    "provider": {
+     "id": 119,
+     "name": "AirNow"
+    },
+    "isMobile": false,
+    "isMonitor": true,
+    "instruments": [
+     {
+      "id": 2,
+      "name": "Government Monitor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 6554447,
+      "name": "co ppm",
+      "parameter": {
+       "id": 8,
+       "name": "co",
+       "units": "ppm",
+       "displayName": "CO"
+      }
+     },
+     {
+      "id": 6571442,
+      "name": "no ppm",
+      "parameter": {
+       "id": 35,
+       "name": "no",
+       "units": "ppm",
+       "displayName": "NO"
+      }
+     },
+     {
+      "id": 6554451,
+      "name": "no2 ppm",
+      "parameter": {
+       "id": 7,
+       "name": "no2",
+       "units": "ppm",
+       "displayName": "NO\u2082"
+      }
+     },
+     {
+      "id": 6571490,
+      "name": "nox ppm",
+      "parameter": {
+       "id": 19840,
+       "name": "nox",
+       "units": "ppm",
+       "displayName": "NOx"
+      }
+     },
+     {
+      "id": 6571234,
+      "name": "o3 ppm",
+      "parameter": {
+       "id": 10,
+       "name": "o3",
+       "units": "ppm",
+       "displayName": "O\u2083"
+      }
+     },
+     {
+      "id": 6554446,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     },
+     {
+      "id": 6554449,
+      "name": "so2 ppm",
+      "parameter": {
+       "id": 9,
+       "name": "so2",
+       "units": "ppm",
+       "displayName": "SO\u2082"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 42.315778,
+     "longitude": -83.043667
+    },
+    "licenses": [
+     {
+      "id": 33,
+      "name": "US Public Domain",
+      "attribution": {
+       "name": "Unknown Governmental Organization",
+       "url": null
+      },
+      "dateFrom": "2016-01-30",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -83.043667,
+     42.315778,
+     -83.043667,
+     42.315778
+    ],
+    "distance": 21829.10921579,
+    "datetimeFirst": {
+     "utc": "2023-07-16T18:00:00Z",
+     "local": "2023-07-16T14:00:00-04:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-09-27T14:00:00Z",
+     "local": "2026-09-27T10:00:00-04:00"
+    }
+   },
+   {
+    "id": 1275804,
+    "name": "Windsor West",
+    "locality": "ONTARIO",
+    "timezone": "America/Toronto",
+    "country": {
+     "id": 156,
+     "code": "CA",
+     "name": "Canada"
+    },
+    "owner": {
+     "id": 4,
+     "name": "Unknown Governmental Organization"
+    },
+    "provider": {
+     "id": 119,
+     "name": "AirNow"
+    },
+    "isMobile": false,
+    "isMonitor": true,
+    "instruments": [
+     {
+      "id": 2,
+      "name": "Government Monitor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 6571485,
+      "name": "no ppm",
+      "parameter": {
+       "id": 35,
+       "name": "no",
+       "units": "ppm",
+       "displayName": "NO"
+      }
+     },
+     {
+      "id": 6554982,
+      "name": "no2 ppm",
+      "parameter": {
+       "id": 7,
+       "name": "no2",
+       "units": "ppm",
+       "displayName": "NO\u2082"
+      }
+     },
+     {
+      "id": 6571483,
+      "name": "nox ppm",
+      "parameter": {
+       "id": 19840,
+       "name": "nox",
+       "units": "ppm",
+       "displayName": "NOx"
+      }
+     },
+     {
+      "id": 6571253,
+      "name": "o3 ppm",
+      "parameter": {
+       "id": 10,
+       "name": "o3",
+       "units": "ppm",
+       "displayName": "O\u2083"
+      }
+     },
+     {
+      "id": 6554954,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     },
+     {
+      "id": 6554948,
+      "name": "so2 ppm",
+      "parameter": {
+       "id": 9,
+       "name": "so2",
+       "units": "ppm",
+       "displayName": "SO\u2082"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 42.292886,
+     "longitude": -83.073139
+    },
+    "licenses": [
+     {
+      "id": 33,
+      "name": "US Public Domain",
+      "attribution": {
+       "name": "Unknown Governmental Organization",
+       "url": null
+      },
+      "dateFrom": "2016-01-30",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -83.073139,
+     42.292886,
+     -83.073139,
+     42.292886
+    ],
+    "distance": 24639.36446053,
+    "datetimeFirst": {
+     "utc": "2023-07-16T19:00:00Z",
+     "local": "2023-07-16T15:00:00-04:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-09-27T14:00:00Z",
+     "local": "2026-09-27T10:00:00-04:00"
+    }
+   },
+   {
+    "id": 1989140,
+    "name": "Madison Heights",
+    "locality": null,
+    "timezone": "America/Detroit",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 11509,
+     "name": "Unknown Person"
+    },
+    "provider": {
+     "id": 66,
+     "name": "AirGradient"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 7,
+      "name": "Unknown AirGradient Sensor"
+     },
+     {
+      "id": 7,
+      "name": "Unknown AirGradient Sensor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 7978049,
+      "name": "pm1 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 19,
+       "name": "pm1",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM1"
+      }
+     },
+     {
+      "id": 7971202,
+      "name": "pm1 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 19,
+       "name": "pm1",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM1"
+      }
+     },
+     {
+      "id": 7971358,
+      "name": "pm10 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 1,
+       "name": "pm10",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM10"
+      }
+     },
+     {
+      "id": 7978043,
+      "name": "pm10 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 1,
+       "name": "pm10",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM10"
+      }
+     },
+     {
+      "id": 7570748,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     },
+     {
+      "id": 7971548,
+      "name": "relativehumidity %",
+      "parameter": {
+       "id": 98,
+       "name": "relativehumidity",
+       "units": "%",
+       "displayName": "RH"
+      }
+     },
+     {
+      "id": 7570726,
+      "name": "temperature c",
+      "parameter": {
+       "id": 100,
+       "name": "temperature",
+       "units": "c",
+       "displayName": "Temperature (C)"
+      }
+     },
+     {
+      "id": 7971547,
+      "name": "um003 particles/cm\u00b3",
+      "parameter": {
+       "id": 125,
+       "name": "um003",
+       "units": "particles/cm\u00b3",
+       "displayName": "PM0.3 count"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 42.4955364,
+     "longitude": -83.0978276
+    },
+    "licenses": [
+     {
+      "id": 41,
+      "name": "CC BY 4.0",
+      "attribution": {
+       "name": "Unknown Person",
+       "url": null
+      },
+      "dateFrom": "2023-07-15",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -83.0978276,
+     42.4955364,
+     -83.0978276,
+     42.4955364
+    ],
+    "distance": 6260.55807206,
+    "datetimeFirst": {
+     "utc": "2023-12-20T23:00:00Z",
+     "local": "2023-12-20T18:00:00-05:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-09-02T17:00:00Z",
+     "local": "2026-09-02T13:00:00-04:00"
+    }
+   },
+   {
+    "id": 2676617,
+    "name": null,
+    "locality": null,
+    "timezone": "America/Detroit",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 11509,
+     "name": "Unknown Person"
+    },
+    "provider": {
+     "id": 66,
+     "name": "AirGradient"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 7,
+      "name": "Unknown AirGradient Sensor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 8659525,
+      "name": "pm1 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 19,
+       "name": "pm1",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM1"
+      }
+     },
+     {
+      "id": 8659528,
+      "name": "pm10 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 1,
+       "name": "pm10",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM10"
+      }
+     },
+     {
+      "id": 8659523,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     },
+     {
+      "id": 8659524,
+      "name": "relativehumidity %",
+      "parameter": {
+       "id": 98,
+       "name": "relativehumidity",
+       "units": "%",
+       "displayName": "RH"
+      }
+     },
+     {
+      "id": 8659527,
+      "name": "temperature c",
+      "parameter": {
+       "id": 100,
+       "name": "temperature",
+       "units": "c",
+       "displayName": "Temperature (C)"
+      }
+     },
+     {
+      "id": 8659526,
+      "name": "um003 particles/cm\u00b3",
+      "parameter": {
+       "id": 125,
+       "name": "um003",
+       "units": "particles/cm\u00b3",
+       "displayName": "PM0.3 count"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 42.5999882926453,
+     "longitude": -83.25749013771502
+    },
+    "licenses": [
+     {
+      "id": 41,
+      "name": "CC BY 4.0",
+      "attribution": {
+       "name": "Unknown Person",
+       "url": null
+      },
+      "dateFrom": "2023-07-15",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -83.25749013771502,
+     42.5999882926453,
+     -83.25749013771502,
+     42.5999882926453
+    ],
+    "distance": 21467.18572571,
+    "datetimeFirst": {
+     "utc": "2024-03-29T18:00:00Z",
+     "local": "2024-03-29T14:00:00-04:00"
+    },
+    "datetimeLast": {
+     "utc": "2024-03-29T20:00:00Z",
+     "local": "2024-03-29T16:00:00-04:00"
+    }
+   },
+   {
+    "id": 5014196,
+    "name": "Cheryl's Place",
+    "locality": null,
+    "timezone": "America/Detroit",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 9,
+     "name": "Clarity"
+    },
+    "provider": {
+     "id": 166,
+     "name": "Clarity"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 4,
+      "name": "Clarity Sensor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 13555753,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 42.40762,
+     "longitude": -82.96626
+    },
+    "licenses": [
+     {
+      "id": 38,
+      "name": "CC0 1.0",
+      "attribution": {
+       "name": "Clarity",
+       "url": null
+      },
+      "dateFrom": "2021-10-20",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -82.96626,
+     42.40762,
+     -82.96626,
+     42.40762
+    ],
+    "distance": 12537.44241942,
+    "datetimeFirst": {
+     "utc": "2025-07-09T14:05:09Z",
+     "local": "2025-07-09T10:05:09-04:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-07-21T12:08:18Z",
+     "local": "2026-07-21T08:08:18-04:00"
+    }
+   },
+   {
+    "id": 5014197,
+    "name": "Grosse Pointe Moving + Storage",
+    "locality": null,
+    "timezone": "America/Detroit",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 9,
+     "name": "Clarity"
+    },
+    "provider": {
+     "id": 166,
+     "name": "Clarity"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 4,
+      "name": "Clarity Sensor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 13555752,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 42.36855,
+     "longitude": -82.96569
+    },
+    "licenses": [
+     {
+      "id": 38,
+      "name": "CC0 1.0",
+      "attribution": {
+       "name": "Clarity",
+       "url": null
+      },
+      "dateFrom": "2021-10-20",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -82.96569,
+     42.36855,
+     -82.96569,
+     42.36855
+    ],
+    "distance": 16641.50364085,
+    "datetimeFirst": {
+     "utc": "2025-07-09T14:02:13Z",
+     "local": "2025-07-09T10:02:13-04:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-09-27T13:02:40Z",
+     "local": "2026-09-27T09:02:40-04:00"
+    }
+   },
+   {
+    "id": 5186042,
+    "name": "S Campbell Rd & E 3rd St",
+    "locality": null,
+    "timezone": "America/Detroit",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 16930,
+     "name": "John M"
+    },
+    "provider": {
+     "id": 66,
+     "name": "AirGradient"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 24,
+      "name": "AirGradient Open Air Generation 1 (O-1PST)"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 14153302,
+      "name": "pm1 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 19,
+       "name": "pm1",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM1"
+      }
+     },
+     {
+      "id": 14153303,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     },
+     {
+      "id": 14153304,
+      "name": "relativehumidity %",
+      "parameter": {
+       "id": 98,
+       "name": "relativehumidity",
+       "units": "%",
+       "displayName": "RH"
+      }
+     },
+     {
+      "id": 14153305,
+      "name": "temperature c",
+      "parameter": {
+       "id": 100,
+       "name": "temperature",
+       "units": "c",
+       "displayName": "Temperature (C)"
+      }
+     },
+     {
+      "id": 14153306,
+      "name": "um003 particles/cm\u00b3",
+      "parameter": {
+       "id": 125,
+       "name": "um003",
+       "units": "particles/cm\u00b3",
+       "displayName": "PM0.3 count"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 42.48918396473178,
+     "longitude": -83.12438805508789
+    },
+    "licenses": [
+     {
+      "id": 41,
+      "name": "CC BY 4.0",
+      "attribution": {
+       "name": "John M",
+       "url": null
+      },
+      "dateFrom": "2023-07-15",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -83.12438805508789,
+     42.48918396473178,
+     -83.12438805508789,
+     42.48918396473178
+    ],
+    "distance": 8554.94677797,
+    "datetimeFirst": {
+     "utc": "2025-09-19T00:00:00Z",
+     "local": "2025-09-18T20:00:00-04:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-09-19T22:00:00Z",
+     "local": "2026-09-19T18:00:00-04:00"
+    }
+   },
+   {
+    "id": 5206276,
+    "name": "Junction & W. Vernor",
+    "locality": null,
+    "timezone": "America/Detroit",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 16837,
+     "name": "NTBC"
+    },
+    "provider": {
+     "id": 66,
+     "name": "AirGradient"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 24,
+      "name": "AirGradient Open Air Generation 1 (O-1PST)"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 14152819,
+      "name": "pm1 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 19,
+       "name": "pm1",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM1"
+      }
+     },
+     {
+      "id": 14152820,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     },
+     {
+      "id": 14152821,
+      "name": "relativehumidity %",
+      "parameter": {
+       "id": 98,
+       "name": "relativehumidity",
+       "units": "%",
+       "displayName": "RH"
+      }
+     },
+     {
+      "id": 14152822,
+      "name": "temperature c",
+      "parameter": {
+       "id": 100,
+       "name": "temperature",
+       "units": "c",
+       "displayName": "Temperature (C)"
+      }
+     },
+     {
+      "id": 14152823,
+      "name": "um003 particles/cm\u00b3",
+      "parameter": {
+       "id": 125,
+       "name": "um003",
+       "units": "particles/cm\u00b3",
+       "displayName": "PM0.3 count"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 42.318957,
+     "longitude": -83.102502
+    },
+    "licenses": [
+     {
+      "id": 41,
+      "name": "CC BY 4.0",
+      "attribution": {
+       "name": "NTBC",
+       "url": null
+      },
+      "dateFrom": "2023-07-15",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -83.102502,
+     42.318957,
+     -83.102502,
+     42.318957
+    ],
+    "distance": 22353.28226613,
+    "datetimeFirst": {
+     "utc": "2025-09-19T00:00:00Z",
+     "local": "2025-09-18T20:00:00-04:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-09-27T14:00:00Z",
+     "local": "2026-09-27T10:00:00-04:00"
+    }
+   },
+   {
+    "id": 5206750,
+    "name": "W. Vernor & Clark - Vamanos!",
+    "locality": null,
+    "timezone": "America/Detroit",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 16837,
+     "name": "NTBC"
+    },
+    "provider": {
+     "id": 66,
+     "name": "AirGradient"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 24,
+      "name": "AirGradient Open Air Generation 1 (O-1PST)"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 13696243,
+      "name": "pm1 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 19,
+       "name": "pm1",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM1"
+      }
+     },
+     {
+      "id": 13696244,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     },
+     {
+      "id": 13696245,
+      "name": "relativehumidity %",
+      "parameter": {
+       "id": 98,
+       "name": "relativehumidity",
+       "units": "%",
+       "displayName": "RH"
+      }
+     },
+     {
+      "id": 13696246,
+      "name": "temperature c",
+      "parameter": {
+       "id": 100,
+       "name": "temperature",
+       "units": "c",
+       "displayName": "Temperature (C)"
+      }
+     },
+     {
+      "id": 13696247,
+      "name": "um003 particles/cm\u00b3",
+      "parameter": {
+       "id": 125,
+       "name": "um003",
+       "units": "particles/cm\u00b3",
+       "displayName": "PM0.3 count"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 42.320028,
+     "longitude": -83.096759
+    },
+    "licenses": [
+     {
+      "id": 41,
+      "name": "CC BY 4.0",
+      "attribution": {
+       "name": "NTBC",
+       "url": null
+      },
+      "dateFrom": "2023-07-15",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -83.096759,
+     42.320028,
+     -83.096759,
+     42.320028
+    ],
+    "distance": 22108.15990714,
+    "datetimeFirst": {
+     "utc": "2025-07-25T22:00:00Z",
+     "local": "2025-07-25T18:00:00-04:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-09-25T22:00:00Z",
+     "local": "2026-09-25T18:00:00-04:00"
+    }
+   },
+   {
+    "id": 5209153,
+    "name": "Campbell & Plumer",
+    "locality": null,
+    "timezone": "America/Detroit",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 16837,
+     "name": "NTBC"
+    },
+    "provider": {
+     "id": 66,
+     "name": "AirGradient"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 24,
+      "name": "AirGradient Open Air Generation 1 (O-1PST)"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 14152844,
+      "name": "pm1 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 19,
+       "name": "pm1",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM1"
+      }
+     },
+     {
+      "id": 14152845,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     },
+     {
+      "id": 14152846,
+      "name": "relativehumidity %",
+      "parameter": {
+       "id": 98,
+       "name": "relativehumidity",
+       "units": "%",
+       "displayName": "RH"
+      }
+     },
+     {
+      "id": 14152847,
+      "name": "temperature c",
+      "parameter": {
+       "id": 100,
+       "name": "temperature",
+       "units": "c",
+       "displayName": "Temperature (C)"
+      }
+     },
+     {
+      "id": 14152848,
+      "name": "um003 particles/cm\u00b3",
+      "parameter": {
+       "id": 125,
+       "name": "um003",
+       "units": "particles/cm\u00b3",
+       "displayName": "PM0.3 count"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 42.32195244362119,
+     "longitude": -83.10707008134864
+    },
+    "licenses": [
+     {
+      "id": 41,
+      "name": "CC BY 4.0",
+      "attribution": {
+       "name": "NTBC",
+       "url": null
+      },
+      "dateFrom": "2023-07-15",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -83.10707008134864,
+     42.32195244362119,
+     -83.10707008134864,
+     42.32195244362119
+    ],
+    "distance": 22146.4968843,
+    "datetimeFirst": {
+     "utc": "2025-09-19T00:00:00Z",
+     "local": "2025-09-18T20:00:00-04:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-09-27T14:00:00Z",
+     "local": "2026-09-27T10:00:00-04:00"
+    }
+   },
+   {
+    "id": 5209154,
+    "name": "Lockwood & St. Hedwig",
+    "locality": null,
+    "timezone": "America/Detroit",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 16837,
+     "name": "NTBC"
+    },
+    "provider": {
+     "id": 66,
+     "name": "AirGradient"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 24,
+      "name": "AirGradient Open Air Generation 1 (O-1PST)"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 14152874,
+      "name": "pm1 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 19,
+       "name": "pm1",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM1"
+      }
+     },
+     {
+      "id": 14152875,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     },
+     {
+      "id": 14152876,
+      "name": "relativehumidity %",
+      "parameter": {
+       "id": 98,
+       "name": "relativehumidity",
+       "units": "%",
+       "displayName": "RH"
+      }
+     },
+     {
+      "id": 14152877,
+      "name": "temperature c",
+      "parameter": {
+       "id": 100,
+       "name": "temperature",
+       "units": "c",
+       "displayName": "Temperature (C)"
+      }
+     },
+     {
+      "id": 14152878,
+      "name": "um003 particles/cm\u00b3",
+      "parameter": {
+       "id": 125,
+       "name": "um003",
+       "units": "particles/cm\u00b3",
+       "displayName": "PM0.3 count"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 42.32875481105541,
+     "longitude": -83.10692593510745
+    },
+    "licenses": [
+     {
+      "id": 41,
+      "name": "CC BY 4.0",
+      "attribution": {
+       "name": "NTBC",
+       "url": null
+      },
+      "dateFrom": "2023-07-15",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -83.10692593510745,
+     42.32875481105541,
+     -83.10692593510745,
+     42.32875481105541
+    ],
+    "distance": 21424.37484948,
+    "datetimeFirst": {
+     "utc": "2025-09-19T00:00:00Z",
+     "local": "2025-09-18T20:00:00-04:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-09-27T14:00:00Z",
+     "local": "2026-09-27T10:00:00-04:00"
+    }
+   },
+   {
+    "id": 5209155,
+    "name": "Campbell & Christiancy",
+    "locality": null,
+    "timezone": "America/Detroit",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 16837,
+     "name": "NTBC"
+    },
+    "provider": {
+     "id": 66,
+     "name": "AirGradient"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 24,
+      "name": "AirGradient Open Air Generation 1 (O-1PST)"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 14153079,
+      "name": "pm1 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 19,
+       "name": "pm1",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM1"
+      }
+     },
+     {
+      "id": 14153080,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     },
+     {
+      "id": 14153081,
+      "name": "relativehumidity %",
+      "parameter": {
+       "id": 98,
+       "name": "relativehumidity",
+       "units": "%",
+       "displayName": "RH"
+      }
+     },
+     {
+      "id": 14153082,
+      "name": "temperature c",
+      "parameter": {
+       "id": 100,
+       "name": "temperature",
+       "units": "c",
+       "displayName": "Temperature (C)"
+      }
+     },
+     {
+      "id": 14153083,
+      "name": "um003 particles/cm\u00b3",
+      "parameter": {
+       "id": 125,
+       "name": "um003",
+       "units": "particles/cm\u00b3",
+       "displayName": "PM0.3 count"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 42.314488566333814,
+     "longitude": -83.10225039428855
+    },
+    "licenses": [
+     {
+      "id": 41,
+      "name": "CC BY 4.0",
+      "attribution": {
+       "name": "NTBC",
+       "url": null
+      },
+      "dateFrom": "2023-07-15",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -83.10225039428855,
+     42.314488566333814,
+     -83.10225039428855,
+     42.314488566333814
+    ],
+    "distance": 22823.6558463,
+    "datetimeFirst": {
+     "utc": "2025-09-19T00:00:00Z",
+     "local": "2025-09-18T20:00:00-04:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-09-27T14:00:00Z",
+     "local": "2026-09-27T10:00:00-04:00"
+    }
+   },
+   {
+    "id": 5209156,
+    "name": "Michigan & Junction",
+    "locality": null,
+    "timezone": "America/Detroit",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 16837,
+     "name": "NTBC"
+    },
+    "provider": {
+     "id": 66,
+     "name": "AirGradient"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 24,
+      "name": "AirGradient Open Air Generation 1 (O-1PST)"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 14153084,
+      "name": "pm1 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 19,
+       "name": "pm1",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM1"
+      }
+     },
+     {
+      "id": 14153085,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     },
+     {
+      "id": 14153086,
+      "name": "relativehumidity %",
+      "parameter": {
+       "id": 98,
+       "name": "relativehumidity",
+       "units": "%",
+       "displayName": "RH"
+      }
+     },
+     {
+      "id": 14153087,
+      "name": "temperature c",
+      "parameter": {
+       "id": 100,
+       "name": "temperature",
+       "units": "c",
+       "displayName": "Temperature (C)"
+      }
+     },
+     {
+      "id": 14153088,
+      "name": "um003 particles/cm\u00b3",
+      "parameter": {
+       "id": 125,
+       "name": "um003",
+       "units": "particles/cm\u00b3",
+       "displayName": "PM0.3 count"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 42.33098925396203,
+     "longitude": -83.11209497565588
+    },
+    "licenses": [
+     {
+      "id": 41,
+      "name": "CC BY 4.0",
+      "attribution": {
+       "name": "NTBC",
+       "url": null
+      },
+      "dateFrom": "2023-07-15",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -83.11209497565588,
+     42.33098925396203,
+     -83.11209497565588,
+     42.33098925396203
+    ],
+    "distance": 21328.27769484,
+    "datetimeFirst": {
+     "utc": "2025-09-19T00:00:00Z",
+     "local": "2025-09-18T20:00:00-04:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-09-27T14:00:00Z",
+     "local": "2026-09-27T10:00:00-04:00"
+    }
+   },
+   {
+    "id": 5209626,
+    "name": "Clark & Brandon",
+    "locality": null,
+    "timezone": "America/Detroit",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 16837,
+     "name": "NTBC"
+    },
+    "provider": {
+     "id": 66,
+     "name": "AirGradient"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 24,
+      "name": "AirGradient Open Air Generation 1 (O-1PST)"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 14152829,
+      "name": "pm1 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 19,
+       "name": "pm1",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM1"
+      }
+     },
+     {
+      "id": 14152830,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     },
+     {
+      "id": 14152831,
+      "name": "relativehumidity %",
+      "parameter": {
+       "id": 98,
+       "name": "relativehumidity",
+       "units": "%",
+       "displayName": "RH"
+      }
+     },
+     {
+      "id": 14152832,
+      "name": "temperature c",
+      "parameter": {
+       "id": 100,
+       "name": "temperature",
+       "units": "c",
+       "displayName": "Temperature (C)"
+      }
+     },
+     {
+      "id": 14152833,
+      "name": "um003 particles/cm\u00b3",
+      "parameter": {
+       "id": 125,
+       "name": "um003",
+       "units": "particles/cm\u00b3",
+       "displayName": "PM0.3 count"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 42.32383619320299,
+     "longitude": -83.09911796511453
+    },
+    "licenses": [
+     {
+      "id": 41,
+      "name": "CC BY 4.0",
+      "attribution": {
+       "name": "NTBC",
+       "url": null
+      },
+      "dateFrom": "2023-07-15",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -83.09911796511453,
+     42.32383619320299,
+     -83.09911796511453,
+     42.32383619320299
+    ],
+    "distance": 21754.5321674,
+    "datetimeFirst": {
+     "utc": "2025-09-19T00:00:00Z",
+     "local": "2025-09-18T20:00:00-04:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-08-11T17:00:00Z",
+     "local": "2026-08-11T13:00:00-04:00"
+    }
+   },
+   {
+    "id": 5209627,
+    "name": "Scotten & Brandon",
+    "locality": null,
+    "timezone": "America/Detroit",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 16837,
+     "name": "NTBC"
+    },
+    "provider": {
+     "id": 66,
+     "name": "AirGradient"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 24,
+      "name": "AirGradient Open Air Generation 1 (O-1PST)"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 14153099,
+      "name": "pm1 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 19,
+       "name": "pm1",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM1"
+      }
+     },
+     {
+      "id": 14153100,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     },
+     {
+      "id": 14153101,
+      "name": "relativehumidity %",
+      "parameter": {
+       "id": 98,
+       "name": "relativehumidity",
+       "units": "%",
+       "displayName": "RH"
+      }
+     },
+     {
+      "id": 14153102,
+      "name": "temperature c",
+      "parameter": {
+       "id": 100,
+       "name": "temperature",
+       "units": "c",
+       "displayName": "Temperature (C)"
+      }
+     },
+     {
+      "id": 14153103,
+      "name": "um003 particles/cm\u00b3",
+      "parameter": {
+       "id": 125,
+       "name": "um003",
+       "units": "particles/cm\u00b3",
+       "displayName": "PM0.3 count"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 42.32419782183833,
+     "longitude": -83.09757589956887
+    },
+    "licenses": [
+     {
+      "id": 41,
+      "name": "CC BY 4.0",
+      "attribution": {
+       "name": "NTBC",
+       "url": null
+      },
+      "dateFrom": "2023-07-15",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -83.09757589956887,
+     42.32419782183833,
+     -83.09757589956887,
+     42.32419782183833
+    ],
+    "distance": 21680.61645293,
+    "datetimeFirst": {
+     "utc": "2025-09-19T00:00:00Z",
+     "local": "2025-09-18T20:00:00-04:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-09-27T14:00:00Z",
+     "local": "2026-09-27T10:00:00-04:00"
+    }
+   },
+   {
+    "id": 6113658,
+    "name": "Bloomfield Hills MI USA",
+    "locality": null,
+    "timezone": "America/Detroit",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 12,
+     "name": "AirGradient"
+    },
+    "provider": {
+     "id": 66,
+     "name": "AirGradient"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 24,
+      "name": "AirGradient Open Air Generation 1 (O-1PST)"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 14510440,
+      "name": "pm1 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 19,
+       "name": "pm1",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM1"
+      }
+     },
+     {
+      "id": 14510441,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     },
+     {
+      "id": 14510442,
+      "name": "relativehumidity %",
+      "parameter": {
+       "id": 98,
+       "name": "relativehumidity",
+       "units": "%",
+       "displayName": "RH"
+      }
+     },
+     {
+      "id": 14510443,
+      "name": "temperature c",
+      "parameter": {
+       "id": 100,
+       "name": "temperature",
+       "units": "c",
+       "displayName": "Temperature (C)"
+      }
+     },
+     {
+      "id": 14510444,
+      "name": "um003 particles/cm\u00b3",
+      "parameter": {
+       "id": 125,
+       "name": "um003",
+       "units": "particles/cm\u00b3",
+       "displayName": "PM0.3 count"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 42.5619846,
+     "longitude": -83.2304833
+    },
+    "licenses": [
+     {
+      "id": 41,
+      "name": "CC BY 4.0",
+      "attribution": {
+       "name": "AirGradient",
+       "url": null
+      },
+      "dateFrom": "2023-07-15",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -83.2304833,
+     42.5619846,
+     -83.2304833,
+     42.5619846
+    ],
+    "distance": 17785.07151387,
+    "datetimeFirst": {
+     "utc": "2025-10-30T22:00:00Z",
+     "local": "2025-10-30T18:00:00-04:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-09-27T14:00:00Z",
+     "local": "2026-09-27T10:00:00-04:00"
+    }
+   },
+   {
+    "id": 6141298,
+    "name": "Henry Ford Sensor 1",
+    "locality": null,
+    "timezone": "America/Detroit",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 12,
+     "name": "AirGradient"
+    },
+    "provider": {
+     "id": 66,
+     "name": "AirGradient"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 7,
+      "name": "Unknown AirGradient Sensor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 14715282,
+      "name": "pm1 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 19,
+       "name": "pm1",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM1"
+      }
+     },
+     {
+      "id": 14715283,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     },
+     {
+      "id": 14715284,
+      "name": "relativehumidity %",
+      "parameter": {
+       "id": 98,
+       "name": "relativehumidity",
+       "units": "%",
+       "displayName": "RH"
+      }
+     },
+     {
+      "id": 14715285,
+      "name": "temperature c",
+      "parameter": {
+       "id": 100,
+       "name": "temperature",
+       "units": "c",
+       "displayName": "Temperature (C)"
+      }
+     },
+     {
+      "id": 14715286,
+      "name": "um003 particles/cm\u00b3",
+      "parameter": {
+       "id": 125,
+       "name": "um003",
+       "units": "particles/cm\u00b3",
+       "displayName": "PM0.3 count"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 42.392461,
+     "longitude": -82.993432
+    },
+    "licenses": [
+     {
+      "id": 41,
+      "name": "CC BY 4.0",
+      "attribution": {
+       "name": "AirGradient",
+       "url": null
+      },
+      "dateFrom": "2023-07-15",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -82.993432,
+     42.392461,
+     -82.993432,
+     42.392461
+    ],
+    "distance": 13506.800259,
+    "datetimeFirst": {
+     "utc": "2025-11-24T20:00:00Z",
+     "local": "2025-11-24T15:00:00-05:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-09-06T18:00:00Z",
+     "local": "2026-09-06T14:00:00-04:00"
+    }
+   },
+   {
+    "id": 6141476,
+    "name": "HFH CURES 30",
+    "locality": null,
+    "timezone": "America/Detroit",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 12,
+     "name": "AirGradient"
+    },
+    "provider": {
+     "id": 66,
+     "name": "AirGradient"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 7,
+      "name": "Unknown AirGradient Sensor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 14715287,
+      "name": "pm1 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 19,
+       "name": "pm1",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM1"
+      }
+     },
+     {
+      "id": 14715288,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     },
+     {
+      "id": 14715289,
+      "name": "relativehumidity %",
+      "parameter": {
+       "id": 98,
+       "name": "relativehumidity",
+       "units": "%",
+       "displayName": "RH"
+      }
+     },
+     {
+      "id": 14715290,
+      "name": "temperature c",
+      "parameter": {
+       "id": 100,
+       "name": "temperature",
+       "units": "c",
+       "displayName": "Temperature (C)"
+      }
+     },
+     {
+      "id": 14715291,
+      "name": "um003 particles/cm\u00b3",
+      "parameter": {
+       "id": 125,
+       "name": "um003",
+       "units": "particles/cm\u00b3",
+       "displayName": "PM0.3 count"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 42.3859777,
+     "longitude": -83.1339697
+    },
+    "licenses": [
+     {
+      "id": 41,
+      "name": "CC BY 4.0",
+      "attribution": {
+       "name": "AirGradient",
+       "url": null
+      },
+      "dateFrom": "2023-07-15",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -83.1339697,
+     42.3859777,
+     -83.1339697,
+     42.3859777
+    ],
+    "distance": 16608.87550989,
+    "datetimeFirst": {
+     "utc": "2025-11-24T22:00:00Z",
+     "local": "2025-11-24T17:00:00-05:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-09-27T14:00:00Z",
+     "local": "2026-09-27T10:00:00-04:00"
+    }
+   },
+   {
+    "id": 6153000,
+    "name": "HFH CURES 5",
+    "locality": null,
+    "timezone": "America/Detroit",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 12,
+     "name": "AirGradient"
+    },
+    "provider": {
+     "id": 66,
+     "name": "AirGradient"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 7,
+      "name": "Unknown AirGradient Sensor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 14801939,
+      "name": "pm1 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 19,
+       "name": "pm1",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM1"
+      }
+     },
+     {
+      "id": 14801940,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     },
+     {
+      "id": 14801941,
+      "name": "relativehumidity %",
+      "parameter": {
+       "id": 98,
+       "name": "relativehumidity",
+       "units": "%",
+       "displayName": "RH"
+      }
+     },
+     {
+      "id": 14801942,
+      "name": "temperature c",
+      "parameter": {
+       "id": 100,
+       "name": "temperature",
+       "units": "c",
+       "displayName": "Temperature (C)"
+      }
+     },
+     {
+      "id": 14801943,
+      "name": "um003 particles/cm\u00b3",
+      "parameter": {
+       "id": 125,
+       "name": "um003",
+       "units": "particles/cm\u00b3",
+       "displayName": "PM0.3 count"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 42.36978,
+     "longitude": -82.99977
+    },
+    "licenses": [
+     {
+      "id": 41,
+      "name": "CC BY 4.0",
+      "attribution": {
+       "name": "AirGradient",
+       "url": null
+      },
+      "dateFrom": "2023-07-15",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -82.99977,
+     42.36978,
+     -82.99977,
+     42.36978
+    ],
+    "distance": 15910.75938179,
+    "datetimeFirst": {
+     "utc": "2025-12-05T02:00:00Z",
+     "local": "2025-12-04T21:00:00-05:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-05-13T18:00:00Z",
+     "local": "2026-05-13T14:00:00-04:00"
+    }
+   },
+   {
+    "id": 6157226,
+    "name": "HFH CURES 6",
+    "locality": null,
+    "timezone": "America/Detroit",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 27955,
+     "name": "Henry Ford Hospital"
+    },
+    "provider": {
+     "id": 66,
+     "name": "AirGradient"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 7,
+      "name": "Unknown AirGradient Sensor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 14970244,
+      "name": "pm1 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 19,
+       "name": "pm1",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM1"
+      }
+     },
+     {
+      "id": 14970245,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     },
+     {
+      "id": 14833986,
+      "name": "relativehumidity %",
+      "parameter": {
+       "id": 98,
+       "name": "relativehumidity",
+       "units": "%",
+       "displayName": "RH"
+      }
+     },
+     {
+      "id": 14833987,
+      "name": "temperature c",
+      "parameter": {
+       "id": 100,
+       "name": "temperature",
+       "units": "c",
+       "displayName": "Temperature (C)"
+      }
+     },
+     {
+      "id": 14970246,
+      "name": "um003 particles/cm\u00b3",
+      "parameter": {
+       "id": 125,
+       "name": "um003",
+       "units": "particles/cm\u00b3",
+       "displayName": "PM0.3 count"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 42.38629,
+     "longitude": -82.92684
+    },
+    "licenses": [
+     {
+      "id": 41,
+      "name": "CC BY 4.0",
+      "attribution": {
+       "name": "Henry Ford Hospital",
+       "url": null
+      },
+      "dateFrom": "2023-07-15",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -82.92684,
+     42.38629,
+     -82.92684,
+     42.38629
+    ],
+    "distance": 16107.53474324,
+    "datetimeFirst": {
+     "utc": "2025-12-08T22:00:00Z",
+     "local": "2025-12-08T17:00:00-05:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-09-25T06:00:00Z",
+     "local": "2026-09-25T02:00:00-04:00"
+    }
+   },
+   {
+    "id": 6158805,
+    "name": "HFH CURES 7",
+    "locality": null,
+    "timezone": "America/Detroit",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 27955,
+     "name": "Henry Ford Hospital"
+    },
+    "provider": {
+     "id": 66,
+     "name": "AirGradient"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 26,
+      "name": "AirGradient Open Air Max Generation 1 (O-M-1PPST-CE)"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 14845836,
+      "name": "pm1 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 19,
+       "name": "pm1",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM1"
+      }
+     },
+     {
+      "id": 14845837,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     },
+     {
+      "id": 14845838,
+      "name": "relativehumidity %",
+      "parameter": {
+       "id": 98,
+       "name": "relativehumidity",
+       "units": "%",
+       "displayName": "RH"
+      }
+     },
+     {
+      "id": 14845839,
+      "name": "temperature c",
+      "parameter": {
+       "id": 100,
+       "name": "temperature",
+       "units": "c",
+       "displayName": "Temperature (C)"
+      }
+     },
+     {
+      "id": 14845840,
+      "name": "um003 particles/cm\u00b3",
+      "parameter": {
+       "id": 125,
+       "name": "um003",
+       "units": "particles/cm\u00b3",
+       "displayName": "PM0.3 count"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 42.38267,
+     "longitude": -82.98246
+    },
+    "licenses": [
+     {
+      "id": 41,
+      "name": "CC BY 4.0",
+      "attribution": {
+       "name": "Henry Ford Hospital",
+       "url": null
+      },
+      "dateFrom": "2023-07-15",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -82.98246,
+     42.38267,
+     -82.98246,
+     42.38267
+    ],
+    "distance": 14762.82624392,
+    "datetimeFirst": {
+     "utc": "2025-12-10T00:00:00Z",
+     "local": "2025-12-09T19:00:00-05:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-09-27T14:00:00Z",
+     "local": "2026-09-27T10:00:00-04:00"
+    }
+   },
+   {
+    "id": 6161251,
+    "name": "HFH Cures 8",
+    "locality": null,
+    "timezone": "America/Detroit",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 12,
+     "name": "AirGradient"
+    },
+    "provider": {
+     "id": 66,
+     "name": "AirGradient"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 7,
+      "name": "Unknown AirGradient Sensor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 14863952,
+      "name": "pm1 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 19,
+       "name": "pm1",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM1"
+      }
+     },
+     {
+      "id": 14863953,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     },
+     {
+      "id": 14863954,
+      "name": "relativehumidity %",
+      "parameter": {
+       "id": 98,
+       "name": "relativehumidity",
+       "units": "%",
+       "displayName": "RH"
+      }
+     },
+     {
+      "id": 14863955,
+      "name": "temperature c",
+      "parameter": {
+       "id": 100,
+       "name": "temperature",
+       "units": "c",
+       "displayName": "Temperature (C)"
+      }
+     },
+     {
+      "id": 14863956,
+      "name": "um003 particles/cm\u00b3",
+      "parameter": {
+       "id": 125,
+       "name": "um003",
+       "units": "particles/cm\u00b3",
+       "displayName": "PM0.3 count"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 42.4075,
+     "longitude": -82.9664
+    },
+    "licenses": [
+     {
+      "id": 41,
+      "name": "CC BY 4.0",
+      "attribution": {
+       "name": "AirGradient",
+       "url": null
+      },
+      "dateFrom": "2023-07-15",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -82.9664,
+     42.4075,
+     -82.9664,
+     42.4075
+    ],
+    "distance": 12545.32795294,
+    "datetimeFirst": {
+     "utc": "2025-12-11T19:00:00Z",
+     "local": "2025-12-11T14:00:00-05:00"
+    },
+    "datetimeLast": {
+     "utc": "2025-12-17T16:00:00Z",
+     "local": "2025-12-17T11:00:00-05:00"
+    }
+   },
+   {
+    "id": 6161328,
+    "name": "HFH CURES 9",
+    "locality": null,
+    "timezone": "America/Detroit",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 12,
+     "name": "AirGradient"
+    },
+    "provider": {
+     "id": 66,
+     "name": "AirGradient"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 7,
+      "name": "Unknown AirGradient Sensor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 14864521,
+      "name": "pm1 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 19,
+       "name": "pm1",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM1"
+      }
+     },
+     {
+      "id": 14864522,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     },
+     {
+      "id": 14864523,
+      "name": "relativehumidity %",
+      "parameter": {
+       "id": 98,
+       "name": "relativehumidity",
+       "units": "%",
+       "displayName": "RH"
+      }
+     },
+     {
+      "id": 14864524,
+      "name": "temperature c",
+      "parameter": {
+       "id": 100,
+       "name": "temperature",
+       "units": "c",
+       "displayName": "Temperature (C)"
+      }
+     },
+     {
+      "id": 14864525,
+      "name": "um003 particles/cm\u00b3",
+      "parameter": {
+       "id": 125,
+       "name": "um003",
+       "units": "particles/cm\u00b3",
+       "displayName": "PM0.3 count"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 42.3664058,
+     "longitude": -82.9348673
+    },
+    "licenses": [
+     {
+      "id": 41,
+      "name": "CC BY 4.0",
+      "attribution": {
+       "name": "AirGradient",
+       "url": null
+      },
+      "dateFrom": "2023-07-15",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -82.9348673,
+     42.3664058,
+     -82.9348673,
+     42.3664058
+    ],
+    "distance": 17768.47198767,
+    "datetimeFirst": {
+     "utc": "2025-12-11T21:00:00Z",
+     "local": "2025-12-11T16:00:00-05:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-01-22T18:00:00Z",
+     "local": "2026-01-22T13:00:00-05:00"
+    }
+   },
+   {
+    "id": 6168327,
+    "name": "HFH CURES 11",
+    "locality": null,
+    "timezone": "America/Detroit",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 12,
+     "name": "AirGradient"
+    },
+    "provider": {
+     "id": 66,
+     "name": "AirGradient"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 7,
+      "name": "Unknown AirGradient Sensor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 14916869,
+      "name": "pm1 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 19,
+       "name": "pm1",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM1"
+      }
+     },
+     {
+      "id": 14916870,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     },
+     {
+      "id": 14916871,
+      "name": "relativehumidity %",
+      "parameter": {
+       "id": 98,
+       "name": "relativehumidity",
+       "units": "%",
+       "displayName": "RH"
+      }
+     },
+     {
+      "id": 14916872,
+      "name": "temperature c",
+      "parameter": {
+       "id": 100,
+       "name": "temperature",
+       "units": "c",
+       "displayName": "Temperature (C)"
+      }
+     },
+     {
+      "id": 14916873,
+      "name": "um003 particles/cm\u00b3",
+      "parameter": {
+       "id": 125,
+       "name": "um003",
+       "units": "particles/cm\u00b3",
+       "displayName": "PM0.3 count"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 42.3581351,
+     "longitude": -82.9433974
+    },
+    "licenses": [
+     {
+      "id": 41,
+      "name": "CC BY 4.0",
+      "attribution": {
+       "name": "AirGradient",
+       "url": null
+      },
+      "dateFrom": "2023-07-15",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -82.9433974,
+     42.3581351,
+     -82.9433974,
+     42.3581351
+    ],
+    "distance": 18339.53390705,
+    "datetimeFirst": {
+     "utc": "2025-12-17T18:00:00Z",
+     "local": "2025-12-17T13:00:00-05:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-09-27T14:00:00Z",
+     "local": "2026-09-27T10:00:00-04:00"
+    }
+   },
+   {
+    "id": 6191915,
+    "name": "HFH CURES 14",
+    "locality": null,
+    "timezone": "America/Detroit",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 12,
+     "name": "AirGradient"
+    },
+    "provider": {
+     "id": 66,
+     "name": "AirGradient"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 7,
+      "name": "Unknown AirGradient Sensor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 15092834,
+      "name": "pm1 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 19,
+       "name": "pm1",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM1"
+      }
+     },
+     {
+      "id": 15092835,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     },
+     {
+      "id": 15092836,
+      "name": "relativehumidity %",
+      "parameter": {
+       "id": 98,
+       "name": "relativehumidity",
+       "units": "%",
+       "displayName": "RH"
+      }
+     },
+     {
+      "id": 15092837,
+      "name": "temperature c",
+      "parameter": {
+       "id": 100,
+       "name": "temperature",
+       "units": "c",
+       "displayName": "Temperature (C)"
+      }
+     },
+     {
+      "id": 15092838,
+      "name": "um003 particles/cm\u00b3",
+      "parameter": {
+       "id": 125,
+       "name": "um003",
+       "units": "particles/cm\u00b3",
+       "displayName": "PM0.3 count"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 42.3838381,
+     "longitude": -82.9653543
+    },
+    "licenses": [
+     {
+      "id": 41,
+      "name": "CC BY 4.0",
+      "attribution": {
+       "name": "AirGradient",
+       "url": null
+      },
+      "dateFrom": "2023-07-15",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -82.9653543,
+     42.3838381,
+     -82.9653543,
+     42.3838381
+    ],
+    "distance": 15034.69765574,
+    "datetimeFirst": {
+     "utc": "2026-01-06T18:00:00Z",
+     "local": "2026-01-06T13:00:00-05:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-06-06T21:00:00Z",
+     "local": "2026-06-06T17:00:00-04:00"
+    }
+   },
+   {
+    "id": 6192817,
+    "name": "HFH CURES 15",
+    "locality": null,
+    "timezone": "America/Detroit",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 12,
+     "name": "AirGradient"
+    },
+    "provider": {
+     "id": 66,
+     "name": "AirGradient"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 7,
+      "name": "Unknown AirGradient Sensor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 15099657,
+      "name": "pm1 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 19,
+       "name": "pm1",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM1"
+      }
+     },
+     {
+      "id": 15099658,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     },
+     {
+      "id": 15099659,
+      "name": "relativehumidity %",
+      "parameter": {
+       "id": 98,
+       "name": "relativehumidity",
+       "units": "%",
+       "displayName": "RH"
+      }
+     },
+     {
+      "id": 15099660,
+      "name": "temperature c",
+      "parameter": {
+       "id": 100,
+       "name": "temperature",
+       "units": "c",
+       "displayName": "Temperature (C)"
+      }
+     },
+     {
+      "id": 15099661,
+      "name": "um003 particles/cm\u00b3",
+      "parameter": {
+       "id": 125,
+       "name": "um003",
+       "units": "particles/cm\u00b3",
+       "displayName": "PM0.3 count"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 42.4035558,
+     "longitude": -82.9530071
+    },
+    "licenses": [
+     {
+      "id": 41,
+      "name": "CC BY 4.0",
+      "attribution": {
+       "name": "AirGradient",
+       "url": null
+      },
+      "dateFrom": "2023-07-15",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -82.9530071,
+     42.4035558,
+     -82.9530071,
+     42.4035558
+    ],
+    "distance": 13399.48370308,
+    "datetimeFirst": {
+     "utc": "2026-01-07T14:00:00Z",
+     "local": "2026-01-07T09:00:00-05:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-01-23T16:00:00Z",
+     "local": "2026-01-23T11:00:00-05:00"
+    }
+   },
+   {
+    "id": 6202468,
+    "name": "HFH CURES 16",
+    "locality": null,
+    "timezone": "America/Detroit",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 12,
+     "name": "AirGradient"
+    },
+    "provider": {
+     "id": 66,
+     "name": "AirGradient"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 7,
+      "name": "Unknown AirGradient Sensor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 15666055,
+      "name": "pm1 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 19,
+       "name": "pm1",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM1"
+      }
+     },
+     {
+      "id": 15666056,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     },
+     {
+      "id": 15666057,
+      "name": "relativehumidity %",
+      "parameter": {
+       "id": 98,
+       "name": "relativehumidity",
+       "units": "%",
+       "displayName": "RH"
+      }
+     },
+     {
+      "id": 15666058,
+      "name": "temperature c",
+      "parameter": {
+       "id": 100,
+       "name": "temperature",
+       "units": "c",
+       "displayName": "Temperature (C)"
+      }
+     },
+     {
+      "id": 15666059,
+      "name": "um003 particles/cm\u00b3",
+      "parameter": {
+       "id": 125,
+       "name": "um003",
+       "units": "particles/cm\u00b3",
+       "displayName": "PM0.3 count"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 42.3418084,
+     "longitude": -83.1059688
+    },
+    "licenses": [
+     {
+      "id": 41,
+      "name": "CC BY 4.0",
+      "attribution": {
+       "name": "AirGradient",
+       "url": null
+      },
+      "dateFrom": "2023-07-15",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -83.1059688,
+     42.3418084,
+     -83.1059688,
+     42.3418084
+    ],
+    "distance": 20026.84690028,
+    "datetimeFirst": {
+     "utc": "2026-03-12T21:00:00Z",
+     "local": "2026-03-12T17:00:00-04:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-05-12T13:00:00Z",
+     "local": "2026-05-12T09:00:00-04:00"
+    }
+   },
+   {
+    "id": 6208756,
+    "name": "HFH CURES 17",
+    "locality": null,
+    "timezone": "America/Detroit",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 27955,
+     "name": "Henry Ford Hospital"
+    },
+    "provider": {
+     "id": 66,
+     "name": "AirGradient"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 26,
+      "name": "AirGradient Open Air Max Generation 1 (O-M-1PPST-CE)"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 15215912,
+      "name": "pm1 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 19,
+       "name": "pm1",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM1"
+      }
+     },
+     {
+      "id": 15215913,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     },
+     {
+      "id": 15215914,
+      "name": "relativehumidity %",
+      "parameter": {
+       "id": 98,
+       "name": "relativehumidity",
+       "units": "%",
+       "displayName": "RH"
+      }
+     },
+     {
+      "id": 15215915,
+      "name": "temperature c",
+      "parameter": {
+       "id": 100,
+       "name": "temperature",
+       "units": "c",
+       "displayName": "Temperature (C)"
+      }
+     },
+     {
+      "id": 15215916,
+      "name": "um003 particles/cm\u00b3",
+      "parameter": {
+       "id": 125,
+       "name": "um003",
+       "units": "particles/cm\u00b3",
+       "displayName": "PM0.3 count"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 42.3736343,
+     "longitude": -82.920955
+    },
+    "licenses": [
+     {
+      "id": 41,
+      "name": "CC BY 4.0",
+      "attribution": {
+       "name": "Henry Ford Hospital",
+       "url": null
+      },
+      "dateFrom": "2023-07-15",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -82.920955,
+     42.3736343,
+     -82.920955,
+     42.3736343
+    ],
+    "distance": 17569.52406577,
+    "datetimeFirst": {
+     "utc": "2026-01-20T19:00:00Z",
+     "local": "2026-01-20T14:00:00-05:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-02-24T17:00:00Z",
+     "local": "2026-02-24T12:00:00-05:00"
+    }
+   },
+   {
+    "id": 6217721,
+    "name": "HFH CURES 18",
+    "locality": null,
+    "timezone": "America/Detroit",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 12,
+     "name": "AirGradient"
+    },
+    "provider": {
+     "id": 66,
+     "name": "AirGradient"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 7,
+      "name": "Unknown AirGradient Sensor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 15282157,
+      "name": "pm1 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 19,
+       "name": "pm1",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM1"
+      }
+     },
+     {
+      "id": 15282158,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     },
+     {
+      "id": 15282159,
+      "name": "relativehumidity %",
+      "parameter": {
+       "id": 98,
+       "name": "relativehumidity",
+       "units": "%",
+       "displayName": "RH"
+      }
+     },
+     {
+      "id": 15282160,
+      "name": "temperature c",
+      "parameter": {
+       "id": 100,
+       "name": "temperature",
+       "units": "c",
+       "displayName": "Temperature (C)"
+      }
+     },
+     {
+      "id": 15282161,
+      "name": "um003 particles/cm\u00b3",
+      "parameter": {
+       "id": 125,
+       "name": "um003",
+       "units": "particles/cm\u00b3",
+       "displayName": "PM0.3 count"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 42.3883694,
+     "longitude": -82.9353079
+    },
+    "licenses": [
+     {
+      "id": 41,
+      "name": "CC BY 4.0",
+      "attribution": {
+       "name": "AirGradient",
+       "url": null
+      },
+      "dateFrom": "2023-07-15",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -82.9353079,
+     42.3883694,
+     -82.9353079,
+     42.3883694
+    ],
+    "distance": 15566.29967054,
+    "datetimeFirst": {
+     "utc": "2026-01-27T18:00:00Z",
+     "local": "2026-01-27T13:00:00-05:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-01-27T18:00:00Z",
+     "local": "2026-01-27T13:00:00-05:00"
+    }
+   },
+   {
+    "id": 6238928,
+    "name": "HFH CURES 19",
+    "locality": null,
+    "timezone": "America/Detroit",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 27955,
+     "name": "Henry Ford Hospital"
+    },
+    "provider": {
+     "id": 66,
+     "name": "AirGradient"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 7,
+      "name": "Unknown AirGradient Sensor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 15437587,
+      "name": "pm1 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 19,
+       "name": "pm1",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM1"
+      }
+     },
+     {
+      "id": 15437588,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     },
+     {
+      "id": 15437589,
+      "name": "relativehumidity %",
+      "parameter": {
+       "id": 98,
+       "name": "relativehumidity",
+       "units": "%",
+       "displayName": "RH"
+      }
+     },
+     {
+      "id": 15437590,
+      "name": "temperature c",
+      "parameter": {
+       "id": 100,
+       "name": "temperature",
+       "units": "c",
+       "displayName": "Temperature (C)"
+      }
+     },
+     {
+      "id": 15437591,
+      "name": "um003 particles/cm\u00b3",
+      "parameter": {
+       "id": 125,
+       "name": "um003",
+       "units": "particles/cm\u00b3",
+       "displayName": "PM0.3 count"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 42.3704536,
+     "longitude": -83.0327629
+    },
+    "licenses": [
+     {
+      "id": 41,
+      "name": "CC BY 4.0",
+      "attribution": {
+       "name": "Henry Ford Hospital",
+       "url": null
+      },
+      "dateFrom": "2023-07-15",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -83.0327629,
+     42.3704536,
+     -83.0327629,
+     42.3704536
+    ],
+    "distance": 15714.34255278,
+    "datetimeFirst": {
+     "utc": "2026-02-13T19:00:00Z",
+     "local": "2026-02-13T14:00:00-05:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-09-27T14:00:00Z",
+     "local": "2026-09-27T10:00:00-04:00"
+    }
+   },
+   {
+    "id": 6244760,
+    "name": "HFH CURES 21",
+    "locality": null,
+    "timezone": "America/Detroit",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 12,
+     "name": "AirGradient"
+    },
+    "provider": {
+     "id": 66,
+     "name": "AirGradient"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 7,
+      "name": "Unknown AirGradient Sensor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 15480930,
+      "name": "pm1 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 19,
+       "name": "pm1",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM1"
+      }
+     },
+     {
+      "id": 15480931,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     },
+     {
+      "id": 15480932,
+      "name": "relativehumidity %",
+      "parameter": {
+       "id": 98,
+       "name": "relativehumidity",
+       "units": "%",
+       "displayName": "RH"
+      }
+     },
+     {
+      "id": 15480933,
+      "name": "temperature c",
+      "parameter": {
+       "id": 100,
+       "name": "temperature",
+       "units": "c",
+       "displayName": "Temperature (C)"
+      }
+     },
+     {
+      "id": 15480934,
+      "name": "um003 particles/cm\u00b3",
+      "parameter": {
+       "id": 125,
+       "name": "um003",
+       "units": "particles/cm\u00b3",
+       "displayName": "PM0.3 count"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 42.4056849,
+     "longitude": -82.9421458
+    },
+    "licenses": [
+     {
+      "id": 41,
+      "name": "CC BY 4.0",
+      "attribution": {
+       "name": "AirGradient",
+       "url": null
+      },
+      "dateFrom": "2023-07-15",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -82.9421458,
+     42.4056849,
+     -82.9421458,
+     42.4056849
+    ],
+    "distance": 13611.66334716,
+    "datetimeFirst": {
+     "utc": "2026-02-18T20:00:00Z",
+     "local": "2026-02-18T15:00:00-05:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-02-24T15:00:00Z",
+     "local": "2026-02-24T10:00:00-05:00"
+    }
+   },
+   {
+    "id": 6246805,
+    "name": "HFH CURES 23",
+    "locality": null,
+    "timezone": "America/Detroit",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 27955,
+     "name": "Henry Ford Hospital"
+    },
+    "provider": {
+     "id": 66,
+     "name": "AirGradient"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 7,
+      "name": "Unknown AirGradient Sensor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 15496011,
+      "name": "pm1 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 19,
+       "name": "pm1",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM1"
+      }
+     },
+     {
+      "id": 15496012,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     },
+     {
+      "id": 15496013,
+      "name": "relativehumidity %",
+      "parameter": {
+       "id": 98,
+       "name": "relativehumidity",
+       "units": "%",
+       "displayName": "RH"
+      }
+     },
+     {
+      "id": 15496014,
+      "name": "temperature c",
+      "parameter": {
+       "id": 100,
+       "name": "temperature",
+       "units": "c",
+       "displayName": "Temperature (C)"
+      }
+     },
+     {
+      "id": 15496015,
+      "name": "um003 particles/cm\u00b3",
+      "parameter": {
+       "id": 125,
+       "name": "um003",
+       "units": "particles/cm\u00b3",
+       "displayName": "PM0.3 count"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 42.397516,
+     "longitude": -82.929523
+    },
+    "licenses": [
+     {
+      "id": 41,
+      "name": "CC BY 4.0",
+      "attribution": {
+       "name": "Henry Ford Hospital",
+       "url": null
+      },
+      "dateFrom": "2023-07-15",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -82.929523,
+     42.397516,
+     -82.929523,
+     42.397516
+    ],
+    "distance": 14923.58540624,
+    "datetimeFirst": {
+     "utc": "2026-02-20T15:00:00Z",
+     "local": "2026-02-20T10:00:00-05:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-09-27T14:00:00Z",
+     "local": "2026-09-27T10:00:00-04:00"
+    }
+   },
+   {
+    "id": 6251317,
+    "name": "L101AAX885",
+    "locality": null,
+    "timezone": "America/Detroit",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 9,
+     "name": "Clarity"
+    },
+    "provider": {
+     "id": 166,
+     "name": "Clarity"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 4,
+      "name": "Clarity Sensor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 15529739,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 42.41957,
+     "longitude": -83.06516
+    },
+    "licenses": [
+     {
+      "id": 38,
+      "name": "CC0 1.0",
+      "attribution": {
+       "name": "Clarity",
+       "url": null
+      },
+      "dateFrom": "2021-10-20",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -83.06516,
+     42.41957,
+     -83.06516,
+     42.41957
+    ],
+    "distance": 10766.90329645,
+    "datetimeFirst": {
+     "utc": "2026-02-24T16:11:25Z",
+     "local": "2026-02-24T11:11:25-05:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-07-07T16:57:19Z",
+     "local": "2026-07-07T12:57:19-04:00"
+    }
+   },
+   {
+    "id": 6251318,
+    "name": "L101AAY190",
+    "locality": null,
+    "timezone": "America/Detroit",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 9,
+     "name": "Clarity"
+    },
+    "provider": {
+     "id": 166,
+     "name": "Clarity"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 4,
+      "name": "Clarity Sensor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 15529736,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 42.42181,
+     "longitude": -83.06701
+    },
+    "licenses": [
+     {
+      "id": 38,
+      "name": "CC0 1.0",
+      "attribution": {
+       "name": "Clarity",
+       "url": null
+      },
+      "dateFrom": "2021-10-20",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -83.06701,
+     42.42181,
+     -83.06701,
+     42.42181
+    ],
+    "distance": 10579.22474164,
+    "datetimeFirst": {
+     "utc": "2026-02-24T16:10:13Z",
+     "local": "2026-02-24T11:10:13-05:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-09-27T12:51:20Z",
+     "local": "2026-09-27T08:51:20-04:00"
+    }
+   },
+   {
+    "id": 6251319,
+    "name": "L101AAY215",
+    "locality": null,
+    "timezone": "America/Detroit",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 9,
+     "name": "Clarity"
+    },
+    "provider": {
+     "id": 166,
+     "name": "Clarity"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 4,
+      "name": "Clarity Sensor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 15529738,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 42.41848,
+     "longitude": -83.06823
+    },
+    "licenses": [
+     {
+      "id": 38,
+      "name": "CC0 1.0",
+      "attribution": {
+       "name": "Clarity",
+       "url": null
+      },
+      "dateFrom": "2021-10-20",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -83.06823,
+     42.41848,
+     -83.06823,
+     42.41848
+    ],
+    "distance": 10961.65235947,
+    "datetimeFirst": {
+     "utc": "2026-02-24T16:00:23Z",
+     "local": "2026-02-24T11:00:23-05:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-07-15T01:34:22Z",
+     "local": "2026-07-14T21:34:22-04:00"
+    }
+   },
+   {
+    "id": 6251320,
+    "name": "L101AAX899",
+    "locality": null,
+    "timezone": "America/Detroit",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 9,
+     "name": "Clarity"
+    },
+    "provider": {
+     "id": 166,
+     "name": "Clarity"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 4,
+      "name": "Clarity Sensor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 15529737,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 42.41929,
+     "longitude": -83.07115
+    },
+    "licenses": [
+     {
+      "id": 38,
+      "name": "CC0 1.0",
+      "attribution": {
+       "name": "Clarity",
+       "url": null
+      },
+      "dateFrom": "2021-10-20",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -83.07115,
+     42.41929,
+     -83.07115,
+     42.41929
+    ],
+    "distance": 10957.62950059,
+    "datetimeFirst": {
+     "utc": "2026-02-24T16:01:26Z",
+     "local": "2026-02-24T11:01:26-05:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-09-27T12:57:37Z",
+     "local": "2026-09-27T08:57:37-04:00"
+    }
+   },
+   {
+    "id": 6251467,
+    "name": "HFH CURES 24",
+    "locality": null,
+    "timezone": "America/Detroit",
+    "country": {
+     "id": 156,
+     "code": "CA",
+     "name": "Canada"
+    },
+    "owner": {
+     "id": 12,
+     "name": "AirGradient"
+    },
+    "provider": {
+     "id": 66,
+     "name": "AirGradient"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 7,
+      "name": "Unknown AirGradient Sensor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 15530805,
+      "name": "pm1 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 19,
+       "name": "pm1",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM1"
+      }
+     },
+     {
+      "id": 15530806,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     },
+     {
+      "id": 15530807,
+      "name": "relativehumidity %",
+      "parameter": {
+       "id": 98,
+       "name": "relativehumidity",
+       "units": "%",
+       "displayName": "RH"
+      }
+     },
+     {
+      "id": 15530808,
+      "name": "temperature c",
+      "parameter": {
+       "id": 100,
+       "name": "temperature",
+       "units": "c",
+       "displayName": "Temperature (C)"
+      }
+     },
+     {
+      "id": 15530809,
+      "name": "um003 particles/cm\u00b3",
+      "parameter": {
+       "id": 125,
+       "name": "um003",
+       "units": "particles/cm\u00b3",
+       "displayName": "PM0.3 count"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 42.3366318,
+     "longitude": -83.0154328
+    },
+    "licenses": [
+     {
+      "id": 41,
+      "name": "CC BY 4.0",
+      "attribution": {
+       "name": "AirGradient",
+       "url": null
+      },
+      "dateFrom": "2023-07-15",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -83.0154328,
+     42.3366318,
+     -83.0154328,
+     42.3366318
+    ],
+    "distance": 19473.54397818,
+    "datetimeFirst": {
+     "utc": "2026-02-24T20:00:00Z",
+     "local": "2026-02-24T15:00:00-05:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-03-22T06:00:00Z",
+     "local": "2026-03-22T02:00:00-04:00"
+    }
+   },
+   {
+    "id": 6261190,
+    "name": "HFH CURES 26",
+    "locality": null,
+    "timezone": "America/Detroit",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 27955,
+     "name": "Henry Ford Hospital"
+    },
+    "provider": {
+     "id": 66,
+     "name": "AirGradient"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 7,
+      "name": "Unknown AirGradient Sensor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 15603868,
+      "name": "pm1 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 19,
+       "name": "pm1",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM1"
+      }
+     },
+     {
+      "id": 15603869,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     },
+     {
+      "id": 15603870,
+      "name": "relativehumidity %",
+      "parameter": {
+       "id": 98,
+       "name": "relativehumidity",
+       "units": "%",
+       "displayName": "RH"
+      }
+     },
+     {
+      "id": 15603871,
+      "name": "temperature c",
+      "parameter": {
+       "id": 100,
+       "name": "temperature",
+       "units": "c",
+       "displayName": "Temperature (C)"
+      }
+     },
+     {
+      "id": 15603872,
+      "name": "um003 particles/cm\u00b3",
+      "parameter": {
+       "id": 125,
+       "name": "um003",
+       "units": "particles/cm\u00b3",
+       "displayName": "PM0.3 count"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 42.3523828,
+     "longitude": -82.99561
+    },
+    "licenses": [
+     {
+      "id": 41,
+      "name": "CC BY 4.0",
+      "attribution": {
+       "name": "Henry Ford Hospital",
+       "url": null
+      },
+      "dateFrom": "2023-07-15",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -82.99561,
+     42.3523828,
+     -82.99561,
+     42.3523828
+    ],
+    "distance": 17871.59988003,
+    "datetimeFirst": {
+     "utc": "2026-03-05T14:00:00Z",
+     "local": "2026-03-05T09:00:00-05:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-09-27T14:00:00Z",
+     "local": "2026-09-27T10:00:00-04:00"
+    }
+   },
+   {
+    "id": 6269281,
+    "name": "HFH CURES 29",
+    "locality": null,
+    "timezone": "America/Detroit",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 27955,
+     "name": "Henry Ford Hospital"
+    },
+    "provider": {
+     "id": 66,
+     "name": "AirGradient"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 7,
+      "name": "Unknown AirGradient Sensor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 15664670,
+      "name": "pm1 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 19,
+       "name": "pm1",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM1"
+      }
+     },
+     {
+      "id": 15664671,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     },
+     {
+      "id": 15664672,
+      "name": "relativehumidity %",
+      "parameter": {
+       "id": 98,
+       "name": "relativehumidity",
+       "units": "%",
+       "displayName": "RH"
+      }
+     },
+     {
+      "id": 15664673,
+      "name": "temperature c",
+      "parameter": {
+       "id": 100,
+       "name": "temperature",
+       "units": "c",
+       "displayName": "Temperature (C)"
+      }
+     },
+     {
+      "id": 15664674,
+      "name": "um003 particles/cm\u00b3",
+      "parameter": {
+       "id": 125,
+       "name": "um003",
+       "units": "particles/cm\u00b3",
+       "displayName": "PM0.3 count"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 42.4002685,
+     "longitude": -82.9456947
+    },
+    "licenses": [
+     {
+      "id": 41,
+      "name": "CC BY 4.0",
+      "attribution": {
+       "name": "Henry Ford Hospital",
+       "url": null
+      },
+      "dateFrom": "2023-07-15",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -82.9456947,
+     42.4002685,
+     -82.9456947,
+     42.4002685
+    ],
+    "distance": 13997.80205679,
+    "datetimeFirst": {
+     "utc": "2026-03-12T15:00:00Z",
+     "local": "2026-03-12T11:00:00-04:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-06-08T13:00:00Z",
+     "local": "2026-06-08T09:00:00-04:00"
+    }
+   },
+   {
+    "id": 6279875,
+    "name": "Muirland St.",
+    "locality": null,
+    "timezone": "America/Detroit",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 12,
+     "name": "AirGradient"
+    },
+    "provider": {
+     "id": 66,
+     "name": "AirGradient"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 7,
+      "name": "Unknown AirGradient Sensor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 15742122,
+      "name": "pm1 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 19,
+       "name": "pm1",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM1"
+      }
+     },
+     {
+      "id": 15742123,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     },
+     {
+      "id": 15742124,
+      "name": "relativehumidity %",
+      "parameter": {
+       "id": 98,
+       "name": "relativehumidity",
+       "units": "%",
+       "displayName": "RH"
+      }
+     },
+     {
+      "id": 15742125,
+      "name": "temperature c",
+      "parameter": {
+       "id": 100,
+       "name": "temperature",
+       "units": "c",
+       "displayName": "Temperature (C)"
+      }
+     },
+     {
+      "id": 15742126,
+      "name": "um003 particles/cm\u00b3",
+      "parameter": {
+       "id": 125,
+       "name": "um003",
+       "units": "particles/cm\u00b3",
+       "displayName": "PM0.3 count"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 42.41485034721,
+     "longitude": -83.13395673242
+    },
+    "licenses": [
+     {
+      "id": 41,
+      "name": "CC BY 4.0",
+      "attribution": {
+       "name": "AirGradient",
+       "url": null
+      },
+      "dateFrom": "2023-07-15",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -83.13395673242,
+     42.41485034721,
+     -83.13395673242,
+     42.41485034721
+    ],
+    "distance": 14015.46494473,
+    "datetimeFirst": {
+     "utc": "2026-03-21T14:00:00Z",
+     "local": "2026-03-21T10:00:00-04:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-09-27T14:00:00Z",
+     "local": "2026-09-27T10:00:00-04:00"
+    }
+   },
+   {
+    "id": 6330408,
+    "name": "AFQ104",
+    "locality": null,
+    "timezone": "America/Detroit",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 9,
+     "name": "Clarity"
+    },
+    "provider": {
+     "id": 166,
+     "name": "Clarity"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 4,
+      "name": "Clarity Sensor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 16120336,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 42.38223,
+     "longitude": -83.19835
+    },
+    "licenses": [
+     {
+      "id": 38,
+      "name": "CC0 1.0",
+      "attribution": {
+       "name": "Clarity",
+       "url": null
+      },
+      "dateFrom": "2021-10-20",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -83.19835,
+     42.38223,
+     -83.19835,
+     42.38223
+    ],
+    "distance": 20267.51433393,
+    "datetimeFirst": {
+     "utc": "2026-05-01T14:06:10Z",
+     "local": "2026-05-01T10:06:10-04:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-09-27T12:58:59Z",
+     "local": "2026-09-27T08:58:59-04:00"
+    }
+   },
+   {
+    "id": 6330409,
+    "name": "L110AEE573",
+    "locality": null,
+    "timezone": "America/Detroit",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 9,
+     "name": "Clarity"
+    },
+    "provider": {
+     "id": 166,
+     "name": "Clarity"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 4,
+      "name": "Clarity Sensor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 16120337,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 42.37991,
+     "longitude": -83.20346
+    },
+    "licenses": [
+     {
+      "id": 38,
+      "name": "CC0 1.0",
+      "attribution": {
+       "name": "Clarity",
+       "url": null
+      },
+      "dateFrom": "2021-10-20",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -83.20346,
+     42.37991,
+     -83.20346,
+     42.37991
+    ],
+    "distance": 20747.02423473,
+    "datetimeFirst": {
+     "utc": "2026-05-01T14:00:00Z",
+     "local": "2026-05-01T10:00:00-04:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-07-26T00:54:26Z",
+     "local": "2026-07-25T20:54:26-04:00"
+    }
+   },
+   {
+    "id": 6447088,
+    "name": "L110AEE592",
+    "locality": null,
+    "timezone": "America/Detroit",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 9,
+     "name": "Clarity"
+    },
+    "provider": {
+     "id": 166,
+     "name": "Clarity"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 4,
+      "name": "Clarity Sensor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 16941195,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 42.37995,
+     "longitude": -83.19853
+    },
+    "licenses": [
+     {
+      "id": 38,
+      "name": "CC0 1.0",
+      "attribution": {
+       "name": "Clarity",
+       "url": null
+      },
+      "dateFrom": "2021-10-20",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -83.19853,
+     42.37995,
+     -83.19853,
+     42.37995
+    ],
+    "distance": 20458.66322252,
+    "datetimeFirst": {
+     "utc": "2026-07-16T16:05:08Z",
+     "local": "2026-07-16T12:05:08-04:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-09-27T12:55:07Z",
+     "local": "2026-09-27T08:55:07-04:00"
+    }
+   },
+   {
+    "id": 6448278,
+    "name": "Royal Oak",
+    "locality": null,
+    "timezone": "America/Detroit",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 12,
+     "name": "AirGradient"
+    },
+    "provider": {
+     "id": 66,
+     "name": "AirGradient"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 7,
+      "name": "Unknown AirGradient Sensor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 16949958,
+      "name": "pm1 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 19,
+       "name": "pm1",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM1"
+      }
+     },
+     {
+      "id": 16949959,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     },
+     {
+      "id": 16949960,
+      "name": "relativehumidity %",
+      "parameter": {
+       "id": 98,
+       "name": "relativehumidity",
+       "units": "%",
+       "displayName": "RH"
+      }
+     },
+     {
+      "id": 16949961,
+      "name": "temperature c",
+      "parameter": {
+       "id": 100,
+       "name": "temperature",
+       "units": "c",
+       "displayName": "Temperature (C)"
+      }
+     },
+     {
+      "id": 16949962,
+      "name": "um003 particles/cm\u00b3",
+      "parameter": {
+       "id": 125,
+       "name": "um003",
+       "units": "particles/cm\u00b3",
+       "displayName": "PM0.3 count"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 42.51525869577415,
+     "longitude": -83.13881644334292
+    },
+    "licenses": [
+     {
+      "id": 41,
+      "name": "CC BY 4.0",
+      "attribution": {
+       "name": "AirGradient",
+       "url": null
+      },
+      "dateFrom": "2023-07-15",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -83.13881644334292,
+     42.51525869577415,
+     -83.13881644334292,
+     42.51525869577415
+    ],
+    "distance": 9369.67983048,
+    "datetimeFirst": {
+     "utc": "2026-07-17T13:00:00Z",
+     "local": "2026-07-17T09:00:00-04:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-09-27T14:00:00Z",
+     "local": "2026-09-27T10:00:00-04:00"
+    }
+   },
+   {
+    "id": 6460119,
+    "name": "Dodge Park & Utica",
+    "locality": null,
+    "timezone": "America/Detroit",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 12,
+     "name": "AirGradient"
+    },
+    "provider": {
+     "id": 66,
+     "name": "AirGradient"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 7,
+      "name": "Unknown AirGradient Sensor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 17037118,
+      "name": "pm1 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 19,
+       "name": "pm1",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM1"
+      }
+     },
+     {
+      "id": 17037119,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     },
+     {
+      "id": 17037120,
+      "name": "relativehumidity %",
+      "parameter": {
+       "id": 98,
+       "name": "relativehumidity",
+       "units": "%",
+       "displayName": "RH"
+      }
+     },
+     {
+      "id": 17037121,
+      "name": "temperature c",
+      "parameter": {
+       "id": 100,
+       "name": "temperature",
+       "units": "c",
+       "displayName": "Temperature (C)"
+      }
+     },
+     {
+      "id": 17037122,
+      "name": "um003 particles/cm\u00b3",
+      "parameter": {
+       "id": 125,
+       "name": "um003",
+       "units": "particles/cm\u00b3",
+       "displayName": "PM0.3 count"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 42.59177907528788,
+     "longitude": -83.01110264032772
+    },
+    "licenses": [
+     {
+      "id": 41,
+      "name": "CC BY 4.0",
+      "attribution": {
+       "name": "AirGradient",
+       "url": null
+      },
+      "dateFrom": "2023-07-15",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -83.01110264032772,
+     42.59177907528788,
+     -83.01110264032772,
+     42.59177907528788
+    ],
+    "distance": 8956.37336937,
+    "datetimeFirst": {
+     "utc": "2026-07-25T16:00:00Z",
+     "local": "2026-07-25T12:00:00-04:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-09-27T14:00:00Z",
+     "local": "2026-09-27T10:00:00-04:00"
+    }
+   }
+  ]
+ }
+]

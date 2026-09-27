@@ -1,0 +1,42 @@
+{
+ "result": {
+  "input": {
+   "address": {
+    "address": "1015 11th Ave, Delano, CA 93215"
+   },
+   "benchmark": {
+    "isDefault": true,
+    "benchmarkDescription": "Public Address Ranges - Current Benchmark",
+    "id": "4",
+    "benchmarkName": "Public_AR_Current"
+   }
+  },
+  "addressMatches": [
+   {
+    "tigerLine": {
+     "side": "L",
+     "tigerLineId": "108997665"
+    },
+    "coordinates": {
+     "x": -119.244393666204,
+     "y": 35.770696940918
+    },
+    "addressComponents": {
+     "zip": "93215",
+     "streetName": "11TH",
+     "preType": "",
+     "city": "DELANO",
+     "preDirection": "",
+     "suffixDirection": "",
+     "fromAddress": "1001",
+     "state": "CA",
+     "suffixType": "AVE",
+     "toAddress": "1099",
+     "suffixQualifier": "",
+     "preQualifier": ""
+    },
+    "matchedAddress": "1015 11TH AVE, DELANO, CA, 93215"
+   }
+  ]
+ }
+}

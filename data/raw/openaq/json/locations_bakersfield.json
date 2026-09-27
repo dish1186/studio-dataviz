@@ -1,0 +1,1003 @@
+[
+ {
+  "meta": {
+   "name": "openaq-api",
+   "website": "/",
+   "page": 1,
+   "limit": 1000,
+   "found": 10
+  },
+  "results": [
+   {
+    "id": 887,
+    "name": "Bakersfield - Califo",
+    "locality": null,
+    "timezone": "America/Los_Angeles",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 4,
+     "name": "Unknown Governmental Organization"
+    },
+    "provider": {
+     "id": 119,
+     "name": "AirNow"
+    },
+    "isMobile": false,
+    "isMonitor": true,
+    "instruments": [
+     {
+      "id": 2,
+      "name": "Government Monitor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 1615,
+      "name": "no2 ppm",
+      "parameter": {
+       "id": 7,
+       "name": "no2",
+       "units": "ppm",
+       "displayName": "NO\u2082"
+      }
+     },
+     {
+      "id": 1614,
+      "name": "o3 ppm",
+      "parameter": {
+       "id": 10,
+       "name": "o3",
+       "units": "ppm",
+       "displayName": "O\u2083"
+      }
+     },
+     {
+      "id": 1613,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 35.3561,
+     "longitude": -119.0403
+    },
+    "licenses": [
+     {
+      "id": 33,
+      "name": "US Public Domain",
+      "attribution": {
+       "name": "Unknown Governmental Organization",
+       "url": null
+      },
+      "dateFrom": "2016-01-30",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -119.0403,
+     35.3561,
+     -119.0403,
+     35.3561
+    ],
+    "distance": 2756.62718917,
+    "datetimeFirst": {
+     "utc": "2016-03-06T20:00:00Z",
+     "local": "2016-03-06T12:00:00-08:00"
+    },
+    "datetimeLast": {
+     "utc": "2017-05-15T18:00:00Z",
+     "local": "2017-05-15T11:00:00-07:00"
+    }
+   },
+   {
+    "id": 6883,
+    "name": "Bakersfield - Califo",
+    "locality": null,
+    "timezone": "America/Los_Angeles",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 4,
+     "name": "Unknown Governmental Organization"
+    },
+    "provider": {
+     "id": 119,
+     "name": "AirNow"
+    },
+    "isMobile": false,
+    "isMonitor": true,
+    "instruments": [
+     {
+      "id": 2,
+      "name": "Government Monitor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 19787,
+      "name": "no2 ppm",
+      "parameter": {
+       "id": 7,
+       "name": "no2",
+       "units": "ppm",
+       "displayName": "NO\u2082"
+      }
+     },
+     {
+      "id": 19785,
+      "name": "o3 ppm",
+      "parameter": {
+       "id": 10,
+       "name": "o3",
+       "units": "ppm",
+       "displayName": "O\u2083"
+      }
+     },
+     {
+      "id": 19786,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 35.356667,
+     "longitude": -119.062778
+    },
+    "licenses": [
+     {
+      "id": 33,
+      "name": "US Public Domain",
+      "attribution": {
+       "name": "Unknown Governmental Organization",
+       "url": null
+      },
+      "dateFrom": "2016-01-30",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -119.062778,
+     35.356667,
+     -119.062778,
+     35.356667
+    ],
+    "distance": 4325.79882074,
+    "datetimeFirst": {
+     "utc": "2017-05-15T19:00:00Z",
+     "local": "2017-05-15T12:00:00-07:00"
+    },
+    "datetimeLast": {
+     "utc": "2019-04-18T19:00:00Z",
+     "local": "2019-04-18T12:00:00-07:00"
+    }
+   },
+   {
+    "id": 6885,
+    "name": "Bakersfield - Califo",
+    "locality": "Bakersfield",
+    "timezone": "America/Los_Angeles",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 4,
+     "name": "Unknown Governmental Organization"
+    },
+    "provider": {
+     "id": 119,
+     "name": "AirNow"
+    },
+    "isMobile": false,
+    "isMonitor": true,
+    "instruments": [
+     {
+      "id": 2,
+      "name": "Government Monitor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 4272382,
+      "name": "no ppm",
+      "parameter": {
+       "id": 35,
+       "name": "no",
+       "units": "ppm",
+       "displayName": "NO"
+      }
+     },
+     {
+      "id": 19789,
+      "name": "no2 ppm",
+      "parameter": {
+       "id": 7,
+       "name": "no2",
+       "units": "ppm",
+       "displayName": "NO\u2082"
+      }
+     },
+     {
+      "id": 4272200,
+      "name": "nox ppm",
+      "parameter": {
+       "id": 19840,
+       "name": "nox",
+       "units": "ppm",
+       "displayName": "NOx"
+      }
+     },
+     {
+      "id": 19792,
+      "name": "o3 ppm",
+      "parameter": {
+       "id": 10,
+       "name": "o3",
+       "units": "ppm",
+       "displayName": "O\u2083"
+      }
+     },
+     {
+      "id": 19790,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 35.356615,
+     "longitude": -119.062613
+    },
+    "licenses": [
+     {
+      "id": 33,
+      "name": "US Public Domain",
+      "attribution": {
+       "name": "Unknown Governmental Organization",
+       "url": null
+      },
+      "dateFrom": "2016-01-30",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -119.062613,
+     35.356615,
+     -119.062613,
+     35.356615
+    ],
+    "distance": 4315.36657905,
+    "datetimeFirst": {
+     "utc": "2019-04-18T20:00:00Z",
+     "local": "2019-04-18T13:00:00-07:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-09-27T13:00:00Z",
+     "local": "2026-09-27T06:00:00-07:00"
+    }
+   },
+   {
+    "id": 28777,
+    "name": "Bakersfield - Califo",
+    "locality": "Bakersfield",
+    "timezone": "America/Los_Angeles",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 4,
+     "name": "Unknown Governmental Organization"
+    },
+    "provider": {
+     "id": 119,
+     "name": "AirNow"
+    },
+    "isMobile": false,
+    "isMonitor": true,
+    "instruments": [
+     {
+      "id": 2,
+      "name": "Government Monitor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 5077807,
+      "name": "no ppm",
+      "parameter": {
+       "id": 35,
+       "name": "no",
+       "units": "ppm",
+       "displayName": "NO"
+      }
+     },
+     {
+      "id": 5077754,
+      "name": "no2 ppm",
+      "parameter": {
+       "id": 7,
+       "name": "no2",
+       "units": "ppm",
+       "displayName": "NO\u2082"
+      }
+     },
+     {
+      "id": 5077693,
+      "name": "nox ppm",
+      "parameter": {
+       "id": 19840,
+       "name": "nox",
+       "units": "ppm",
+       "displayName": "NOx"
+      }
+     },
+     {
+      "id": 5077706,
+      "name": "o3 ppm",
+      "parameter": {
+       "id": 10,
+       "name": "o3",
+       "units": "ppm",
+       "displayName": "O\u2083"
+      }
+     },
+     {
+      "id": 5077547,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 35.356615,
+     "longitude": -119.06261300000001
+    },
+    "licenses": [
+     {
+      "id": 33,
+      "name": "US Public Domain",
+      "attribution": {
+       "name": "Unknown Governmental Organization",
+       "url": null
+      },
+      "dateFrom": "2016-01-30",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -119.06261300000001,
+     35.356615,
+     -119.06261300000001,
+     35.356615
+    ],
+    "distance": 4315.36657905,
+    "datetimeFirst": {
+     "utc": "2023-05-09T03:00:00Z",
+     "local": "2023-05-08T20:00:00-07:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-09-21T17:00:00Z",
+     "local": "2026-09-21T10:00:00-07:00"
+    }
+   },
+   {
+    "id": 230814,
+    "name": "Bakersfield - Golden",
+    "locality": "Bakersfield",
+    "timezone": "America/Los_Angeles",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 4,
+     "name": "Unknown Governmental Organization"
+    },
+    "provider": {
+     "id": 119,
+     "name": "AirNow"
+    },
+    "isMobile": false,
+    "isMonitor": true,
+    "instruments": [
+     {
+      "id": 2,
+      "name": "Government Monitor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 1584628,
+      "name": "pm10 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 1,
+       "name": "pm10",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM10"
+      }
+     },
+     {
+      "id": 1328938,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 35.3853,
+     "longitude": -119.014702
+    },
+    "licenses": [
+     {
+      "id": 33,
+      "name": "US Public Domain",
+      "attribution": {
+       "name": "Unknown Governmental Organization",
+       "url": null
+      },
+      "dateFrom": "2016-01-30",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -119.014702,
+     35.3853,
+     -119.014702,
+     35.3853
+    ],
+    "distance": 1254.13034108,
+    "datetimeFirst": {
+     "utc": "2021-08-03T19:00:00Z",
+     "local": "2021-08-03T12:00:00-07:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-09-27T13:00:00Z",
+     "local": "2026-09-27T06:00:00-07:00"
+    }
+   },
+   {
+    "id": 3400890,
+    "name": "Fuller Acres (SJVAir / CCEJN)",
+    "locality": null,
+    "timezone": "America/Los_Angeles",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 11028,
+     "name": "SJVAir.com"
+    },
+    "provider": {
+     "id": 66,
+     "name": "AirGradient"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 7,
+      "name": "Unknown AirGradient Sensor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 12178107,
+      "name": "pm1 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 19,
+       "name": "pm1",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM1"
+      }
+     },
+     {
+      "id": 12178108,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     },
+     {
+      "id": 12178109,
+      "name": "relativehumidity %",
+      "parameter": {
+       "id": 98,
+       "name": "relativehumidity",
+       "units": "%",
+       "displayName": "RH"
+      }
+     },
+     {
+      "id": 12178110,
+      "name": "temperature c",
+      "parameter": {
+       "id": 100,
+       "name": "temperature",
+       "units": "c",
+       "displayName": "Temperature (C)"
+      }
+     },
+     {
+      "id": 12178474,
+      "name": "um003 particles/cm\u00b3",
+      "parameter": {
+       "id": 125,
+       "name": "um003",
+       "units": "particles/cm\u00b3",
+       "displayName": "PM0.3 count"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 35.300036256702775,
+     "longitude": -118.9145307888163
+    },
+    "licenses": [
+     {
+      "id": 41,
+      "name": "CC BY 4.0",
+      "attribution": {
+       "name": "SJVAir.com",
+       "url": null
+      },
+      "dateFrom": "2023-07-15",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -118.9145307888163,
+     35.300036256702775,
+     -118.9145307888163,
+     35.300036256702775
+    ],
+    "distance": 12769.28004904,
+    "datetimeFirst": {
+     "utc": "2025-02-11T18:00:00Z",
+     "local": "2025-02-11T10:00:00-08:00"
+    },
+    "datetimeLast": {
+     "utc": "2025-10-09T00:00:00Z",
+     "local": "2025-10-08T17:00:00-07:00"
+    }
+   },
+   {
+    "id": 5956914,
+    "name": "Bakersfield",
+    "locality": null,
+    "timezone": "America/Los_Angeles",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 9,
+     "name": "Clarity"
+    },
+    "provider": {
+     "id": 166,
+     "name": "Clarity"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 4,
+      "name": "Clarity Sensor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 14244951,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 35.37032,
+     "longitude": -119.02999
+    },
+    "licenses": [
+     {
+      "id": 38,
+      "name": "CC0 1.0",
+      "attribution": {
+       "name": "Clarity",
+       "url": null
+      },
+      "dateFrom": "2021-10-20",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -119.02999,
+     35.37032,
+     -119.02999,
+     35.37032
+    ],
+    "distance": 987.65518084,
+    "datetimeFirst": {
+     "utc": "2025-09-29T18:11:51Z",
+     "local": "2025-09-29T11:11:51-07:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-09-27T12:54:47Z",
+     "local": "2026-09-27T05:54:47-07:00"
+    }
+   },
+   {
+    "id": 6316359,
+    "name": "Jesus Home",
+    "locality": null,
+    "timezone": "America/Los_Angeles",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 11028,
+     "name": "SJVAir.com"
+    },
+    "provider": {
+     "id": 66,
+     "name": "AirGradient"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 7,
+      "name": "Unknown AirGradient Sensor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 16016880,
+      "name": "pm1 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 19,
+       "name": "pm1",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM1"
+      }
+     },
+     {
+      "id": 16016881,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     },
+     {
+      "id": 16016882,
+      "name": "relativehumidity %",
+      "parameter": {
+       "id": 98,
+       "name": "relativehumidity",
+       "units": "%",
+       "displayName": "RH"
+      }
+     },
+     {
+      "id": 16016883,
+      "name": "temperature c",
+      "parameter": {
+       "id": 100,
+       "name": "temperature",
+       "units": "c",
+       "displayName": "Temperature (C)"
+      }
+     },
+     {
+      "id": 16016884,
+      "name": "um003 particles/cm\u00b3",
+      "parameter": {
+       "id": 125,
+       "name": "um003",
+       "units": "particles/cm\u00b3",
+       "displayName": "PM0.3 count"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 35.32542996282645,
+     "longitude": -119.01969881886521
+    },
+    "licenses": [
+     {
+      "id": 41,
+      "name": "CC BY 4.0",
+      "attribution": {
+       "name": "SJVAir.com",
+       "url": null
+      },
+      "dateFrom": "2023-07-15",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -119.01969881886521,
+     35.32542996282645,
+     -119.01969881886521,
+     35.32542996282645
+    ],
+    "distance": 5522.91584654,
+    "datetimeFirst": {
+     "utc": "2026-04-21T19:00:00Z",
+     "local": "2026-04-21T12:00:00-07:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-05-18T21:00:00Z",
+     "local": "2026-05-18T14:00:00-07:00"
+    }
+   },
+   {
+    "id": 6447137,
+    "name": "1013",
+    "locality": null,
+    "timezone": "America/Los_Angeles",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 12,
+     "name": "AirGradient"
+    },
+    "provider": {
+     "id": 66,
+     "name": "AirGradient"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 7,
+      "name": "Unknown AirGradient Sensor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 16941541,
+      "name": "pm1 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 19,
+       "name": "pm1",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM1"
+      }
+     },
+     {
+      "id": 16941542,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     },
+     {
+      "id": 16941543,
+      "name": "relativehumidity %",
+      "parameter": {
+       "id": 98,
+       "name": "relativehumidity",
+       "units": "%",
+       "displayName": "RH"
+      }
+     },
+     {
+      "id": 16941544,
+      "name": "temperature c",
+      "parameter": {
+       "id": 100,
+       "name": "temperature",
+       "units": "c",
+       "displayName": "Temperature (C)"
+      }
+     },
+     {
+      "id": 16941545,
+      "name": "um003 particles/cm\u00b3",
+      "parameter": {
+       "id": 125,
+       "name": "um003",
+       "units": "particles/cm\u00b3",
+       "displayName": "PM0.3 count"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 35.307306804055244,
+     "longitude": -119.00214347469053
+    },
+    "licenses": [
+     {
+      "id": 41,
+      "name": "CC BY 4.0",
+      "attribution": {
+       "name": "AirGradient",
+       "url": null
+      },
+      "dateFrom": "2023-07-15",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -119.00214347469053,
+     35.307306804055244,
+     -119.00214347469053,
+     35.307306804055244
+    ],
+    "distance": 7723.113829,
+    "datetimeFirst": {
+     "utc": "2026-07-16T18:00:00Z",
+     "local": "2026-07-16T11:00:00-07:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-08-31T16:00:00Z",
+     "local": "2026-08-31T09:00:00-07:00"
+    }
+   },
+   {
+    "id": 6454415,
+    "name": "1009  S chester",
+    "locality": null,
+    "timezone": "America/Los_Angeles",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 12,
+     "name": "AirGradient"
+    },
+    "provider": {
+     "id": 66,
+     "name": "AirGradient"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 7,
+      "name": "Unknown AirGradient Sensor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 16995224,
+      "name": "pm1 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 19,
+       "name": "pm1",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM1"
+      }
+     },
+     {
+      "id": 16995225,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     },
+     {
+      "id": 16995226,
+      "name": "relativehumidity %",
+      "parameter": {
+       "id": 98,
+       "name": "relativehumidity",
+       "units": "%",
+       "displayName": "RH"
+      }
+     },
+     {
+      "id": 16995227,
+      "name": "temperature c",
+      "parameter": {
+       "id": 100,
+       "name": "temperature",
+       "units": "c",
+       "displayName": "Temperature (C)"
+      }
+     },
+     {
+      "id": 16995228,
+      "name": "um003 particles/cm\u00b3",
+      "parameter": {
+       "id": 125,
+       "name": "um003",
+       "units": "particles/cm\u00b3",
+       "displayName": "PM0.3 count"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 35.3272346979014,
+     "longitude": -119.00976637469506
+    },
+    "licenses": [
+     {
+      "id": 41,
+      "name": "CC BY 4.0",
+      "attribution": {
+       "name": "AirGradient",
+       "url": null
+      },
+      "dateFrom": "2023-07-15",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -119.00976637469506,
+     35.3272346979014,
+     -119.00976637469506,
+     35.3272346979014
+    ],
+    "distance": 5416.97898989,
+    "datetimeFirst": {
+     "utc": "2026-07-21T18:00:00Z",
+     "local": "2026-07-21T11:00:00-07:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-08-03T16:00:00Z",
+     "local": "2026-08-03T09:00:00-07:00"
+    }
+   }
+  ]
+ }
+]

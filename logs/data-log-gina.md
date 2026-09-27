@@ -5,10 +5,17 @@ Running plain-language log of every data step Gina runs with Claude. This log fe
 Dish keeps her own log (`data-log-dish.md`); the two may be combined later.
 **Newest entries are at the top** (Dish's log runs oldest-first).
 
-**Datasets in this log:** Media Cloud news coverage (online news) · American Lung Association *State of the Air 2026* PM2.5 rankings
-**Cities (36 in 15 ALA metro areas):** Bakersfield-Delano CA · Eugene-Springfield OR · Brownsville-Harlingen-Raymondville TX · Fresno-Hanford-Corcoran CA · Visalia CA · Fairbanks-College AK · Los Angeles-Long Beach CA · Detroit-Warren-Ann Arbor MI · Indianapolis-Carmel-Muncie IN · Pittsburgh-Weirton-Steubenville PA-OH-WV · McAllen-Edinburg TX · San Diego-Chula Vista-Carlsbad CA · Phoenix-Mesa AZ · San Jose-San Francisco-Oakland CA · Houston-Pasadena TX
-**Media window:** 2024-09-25 – 2026-09-25 (24 months, as passed to the Media Cloud API; whether the API counts the end date itself was not checked)
-**Scale:** Media Cloud "State & Local" collection per state; the city is a search term, not a geographic filter.
+**Datasets in this log:** Media Cloud news coverage (online news) · American Lung Association *State of the Air 2026* PM2.5 rankings · OpenAQ PM2.5
+
+**City-selection (Media Cloud × ALA)**
+- **Cities (36 in 15 ALA metro areas):** Bakersfield-Delano CA · Eugene-Springfield OR · Brownsville-Harlingen-Raymondville TX · Fresno-Hanford-Corcoran CA · Visalia CA · Fairbanks-College AK · Los Angeles-Long Beach CA · Detroit-Warren-Ann Arbor MI · Indianapolis-Carmel-Muncie IN · Pittsburgh-Weirton-Steubenville PA-OH-WV · McAllen-Edinburg TX · San Diego-Chula Vista-Carlsbad CA · Phoenix-Mesa AZ · San Jose-San Francisco-Oakland CA · Houston-Pasadena TX
+- **Media window:** 2024-09-25 – 2026-09-25 (24 months, as passed to the Media Cloud API; whether the API counts the end date itself was not checked)
+- **Scale:** Media Cloud "State & Local" collection per state; the city is a search term, not a geographic filter.
+
+**OpenAQ PM2.5**
+- **Cities (16):** Ann Arbor MI · Bakersfield CA · Boston MA · Brownsville TX · Delano CA · Detroit MI · Eugene OR · Fairbanks AK · Fresno CA · Los Angeles CA · Phoenix AZ · Raymondville TX · San Diego CA · San Francisco CA · Springfield OR · Warren MI
+- **Study period:** 2016-01-01 – 2026-09-25, daily (end date matches Dish's Decision D1)
+- **Scale:** city limits; nearest-city fallback only where a city has no sensor inside its limits, logged when used (Decision OA-D1).
 
 ## Rules
 1. One step at a time. Claude explains the step and shows the script, and Gina approves before it runs.
@@ -22,6 +29,69 @@ Step · dataset · date · who ran it | What (plain language) | Why | Input file
 **Note on Steps 1–8:** these were run on 2026-09-26/27 before this log existed, and logged retroactively in Step 9. They did not follow Rule 1 (no step-by-step approval before running), and Rule 2/3 files were assembled afterwards. Judgment calls in them are marked **Claude's choice, flagged to Gina in chat; not yet approved**, unless Gina specified or changed them. Gina to review.
 
 ---
+
+### Step 1 · OpenAQ · 2026-09-27 · Gina + Claude
+- **What:** Read-only inventory of every OpenAQ location with a PM2.5 sensor within 25 km of each city's center (city hall), and each PM2.5 sensor's first and last measurement date. **No measurements downloaded; nothing assigned to a city yet.**
+- **Why:** To see which sensors exist near each city, what type they are and how far back they go, before choosing which ones count (Step 2) and downloading data.
+- **Input:**
+  - **City centers:** 9 from Dish's city hall coordinates (`data/processed/metar/metar_station_distances.csv`: Bakersfield, Boston, Brownsville, Detroit, Eugene, Fairbanks, Fresno, Los Angeles, San Francisco).
+  - **6 geocoded:** city hall addresses supplied by Claude, geocoded by the US Census Geocoder (Ann Arbor, Delano, Phoenix, Raymondville, San Diego, Springfield).
+  - **Warren:** Gina's Google Maps place pin (42.5118008, −83.0249714), because the Census Geocoder has no match for 1 City Square.
+  - **OpenAQ API v3:** `/v3/locations` (radius search, PM2.5 only) and `/v3/locations/{id}/sensors`.
+- **Script:** `scripts/openaq/01_sensor_inventory.py` (API key read from `$OPENAQ_API_KEY`; not in any file, checked after the run)
+- **Rows in → out:** 16 city searches → **880 location results → 881 city × sensor rows, 821 distinct sensors** (some sensors fall in two cities' circles; one Boston location has 2 PM2.5 sensors). 0 removed.
+
+  | City | Sensors | Reference | Low-cost |
+  |---|---|---|---|
+  | Ann Arbor | 27 | 1 | 26 |
+  | Bakersfield | 10 | 5 | 5 |
+  | Boston | 55 | 20 | 35 |
+  | Brownsville | 12 | 2 | 10 |
+  | Delano | 22 | 0 | 22 |
+  | Detroit | 57 | 15 | 42 |
+  | Eugene | 8 | 8 | 0 |
+  | Fairbanks | 3 | 3 | 0 |
+  | Fresno | 12 | 5 | 7 |
+  | Los Angeles | 282 | 13 | 269 |
+  | Phoenix | 37 | 11 | 26 |
+  | Raymondville | **0** | 0 | 0 |
+  | San Diego | 35 | 12 | 23 |
+  | San Francisco | 258 | 7 | 251 |
+  | Springfield | 8 | 8 | 0 |
+  | Warren | 55 | 12 | 43 |
+- **Output:**
+  - Raw, exactly as received: `data/raw/openaq/json/` (`geocode_<city>.json` ×6, `locations_<city>.json` ×16, `location_sensors_<city>.jsonl` ×16)
+  - Flattened: `data/processed/openaq/step01_inventory/openaq_cities.csv` (16 rows) and `openaq_sensors_inventory.csv` (881 rows)
+  - Descriptions: 30 rows added to `data/descriptions/data_descriptions.csv`, one per JSON field in the three raw file types
+- **Findings:**
+  - **OpenAQ's data starts on 2016-03-06, not 2016-01-01.** No sensor anywhere has earlier data. The first ~2 months of the study period are missing for every city. **Open item for Gina.**
+  - **Low-cost sensors are recent.** 695 of 730 low-cost city × sensor rows with dates started in 2022 or later; only 12 started before 2021. For 2016–2026 trends, only the **reference** (AirNow) monitors cover the whole period.
+  - **Raymondville:** no PM2.5 sensor within 25 km.
+  - **Delano:** no reference monitor within 25 km; 22 low-cost AirGradient sensors, the earliest from 2024-06-28.
+  - **Ann Arbor:** the only reference monitor within 25 km is in **Ypsilanti**, 12.9 km from Ann Arbor City Hall.
+  - **Warren:** the nearest reference monitor is 9.2 km away in Detroit (Detroit-E7 Mile, from 2024 only); all others are 14+ km away.
+  - **Brownsville:** the reference record has a gap. Brownsville C80 ends 2023-04-04 and Brownsville East 6th starts 2024-02-01.
+  - **Shared circles:** Detroit and Warren share 52 sensors; Eugene and Springfield share all 8. Springfield's own city hall has a reference monitor (0.15 km).
+  - **Reference sensors that stopped reporting** (city × sensor rows): 14 ended between 2016 and 2021, 11 in 2023, 3 in 2024, 8 in 2025; 85 have data in 2026.
+  - 30 sensors (29 low-cost, 1 reference) have no first/last date in OpenAQ. None are mobile.
+- **Judgment calls:**
+  - **25 km search radius**, the API's maximum, as a search net only; assignment happens in Step 2. **Claude's choice, approved by Gina.**
+  - **City hall as the center**, reusing Dish's coordinates where they exist. **Claude's choice, approved by Gina.**
+  - **Addresses for the 6 geocoded city halls supplied by Claude.** The Census matched all 6. Gina to spot-check Raymondville, Delano and Springfield. **Claude's choice, approved by Gina; verification pending.**
+  - **Warren's coordinates from Gina** (Google Maps place pin, not the map-view center, which was ~200 m west). **Changed by Gina.**
+  - **"Reference" vs "low-cost" taken from OpenAQ's `isMonitor` flag.** **Claude's choice, approved by Gina.**
+- **Problem during the step:** The first run stopped at Warren (no geocoder match) before contacting OpenAQ, as designed. It had written 7 geocoder files. Claude deleted Warren's empty response before the rerun (a raw file, but a failed lookup); the other 6 were overwritten with identical results by the rerun.
+- **Known limitation:** Los Angeles, Phoenix and San Diego extend past 25 km from city hall in places. Step 2 will check city limits and fill any gap with an extra search.
+
+### Decision OA-D1 · OpenAQ · 2026-09-27 · Gina
+- **What:** Set the approach for the OpenAQ PM2.5 data before any data was pulled.
+  1. **Cities:** the 15 Gina listed plus **Boston** (added by Gina).
+  2. **Proximity:** sensors inside **city limits**. Where a city has none, fall back to the **nearest sensors outside its limits that are not inside another listed city**, and log it. A sensor belongs to one city only. **Claude's recommendation, approved by Gina.**
+  3. **Sensor types:** download both reference and low-cost sensors, flag them in the inventory, and decide what goes into the city averages later. **Claude's recommendation, approved by Gina.**
+  4. **Time resolution: daily** (OpenAQ 24-hour summaries), not hourly. **Changed by Gina** (chose daily from Claude's options).
+  5. **Study period ends 2026-09-25**, matching Dish's Decision D1. **Changed by Gina** (from "most recent date in September 2026").
+  6. **File layout:** one sensor inventory for all cities, plus one daily file per city; raw API responses saved as received. **Claude's recommendation, approved by Gina.**
+- **Open for Step 2:** how far the fallback may reach (Claude suggested a 10–15 km cap beyond city limits, with "no local sensor" beyond that).
 
 ### Step 11 · descriptions · 2026-09-27 · Gina + Claude
 - **What:** Changed the data descriptions from Markdown to CSV. Each table row from `data_descriptions.md` became a CSV row, with the file name in its own column; the Markdown file was removed. Wording unchanged.
