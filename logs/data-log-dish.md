@@ -515,5 +515,18 @@ Step · dataset · date · who ran it | What (plain language) | Why | Input file
 - **Judgment calls:**
   - Existing zips are skipped rather than rewritten, because zip timestamps would change their bytes even with identical shapes. **Claude's choice, approved by Dish.**
 
+### Decision D9 · UTCI scope · 2026-09-27 · Dish
+- **What:** UTCI felt heat is pulled from Copernicus CDS **"Thermal comfort indices time-series derived from ERA5 reanalysis"** (ERA5-HEAT v1.1, hourly, 0.25°; consolidated data plus intermediate near-real-time days, which the CDS may later replace). The handoff named the gridded ERA5-HEAT dataset, but it ships global daily files; the time-series product gives the same values for one small box per city (max 3×3°) in a single request.
+- **Cities:** the 17 METAR cities (D5), **including Fairbanks** (ERA5 is global). Springfield gets its own cell choice.
+- **Period:** one continuous request per city, 1991-01-01 UTC → latest available. It covers the 1991–2020 baseline (kept, same as gridMET) and the 2016 → 2026-09-24 study period. The latest UTCI date is expected to lag ~5 days. **Whether all datasets share one end date is to be decided once all three are in** (METAR stays frozen, D8).
+- **Boundary:** city limits, TIGER/Line 2025 Places (D2). The UTCI "city" is the city-hall cell or the cells overlapping city limits, chosen per city in a later step.
+- **Raw files:** committed to git (~20–30 MB each). SHA-256 logged for each.
+- **Judgment calls:** time-series product instead of gridded. **Claude's choice, approved by Dish.** Raw NetCDF committed. **Changed by Dish** (Claude had suggested .gitignore). Download box = cells overlapping city limits plus a 1-cell margin. **Claude's choice, approved by Dish.**
+
+### Step 0 · UTCI · 2026-09-27 · Dish + Claude
+- **What:** Created `data/raw/utci/cds_timeseries/`, `data/processed/utci/`, `scripts/utci/` (with `.gitkeep`). Installed xarray 2025.6.1 and netCDF4 1.7.4 (plus geopandas 1.1.4) in the local workspace. **Input / output:** none (setup only) · **Script:** none (folder setup only)
+- **Proxy check:** the CDS is blocked (HTTP 403) from both the local workspace and Claude's cloud workspace, so Dish downloads by hand from the CDS website.
+- **Judgment calls:** layout proposed by Claude. **Approved by Dish.**
+
 ---
 **METAR pipeline status (2026-09-27, final):** **Closed (D8).** 17 cities, Steps 0–9b complete, ending 2026-09-24 (D4); final files frozen. Step 8b distances cover all 18 stations. Not done, by choice: in-city check for the new stations (D7), review of 7 low days, ASOS algorithm citation (appendix), Phoenix story decision; city-hall spot-check pending with Dish. New caveat: Ann Arbor outage from ~2026-06-17 (last valid day 2026-08-05).
