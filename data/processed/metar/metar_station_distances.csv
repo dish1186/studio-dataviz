@@ -1,0 +1,13 @@
+city,station,iem_network,iem_name,station_lat,station_lon,city_hall,city_hall_lat,city_hall_lon,distance_km,distance_mi,in_city_limits_note
+bakersfield,BFL,CA_ASOS,BAKERSFIELD/MEADOWS,35.4344,-119.0542,"1600 Truxtun Ave, Bakersfield CA",35.3752,-119.0209,7.2,4.5,not checked
+fresno,FAT,CA_ASOS,FRESNO AIR TERMINAL,36.78,-119.7194,"2600 Fresno St, Fresno CA",36.7375,-119.7867,7.6,4.7,not checked
+losangeles,LAX,CA_ASOS,LOS ANGELES INTL,33.93816,-118.38653,"200 N Spring St, Los Angeles CA",34.0537,-118.2428,18.5,11.5,in city limits (handoff)
+sanfrancisco,SFO,CA_ASOS,SAN FRANCISCO INTL,37.61897,-122.37489,"1 Dr Carlton B Goodlett Pl, San Francisco CA",37.7793,-122.4192,18.2,11.3,just south of city limits (handoff)
+eugene,EUG,OR_ASOS,EUGENE/MAHLON SWEET,44.12458,-123.21197,"101 W 10th Ave, Eugene OR",44.0497,-123.093,12.6,7.9,not checked
+fairbanks,PAFA,AK_ASOS,FAIRBANKS INTL ARPT (ASOS),64.80389,-147.87611,"800 Cushman St, Fairbanks AK",64.8355,-147.7164,8.3,5.2,not checked
+brownsville,BRO,TX_ASOS,BROWNSVILLE INTL,25.91461,-97.42313,"1001 E Elizabeth St, Brownsville TX",25.9016,-97.4958,7.4,4.6,not checked
+detroit,DET,MI_ASOS,DETROIT/CITY AIR,42.40919,-83.00986,"2 Woodward Ave, Detroit MI",42.3294,-83.0445,9.3,5.8,in city (handoff)
+detroit,DTW,MI_ASOS,DETROIT/WAYNE,42.23,-83.33,"2 Woodward Ave, Detroit MI",42.3294,-83.0445,26.0,16.1,"outside, Romulus (handoff)"
+pittsburgh,AGC,PA_ASOS,PITTSBURGH/ALLEGHEN,40.35472,-79.92167,"414 Grant St, Pittsburgh PA",40.4383,-79.9967,11.3,7.0,next to the city (handoff)
+pittsburgh,PIT,PA_ASOS,PITTSBURGH INTL,40.49147,-80.23286,"414 Grant St, Pittsburgh PA",40.4383,-79.9967,20.8,12.9,outside (handoff)
+boston,BOS,MA_ASOS,BOSTON/LOGAN INTL,42.36057,-71.00973,"1 City Hall Square, Boston MA",42.3603,-71.058,4.0,2.5,not checked

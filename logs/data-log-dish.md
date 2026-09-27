@@ -195,5 +195,19 @@ Step · dataset · date · who ran it | What (plain language) | Why | Input file
   - Final files in `data/processed/metar/final/`. **Claude's choice, approved by Dish.**
 - **Caveat for the appendix:** Days dropped for too few dry hours are mostly rainy/snowy days, which tend to be clean, so the remaining series tilts slightly toward hazier weather in the wet cities (largest for Fairbanks, Boston, Eugene).
 
+### Step 8b · METAR · 2026-09-27 · Dish + Claude
+- **What:** Measured the straight-line (great-circle, haversine) distance from each of the 12 airports to its city hall. **Read-only: no visibility data changed.**
+- **Why:** The handoff requires logging airport distances, especially for airports outside city limits. This turns "some airports are outside the city" into numbers for the appendix.
+- **Input:** airport coordinates transcribed by Claude from each station's IEM page (`mesonet.agron.iastate.edu/sites/site.php?station=<ID>&network=<NET>`). Scripts couldn't download IEM's station list directly: the network proxy blocks mesonet.agron.iastate.edu from both the local and cloud shells. City hall coordinates supplied by Claude (approximately one block); no geocoder was available (OpenStreetMap Nominatim disallows automated access).
+- **Script:** `scripts/metar/08b_station_distances.py`
+- **Output:** `data/processed/metar/metar_station_distances.csv`
+- **Results (miles from city hall):** BOS 2.5 · BFL 4.5 · BRO 4.6 · FAT 4.7 · PAFA 5.2 · DET 5.8 · AGC 7.0 · EUG 7.9 · SFO 11.3 · LAX 11.5 · PIT 12.9 · **DTW 16.1**.
+  - LAX is inside Los Angeles city limits but 11.5 mi from City Hall. LA is large, so "in city" ≠ "downtown."
+  - Two-airport cities: Detroit's DET is 5.8 mi and DTW 16.1 mi from city hall; Pittsburgh's AGC is 7.0 mi and PIT 12.9 mi. They are weighted equally in Step 8.
+- **Judgment calls:**
+  - **City hall coordinates supplied by Claude.** Dish to spot-check 2–3 in Google Maps; a one-block error changes distances by < 0.1 mi. **Claude's choice, approved by Dish; verification pending.**
+  - **Airport coordinates copied by hand** from IEM pages (source URL pattern in the script). **Claude's choice, approved by Dish.**
+  - "In city limits" filled only where the handoff states it; others are "not checked" until city-limits shapefiles are available (gridMET step). **Claude's choice, approved by Dish.**
+
 ---
-**METAR pipeline status (2026-09-27):** Steps 0–9b complete. Open items: (1) airport distances from city hall (Step 8b); (2) review of the Boston 2024-02-23 and Bakersfield 2020-12-17/18 low days; (3) ASOS internal visibility algorithm (M1).
+**METAR pipeline status (2026-09-27):** Steps 0–9b complete. Open items: (1) ~~airport distances (Step 8b)~~ done, city-hall coordinates pending Dish's spot-check; in-city-limits check pending shapefiles; (2) review of the Boston 2024-02-23 and Bakersfield 2020-12-17/18 low days; (3) ASOS internal visibility algorithm (M1).
