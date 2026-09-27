@@ -528,5 +528,44 @@ Step · dataset · date · who ran it | What (plain language) | Why | Input file
 - **Proxy check:** the CDS is blocked (HTTP 403) from both the local workspace and Claude's cloud workspace, so Dish downloads by hand from the CDS website.
 - **Judgment calls:** layout proposed by Claude. **Approved by Dish.**
 
+### Decision D10 · all datasets · 2026-09-27 · Dish
+- **What:** Final city list for the visualization, **12 cities**, in this order: Los Angeles · Phoenix · San Diego · Detroit · Bakersfield · San Francisco · Fresno · Boston · Eugene · Fairbanks · Brownsville · Ann Arbor. **Dropped at the visualization stage:** Pittsburgh, Raymondville, Springfield, Warren, Delano.
+- **Effect on existing files:** none. All data already pulled is kept (METAR finals frozen per D8; gridMET files as they are; UTCI Delano file kept). Extra cities are cut when building the visualizations.
+- **Who chose it:** **Dish.**
+
+### Step 1 · UTCI · 2026-09-27 · Dish (downloads) + Claude (check)
+- **Downloads (Dish, CDS web form):** "Thermal comfort indices time-series derived from ERA5 reanalysis" · Universal thermal climate index · 1991-01-01 → **2026-06-13 (latest date the form allowed on 2026-09-27)** · Area (the form's field order is **North / South / West / East**) with the per-city boxes from D9 · NetCDF. 13 files, one per city, named `utci_<city>_1991-2026.nc` at save time. Boston was saved without an extension and **renamed** to add `.nc` (name only; SHA-256 identical before and after). File contents untouched.
+- **What (check):** read-only check of every raw file: SHA-256; grid vs requested box; hourly continuity; units; empty and implausible values (outside −90 to +60 °C) per cell. Added after the first 10 files (approved by Dish): location check (city-hall cell in the file, every cell touching city limits in the file), hottest 3 days in the city-hall cell, duplicate cells, empty hours by year, and agreement where two cities' boxes share cells.
+- **Input:** `data/raw/utci/cds_timeseries/utci_<city>_1991-2026.nc` (13 files, not modified; SHA-256 re-checked after each run) · city limits from `data/processed/gridmet/step03_city_polygons/` and, for Fairbanks, GEOID 0224230 in `data/raw/gridmet/tiger_places/tl_2025_02_place.zip` · city halls from `data/processed/metar/metar_station_distances.csv` (not modified)
+- **Script:** `scripts/utci/01_raw_check.py`
+- **Output:** `data/processed/utci/step01_raw_check/` → `raw_check.csv` (13 rows), `raw_cells.csv` (232 cells), `raw_extra.csv` (13 rows)
+- **Results:** all 13 files: box matches the request, cell centres on 0.25° steps, **310,752 of 310,752 hours** (1991-01-01 00:00 → 2026-06-13 23:00 UTC), 0 missing, 0 duplicate, units K, 0 implausible values. City-hall cell in the file and 0 city-limits cells missing, for every city. Where boxes overlap, the files are identical (Ann Arbor/Detroit 3 cells, Bakersfield/Delano 6 cells).
+- **Location sanity check (hottest UTC days, city-hall cell):** Eugene 2021-06-27/28 (Pacific NW heat dome) · Fresno and Bakersfield 2022-09-06 (same day as gridMET's record) · Los Angeles 2022-09-04, 2020-09-05, 2018-07-07 · Phoenix 2017-06-20/21 · Detroit and Ann Arbor 2012-07-06, 1995-07-14 · Boston 2011-07-22 · Fairbanks 2004-06-29 · San Diego 2024-09-08. Brownsville's lowest value (−30.3 °C UTCI) is on 2021-02-15, the Texas freeze.
+- **Findings (nothing changed):**
+  - **Duplicate cells:** in Boston, Eugene, Fairbanks, Los Angeles and Phoenix, some neighbouring 0.25° cells hold identical values in ≥ 99.99% of hours (e.g. Boston lon −71.00 = −71.25; Eugene −123.00 = −122.75; Fairbanks −147.50 = −147.25; Phoenix lat 33.75 = 34.00; LA several pairs). The Boston, Eugene and LA pairs differ only on 2021-04-29. Likely cause (not verified): regridding from ERA5's native ~31 km grid to 0.25°. So UTCI's true detail is coarser than the 0.25° grid suggests, and some city-hall cells equal their neighbour. Duplicates must be dropped before averaging cells.
+  - **Empty hours:** hours with an empty value in any cell: Boston 744, SF 170, Brownsville 119, Detroit 267, LA 89, San Diego 1; 0 in the other 7. Mostly sea or lake cells; in Brownsville also inland cells. Possible cause (not verified): UTCI left blank when inputs are outside the UTCI formula's valid range (e.g. wind > 17 m/s). Days with missing hours to be handled in the daily-max step.
+  - **San Francisco:** the city-hall cell (37.75, −122.50) is centred on the ocean side; its hottest day is only 30.1 °C UTCI and it misses the 2017-09-01 heat. Needs a closer look in the cell-choice step.
+  - **Gap:** UTCI ends 2026-06-13; METAR and gridMET run to 2026-09-24 (D4). Common end date still to be decided (D9).
+  - A Finder `.DS_Store` file appeared in the raw folder; not to be committed.
+- **SHA-256 of raw files:**
+  - annarbor (13,689,826 bytes) `105c4e11088968f7ddd1b4321266b1e31f97519a1b7dd6811d9b6fab0ab78f72`
+  - bakersfield (27,362,914 bytes) `eb5f242af626a2be110e1d03ceddb5fe93be368d0f86fd4c3f4ebac620d9ba3a`
+  - boston (27,362,914 bytes) `7c69c5f473c6ba453410768469010ee3a72f5fbbfbb4bcf82ff36d8a2ea3d790`
+  - brownsville (33,577,954 bytes) `cebe5957faeb86ffa74b02072c70bbb733ddbf2eeef552e7eea9269e1aa0c7cb`
+  - delano (13,689,826 bytes) `22209537e2fd8feb98ffbae96bd9791ff89296d201e6a8cd515d266d649caeef`
+  - detroit (22,390,882 bytes) `3d78cd64b0a2b229deff471978599fac514aec87d2de7dd1bbcd77f7bd65ee43`
+  - eugene (22,390,882 bytes) `43aa2910e2fe9514a3b354610bebda844a0a4559ee4bd7c5bc18f56cfa12be40`
+  - fairbanks (22,390,882 bytes) `8f89828d9afd581b8eda2fe16400504007a33c058e2aaf6239e3eed7c160e281`
+  - fresno (22,390,882 bytes) `0d59b2c4313da17f9bdfbccef4ebb1f1cf5e771ed474b8330a84aae85db051be`
+  - losangeles (33,577,954 bytes) `e51574d8c7a3cbe90bbf283e95a123142262504b23c26d79182f2f976e6bfdbc`
+  - phoenix (32,334,946 bytes) `e3444d94987f6779dcd5336e6129fd63433a60aa8b1ed12af4c12b087344cc9a`
+  - sandiego (27,362,914 bytes) `38b4b398aa23b87f4c28f9efbacb2c1b01bb2193ea9fab5bc4025baa085ccdfd`
+  - sanfrancisco (22,390,882 bytes) `78a42af438849a288f4d6cf0b127ac23ca4dc383fba2dfb1551e45191f9b1a6a`
+- **Judgment calls:**
+  - Plausible range −90 to +60 °C, flag only. **Claude's choice, approved by Dish.**
+  - Rename of the Boston file to add `.nc`. **Claude's choice, approved by Dish.**
+  - Extra checks (location, hottest days, duplicates, empty hours, overlaps) added to the Step 1 script. Duplicate = identical in > 50% of hours. City-hall cell = nearest 0.25° centre. **Claude's choice, approved by Dish.**
+  - Script bug caught before logging: the first version of the extra checks overwrote the per-cell table (17 rows instead of 232). Fixed by renaming variables; the re-run table matches the earlier output exactly.
+
 ---
 **METAR pipeline status (2026-09-27, final):** **Closed (D8).** 17 cities, Steps 0–9b complete, ending 2026-09-24 (D4); final files frozen. Step 8b distances cover all 18 stations. Not done, by choice: in-city check for the new stations (D7), review of 7 low days, ASOS algorithm citation (appendix), Phoenix story decision; city-hall spot-check pending with Dish. New caveat: Ann Arbor outage from ~2026-06-17 (last valid day 2026-08-05).
