@@ -1,0 +1,13 @@
+city,station,hours_in,hours_removed_night,hours_out,pct_of_possible_daytime
+bakersfield,BFL,93835,54752,39083,99.68
+boston,BOS,93908,54770,39138,99.82
+brownsville,BRO,93169,54174,38995,99.45
+detroit,DET,93868,54767,39101,99.72
+detroit,DTW,93976,54804,39172,99.9
+eugene,EUG,93691,54525,39166,99.89
+fairbanks,PAFA,94012,54838,39174,99.91
+fresno,FAT,93929,54788,39141,99.82
+losangeles,LAX,94027,54835,39192,99.95
+pittsburgh,AGC,93201,54364,38837,99.05
+pittsburgh,PIT,94001,54826,39175,99.91
+sanfrancisco,SFO,94048,54856,39192,99.95
