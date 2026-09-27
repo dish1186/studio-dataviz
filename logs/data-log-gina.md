@@ -30,6 +30,23 @@ Step · dataset · date · who ran it | What (plain language) | Why | Input file
 
 ---
 
+### Step 3 · Google Trends · 2026-09-27 · Gina + Claude
+- **What:** Made processed copies of the 17 heat-search files. Each keeps `Time`, "air conditioner", "fan" and "AC" unchanged, removes "cooling center" and "cooling fan", and adds `total_searches` (sum of the three terms) and `avg_searches` (their average, 2 decimals). **Raw files not modified** (checked with `git status`).
+- **Why:** Gina asked for the three main heat-related terms, with a total and an average per month.
+- **Input:** `data/raw/google-trends/heat-search/*-heat-search.csv` (17 files)
+- **Script:** `scripts/google-trends/02_heat_search_three_terms.py`
+- **Rows in → out:** 17 files × 129 months → 17 files × 129 months; 2 columns removed, 2 added. Checked after running: dates and the three kept terms are identical to the raw files, and `total_searches` equals their sum in every row.
+- **Output:** `data/processed/google-trends/heat-search/` (17 files, same names as the raw files); 7 rows added to `data/descriptions/data_descriptions.csv`
+- **Judgment calls:**
+  - **Columns removed, terms kept and the two new columns:** **specified by Gina.**
+  - **Column names `total_searches` / `avg_searches` as Gina specified.** They are sums and averages of Google's relative index values, not numbers of searches; the data descriptions say so. **Flagged to Gina in chat.**
+  - **`avg_searches` rounded to 2 decimals;** kept columns written as numbers. **Claude's choice, flagged to Gina in chat.**
+  - **Same file names as the raw files**, in a parallel processed folder. **Claude's choice.**
+- **Problem during the step:** The first run wrote the three kept columns as quoted text (e.g. `"2"`), which spreadsheet or charting tools could read as text. Fixed (written as numbers) and rerun; the first run's output was overwritten.
+- **Caveats for the appendix:**
+  - **Each file is scaled separately** (0–100 within that file), so `total_searches` can be compared across months within a city, but not between cities or states.
+  - **The three terms are summed with equal weight.** In each file, "fan" and "AC" are usually much higher than "air conditioner", so they dominate the total.
+
 ### Step 2 · Google Trends · 2026-09-27 · Gina + Claude
 - **What:** Added one more Google Trends download, `boston MA-Manchester-NH-heat-search.csv` (metro area **Boston MA-Manchester NH**), the same way as Step 1: copied **unchanged** (checked byte-for-byte), added to `trends_sources.csv` (now 17 rows), and the file count updated in the data descriptions. **No data values changed.**
 - **Why:** Gina added the Boston file to `~/Desktop/MDE/dataviz/trends-heat-search/` after Step 1.
