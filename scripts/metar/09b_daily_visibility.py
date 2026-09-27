@@ -1,6 +1,6 @@
 """
 Step 9b · METAR · Daily visibility per city (final output).
-For each city and each day (2016-01-01 to 2026-09-25, 3,921 days):
+For each city and each day (2016-01-01 to 2026-09-24, 3,920 days; D4):
   n_hours    = dry daytime city-hours that day
   extinction = mean of hourly extinction_km (1/km), only if n_hours >= 3
   visibility_mi = (3.912 / extinction) / 1.609344   (back-converted, Koschmieder)
@@ -17,7 +17,7 @@ OUT = "data/processed/metar/final"
 os.makedirs(OUT, exist_ok=True)
 
 K, MI_TO_KM, MIN_HOURS = 3.912, 1.609344, 3
-ALL_DAYS = pd.Index(pd.date_range("2016-01-01", "2026-09-25", freq="D").strftime("%Y-%m-%d"), name="date")
+ALL_DAYS = pd.Index(pd.date_range("2016-01-01", "2026-09-24", freq="D").strftime("%Y-%m-%d"), name="date")
 
 summary = []
 for path in sorted(glob.glob(f"{IN}/metar_*_cityhour.csv")):
@@ -60,5 +60,5 @@ for path in sorted(glob.glob(f"{IN}/metar_*_cityhour.csv")):
 summ = pd.DataFrame(summary)
 summ.to_csv(f"{OUT}/step09_summary.csv", index=False)
 print(summ.to_string(index=False))
-# Checks: every city has all 3,921 days; hours used + hours in short days = all city-hours
+# Checks: every city has all 3,920 days; hours used + hours in short days = all city-hours
 assert (summ.days == len(ALL_DAYS)).all()

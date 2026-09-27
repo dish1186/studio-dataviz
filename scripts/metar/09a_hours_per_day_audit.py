@@ -1,7 +1,7 @@
 """
 Step 9a · METAR · How many dry daytime hours does each day have? (read-only)
 For each city: distribution of dry daytime city-hours per calendar day (0-10),
-and how many of the 3,921 days would remain at minimum-hours thresholds 1-6.
+and how many of the 3,920 days would remain at minimum-hours thresholds 1-6.
 Removes and averages nothing.
 
 Run from the repo root:  python3 scripts/metar/09a_hours_per_day_audit.py
@@ -13,7 +13,7 @@ IN = "data/processed/metar/step08_city_hourly"
 OUT = "data/processed/metar/step09a_hours_per_day"
 os.makedirs(OUT, exist_ok=True)
 
-ALL_DAYS = pd.date_range("2016-01-01", "2026-09-25", freq="D").strftime("%Y-%m-%d")  # 3,921 days
+ALL_DAYS = pd.date_range("2016-01-01", "2026-09-24", freq="D").strftime("%Y-%m-%d")  # 3,920 days (D4: study period ends 2026-09-24)
 THRESHOLDS = [1, 2, 3, 4, 5, 6]
 
 dist_rows, trade_rows = [], []
