@@ -24,13 +24,15 @@ Dish keeps her own log (`data-log-dish.md`); the two may be combined later.
 4. Any threshold, filter or default Gina didn't specify is flagged as **Claude's choice, approved by Gina** or **changed by Gina**.
 
 ## Entry format
-Step · dataset · date · who ran it | What (plain language) | Why | Input file(s) | Script | Rows/values in → out (and what was removed or changed) | Output file | Judgment calls
+Step · dataset · date and time · who ran it | What (plain language) | Why | Input file(s) | Script | Rows/values in → out (and what was removed or changed) | Output file | Judgment calls
+
+**Timestamps:** Eastern time (EDT, the Mac's time zone). The time in each heading is when the entry was first committed to the repo, taken from the git history, which is normally within minutes of the step finishing. The retroactive city-selection entries (Steps 1–8) keep their run date in the heading and have a **Time** line with when they ran (from file times, where known) and when they were logged. Timestamps added 2026-09-27 at Gina's request; new entries get them as they are written.
 
 **Note on Steps 1–8:** these were run on 2026-09-26/27 before this log existed, and logged retroactively in Step 9. They did not follow Rule 1 (no step-by-step approval before running), and Rule 2/3 files were assembled afterwards. Judgment calls in them are marked **Claude's choice, flagged to Gina in chat; not yet approved**, unless Gina specified or changed them. Gina to review.
 
 ---
 
-### Step 5 · Google Trends · 2026-09-27 · Gina + Claude
+### Step 5 · Google Trends · 2026-09-27 15:01 EDT · Gina + Claude
 - **What:** Made processed copies of the 17 air-search files. Each keeps `Time`, "air purifier", "air filter" and "n95" unchanged (all three kept) and adds `total_interest_index` (their sum) and `avg_interest_index` (their average, 2 decimals). Added a `README.md` defining the 0–100 index. **Raw files not modified.**
 - **Why:** Gina asked to repeat the heat-search process for the air-quality searches.
 - **Input:** `data/raw/google-trends/air-search/*-air-search.csv` (17 files)
@@ -45,7 +47,7 @@ Step · dataset · date · who ran it | What (plain language) | Why | Input file
   - In **Eugene and Oregon the 100 is "air purifier" in September 2020**, the month of the Oregon wildfire smoke (compare OpenAQ: Eugene reference PM2.5 up to 468 µg/m³ that month).
   - As for heat search, the files are not comparable across places.
 
-### Step 4 · Google Trends · 2026-09-27 · Gina + Claude
+### Step 4 · Google Trends · 2026-09-27 15:01 EDT · Gina + Claude
 - **What:** Added Gina's 17 Google Trends air-quality search downloads to the repo **unchanged** (checked byte-for-byte), and wrote `trends_sources.csv` with each file's source, geography, level, date range, terms and settings. The hidden Mac file `.DS_Store` in the folder was not copied. **No data values changed.**
 - **Why:** Same as Google Trends Step 1, for the air-quality searches.
 - **Input:** `~/Desktop/MDE/dataviz/trends-air/*.csv` (17 files, downloaded by Gina 2026-09-27, file times 10:51–13:41)
@@ -59,7 +61,7 @@ Step · dataset · date · who ran it | What (plain language) | Why | Input file
   - **Boston recorded as the Boston MA-Manchester NH metro**, although this file is named just `boston-ma`. **Confirmed by Gina.**
   - **Settings as for heat search** (search terms, All categories, Web Search, downloaded 2026-09-27). **Confirmed by Gina.**
 
-### Step 3 · Google Trends · 2026-09-27 · Gina + Claude
+### Step 3 · Google Trends · 2026-09-27 14:51 EDT · Gina + Claude
 - **What:** Made processed copies of the 17 heat-search files. Each keeps `Time`, "air conditioner", "fan" and "AC" unchanged, removes "cooling center" and "cooling fan", and adds `total_interest_index` (sum of the three terms) and `avg_interest_index` (their average, 2 decimals). **Raw files not modified** (checked with `git status`).
 - **Why:** Gina asked for the three main heat-related terms, with a total and an average per month.
 - **Input:** `data/raw/google-trends/heat-search/*-heat-search.csv` (17 files)
@@ -77,7 +79,7 @@ Step · dataset · date · who ran it | What (plain language) | Why | Input file
   - **Each file is scaled separately** (0–100 within that file), so `total_interest_index` can be compared across months within a city, but not between cities or states.
   - **The three terms are summed with equal weight.** In each file, "fan" and "AC" are usually much higher than "air conditioner", so they dominate the total.
 
-### Step 2 · Google Trends · 2026-09-27 · Gina + Claude
+### Step 2 · Google Trends · 2026-09-27 14:48 EDT · Gina + Claude
 - **What:** Added one more Google Trends download, `boston MA-Manchester-NH-heat-search.csv` (metro area **Boston MA-Manchester NH**), the same way as Step 1: copied **unchanged** (checked byte-for-byte), added to `trends_sources.csv` (now 17 rows), and the file count updated in the data descriptions. **No data values changed.**
 - **Why:** Gina added the Boston file to `~/Desktop/MDE/dataviz/trends-heat-search/` after Step 1.
 - **Input:** `~/Desktop/MDE/dataviz/trends-heat-search/boston MA-Manchester-NH-heat-search.csv` (file time 2026-09-27 14:45)
@@ -90,7 +92,7 @@ Step · dataset · date · who ran it | What (plain language) | Why | Input file
 - **Correction:** Steps 1 and 2 first said each file has 128 months; the correct count is **129** (Jan 2016 to Sep 2026 = 10 × 12 + 9). Claude had read the number from a line count (`wc -l`) that misses the files' last line, which has no line ending. `trends_sources.csv` was always correct (n_months = 129 for all 17 files); only the log and description text were wrong, now fixed.
 - **Note:** Boston is covered by a **metro** file, while most other study cities are covered by city (or state) files, so the geographic level differs.
 
-### Step 1 · Google Trends · 2026-09-27 · Gina + Claude
+### Step 1 · Google Trends · 2026-09-27 14:46 EDT · Gina + Claude
 - **What:** Added Gina's 16 Google Trends downloads to the repo **unchanged**, and wrote `trends_sources.csv` next to them, with one row per file: source, geography selected, level, date range, search terms and settings. **No data values changed.**
 - **Why:** Gina asked for the files to be in the raw data folder, labelled with their source (Google Trends), date range and geography. The files themselves contain no metadata, so the geography is only in the file name.
 - **Input:** `~/Desktop/MDE/dataviz/trends-heat-search/*.csv` (16 files, downloaded by Gina from Google Trends on 2026-09-27)
@@ -111,7 +113,7 @@ Step · dataset · date · who ran it | What (plain language) | Why | Input file
   - **"fan" and "AC" are ambiguous terms** (e.g. sports fans, other meanings of AC).
   - **"cooling center" is mostly 0** (too little search volume).
 
-### Step 15 · descriptions · 2026-09-27 · Gina + Claude
+### Step 15 · descriptions · 2026-09-27 14:35 EDT · Gina + Claude
 - **What:** Added a **key terms** section at the top of `data/descriptions/data_descriptions.csv`: 21 rows with `file` = "KEY TERM", one per term (PM2.5, reference monitor, low-cost sensor, AirNow, sensor, location, site, city limits, city center, fallback sensor, study period, sensor-day, valid day, flag, negative values, low-cost outlier rule, counted sensor-day, site-day, city daily mean, overall city daily mean, min / max). Each has a plain definition, units, source (with links), formula where relevant, and pointers to the detailed rows, steps and decisions. **Documentation only: no data changed.**
 - **Why:** Gina asked where reference vs low-cost is defined. The definition existed, but only under the raw field `isMonitor`, and other key terms were spread across rows and log entries.
 - **Script:** none (documentation, written by Claude).
@@ -120,7 +122,7 @@ Step · dataset · date · who ran it | What (plain language) | Why | Input file
   - The AirNow definition (preliminary data, validated data in EPA's AQS) was checked against AirNow's "About the Data" page (https://www.airnow.gov/about-the-data/) and the link added.
   - The first version of "low-cost sensor" said these sensors "can read high, especially in humid air"; this is widely reported but was not sourced here, so Claude removed it. It can be restored with a citation (e.g. EPA material on low-cost sensor corrections) if the appendix needs it.
 
-### Step 14 · descriptions · 2026-09-27 · Gina + Claude
+### Step 14 · descriptions · 2026-09-27 14:21 EDT · Gina + Claude
 - **What:** Added the Step 5 audit files and coverage summary to `data/descriptions/data_descriptions.csv`, each with description, units, source and formula. **Documentation only: no data changed.**
   - `audit/sensor_day_audit_<city>.csv`: 1 file row + 16 columns
   - `audit/site_daily_<city>.csv`: 1 + 7
@@ -128,7 +130,7 @@ Step · dataset · date · who ran it | What (plain language) | Why | Input file
 - **Why:** Gina asked for the audit files to be in the definitions document too. The coverage summary was added with them, since it was the other Step 5 file not yet described. **Claude's choice, flagged to Gina in chat.**
 - **Script:** none (documentation). Checked that the columns described match each file's header exactly.
 
-### Step 13 · descriptions · 2026-09-27 · Gina + Claude
+### Step 13 · descriptions · 2026-09-27 14:20 EDT · Gina + Claude
 - **What:** Added the columns of the final daily city files (`data/processed/openaq/step05_averages/pm25_<city>_daily.csv`) to `data/descriptions/data_descriptions.csv`: 1 file row + 18 column rows, each with description, units, source and formula. **Documentation only: no data changed.**
 - **Why:** Gina asked for the definitions document to cover the daily results, not only raw files.
 - **Script:** none (documentation, written by Claude). Checked that the 18 columns described match the file header exactly.
@@ -136,7 +138,7 @@ Step · dataset · date · who ran it | What (plain language) | Why | Input file
   - **The descriptions file now covers this processed file as well as raw files.** Its `file` column gives the path under `data/` (`processed/...`) to tell them apart. **Changed by Gina** (Step 10 had scoped it to raw files).
   - **Audit and coverage files** were added in Step 14.
 
-### Step 5 · OpenAQ · 2026-09-27 · Gina + Claude
+### Step 5 · OpenAQ · 2026-09-27 14:17 EDT · Gina + Claude
 - **What:** Built **daily PM2.5 averages per city**: reference, low-cost and overall. Each is built from site averages, with the min and max across sites, the number of sites, and the site and sensor IDs used each day. Every sensor-day is recorded in an audit file as included or excluded, with the reason.
 - **Why:** Gina needs one value per city per day that combines all the sites and sensors measuring in the city, fully traceable.
 - **Input:** `data/processed/openaq/step04_daily/openaq_pm25_<city>_daily_sensors.csv`; site IDs from Step 3
@@ -206,14 +208,14 @@ Step · dataset · date · who ran it | What (plain language) | Why | Input file
   - **Overall average composition changes over time:** reference only until low-cost sensors appear (2021–2025 depending on city), mixed after. The column `all_mean_basis` records which, day by day.
   - **Files:** `sensor_day_audit_losangeles.csv` is 29 MB and `site_daily_losangeles.csv` 14 MB (below GitHub's 50 MB warning).
 
-### Decision OA-D7 · OpenAQ · 2026-09-27 · Gina
+### Decision OA-D7 · OpenAQ · 2026-09-27 14:12 EDT · Gina
 - **What:** How OpenAQ-flagged days are treated in Step 5.
   - **Reference sensor-days with `hasFlags = true` are kept.** The flagged hour (negative) is already excluded from OpenAQ's daily value (Step 5a); the rest of the day is valid. Dropping them would remove 9,009 mostly clean-air days and bias reference averages upward.
   - **Low-cost sensor-days with `hasFlags = true` are removed.** The flagged hour is above 1,000 µg/m³ and is still inside OpenAQ's daily value (Step 5a), a sign of malfunction. This affects 523 valid sensor-days (0.2% of valid low-cost sensor-days), overlapping with OA-D6.
 - **Who:** **Claude's recommendation, approved by Gina.**
 - **Order in Step 5:** valid-day check (≥ 18 h) → negatives set to 0 (OA-D5) → flagged low-cost removed (OA-D7) → outlier rule (OA-D6, using only sensor-days still included) → site average → city averages.
 
-### Step 5a · OpenAQ · 2026-09-27 · Gina + Claude
+### Step 5a · OpenAQ · 2026-09-27 14:08 EDT · Gina + Claude
 - **What:** Read-only audit of what OpenAQ's `hasFlags` means. Downloaded all flags for the 95 kept sensors with at least one flagged day, counted flag types, and checked 2 flagged days hour by hour against the daily value. **Nothing removed or changed.**
 - **Why:** 10.6% of valid reference sensor-days are flagged (Step 4); Gina asked to understand what that means before deciding whether flagged days count.
 - **Input:** `data/processed/openaq/step04_daily/`; OpenAQ API v3 `/v3/sensors/{id}/flags` and, for the 2 checks, `/v3/sensors/{id}/measurements`
@@ -230,7 +232,7 @@ Step · dataset · date · who ran it | What (plain language) | Why | Input file
 - **Judgment calls:** Only 2 days were checked hour by hour; the pattern is consistent with all 55,531 flag notes but not verified on every day. **Claude's choice, flagged to Gina in chat.**
 - **Problem during the step:** The flags endpoint ignores `limit` and `page` and returns all flags every time (sensor 2436: 1,130 flags returned for page 1, 2 and 50). The first run treated a full page as "more pages to come" and looped on the 14th sensor for ~25 minutes. Claude stopped it, changed the script to one request per sensor (checked against `meta.found`), and reran, reusing the 13 files already saved (all under 1,000 flags, so complete).
 
-### Decision OA-D6 · OpenAQ · 2026-09-27 · Gina
+### Decision OA-D6 · OpenAQ · 2026-09-27 14:03 EDT · Gina
 - **What:** A rule for removing **low-cost** sensor-day readings that are glitches, applied in Step 5 before any average. Reference monitors are not subject to it. Values are checked after negatives are set to 0 (OA-D5). "Reference average" = the mean of the city's valid reference sensor-days that day; "other low-cost median" = the median of the city's other valid low-cost sensor-days that day.
 
   A low-cost sensor-day is **removed** if it is **> 100 µg/m³** and:
@@ -259,13 +261,13 @@ Step · dataset · date · who ran it | What (plain language) | Why | Input file
   - A removed low-cost reading may sometimes be real but hyper-local (a sensor next to a local source), not a malfunction. Either way it does not represent the city's air.
   - Expected effect: about 140 of ~302,000 valid low-cost sensor-days (0.05%); the exact count will be in Step 5.
 
-### Decision OA-D5 · OpenAQ · 2026-09-27 · Gina
+### Decision OA-D5 · OpenAQ · 2026-09-27 14:03 EDT · Gina
 - **What:** **Negative daily PM2.5 values are set to 0 µg/m³** before any site or city average is calculated. The raw files and Step 4 CSVs keep the original values, and the Step 5 audit file will show both.
 - **Why:** 26 sensor-days in the study period have a negative daily mean (24 Fairbanks, 2 San Francisco). Physically, concentration can't be below 0.
 - **Options:** Claude suggested keeping them as measured (small negatives are a known instrument quirk in very clean air); the alternatives were set to 0 or drop. **Changed by Gina: set to 0.**
 - **Documentation:** noted in `data/descriptions/data_descriptions.csv` on the daily `value` field, at Gina's request.
 
-### Step 4 · OpenAQ · 2026-09-27 · Gina + Claude
+### Step 4 · OpenAQ · 2026-09-27 13:29 EDT · Gina + Claude
 - **What:** Downloaded OpenAQ's daily PM2.5 values for all 549 kept sensors (Step 3), 2016-03-06 to 2026-09-25, one calendar year per request. Flattened them into one CSV per city: one row per sensor per local day, with the day's mean, hourly min/median/max/sd, hours observed and flags. `valid_day` = 1 when at least 18 hours were observed. **No values changed, no days removed.**
 - **Why:** The data for the site and city averages (Step 5).
 - **Input:** `data/processed/openaq/step03_final/openaq_sensors_final.csv` (kept sensors); OpenAQ API v3 `/v3/sensors/{id}/days`. OpenAQ Docs: the daily value is "computed from the hourly average values from 01:00 to 0:00 in local time".
@@ -312,14 +314,14 @@ Step · dataset · date · who ran it | What (plain language) | Why | Input file
   - **No filtering in this step;** invalid, negative and extreme values kept and flagged. **Claude's choice, approved by Gina.**
 - **Change during the step:** After 32 sensors, the run was stopped and restarted with faster pacing: a 0.3 s pause plus a self-imposed budget of 55 requests/minute and 1,850/hour, under OpenAQ's free-tier limits of 60/minute and 2,000/hour. **Changed by Gina** (chose this from Claude's two options). The run resumed without re-downloading the 32. The Mac was kept awake with `caffeinate` for the run, at Gina's request. Total run time about 35 minutes after the restart.
 
-### Decision OA-D4 · OpenAQ · 2026-09-27 · Gina
+### Decision OA-D4 · OpenAQ · 2026-09-27 12:44 EDT · Gina
 - **What:** A fallback sensor must be **closer to its own city's limits than to any other study city's limits**; otherwise no city uses it. Step 3 was rerun with this rule; its outputs were overwritten and the Step 3 entry below is updated.
 - **Why:** Step 3's traceability columns showed that 4 of Warren's fallback sensors were much closer to Detroit's limits than to Warren's. **Oak Park** (reference): 2.0 km from Detroit vs 8.1 km from Warren. **HFH CURES 6, 17, 18** (low-cost): 0.2–1.3 km vs 7.4–9.4 km. They measure air at Detroit's edge, not Warren's. (Measured from city hall, Oak Park is closer to Warren, 14.1 km vs 18.7 km, because Detroit's city hall is far south; the rule uses city limits.)
 - **Options:** (a) keep the Step 2 rule, "nearest city that needs it"; (b) the stricter rule. **Changed by Gina: chose (b)**, as recommended by Claude.
 - **These 4 sensors don't go to Detroit either.** Detroit has its own sensors of both types, and fallbacks are only for cities with none of that type. They're recorded as "fallback closer to another study city". **Claude's explanation, confirmed by Gina's question in chat; not separately approved.**
 - **Effect:** Warren: reference 1 → **0** sites; low-cost 7 → **4** sites (Madison Heights, S Campbell Rd & E 3rd St, Royal Oak, Dodge Park & Utica). Ann Arbor unchanged (Ypsilanti has no other study city within 10 km). Totals: 560 → **556 sensors, 496 → 492 sites** (549 at 489 after the Step 3 correction). **Cities with no reference average: Warren, Delano, Raymondville.**
 
-### Step 3 · OpenAQ · 2026-09-27 · Gina + Claude
+### Step 3 · OpenAQ · 2026-09-27 12:38 EDT · Gina + Claude
 - **What:** Made the final list of sensors per city and grouped them into sites. Kept sensors inside city limits, plus fallback sensors within the 10 km cap, US only (Decision OA-D3). Sensors of the same type in the same city within 50 m of each other were grouped into one site (chained). Added traceability columns: other study cities within 10 km of each sensor, and the cities whose Step 1 search circle it fell in. **No measurements downloaded.**
 - **Why:** Decision OA-D3, and Gina's requirement that it be traceable which sensors go into which calculation, and why.
 - **Input:** `data/processed/openaq/step02_assignment/openaq_sensors_assigned.csv` and `city_boundaries.geojson`; `data/processed/openaq/step01_inventory/openaq_sensors_inventory.csv`; country codes from the raw `data/raw/openaq/json/locations_*.json`
@@ -376,7 +378,7 @@ Step · dataset · date · who ran it | What (plain language) | Why | Input file
 
   Gina chose to exclude them (OA-D4).
 
-### Decision OA-D3 · OpenAQ · 2026-09-27 · Gina
+### Decision OA-D3 · OpenAQ · 2026-09-27 12:38 EDT · Gina
 - **What:**
   1. **Fallback cap: 10 km beyond city limits.** Ann Arbor gets the Ypsilanti reference monitor (6.9 km). Warren gets Oak Park (reference, 8.1 km, from Dec 2024) and 7 low-cost sensors. **Claude's recommendation, approved by Gina** after seeing the Step 2 cap options.
   2. **US monitors only.** Canadian (Windsor) monitors are excluded. **Claude's recommendation, approved by Gina.**
@@ -385,7 +387,7 @@ Step · dataset · date · who ran it | What (plain language) | Why | Input file
   5. **Three city averages** (reference, low-cost, overall), each with the mean, min and max across sites, the number of sites and the site IDs used. **Specified by Gina.** "Overall" = the mean of the reference average and the low-cost average (each type weighted 50%); on days with only one type, overall = that type. **Changed by Gina** (chose option b from Claude's two options).
 - **Still open:** min/max are the lowest and highest site value of the day (spread across the city). OpenAQ's within-day hourly min/max will also be kept in the raw daily files. **Claude's choice, not yet approved.**
 
-### Step 2 · OpenAQ · 2026-09-27 · Gina + Claude
+### Step 2 · OpenAQ · 2026-09-27 12:05 EDT · Gina + Claude
 - **What:** Checked which city's limits each PM2.5 sensor is inside, and each sensor's distance to the limits of nearby cities. Sensors inside limits were assigned to that city. For each city and sensor type with no sensor inside its limits, listed the fallback options at caps of 5, 10, 15 and 20 km beyond the limits. **No measurements downloaded; no sensors dropped; the cap isn't chosen yet.**
 - **Why:** Decision OA-D1 (city limits first, nearest-city fallback). Gina chose to decide the cap after seeing these counts (OA-D2).
 - **Input:**
@@ -423,7 +425,7 @@ Step · dataset · date · who ran it | What (plain language) | Why | Input file
   - **NAD83 (Census) vs WGS84 (OpenAQ) difference ignored** (< 2 m). **Claude's choice, approved by Gina.**
 - **Known limitation:** The Step 1 net reaches at least 16 km beyond the limits of the small cities (Warren 16.4, Delano 16.5, Ann Arbor 17.7), so the 20 km cap counts may miss sensors 16–20 km out. The 5, 10 and 15 km counts are complete.
 
-### Step 12 · descriptions · 2026-09-27 · Gina + Claude
+### Step 12 · descriptions · 2026-09-27 11:06 EDT · Gina + Claude
 - **What:** Added OpenAQ's own definitions of reference-grade monitors and low-cost sensors to the `isMonitor` row of `data/descriptions/data_descriptions.csv`, and examples of each type to the `instruments[].name` row. **Documentation only: no data changed.**
 - **Why:** Gina asked for the difference between the two sensor types, from the API/OpenAQ documentation, to be in the definitions document.
 - **Input:**
@@ -434,14 +436,14 @@ Step · dataset · date · who ran it | What (plain language) | Why | Input file
 - **Output:** `data/descriptions/data_descriptions.csv`
 - **Judgment calls:** OpenAQ's wording paraphrased, with the source pages cited. **Claude's choice, approved by Gina.**
 
-### Decision OA-D2 · OpenAQ · 2026-09-27 · Gina
+### Decision OA-D2 · OpenAQ · 2026-09-27 11:06 EDT · Gina
 - **What:**
   1. **The PM2.5 series starts on 2016-03-06**, the first date with OpenAQ data at any sensor (Step 1), instead of 2016-01-01. **Changed by Gina** (chose this from Claude's three options; the others were filling Jan–Feb 2016 from EPA's archive, or asking Dish to move her start date).
   2. **Three city averages planned:** reference sensors only, low-cost sensors only, and all sensors. **Specified by Gina.** How the "all sensors" average is weighted is still open (see the Step 1 counts: e.g. Los Angeles has 13 reference vs 269 low-cost sensors).
   3. **The fallback distance cap will be chosen after Step 2**, once its output shows what each cap would keep. **Specified by Gina.**
 - **Consequence:** the OpenAQ PM2.5 series is 2 months shorter than Dish's METAR visibility series (2016-01-01 – 2026-09-25). Comparisons between the two should use the shared period.
 
-### Step 1 · OpenAQ · 2026-09-27 · Gina + Claude
+### Step 1 · OpenAQ · 2026-09-27 10:58 EDT · Gina + Claude
 - **What:** Read-only inventory of every OpenAQ location with a PM2.5 sensor within 25 km of each city's center (city hall), and each PM2.5 sensor's first and last measurement date. **No measurements downloaded; nothing assigned to a city yet.**
 - **Why:** To see which sensors exist near each city, what type they are and how far back they go, before choosing which ones count (Step 2) and downloading data.
 - **Input:**
@@ -494,7 +496,7 @@ Step · dataset · date · who ran it | What (plain language) | Why | Input file
 - **Problem during the step:** The first run stopped at Warren (no geocoder match) before contacting OpenAQ, as designed. It had written 7 geocoder files. Claude deleted Warren's empty response before the rerun (a raw file, but a failed lookup); the other 6 were overwritten with identical results by the rerun.
 - **Known limitation:** Los Angeles, Phoenix and San Diego extend past 25 km from city hall in places. Step 2 will check city limits and fill any gap with an extra search.
 
-### Decision OA-D1 · OpenAQ · 2026-09-27 · Gina
+### Decision OA-D1 · OpenAQ · 2026-09-27 10:58 EDT · Gina
 - **What:** Set the approach for the OpenAQ PM2.5 data before any data was pulled.
   1. **Cities:** the 15 Gina listed plus **Boston** (added by Gina).
   2. **Proximity:** sensors inside **city limits**. Where a city has none, fall back to the **nearest sensors outside its limits that are not inside another listed city**, and log it. A sensor belongs to one city only. **Claude's recommendation, approved by Gina.**
@@ -504,7 +506,7 @@ Step · dataset · date · who ran it | What (plain language) | Why | Input file
   6. **File layout:** one sensor inventory for all cities, plus one daily file per city; raw API responses saved as received. **Claude's recommendation, approved by Gina.**
 - **Open for Step 2:** how far the fallback may reach (Claude suggested a 10–15 km cap beyond city limits, with "no local sensor" beyond that).
 
-### Step 11 · descriptions · 2026-09-27 · Gina + Claude
+### Step 11 · descriptions · 2026-09-27 10:12 EDT · Gina + Claude
 - **What:** Changed the data descriptions from Markdown to CSV. Each table row from `data_descriptions.md` became a CSV row, with the file name in its own column; the Markdown file was removed. Wording unchanged.
 - **Why:** Gina asked for a CSV instead.
 - **Input:** `data/descriptions/data_descriptions.md` (Step 10)
@@ -515,7 +517,7 @@ Step · dataset · date · who ran it | What (plain language) | Why | Input file
   - **CSV replaces the Markdown**, rather than keeping both. **Changed by Gina.**
   - **The Markdown file's intro text was not carried over.** It said the file covers Gina's raw files only and is updated with every new raw file; both points are recorded in Step 10. **Claude's choice, flagged to Gina in chat; not yet approved.**
 
-### Step 10 · descriptions · 2026-09-27 · Gina + Claude
+### Step 10 · descriptions · 2026-09-27 10:09 EDT · Gina + Claude
 - **What:** Wrote a column-by-column description of every raw file Gina has added: what each value is, its type or units, its source, and the formula when it's calculated. **Documentation only: no data changed.**
 - **Why:** So anyone reading the raw files knows what each column means and where it comes from, without having to trace the scripts.
 - **Input:** the 5 files in `data/raw/city-selection/`; the ALA *State of the Air 2026* report (About This Report, pp. 7–12, from `~/Desktop/MDE/dataviz/State-of-the-Air-2026-Report.pdf`) for the ranking methods; the Media Cloud API endpoints used in Steps 2–6.
@@ -529,7 +531,7 @@ Step · dataset · date · who ran it | What (plain language) | Why | Input file
   - **Downstream formulas included** where a raw column feeds one (e.g. coverage index = `relevant_total_stories` ÷ `source_count`). **Claude's choice, approved by Gina.**
   - **ALA method summarized from the report itself.** Short-term: county weighted average of unhealthy 24-hour PM2.5 days in 2022–2024 (orange ×1, red ×1.5, purple ×2, maroon ×2.5, ÷ 3). Year-round: county annual PM2.5 design value. In both, the metro takes its worst county. **Claude's choice, approved by Gina.**
 
-### Step 9 · city-selection · 2026-09-27 · Gina + Claude
+### Step 9 · city-selection · 2026-09-27 10:00 EDT · Gina + Claude
 - **What:** Started this log and filled in Steps 1–8 retroactively. Created `data/raw/city-selection/`, `data/processed/city-selection/` (one subfolder per step) and `scripts/city-selection/`, and added the scripts and intermediate files from the analysis.
 - **Why:** Gina asked for a log in the same format as Dish's, and for the city-selection analysis to be traceable in the repo.
 - **Input:** the local files in `~/Desktop/MDE/dataviz/` (`mediacloud_air_pollution_by_state.csv`, `news_coverage_by_city.csv`, `air_pollution_cities_by_state.csv`), Gina's `news_coverage_by_state_cross_pm.numbers`, and the commands and terminal output from this chat session.
@@ -546,6 +548,7 @@ Step · dataset · date · who ran it | What (plain language) | Why | Input file
   - `mediacloud_air_pollution_US_national_vs_state.csv` (Step 4) is no longer in `~/Desktop/MDE/dataviz/`. The repo copy was regenerated by re-running `04b_write_us_csv.py`, which contains the values as typed in on 2026-09-26.
 
 ### Step 8 · city-selection · 2026-09-27 · Gina + Claude
+- **Time:** 2026-09-27, in chat between 09:28 and 09:47 EDT (no file at the time). Logged retroactively 2026-09-27 10:00 EDT (Step 9).
 - **What:** Listed the top 3 cities in each pollution × coverage group, for both state-level and city-level coverage (Step 7 groups).
 - **Why:** Gina asked for the strongest examples of each group, to compare the two methods.
 - **Input:** `data/processed/city-selection/step06_city_coverage/news_coverage_by_city.csv`, `step03_state_coverage/mediacloud_air_pollution_by_state.csv`, `data/raw/city-selection/ala_sota2026_pm25_rankings_transcribed.csv`
@@ -568,6 +571,7 @@ Step · dataset · date · who ran it | What (plain language) | Why | Input file
 - **Caveat for the appendix:** Delano is also a surname, so its low count may include unrelated stories. Without it, Harlingen (TX) is #3 in city-level high pollution / low coverage.
 
 ### Step 7 · city-selection · 2026-09-27 · Gina + Claude
+- **Time:** ran 2026-09-27, workbook written 09:28 EDT; pushed to the repo 09:47 EDT. Logged retroactively 2026-09-27 10:00 EDT (Step 9).
 - **What:** Built one workbook crossing the ALA PM2.5 ranks with state-level and city-level coverage, one row per city (36). Each city gets a **pollution score** (the mean of its metro's available ALA ranks), a coverage index and rank under each method, and a group ("High/Low pollution / High/Low coverage") under each method. It also flags whether the group changes between methods. Indexes, ranks, thresholds and groups are live Excel formulas.
 - **Why:** Gina asked to compare how rankings change between state-level and city-level mentions, grouped by pollution and coverage.
 - **Input:** Gina's `news_coverage_by_state_cross_pm.numbers` (Step 5; ALA ranks + state-level data) and `news_coverage_by_city.csv` (Step 6)
@@ -586,6 +590,7 @@ Step · dataset · date · who ran it | What (plain language) | Why | Input file
 - **Caveat for the appendix:** "Low pollution" is relative. Every metro here is among the most PM2.5-polluted in the US. Coverage indexes are not comparable across states in absolute terms: the index divides by the collection's source count (77 in Alaska vs 1,283 in California), so small collections inflate it (Fairbanks: 144 stories, index 1.87).
 
 ### Step 6 · city-selection · 2026-09-26/27 · Gina + Claude
+- **Time:** ran 2026-09-26/27, output file written 2026-09-27 00:19 EDT. Logged retroactively 2026-09-27 10:00 EDT (Step 9).
 - **What:** Counted Total Stories for `("air pollution" OR "air quality") AND "[city]"` for each of the **36 cities** in the ALA list, each searched on its own in its state's collection, 2024-09-25 to 2026-09-25.
 - **Why:** State-level counts give every city in a state the same number. City-level counts show which places the coverage is actually about. Method specified by Gina.
 - **Input:** Media Cloud API (`/api/search/total-count`), collections from Step 2; city list from Step 1
@@ -601,6 +606,7 @@ Step · dataset · date · who ran it | What (plain language) | Why | Input file
 - **Caveat for the appendix:** the AND only requires that the city name appear somewhere in a story that mentions air pollution or air quality. It doesn't show the story is about that city's air.
 
 ### Step 5 · city-selection · 2026-09-26 · Gina
+- **Time:** done by Gina 2026-09-26: CSV saved 22:11 EDT, Numbers file 22:15 EDT. Logged retroactively 2026-09-27 10:00 EDT (Step 9).
 - **What:** Gina combined the ALA ranks (Step 1) with the state-level Media Cloud results (Step 3) in one table, one row per metro area and state: metro, city_1–3, state, ALA short-term and year-round PM2.5 rank, then all Step 3 columns. The Pittsburgh-Weirton-Steubenville metro has 3 rows (PA, OH, WV). Done by Gina in Numbers, without Claude.
 - **Why:** Puts pollution rank and state coverage side by side for each metro.
 - **Input:** ALA rankings (Step 1), `mediacloud_air_pollution_by_state.csv` (Step 3)
@@ -610,6 +616,7 @@ Step · dataset · date · who ran it | What (plain language) | Why | Input file
 - **Judgment calls:** Gina's own (column layout, one row per state for the multi-state metro).
 
 ### Step 4 · city-selection · 2026-09-26 · Gina + Claude
+- **Time:** ran 2026-09-26, time not recorded (local output file no longer exists). Logged retroactively 2026-09-27 10:00 EDT (Step 9).
 - **What:** Ran the search once in the national collection instead of the state collections: `("air pollution" OR "air quality") AND "[State]"` in **United States - National** (`cs=34412234`, 246 sources), one query per state (10), 2024-09-25 to 2026-09-25.
 - **Why:** Gina wanted to see whether results differ from the per-state collections.
 - **Input:** Media Cloud API (`/api/sources/collections/`, `/api/search/total-count`)
@@ -623,6 +630,7 @@ Step · dataset · date · who ran it | What (plain language) | Why | Input file
 - **Caveat for the appendix:** state names also match unrelated uses (e.g. "Indiana Jones"), and a national story can list several states.
 
 ### Step 3 · city-selection · 2026-09-26 · Gina + Claude
+- **Time:** ran 2026-09-26, output file written 21:59 EDT. Logged retroactively 2026-09-27 10:00 EDT (Step 9).
 - **What:** Counted Total Stories (Media Cloud "Total Attention") for `"air pollution" OR "air quality"` in each of the 10 state collections, 2024-09-25 to 2026-09-25, and computed **index = total stories ÷ sources in the collection**.
 - **Why:** Gina's method, to compare how much each state's local media cover air quality.
 - **Input:** Media Cloud API (`/api/search/total-count`), collection IDs and source counts from Step 2
@@ -636,6 +644,7 @@ Step · dataset · date · who ran it | What (plain language) | Why | Input file
   - Index rounded to 2 decimals in the CSV. **Claude's choice.**
 
 ### Step 2 · city-selection · 2026-09-26 · Gina + Claude
+- **Time:** ran 2026-09-26, time not recorded (before Step 3). Logged retroactively 2026-09-27 10:00 EDT (Step 9).
 - **What:** Found each state's Media Cloud collection and its number of sources, for the 10 states in the ALA list (CA, OR, TX, AK, MI, IN, PA, OH, WV, AZ).
 - **Why:** Step 1 of Gina's method ("In Collections, select the specific state").
 - **Input:** Media Cloud API (`/api/sources/collections/?name=<state>`)
@@ -647,6 +656,7 @@ Step · dataset · date · who ran it | What (plain language) | Why | Input file
 - **Note:** A first attempt used the `mediacloud` Python client and hung for several minutes with no output. The likely cause is the same SSL problem found in Step 6. Claude switched to `curl`. The client's results arrived later and matched; they weren't used.
 
 ### Step 1 · city-selection · 2026-09-26 · Gina
+- **Time:** ran 2026-09-26, time not recorded (before Step 2). Logged retroactively 2026-09-27 10:00 EDT (Step 9).
 - **What:** Gina supplied the list of metro areas and their ALA *State of the Air 2026* PM2.5 ranks (short-term and year-round) as a screenshot: 15 metro areas, named City1-City2-State, one with three states (PA-OH-WV).
 - **Why:** Defines the cities for the city-selection analysis.
 - **Input:** screenshot of the ALA ranking table (supplied twice in chat, same content)
