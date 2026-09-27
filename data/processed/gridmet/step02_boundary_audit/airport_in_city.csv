@@ -11,3 +11,10 @@ pittsburgh,AGC,False,1.1950548087965633,next to the city (handoff)
 pittsburgh,PIT,False,12.124296231395922,outside (handoff)
 boston,BOS,True,0.0,not checked
 fairbanks,PAFA,False,4.272274936672036,not checked
+annarbor,ARB,False,0.6150385628048987,not checked
+warren,VLL,False,7.485075882051708,not checked
+delano,DLO,True,0.0,not checked
+sandiego,SAN,True,0.0,not checked
+phoenix,PHX,True,0.0,not checked
+raymondville,HRL,False,27.61867472336335,"outside, Harlingen (D5)"
+springfield,EUG,False,13.678268328911692,not checked; shared with Eugene (D5)

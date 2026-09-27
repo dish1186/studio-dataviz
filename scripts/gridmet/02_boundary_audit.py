@@ -19,6 +19,7 @@ OUT = "data/processed/gridmet/step02_boundary_audit"
 os.makedirs(OUT, exist_ok=True)
 
 # city key -> (state FIPS, Census NAME). Fairbanks: airport check only (no gridMET in AK).
+# Airport check covers every station listed for the city in metar_station_distances.csv.
 CITIES = {
     "bakersfield":  ("06", "Bakersfield"),
     "fresno":       ("06", "Fresno"),
@@ -30,6 +31,14 @@ CITIES = {
     "pittsburgh":   ("42", "Pittsburgh"),
     "boston":       ("25", "Boston"),
     "fairbanks":    ("02", "Fairbanks"),
+    # Added 2026-09-27 (gridMET extension to METAR's D5 cities; airport check closes METAR D7)
+    "annarbor":     ("26", "Ann Arbor"),
+    "warren":       ("26", "Warren"),
+    "delano":       ("06", "Delano"),
+    "sandiego":     ("06", "San Diego"),
+    "phoenix":      ("04", "Phoenix"),
+    "raymondville": ("48", "Raymondville"),
+    "springfield":  ("41", "Springfield"),   # own city-limits polygon; airport EUG shared with Eugene
 }
 GRIDMET_DEG = 1 / 24  # gridMET cell size (~4 km)
 

@@ -490,5 +490,19 @@ Step · dataset · date · who ran it | What (plain language) | Why | Input file
 - **SHA-256:** 04 `7c52a87725285cd6e6655daf6cf733c37942256bc7e190ac01ddb174a0acd330`
 - **Judgment calls:** none new (same source, vintage and folder as Step 1).
 
+### Step 2b (7 added cities) · gridMET · 2026-09-27 · Dish + Claude
+- **What:** Read-only boundary audit for Ann Arbor, Warren, Delano, San Diego, Phoenix, Raymondville and Springfield, same method as Step 2 (areas, polygon pieces, approx. gridMET cells), plus the airport-in-city check for their METAR stations. **Nothing changed in raw data.**
+- **Why:** Numbers for preparing the 7 new ClimateEngine polygons (Step 3b), and to close METAR's deferred in-city check (D7) at no extra cost.
+- **Input:** `data/raw/gridmet/tiger_places/tl_2025_{04,06,26,41,48}_place.zip` (not modified) · `data/processed/metar/metar_station_distances.csv` (not modified; METAR frozen, D8)
+- **Script:** `scripts/gridmet/02_boundary_audit.py` (7 cities added to the city list; nothing else changed)
+- **Output:** `data/processed/gridmet/step02_boundary_audit/` → `boundary_audit.csv` (10 → 17 cities), `boundary_parts.csv` (197 → 234 pieces), `airport_in_city.csv` (12 → 19 rows). **Original rows byte-identical to the previous files** (checked against copies taken before the run).
+- **Census matches (exactly one each, NAME + "<name> city"):** Ann Arbor 2603000 · Warren 2684000 · Delano 0618394 · San Diego 0666000 · **Phoenix 0455000** · Raymondville 4860836 · Springfield 4169600. The six from the METAR chat are confirmed.
+- **Findings (boundaries):** land / water km², pieces, approx. gridMET cells: Ann Arbor 73.6 / 2.3 · 6 (detached total 0.07 km²) · 6 · Warren 89.0 / 0.2 · 1 · 5 · **Delano 38.1 / 0.1 · 3 (largest detached 1.65 km², 0.8 km away)** · 4 · San Diego 844.4 / 42.1 (4.8% water) · 3 (largest detached 0.26 km², 2.7 km) · 50 · Phoenix 1,342.7 / 2.6 · 2 (detached 0.28 km²) · 75 · **Raymondville 10.7 / 0.03 · 1 · ~1 cell** · Springfield 41.6 / 0.0 · 21 (slivers, largest 0.42 km²) · 3.
+- **Findings (airports, closes D7):** **inside:** DLO, SAN, PHX. **Outside:** ARB 0.6 km · VLL 7.5 km · EUG→Springfield 13.7 km · HRL→Raymondville 27.6 km beyond the boundary. Recorded here only; `metar_station_distances.csv` keeps "not checked" (frozen, D8).
+- **Caveats:** Raymondville's city mean is effectively one gridMET cell; Delano and Springfield 3–4. Springfield borders Eugene, so they share edge cells.
+- **Judgment calls:**
+  - Rewrote the three Step 2 CSVs with all 17 cities (rather than separate files), after verifying the original rows are unchanged. **Claude's choice, approved by Dish.**
+  - Airport check for the 7 new stations included (reopens D7). **Approved by Dish.**
+
 ---
 **METAR pipeline status (2026-09-27, final):** **Closed (D8).** 17 cities, Steps 0–9b complete, ending 2026-09-24 (D4); final files frozen. Step 8b distances cover all 18 stations. Not done, by choice: in-city check for the new stations (D7), review of 7 low days, ASOS algorithm citation (appendix), Phoenix story decision; city-hall spot-check pending with Dish. New caveat: Ann Arbor outage from ~2026-06-17 (last valid day 2026-08-05).
