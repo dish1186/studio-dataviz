@@ -1,0 +1,10 @@
+city,geoid,pieces_before,pieces_after,area_before_km2,area_after_km2,removed_km2
+bakersfield,0603526,4,4,393.42,393.42,0.0
+fresno,0627000,4,4,303.32,303.32,0.0
+losangeles,0644000,1,1,1300.19,1300.19,0.0
+sanfrancisco,0667000,2,1,600.62,352.69,247.92
+eugene,4123850,178,178,115.94,115.94,0.0
+brownsville,4810768,4,4,332.63,332.63,0.0
+detroit,2622000,1,1,370.12,370.12,0.0
+pittsburgh,4261000,1,1,151.12,151.12,0.0
+boston,2507000,1,1,232.1,232.1,0.0

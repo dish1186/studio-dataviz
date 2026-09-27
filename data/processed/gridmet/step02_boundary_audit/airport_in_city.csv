@@ -1,0 +1,13 @@
+city,station,in_city_limits,km_outside_boundary,handoff_note
+bakersfield,BFL,False,1.8682595205012449,not checked
+fresno,FAT,True,0.0,not checked
+losangeles,LAX,True,0.0,in city limits (handoff)
+sanfrancisco,SFO,False,10.018034337542527,just south of city limits (handoff)
+eugene,EUG,False,0.9407680397856604,not checked
+brownsville,BRO,True,0.0,not checked
+detroit,DET,True,0.0,in city (handoff)
+detroit,DTW,False,13.608497201024178,"outside, Romulus (handoff)"
+pittsburgh,AGC,False,1.1950548087965633,next to the city (handoff)
+pittsburgh,PIT,False,12.124296231395922,outside (handoff)
+boston,BOS,True,0.0,not checked
+fairbanks,PAFA,False,4.272274936672036,not checked
