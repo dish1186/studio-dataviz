@@ -30,6 +30,69 @@ Step · dataset · date · who ran it | What (plain language) | Why | Input file
 
 ---
 
+### Step 5 · OpenAQ · 2026-09-27 · Gina + Claude
+- **What:** Built **daily PM2.5 averages per city**: reference, low-cost and overall. Each is built from site averages, with the min and max across sites, the number of sites, and the site and sensor IDs used each day. Every sensor-day is recorded in an audit file as included or excluded, with the reason.
+- **Why:** Gina needs one value per city per day that combines all the sites and sensors measuring in the city, fully traceable.
+- **Input:** `data/processed/openaq/step04_daily/openaq_pm25_<city>_daily_sensors.csv`; site IDs from Step 3
+- **Script:** `scripts/openaq/05_site_and_city_averages.py` (local files only; no API calls)
+- **Order of operations** (OA-D3, OA-D5, OA-D6, OA-D7):
+  1. sensor-day valid if ≥ 18 h
+  2. negatives set to 0
+  3. flagged low-cost days removed
+  4. low-cost outlier rule
+  5. site-day = mean of the site's included sensor-days
+  6. city-day per type = mean / min / max across site-days
+  7. overall mean = mean of the reference and low-cost means (one type only → that type); overall min / max / sites = across all site-days
+- **Rows in → out:** **466,458 sensor-days → 387,270 included**. Excluded:
+
+  | Reason | Sensor-days |
+  |---|---|
+  | Fewer than 18 hours observed | 78,622 |
+  | Low-cost day flagged by OpenAQ | 269 |
+  | No value | 255 |
+  | Low-cost outlier, rule "ref+peer" | 35 |
+  | Low-cost outlier, rule "peer" | 1 |
+  | Above 1,000 µg/m³ | 6 |
+
+  Negative daily values set to 0: 26. Most extreme low-cost days were removed by the flag rule (OA-D7) before the outlier rule (OA-D6) ran, so OA-D6 removed 42 days, not the ~140 estimated beforehand.
+- **Days with data per city** (of 3,856; reference / low-cost / overall; days with both types):
+
+  | City | Reference | Low-cost | Overall | Both |
+  |---|---|---|---|---|
+  | Ann Arbor | 3,043 | 752 | 3,049 | 746 |
+  | Bakersfield | 2,949 | 176 | 2,954 | 171 |
+  | Boston | 2,656 | 922 | 2,663 | 915 |
+  | Brownsville | 1,147 | 12 | 1,150 | 9 |
+  | Delano | 0 | 502 | 502 | 0 |
+  | Detroit | 3,042 | 440 | 3,043 | 439 |
+  | Eugene | 3,203 | 0 | 3,203 | 0 |
+  | Fairbanks | 2,907 | 0 | 2,907 | 0 |
+  | Fresno | 3,009 | 824 | 3,016 | 817 |
+  | Los Angeles | 3,031 | 1,586 | 3,051 | 1,566 |
+  | Phoenix | 3,070 | 911 | 3,076 | 905 |
+  | Raymondville | 0 | 0 | 0 | 0 |
+  | San Diego | 2,428 | 859 | 2,429 | 858 |
+  | San Francisco | 2,729 | 1,649 | 2,947 | 1,431 |
+  | Springfield | 2,926 | 0 | 2,926 | 0 |
+  | Warren | 0 | 924 | 924 | 0 |
+- **Output:** `data/processed/openaq/step05_averages/`
+  - **`pm25_<city>_daily.csv`** (16 files, 3,856 rows each; days without data are blank): date; for reference (`ref_`) and low-cost (`lowcost_`): mean, min, max, n_sites, site_ids, sensor_ids; then all_mean, all_mean_basis, all_min, all_max, all_n_sites
+  - `pm25_city_coverage_summary.csv`: per city and average, days with data, share of study days, first/last day, sites used. **Coverage only, no whole-period averages** (changed by Gina).
+  - `audit/sensor_day_audit_<city>.csv`: every sensor-day, with raw value, value used, negative_set_to_zero, hours, flag, included, exclusion_reason, and for low-cost the rule applied, the reference average and the peer median it was compared to
+  - `audit/site_daily_<city>.csv`: every site-day, with site mean, n_sensors and sensor IDs
+- **Checks:**
+  - Every city file has 3,856 rows. Sensor-day totals match Step 4 (466,458).
+  - **Trace example:** Springfield 2020-09-12 → ref_mean 105.0 from 1 site (S1857) = 1 sensor (3278), 18 h.
+  - Largest values after the rules: reference 468 (Eugene), low-cost 289 (Warren, 2026-07-16 event). No city value above 500.
+- **Judgment calls:**
+  - **Days with no data kept as blank rows.** **Claude's choice, approved by Gina.**
+  - **The low-cost outlier test compares against the mean of reference *sensor*-days,** not site-days, as OA-D6 is worded. **Claude's choice, approved by Gina.**
+  - **No whole-period averages in the summary.** **Changed by Gina** (she needs daily values per city; Claude had proposed period, yearly and shared-period means).
+- **For review:**
+  - **Springfield 2020-09-10 to 09-14 (wildfire smoke).** Springfield's only reference monitor read 105 on 09-12 (hourly 48–220) while Eugene's three monitors read 372–542 (hourly 156–742), 5 km away. Its 09-13 and 09-14 days have 6 and 16 hours (invalid). It could be a real local dip or an instrument problem at extreme levels. **Open item for Gina.**
+  - **Overall average composition changes over time:** reference only until low-cost sensors appear (2021–2025 depending on city), mixed after. The column `all_mean_basis` records which, day by day.
+  - **Files:** `sensor_day_audit_losangeles.csv` is 29 MB and `site_daily_losangeles.csv` 14 MB (below GitHub's 50 MB warning).
+
 ### Decision OA-D7 · OpenAQ · 2026-09-27 · Gina
 - **What:** How OpenAQ-flagged days are treated in Step 5.
   - **Reference sensor-days with `hasFlags = true` are kept.** The flagged hour (negative) is already excluded from OpenAQ's daily value (Step 5a); the rest of the day is valid. Dropping them would remove 9,009 mostly clean-air days and bias reference averages upward.

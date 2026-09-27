@@ -1,0 +1,1 @@
+city_slug,date_local,site_id,sensor_id,sensor_class,value_raw,pm25_used,negative_set_to_zero,hours_observed,has_flags,included,exclusion_reason,rule,ref_avg,peer_median,n_peers
