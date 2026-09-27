@@ -598,5 +598,19 @@ Step · dataset · date · who ran it | What (plain language) | Why | Input file
 - **Layout:** states in order of their first city in Dish's D10 list: California (LA, San Diego, Bakersfield, San Francisco, Fresno) · Arizona · Michigan (Detroit, Ann Arbor) · Massachusetts · Oregon · Alaska · Texas. **Changed by Dish:** state-by-state layout with city zooms; D10 order.
 - **Judgment calls:** Natural Earth 1:50m outlines (drawing only; coarser than TIGER); Alaska locator cropped to the mainland (lon −170 to −129); city zoom = cells touching city limits + 0.06° margin; a draft with 13 cities and "= lat,lon" text labels was shown to Dish in chat and replaced by this version. **Claude's choice, approved by Dish.**
 
+### Step 3 · UTCI · 2026-09-27 · Dish + Claude
+- **What:** Built one hourly UTCI series per city: in every hour, the area-weighted average of the city's cells (D11 weights from Step 2). Cells without a value in that hour are skipped and the other weights re-normalized; if the cells with a value cover < 50% of the city's weight, the hour is left empty (D11 rules). Times stay in UTC and values in kelvin.
+- **Why:** Turns each city's 1–7 cells into the single "city" UTCI that the daily steps use.
+- **Input:** `data/raw/utci/cds_timeseries/utci_<city>_1991-2026.nc` (12 cities; Delano's file not used, D10) · `data/processed/utci/step02_cell_weights/cell_weights.csv` — not modified (SHA-256 re-checked)
+- **Script:** `scripts/utci/03_city_hourly.py`
+- **Output:** `data/processed/utci/step03_city_hourly/utci_<city>_hourly.csv.gz` (columns: time_utc, utci_k, weight_available, n_cells_used, n_cells) and `step03_summary.csv`
+- **Rows in → out:** 310,752 hours per city in → 310,752 out. **All cells present in every hour for 11 of 12 cities** (the empty hours seen in Step 1 were all in cells outside city limits). **Brownsville:** 17 hours kept with part of the cells (coverage ≥ 91%) and **10 hours left empty** (coverage 0–4%, because the city-hall cell, 89% of the weight, is blank).
+- **Finding (Brownsville empty hours):** they fall on **2005-07-20** (Hurricane Emily), **2008-07-23/24** (Hurricane Dolly), **2010-07-01** (Hurricane Alex) and **2020-07-26** (Hurricane Hanna), all landfalls or near-landfalls in South Texas. This strongly supports the Step 1 guess that ERA5-HEAT leaves UTCI blank when wind is outside the UTCI formula's range (> 17 m/s): **the felt-heat index is undefined in a hurricane.** Possible story/appendix note. (Hurricane dates are Claude's identification, not checked against a storm database.)
+- **Checks:** Ann Arbor (1 cell) equals its raw cell to 0.00005 K (rounding to 4 decimals); a hand calculation for Los Angeles 2022-09-06 22:00 UTC matches the file (313.7929 K).
+- **Range (°C UTCI, all hours 1991–2026-06-13):** LA −12.0 / 17.1 / 47.6 (min / mean / max) · Phoenix −26.3 / 19.7 / 51.5 · San Diego −15.8 / 16.3 / 42.6 · Detroit −49.3 / 4.5 / 42.4 · Bakersfield −12.0 / 17.8 / 48.0 · San Francisco −22.4 / 8.1 / 32.3 · Fresno −15.3 / 17.2 / 51.6 · Boston −51.6 / 5.3 / 41.4 · Eugene −28.9 / 9.9 / 46.3 · Fairbanks −52.5 / −4.6 / 36.1 · Brownsville −30.2 / 22.2 / 45.3 · Ann Arbor −49.2 / 4.7 / 43.2.
+- **Judgment calls:**
+  - Output as gzip-compressed CSV (~2 MB per city instead of ~12 MB), values written to 4 decimals of a kelvin. **Claude's choice, approved by Dish.**
+  - Missing-cell and 50% coverage rules as decided in D11. **Claude's choice, approved by Dish.**
+
 ---
 **METAR pipeline status (2026-09-27, final):** **Closed (D8).** 17 cities, Steps 0–9b complete, ending 2026-09-24 (D4); final files frozen. Step 8b distances cover all 18 stations. Not done, by choice: in-city check for the new stations (D7), review of 7 low days, ASOS algorithm citation (appendix), Phoenix story decision; city-hall spot-check pending with Dish. New caveat: Ann Arbor outage from ~2026-06-17 (last valid day 2026-08-05).
