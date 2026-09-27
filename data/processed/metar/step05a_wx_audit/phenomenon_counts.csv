@@ -1,0 +1,108 @@
+city,phenomenon,name,hours_at_airport,hours_vicinity_only
+bakersfield,BR,mist,965,0
+bakersfield,DU,dust,18,0
+bakersfield,FG,fog,159,0
+bakersfield,FU,smoke,590,0
+bakersfield,HZ,haze,5213,0
+bakersfield,RA,rain,950,0
+bakersfield,TS,TS,2,31
+boston,BR,mist,3628,0
+boston,DZ,drizzle,307,0
+boston,FG,fog,403,0
+boston,FU,smoke,3,0
+boston,GR,hail,4,0
+boston,GS,small hail,9,0
+boston,HZ,haze,119,0
+boston,PL,ice pellets,69,0
+boston,RA,rain,3492,0
+boston,SN,snow,809,0
+boston,SQ,squalls,1,0
+boston,TS,TS,61,44
+boston,UP,unknown precip,5,0
+brownsville,BR,mist,1432,0
+brownsville,DZ,drizzle,5,0
+brownsville,FG,fog,104,0
+brownsville,FU,smoke,4,0
+brownsville,HZ,haze,572,0
+brownsville,RA,rain,1919,0
+brownsville,SN,snow,9,0
+brownsville,SQ,squalls,2,0
+brownsville,TS,TS,166,435
+brownsville,UP,unknown precip,3,0
+detroit,BR,mist,5919,0
+detroit,DZ,drizzle,300,0
+detroit,FG,fog,629,0
+detroit,FU,smoke,26,0
+detroit,GR,hail,9,0
+detroit,GS,small hail,11,0
+detroit,HZ,haze,2237,0
+detroit,PL,ice pellets,53,0
+detroit,RA,rain,5283,0
+detroit,SN,snow,3257,0
+detroit,SQ,squalls,14,0
+detroit,TS,TS,162,242
+detroit,UP,unknown precip,93,0
+eugene,BR,mist,3162,0
+eugene,DZ,drizzle,64,0
+eugene,FC,funnel cloud,1,0
+eugene,FG,fog,878,0
+eugene,FU,smoke,312,0
+eugene,GR,hail,9,0
+eugene,GS,small hail,5,0
+eugene,HZ,haze,249,0
+eugene,PL,ice pellets,9,0
+eugene,RA,rain,4111,0
+eugene,SN,snow,99,0
+eugene,TS,TS,20,6
+eugene,UP,unknown precip,1,0
+fairbanks,BR,mist,4146,0
+fairbanks,DZ,drizzle,130,0
+fairbanks,FG,fog,449,139
+fairbanks,FU,smoke,478,0
+fairbanks,GS,small hail,3,0
+fairbanks,HZ,haze,11,0
+fairbanks,PL,ice pellets,6,0
+fairbanks,RA,rain,2240,0
+fairbanks,SN,snow,4367,0
+fairbanks,TS,TS,48,2
+fresno,BR,mist,1509,0
+fresno,DU,dust,12,0
+fresno,FG,fog,310,0
+fresno,FU,smoke,830,0
+fresno,GR,hail,2,0
+fresno,GS,small hail,1,0
+fresno,HZ,haze,3867,0
+fresno,RA,rain,1092,0
+fresno,SS,sandstorm,1,0
+fresno,TS,TS,10,21
+losangeles,BR,mist,1842,0
+losangeles,DU,dust,1,0
+losangeles,DZ,drizzle,31,0
+losangeles,FG,fog,487,30
+losangeles,FU,smoke,53,0
+losangeles,HZ,haze,2172,0
+losangeles,RA,rain,920,0
+losangeles,SQ,squalls,1,0
+losangeles,TS,TS,13,14
+pittsburgh,BR,mist,6357,0
+pittsburgh,DZ,drizzle,595,0
+pittsburgh,FG,fog,719,0
+pittsburgh,FU,smoke,77,0
+pittsburgh,GR,hail,6,0
+pittsburgh,GS,small hail,7,0
+pittsburgh,HZ,haze,1030,0
+pittsburgh,PL,ice pellets,26,0
+pittsburgh,RA,rain,6692,0
+pittsburgh,SN,snow,3643,0
+pittsburgh,SQ,squalls,11,0
+pittsburgh,TS,TS,324,410
+pittsburgh,UP,unknown precip,63,0
+sanfrancisco,BR,mist,942,0
+sanfrancisco,DZ,drizzle,7,0
+sanfrancisco,FG,fog,68,3
+sanfrancisco,FU,smoke,157,0
+sanfrancisco,GS,small hail,1,0
+sanfrancisco,HZ,haze,447,0
+sanfrancisco,RA,rain,1511,0
+sanfrancisco,SQ,squalls,5,0
+sanfrancisco,TS,TS,3,11
