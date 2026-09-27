@@ -32,6 +32,30 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Visualization V1 · version 5: search row + monthly · Google Trends + METAR + OpenAQ · 2026-09-27 17:45 EDT · Gina + Claude
+- **What:** Added a third row to each city panel, **"Searching for air-quality help"**: the monthly Google Trends total of the search terms switched on ("air purifier", "air filter", "n95"; all on by default), with switches to turn terms on and off. Added a **Monthly** option to the smoothing control (Daily / 7-day / 30-day / Monthly). Each panel now reads measured (PM2.5) → perceived (haze) → action (searches). **No repo files created or changed**; calculations run in the page.
+- **Why:** Gina wants to see the relationship between measured PM2.5, perceived haze and action taken (searching for mitigation).
+- **Input:** `data/processed/google-trends/air-search/*-air-search.csv` (Google Trends Step 5; read only), plus the PM2.5 and METAR inputs of versions 1–4.
+- **Search geography per city:**
+  - **City files:** Bakersfield, Detroit, Eugene, Fairbanks, Los Angeles, Phoenix, San Diego.
+  - **Metro areas:** San Francisco → San Francisco-Oakland-San Jose; Fresno → Fresno-Visalia; Brownsville and Raymondville → Harlingen-Weslaco-Brownsville-McAllen; Boston → Boston MA-Manchester NH.
+  - **State files (fallback, no own file):** Ann Arbor and Warren → **Michigan**; Springfield → **Oregon**; Delano → **California**. **Changed by Gina** (Claude had suggested the nearest city files).
+- **Checks (read only):** all 16 mapped files have 129 months (2016-01 → 2026-09), and `total_interest_index` = the sum of the three terms in every row. Eugene Sep 2020 = air purifier 100 + air filter 92 + n95 63 = 255, and the page shows the same.
+- **Transformation (in the page):**
+  - **Search line** = sum of the selected terms' monthly index values, drawn flat across each month on the daily date axis. **Own scale per city**, 0 to the highest value in view, because Trends files aren't comparable across places.
+  - **Monthly smoothing** = calendar-month mean of the days with data, shown only if at least half of that month's days (within the date axis) have data. For haze: mean **extinction** first, then ÷ CLEAR (same rule as the 7/30-day options).
+  - **Tooltip** shows the month, the total, each selected term's value, and "(partial)" for September 2026. The site count is shown only for daily values, since it is a per-day count.
+- **Judgment calls:**
+  - **Use the total, with term switches.** **Changed by Gina** (Claude had suggested "air purifier" alone because n95 mostly reflects COVID-19). Claude pointed out that the average is total ÷ 3, so it has the same shape, and that a 0 in Trends means "too little data", not zero searches.
+  - **Monthly option added.** **Specified by Gina.**
+  - **Search line in green, flat within each month.** **Claude's choice.**
+- **Findings (from the checks):**
+  - The total peaks in **April 2020** (COVID-19 masks) in most places.
+  - **Exceptions:** Eugene and Oregon **Sep 2020** (wildfire smoke; all three rows spike together in Eugene); San Francisco **Nov 2018** (the month of the Camp Fire smoke); Fairbanks **Jun 2022**; Phoenix and San Diego **Apr 2026**.
+  - **Fairbanks is mostly 0** for "air purifier" (119 of 129 months) and "n95" (125), so its line mostly follows "air filter"; noted on its panel.
+
+---
+
 ### Visualization V1 · version 4: haze row · METAR + OpenAQ · 2026-09-27 17:21 EDT · Gina + Claude
 - **What:** Added a **"Haze you can see: times hazier than a clear day"** row under each city's PM2.5 chart in the PM2.5 City Explorer (same link, version 4), using Dish's frozen METAR visibility files. Haze index = daily light extinction ÷ its value on a clear day. **No files in the repo created or changed:** the calculation runs in the page. The METAR files were read only; `git status` shows no changes in `data/processed/metar/`.
 - **Why:** Gina's handoff: add the METAR visibility row as Dish's "option C", the haze index.
