@@ -775,6 +775,13 @@ Step · dataset · date · who ran it | What (plain language) | Why | Input file
   - annarbor `4843f9397a2be58e522e97dbc604d8469604b92401eb4a855f3682e04ebfeb6a`
   - step05b_summary.csv `cbfcc69d0129222dde6e7b59c95c4f6c5f8969030aa21a0d2e59499bd337f291`
 
+### Decision D14 · felt minus actual (UTCI Step 7) · 2026-09-27 · Dish
+- **UTCI Step 7 (felt minus actual, UTCI − gridMET high) is dropped as a pipeline step.** No gap file is produced.
+- **Why:** the viz asks which signal prompts action (sensor, body, media), which is shown by the rows side by side, not by their difference. The two sources also differ in method (gridMET 4 km mean over city limits vs UTCI ~28 km reanalysis cells; SF's UTCI is 75% an ocean cell), so a gap would partly measure the method rather than the physics.
+- **If needed later:** the gridMET and UTCI finals join on date row for row, so a gap for a single annotation can be computed in the viz code over the common window 2016-01-01 → 2026-06-12 (D9), and noted in the appendix.
+- **Possible replacement (later, with the search data):** compare anomalies instead of raw values (abnormally hot by thermometer, abnormally high felt heat, both, or neither) against search spikes.
+- **Changed by Dish** (handoff Procedure 3, step 7 had listed it).
+
 ---
 **gridMET pipeline status (2026-09-27):** Steps 1–5b done. 16 continental cities pulled and checked (Steps 1–4); **final files for the 11 viz cities (D10)** in `data/processed/gridmet/final/`: `temp_<city>_daily.csv` (3,920 rows, 2016-01-01 → 2026-09-24, joins row for row with UTCI), `temp_<city>_normals.csv`, `temp_<city>_monthly.csv` (129 months, Sep 2026 partial), summaries. End date settled (D9 resolved: keep 2026-09-24; felt-vs-actual comparisons use 2016-01-01 → 2026-06-12). Open: Fairbanks (no gridMET in AK), N1 (boundary file vs OpenAQ).
 
