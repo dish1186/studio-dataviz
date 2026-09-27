@@ -23,6 +23,17 @@ Step · dataset · date · who ran it | What (plain language) | Why | Input file
 
 ---
 
+### Step 11 · descriptions · 2026-09-27 · Gina + Claude
+- **What:** Changed the data descriptions from Markdown to CSV. Each table row from `data_descriptions.md` became a CSV row, with the file name in its own column; the Markdown file was removed. Wording unchanged.
+- **Why:** Gina asked for a CSV instead.
+- **Input:** `data/descriptions/data_descriptions.md` (Step 10)
+- **Script:** none (one-off format conversion by Claude)
+- **Rows in → out:** 37 descriptions → 37 CSV rows. Checked again that the columns listed match each raw file's header exactly.
+- **Output:** `data/descriptions/data_descriptions.csv` (columns: file, column, description, type_units, source, formula_or_derivation). Blank cells = no formula (shown as "—" in the Markdown).
+- **Judgment calls:**
+  - **CSV replaces the Markdown**, rather than keeping both. **Changed by Gina.**
+  - **The Markdown file's intro text was not carried over.** It said the file covers Gina's raw files only and is updated with every new raw file; both points are recorded in Step 10. **Claude's choice, flagged to Gina in chat; not yet approved.**
+
 ### Step 10 · descriptions · 2026-09-27 · Gina + Claude
 - **What:** Wrote a column-by-column description of every raw file Gina has added: what each value is, its type or units, its source, and the formula when it's calculated. **Documentation only: no data changed.**
 - **Why:** So anyone reading the raw files knows what each column means and where it comes from, without having to trace the scripts.
@@ -166,4 +177,4 @@ Step · dataset · date · who ran it | What (plain language) | Why | Input file
   - "—" (not ranked) recorded as blank. **Claude's choice.**
 
 ---
-**City-selection status (2026-09-27):** Steps 1–8 complete and logged retroactively (Step 9); raw-file descriptions in `data/descriptions/data_descriptions.md` (Step 10). Open items: (1) Gina to review the judgment calls marked "not yet approved"; (2) confirm whether the ALA list continues past Houston-Pasadena; (3) check whether the Media Cloud API includes the end date (2026-09-25) in its counts; (4) ambiguous city names may inflate some city-level counts.
+**City-selection status (2026-09-27):** Steps 1–8 complete and logged retroactively (Step 9); raw-file descriptions in `data/descriptions/data_descriptions.csv` (Steps 10–11). Open items: (1) Gina to review the judgment calls marked "not yet approved"; (2) confirm whether the ALA list continues past Houston-Pasadena; (3) check whether the Media Cloud API includes the end date (2026-09-25) in its counts; (4) ambiguous city names may inflate some city-level counts.
