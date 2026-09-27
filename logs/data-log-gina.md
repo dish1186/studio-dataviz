@@ -30,7 +30,42 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 **Note on Steps 1–8:** these were run on 2026-09-26/27 before this log existed, and logged retroactively in Step 9. They did not follow Rule 1 (no step-by-step approval before running), and Rule 2/3 files were assembled afterwards. Judgment calls in them are marked **Claude's choice, flagged to Gina in chat; not yet approved**, unless Gina specified or changed them. Gina to review.
 
---
+---
+
+### Visualization V1 · version 4: haze row · METAR + OpenAQ · 2026-09-27 17:21 EDT · Gina + Claude
+- **What:** Added a **"Haze you can see: times hazier than a clear day"** row under each city's PM2.5 chart in the PM2.5 City Explorer (same link, version 4), using Dish's frozen METAR visibility files. Haze index = daily light extinction ÷ its value on a clear day. **No files in the repo created or changed:** the calculation runs in the page. The METAR files were read only; `git status` shows no changes in `data/processed/metar/`.
+- **Why:** Gina's handoff: add the METAR visibility row as Dish's "option C", the haze index.
+- **Input:** `data/processed/metar/final/vis_<city>_daily.csv` for the **16 study cities** (Pittsburgh excluded: **changed by Gina**), columns `date`, `extinction`, `valid_day`; plus the Step 5 PM2.5 daily files. Data guide: `docs/metar-status.md` (Dish, commit `aa7d554`); Decision D8 in `logs/data-log-dish.md`.
+- **Checks before building (read-only):**
+  - All 17 files match the SHA-256 in D8.
+  - 3,920 rows each, 2016-01-01 → 2026-09-24.
+  - Valid days match `step09_summary.csv` and the table in `docs/metar-status.md` for all 17.
+  - No valid day has a blank extinction, and no invalid day has one.
+  - Minimum 1.00× everywhere. **Eugene max 40.00× on 2020-09-13** (Springfield identical), **Phoenix max 1.79×**.
+  - Checked again in the built page: Eugene 2020-09-13 shows "40.0× a clear day (≈0.25 mi visibility)".
+- **Transformation (in the page):**
+  - `CLEAR` = 3.912 ÷ (10 × 1.609344) = 0.24308 (extinction at the 10-mile sensor cap).
+  - **Daily:** haze = extinction ÷ CLEAR, only `valid_day = 1`; other days are gaps (no zeros, no filling).
+  - **7- and 30-day:** trailing mean of the valid days' **extinction** in the window, shown only when at least half the window has valid days, then ÷ CLEAR. Visibility is never averaged, and an index is never averaged. The control is shared with PM2.5 (Daily / 7-day / 30-day). **Changed by Gina** (trailing means, as a toggle).
+  - **Tooltip visibility** = 10 ÷ haze index miles (identical to `visibility_mi`).
+  - **Date axis** extended to 2016-01-01 → 2026-09-25 so both datasets fit; PM2.5 starts 2016-03-06 and METAR ends 2026-09-24, each shown as gaps outside its range.
+- **Drawing (per the handoff):**
+  - Linear y from 1×; ticks from 1×, 2×, 5×, 10×, 20×, 40× (80× if needed), dropping any within 16 px of the tick below. **One haze scale across all selected cities**, whatever the PM2.5 "per city / shared" setting.
+  - Tooltip: "12.4× a clear day (≈0.8 mi visibility)", or "1× (clear, 10+ mi)" at the floor (index < 1.005).
+  - The word "extinction" does not appear in the main UI; the footnote wording is as given in the handoff.
+- **Caveats shown on the page:**
+  - **Notes on the city panels:** Ann Arbor outage from ~2026-06-17 (last valid day 2026-08-05); Phoenix nearly flat (max ≈ 1.8×), flagged not hidden; Springfield uses Eugene's airport; Raymondville uses Harlingen's (19 mi); Delano starts 2017-01-15 and uses routine reports only; Warren = Troy airport (VLL), routine reports only; Detroit = mean of two airports.
+  - **The 7 unreviewed days** (Boston 2024-02-23, Bakersfield 2020-12-17/18, Ann Arbor 2016-07-25, Warren 2026-07-16/17, Delano 2024-11-11) are circled on the chart, with "not yet checked: possibly fog" in the tooltip.
+  - **Raymondville is now selectable** (haze only; no PM2.5).
+- **Finding:** several unreviewed days are their city's **highest** haze day: Ann Arbor 15.2× (2016-07-25), Bakersfield 18.0× (2020-12-17), Boston 6.0× (2024-02-23), Delano 5.9× (2024-11-11), Warren 9.5× (2026-07-16). Warren's and Detroit's 2026-07-16 highs coincide with the Detroit PM2.5 spike (OpenAQ Step 4), which suggests smoke rather than fog there, but it is still unreviewed.
+- **Judgment calls:**
+  - **Visibility computed as 10 ÷ index**, not read from `visibility_mi` (identical, smaller page). **Claude's choice, flagged to Gina in chat.**
+  - **"1×" shown when the index is below 1.005.** **Claude's choice.**
+  - **Haze line in violet**, a separate chart (no second axis on the PM2.5 chart). **Claude's choice.**
+  - `metar-pipeline-status.md` was not available at first; the repo copy `docs/metar-status.md` was used once Gina added it. Dish's "Haze Scale Options" artifact is not shared with Gina, so it was not consulted.
+- **Log fix:** the separator line above the Visualization V1 entry had been cut to `--` by an earlier edit of Claude's; restored to `---`.
+
+---
 
 ### Visualization V1 · OpenAQ · 2026-09-27 17:00 EDT · Gina + Claude
 - **What:** Built an exploratory chart page, **"PM2.5 City Explorer"** (private Claude artifact: https://claude.ai/artifact/NRvuFdqDZZioQHkL1RnB8Q). One panel per selected city, with the date on the horizontal axis and daily PM2.5 on the vertical.
