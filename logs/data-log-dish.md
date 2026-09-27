@@ -567,5 +567,27 @@ Step · dataset · date · who ran it | What (plain language) | Why | Input file
   - Extra checks (location, hottest days, duplicates, empty hours, overlaps) added to the Step 1 script. Duplicate = identical in > 50% of hours. City-hall cell = nearest 0.25° centre. **Claude's choice, approved by Dish.**
   - Script bug caught before logging: the first version of the extra checks overwrote the per-cell table (17 rows instead of 232). Fixed by renaming variables; the re-run table matches the earlier output exactly.
 
+### Decision D11 · UTCI cells · 2026-09-27 · Dish
+- **What:** A city's UTCI = **area-weighted average of every 0.25° cell touching city limits** (weight = the cell's share of city area, TIGER/Line 2025 per D2). Applies to all 12 cities (D10). Matches gridMET, which averages over city limits.
+- **Options considered:** (A) city-hall cell only; (B) area-weighted average of all touching cells; (C) single cell where it covers ≥ 75%, else B. **Changed by Dish: chose B** (Claude's recommendation).
+- **Correction to Step 1:** Step 1 said duplicate cells "must be dropped before averaging." With area weights that is unnecessary: a duplicated pair is one native ERA5 point covering both squares, so weighting each square by its area equals merging them. Duplicates are recorded but not changed (only 2021-04-29 differs within the pairs).
+- **Consequence:** San Francisco stays mostly marine (75% of its weight is the ocean-side cell 37.75, −122.50), like gridMET's SF city mean.
+- **Rules for the next steps (approved by Dish now):**
+  - **Missing cells in an hour:** average the cells that have a value, re-weighted to sum to 1; if those cells cover **< 50% of the city's weight**, the hour is left empty. **Claude's choice, approved by Dish.**
+  - **Order:** average the cells hour by hour first, then take the daily maximum (Step 4). **Claude's choice, approved by Dish.**
+
+### Step 2 · UTCI · 2026-09-27 · Dish + Claude
+- **What:** For each of the 12 cities, listed every UTCI cell touching city limits and its share of the city's area; the shares are the cell weights for D11. **Read-only on inputs.**
+- **Why:** Fixes, in one table, exactly which cells make up each city and how much each counts.
+- **Input:** `data/raw/utci/cds_timeseries/utci_<city>_1991-2026.nc` (grid and duplicate check only; not modified) · `data/processed/gridmet/step03_city_polygons/<city>_citylimits.zip`; Fairbanks GEOID 0224230 from `data/raw/gridmet/tiger_places/tl_2025_02_place.zip` · city halls from `data/processed/metar/metar_station_distances.csv`
+- **Script:** `scripts/utci/02_cell_weights.py`
+- **Output:** `data/processed/utci/step02_cell_weights/cell_weights.csv` (53 rows: city, lat, lon, overlap_km2, weight, is_city_hall_cell, duplicate_of)
+- **Results (cells · city-hall cell weight · largest cell if different):** Los Angeles 6 · 23.1% · 34.25,−118.50 35.4% | Phoenix 7 · 30.9% | San Diego 5 · 29.6% | Detroit 4 · 25.5% · 42.50,−83.00 31.6% | Bakersfield 5 · 23.5% · 35.25,−119.00 46.8% | San Francisco 4 · 75.4% | Fresno 3 · 80.0% | Boston 5 · 65.6% | Eugene 3 · 58.2% | Fairbanks 3 · 59.5% | Brownsville 6 · 88.9% | Ann Arbor 1 · 100%. Weights sum to 1 in every city.
+- **Checks:** raw UTCI files and Step 1 outputs unchanged (SHA-256).
+- **Judgment calls:**
+  - Cell footprint = centre ± 0.125°; areas in an equal-area projection (EPSG:6933); weights re-normalized to sum exactly to 1. **Claude's choice, approved by Dish.**
+  - Every touching cell kept, however small (smallest: SF 38.00,−122.25 at 0.1%). Follows from D11 (no cutoff).
+- **Related (not in the repo yet):** state-by-state map of these cells over gridMET city limits and METAR airports, made for Dish's review in chat (`scripts/utci/02_cell_map.py`, 13 cities incl. Delano). Basemap for its outlines: `data/raw/basemap/ne_50m_admin_1_states_provinces.geojson` (Natural Earth 1:50m, public domain, from GitHub nvkelso/natural-earth-vector commit 117488dc, 2022-05-05; 2,325,694 bytes; SHA-256 `69a0e06e640b2d505858ae1cb63034e4677f3000b35a98e16312932b98c426b9`). Downloaded with Dish's approval; drawing only.
+
 ---
 **METAR pipeline status (2026-09-27, final):** **Closed (D8).** 17 cities, Steps 0–9b complete, ending 2026-09-24 (D4); final files frozen. Step 8b distances cover all 18 stations. Not done, by choice: in-city check for the new stations (D7), review of 7 low days, ASOS algorithm citation (appendix), Phoenix story decision; city-hall spot-check pending with Dish. New caveat: Ann Arbor outage from ~2026-06-17 (last valid day 2026-08-05).
