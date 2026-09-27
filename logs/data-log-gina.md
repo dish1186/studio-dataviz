@@ -32,6 +32,16 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Step 16 · descriptions · 2026-09-27 15:14 EDT · Gina + Claude
+- **What:** Added two columns to `data/descriptions/data_descriptions.csv`: **`name`** (who added the row) = `gina` for all 206 existing rows, and **`date-added`** (date the row was first added).
+- **Why:** So Gina's and Bidisha's (Dish's) entries can be told apart if both add to the file, and so each row's age is visible.
+- **Script:** none (documentation). `date-added` was taken from the git history: for each row (file + column), the date of the first commit containing it. All 206 rows were added on 2026-09-27. Rows renamed later (e.g. `total_searches` → `total_interest_index`) carry the date of the rename.
+- **Judgment calls:**
+  - **Columns and value `gina`:** **specified by Gina.**
+  - **`date-added` as a date only (YYYY-MM-DD)**, as asked; exact times are in the git history. **Claude's choice, flagged to Gina in chat.**
+  - **Columns added at the end** of each row. **Claude's choice.**
+- **From now on:** every row Claude adds for Gina gets `name` = `gina` and that day's `date-added`.
+
 ### Step 5 · Google Trends · 2026-09-27 15:01 EDT · Gina + Claude
 - **What:** Made processed copies of the 17 air-search files. Each keeps `Time`, "air purifier", "air filter" and "n95" unchanged (all three kept) and adds `total_interest_index` (their sum) and `avg_interest_index` (their average, 2 decimals). Added a `README.md` defining the 0–100 index. **Raw files not modified.**
 - **Why:** Gina asked to repeat the heat-search process for the air-quality searches.
