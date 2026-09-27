@@ -38,8 +38,8 @@ Step · dataset · date · who ran it | What (plain language) | Why | Input file
 - **Rows in → out:** 1 file, 129 months (2016-01 to 2026-09) × the same 5 terms → copied unchanged; `trends_sources.csv` 16 → 17 rows.
 - **Output:** `data/raw/google-trends/heat-search/boston MA-Manchester-NH-heat-search.csv`; `trends_sources.csv`; descriptions row updated (17 files: 6 states, 4 metro areas, 7 cities)
 - **Judgment calls:**
-  - **Level recorded as "metro area"**, from the name (it matches the Google Trends metro naming, like the other 3 metros). **Claude's choice, flagged to Gina in chat.**
-  - **Same settings assumed as Step 1** (search terms, All categories, Web Search, downloaded 2026-09-27 by Gina). **Claude's assumption, flagged to Gina in chat; not yet confirmed.**
+  - **Level recorded as "metro area"**, from the name (it matches the Google Trends metro naming, like the other 3 metros). **Claude's reading, confirmed by Gina.**
+  - **Same settings as Step 1** (search terms, All categories, Web Search, downloaded 2026-09-27 by Gina). **Confirmed by Gina.**
 - **Correction:** Steps 1 and 2 first said each file has 128 months; the correct count is **129** (Jan 2016 to Sep 2026 = 10 × 12 + 9). Claude had read the number from a line count (`wc -l`) that misses the files' last line, which has no line ending. `trends_sources.csv` was always correct (n_months = 129 for all 17 files); only the log and description text were wrong, now fixed.
 - **Note:** Boston is covered by a **metro** file, while most other study cities are covered by city (or state) files, so the geographic level differs.
 
