@@ -44,6 +44,7 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
   - **EPA line:** 35 µg/m³ is the level of the 24-hour PM2.5 standard (40 CFR 50.13, https://www.law.cornell.edu/cfr/text/40/50.13, checked 2026-09-27). The page notes that the standard is judged on the 98th percentile over three years, so one day above it is not a violation. **Claude's choice, flagged to Gina in chat.**
   - **Default view:** 6 cities (Bakersfield, Fresno, Los Angeles, Eugene, Fairbanks, Detroit), reference vs low-cost, 7-day smoothing, per-city y axis. **Claude's choice.**
 - **Note:** the page is a view of the Step 5 files, not a new dataset. Numbers read from it are rounded to 0.1 µg/m³.
+- **Version 2 (2026-09-27 17:06 EDT):** the two date boxes were replaced with a **two-handle date slider** (start and end, minimum 7 days apart), with year marks and the selected range and day count shown above it. The presets and drag-to-zoom on the charts still work and move the slider. **Changed by Gina.** Same link; no data changed.
 
 
 ### Step 16 · descriptions · 2026-09-27 15:14 EDT · Gina + Claude
