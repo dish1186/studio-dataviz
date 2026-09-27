@@ -1,7 +1,8 @@
 # Step 3 · OpenAQ · final list of sensors per city, grouped into sites. No measurements downloaded.
 #
 #   1. Keep sensors assigned in Step 2 as "in_city_limits", plus fallback candidates within the 10 km cap
-#      (Decision OA-D3). Only sensors with data in the study period (2016-03-06 to 2026-09-25) were assigned in Step 2.
+#      (Decision OA-D3). Only sensors with data in the study period (2016-03-06 to 2026-09-25) are kept: Step 2 applied
+#      this to fallback candidates only, so in-city sensors without study-period data are dropped here.
 #   2. US only (Decision OA-D3). Sensors inside a study city's Census boundary are in the US by definition.
 #      Fallback sensors must have OpenAQ country "US". (OpenAQ's country field is not used for in-city sensors: it is
 #      wrong near borders, e.g. Brownsville's AirNow monitors are tagged MX and one Detroit sensor CA.)
@@ -71,7 +72,9 @@ for s in S:
     s["other_study_cities_nearby"] = "; ".join(f"{c} ({d:.1f} km)" for d, c in sorted(near))
     s["step01_within_25km_of"] = "; ".join(step1.get(s["sensor_id"], [])) or "(found in Step 2 extra search)"
     s["_near"] = sorted(near)
-    if s["assignment_rule"] == "in_city_limits":
+    if s["assignment_rule"] == "in_city_limits" and s["overlaps_study_period"] != "True":
+        s["kept"], s["reason"] = False, "in city limits, but no data in study period (no dates in OpenAQ)"
+    elif s["assignment_rule"] == "in_city_limits":
         s["kept"], s["reason"] = True, "in city limits"
     elif s["assignment_rule"] == "fallback_candidate" and float(s["distance_km_to_assigned_limits"]) <= CAP_KM:
         own = float(s["distance_km_to_assigned_limits"])
