@@ -30,13 +30,21 @@ Step · dataset · date · who ran it | What (plain language) | Why | Input file
 
 ---
 
+### Step 14 · descriptions · 2026-09-27 · Gina + Claude
+- **What:** Added the Step 5 audit files and coverage summary to `data/descriptions/data_descriptions.csv`, each with description, units, source and formula. **Documentation only: no data changed.**
+  - `audit/sensor_day_audit_<city>.csv`: 1 file row + 16 columns
+  - `audit/site_daily_<city>.csv`: 1 + 7
+  - `pm25_city_coverage_summary.csv`: 1 + 6 (first_day and last_day in one row)
+- **Why:** Gina asked for the audit files to be in the definitions document too. The coverage summary was added with them, since it was the other Step 5 file not yet described. **Claude's choice, flagged to Gina in chat.**
+- **Script:** none (documentation). Checked that the columns described match each file's header exactly.
+
 ### Step 13 · descriptions · 2026-09-27 · Gina + Claude
 - **What:** Added the columns of the final daily city files (`data/processed/openaq/step05_averages/pm25_<city>_daily.csv`) to `data/descriptions/data_descriptions.csv`: 1 file row + 18 column rows, each with description, units, source and formula. **Documentation only: no data changed.**
 - **Why:** Gina asked for the definitions document to cover the daily results, not only raw files.
 - **Script:** none (documentation, written by Claude). Checked that the 18 columns described match the file header exactly.
 - **Judgment calls:**
   - **The descriptions file now covers this processed file as well as raw files.** Its `file` column gives the path under `data/` (`processed/...`) to tell them apart. **Changed by Gina** (Step 10 had scoped it to raw files).
-  - **Audit and coverage files not described yet;** they are documented in the Step 5 log entry. **Claude's choice, flagged to Gina in chat.**
+  - **Audit and coverage files** were added in Step 14.
 
 ### Step 5 · OpenAQ · 2026-09-27 · Gina + Claude
 - **What:** Built **daily PM2.5 averages per city**: reference, low-cost and overall. Each is built from site averages, with the min and max across sites, the number of sites, and the site and sensor IDs used each day. Every sensor-day is recorded in an audit file as included or excluded, with the reason.
