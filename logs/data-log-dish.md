@@ -434,5 +434,20 @@ Step · dataset · date · who ran it | What (plain language) | Why | Input file
 - **Plausibility (worst days, new cities):** Ann Arbor 2023-06-28/29 (1.3–1.4 mi) lines up with the June 2023 Canadian wildfire smoke; San Diego 2020-09-14/15 (3.4–4.0 mi) with the September 2020 West Coast fires. **To review:** Ann Arbor 2016-07-25 (0.66 mi), Warren 2026-07-16/17 (1.05–1.66 mi) and Delano 2024-11-11 (1.69 mi) have no obvious explanation yet. Phoenix's worst valid day is 5.59 mi, and it has **0 days below 5 mi** (see the ceiling caveat above).
 - **Judgment calls:** none new (D4 end date was set in the gridMET chat and applied here).
 
+
+### Step 8b (rerun, D5 stations) · METAR · 2026-09-27 · Dish + Claude
+- **What:** Added the 6 D5 airports (ARB, DLO, SAN, VLL, PHX, HRL), plus EUG measured to **Springfield's** city hall, to the airport-to-city-hall distance table and reran it. Same method as before (great-circle/haversine, straight line). **Read-only: no visibility data changed.**
+- **Why:** The handoff requires logging each airport's distance from its city, and the new cities were missing.
+- **Input:** airport coordinates copied by Claude from each station's IEM page (`mesonet.agron.iastate.edu/sites/site.php?station=<ID>&network=<NET>`, fetched 2026-09-27, values as shown to 5 decimals). City-hall coordinates supplied by Claude.
+- **Script:** `scripts/metar/08b_station_distances.py` (7 rows appended to `AIRPORTS` and `CITY_HALLS`, plus one docstring line; the original 12 rows and the formula are unchanged; see git diff)
+- **Rows in → out:** 12 → **19 rows**.
+- **Output:** `data/processed/metar/metar_station_distances.csv` (overwritten; previous version in git)
+- **Results (miles from city hall):** DLO 1.7 · SAN 1.7 · PHX 3.9 · ARB 4.0 · VLL 8.0 (Troy → Warren) · EUG → Springfield 10.9 · **HRL → Raymondville 19.2** (the farthest airport in the study).
+- **Checks after running:** git diff shows only 7 rows added to the CSV and 0 changed. All files in `data/processed/metar/final/` are unchanged (checksums before vs after).
+- **Judgment calls:**
+  - **City-hall coordinates supplied by Claude:** Ann Arbor 301 E Huron St (42.2819, −83.7449) · Delano 1015 11th Ave (35.7686, −119.2476) · San Diego 202 C St (32.7167, −117.1628) · **Warren 1 City Square (42.5106, −83.0267)**, least certain · Phoenix 200 W Washington St (33.4484, −112.0770) · **Raymondville 142 S 7th St (26.4815, −97.7831)**, less certain · Springfield 225 5th St (44.0462, −123.0221). **Claude's choice, approved by Dish; Dish's spot-check pending (also for the original 10).**
+  - Springfield gets its own row (EUG measured to Springfield city hall); Eugene's row is unchanged. **Claude's choice, approved by Dish.**
+  - In-city note left as "not checked" for the new stations until the city-limits step. The exception is HRL, noted as outside (it's in Harlingen, per D5). **Claude's choice, approved by Dish.**
+
 ---
-**METAR pipeline status (2026-09-27, updated):** 17 cities, Steps 0–9b complete, ending 2026-09-24 (D4). Open items: (1) Step 8b distances for the 6 new stations (ARB, DLO, SAN, VLL, PHX, HRL) and the city-hall spot-check; (2) review of unexplained low days: Boston 2024-02-23, Bakersfield 2020-12-17/18, Ann Arbor 2016-07-25, Warren 2026-07-16/17, Delano 2024-11-11; (3) ASOS internal visibility algorithm (M1); (4) Phoenix visibility row is nearly flat (99.3% of hours at the 10-mi cap); decide how to use it in the story.
+**METAR pipeline status (2026-09-27, updated):** 17 cities, Steps 0–9b complete, ending 2026-09-24 (D4). Step 8b distances now cover all 18 stations (19 rows). Open items: (1) Dish's spot-check of the city-hall coordinates (all 17), and "in city limits" for the 6 new stations; (2) review of unexplained low days: Boston 2024-02-23, Bakersfield 2020-12-17/18, Ann Arbor 2016-07-25, Warren 2026-07-16/17, Delano 2024-11-11; (3) ASOS internal visibility algorithm (M1); (4) Phoenix visibility row is nearly flat (99.3% of hours at the 10-mi cap); decide how to use it in the story.

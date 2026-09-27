@@ -5,6 +5,8 @@ Airport coordinates: transcribed by Claude from each station's IEM page
   https://mesonet.agron.iastate.edu/sites/site.php?station=<ID>&network=<NET>
 City hall coordinates: supplied by Claude (approx. one block); verify in Google Maps.
 In-city-limits notes: from the handoff doc only; otherwise "not checked".
+2026-09-27: added the D5 stations (ARB, DLO, SAN, VLL, PHX, HRL) and EUG measured to
+  Springfield city hall. Original 12 rows unchanged.
 
 Run from the repo root:  python3 scripts/metar/08b_station_distances.py
 """
@@ -26,6 +28,14 @@ AIRPORTS = [  # city, station, network, IEM name, lat, lon, in-city note (from h
     ("pittsburgh",   "AGC",  "PA_ASOS", "PITTSBURGH/ALLEGHEN",      40.35472,  -79.92167, "next to the city (handoff)"),
     ("pittsburgh",   "PIT",  "PA_ASOS", "PITTSBURGH INTL",          40.49147,  -80.23286, "outside (handoff)"),
     ("boston",       "BOS",  "MA_ASOS", "BOSTON/LOGAN INTL",        42.36057,  -71.00973, "not checked"),
+    # D5 stations (added 2026-09-27)
+    ("annarbor",     "ARB",  "MI_ASOS", "ANN ARBOR",                42.22396,  -83.73972, "not checked"),
+    ("delano",       "DLO",  "CA_ASOS", "Delano",                   35.74560, -119.23650, "not checked"),
+    ("sandiego",     "SAN",  "CA_ASOS", "SAN DIEGO/LINDBERG",       32.73392, -117.18449, "not checked"),
+    ("warren",       "VLL",  "MI_ASOS", "Troy",                     42.54290,  -83.17790, "not checked"),
+    ("phoenix",      "PHX",  "AZ_ASOS", "PHOENIX/SKY HARBOR",       33.43428, -112.01158, "not checked"),
+    ("raymondville", "HRL",  "TX_ASOS", "HARLINGEN INTL ARPT",      26.22850,  -97.65439, "outside, Harlingen (D5)"),
+    ("springfield",  "EUG",  "OR_ASOS", "EUGENE/MAHLON SWEET",      44.12458, -123.21197, "not checked; shared with Eugene (D5)"),
 ]
 
 CITY_HALLS = {  # city: (address, lat, lon)  -- Claude-supplied, verify
@@ -39,6 +49,14 @@ CITY_HALLS = {  # city: (address, lat, lon)  -- Claude-supplied, verify
     "detroit":      ("2 Woodward Ave, Detroit MI",                 42.3294,  -83.0445),
     "pittsburgh":   ("414 Grant St, Pittsburgh PA",                40.4383,  -79.9967),
     "boston":       ("1 City Hall Square, Boston MA",              42.3603,  -71.0580),
+    # D5 cities (added 2026-09-27) -- Claude-supplied, verify
+    "annarbor":     ("301 E Huron St, Ann Arbor MI",               42.2819,  -83.7449),
+    "delano":       ("1015 11th Ave, Delano CA",                   35.7686, -119.2476),
+    "sandiego":     ("202 C St, San Diego CA",                     32.7167, -117.1628),
+    "warren":       ("1 City Square, Warren MI",                   42.5106,  -83.0267),
+    "phoenix":      ("200 W Washington St, Phoenix AZ",            33.4484, -112.0770),
+    "raymondville": ("142 S 7th St, Raymondville TX",              26.4815,  -97.7831),
+    "springfield":  ("225 5th St, Springfield OR",                 44.0462, -123.0221),
 }
 
 def haversine_km(lat1, lon1, lat2, lon2):

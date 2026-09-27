@@ -11,3 +11,10 @@ detroit,DTW,MI_ASOS,DETROIT/WAYNE,42.23,-83.33,"2 Woodward Ave, Detroit MI",42.3
 pittsburgh,AGC,PA_ASOS,PITTSBURGH/ALLEGHEN,40.35472,-79.92167,"414 Grant St, Pittsburgh PA",40.4383,-79.9967,11.3,7.0,next to the city (handoff)
 pittsburgh,PIT,PA_ASOS,PITTSBURGH INTL,40.49147,-80.23286,"414 Grant St, Pittsburgh PA",40.4383,-79.9967,20.8,12.9,outside (handoff)
 boston,BOS,MA_ASOS,BOSTON/LOGAN INTL,42.36057,-71.00973,"1 City Hall Square, Boston MA",42.3603,-71.058,4.0,2.5,not checked
+annarbor,ARB,MI_ASOS,ANN ARBOR,42.22396,-83.73972,"301 E Huron St, Ann Arbor MI",42.2819,-83.7449,6.5,4.0,not checked
+delano,DLO,CA_ASOS,Delano,35.7456,-119.2365,"1015 11th Ave, Delano CA",35.7686,-119.2476,2.7,1.7,not checked
+sandiego,SAN,CA_ASOS,SAN DIEGO/LINDBERG,32.73392,-117.18449,"202 C St, San Diego CA",32.7167,-117.1628,2.8,1.7,not checked
+warren,VLL,MI_ASOS,Troy,42.5429,-83.1779,"1 City Square, Warren MI",42.5106,-83.0267,12.9,8.0,not checked
+phoenix,PHX,AZ_ASOS,PHOENIX/SKY HARBOR,33.43428,-112.01158,"200 W Washington St, Phoenix AZ",33.4484,-112.077,6.3,3.9,not checked
+raymondville,HRL,TX_ASOS,HARLINGEN INTL ARPT,26.2285,-97.65439,"142 S 7th St, Raymondville TX",26.4815,-97.7831,30.9,19.2,"outside, Harlingen (D5)"
+springfield,EUG,OR_ASOS,EUGENE/MAHLON SWEET,44.12458,-123.21197,"225 5th St, Springfield OR",44.0462,-123.0221,17.5,10.9,not checked; shared with Eugene (D5)
