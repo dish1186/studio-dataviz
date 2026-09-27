@@ -23,6 +23,20 @@ Step · dataset · date · who ran it | What (plain language) | Why | Input file
 
 ---
 
+### Step 10 · descriptions · 2026-09-27 · Gina + Claude
+- **What:** Wrote a column-by-column description of every raw file Gina has added: what each value is, its type or units, its source, and the formula when it's calculated. **Documentation only: no data changed.**
+- **Why:** So anyone reading the raw files knows what each column means and where it comes from, without having to trace the scripts.
+- **Input:** the 5 files in `data/raw/city-selection/`; the ALA *State of the Air 2026* report (About This Report, pp. 7–12, from `~/Desktop/MDE/dataviz/State-of-the-Air-2026-Report.pdf`) for the ranking methods; the Media Cloud API endpoints used in Steps 2–6.
+- **Script:** none (documentation, written by Claude).
+- **Rows in → out:** 5 files, 37 columns → 37 descriptions. Checked that the columns described match each file's header exactly.
+- **Output:** `data/descriptions/data_descriptions.md`
+- **Judgment calls:**
+  - **Markdown, one section per raw file**, in a new `data/descriptions/` folder. **Changed by Gina** (Claude proposed a CSV in `data/raw/`).
+  - **Only Gina's raw files**, not Dish's METAR files. **Changed by Gina** (Claude asked).
+  - **The file will be updated every time a new raw file is added**, with a log entry each time. **Specified by Gina.**
+  - **Downstream formulas included** where a raw column feeds one (e.g. coverage index = `relevant_total_stories` ÷ `source_count`). **Claude's choice, approved by Gina.**
+  - **ALA method summarized from the report itself.** Short-term: county weighted average of unhealthy 24-hour PM2.5 days in 2022–2024 (orange ×1, red ×1.5, purple ×2, maroon ×2.5, ÷ 3). Year-round: county annual PM2.5 design value. In both, the metro takes its worst county. **Claude's choice, approved by Gina.**
+
 ### Step 9 · city-selection · 2026-09-27 · Gina + Claude
 - **What:** Started this log and filled in Steps 1–8 retroactively. Created `data/raw/city-selection/`, `data/processed/city-selection/` (one subfolder per step) and `scripts/city-selection/`, and added the scripts and intermediate files from the analysis.
 - **Why:** Gina asked for a log in the same format as Dish's, and for the city-selection analysis to be traceable in the repo.
@@ -152,4 +166,4 @@ Step · dataset · date · who ran it | What (plain language) | Why | Input file
   - "—" (not ranked) recorded as blank. **Claude's choice.**
 
 ---
-**City-selection status (2026-09-27):** Steps 1–8 complete and logged retroactively (Step 9). Open items: (1) Gina to review the judgment calls marked "not yet approved"; (2) confirm whether the ALA list continues past Houston-Pasadena; (3) check whether the Media Cloud API includes the end date (2026-09-25) in its counts; (4) ambiguous city names may inflate some city-level counts.
+**City-selection status (2026-09-27):** Steps 1–8 complete and logged retroactively (Step 9); raw-file descriptions in `data/descriptions/data_descriptions.md` (Step 10). Open items: (1) Gina to review the judgment calls marked "not yet approved"; (2) confirm whether the ALA list continues past Houston-Pasadena; (3) check whether the Media Cloud API includes the end date (2026-09-25) in its counts; (4) ambiguous city names may inflate some city-level counts.
