@@ -5,7 +5,7 @@ Running plain-language log of every data step Gina runs with Claude. This log fe
 Dish keeps her own log (`data-log-dish.md`); the two may be combined later.
 **Newest entries are at the top** (Dish's log runs oldest-first).
 
-**Datasets in this log:** Media Cloud news coverage (online news) · American Lung Association *State of the Air 2026* PM2.5 rankings · OpenAQ PM2.5
+**Datasets in this log:** Media Cloud news coverage (online news) · American Lung Association *State of the Air 2026* PM2.5 rankings · OpenAQ PM2.5 · Google Trends (heat-related searches)
 
 **City-selection (Media Cloud × ALA)**
 - **Cities (36 in 15 ALA metro areas):** Bakersfield-Delano CA · Eugene-Springfield OR · Brownsville-Harlingen-Raymondville TX · Fresno-Hanford-Corcoran CA · Visalia CA · Fairbanks-College AK · Los Angeles-Long Beach CA · Detroit-Warren-Ann Arbor MI · Indianapolis-Carmel-Muncie IN · Pittsburgh-Weirton-Steubenville PA-OH-WV · McAllen-Edinburg TX · San Diego-Chula Vista-Carlsbad CA · Phoenix-Mesa AZ · San Jose-San Francisco-Oakland CA · Houston-Pasadena TX
@@ -29,6 +29,27 @@ Step · dataset · date · who ran it | What (plain language) | Why | Input file
 **Note on Steps 1–8:** these were run on 2026-09-26/27 before this log existed, and logged retroactively in Step 9. They did not follow Rule 1 (no step-by-step approval before running), and Rule 2/3 files were assembled afterwards. Judgment calls in them are marked **Claude's choice, flagged to Gina in chat; not yet approved**, unless Gina specified or changed them. Gina to review.
 
 ---
+
+### Step 1 · Google Trends · 2026-09-27 · Gina + Claude
+- **What:** Added Gina's 16 Google Trends downloads to the repo **unchanged**, and wrote `trends_sources.csv` next to them, with one row per file: source, geography selected, level, date range, search terms and settings. **No data values changed.**
+- **Why:** Gina asked for the files to be in the raw data folder, labelled with their source (Google Trends), date range and geography. The files themselves contain no metadata, so the geography is only in the file name.
+- **Input:** `~/Desktop/MDE/dataviz/trends-heat-search/*.csv` (16 files, downloaded by Gina from Google Trends on 2026-09-27)
+- **Script:** `scripts/google-trends/01_sources_table.py` (writes `trends_sources.csv`); the files were copied with `cp -p` and checked byte-for-byte against the originals (16/16 identical).
+- **Rows in → out:** 16 files, each 128 months (2016-01 to 2026-09) × 5 terms ("air conditioner", "cooling center", "fan", "AC", "cooling fan") → 16 files unchanged + a 16-row sources table.
+  - **US states (6):** Arizona, California, Alaska, Michigan, Oregon, Texas
+  - **Metro areas (3):** Fresno-Visalia CA; Harlingen-Weslaco-Brownsville-McAllen TX; San Francisco-Oakland-San Jose CA
+  - **Cities, per Gina (7):** Bakersfield CA, Detroit MI, Eugene OR, Fairbanks AK, Los Angeles CA, Phoenix AZ, San Diego CA
+- **Output:** `data/raw/google-trends/heat-search/` (16 CSVs + `trends_sources.csv`); 19 rows added to `data/descriptions/data_descriptions.csv`
+- **Settings (from Gina):** search terms (not topics), All categories, Web Search, downloaded 2026-09-27.
+- **Judgment calls:**
+  - **Metadata in a companion file, not inside the CSVs**, because Rule 2 says raw files are never edited and title rows would break the CSV format. Gina had asked for "a page in the csv or a title". **Claude's proposal; Gina did not object.**
+  - **Folder `data/raw/google-trends/heat-search/`**, leaving room for other Trends downloads (e.g. `trends-air`). **Claude's choice, flagged to Gina in chat.**
+  - **The 7 city-named files are recorded as cities, per Gina.** Claude had expected them to be metro areas and couldn't confirm from Google's help pages which levels the "interest over time" view offers. **Specified by Gina; level not independently verified.**
+- **Caveats for the appendix:**
+  - **Values are relative (0–100), scaled within each file**, not search counts, and not comparable across files. Google normalizes each point by total searches in that geography and time range, then scales 0–100 (Google Trends Help FAQ, https://support.google.com/trends/answer/4365533).
+  - **2026-09 is a partial month.**
+  - **"fan" and "AC" are ambiguous terms** (e.g. sports fans, other meanings of AC).
+  - **"cooling center" is mostly 0** (too little search volume).
 
 ### Step 15 · descriptions · 2026-09-27 · Gina + Claude
 - **What:** Added a **key terms** section at the top of `data/descriptions/data_descriptions.csv`: 21 rows with `file` = "KEY TERM", one per term (PM2.5, reference monitor, low-cost sensor, AirNow, sensor, location, site, city limits, city center, fallback sensor, study period, sensor-day, valid day, flag, negative values, low-cost outlier rule, counted sensor-day, site-day, city daily mean, overall city daily mean, min / max). Each has a plain definition, units, source (with links), formula where relevant, and pointers to the detailed rows, steps and decisions. **Documentation only: no data changed.**
