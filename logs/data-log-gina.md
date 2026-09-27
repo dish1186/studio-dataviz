@@ -75,7 +75,11 @@ Step · dataset · date · who ran it | What (plain language) | Why | Input file
   - **Site = same type, same city, within 50 m, chained.** Co-located reference sensors are 0–16 m apart; the nearest distinct stations are ~150 m or more apart. **Claude's choice, approved by Gina.**
   - **Site IDs made by the script:** "S" + the lowest OpenAQ location ID in the site. **Claude's choice, approved by Gina.**
   - **A station that moved more than 50 m counts as two sites**, e.g. San Ysidro (San Diego), 184 m apart, never reporting on the same day. City averages aren't affected, because only sites with data that day are used. **Claude's choice, approved by Gina.**
-  - **US test:** in-city sensors count as US by the Census boundary; fallback sensors use OpenAQ's country. **Claude's fix, flagged to Gina in chat; not yet approved.**
+  - **US test:** in-city sensors count as US by the Census boundary; fallback sensors use OpenAQ's country. **Claude's fix, approved by Gina** after this check:
+    - **Brownsville C80:** TCEQ (Texas environmental agency) lists it at 344 Porter Drive, Brownsville (https://www.tceq.texas.gov/cgi-bin/compliance/monops/site_info.pl?cams=80, accessed 2026-09-27). The Census Geocoder places that address in Texas, Cameron County, Brownsville city, 562 m from OpenAQ's coordinates. OpenAQ's position is 326 m inside the city limit.
+    - **Brownsville East 6th:** TCEQ lists it at 85 East 6th Street, Brownsville. Census: Texas, Cameron County, Brownsville city, 301 m from OpenAQ's coordinates. OpenAQ's position is 847 m inside the limit, and OpenAQ gives its locality as "CAMERON".
+    - The geocoder interpolates positions along address ranges, so gaps of a few hundred metres are expected.
+    - The low-cost sensors (Clarity Brownsville Sensor #6, HFH CURES 24 in Detroit) have no agency address. They are 726 m and 608 m inside their city limits, well beyond the boundary file's simplification error.
 - **Finding (resolved by Decision OA-D4):** Some of Warren's fallback sensors are much closer to Detroit than to Warren. The "nearest city that needs it" rule (Step 2) gives them to Warren because Detroit doesn't use fallbacks.
   - HFH CURES 6, 17 and 18: 0.2–1.3 km from Detroit's limits, 7.4–9.4 km from Warren's.
   - **Oak Park**, Warren's only reference monitor: 2.0 km from Detroit, 8.1 km from Warren.
