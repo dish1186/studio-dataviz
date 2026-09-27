@@ -1,0 +1,2 @@
+city,source,n_rows,n_blank,first_row,last_row,last_valid,pool_min,pool_max,baseline_share_above_p90,share_abnormally_high_2016on,mean_anomaly_f,hottest_day,hottest_tmax_f,n_months,most_abnormal_month,most_abnormal_n,warmest_anomaly_month,warmest_anomaly_f
+fairbanks,"ERA5-Land hourly time-series (CDS), 8 cells area-weighted",3920,3,2016-01-01,2026-09-24,2026-09-21,450,458,9.38,9.0,0.8,2019-06-29,88.26,129,2019-03,18,2019-03,15.78
