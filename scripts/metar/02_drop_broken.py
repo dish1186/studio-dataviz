@@ -14,8 +14,11 @@ OUT = "data/processed/metar/step02_valid"
 os.makedirs(OUT, exist_ok=True)
 
 summary = []
-for path in sorted(glob.glob(f"{RAW}/metar_*_raw.csv")):
-    city = os.path.basename(path).replace("metar_", "").replace("_raw.csv", "")
+# Phoenix comes from the Step 1b local-time file (raw PHX is in UTC; log D5, Step 1b)
+PHOENIX_LOCAL = "data/processed/metar/step01b_phoenix_local/metar_phoenix_local.csv"
+for path in sorted(glob.glob(f"{RAW}/metar_*_raw.csv")) + [PHOENIX_LOCAL]:
+    city = (os.path.basename(path).replace("metar_", "")
+            .replace("_raw.csv", "").replace("_local.csv", ""))
     df = pd.read_csv(path, dtype=str, keep_default_na=False)   # everything as text
 
     vsby = pd.to_numeric(df["vsby"].replace("", None), errors="coerce")
