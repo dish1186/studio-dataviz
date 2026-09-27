@@ -30,6 +30,44 @@ Step · dataset · date · who ran it | What (plain language) | Why | Input file
 
 ---
 
+### Step 2 · OpenAQ · 2026-09-27 · Gina + Claude
+- **What:** Checked which city's limits each PM2.5 sensor is inside, and each sensor's distance to the limits of nearby cities. Sensors inside limits were assigned to that city. For each city and sensor type with no sensor inside its limits, listed the fallback options at caps of 5, 10, 15 and 20 km beyond the limits. **No measurements downloaded; no sensors dropped; the cap isn't chosen yet.**
+- **Why:** Decision OA-D1 (city limits first, nearest-city fallback). Gina chose to decide the cap after seeing these counts (OA-D2).
+- **Input:**
+  - `data/raw/census/cb_2024_us_place_500k.zip`: Census 2024 cartographic boundary file for places, 22,957,701 bytes. Downloaded 2026-09-27 with Gina's approval; not modified. SHA-256 `2be68094…6944b3` (full hash in the data descriptions).
+  - `data/processed/openaq/step01_inventory/` (Step 1)
+  - OpenAQ API v3 `/v3/locations?bbox=…` and `/v3/locations/{id}/sensors`, for the extra searches
+- **Script:** `scripts/openaq/02_assign_sensors.py`. Uses the `pyshp` library (installed with Gina's approval) to read the shapefile.
+- **Rows in → out:** 821 Step 1 sensors + **127 found by the extra searches** = **948 distinct sensors**. **551 inside the limits** of a study city, **16 fallback candidates**, **381 unassigned** (outside every city and not a candidate).
+  - **Extra searches:** 5 cities reach past the 25 km net. Farthest limit from city hall: Phoenix 53.6 km, San Francisco 53.0 km (the Farallon Islands), San Diego 48.1 km, Los Angeles 43.2 km, Brownsville 35.0 km. New sensors found: Los Angeles +114, San Diego +12, Phoenix +1, San Francisco 0, Brownsville 0.
+  - **Sensors inside limits with data in the study period (reference / low-cost):** Ann Arbor 0 / 16 · Bakersfield 5 / 2 · Boston 5 / 11 · Brownsville 2 / 10 · Delano 0 / 13 · Detroit 8 / 34 · Eugene 4 / 0 · Fairbanks 2 / 0 · Fresno 3 / 5 · Los Angeles 8 / 273 · Phoenix 7 / 25 · Raymondville 0 / 0 · San Diego 12 / 22 · San Francisco 1 / 72 · Springfield 4 / 0 · Warren 0 / 0.
+  - **Fallback candidates** (km beyond the limits):
+    - Ann Arbor reference: Ypsilanti 6.9.
+    - Warren reference: Oak Park 8.1, Windsor Downtown 14.7 and 14.8, Dearborn 16.5, Windsor West 17.2 and 17.3.
+    - Warren low-cost: 9 sensors, 1.0–15.7 km, all from Dec 2023 or later.
+    - None within 20 km for Delano reference, Raymondville (either type), or Eugene / Springfield / Fairbanks low-cost.
+- **Output:** `data/processed/openaq/step02_assignment/`
+  - `openaq_sensors_assigned.csv`: one row per distinct sensor, with inside_city, nearest_city, assigned_city, assignment_rule and distances
+  - `fallback_cap_options.csv`
+  - `city_boundary_summary.csv`
+  - `city_boundaries.geojson`: the 16 boundaries, copied from the Census file, for maps
+  - Raw: `data/raw/openaq/json/locations_bbox_<city>.json` and `location_sensors_bbox_<city>.jsonl` (5 cities each)
+  - Descriptions: 16 rows added to `data/descriptions/data_descriptions.csv`
+- **Checks:** Every city matched exactly one Census "city" (LSAD 25) boundary. No sensor fell inside two cities. The extra searches returned nothing outside their box. Spot checks: the Springfield City Hall monitor is inside Springfield; Ypsilanti is outside Ann Arbor (6.9 km); Detroit-E7 Mile is inside Detroit and so is not available to Warren.
+- **Findings for the next decisions:**
+  - **Warren's reference fallback includes Windsor, Ontario (Canada)** monitors, across the Detroit River. AirNow reports some Canadian stations. **Open item: keep or exclude non-US monitors.**
+  - **Several sensors can share one site.** Springfield City Hall has 3 reference sensors with overlapping dates; Bakersfield's 5 reference sensors are at 2 named sites; San Diego's 12 are at 8. Averaging by sensor would count those sites more than once. **Open item for the averaging step: average by site (location) or by sensor.**
+  - **Short-lived or temporary reference monitors** are included, e.g. San Diego's "EBAM" and "MMCA…" units (2020–2024) and a San Ysidro unit reporting for 8 days in 2016.
+  - San Francisco has only **1** reference monitor inside its limits (the Step 1 count of 7 included Oakland and other nearby cities).
+  - Detroit and Warren: the 52 sensors their 25 km circles shared (Step 1) are now separated. Warren has no sensor of either type inside its own limits.
+- **Judgment calls:**
+  - **Fallback decided per sensor type** (reference / low-cost). **Claude's choice, approved by Gina.**
+  - **Fallback sensors go to the nearest city that needs them.** Sensors inside another listed city's limits are never used as fallback. **Claude's choice, approved by Gina.**
+  - **Only sensors with data between 2016-03-06 and 2026-09-25 count** as "inside" or as candidates. **Claude's choice, approved by Gina.**
+  - **Extra search only for cities whose limits reach past 25 km**, using the boundary's bounding box. **Claude's choice, approved by Gina.**
+  - **NAD83 (Census) vs WGS84 (OpenAQ) difference ignored** (< 2 m). **Claude's choice, approved by Gina.**
+- **Known limitation:** The Step 1 net reaches at least 16 km beyond the limits of the small cities (Warren 16.4, Delano 16.5, Ann Arbor 17.7), so the 20 km cap counts may miss sensors 16–20 km out. The 5, 10 and 15 km counts are complete.
+
 ### Step 12 · descriptions · 2026-09-27 · Gina + Claude
 - **What:** Added OpenAQ's own definitions of reference-grade monitors and low-cost sensors to the `isMonitor` row of `data/descriptions/data_descriptions.csv`, and examples of each type to the `instruments[].name` row. **Documentation only: no data changed.**
 - **Why:** Gina asked for the difference between the two sensor types, from the API/OpenAQ documentation, to be in the definitions document.

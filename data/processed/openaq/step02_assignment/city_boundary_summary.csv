@@ -1,0 +1,17 @@
+city_slug,GEOID,NAMELSAD,state,land_km2,farthest_limit_from_center_km,extra_bbox_search,extra_locations_found,extra_pm25_sensors_found
+detroit,2622000,Detroit city,MI,359.3,23.6,False,0,0
+phoenix,0455000,Phoenix city,AZ,1342.5,53.6,True,1,1
+boston,2507000,Boston city,MA,125.2,15.9,False,0,0
+brownsville,4810768,Brownsville city,TX,345.5,35.0,True,0,0
+eugene,4123850,Eugene city,OR,115.2,11.3,False,0,0
+springfield,4169600,Springfield city,OR,41.3,11.2,False,0,0
+sandiego,0666000,San Diego city,CA,844.6,48.1,True,12,12
+bakersfield,0603526,Bakersfield city,CA,389.2,23.6,False,0,0
+losangeles,0644000,Los Angeles city,CA,1218.6,43.2,True,114,114
+delano,0618394,Delano city,CA,38.1,8.5,False,0,0
+fairbanks,0224230,Fairbanks city,AK,82.4,10.2,False,0,0
+sanfrancisco,0667000,San Francisco city,CA,120.9,53.0,True,0,0
+fresno,0627000,Fresno city,CA,300.2,19.9,False,0,0
+warren,2684000,Warren city,MI,89.0,8.6,False,0,0
+annarbor,2603000,Ann Arbor city,MI,73.5,7.3,False,0,0
+raymondville,4860836,Raymondville city,TX,10.7,3.3,False,0,0
