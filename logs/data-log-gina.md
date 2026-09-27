@@ -5,7 +5,7 @@ Running plain-language log of every data step Gina runs with Claude. This log fe
 Dish keeps her own log (`data-log-dish.md`); the two may be combined later.
 **Newest entries are at the top** (Dish's log runs oldest-first).
 
-**Datasets in this log:** Media Cloud news coverage (online news) · American Lung Association *State of the Air 2026* PM2.5 rankings · OpenAQ PM2.5 · Google Trends (heat-related searches)
+**Datasets in this log:** Media Cloud news coverage (online news) · American Lung Association *State of the Air 2026* PM2.5 rankings · OpenAQ PM2.5 · Google Trends (heat-related and air-quality searches)
 
 **City-selection (Media Cloud × ALA)**
 - **Cities (36 in 15 ALA metro areas):** Bakersfield-Delano CA · Eugene-Springfield OR · Brownsville-Harlingen-Raymondville TX · Fresno-Hanford-Corcoran CA · Visalia CA · Fairbanks-College AK · Los Angeles-Long Beach CA · Detroit-Warren-Ann Arbor MI · Indianapolis-Carmel-Muncie IN · Pittsburgh-Weirton-Steubenville PA-OH-WV · McAllen-Edinburg TX · San Diego-Chula Vista-Carlsbad CA · Phoenix-Mesa AZ · San Jose-San Francisco-Oakland CA · Houston-Pasadena TX
@@ -29,6 +29,35 @@ Step · dataset · date · who ran it | What (plain language) | Why | Input file
 **Note on Steps 1–8:** these were run on 2026-09-26/27 before this log existed, and logged retroactively in Step 9. They did not follow Rule 1 (no step-by-step approval before running), and Rule 2/3 files were assembled afterwards. Judgment calls in them are marked **Claude's choice, flagged to Gina in chat; not yet approved**, unless Gina specified or changed them. Gina to review.
 
 ---
+
+### Step 5 · Google Trends · 2026-09-27 · Gina + Claude
+- **What:** Made processed copies of the 17 air-search files. Each keeps `Time`, "air purifier", "air filter" and "n95" unchanged (all three kept) and adds `total_interest_index` (their sum) and `avg_interest_index` (their average, 2 decimals). Added a `README.md` defining the 0–100 index. **Raw files not modified.**
+- **Why:** Gina asked to repeat the heat-search process for the air-quality searches.
+- **Input:** `data/raw/google-trends/air-search/*-air-search.csv` (17 files)
+- **Script:** `scripts/google-trends/04_air_search_processed.py`
+- **Rows in → out:** 17 files × 129 months → 17 files × 129 months; 2 columns added, none removed. Checked: dates and the three terms identical to raw, and the total equals their sum in every row.
+- **Output:** `data/processed/google-trends/air-search/` (17 CSVs + `README.md`); 5 description rows added
+- **Judgment calls:**
+  - **All three terms kept.** **Specified by Gina** (after Claude flagged that "air filter" includes furnace, HVAC and car filters, and that "n95" peaks with COVID-19).
+  - **Column names and README as for heat search** (Google Trends Step 3). **Specified by Gina** ("repeat this process").
+- **Caveats for the appendix:**
+  - **What sets the 100:** in **15 of 17 files it is "n95" in March or April 2020** (COVID-19 onset), or January 2022 in San Francisco-Oakland-San Jose. Every other month and term is scaled against that spike, so air-quality-related searches in other months look small. Dropping n95 afterwards would not undo this, because Google's scaling is built into the download.
+  - In **Eugene and Oregon the 100 is "air purifier" in September 2020**, the month of the Oregon wildfire smoke (compare OpenAQ: Eugene reference PM2.5 up to 468 µg/m³ that month).
+  - As for heat search, the files are not comparable across places.
+
+### Step 4 · Google Trends · 2026-09-27 · Gina + Claude
+- **What:** Added Gina's 17 Google Trends air-quality search downloads to the repo **unchanged** (checked byte-for-byte), and wrote `trends_sources.csv` with each file's source, geography, level, date range, terms and settings. The hidden Mac file `.DS_Store` in the folder was not copied. **No data values changed.**
+- **Why:** Same as Google Trends Step 1, for the air-quality searches.
+- **Input:** `~/Desktop/MDE/dataviz/trends-air/*.csv` (17 files, downloaded by Gina 2026-09-27, file times 10:51–13:41)
+- **Script:** `scripts/google-trends/03_air_sources_table.py`
+- **Rows in → out:** 17 files, each 129 months (2016-01 to 2026-09) × 3 terms ("air purifier", "air filter", "n95"), all values whole numbers → 17 files unchanged + a 17-row sources table.
+- **Geographies:** the same 17 as the heat search, with the same levels: 6 US states; 4 metro areas; 7 cities (per Gina). Checked in code: geographies and levels identical to the heat-search `trends_sources.csv`.
+  - File names differ from the heat search in places: `boston-ma` (heat: `boston MA-Manchester-NH`), `la-ca`, `san diego-ca`, `fresno-visalia-ca`, `oregon`, `tx`.
+- **Output:** `data/raw/google-trends/air-search/` (17 CSVs + `trends_sources.csv`); 6 description rows added
+- **Judgment calls:**
+  - **Same levels as the heat search.** **Specified by Gina.**
+  - **Boston recorded as the Boston MA-Manchester NH metro**, although this file is named just `boston-ma`. **Confirmed by Gina.**
+  - **Settings as for heat search** (search terms, All categories, Web Search, downloaded 2026-09-27). **Confirmed by Gina.**
 
 ### Step 3 · Google Trends · 2026-09-27 · Gina + Claude
 - **What:** Made processed copies of the 17 heat-search files. Each keeps `Time`, "air conditioner", "fan" and "AC" unchanged, removes "cooling center" and "cooling fan", and adds `total_interest_index` (sum of the three terms) and `avg_interest_index` (their average, 2 decimals). **Raw files not modified** (checked with `git status`).
