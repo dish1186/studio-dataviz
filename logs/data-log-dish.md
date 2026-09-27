@@ -209,6 +209,118 @@ Step · dataset · date · who ran it | What (plain language) | Why | Input file
   - **Airport coordinates copied by hand** from IEM pages (source URL pattern in the script). **Claude's choice, approved by Dish.**
   - "In city limits" filled only where the handoff states it; others are "not checked" until city-limits shapefiles are available (gridMET step). **Claude's choice, approved by Dish.**
 
+### Decision D2 · gridMET · 2026-09-27 · Dish
+- **What:** gridMET actual temperature will be pulled over **city-limits boundaries** (Census TIGER/Line "Places") for all 9 continental-US cities, not ClimateEngine's built-in county regions.
+- **Why:** For most of the cities the county is far larger and takes in mountains or desert: LA County (San Gabriels, Mojave), Kern (Sierra Nevada, Tehachapis, Mojave), Fresno (Sierra peaks near 14,000 ft), Lane (Cascades to the coast). A county average would blend in those cooler or different climates and misstate city highs. City limits also match the handoff's city-scale rule and the METAR airport-nearest-city approach.
+- **Options considered:** (A) city limits for all 9; (B) ClimateEngine county regions for all 9 (faster, no download); (C) county only where it matches the city (San Francisco, Suffolk/Boston), city limits elsewhere. **Approved by Dish: chose A** (Claude's recommendation).
+- **Consequence:** Dish downloads the TIGER/Line Places state files by hand (the network proxy blocks www2.census.gov from both shells). Per-city shapefiles for upload to ClimateEngine are made in a later step.
+
+### Step 1 · gridMET · 2026-09-27 · Dish (download) + Claude (check)
+- **What:** Dish downloaded the Census **TIGER/Line 2025 "Places"** shapefiles by hand for 7 states from census.gov/cgi-bin/geo/shapefiles/index.php (Year 2025 → Layer type: Places → state → Download). Claude checked that each zip is complete. **Files kept exactly as downloaded (not renamed, not unzipped).**
+- **Why:** City-limits boundaries for the gridMET pull (Decision D2), plus the "is the airport inside city limits" check for the METAR stations. Alaska is included only for that check at Fairbanks (gridMET doesn't cover Alaska).
+- **Output (raw):** `data/raw/gridmet/tiger_places/tl_2025_<FIPS>_place.zip` for FIPS 02 AK · 06 CA · 25 MA · 26 MI · 41 OR · 42 PA · 48 TX
+- **Check:** every zip has .shp, .shx, .dbf, .prj, .cpg and the two ISO metadata .xml files (7 files each). Shapefiles dated 2025-09-12/13 by Census.
+- **SHA-256 (so anyone can confirm the raw files are unchanged):**
+  - 02 `582c37f2fe680af15d7508e222153d5aa163867f47f2d96fbacd05695b0d985d`
+  - 06 `2b59dc5d54c69c7a451795401fc2a1c1c68b172f1d912d3486080e04a83e23e8`
+  - 25 `950f7d0a669caf721f770d1cc58883560b1cf84f5d7be845e6e3d05a855c86fa`
+  - 26 `91cd708b8f9809a50ebed360fe7242969ba357a542481da81d9edc5821d35d3b`
+  - 41 `d05814de06701cca35df9e160017cd11d5ffe43a2530a8fa7f4b3a521e9e1f0f`
+  - 42 `b9b8a25b906bc0c338cc4cfea45d8e5de12247a913cbd821b93368c55e2e9dc5`
+  - 48 `5a0c4d49641f69028ee9f5c343bf09936ec00a378e5e6393115b106bab935e13`
+- **Judgment calls:**
+  - **TIGER/Line (full-detail legal boundaries), vintage 2025**, rather than the simplified cartographic-boundary files. **Claude's choice, approved by Dish** (Dish picked 2025, the latest listed).
+  - Raw folder `data/raw/gridmet/tiger_places/`; the same boundaries will be reused for UTCI. **Claude's choice, approved by Dish.**
+  - Downloaded by hand because the network proxy blocks www2.census.gov from both shells.
+
+### Step 2 · gridMET · 2026-09-27 · Dish + Claude
+- **What:** Read-only audit of the city-limits boundaries. For each city: Census land and water area, number of separate polygon pieces and distance of the farthest piece, approximate number of gridMET cells inside. Also checked whether each of the 12 METAR airports lies inside its city's limits. **Nothing changed.**
+- **Why:** To decide, with real numbers, how to prepare each city's polygon for ClimateEngine; and to close METAR open item 4 (airports in city limits).
+- **Input:** `data/raw/gridmet/tiger_places/*.zip` (not modified) · `data/processed/metar/metar_station_distances.csv`
+- **Script:** `scripts/gridmet/02_boundary_audit.py` (needs geopandas 1.1.4, installed in the local workspace)
+- **Output:** `data/processed/gridmet/step02_boundary_audit/` → `boundary_audit.csv` (10 cities), `boundary_parts.csv` (one row per polygon piece), `airport_in_city.csv` (12 airports)
+- **Findings (boundaries):**
+  - Land / water km², pieces, approx. gridMET cells: Bakersfield 390 / 4 · 4 pieces · 20 · Fresno 300 / 3 · 4 · 14 · Los Angeles 1,219 / 82 · 1 · 74 · **San Francisco 121 / 480 (80% water) · 2 pieces, second one 248 km² at 30.7 km (Farallon Islands and surrounding ocean)** · 37 · Eugene 116 / 0.2 · **178 pieces** (mostly slivers, largest detached 0.47 km²) · 8 · Brownsville 316 / 17 · 4 · 19 · Detroit 359 / 11 · 1 · 24 · Pittsburgh 143 / 8 · 1 · 10 · **Boston 125 / 107 (46% water)** · 1 · 15 · Fairbanks 82 / 2 · 1 · n/a.
+- **Findings (airports in city limits):** **inside:** FAT, BRO, BOS, LAX, DET. **Outside:** BFL 1.9 km · EUG 0.9 km · AGC 1.2 km · PAFA 4.3 km · SFO 10.0 km · PIT 12.1 km · DTW 13.6 km (km beyond the boundary, not from city hall). Handoff notes for LAX, SFO, DET, DTW, AGC, PIT confirmed.
+- **Judgment calls:**
+  - Checked all 12 airports, not just the 6 Dish listed. **Claude's choice, approved by Dish.**
+  - gridMET cell count = cell centres (1/24° grid) inside the boundary; a rough size check, not what ClimateEngine computes. **Claude's choice, approved by Dish.**
+  - Places matched by Census NAME + "<name> city"; exactly one match required. **Claude's choice, approved by Dish.**
+  - Equal-area projections EPSG:5070 (CONUS) and EPSG:3338 (Alaska) for areas and distances. **Claude's choice, approved by Dish.**
+- **Open decision:** how to handle water (SF, Boston), the Farallon piece, and Eugene's slivers before making the ClimateEngine polygons.
+
+### Housekeeping · repo · 2026-09-27 · Claude (approved by Dish)
+- Added `.gitignore` (`.DS_Store`, plus `__pycache__/` as Claude's addition) and a full `README.md`. The two `.DS_Store` files already tracked by git (`data/`, `data/raw/`) are to be untracked with `git rm --cached` at commit time (files stay on disk).
+
+### Decision D3 · gridMET · 2026-09-27 · Dish
+- **What:** Use the Census city-limits shapes as they are (water included, Eugene's slivers kept), **except San Francisco: drop the detached Farallon Islands piece** (248 km², 30.7 km offshore).
+- **Why:** gridMET is a land dataset, so water cells are expected to be blank and skipped in ClimateEngine's average (to be confirmed visually in ClimateEngine). The Farallones are not part of the lived city, and an ocean-cooled island cell could bias SF's average. Eugene's slivers are tiny (largest 0.47 km²) and inside or next to the city.
+- **Options considered:** (A) all shapes as-is; (B) as-is but drop SF's Farallon piece; (C) clip every city to land using Census cartographic-boundary files. **Approved by Dish: chose B** (Claude's recommendation).
+- **To confirm:** after upload, check in ClimateEngine's gridMET map layer that bay and harbor water (SF, Boston) show no data.
+
+### Step 3 · gridMET · 2026-09-27 · Dish + Claude
+- **What:** Pulled each of the 9 continental cities' city-limits shape out of its state file and saved it as its own zipped shapefile for ClimateEngine upload. San Francisco keeps only its main piece (Decision D3). Converted coordinates from NAD83 to WGS84.
+- **Why:** ClimateEngine's "Custom Polygon from Shapefile" needs a zip with .shp/.shx/.dbf/.prj; one city per zip avoids ambiguity.
+- **Input:** `data/raw/gridmet/tiger_places/tl_2025_{06,25,26,41,42,48}_place.zip` (not modified; `git status` shows no change to raw files)
+- **Script:** `scripts/gridmet/03_city_polygons.py`
+- **Rows/values in → out:** 9 city shapes → 9 zips. Pieces and area unchanged for 8 cities. **San Francisco: 2 pieces → 1; 600.62 → 352.69 km² (247.92 km² removed, the Farallon Islands piece).** SF's remaining shape still includes bay and ocean water (lat 37.71–37.93, lon −122.61 to −122.28).
+- **Output:** `data/processed/gridmet/step03_city_polygons/<city>_citylimits.zip` (9 files: .shp .shx .dbf .prj .cpg), `step03_summary.csv`
+- **Judgment calls:**
+  - Reprojected NAD83 (EPSG:4269) → WGS84 (EPSG:4326), Earth Engine's standard; shift ≈ 1 m. **Claude's choice, approved by Dish.**
+  - SF "main piece" = largest piece by area. **Claude's choice, approved by Dish** (implements D3).
+  - Kept columns GEOID, NAME, NAMELSAD, ALAND, AWATER in the upload copies only. **Claude's choice, approved by Dish.**
+  - File names `<city>_citylimits.zip`. **Claude's choice, approved by Dish.**
+
+### Decision D4 · all datasets · 2026-09-27 · Dish
+- **What:** The study period now ends **2026-09-24** for all three datasets (replaces D1's end date of 2026-09-25).
+- **Why:** gridMET's period of record in ClimateEngine currently ends 2026-09-24 (it runs a day or two behind). Ending everything on the 24th keeps all three datasets aligned without waiting for a re-pull.
+- **Options considered:** (A) pull gridMET through 09-24 now, add 09-25 later as a separate raw file; (B) end only gridMET on 09-24, one-day mismatch with METAR; (C) move the whole study end to 09-24. **Changed by Dish: chose C** (Claude had leaned A).
+- **Follow-on (open, METAR):** the METAR final files (`data/processed/metar/final/vis_<city>_daily.csv`) still run to 2026-09-25 (3,921 days) and need a small trim step to drop 09-25 (→ 3,920 days). Not done in the gridMET work. UTCI will be pulled through 09-24.
+
+### Step 4 · gridMET · 2026-09-27 · Dish (downloads) + Claude (check)
+- **Downloads (Dish, ClimateEngine, Boston pilot):** Native Time Series · One Variable Analysis · Region: Custom Polygon from Shapefile → `boston_citylimits.zip` (feature 2507000 selected in the region dropdown) · Climate & Hydrology · GridMET 4km Daily · Maximum Temperature · deg F · 4000 m · Statistic over region: Mean · **Masking: No masking of data** · Custom Date Range. Saved to `data/raw/gridmet/climateengine/` and named at save time `gridmet_tmax_<city>_<period>.csv` (file contents untouched).
+  - Troubleshooting on the way (for the record): masking was initially set to "Mask by category → Valley Bottom Extraction Tool" (left over from the Map tab), and ClimateEngine refused to run; switched to No masking. A generic server error ("Expecting value: line 1 column 1") came from no region being selected in the "Pick a Region!" dropdown after the upload.
+  - **Mistaken download replaced:** the first baseline file covered 1999-01-01 to 2020-12-31 (start date typed as 1999). Dish re-ran it from 1991-01-01 and saved over it under the same name. The mistaken file was not processed.
+- **Water check (for D3):** the gridMET Map layer shows no values over the Atlantic, Massachusetts Bay, Lake Ontario or the Bay of Fundy; colour stops at the coastline in 4 km steps. So water inside city limits is empty in gridMET and doesn't enter ClimateEngine's regional mean. D3 holds.
+- **What (check):** read-only check of each raw file: header, date range, day count, gaps, duplicates, blanks, implausible values (outside −60 to 130 °F), and whether the 2016–2020 days common to both pulls have identical values.
+- **Input:** `data/raw/gridmet/climateengine/gridmet_tmax_boston_2016-2026.csv` (SHA-256 `8a043cc9317264b2da10cb76778ebcacbc53b58e59251a1a3f9a8f53c89cb394`) · `gridmet_tmax_boston_1991-2020.csv` (SHA-256 `0f682e54c6d4750674d86351a618e0ce904f12221700b607aea345af22a1370c`)
+- **Script:** `scripts/gridmet/04_raw_check.py`
+- **Output:** `data/processed/gridmet/step04_raw_check/raw_check.csv`
+- **Results (Boston):** 2016-2026: 3,920 of 3,920 days (2016-01-01 to 2026-09-24); 1991-2020: 10,958 of 10,958 days. 0 missing, 0 duplicate, 0 blank, 0 implausible. **Overlap 2016–2020: identical values (max difference 0.0 °F)**, so both pulls used the same polygon and settings. Range: 8.2 °F (2019-01-21) to 101.9 °F (2025-06-24, the June 2025 heat wave); baseline 6.5 to 98.9 °F.
+- **Judgment calls:**
+  - Plausible range −60 to 130 °F (flag only, nothing removed). **Claude's choice, approved by Dish.**
+  - Renaming ClimateEngine downloads at save time so the 18 files are distinguishable. **Claude's choice, approved by Dish.**
+  - Boston downloaded first as a pilot before the other 8 cities. **Claude's choice, approved by Dish.**
+
+### Step 4 (final) · gridMET · 2026-09-27 · Dish (downloads) + Claude (check)
+- **What:** Dish downloaded the remaining 8 cities from ClimateEngine with the Boston pilot settings (one city polygon per request, its GEOID picked in the region dropdown, No masking, 2016-01-01 → 2026-09-24 and 1991-01-01 → 2020-12-31). Claude ran the raw check on all **18 files** after each city came in, then once more on all of them after adding three header checks (below). **Read-only: nothing changed.**
+- **Script change (approved by Dish before running):** `scripts/gridmet/04_raw_check.py` now also records `geoid_in_header`, `geoid_matches_city` (header GEOID vs the city in the filename, using the Step 3 GEOIDs) and `header_dates_match` (header date range vs the expected range; would have caught the 1999 mix-up).
+- **Output:** `data/processed/gridmet/step04_raw_check/raw_check.csv` (18 rows)
+- **Results:** every file has the right GEOID and date range; 3,920 of 3,920 study days and 10,958 of 10,958 baseline days; 0 missing, 0 duplicate, 0 bad dates, 0 blank, 0 implausible, 0 outside range. **2016–2020 overlap identical in all 9 cities (max difference 0.0 °F).**
+- **Hottest study-period days (2016-01-01 to 2026-09-24):** Bakersfield 113.8 °F (2022-09-06) · Fresno 113.4 °F (2022-09-06) · Eugene 110.1 °F (2021-06-27, Pacific NW heat dome) · Los Angeles 109.3 °F (2018-07-06) · Brownsville 102.7 °F · Boston 101.9 °F (2025-06-24) · San Francisco 97.9 °F (2020-09-06) · Detroit 97.2 °F · Pittsburgh 96.8 °F. Cold ends match known events (Detroit −1.4 °F on 2019-01-30, polar vortex; Brownsville 34.0 °F, likely the Feb 2021 freeze).
+- **Flags for later (nothing changed):**
+  - **Detroit 2013-09-10 = 104.8 °F** (baseline). Real hot spell (neighbouring days 89 and 99 °F), but Claude's understanding is that the airport recorded mid-90s that day, so gridMET may run ~8–10 °F hot on this day. Not verified (METAR pulls didn't include temperature). Affects only early-September normals; candidate for an outlier audit before the normals step.
+  - **Area averaging flattens extremes (appendix caveat):** San Francisco's hottest gridMET day in 2017 is 95.3 °F (09-02), while downtown SF officially hit ~106 °F on 2017-09-01. The city mean includes the cooler foggy west side.
+- **SHA-256 of raw files** (`data/raw/gridmet/climateengine/`):
+  - bakersfield 1991-2020 `c09960f59715601a9cd10d0e87148b254c218caed59e3c87cdbff1648eb6b70b` · 2016-2026 `2ae64c2a7830c3e70fa7b18a374d21fbf6ec72287bdff8af720c0de23552480b`
+  - boston 1991-2020 `0f682e54c6d4750674d86351a618e0ce904f12221700b607aea345af22a1370c` · 2016-2026 `8a043cc9317264b2da10cb76778ebcacbc53b58e59251a1a3f9a8f53c89cb394`
+  - brownsville 1991-2020 `57c129af19bb4a8baea4105c16590852d7a425f373a8f3d7271575069abeed75` · 2016-2026 `44c7be1de0a742b4fd011c16ec0b2f52861a946b075c48c314140046d73ff40c`
+  - detroit 1991-2020 `289697e61b46ccd46aba6f88a036414857e6d5a13eadcbfee5c4c602313059cf` · 2016-2026 `23b99a51719cfd46119ae9c216664c5ffd0d99ecff3d84387c34fb1313c7a4b8`
+  - eugene 1991-2020 `f4248f0a6e442015b7c2b9bd9ba5390cb77236b406d96bb8634bf706138b56e8` · 2016-2026 `1fc690435505f0013d7557e4c0bc40d771c2078872c4e7d85fe2e3f6974a00d3`
+  - fresno 1991-2020 `0378ed17f7c4440d637c80983a8e72f3b49efc82bf4e9f3f8970a3fd5b645c28` · 2016-2026 `58eefa65bffd9c7ea4684f426e726214bdf60db82856fc01d2166add2126632b`
+  - losangeles 1991-2020 `fe4b8b45cdcb22e29118be7fead545b2ef92ad6b81dfc0f25b9b0a7451268a34` · 2016-2026 `bb64c2829a1f01b68f556efe447a0588c1b7e063cceef4ced184c1059a6721ea`
+  - pittsburgh 1991-2020 `1e384e4fa16d9c623ee2a8bdefdc934bcaf1beb8d7a195575e6d6e4b8352437b` · 2016-2026 `b8920f10078f69e80d352c5aa2c000a9d2127da96091680239a1df00ed396d9d`
+  - sanfrancisco 1991-2020 `6ed70bd8bc7fb4e8a0d75c0fe0b288c4babb33e078cd770ca6d24340cc17dd87` · 2016-2026 `d3b51456d12e35ee117a042ff39e1da4d07316da9740f52bd9389097f1c680e0`
+- **Judgment calls:**
+  - GEOID and header-date checks added. **Claude's choice, approved by Dish.**
+  - Detroit 2013-09-10 and the SF smoothing example flagged but not acted on. **Claude's choice, approved by Dish.**
+
+### Note N1 · gridMET vs OpenAQ boundaries · 2026-09-27 · Dish + Claude
+- **What:** Found while rebasing onto Gina's commits: the two pipelines use different Census city-limits files. gridMET (Dish): **TIGER/Line 2025 Places** (full detail, legal boundary incl. water). OpenAQ (Gina, `scripts/openaq/02_assign_sensors.py`): **2024 cartographic boundary file** `data/raw/census/cb_2024_us_place_500k.zip` (generalized, clipped to the shoreline).
+- **Why it matters:** the handoff asks for the same boundary for every variable of a city. Differences are one boundary vintage (2024 vs 2025 annexations) and edge detail/water. For gridMET the effect is expected to be negligible (water cells are empty in gridMET; the generalized edges are much finer than the 4 km grid). For OpenAQ it could matter for sensors right at the edge.
+- **Decision:** none yet. **Logged for Dish and Gina to decide** whether to align on one file (a read-only comparison of the two boundaries per city is possible). No data changed.
+- **Also noted:** these gridMET entries (D2, Steps 1–4, D3, D4, housekeeping) were accidentally dropped from this log by the commit "Data log: D5, D6 (amended), Steps 1b-9b reruns for 17 cities" (`2f63eaa` on main; saved from an older copy) and restored verbatim from the gridMET Steps 1-4 commit (`9e12126` on main) in the commit that adds this note. (Hashes are after rebasing onto Gina's commits.) D4's METAR follow-on (trim to 2026-09-24) is done: see the Steps 9a + 9b rerun below.
+
 ### Decision D5 · METAR · 2026-09-27 · Dish
 - **What:** Added 4 cities to the METAR pipeline. Stations were chosen from IEM station pages by Claude and approved by Dish:
   - **Ann Arbor MI → ARB** (Ann Arbor Municipal), MI_ASOS, America/New_York.
