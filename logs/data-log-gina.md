@@ -32,6 +32,46 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Step 2 · Media Cloud attention · 2026-09-27 18:55 EDT · Gina + Claude
+- **What:** For each of the 12 cities, counted daily stories mentioning the city at all (`"<city>"`), in the **same state collection and dates** as Step 1. Added two columns to each processed CSV:
+  - **`city_stories`** (the denominator)
+  - **`air_share`** = air-pollution stories ÷ city stories (the numerator is Step 1's `stories`)
+
+  This gives the share of the day's city coverage that is about air pollution or air quality. Existing columns are unchanged.
+- **Why:** Gina's design: a percentage of media attention that is independent of how much a city is in the news overall.
+- **Input:** Media Cloud API (`/api/search/count-over-time`, query `"<city>"`); `data/processed/mediacloud-attention/` (Step 1)
+- **Script:** `scripts/mediacloud/02_city_mentions.py`
+- **Rows in → out:** 12 queries; no rows added or removed.
+
+  | City | City stories | Days with 0 | Whole-period air share |
+  |---|---|---|---|
+  | Los Angeles | 2,363,655 | 0 | 1.18% |
+  | Phoenix | 430,944 | 0 | 0.45% |
+  | San Diego | 1,173,860 | 0 | 0.76% |
+  | Detroit | 670,408 | 0 | 0.42% |
+  | Bakersfield | 149,574 | 2 | 1.76% |
+  | San Francisco | 1,357,132 | 0 | 1.14% |
+  | Fresno | 242,984 | 0 | 1.67% |
+  | Boston | 905,399 | 0 | 0.46% |
+  | Eugene | 50,689 | 49 | 1.20% (likely understated) |
+  | Fairbanks | 38,519 | 374 | 1.93% |
+  | Brownsville | 39,093 | 196 | 0.40% |
+  | Ann Arbor | 119,442 | 6 | 0.38% |
+- **Output:**
+  - Raw: `data/raw/mediacloud-attention/json/<city>_city_count_over_time.json` (12)
+  - Processed: `mediacloud_attention_<city>.csv` gained `city_stories` and `air_share`; `queries.csv` gained `city_query`, `total_city_stories`, `days_city_stories_0` and `air_share_overall`
+  - 4 description rows added
+- **Checks (built into the script, which stops if either fails):** the dates are identical to Step 1 for every city (Fairbanks: the same 3,886 days); `city_stories` ≥ `stories` on every day. Both passed for all 12. Rate-limit hits (HTTP 429) on 4 cities were retried successfully.
+- **Judgment calls:**
+  - **Denominator = the same quoted city phrase as the numerator, in the same state collection**, so the share can't exceed 100%. **Specified by Gina.**
+  - **Eugene kept as `"Eugene"`, flagged as likely understated** (the first name inflates the denominator); Phoenix has a smaller version of the same issue. **Claude's recommendation, approved by Gina.**
+  - **`air_share` blank when `city_stories` = 0** (undefined, not 0%). **Specified by Gina.**
+  - **For 7-day, 30-day and monthly views, the share is to be calculated as sum(stories) ÷ sum(city_stories) over the window,** not an average of daily shares; the explorer will apply this. **Approved by Gina** ("malleable based on the settings of the explorer").
+  - **Sports and passing mentions count in the denominator** ("all media mentioning the city"). **Approved by Gina.**
+- **Caveat for the appendix:** daily shares are noisy where city mentions are few (Brownsville: 196 days with no city story; Fairbanks 374), e.g. 1 of 2 stories = 50%. Use longer windows for small cities.
+
+---
+
 ### Step 1 · Media Cloud attention · 2026-09-27 18:32 EDT · Gina + Claude
 - **What:** Downloaded Media Cloud **"Attention over time"** (daily story counts) for 12 study cities. Each query is `("air pollution" OR "air quality") AND "<city>"`, run in the city's state **"State & Local"** collection, 2016-01-01 → 2026-09-25. Saved one CSV per city plus the raw responses. **No values changed.**
 - **Why:** Gina is adding a media angle to the city explorer (measurement, perception, reaction, and now coverage).
