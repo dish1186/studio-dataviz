@@ -482,5 +482,13 @@ Step · dataset · date · who ran it | What (plain language) | Why | Input file
   - springfield `0c1422b520093a3655a4b541e0e1bac803fdfc3730af417dafcb099d33c29bcb`
   - warren `807c8f1520aa9ad8b3c536cda33e11a9cc58ca35c1e4c5a694786cd55c59f2aa`
 
+### Step 1b (7 added cities) · gridMET · 2026-09-27 · Dish (download) + Claude (check)
+- **What:** Dish downloaded the Census TIGER/Line 2025 Places file for **Arizona** by hand (census.gov/cgi-bin/geo/shapefiles/index.php → Year 2025 → Places → Arizona → Download), same settings as Step 1. Claude checked the zip. **File kept exactly as downloaded (not renamed, not unzipped).**
+- **Why:** gridMET is being extended to the 7 continental cities that METAR added in D5 (Ann Arbor, Warren, Delano, San Diego, Phoenix, Raymondville, Springfield). Phoenix needs the Arizona file; the other 6 are in state files from Step 1 (CA, MI, OR, TX). Springfield OR gets its own city-limits polygon here (in METAR it shares Eugene's airport).
+- **Output (raw):** `data/raw/gridmet/tiger_places/tl_2025_04_place.zip`
+- **Check (read-only):** zip test passes; 7 files (.shp .shx .dbf .prj .cpg + 2 ISO .xml), dated 2025-09-12 by Census like the other states; 467 places; exactly one "Phoenix city" (GEOID 0455000).
+- **SHA-256:** 04 `7c52a87725285cd6e6655daf6cf733c37942256bc7e190ac01ddb174a0acd330`
+- **Judgment calls:** none new (same source, vintage and folder as Step 1).
+
 ---
 **METAR pipeline status (2026-09-27, final):** **Closed (D8).** 17 cities, Steps 0–9b complete, ending 2026-09-24 (D4); final files frozen. Step 8b distances cover all 18 stations. Not done, by choice: in-city check for the new stations (D7), review of 7 low days, ASOS algorithm citation (appendix), Phoenix story decision; city-hall spot-check pending with Dish. New caveat: Ann Arbor outage from ~2026-06-17 (last valid day 2026-08-05).
