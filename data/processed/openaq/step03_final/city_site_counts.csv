@@ -1,0 +1,17 @@
+city_slug,reference_sites,reference_sensors,low-cost_sites,low-cost_sensors
+annarbor,1,1,14,16
+bakersfield,3,5,3,3
+boston,5,5,10,11
+brownsville,2,2,10,10
+delano,0,0,12,13
+detroit,8,8,33,34
+eugene,3,4,0,0
+fairbanks,2,2,0,0
+fresno,3,3,4,5
+losangeles,8,8,243,278
+phoenix,7,7,21,25
+raymondville,0,0,0,0
+sandiego,10,13,22,22
+sanfrancisco,1,1,61,72
+springfield,2,4,0,0
+warren,1,1,7,7

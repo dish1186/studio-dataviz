@@ -30,6 +30,60 @@ Step · dataset · date · who ran it | What (plain language) | Why | Input file
 
 ---
 
+### Step 3 · OpenAQ · 2026-09-27 · Gina + Claude
+- **What:** Made the final list of sensors per city and grouped them into sites. Kept sensors inside city limits, plus fallback sensors within the 10 km cap, US only (Decision OA-D3). Sensors of the same type in the same city within 50 m of each other were grouped into one site (chained). Added traceability columns: other study cities within 10 km of each sensor, and the cities whose Step 1 search circle it fell in. **No measurements downloaded.**
+- **Why:** Decision OA-D3, and Gina's requirement that it be traceable which sensors go into which calculation, and why.
+- **Input:** `data/processed/openaq/step02_assignment/openaq_sensors_assigned.csv` and `city_boundaries.geojson`; `data/processed/openaq/step01_inventory/openaq_sensors_inventory.csv`; country codes from the raw `data/raw/openaq/json/locations_*.json`
+- **Script:** `scripts/openaq/03_final_sensors_and_sites.py` (local files only; no API calls)
+- **Rows in → out:** 948 sensors → **560 kept at 496 sites**; 388 not kept, each with a reason: 358 outside every study city and not needed as fallback, 23 with no data in the study period, 7 fallback beyond the 10 km cap.
+
+  | City | Reference sites (sensors) | Low-cost sites (sensors) |
+  |---|---|---|
+  | Ann Arbor | 1 (1), fallback: Ypsilanti | 14 (16) |
+  | Bakersfield | 3 (5) | 3 (3) |
+  | Boston | 5 (5) | 10 (11) |
+  | Brownsville | 2 (2) | 10 (10) |
+  | Delano | 0 | 12 (13) |
+  | Detroit | 8 (8) | 33 (34) |
+  | Eugene | 3 (4) | 0 |
+  | Fairbanks | 2 (2) | 0 |
+  | Fresno | 3 (3) | 4 (5) |
+  | Los Angeles | 8 (8) | 243 (278) |
+  | Phoenix | 7 (7) | 21 (25) |
+  | Raymondville | 0 | 0 |
+  | San Diego | 10 (13) | 22 (22) |
+  | San Francisco | 1 (1) | 61 (72) |
+  | Springfield | 2 (4) | 0 |
+  | Warren | 1 (1), fallback: Oak Park | 7 (7), all fallback |
+- **Output:** `data/processed/openaq/step03_final/`
+  - `openaq_sensors_final.csv`: all 948 sensors, with kept, reason, site_id, us_basis, other_study_cities_nearby, step01_within_25km_of
+  - `openaq_sites.csv`: 496 sites, with member sensors, location and spread
+  - `city_site_counts.csv`
+- **Problem during the step, fixed before this entry:** The first run applied "US only" using OpenAQ's `country` field. That field is wrong near borders: Brownsville's 2 AirNow monitors and 1 Clarity sensor (inside Brownsville city limits) are tagged **MX**, and HFH CURES 24 (inside Detroit) is tagged **CA**. Brownsville lost both reference monitors. Claude changed the rule and reran:
+  - Sensors inside a study city's Census boundary count as US.
+  - Only fallback sensors are checked against OpenAQ's country (all 9 are "US", and their coordinates confirm it).
+
+  Column `us_basis` records which test each sensor passed. The first run's outputs were overwritten.
+- **Judgment calls:**
+  - **Site = same type, same city, within 50 m, chained.** Co-located reference sensors are 0–16 m apart; the nearest distinct stations are ~150 m or more apart. **Claude's choice, approved by Gina.**
+  - **Site IDs made by the script:** "S" + the lowest OpenAQ location ID in the site. **Claude's choice, approved by Gina.**
+  - **A station that moved more than 50 m counts as two sites**, e.g. San Ysidro (San Diego), 184 m apart, never reporting on the same day. City averages aren't affected, because only sites with data that day are used. **Claude's choice, approved by Gina.**
+  - **US test:** in-city sensors count as US by the Census boundary; fallback sensors use OpenAQ's country. **Claude's fix, flagged to Gina in chat; not yet approved.**
+- **Finding (open item):** Some of Warren's fallback sensors are much closer to Detroit than to Warren. The "nearest city that needs it" rule (Step 2) gives them to Warren because Detroit doesn't use fallbacks.
+  - HFH CURES 6, 17 and 18: 0.2–1.3 km from Detroit's limits, 7.4–9.4 km from Warren's.
+  - **Oak Park**, Warren's only reference monitor: 2.0 km from Detroit, 8.1 km from Warren.
+
+  **Decision needed from Gina.**
+
+### Decision OA-D3 · OpenAQ · 2026-09-27 · Gina
+- **What:**
+  1. **Fallback cap: 10 km beyond city limits.** Ann Arbor gets the Ypsilanti reference monitor (6.9 km). Warren gets Oak Park (reference, 8.1 km, from Dec 2024) and 7 low-cost sensors. **Claude's recommendation, approved by Gina** after seeing the Step 2 cap options.
+  2. **US monitors only.** Canadian (Windsor) monitors are excluded. **Claude's recommendation, approved by Gina.**
+  3. **Average by site, not by sensor.** Each day, the sensors at a site are averaged first, then the sites are averaged into the city value, so a site with several sensors counts once. **Claude's recommendation, approved by Gina.**
+  4. **A sensor-day is valid with at least 18 of 24 hours** (EPA's usual completeness rule for a daily average). **Claude's recommendation, approved by Gina.**
+  5. **Three city averages** (reference, low-cost, overall), each with the mean, min and max across sites, the number of sites and the site IDs used. **Specified by Gina.** "Overall" = the mean of the reference average and the low-cost average (each type weighted 50%); on days with only one type, overall = that type. **Changed by Gina** (chose option b from Claude's two options).
+- **Still open:** min/max are the lowest and highest site value of the day (spread across the city). OpenAQ's within-day hourly min/max will also be kept in the raw daily files. **Claude's choice, not yet approved.**
+
 ### Step 2 · OpenAQ · 2026-09-27 · Gina + Claude
 - **What:** Checked which city's limits each PM2.5 sensor is inside, and each sensor's distance to the limits of nearby cities. Sensors inside limits were assigned to that city. For each city and sensor type with no sensor inside its limits, listed the fallback options at caps of 5, 10, 15 and 20 km beyond the limits. **No measurements downloaded; no sensors dropped; the cap isn't chosen yet.**
 - **Why:** Decision OA-D1 (city limits first, nearest-city fallback). Gina chose to decide the cap after seeing these counts (OA-D2).
