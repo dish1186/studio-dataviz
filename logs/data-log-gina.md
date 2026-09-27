@@ -14,7 +14,7 @@ Dish keeps her own log (`data-log-dish.md`); the two may be combined later.
 
 **OpenAQ PM2.5**
 - **Cities (16):** Ann Arbor MI · Bakersfield CA · Boston MA · Brownsville TX · Delano CA · Detroit MI · Eugene OR · Fairbanks AK · Fresno CA · Los Angeles CA · Phoenix AZ · Raymondville TX · San Diego CA · San Francisco CA · Springfield OR · Warren MI
-- **Study period:** 2016-01-01 – 2026-09-25, daily (end date matches Dish's Decision D1)
+- **Study period:** 2016-03-06 – 2026-09-25, daily (start = first OpenAQ data, Decision OA-D2; end matches Dish's Decision D1)
 - **Scale:** city limits; nearest-city fallback only where a city has no sensor inside its limits, logged when used (Decision OA-D1).
 
 ## Rules
@@ -29,6 +29,24 @@ Step · dataset · date · who ran it | What (plain language) | Why | Input file
 **Note on Steps 1–8:** these were run on 2026-09-26/27 before this log existed, and logged retroactively in Step 9. They did not follow Rule 1 (no step-by-step approval before running), and Rule 2/3 files were assembled afterwards. Judgment calls in them are marked **Claude's choice, flagged to Gina in chat; not yet approved**, unless Gina specified or changed them. Gina to review.
 
 ---
+
+### Step 12 · descriptions · 2026-09-27 · Gina + Claude
+- **What:** Added OpenAQ's own definitions of reference-grade monitors and low-cost sensors to the `isMonitor` row of `data/descriptions/data_descriptions.csv`, and examples of each type to the `instruments[].name` row. **Documentation only: no data changed.**
+- **Why:** Gina asked for the difference between the two sensor types, from the API/OpenAQ documentation, to be in the definitions document.
+- **Input:**
+  - OpenAQ Docs, Instruments (https://docs.openaq.org/resources/instruments): the field shows whether the device is used for official monitoring.
+  - OpenAQ Explorer, Getting started (https://explore.openaq.org/getting-started): reference-grade monitors are the "gold standard", typically run by government agencies for regulatory purposes; air sensors are less sophisticated but small, portable and affordable, used to fill gaps. Both accessed 2026-09-27.
+- **Script:** none (documentation, edited by Claude)
+- **Rows in → out:** 2 of 67 description rows changed.
+- **Output:** `data/descriptions/data_descriptions.csv`
+- **Judgment calls:** OpenAQ's wording paraphrased, with the source pages cited. **Claude's choice, approved by Gina.**
+
+### Decision OA-D2 · OpenAQ · 2026-09-27 · Gina
+- **What:**
+  1. **The PM2.5 series starts on 2016-03-06**, the first date with OpenAQ data at any sensor (Step 1), instead of 2016-01-01. **Changed by Gina** (chose this from Claude's three options; the others were filling Jan–Feb 2016 from EPA's archive, or asking Dish to move her start date).
+  2. **Three city averages planned:** reference sensors only, low-cost sensors only, and all sensors. **Specified by Gina.** How the "all sensors" average is weighted is still open (see the Step 1 counts: e.g. Los Angeles has 13 reference vs 269 low-cost sensors).
+  3. **The fallback distance cap will be chosen after Step 2**, once its output shows what each cap would keep. **Specified by Gina.**
+- **Consequence:** the OpenAQ PM2.5 series is 2 months shorter than Dish's METAR visibility series (2016-01-01 – 2026-09-25). Comparisons between the two should use the shared period.
 
 ### Step 1 · OpenAQ · 2026-09-27 · Gina + Claude
 - **What:** Read-only inventory of every OpenAQ location with a PM2.5 sensor within 25 km of each city's center (city hall), and each PM2.5 sensor's first and last measurement date. **No measurements downloaded; nothing assigned to a city yet.**
