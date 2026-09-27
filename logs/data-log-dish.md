@@ -449,5 +449,38 @@ Step · dataset · date · who ran it | What (plain language) | Why | Input file
   - Springfield gets its own row (EUG measured to Springfield city hall); Eugene's row is unchanged. **Claude's choice, approved by Dish.**
   - In-city note left as "not checked" for the new stations until the city-limits step. The exception is HRL, noted as outside (it's in Harlingen, per D5). **Claude's choice, approved by Dish.**
 
+
+### Decision D7 · METAR · 2026-09-27 · Dish
+- **What:** The "in city limits" check for the 6 new stations (ARB, DLO, SAN, VLL, PHX, HRL) and EUG → Springfield is **deferred**. Their in-city note stays "not checked" in `metar_station_distances.csv`. The Arizona Places file was not downloaded.
+- **Why:** The check changes no visibility values; it's documentation only. The Step 8b distances already record how far each airport is from its city (e.g. HRL is 19.2 mi from Raymondville). The low-day review and the Phoenix decision matter more for the story.
+- **Options considered:** (A) run the check now (needs the Arizona TIGER file); (B) defer. **Changed by Dish: chose B** (Claude's suggestion). Claude's planned script (`08c_airport_in_city.py`, same method as `scripts/gridmet/02_boundary_audit.py`) was not written.
+
+
+### Decision D8 · METAR final (frozen) · 2026-09-27 · Dish
+- **What:** The METAR visibility pipeline is **closed**. The 17 files `data/processed/metar/final/vis_<city>_daily.csv` (3,920 days each, 2016-01-01 → 2026-09-24) are final as they stand; no further reruns planned. They are unchanged since the Steps 9a + 9b rerun.
+- **Options considered:** (A) freeze now; (B) run a read-only review of the 7 unexplained low days first, possibly blanking any that are fog. **Changed by Dish: chose A** (Claude's suggestion).
+- **Moved out of the pipeline** (none of these change values): ASOS visibility algorithm citation (M1) → Forensics Appendix; how to use Phoenix's flat row → story work; city-hall spot-check → Dish, any time; in-city check for new stations → deferred (D7).
+- **Unreviewed low days**, not to be used as story beats without checking: Boston 2024-02-23 · Bakersfield 2020-12-17/18 · Ann Arbor 2016-07-25 · Warren 2026-07-16/17 · Delano 2024-11-11 (possibly uncoded fog).
+- **New finding (read-only check while summarizing):** **Ann Arbor (ARB) has an outage from about 2026-06-17.** Visibility and RH are blank in almost every raw report from then to the end of the file. Valid days: June 2026 20 · July 3 · August 1 (last valid day **2026-08-05**) · September 0. The pipeline handled it correctly (Step 2 dropped blank readings; those days are blank with `valid_day = 0`). **Ann Arbor can't be used for summer 2026.**
+- **Caveats carried to the appendix:** 10-mi ceiling (65% of dry daytime hours at the cap for Bakersfield, up to 99% for Phoenix); Phoenix row nearly flat (0 days < 5 mi); airports are point samples, some outside the city (HRL 19.2 mi, DTW 16.1, PIT 12.9); removing wet hours tilts wet cities' series toward hazier weather; DLO/VLL use one routine report per hour (D6); ARB, DLO, SAN, VLL end 2026-09-23 (Sep 24 blank); DLO starts 2017-01-15.
+- **SHA-256 of the final files** (so anyone can confirm they're unchanged):
+  - annarbor `8fc6c471fdf2493bb2dd86a21663aea568c761739c743023b593e9d83948abce`
+  - bakersfield `e422f6a0a9913d9c462e1e5d189b73d2a15c7d20349de8a4249c22f0518eeeb2`
+  - boston `8823c355839c6fbf84bfac9cc3f186fea34c6f298a89b44ade7f4c521ea2585e`
+  - brownsville `3594f620b8a19ef65c8636b4eb0b047c9b52f13f2842365556abfb4439dc7c3e`
+  - delano `b6dfd24b8167974c8f9a3e107d561a45930b819150ab6894a47526d66ca8b54e`
+  - detroit `588f67a423925ae0f4678d0e3e7fe3d209c1379a84f387a477b8187f58550a87`
+  - eugene `0c1422b520093a3655a4b541e0e1bac803fdfc3730af417dafcb099d33c29bcb`
+  - fairbanks `20d3a61b44332ed8d92e8640d28a089851f5ebec9d7bc89f82d6e873a10d9123`
+  - fresno `6d8e01d8b661596af6c0746c7a9be68fa1811cb6ceec86d60b4a16bf2df40030`
+  - losangeles `0697fab30dacd04189abb6e75441990c76f33135f970d56926db1c3ffe19f244`
+  - phoenix `b9a42f7668ac3c5fd27f0fa09fa74391b6dafca9fc84aab2a16901552df871ca`
+  - pittsburgh `3d83e853affb4040e91e1488b68f4cb8ee8ed37758124a48e04aba257a03e4ae`
+  - raymondville `492a5f053e6929b173937598b7434b14834b639e4b1436cd07ccaaf17bd5d6f6`
+  - sandiego `60c0ac6341496808337e391179dc47226e249a36c4bee10e69777ccd73714e41`
+  - sanfrancisco `9123904d918c12300175b79bdb292460ca03ecada658b4b0dfea93da12213b84`
+  - springfield `0c1422b520093a3655a4b541e0e1bac803fdfc3730af417dafcb099d33c29bcb`
+  - warren `807c8f1520aa9ad8b3c536cda33e11a9cc58ca35c1e4c5a694786cd55c59f2aa`
+
 ---
-**METAR pipeline status (2026-09-27, updated):** 17 cities, Steps 0–9b complete, ending 2026-09-24 (D4). Step 8b distances now cover all 18 stations (19 rows). Open items: (1) Dish's spot-check of the city-hall coordinates (all 17), and "in city limits" for the 6 new stations; (2) review of unexplained low days: Boston 2024-02-23, Bakersfield 2020-12-17/18, Ann Arbor 2016-07-25, Warren 2026-07-16/17, Delano 2024-11-11; (3) ASOS internal visibility algorithm (M1); (4) Phoenix visibility row is nearly flat (99.3% of hours at the 10-mi cap); decide how to use it in the story.
+**METAR pipeline status (2026-09-27, final):** **Closed (D8).** 17 cities, Steps 0–9b complete, ending 2026-09-24 (D4); final files frozen. Step 8b distances cover all 18 stations. Not done, by choice: in-city check for the new stations (D7), review of 7 low days, ASOS algorithm citation (appendix), Phoenix story decision; city-hall spot-check pending with Dish. New caveat: Ann Arbor outage from ~2026-06-17 (last valid day 2026-08-05).
