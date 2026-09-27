@@ -30,6 +30,41 @@ Step · dataset · date · who ran it | What (plain language) | Why | Input file
 
 ---
 
+### Decision OA-D6 · OpenAQ · 2026-09-27 · Gina
+- **What:** A rule for removing **low-cost** sensor-day readings that are glitches, applied in Step 5 before any average. Reference monitors are not subject to it. Values are checked after negatives are set to 0 (OA-D5). "Reference average" = the mean of the city's valid reference sensor-days that day; "other low-cost median" = the median of the city's other valid low-cost sensor-days that day.
+
+  A low-cost sensor-day is **removed** if it is **> 100 µg/m³** and:
+
+  | Available in the city that day | Removed if… |
+  |---|---|
+  | Reference data **and** ≥ 3 other low-cost sensors | > 5× the reference average **and** > 5× the other low-cost median |
+  | Reference data, < 3 other low-cost sensors | > 5× the reference average |
+  | No reference data, ≥ 3 other low-cost sensors | > 5× the other low-cost median |
+  | Neither | > 1,000 µg/m³ |
+
+  Also, **any low-cost sensor-day > 1,000 µg/m³ is removed**, whatever the comparison. Removed days stay in the Step 5 audit file with the value, what it was compared to, and which rule applied.
+- **Why:**
+  - 64 low-cost sensor-days exceed 500 µg/m³ and 35 exceed 1,000; the highest reference value in the study period is 542 (Eugene, 2020-09-12). On every low-cost day above 500, the city's reference average was 3–23.
+  - Of 144 days caught by a reference-only version (> 100 and > 5× reference), 140 were also > 5× the median of ≥ 3 other low-cost sensors (median ratio 39×). On those days the other low-cost sensors' median (10.6) matched the reference average (10.8).
+  - On 5,530 days with both types, the city's low-cost median and reference average differ by a median of −0.5 µg/m³ and are within ±5 on 84% of days, so the two networks can check each other.
+  - Real events pass. Detroit 2026-07-16: low-cost 302–333, reference average ~294.
+- **Options considered:**
+  - (a) a fixed ceiling of 500 or 1,000. Gina was hesitant about 500 because reference values have exceeded it; 1,000 would keep 29 clearly false days between 500 and 1,000.
+  - (b) reference comparison only.
+  - (c) reference **and** peer comparison, with a 1,000 ceiling as a safety net.
+
+  **Claude's recommendation (c), approved by Gina.**
+- **Caveats for the appendix:**
+  - Reference data comes through AirNow, which is preliminary; EPA's validated version is in AQS.
+  - A removed low-cost reading may sometimes be real but hyper-local (a sensor next to a local source), not a malfunction. Either way it does not represent the city's air.
+  - Expected effect: about 140 of ~302,000 valid low-cost sensor-days (0.05%); the exact count will be in Step 5.
+
+### Decision OA-D5 · OpenAQ · 2026-09-27 · Gina
+- **What:** **Negative daily PM2.5 values are set to 0 µg/m³** before any site or city average is calculated. The raw files and Step 4 CSVs keep the original values, and the Step 5 audit file will show both.
+- **Why:** 26 sensor-days in the study period have a negative daily mean (24 Fairbanks, 2 San Francisco). Physically, concentration can't be below 0.
+- **Options:** Claude suggested keeping them as measured (small negatives are a known instrument quirk in very clean air); the alternatives were set to 0 or drop. **Changed by Gina: set to 0.**
+- **Documentation:** noted in `data/descriptions/data_descriptions.csv` on the daily `value` field, at Gina's request.
+
 ### Step 4 · OpenAQ · 2026-09-27 · Gina + Claude
 - **What:** Downloaded OpenAQ's daily PM2.5 values for all 549 kept sensors (Step 3), 2016-03-06 to 2026-09-25, one calendar year per request. Flattened them into one CSV per city: one row per sensor per local day, with the day's mean, hourly min/median/max/sd, hours observed and flags. `valid_day` = 1 when at least 18 hours were observed. **No values changed, no days removed.**
 - **Why:** The data for the site and city averages (Step 5).
