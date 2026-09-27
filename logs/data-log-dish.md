@@ -704,7 +704,45 @@ Step · dataset · date · who ran it | What (plain language) | Why | Input file
   - Original rows compared by file name (the output is sorted by file name, so new rows are interleaved). **Claude's choice, approved by Dish.**
   - Warren 2013-09-10 flagged, not acted on. **Claude's choice, approved by Dish.**
 
+### Step 5 · gridMET · 2026-09-27 · Dish + Claude
+- **What:** For each calendar date, built the 1991–2020 "normal" daily high and normal range (p10–p90) per city, then compared every day 2016-01-01 → 2026-09-24 with it. Wrote the **final gridMET actual-temperature files**, one per city, joining row for row with the UTCI finals. **11 cities** (D10 order, gridMET only): Los Angeles, Phoenix, San Diego, Detroit, Bakersfield, San Francisco, Fresno, Boston, Eugene, Brownsville, Ann Arbor. Fairbanks has no gridMET (source still open); Pittsburgh, Warren, Delano, Raymondville, Springfield not processed (D10; their files untouched).
+- **Method (copied from UTCI Step 6):** pool = 1991-01-01 → 2020-12-31 highs within **±7 calendar days** of the date, wrapping around New Year; 365-day calendar with **Feb 29 counted as Feb 28** (pools 450, **458** for windows containing Feb 28). normal_f = mean; p10_f / p90_f = numpy default (linear) percentiles; anomaly_f = tmax_f − normal_f; **abnormally_high = 1 if tmax_f > p90_f (strict)**. Column named `abnormally_high` (not the handoff's `abnormally_hot`) to match UTCI. **Decided by Dish** (previous chat).
+- **Input:** `data/raw/gridmet/climateengine/gridmet_tmax_<city>_{2016-2026,1991-2020}.csv` (22 files; not modified; SHA-256 re-checked against Step 4 final / 4b before running, and the script stops on any mismatch)
+- **Script:** `scripts/gridmet/05_normals_final.py` (SHA-256 `dd4c6ead3baed51277b28bfafba576faf0c5a19b6cae8e342748498b444f2633`)
+- **Output:** `data/processed/gridmet/final/temp_<city>_daily.csv` (columns: date, tmax_f, normal_f, p10_f, p90_f, anomaly_f, abnormally_high, n_baseline_values) · `temp_<city>_normals.csv` (365 rows: month_day, normal_f, p10_f, p90_f, n_baseline_values; for drawing the normal band) · `step05_summary.csv`
+- **Rows:** in 3,920 study days + 10,958 baseline days per city → out **3,920 rows per city, 2016-01-01 → 2026-09-24, 0 blanks**; nothing removed or changed. Every pool is 450 or 458 (no gaps in the baseline).
+- **Checks (read-only):**
+  - Dates identical to `data/processed/utci/final/utci_<city>_daily.csv` in all 11 cities (row for row).
+  - Share of baseline days above their own p90 = **9.50–9.95%** per city (≈ 10% expected; slightly lower because "above" is strict).
+  - Every daily row's normal/p10/p90/pool matches the city's normals table (Feb 29 → Feb 28).
+  - **Hand calculation, Phoenix 2023-07-15** (pool rebuilt from real dates Jul 8–22 of 1991–2020, independent of the script's day numbering): 450 values; normal 105.15 °F, p10 99.87, p90 110.50; that day 114.97 °F → anomaly +9.82, abnormally high. Matches the file exactly.
+  - Feb 29 and New Year: 2016-02-29 uses the 458-value Feb 28 pool (same normal as 02-28); 2016-01-01 uses a 450-value pool spanning Dec 25 – Jan 8.
+  - **Known heat days:** Eugene 2021-06-27 = 110.11 °F vs normal 77.59 (+32.51, p90 87.02) · Bakersfield 2022-09-06 = 113.85 vs 94.94 (+18.90) · Fresno 2022-09-06 = 113.44 vs 94.19 (+19.25). All abnormally high.
+  - Existing outputs unchanged: SHA-256 of all 77 files in `data/raw/gridmet/`, `data/processed/gridmet/` (Steps 2–4) and `data/processed/utci/final/` identical before and after.
+- **Results, 2016-01-01 → 2026-09-24 (share abnormally high / mean anomaly):** LA 14.6% / −0.21 °F · Phoenix 16.4% / +1.04 · San Diego 11.8% / −0.32 · Detroit 12.4% / +0.88 · Bakersfield 12.8% / +1.03 · SF 15.2% / −0.37 · Fresno 12.9% / +1.29 · Boston 14.4% / +1.15 · Eugene 14.4% / +0.98 · Brownsville 16.6% / +1.12 · Ann Arbor 12.7% / +1.03. Every city is above the ~10% baseline rate. **The three coastal California cities have a slightly negative mean anomaly yet more hot-tail days**: typical days slightly cooler than 1991–2020, extremes more frequent (unlike UTCI, where all means are positive).
+- **Detroit 2013-09-10 (104.8 °F, flagged in Step 4 final):** kept in the baseline as decided by Dish. Effect measured, not applied: the Sep 10 pool's normal is 77.08 °F with it vs 77.02 without, p90 87.47 vs 87.37 (the day sits in the pools of Sep 3–17 only).
+- **Judgment calls:**
+  - `tmax_f` stored rounded to 2 decimals (raw has 4); anomaly and the > p90 test use unrounded values. Consequence: 37 days across the 11 cities show `tmax_f` = `p90_f` after rounding; 5 of them are flagged 1 because the unrounded high was just above p90. **Claude's choice, approved by Dish.**
+  - Normals table labelled `month_day` (`MM-DD`), no `02-29` row (Feb 29 uses Feb 28). **Claude's choice, approved by Dish.**
+  - Blank baseline days would be left out, no minimum pool size (none occur). **Claude's choice, approved by Dish.**
+  - Summary adds `n_blank`, `hottest_day`, `hottest_tmax_f` beyond UTCI's columns. **Claude's choice, approved by Dish.**
+  - Script overwrites files in `final/` if re-run (folder was new). **Claude's choice, approved by Dish.**
+  - Monthly roll-up (handoff Procedure 2 step 6) not done in this step. **Decided by Dish.**
+- **SHA-256 of the final files** (daily · normals):
+  - losangeles `a3d05821a0f61e60177faa67823e5d83e2649cdc182e01caea97710d687ee435` · `54c7db36b00069d21faed4a2c40e70dfe51d1816f582e2c3140785d74189cd3e`
+  - phoenix `29a715d208ecee730ce6ff836774be1c9949ebdd81f65e2179cfc2f4bf6590d0` · `f4a56a2085dcf4cea21400dbe64a3a3accac029cc1bb37c6c2230726066ff42a`
+  - sandiego `6b4cdbd3b047853e9b64cfc89c25135c4d24cff90ab6847c1ff472137150fee0` · `44f0cf9b94b66f22c3cf689a2ac4805ef7332725070f607e1778d998b36585f7`
+  - detroit `d80c11384f7b0f41703cacb5e0f9c9c696f74c385b9d73c27b40a3de893dcc3c` · `0ce0849054933045a00cf8749d96ca4a802c75d23966798aaaef99b002ac9643`
+  - bakersfield `47dd6fd8b0f8382ef956005cc5822a80f002f5147997a4c42f7df04c15d91d25` · `d94b2e9484fefdc0aae030fb201d275e93c358b993ec1459a5f6aa5f24eb693e`
+  - sanfrancisco `37fdd4c95c40adcdc9450a1c0c7db7d40d684c8a7b592d565620d29d1e881121` · `7dae18a3c512ce4321e79f495a1a1c899084cc7ffcce265bf8d95f1c166f08ac`
+  - fresno `a7cca208fcd1ea8599b21b3023d8583e860f323202e310049b9aec6d144a716b` · `2ec4f334167cd7caca551fe2b6d3d86b52c3aecc6468b510e489be95582c6b98`
+  - boston `4a78adbc0049eca4d5d998743429dc89aab0169976df894825b751d4a9844507` · `68d16f417bbe1bbdbe8053ba02742df46f936042888cd35eefe5dc728998b55b`
+  - eugene `f0aa592dd9c2b886012f921b1053c8bb1c685e53812344ba7ad37e00bb44d02a` · `e3b3a852115d997b9598bf298c2cea804c4be0871bcc6a963c1557affbfa6f33`
+  - brownsville `57989eb8c550bf8726f207c8860fd20db35234577df8059b17dd6531e4d41c04` · `9e108cba46cd061e71850a0ef7b5032a80909add6b990b2e452037e127c8fc0f`
+  - annarbor `e9ea9a0f21c4c941309f455f9ccb147353038d8968a7d1f469884990ca96f9d3` · `6320c6295a0595f95f3961a7216f62f444b8e1359216364e2ea9753733038e00`
+  - step05_summary.csv `2f4ec1931a927fccc9a61240881761113428150b6b6f743041a8bb4065946eb8`
+
 ---
-**gridMET pipeline status (2026-09-27):** Steps 1–4 done for 16 continental cities (original 9 + 7 from D5; 11 of them used in the visualization per D10, plus Fairbanks from another source); 32 raw files pass the check. Next: optional outlier audit (Detroit/Warren 2013-09-10), then Step 5 (1991–2020 normals, anomalies, monthly roll-up). Open: Fairbanks (no gridMET in AK), N1 (boundary file vs OpenAQ), common end date with UTCI (ends 2026-06-13, D9).
+**gridMET pipeline status (2026-09-27):** Steps 1–5 done. 16 continental cities pulled and checked (Steps 1–4); **Step 5 final files for the 11 viz cities (D10)** in `data/processed/gridmet/final/` (`temp_<city>_daily.csv`, 3,920 rows, 2016-01-01 → 2026-09-24, joins row for row with UTCI; `temp_<city>_normals.csv`; `step05_summary.csv`). Next: monthly roll-up (to decide), UTCI Step 7 (felt minus actual). Open: Fairbanks (no gridMET in AK), N1 (boundary file vs OpenAQ), common end date with UTCI (ends 2026-06-13, D9).
 
 **METAR pipeline status (2026-09-27, final):** **Closed (D8).** 17 cities, Steps 0–9b complete, ending 2026-09-24 (D4); final files frozen. Step 8b distances cover all 18 stations. Not done, by choice: in-city check for the new stations (D7), review of 7 low days, ASOS algorithm citation (appendix), Phoenix story decision; city-hall spot-check pending with Dish. New caveat: Ann Arbor outage from ~2026-06-17 (last valid day 2026-08-05).
