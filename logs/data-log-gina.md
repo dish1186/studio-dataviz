@@ -45,6 +45,7 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
   - **Default view:** 6 cities (Bakersfield, Fresno, Los Angeles, Eugene, Fairbanks, Detroit), reference vs low-cost, 7-day smoothing, per-city y axis. **Claude's choice.**
 - **Note:** the page is a view of the Step 5 files, not a new dataset. Numbers read from it are rounded to 0.1 µg/m³.
 - **Version 2 (2026-09-27 17:06 EDT):** the two date boxes were replaced with a **two-handle date slider** (start and end, minimum 7 days apart), with year marks and the selected range and day count shown above it. The presets and drag-to-zoom on the charts still work and move the slider. **Changed by Gina.** Same link; no data changed.
+- **Version 3 (2026-09-27 17:11 EDT):** hover labels rebuilt with HTML character codes (µg/m³, ·, −, –) and set in the sans-serif face, so they display correctly however the page is loaded; the low-cost − reference difference now shows its unit. Gina had seen garbled characters in the labels (likely the first local preview, which ran before the characters were escaped). **Requested by Gina.** No data changed.
 
 
 ### Step 16 · descriptions · 2026-09-27 15:14 EDT · Gina + Claude
