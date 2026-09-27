@@ -742,7 +742,40 @@ Step · dataset · date · who ran it | What (plain language) | Why | Input file
   - annarbor `e9ea9a0f21c4c941309f455f9ccb147353038d8968a7d1f469884990ca96f9d3` · `6320c6295a0595f95f3961a7216f62f444b8e1359216364e2ea9753733038e00`
   - step05_summary.csv `2f4ec1931a927fccc9a61240881761113428150b6b6f743041a8bb4065946eb8`
 
+### Decision D9 resolved · end date · 2026-09-27 · Dish (Claude's suggestion)
+- **All datasets keep the D4 end date, 2026-09-24.** UTCI keeps its blank rows 2026-06-13 → 09-24, so every final file joins on date unchanged. Any direct felt-vs-actual comparison (UTCI Step 7, side-by-side panels) is limited to the common window, **2016-01-01 → 2026-06-12**; the viz marks UTCI as not yet available after that.
+- **Why:** cutting everything at 06-12 would drop summer 2026, which gridMET and METAR cover (e.g. Ann Arbor's hottest study day 2026-07-01, Detroit's 2026-09-02). Optional later: top up UTCI from gridded ERA5-HEAT.
+- **Claude's suggestion, approved by Dish.**
+
+### Step 5b · gridMET monthly roll-up · 2026-09-27 · Dish + Claude
+- **What:** Rolled the Step 5 daily files up to calendar months (handoff Procedure 2, step 6): average high, average normal, average anomaly, count of abnormally hot days, hottest day. 11 cities (D10, gridMET only).
+- **Input:** `data/processed/gridmet/final/temp_<city>_daily.csv` (Step 5; not modified)
+- **Script:** `scripts/gridmet/05b_monthly.py` (SHA-256 `ef534eb60fcf6398477854f55e5d73c4aab56e8c24c5cc1dee8d2d2390606f9b`)
+- **Output:** `data/processed/gridmet/final/temp_<city>_monthly.csv` (columns: month, n_days, days_in_month, tmax_mean_f, normal_mean_f, anomaly_mean_f, n_abnormally_high, hottest_date, hottest_tmax_f, complete) · `step05b_summary.csv`
+- **Rows:** 3,920 days → **129 months per city (2016-01 → 2026-09)**; 128 complete, **2026-09 partial (24 of 30 days, complete = 0)**. Nothing removed.
+- **Checks (read-only):** month lengths add up to 3,920 days; abnormally hot days add up to the daily totals in every city; each city's hottest month-day equals its Step 5 hottest day; Feb 2016/2020/2024 have 29 days; 0 blanks. **Hand check Eugene 2021-06:** 30 days, mean high 81.72 °F vs normal 73.68 (+8.04), 14 abnormally hot days, hottest 2021-06-27 at 110.11 °F; matches the file. Existing outputs unchanged (SHA-256 of 100 files in `data/raw/gridmet/`, `data/processed/gridmet/` incl. Step 5 finals, `data/processed/utci/final/` identical before and after).
+- **Results (month with most abnormally hot days):** **March 2026** in LA (20), Phoenix (25), San Diego (19), SF (19), Fresno (18); it is also the warmest-anomaly month in LA, Phoenix (+14.50 °F), San Diego, Bakersfield, SF and Fresno. Others: Detroit 2024-02 (12) · Bakersfield 2024-07 (17) · Boston 2022-08 (12) · Eugene 2021-06 (14, heat dome) · Brownsville 2023-09 (25) · Ann Arbor 2024-02 (15). **Flag:** the March 2026 values rise and fall smoothly across the month and appear in 6 cities at once (Phoenix 100–103 °F on Mar 18–21 vs normal ~76 °F), so it looks like a real event rather than a data error, but it has **not been checked against station records**.
+- **Judgment calls:**
+  - Monthly values computed from the Step 5 daily files as saved (2 decimals), not the raw 4-decimal values, so they trace exactly to the dailies (difference < 0.01 °F). **Claude's choice, approved by Dish.**
+  - Partial Sep 2026 kept, with n_days / days_in_month / complete columns. **Claude's choice, approved by Dish.**
+  - Extra columns normal_mean_f and completeness; no monthly p10/p90 (averaging percentiles isn't a percentile). **Claude's choice, approved by Dish.**
+  - Ties: the first day is kept as the hottest; the same rule applies to the summary's "most" columns. **Claude's choice, approved by Dish.**
+  - One file per city, matching the dailies. **Claude's choice, approved by Dish.**
+- **SHA-256 of the monthly files:**
+  - losangeles `f280dd5d6f0e9ca3fd3d897323ad377d2e1ae2c3a3fedb1eda18f24c877ca0a1`
+  - phoenix `69cadff361c822c1b3b32d44f84e6353ed04baff467a07989f9632bccc7c5143`
+  - sandiego `a5a378d6ae6ba79b83d6d7469d178c3ebe39bd884b93b04f6d3754141e66725d`
+  - detroit `a970a4c5cc4c28f5f776bd248d89713d45a5810e7dc73d3aa95cbf548f374347`
+  - bakersfield `2328c5856ede18f94cc3d2c8ae5a7f7160b5af7d805e80f06a4159cc5e2568c8`
+  - sanfrancisco `71375b060b2b257969e449245aef69fc756b021b7c7280686a8ac2c99b6937e3`
+  - fresno `29df3de4f0fe0bb2a9806c639aadd056b755474af05fbc81627ed7669707059c`
+  - boston `28adef54ee40d13c36802118260992c7a06010c068465c3ec3396ac2ee433bcf`
+  - eugene `260aeb74e132e0558d31e2d40e2f9b81813189fba9786d4aed77ec1e008d21ea`
+  - brownsville `e2d3fe226754a64aea76e2d0f85908992b5cea4ea67bbce6e4c9dbcb21fc77f5`
+  - annarbor `4843f9397a2be58e522e97dbc604d8469604b92401eb4a855f3682e04ebfeb6a`
+  - step05b_summary.csv `cbfcc69d0129222dde6e7b59c95c4f6c5f8969030aa21a0d2e59499bd337f291`
+
 ---
-**gridMET pipeline status (2026-09-27):** Steps 1–5 done. 16 continental cities pulled and checked (Steps 1–4); **Step 5 final files for the 11 viz cities (D10)** in `data/processed/gridmet/final/` (`temp_<city>_daily.csv`, 3,920 rows, 2016-01-01 → 2026-09-24, joins row for row with UTCI; `temp_<city>_normals.csv`; `step05_summary.csv`). Next: monthly roll-up (to decide), UTCI Step 7 (felt minus actual). Open: Fairbanks (no gridMET in AK), N1 (boundary file vs OpenAQ), common end date with UTCI (ends 2026-06-13, D9).
+**gridMET pipeline status (2026-09-27):** Steps 1–5b done. 16 continental cities pulled and checked (Steps 1–4); **final files for the 11 viz cities (D10)** in `data/processed/gridmet/final/`: `temp_<city>_daily.csv` (3,920 rows, 2016-01-01 → 2026-09-24, joins row for row with UTCI), `temp_<city>_normals.csv`, `temp_<city>_monthly.csv` (129 months, Sep 2026 partial), summaries. End date settled (D9 resolved: keep 2026-09-24; felt-vs-actual comparisons use 2016-01-01 → 2026-06-12). Open: Fairbanks (no gridMET in AK), N1 (boundary file vs OpenAQ).
 
 **METAR pipeline status (2026-09-27, final):** **Closed (D8).** 17 cities, Steps 0–9b complete, ending 2026-09-24 (D4); final files frozen. Step 8b distances cover all 18 stations. Not done, by choice: in-city check for the new stations (D7), review of 7 low days, ASOS algorithm citation (appendix), Phoenix story decision; city-hall spot-check pending with Dish. New caveat: Ann Arbor outage from ~2026-06-17 (last valid day 2026-08-05).
