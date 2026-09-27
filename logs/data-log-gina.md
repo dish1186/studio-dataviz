@@ -31,9 +31,9 @@ Step · dataset · date · who ran it | What (plain language) | Why | Input file
 ---
 
 ### Step 13 · descriptions · 2026-09-27 · Gina + Claude
-- **What:** Added the columns of the final daily city files (`data/processed/openaq/step05_averages/pm25_<city>_daily.csv`) to `data/descriptions/data_descriptions.csv`: 1 file row + 17 column rows, each with description, units, source and formula. **Documentation only: no data changed.**
+- **What:** Added the columns of the final daily city files (`data/processed/openaq/step05_averages/pm25_<city>_daily.csv`) to `data/descriptions/data_descriptions.csv`: 1 file row + 18 column rows, each with description, units, source and formula. **Documentation only: no data changed.**
 - **Why:** Gina asked for the definitions document to cover the daily results, not only raw files.
-- **Script:** none (documentation, written by Claude). Checked that the 17 columns described match the file header exactly.
+- **Script:** none (documentation, written by Claude). Checked that the 18 columns described match the file header exactly.
 - **Judgment calls:**
   - **The descriptions file now covers this processed file as well as raw files.** Its `file` column gives the path under `data/` (`processed/...`) to tell them apart. **Changed by Gina** (Step 10 had scoped it to raw files).
   - **Audit and coverage files not described yet;** they are documented in the Step 5 log entry. **Claude's choice, flagged to Gina in chat.**
