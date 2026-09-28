@@ -32,6 +32,36 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Analysis A7 · Fairbanks case study · 2026-09-28 11:17 EDT · Gina + Claude
+- **What:** Profiled Fairbanks' PM2.5 (reference only), haze, news share and Trends by calendar month, by season (winter Nov–Feb vs summer Jun–Aug) and by year. Also listed its top PM2.5, winter-PM2.5 and news days. **No files written**; this was a one-off script in chat, reading the explorer bundle.
+- **Why:** Gina: "do a mini case study on fairbanks, alaska. what's happening with its data? what's the story there?"
+- **Findings:**
+  - **Two pollution seasons:**
+    - **Winter:** Jan mean 18.2 µg/m³; 36 winter days > 35. Winter peaks are moderate (max 54 on 2017-01-24).
+    - **Summer:** Jun–Jul means ≈ 11; 47 summer days > 35. Summer peaks are extreme: 203 on 2022-06-28 and 196.5 on 2024-06-30.
+  - **Only the summer is seen:**
+    - **Winter days > 35:** haze valid on 97% of them but averaging **1.02×**; news share **1.0%** (lower than on clean winter days, 1.9%); "air purifier" Trends **0** in every Oct–Dec month.
+    - **Summer days > 35:** haze averages **3.96×** and news share **9.0%**.
+  - **Summer smoke years:**
+    - 2019 (6 days > 35), 2022 (19), 2023 (6), 2024 (7), 2025 (7).
+    - 2020 and 2026 were clean.
+    - "Air purifier" is non-zero in the summers of 2019 and 2022–2024 only.
+  - **Winter trend:** 14 days > 35 in winter 2016–17, then 0–6 per winter. Reference coverage was thin in 2017–2018 (172–198 days per year; winter 2017–18 has 3 days), so the early counts are not comparable. Not investigated.
+  - **Top news days** (5/20 on 2018-10-12, 2018-10-30, 2019-10-29, 2020-01-24) fell on **low-PM days**, possibly policy or regulatory coverage. Headlines have not been checked.
+  - **Search data:**
+    - "Air filter" is the main term (monthly means 5.6–39.4, peaking in May; summer means rise from 16.7 in 2017 to 57.7 in 2025). It is ambiguous (furnace and car filters).
+    - "Air purifier" is 0 in 119 of 129 months.
+- **Interpretation (Claude's, flagged to Gina):**
+  - Winter inversion pollution sits in a range the airport visibility sensor can't register. By a rough rule of thumb, 35–55 µg/m³ of dry fine particles still leaves visibility near or above the 10-mile cap. Summer smoke at 100–200 µg/m³ does not.
+  - Fairbanks' "haze" group placement (A6) therefore reflects summer wildfire smoke only.
+  - **Context to verify and cite before use:** Fairbanks North Star Borough's PM2.5 nonattainment status (EPA Green Book), and the causes of winter pollution (wood and oil heating under inversions).
+- **Caveats:**
+  - One reference-monitor series; the airport is 5.2 mi from city hall.
+  - Media Cloud's Alaska collection has few Fairbanks stories per day (often 2–20), so the news share is spiky.
+  - Trends is city level and low volume.
+
+---
+
 ### Visualization V1 · version 17: national air-purifier trend chart · 2026-09-28 11:13 EDT · Gina + Claude
 - **What:** Added a section below the coverage table (above "About the data"): **"The national rise in 'air purifier' searches."**
   - One grey line per Google Trends search area, and a bold green line for the median across areas.
