@@ -33,7 +33,7 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 ---
 
 ### Visualization V4 · version 1: "Pollution clouds" US map · 2026-09-28 16:01 EDT · Gina + Claude
-- **What:** A new, separate page: https://claude.ai/artifact/7D2Ebp7Dj4TnwduqJU8fbs
+- **What:** A new, separate page: https://claude.ai/artifact/6KstSbHEFFZchqA4HHqr1h
   - A US map (d3 Albers USA, with the Alaska inset for Fairbanks) of the **12 study cities with news data**. Each city is drawn as a cloud of **one speck per day with a valid daily PM2.5 value**.
     - Daily value: reference mean, low-cost mean where no reference (Step 5 city file, strict ≥ 18 h).
     - Speck colour = EPA AQI category (breakpoints and truncation as in OpenAQ Step 6).
