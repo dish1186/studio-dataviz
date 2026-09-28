@@ -32,6 +32,27 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Visualization V2 · version 3: PM2.5 as thread or background · 2026-09-28 12:17 EDT · Gina + Claude
+- **What:** Added a **"PM2.5 shown as: Thread | Background"** toggle, saved in the browser. Thread is the default.
+  - **Background mode** draws every **day** as a thin band across the chart (7 per week row).
+  - The band's colour is set by that day's **actual PM2.5** (reference daily mean, low-cost where none), not a percentile.
+  - Colour opacity rises linearly from 0 to 0.62 at 35 µg/m³ (the EPA 24-hour standard level), then to 0.92 at ≥ 100 µg/m³.
+  - The key marks 0, 9 (EPA annual standard level, for reference), 35 and 100+.
+  - Days with no value are blank.
+  - The PM2.5 thread is hidden in this mode. Hover adds each week's number of PM2.5 days and its highest day.
+  - Brown in light mode, amber in dark mode.
+- **Why:** Gina: "can we add a toggle to make pm2.5 either a line (as is) or to make it the background of this graph? some type of color that gets brighter or darker with intensity of the actual pollution".
+- **Why daily, not weekly:** San Francisco's worst smoke days (2020-09-10 at 129.0, 2020-09-12 at 93.7 µg/m³) fall in weeks with only 3 days of data, which the weekly rule (≥ 4 days) drops. Daily bands show them.
+  - 2,068 of 2,471 days in the period have a value.
+- **Judgment calls (Claude's choices, flagged; not yet approved):**
+  - Absolute (not relative) colour scale, so cities are comparable.
+  - The break at 35 and the 100 cap.
+  - Colours.
+  - EPA levels used as reference marks only: they apply to 24-hour values and to 3-year statistics, not single days.
+- **No data changed.**
+
+---
+
 ### Visualization V2 · version 2: San Francisco threads with 2020 and 2024 · 2026-09-28 12:13 EDT · Gina + Claude
 - **What:** Rebuilt the threads page from the re-stitched weekly searches, which now run 2019-12-29 to 2026-09-27 (353 weeks, no 2024 gap). Also:
   - Added a "Sept 2020 wildfire smoke" marker at the week of 2020-09-06, the highest week in the 2020 file.
