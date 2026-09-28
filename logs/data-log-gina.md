@@ -32,6 +32,14 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Visualization V1 · version 9: zoom undone · 2026-09-27 22:13 EDT · Gina
+- **What:** Reverted version 8. The page is back to version 7: the haze row again uses **one scale across all selected cities**, starting at 1×, as in Dish's handoff rule 3. No ▲ markers or clipping. Everything else from version 7 is unchanged (city groups, news row, search row, monthly option).
+- **Why:** Gina: "ok jk undo that please".
+- **How:** version 7's page source was restored unchanged and republished (same link). The zoomed version is kept locally in case it's wanted later. **No data changed.**
+- **Also:** version 8's note that it covered Gina's earlier per-city haze request no longer applies; the haze axis is shared again.
+
+---
+
 ### Visualization V1 · version 8: zoomed haze · 2026-09-27 22:12 EDT · Gina + Claude
 - **What:** Each city's haze chart is now **zoomed to its own range**, and single extreme days no longer flatten the rest.
   - **Top of the y-axis:** the 99th percentile of the haze values in view × 1.15 (at least 1.5×, never above the real maximum). It updates with the date range and smoothing.
