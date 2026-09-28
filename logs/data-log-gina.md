@@ -32,6 +32,32 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Analysis A5 · season vs trend check for Ann Arbor and Brownsville · 2026-09-28 10:55 EDT · Gina + Claude
+- **What:** Tested the claim that Ann Arbor's and Brownsville's searches–haze link comes from shared seasons. Method: air-purifier searches vs haze, Spearman, 2020-03/04 and 2026-03 to 06 left out, as in V1 v7. **No files written**; this was a one-off script in chat.
+- **Why:** Gina asked what "through seasons, not reactions" meant.
+- **Method:**
+  - **Season removed:** subtract each calendar month's 2016–2026 average from both series.
+  - **Season + year removed:** also subtract each year's average (searches).
+  - Also computed ρ between the 12 calendar-month averages alone.
+- **Result:**
+
+  | City | Raw ρ | ρ of the 12 month-of-year averages | Season removed | Season + year removed |
+  |---|---|---|---|---|
+  | Ann Arbor | 0.48 | 0.46 | 0.42 | **0.08** |
+  | Brownsville | 0.40 | **−0.61** | 0.38 | **0.07** |
+  | (Bakersfield, for comparison) | 0.24 | 0.37 | 0.39 | 0.28 |
+  | (Boston, for comparison) | −0.04 | −0.25 | 0.14 | 0.12 |
+
+  - **Yearly averages, Ann Arbor:** air-purifier index went from 2.8 in 2016 to 10.7 in 2025; haze from 1.07× to 1.15× (with 2019, 2023 and 2025 highest).
+  - **Yearly averages, Brownsville:** index went from 0.4 to 7.2; haze from 1.03× to 1.03×, with 2022 (1.06×) and 2024 (1.08×) highest, all in the later years.
+- **Correction (to A4 and the chat reply):** "probably through seasons" was **wrong**.
+  - Brownsville's seasons run in opposite directions: haze peaks in Mar–Apr, when searches are at their lowest.
+  - Removing seasons barely changes either city.
+  - Both links disappear when the year-to-year level is removed. They come from a **shared long-term trend**: searches rose nationally from 2016 to 2026, and both cities happened to have hazier later years. This is a trend coincidence, not evidence of people reacting to haze.
+- **Implication:** group 1 ("search follows haze most strongly") currently rests on this trend. **Proposed, not run:** recompute all groupings on season- and year-adjusted series. Waiting for Gina's decision.
+
+---
+
 ### Visualization V1 · version 15: groups renamed and reordered · 2026-09-28 10:49 EDT · Gina + Claude
 - **What:** Renamed and reordered the city groups (the method from V1 v7 is unchanged):
   1. **Search follows haze most strongly:** Ann Arbor, Brownsville
