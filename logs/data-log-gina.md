@@ -32,6 +32,52 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Analysis A2 · searches vs news, news vs haze correlations · 2026-09-28 10:27 EDT · Gina + Claude
+- **What:** The same exercise as A1 for two more pairs: **searches vs news share** and **news share vs haze**, combined with A1 into one table. **No files written**; this was a one-off script in chat.
+- **Why:** Gina: "do the same exercise between searching and news, and then news and haze as two separate correlation exercises. combine the correlations with the previous table into one table".
+- **Method:**
+  - **News month:** air-quality stories ÷ city stories summed over the calendar month (sum ÷ sum, as in the explorer), in %. The month is blank if it has no city stories.
+  - Searches and haze are defined as in A1.
+  - A pair needs ≥ 24 months with both values.
+  - **"r without top month":** removes the haziest month (pairs with haze) or the highest-news month (searches vs news).
+  - News exists for 12 cities; there are no Media Cloud queries for Delano, Raymondville, Springfield or Warren.
+  - n = 129 months for all news pairs (126 for Ann Arbor news vs haze).
+  - Leaving out the 2020-03/04 and 2026-03 to 06 months changes ρ by ≤ 0.08.
+- **Result (ρ = Spearman, r = Pearson, r− = Pearson without top month):**
+
+  | City | Search–Haze ρ / r / r− | Search–News ρ / r / r− | News–Haze ρ / r / r− |
+  |---|---|---|---|
+  | Ann Arbor | 0.31 / 0.18 / 0.13 | 0.21 / 0.31 / 0.19 | 0.12 / 0.40 / 0.11 |
+  | Bakersfield | −0.06 / −0.04 / −0.03 | 0.02 / −0.06 / −0.01 | −0.12 / −0.13 / −0.12 |
+  | Boston | 0.11 / 0.03 / 0.06 | 0.40 / 0.05 / 0.10 | 0.15 / 0.11 / 0.15 |
+  | Brownsville | 0.31 / 0.11 / 0.14 | 0.15 / 0.06 / 0.06 | 0.10 / 0.03 / 0.05 |
+  | Delano | 0.07 / 0.12 / 0.16 | – | – |
+  | Detroit | −0.17 / 0.11 / −0.02 | 0.34 / 0.26 / 0.27 | −0.07 / 0.54 / 0.40 |
+  | Eugene | 0.02 / 0.76 / 0.13 | 0.28 / 0.72 / 0.26 | 0.21 / 0.89 / 0.73 |
+  | Fairbanks | 0.12 / 0.38 / 0.36 | 0.09 / 0.03 / 0.09 | 0.06 / 0.24 / 0.21 |
+  | Fresno | −0.27 / 0.01 / −0.08 | 0.31 / 0.30 / 0.22 | 0.03 / 0.28 / 0.09 |
+  | Los Angeles | −0.09 / −0.09 / −0.10 | 0.14 / 0.23 / 0.18 | 0.08 / 0.16 / 0.16 |
+  | Phoenix | 0.13 / −0.02 / −0.01 | 0.13 / 0.26 / 0.23 | 0.03 / 0.05 / 0.05 |
+  | Raymondville | −0.06 / 0.09 / 0.08 | – | – |
+  | San Diego | 0.12 / 0.03 / −0.03 | 0.27 / 0.15 / 0.12 | 0.07 / 0.47 / 0.21 |
+  | San Francisco | 0.01 / 0.54 / 0.41 | 0.30 / 0.59 / 0.53 | 0.10 / 0.76 / 0.74 |
+  | Springfield | 0.00 / 0.74 / 0.04 | – | – |
+  | Warren | −0.30 / 0.11 / −0.24 | – | – |
+
+- **Top months removed for r−:**
+  - Searches vs news: 2020-09 for Eugene, Fresno, Los Angeles, San Diego and San Francisco; 2026-07 for Ann Arbor and Phoenix; 2023-06 for Detroit.
+  - Pairs with haze: as in A1.
+- **Reading (Claude's interpretation, flagged to Gina):**
+  - On ordinary months (ρ), **searches track news more than haze** in most cities (Boston 0.40, Detroit 0.34, Fresno 0.31, San Francisco 0.30).
+  - **News vs haze** is weak on ordinary months (ρ ≤ 0.21) but strong in smoke events (r). It is also the most robust Pearson: Eugene 0.73 and San Francisco 0.74 even without their haziest month.
+  - The pattern is consistent with: extreme smoke → news coverage → searches. Everyday haze reaches neither.
+- **Caveats:**
+  - Same as A1.
+  - The news share uses state and local collections, so it is not only local outlets.
+  - A monthly correlation can't show which came first.
+
+---
+
 ### Analysis A1 · searches vs haze correlations · 2026-09-28 10:18 EDT · Gina + Claude
 - **What:** Monthly correlations between **searches (total of air purifier + air filter + n95)** and the **haze index** for all 16 cities. **No files written.** This was a one-off script in chat, reading the explorer bundle (built from `data/processed/google-trends/air-search/` and Dish's frozen `vis_<city>_daily.csv`).
 - **Why:** Gina: "can you calculate the correlation coefficients between searching & haze visibility for each city? … which creates a more compelling story?"
