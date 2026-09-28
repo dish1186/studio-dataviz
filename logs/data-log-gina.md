@@ -32,6 +32,35 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Visualization V3 · mockup: "Unhealthy Air Days" (San Francisco 2020) + single-sensor check · 2026-09-28 13:54 EDT · Gina + Claude
+- **What:**
+  1. An inline chat mockup (not saved or published) of one year block: 2020, San Francisco.
+     - A 20 × 20 grid with a bold cross = quarters; one cell per day in reading order.
+     - Colour by share of sites above 35.4 µg/m³, or by worst EPA AQI category.
+     - Partial days are included by default, with a corner tick; no-data days are hatched.
+  2. The single-sensor check the prompt asked for.
+  - Both were computed in memory from `data/processed/openaq/step05_averages/audit/sensor_day_audit_sanfrancisco.csv`. **No files written.**
+- **Why:** Gina sent the V3 build prompt ("Show me a mockup of one year (2020) first").
+- **Mockup method:**
+  - Site-day = mean of the site's included sensor-days (Step 5 rules).
+  - **Partial mode** also includes sensor-days excluded only for "fewer than 18 hours" **if they have ≥ 12 hours**. Low-cost ones still need to be unflagged and ≤ 1,000. A site uses its valid sensor-days when it has any.
+  - **2020 result:** 305 days with data including partial days, 222 strict. Days above 35: **8** including partial (08-19, 09-10 to 09-14, 10-22, 10-23), **5** strict.
+  - 2020 has only 1 site, so share mode is all-or-nothing that year.
+- **Single-sensor check (2022, 2025): days where exactly one site is above 35 and it is low-cost:**
+  - **2022: 24 days, 23 of them from one sensor**: S1008725 (Hyde St & Golden Gate Ave / Tenderloin Housing Clinic), 2022-10-12 to 11-27.
+    - Values 35.6–97.5 µg/m³, while the reference monitor read 0.8–12.8 and the median of about 20 other low-cost sites read 2.0–13.4.
+    - They slipped past OA-D6 because that rule only tests values > 100.
+    - The 24th is S938273 on 2022-07-24 (44.4 vs reference 3.6).
+  - **2025: 26 days**:
+    - **20 from S1596663 ("Outdoor")**, 2025-06-23 to 09-27: 35.8–87.2 vs reference 2.0–16.9 and peer median 2.2–17.9.
+    - **6 from S1977260 (Church Muni Stop)**, 2025-11-28 to 12-10: 35.6–39.0 vs reference 16.1–19.5 and peer median 19.7–21.8. This is closer; possibly local traffic.
+  - **Flagged to Gina, nothing removed.**
+- **Judgment calls (Claude's choices, flagged; not yet approved):**
+  - The 12-hour minimum for partial days.
+  - Mockup colours.
+
+---
+
 ### Analysis A10 · days above 35 µg/m³ by city and year · 2026-09-28 13:51 EDT · Gina + Claude
 - **What:** For each city and year, counted days where a site's daily mean PM2.5 was > 35.4 µg/m³ (35.5+, EPA "Unhealthy for Sensitive Groups" or worse). Partial days (< 18 hours) are included.
   - Counted two ways: (a) **reference monitors only**; (b) **any site**, including low-cost.
