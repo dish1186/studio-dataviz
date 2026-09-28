@@ -5,7 +5,7 @@ Running plain-language log of every data step Gina runs with Claude. This log fe
 Dish keeps her own log (`data-log-dish.md`); the two may be combined later.
 **Newest entries are at the top** (Dish's log runs oldest-first).
 
-**Datasets in this log:** Media Cloud news coverage (online news) · American Lung Association *State of the Air 2026* PM2.5 rankings · OpenAQ PM2.5 · Google Trends (heat-related and air-quality searches) · Media Cloud attention over time
+**Datasets in this log:** Media Cloud news coverage (online news) · American Lung Association *State of the Air 2026* PM2.5 rankings · OpenAQ PM2.5 · Google Trends (heat-related and air-quality searches) · Media Cloud attention over time (air quality, heat)
 
 **City-selection (Media Cloud × ALA)**
 - **Cities (36 in 15 ALA metro areas):** Bakersfield-Delano CA · Eugene-Springfield OR · Brownsville-Harlingen-Raymondville TX · Fresno-Hanford-Corcoran CA · Visalia CA · Fairbanks-College AK · Los Angeles-Long Beach CA · Detroit-Warren-Ann Arbor MI · Indianapolis-Carmel-Muncie IN · Pittsburgh-Weirton-Steubenville PA-OH-WV · McAllen-Edinburg TX · San Diego-Chula Vista-Carlsbad CA · Phoenix-Mesa AZ · San Jose-San Francisco-Oakland CA · Houston-Pasadena TX
@@ -29,6 +29,51 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 **Timestamps:** Eastern time (EDT, the Mac's time zone). The time in each heading is when the entry was first committed to the repo, taken from the git history, which is normally within minutes of the step finishing. The retroactive city-selection entries (Steps 1–8) keep their run date in the heading and have a **Time** line with when they ran (from file times, where known) and when they were logged. Timestamps added 2026-09-27 at Gina's request; new entries get them as they are written.
 
 **Note on Steps 1–8:** these were run on 2026-09-26/27 before this log existed, and logged retroactively in Step 9. They did not follow Rule 1 (no step-by-step approval before running), and Rule 2/3 files were assembled afterwards. Judgment calls in them are marked **Claude's choice, flagged to Gina in chat; not yet approved**, unless Gina specified or changed them. Gina to review.
+
+---
+
+### Step 4 · Media Cloud heat · 2026-09-27 21:47 EDT · Gina + Claude
+- **What:** Added **`city_stories`** and **`heat_share`** (heat stories ÷ city stories) to each heat CSV, using the city-mention denominator already downloaded in Step 2. **No new queries.**
+- **Why:** Gina asked for a heat share like the air-quality share ("yes!").
+- **Input:** `data/processed/heat-media/` (Step 3); `city_stories` from `data/processed/mediacloud-attention/` (Step 2; same collections and dates)
+- **Script:** `scripts/mediacloud/04_heat_share.py` (local files only)
+- **Checks (built in; the script stops if either fails):** dates identical to Step 2 for every city; heat stories ≤ city stories on every day. Both passed for all 12.
+- **Whole-period heat share:** Los Angeles 0.57% · Fresno 0.56% · San Diego 0.53% · San Francisco 0.51% · Bakersfield 0.49% · Phoenix 0.45% · Eugene 0.38% (likely understated, "Eugene" is also a first name) · Brownsville 0.33% · Boston 0.32% · Fairbanks 0.17% · Detroit 0.14% · Ann Arbor 0.10%.
+- **Output:** the two new columns in `heat_media_<city>.csv`; `total_city_stories` and `heat_share_overall` in `queries.csv`; description rows as below.
+- **Judgment calls:** `heat_share` blank when `city_stories` = 0, and longer periods use the ratio of sums, the same rules as `air_share` (Step 2). **Same rules Gina approved for the air share.**
+
+### Step 3 · Media Cloud heat · 2026-09-27 21:47 EDT · Gina + Claude
+- **What:** Downloaded Media Cloud **"Attention over time"** for heat news in the same 12 cities, collections and dates as Step 1 (2016-01-01 → 2026-09-25). Query: `("heat wave" OR "heat advisory") AND "<city>"`. **No values changed.**
+- **Why:** Gina is adding a heat media angle alongside the air-quality one.
+- **Input:** Media Cloud API; method specified by Gina (same as Step 1). Key read from `$MEDIACLOUD_API_KEY`; not in any file (checked).
+- **Script:** `scripts/mediacloud/03_heat_attention_over_time.py` (Step 1's script with the query and folders changed)
+- **Rows in → out:**
+
+  | # | City | Collection | Sources | Heat stories |
+  |---|---|---|---|---|
+  | 1 | Los Angeles | California | 1,283 | 13,491 |
+  | 2 | Phoenix | Arizona | 139 | 1,924 |
+  | 3 | San Diego | California | 1,283 | 6,211 |
+  | 4 | Detroit | Michigan | 203 | 949 |
+  | 5 | Bakersfield | California | 1,283 | 736 |
+  | 6 | San Francisco | California | 1,283 | 6,975 |
+  | 7 | Fresno | California | 1,283 | 1,366 |
+  | 8 | Boston | Massachusetts | 307 | 2,907 |
+  | 9 | Eugene | Oregon | 145 | 194 |
+  | 10 | Fairbanks | Alaska | 77 | 66 |
+  | 11 | Brownsville | Texas | 593 | 130 |
+  | 12 | Ann Arbor | Michigan | 203 | 123 |
+
+  All have 3,921 days except Fairbanks (3,886; the same 35 empty-collection days as Step 1).
+- **Output:** raw `data/raw/heat-media/json/` (12 heat responses + 12 collection records); processed `data/processed/heat-media/heat_media_<city>.csv` (12) and `queries.csv`; 10 description rows added (Steps 3–4).
+- **Checks:**
+  - `ratio` = stories ÷ collection total on every row.
+  - **The busiest days match known heat waves:** Los Angeles and San Francisco **2022-09-07** (the September 2022 California heat wave); Eugene **2021-06-29** (the Pacific Northwest heat dome); Phoenix 2021-06-29 and **2023-07-19**; Fresno 2020-09-06/07; San Diego 2020-08-17; Boston June–August 2018/2019.
+  - Rate-limit hits (HTTP 429) on 3 cities were retried successfully.
+- **Judgment calls:**
+  - **Folders:** Gina asked for a new raw folder "heat-media". Following her rule from Step 1 (JSON is raw; flattened CSVs are processed), the JSON is in `data/raw/heat-media/json/` and the CSVs in `data/processed/heat-media/`. **Claude's proposal, approved by Gina** ("yes do that").
+  - **Same collections as Step 1**, including Massachusetts 38381372. **Claude's choice.**
+- **Caveat:** "heat advisory" is a National Weather Service product name; stories quoting advisories may cluster in regions where the NWS issues them often. "heat wave" also appears in non-weather uses (e.g. sports, music).
 
 ---
 
