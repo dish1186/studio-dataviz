@@ -33,7 +33,7 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 ---
 
 ### Visualization V3 · version 1: "Unhealthy Air Days" calendar, San Francisco · 2026-09-28 14:11 EDT · Gina + Claude
-- **What:** A new, separate page: https://claude.ai/artifact/ (see chat for the link).
+- **What:** A new, separate page: https://claude.ai/artifact/7N8hWpqowN6nKQwuXDSJkQ.
   - A Jaźwiński-style colour grid: 11 year squares (2016 from 6 Mar; 2026 to 25 Sept) plus a title cartouche.
   - Each square is 20 × 20 cells with a bold cross = quarters; one cell per day, filled in reading order within each quarter.
   - **Colour by:** share of reporting sites above 35 µg/m³ (vermilion, 4 steps: 1–25 / 26–50 / 51–75 / 76–100%), or the worst site's EPA AQI category (ochre USG, vermilion Unhealthy, crimson-purple Very Unhealthy, brown Hazardous; Good/Moderate stay paper).
