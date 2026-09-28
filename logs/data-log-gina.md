@@ -32,6 +32,36 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Visualization V4 · version 1: "Pollution clouds" US map · 2026-09-28 16:01 EDT · Gina + Claude
+- **What:** A new, separate page: https://claude.ai/artifact/7D2Ebp7Dj4TnwduqJU8fbs
+  - A US map (d3 Albers USA, with the Alaska inset for Fairbanks) of the **12 study cities with news data**. Each city is drawn as a cloud of **one speck per day with a valid daily PM2.5 value**.
+    - Daily value: reference mean, low-cost mean where no reference (Step 5 city file, strict ≥ 18 h).
+    - Speck colour = EPA AQI category (breakpoints and truncation as in OpenAQ Step 6).
+  - **"Worst days in the core"** (default) orders specks by PM2.5 from the centre outwards; **"Scattered"** places them at random. Positions are seeded so they don't move.
+  - Every cloud is the same size. Good specks are faint and small; unhealthy ones are larger and opaque.
+  - Clouds are nudged apart with a force layout, with leader lines to each city's point (city-hall coordinates from `data/processed/openaq/step01_inventory/openaq_cities.csv`). Labels are placed where they don't collide with other clouds.
+  - A year selector (all years or one year). Hover shows days with data, the average, days per unhealthy category and the worst day.
+  - A table of each city's days per category.
+- **Why:** Gina: "can you make me a map of the us with the different 12 cities highlighted and some indication of the collection of their daily air pollution as like a cloud".
+- **Inputs (unchanged):**
+  - `data/processed/openaq/step05_averages/pm25_<city>_daily.csv`
+  - `data/raw/basemap/ne_50m_admin_1_states_provinces.geojson`: US features only, coordinates rounded to 0.01° for the page, rings rewound for d3.
+  - **No data changed.**
+- **Totals shown (all years; days above 35 = USG or worse, city daily value):**
+  - Bakersfield 146 · Fresno 122 · Fairbanks 81 · Eugene 30 · Detroit 27 · Los Angeles 20 · San Francisco 16 · Ann Arbor 15 · Phoenix 13 · Brownsville 12 · San Diego 5 · Boston 1.
+  - These differ from Step 6's "any site" counts, since this uses the city's reference average.
+- **Checked:**
+  - Hazardous days are real: Eugene 2020-09-10 to 09-15 (300–468 µg/m³, 2–3 reference sites); Detroit and Ann Arbor 2026-07-16 (Detroit 294 from 7 reference sites, with 12 low-cost sites at 286; Ann Arbor 286).
+  - **The cause of the July 2026 event has not been verified.**
+- **Judgment calls (Claude's choices, flagged; not yet approved):**
+  - Only the 12 news cities.
+  - Same-size clouds.
+  - The worst-in-core ordering.
+  - Colours and speck sizes.
+  - Excluding Springfield, Delano, Warren and Raymondville.
+
+---
+
 ### Visualization V3 · version 1: "Unhealthy Air Days" calendar, San Francisco · 2026-09-28 14:11 EDT · Gina + Claude
 - **What:** A new, separate page: https://claude.ai/artifact/7N8hWpqowN6nKQwuXDSJkQ.
   - A Jaźwiński-style colour grid: 11 year squares (2016 from 6 Mar; 2026 to 25 Sept) plus a title cartouche.
