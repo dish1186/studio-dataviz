@@ -32,6 +32,43 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Analysis A4 · A1–A3 redone with "air purifier" searches only · 2026-09-28 10:46 EDT · Gina + Claude
+- **What:** Reran the three correlation pairs and the drop-the-top-months check using only the **"air purifier"** Trends series, instead of the total of 3 terms. **No files written**; this was a one-off script in chat. The news ↔ haze numbers don't involve searches and are unchanged from A2.
+- **Why:** Gina: "can you regenerate these results based just on searches for air purifiers?"
+- **Method:** the same as A1–A3. "r−k" = Pearson r after removing the k haziest months (searches vs haze) or the k highest-news months (searches vs news).
+- **Result (ρ / r / r−1 / r−3):**
+
+  | City | Searches ↔ Haze | Searches ↔ News | News ↔ Haze (unchanged) |
+  |---|---|---|---|
+  | Ann Arbor | 0.44 / 0.20 / 0.12 / 0.19 | 0.21 / 0.39 / 0.23 / 0.22 | 0.12 / 0.40 / 0.11 / 0.13 |
+  | Bakersfield | 0.18 / 0.13 / 0.13 / 0.14 | 0.00 / −0.03 / 0.03 / 0.02 | −0.12 / −0.13 / −0.12 / −0.08 |
+  | Boston | −0.04 / −0.03 / −0.06 / −0.04 | 0.35 / 0.06 / 0.13 / 0.10 | 0.15 / 0.11 / 0.15 / 0.16 |
+  | Brownsville | 0.42 / 0.22 / 0.27 / 0.26 | 0.12 / 0.09 / 0.09 / 0.06 | 0.10 / 0.03 / 0.05 / 0.07 |
+  | Delano | 0.21 / 0.17 / 0.20 / 0.27 | – | – |
+  | Detroit | 0.04 / 0.25 / 0.09 / −0.04 | 0.37 / 0.41 / 0.41 / 0.20 | −0.07 / 0.54 / 0.40 / −0.07 |
+  | Eugene | 0.09 / 0.86 / 0.11 / 0.10 | 0.29 / 0.81 / 0.32 / 0.25 | 0.21 / 0.89 / 0.73 / 0.49 |
+  | Fairbanks | 0.16 / 0.56 / 0.48 / 0.48 | 0.09 / 0.14 / 0.18 / 0.09 | 0.06 / 0.24 / 0.21 / 0.08 |
+  | Fresno | −0.05 / 0.17 / 0.03 / 0.01 | 0.25 / 0.33 / 0.18 / 0.17 | 0.03 / 0.28 / 0.09 / 0.12 |
+  | Los Angeles | −0.11 / −0.01 / −0.03 / −0.12 | 0.19 / 0.42 / 0.35 / 0.18 | 0.08 / 0.16 / 0.16 / 0.00 |
+  | Phoenix | 0.15 / 0.01 / −0.01 / 0.01 | 0.14 / 0.23 / 0.21 / 0.21 | 0.03 / 0.05 / 0.05 / 0.04 |
+  | Raymondville | 0.01 / 0.08 / 0.03 / −0.01 | – | – |
+  | San Diego | 0.07 / 0.07 / 0.01 / −0.02 | 0.24 / 0.26 / 0.23 / 0.24 | 0.07 / 0.47 / 0.21 / 0.22 |
+  | San Francisco | −0.01 / 0.64 / 0.60 / 0.01 | 0.33 / 0.78 / 0.67 / 0.65 | 0.10 / 0.76 / 0.74 / 0.12 |
+  | Springfield | 0.10 / 0.85 / 0.05 / 0.10 | – | – |
+  | Warren | −0.08 / 0.24 / −0.15 / −0.12 | – | – |
+
+  Leaving out the 2020-03/04 and 2026-03 to 06 months changes ρ by ≤ 0.09.
+- **Searches follow haze more than news:**
+  - **Brownsville** and **Fairbanks** on all measures. Brownsville's link rests on ordinary months, most likely shared spring seasons. Fairbanks' link rests on its smoke months.
+  - **Ann Arbor** on ordinary months only.
+  - **Bakersfield** weakly (0.18 vs 0.00). This is new with air purifier alone.
+- **Searches follow news more than haze:** all other cities with news data.
+  - **San Francisco's** searches–news link is the most robust in the table: r = 0.65 after removing its 3 biggest news months, while its searches–haze link falls to 0.01.
+- **Data caveat:** "air purifier" in Fairbanks is **0 in 119 of 129 months** (Google's low-volume floor), so its correlations rest on 10 non-zero months. Other cities with many zero months: Bakersfield 32, Eugene 23, Brownsville and Raymondville 21 (they share one Trends file). The 1.5×-median hit count from A3 is not meaningful for Fairbanks (median 0).
+- **Consistency check:** Ann Arbor searches–haze ρ = 0.44 here, and 0.48 with the COVID-19 and 2026 months left out, matching V1 v7 (0.48).
+
+---
+
 ### Analysis A3 · how many events carry the searches–haze link · 2026-09-28 10:37 EDT · Gina + Claude
 - **What:** For searches vs haze (as in A1), recomputed Pearson r after removing the 1, 2, … 5 haziest months. Also counted, among each city's 10% haziest months, how many had searches above 1.5× the city's median month. **No files written**; this was a one-off script in chat.
 - **Why:** Gina asked what it means that Fairbanks and San Francisco keep a high r with a low ρ, and whether other cities share this.
