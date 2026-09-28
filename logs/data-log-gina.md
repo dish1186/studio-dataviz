@@ -32,6 +32,54 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Visualization V1 · version 7: city groups · 2026-09-27 22:05 EDT · Gina + Claude
+- **What:** The explorer now groups the city panels by **what each city's air-purifier searches follow most closely**, with a switch to turn grouping off. Each panel shows its three correlations, with the strongest highlighted. The page now opens with all 16 cities selected, so every group shows. **No repo files changed**; the correlations were computed in a one-off script in chat (not saved) and built into the page.
+- **Why:** Gina asked for four groups:
+  1. searches follow haze more than news
+  2. searches follow news more than haze
+  3. searches follow PM2.5 most
+  4. other
+- **Method:**
+  - **Series:** monthly Google Trends **"air purifier"** (not the total, which n95 and COVID-19 dominate) vs:
+    - monthly PM2.5 (reference daily means, low-cost where no reference; month kept if ≥ 15 days)
+    - haze (mean extinction ÷ CLEAR; month kept if ≥ 15 valid days)
+    - news share (sum ÷ sum)
+  - **Correlation:** Spearman rank.
+  - **Months left out:** 2020-03/04 (COVID-19 mask buying) and 2026-03 to 2026-06 (a nationwide air-purifier spike in 13 of 17 Trends files, not tied to local air).
+  - **Rule:** a city joins the group of its strongest measure if that correlation is **≥ 0.2** and **≥ 0.05 above the next one**; otherwise **group 4**. A city with haze strongest but no news data also goes to group 4, since "haze more than news" can't be shown.
+- **Result:**
+
+  | City | PM2.5 | Haze | News | Group |
+  |---|---|---|---|---|
+  | Ann Arbor | 0.13 | **0.48** | 0.17 | 1 |
+  | Brownsville | 0.06 | **0.42** | 0.08 | 1 |
+  | Detroit | 0.10 | 0.11 | **0.40** | 2 |
+  | Boston | −0.15 | −0.05 | **0.37** | 2 |
+  | Eugene | 0.21 | 0.10 | **0.33** | 2 |
+  | San Francisco | 0.03 | 0.07 | **0.29** | 2 |
+  | San Diego | 0.10 | 0.11 | **0.23** | 2 |
+  | Fairbanks | **0.33** | 0.21 | 0.20 | 3 |
+  | Phoenix | **0.32** | 0.17 | 0.11 | 3 |
+  | Springfield | **0.28** | 0.11 | – | 3 |
+  | Bakersfield | 0.26 | 0.26 | 0.02 | 4 (PM2.5 = haze) |
+  | Fresno | 0.27 | 0.00 | 0.29 | 4 (news ≈ PM2.5) |
+  | Los Angeles | −0.24 | −0.07 | 0.17 | 4 (none ≥ 0.2) |
+  | Delano | – | 0.31 | – | 4 (no news data) |
+  | Warren | 0.19 | −0.03 | – | 4 (none ≥ 0.2) |
+  | Raymondville | – | 0.00 | – | 4 (none ≥ 0.2) |
+- **Judgment calls (all Claude's choices, flagged to Gina in chat):**
+  - The 0.2 threshold and the 0.05 margin.
+  - "Air purifier" alone as the search measure.
+  - Which months are left out.
+  - Delano placed in group 4.
+- **Caveats (in the page footnote):**
+  - Correlation, not cause.
+  - Shared seasons (e.g. spring allergy season) can raise a correlation on their own. Brownsville's haze peaks in spring, and its group-1 placement may reflect that.
+  - Fairbanks's searches are mostly 0.
+  - Groups use the whole 2016–2026 period, whatever the date slider shows.
+
+---
+
 ### Step 4 · Media Cloud heat · 2026-09-27 21:47 EDT · Gina + Claude
 - **What:** Added **`city_stories`** and **`heat_share`** (heat stories ÷ city stories) to each heat CSV, using the city-mention denominator already downloaded in Step 2. **No new queries.**
 - **Why:** Gina asked for a heat share like the air-quality share ("yes!").
