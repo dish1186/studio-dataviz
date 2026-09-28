@@ -32,6 +32,32 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Analysis A9 · San Francisco PM2.5 during the Sept 2020 wildfires · 2026-09-28 12:23 EDT · Gina + Claude
+- **What:** Read San Francisco's daily PM2.5 for 2020-08-16 to 2020-09-25 at the sensor level, including days dropped by the 18-hour rule, alongside the haze index and news counts. **No files written.**
+  - PM2.5 from `data/processed/openaq/step04_daily/openaq_pm25_sanfrancisco_daily_sensors.csv`.
+  - Haze and news from the explorer bundle.
+- **Why:** Gina: "whats the pm2.5 data for the sept 2020 wildfires".
+- **Findings:**
+  - San Francisco has **one reference site** (S2009, "San Francisco", sensor 3569) and **no low-cost sensors before 2021-10**.
+  - **Worst run: 2020-09-10 to 09-14**, daily means (hours observed):
+    - 09-10: **129.0** (19 h, kept)
+    - 09-11: **151.0** (15 h, dropped)
+    - 09-12: **93.7** (20 h, kept)
+    - 09-13: **107.0** (13 h, dropped)
+    - 09-14: **111.0** (16 h, dropped)
+    - Highest hour: 214 µg/m³ on 09-10.
+    - Haze: 6.8× · **10.0×** · 5.0× · 3.6× · 6.3×.
+    - News share of San Francisco stories: 17.7% · 19.9% · 32.3% · 20.2% · 12.4%.
+  - **2020-09-09** (the day of the orange sky): 27.2 µg/m³ (16 h, dropped); haze 1.4×; news 101/618 (16.3%).
+  - **Late-August smoke** (2020-08-19 to 09-01): daily means mostly 16–40, hourly peaks 36–142; haze up to 3.4×.
+  - **Completeness:** in these 41 days, 23 site-days have < 18 of 24 hourly values in OpenAQ and are dropped, including 3 of the 5 worst days. The gaps look like missing hours in OpenAQ's copy (5–17 hours per day); **not verified against EPA AQS**.
+- **Implications:**
+  - The weekly PM2.5 thread and the processed daily file **understate the Sept 2020 peak**.
+  - The 7-day background still shows the peak, from the kept days only.
+  - **Proposed, not done:** fill 2020–2021 from EPA AQS daily values for this monitor. Waiting for Gina's decision.
+
+---
+
 ### Visualization V2 · version 4: smoothed PM2.5 background · 2026-09-28 12:19 EDT · Gina + Claude
 - **What:** The PM2.5 background now defaults to a **centred 7-day average** for each day's band: the day ±3 days, averaging the days that have a value, needing ≥ 3.
   - A **"7-day smoothed | Daily"** switch (saved in the browser) brings back the raw daily bands.
