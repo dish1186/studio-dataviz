@@ -32,6 +32,19 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Analysis A3 · how many events carry the searches–haze link · 2026-09-28 10:37 EDT · Gina + Claude
+- **What:** For searches vs haze (as in A1), recomputed Pearson r after removing the 1, 2, … 5 haziest months. Also counted, among each city's 10% haziest months, how many had searches above 1.5× the city's median month. **No files written**; this was a one-off script in chat.
+- **Why:** Gina asked what it means that Fairbanks and San Francisco keep a high r with a low ρ, and whether other cities share this.
+- **Result (r after removing the 0 / 1 / 2 / 3 / 4 / 5 haziest months; hazy months with high searches):**
+  - **Fairbanks:** 0.38 / 0.36 / 0.41 / 0.34 / 0.15 / 0.08. 6 of 12 hazy months had high searches: 2019-07, 2022-06, 2022-07, 2023-08 and 2024-06 were all summer smoke months.
+  - **San Francisco:** 0.54 / 0.41 / 0.22 / 0.08 / 0.14 / 0.14. 6 of 12. The link rests on 2018-11 and 2020-08/09.
+  - **Eugene:** 0.76 / 0.13 / … 5 of 12. **Springfield:** 0.74 / 0.04 / … 3 of 12. In both, the link rests on 2020-09 alone.
+  - **All other cities:** r ≤ 0.24 at every step, and 1–3 of 10–12 hazy months with high searches.
+- **Correction to A1/A2 wording:** "keeps r ≈ 0.4 without its top month" overstated San Francisco. Its link rests on **2 events** (Camp Fire Nov 2018; Aug–Sept 2020 fires). **Fairbanks is the only city where the link holds across several separate events** (4 years of summer smoke).
+- **Caveats:** same as A1. The 1.5× cutoff and the 10% cutoff are Claude's choices, used only for this check.
+
+---
+
 ### Analysis A2 · searches vs news, news vs haze correlations · 2026-09-28 10:27 EDT · Gina + Claude
 - **What:** The same exercise as A1 for two more pairs: **searches vs news share** and **news share vs haze**, combined with A1 into one table. **No files written**; this was a one-off script in chat.
 - **Why:** Gina: "do the same exercise between searching and news, and then news and haze as two separate correlation exercises. combine the correlations with the previous table into one table".
