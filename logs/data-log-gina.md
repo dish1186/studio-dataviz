@@ -32,6 +32,43 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Analysis A10 · days above 35 µg/m³ by city and year · 2026-09-28 13:51 EDT · Gina + Claude
+- **What:** For each city and year, counted days where a site's daily mean PM2.5 was > 35.4 µg/m³ (35.5+, EPA "Unhealthy for Sensitive Groups" or worse). Partial days (< 18 hours) are included.
+  - Counted two ways: (a) **reference monitors only**; (b) **any site**, including low-cost.
+  - Also counted reference coverage days per year.
+  - Read from `data/processed/openaq/step04_daily/openaq_pm25_<city>_daily_sensors.csv`. **No files written.**
+  - San Francisco was checked first (strict vs partial days) for the chart prompt.
+- **Why:** Gina chose 35 as the threshold for the planned "Unhealthy Air Days" chart (Jaźwiński grid), then asked which city would give the most dramatic visual of intensifying unhealthy days.
+- **Reference only, days > 35 per year 2016–2026 (total):**
+  - Bakersfield: 19 30 30 8 40 42 39 10 16 9 13 (256)
+  - Fresno: 14 29 34 2 40 35 29 9 10 6 9 (217)
+  - Fairbanks: 4 14 4 14 8 7 34 8 10 10 2 (115)
+  - Los Angeles: 3 18 11 3 13 12 4 0 6 6 0 (76)
+  - Phoenix: 2 7 6 3 12 6 9 5 8 8 4 (70)
+  - Eugene: 0 15 5 5 11 1 8 7 0 3 5 (60)
+  - Detroit: 3 1 1 4 5 1 9 15 2 8 6 (55)
+  - San Francisco: 0 7 14 0 9 1 0 1 0 0 0 (32)
+  - Springfield: 31
+  - San Diego: 20 (no reference 2017–2018)
+  - Ann Arbor: 18
+  - Brownsville: 12 (no reference 2017–2021)
+  - Boston: 3
+  - Delano and Warren: no reference monitor
+- **Any site (incl. low-cost), recent years jump:**
+  - Los Angeles: 45 · 26 · 52 · **133** · **118** (2022–2026)
+  - Detroit: 28 (2025) → **188** (2026 through Sept)
+  - Delano: 52 · 45 (2025–2026)
+  - Ann Arbor: 36 · 53
+  - Warren: 30 · 16
+  - San Francisco: 37 (2022) and 34 (2025); reference monitor 0 in both years.
+  - These jumps coincide with many new low-cost sensors, and the reference monitors don't show them. **Likely sensor-count and calibration artefacts, not worsening air. Not investigated.**
+- **Reading (Claude's, flagged):**
+  - The most unhealthy days: Bakersfield, then Fresno, both high every year, peaking 2020–2022.
+  - A rise in the second half of the record (reference only): Fairbanks (44 days in 2016–20 → 69 in 2021–25), Detroit (14 → 35), Ann Arbor (2 → 13).
+  - No city shows a steady year-on-year increase.
+
+---
+
 ### Visualization V2 · version 5: zoom · 2026-09-28 12:27 EDT · Gina + Claude
 - **What:** Added zoom to the threads page:
   - **Drag down the chart** to zoom to a period; the selected weeks fill most of the screen (up to 40×).
