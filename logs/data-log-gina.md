@@ -32,6 +32,36 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Visualization V2 · version 2: San Francisco threads with 2020 and 2024 · 2026-09-28 12:13 EDT · Gina + Claude
+- **What:** Rebuilt the threads page from the re-stitched weekly searches, which now run 2019-12-29 to 2026-09-27 (353 weeks, no 2024 gap). Also:
+  - Added a "Sept 2020 wildfire smoke" marker at the week of 2020-09-06, the highest week in the 2020 file.
+  - Updated the notes text (seven yearly downloads).
+  - Same method as v1. The page is the same link, updated in place.
+- **Why:** Gina: "here's the 2024 data, if you can add that to san fran, as well as 2020. please add to the visual".
+- **Effect:**
+  - ρ now reaches **0.90**: news vs searches in autumn 2020. The fitted scale now runs −0.75 to +1.0.
+  - **2020:** news ρ 0.70 (late June), 0.88 (late Sept) and 0.55 (late Dec); haze 0.55 (late June) and 0.64 (late Sept).
+  - **2024:** news 0.62 in spring; PM2.5 about 0.3 through the second half.
+- **Data note:** San Francisco PM2.5 has no values in the page for mid-2020 to 2021. There are only 222 reference days in 2020 and 190 in 2021, with low-cost from 2021-10, so the PM2.5 thread is broken there. **Not investigated.**
+
+---
+
+### Google Trends · Step 9: 2020 and 2024 weekly San Francisco files; re-stitch · 2026-09-28 12:13 EDT · Gina + Claude
+- **What:** Added two more of Gina's downloads to `data/raw/google-trends/air-search-weekly/san-francisco/`, **copied unchanged** (`cmp` identical):
+  - `time_series_807_20200101-0000_20260928-1211.csv`: 2019-12-29 to 2020-12-27, 53 weeks, SHA-256 d3547ac1…5ae2
+  - `time_series_807_20240101-0000_20260928-1210.csv`: 2023-12-31 to 2024-12-29, 53 weeks, d8bfecd2…1c79
+- Reran `scripts/google-trends/05_sf_weekly_stitch.py` (unchanged): 353 weeks.
+- Rewrote `trends_sources.csv` (7 rows) and updated 2 rows in `data_descriptions.csv`.
+- **Why:** Gina supplied the missing 2024 file and 2020.
+- **Result:**
+  - New factors: 2020 **1.1614** (fit r 0.999); 2024 **0.1069** (fit r 0.792).
+  - 2024's lower fit is because its monthly values are nearly flat (7–9), leaving little to fit; the max residual is 0.83.
+  - All six year-boundary overlap weeks agree after scaling (gaps 0.61, 0.10, 0.36, 0.23, 0.48, 0.02 index points).
+  - The earlier factors are unchanged.
+- **Note:** the 2020 file's values are mostly small integers (4–9) outside the Aug–Sept smoke spike (100 = week of 2020-09-06), so ordinary 2020 weeks carry more rounding error.
+
+---
+
 ### Visualization V2 · version 1: San Francisco weekly threads · 2026-09-28 12:07 EDT · Gina + Claude
 - **What:** A new, separate page, **"Air-quality threads"**: https://claude.ai/artifact/7UB1ipuuUtX2KEcvCUvxWL
   - San Francisco only; weekly, from 2020-12-27 to 2026-09-27; time runs down the page.
