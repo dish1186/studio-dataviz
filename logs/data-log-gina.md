@@ -32,6 +32,53 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Analysis A6 + Visualization V1 · version 16: season- and year-adjusted groups · 2026-09-28 11:02 EDT · Gina + Claude
+- **What:** Recomputed the city groups from correlations with **each series' seasonal pattern and year-to-year level removed**, and put them in the explorer. Each panel's correlations now show the adjusted values; hovering shows the values before adjustment. The Groups footnote was rewritten to match. Built with `pm25_bundle_v9.json` (v8 with the new `assoc` values). **No data files changed**; the correlations came from a one-off script in chat.
+- **Why:** Gina: "yes - i also want to add search correlation with pm2.5 (the actual measurement)", after A5 showed the Ann Arbor and Brownsville haze links came from a shared long-term trend.
+- **Method:**
+  - **Series:** monthly "air purifier" searches vs:
+    - PM2.5: reference daily mean, low-cost where no reference; month kept if ≥ 15 days
+    - haze: extinction ÷ 0.24308; ≥ 15 valid days
+    - news share: sum ÷ sum
+  - **Months left out:** 2020-03/04 and 2026-03 to 06.
+  - **Adjustment:** for each series, over the months used: value − its calendar-month mean − its year mean + overall mean.
+  - **Correlation:** Spearman ρ; a pair needs ≥ 24 months.
+  - **Chance check:** the measure was shifted by 6–123 months (circularly) against searches, repeating the adjustment each time. p = share of shifted ρ ≥ actual. In unshifted tests at 12–36 months, chance values reached about ±0.3.
+  - **Group rule:** unchanged from V1 v7 (strongest ≥ 0.2, ≥ 0.05 above the next, at least 2 measures).
+- **Result (ρ before → after adjustment; * = beats chance, p < 0.05):**
+
+  | City | PM2.5 | Haze | News | Group (was) |
+  |---|---|---|---|---|
+  | Fairbanks | 0.24 → **0.48*** | 0.24 → **0.73*** | 0.18 → 0.06 | **Haze** (PM2.5) |
+  | Ann Arbor | 0.12 → **0.47*** | 0.48 → 0.22* | 0.16 → 0.32* | **PM2.5** (haze) |
+  | Bakersfield | 0.25 → **0.34*** | 0.24 → 0.26* | 0.03 → 0.22* | **PM2.5** (other) |
+  | Warren | 0.18 → **0.52*** (28 months) | −0.04 → 0.24* | – | **PM2.5** (other) |
+  | Detroit | 0.08 → 0.43* | 0.10 → 0.30* | 0.38 → **0.52*** | **Media** (media) |
+  | Los Angeles | −0.24 → 0.11 | −0.08 → 0.18* | 0.17 → **0.47*** | **Media** (other) |
+  | Phoenix | 0.29 → 0.32* | 0.15 → 0.04 | 0.10 → **0.38*** | **Media** (PM2.5) |
+  | San Diego | 0.09 → 0.22* | 0.10 → 0.24* | 0.23 → **0.39*** | **Media** (media) |
+  | San Francisco | 0.02 → 0.67* | 0.06 → 0.70* | 0.29 → **0.78*** | **Media** (media) |
+  | Eugene | 0.20 → 0.56* | 0.11 → 0.45* | 0.32 → 0.56* | Other: PM2.5 = news (media) |
+  | Fresno | 0.26 → 0.61* | −0.00 → 0.58* | 0.29 → 0.36* | Other: PM2.5 ≈ haze (other) |
+  | Springfield | 0.27 → 0.58* | 0.12 → 0.58* | – | Other: PM2.5 = haze (PM2.5) |
+  | Delano | – | 0.31 → 0.48* | – | Other: one measure only (other) |
+  | Boston | −0.16 → 0.18 | −0.04 → 0.09 | 0.37 → 0.12 | Other: none ≥ 0.2 (media) |
+  | Brownsville | 0.05 → −0.18 (36 months) | 0.40 → 0.09 | 0.07 → −0.09 | Other: none ≥ 0.2 (haze) |
+  | Raymondville | – | 0.00 → 0.08 | – | Other: one measure only (other) |
+
+- **Reading (Claude's interpretation, flagged to Gina):**
+  - Once the shared trend and seasons are removed, **most cities' searches move with all three measures** in unusual months. Big smoke events raise PM2.5, haze and news together, so the three measures are hard to separate.
+  - The Ann Arbor and Brownsville haze links (A5) disappear.
+  - Boston's news link (0.37) also came mostly from the trend.
+- **Judgment calls (Claude's choices, flagged; not yet approved):**
+  - Additive season + year adjustment applied to both series.
+  - The shift-based chance test.
+  - Keeping the 0.2 / 0.05 rule.
+  - Page notes: Fairbanks (119 of 129 zero-search months) and Warren (PM2.5 only 28 months).
+- **Note:** the "before" values differ slightly from V1 v7 for some cities (e.g. Fairbanks PM2.5 0.33 → 0.24). This is because the monthly PM2.5 series was rebuilt here and may not exactly match v7's (which was not saved). The groups use only the new adjusted values.
+
+---
+
 ### Analysis A5 · season vs trend check for Ann Arbor and Brownsville · 2026-09-28 10:55 EDT · Gina + Claude
 - **What:** Tested the claim that Ann Arbor's and Brownsville's searches–haze link comes from shared seasons. Method: air-purifier searches vs haze, Spearman, 2020-03/04 and 2026-03 to 06 left out, as in V1 v7. **No files written**; this was a one-off script in chat.
 - **Why:** Gina asked what "through seasons, not reactions" meant.
