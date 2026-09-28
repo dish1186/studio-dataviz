@@ -32,6 +32,43 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Analysis A13 · repo survey for topics and case studies (heat + air, not wildfire-led) · 2026-09-28 17:21 EDT · Gina + Claude
+- **What:** A read-only survey of the repo's datasets (both logs, README, processed folders), plus quick checks. **No files written.**
+  - Heat datasets read: gridMET/ERA5-Land `temp_<city>_daily.csv`, UTCI `utci_<city>_daily.csv`, `heat_media_<city>.csv`, heat-search raw and processed.
+  - Air datasets read: OpenAQ Step 5 city dailies.
+- **Why:** Gina asked for key topics and case studies in the data we already have (e.g. heat waves and unhoused people), with less focus on wildfires.
+- **Checks and results:**
+  - **Heat vs heat news, 2016–2026:** days with gridMET abnormally high heat; days with UTCI felt heat "strong" or worse (to 2026-06-12); heat-news share; monthly ρ between heat-news share and abnormal-hot days:
+    - LA 571 / 975 / 0.57% / 0.27
+    - Phoenix 641 / 1,977 / 0.45% / **0.40**
+    - San Diego 462 / 588 / 0.53% / 0.24
+    - Detroit 486 / 361 / 0.14% / −0.20
+    - Bakersfield 501 / 1,577 / 0.49% / 0.18
+    - SF 596 / **1** / 0.51% / 0.07
+    - Fresno 504 / 1,668 / 0.56% / 0.19
+    - Boston 563 / 308 / 0.32% / 0.19
+    - Eugene 564 / 294 / 0.38% / 0.30
+    - Fairbanks 354 / 43 / 0.17% / 0.06
+    - **Brownsville 649 / 2,057 / 0.33% / 0.03**
+    - Ann Arbor 497 / 412 / 0.10% / −0.12
+    - Caveat: "abnormally high" includes warm winter days, which "heat wave" news wouldn't cover.
+  - **March 2026 heat:** 16–25 abnormally hot days in LA, Phoenix, San Diego, SF, Fresno and Bakersfield (+22 to +25 °F). Heat-news share was far above those cities' usual March (e.g. LA 1.64% vs March median 0.07%; Phoenix 2.02% vs 0.04%) and above their July medians. The heat event itself is still **unverified against station records** (Dish, gridMET Step 5b).
+  - **"Cooling center" searches:** very low volume.
+    - Before late 2025, non-zero only in heat emergencies: SF 2017-09, 2022-09, 2024-07; Oregon 2021-06; Fresno 2024-07/08.
+    - From late 2025 / early 2026, non-zero almost everywhere, month after month. **Possibly a Google Trends sampling change; not investigated.**
+    - The processed heat-search files keep 3 terms (air conditioner, fan, AC); "cooling center" is only in the raw files.
+  - **Heat + unhealthy air on the same day** (abnormally hot / strong felt heat, with city PM2.5 > 35.4): Bakersfield 23/33 · Fresno 21/41 · Fairbanks 17/14 · Eugene 13/17 · Brownsville 9/11 (incl. 2024-05-08/09/19) · SF 7/1 · Detroit 5/4 · others ≤ 2 (Boston 0).
+  - **Candidate events:**
+    - Phoenix 2023-07: gridMET city mean ≥ 110 °F on 18 days, max 115.2; 31 days of strong+ felt heat (21 extreme); 241 heat stories. The widely reported 31 days ≥ 110 °F is the airport record, not our city mean.
+    - Eugene 2021-06: 110.1 °F on 06-27 (+32.5 °F); 31 stories.
+    - Brownsville 2024-05: 31 of 31 days strong+ felt heat; 7 days PM2.5 > 35; only 7 heat stories.
+- **Data gaps named:**
+  - No homelessness or vulnerability data in the repo. Options: a Media Cloud query combining unhoused/homeless terms with heat terms per city; HUD Point-in-Time counts; county heat-death reports (e.g. Maricopa County). **All new data steps; not done.**
+  - No station check of the March 2026 heat.
+  - No cause checks for Brownsville's May 2024 smoke or Detroit/Ann Arbor 2026-07-16.
+
+---
+
 ### Visualization V4 · version 1: "Pollution clouds" US map · 2026-09-28 16:01 EDT · Gina + Claude
 - **What:** A new, separate page: https://claude.ai/artifact/6KstSbHEFFZchqA4HHqr1h
   - A US map (d3 Albers USA, with the Alaska inset for Fairbanks) of the **12 study cities with news data**. Each city is drawn as a cloud of **one speck per day with a valid daily PM2.5 value**.
