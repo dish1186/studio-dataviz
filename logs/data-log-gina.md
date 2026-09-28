@@ -32,6 +32,30 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Visualization V1 · version 17: national air-purifier trend chart · 2026-09-28 11:13 EDT · Gina + Claude
+- **What:** Added a section below the coverage table (above "About the data"): **"The national rise in 'air purifier' searches."**
+  - One grey line per Google Trends search area, and a bold green line for the median across areas.
+  - Each area is divided by its own 2016–2019 monthly average (1× = pre-2020 normal), on a log scale.
+  - Event markers: COVID-19 (Mar 2020), Western wildfire smoke (Sep 2020), Canadian smoke (Jun 2023), spring 2026 spike (Apr 2026).
+  - Hovering shows every area's value that month and highlights the nearest line.
+  - A summary line is computed on the page from the data.
+- **Why:** Gina: "mock up option 1 with the real data, and add it at the bottom of this city explorer" (to show the national trend behind the A5/A6 adjustment).
+- **Data:** the `ap` series already in the bundle (`data/processed/google-trends/air-search/`).
+  - **13 search areas.** The 16 cities map to 14 Trends files, since Michigan covers Ann Arbor and Warren and Harlingen-Weslaco-Brownsville-McAllen covers Brownsville and Raymondville.
+  - **Fairbanks is left out:** 0 in 119 of 129 months, so there is no usable baseline.
+  - Months at 0 are drawn as gaps; September 2026 is partial. **No data changed.**
+- **Result shown on the page:** in all 13 areas, the 2021–2025 average was **1.7× to 4.9×** the 2016–2019 level (**median 2.5×**). The largest single-month peaks were Sept 2020 (median ≈ 7×) and April 2026.
+- **Judgment calls (Claude's choices, flagged to Gina):**
+  - The 2016–2019 baseline.
+  - Log scale.
+  - Median rather than mean.
+  - Fairbanks left out.
+  - Which events to mark and how to label them. The "Western wildfire smoke" and "Canadian smoke" labels are general descriptions of those months, not checked against each area.
+  - Placing the section above the notes rather than after them.
+- **Not done:** no US-wide Trends file exists yet; the median of our areas stands in for it.
+
+---
+
 ### Analysis A6 + Visualization V1 · version 16: season- and year-adjusted groups · 2026-09-28 11:02 EDT · Gina + Claude
 - **What:** Recomputed the city groups from correlations with **each series' seasonal pattern and year-to-year level removed**, and put them in the explorer. Each panel's correlations now show the adjusted values; hovering shows the values before adjustment. The Groups footnote was rewritten to match. Built with `pm25_bundle_v9.json` (v8 with the new `assoc` values). **No data files changed**; the correlations came from a one-off script in chat.
 - **Why:** Gina: "yes - i also want to add search correlation with pm2.5 (the actual measurement)", after A5 showed the Ann Arbor and Brownsville haze links came from a shared long-term trend.
