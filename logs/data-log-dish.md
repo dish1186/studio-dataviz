@@ -822,6 +822,267 @@ Step · dataset · date · who ran it | What (plain language) | Why | Input file
   - raw_check.csv `b4aacc55adae9486222d6d5b5f1fe7a2b3605c89f280ab281b893fcfcea6ff89` · cell_weights.csv `a0cac925eae5cd285eb9b695ca590e16326ad2cd3ed2d3874af839f982e8f794` · fairbanks_daily_max.csv `7c69b37c7788349cae25536906ffb3ed2b54dc2c2f87e9929aa25d2dcd2fb243` · step03_summary.csv `ee3c9e340033c0f32051517471db0371eeb120c357f8af79687db48a8bcdd457`
   - temp_fairbanks_daily.csv `3d23927caf068274a96d40cad70d99613ec3270af4223bd8a38137c162bc5710` · temp_fairbanks_normals.csv `a5cf4958627e7fd520eed02d91d54e5cc6d1e76f2746c6c4fc64872c49756a04` · temp_fairbanks_monthly.csv `5f763ba28161114cb2c195f2328451801bacf64dd2d803533a75e374edce49fc`
 
+### Viz · Heat City Explorer V1 → V2.2 · 2026-09-27 · Claude (approved by Dish)
+- **What:** A new, separate artifact, **"Heat City Explorer"** (https://claude.ai/artifact/1gHjG67CiMoj8VDZLsN71J), showing actual temperature (sensor) and felt heat (embodied) for the 12 cities, 2016-01-01 → 2026-09-24, in the format of the PM2.5 City Explorer (d3 7.9, city chips, date slider, drag-to-zoom, per-city/shared y axis, "About the data", days-with-data table). Space is kept for the heat media and search rows. The air-quality artifact was not touched.
+- **Why:** To see the sensor and embodied rows together before the media and search rows are added.
+- **Input:** `data/processed/gridmet/final/temp_<city>_daily.csv` · `data/processed/utci/final/utci_<city>_daily.csv` (12 + 12 files, read only; 3,920 rows each, dates identical)
+- **Script:** the data is packed into the page by `build_data.py`, which is only in the session workspace (not in the repo; see the last judgment call). It copies tmax/utci_max, normal, p10, p90, abnormally_high and stress_category per day, rounded to 0.1 °F. No smoothing or filtering there: every derived value is computed in the page.
+- **Checks:** dates identical across the 24 files; UTCI blanks match `valid = 0` exactly (106 days per city: 2021-04-28/29 and 2026-06-13 → 09-24); Fairbanks temperature blank 2026-09-22 → 09-24; no blank normals.
+- **Finding for the appendix:** 9 city-days have `abnormally_high = 1` although the value equals p90 at 2 decimals (temp: Ann Arbor 2024-06-19, Bakersfield 2022-08-16, Brownsville 2024-06-16, Eugene 2025-05-27, Phoenix 2021-11-04; UTCI: Boston 2024-04-29, Brownsville 2025-10-25, San Diego 2021-02-22 and 2022-06-08). The flags were set on unrounded values. The page keeps the file flags.
+- **Versions:**
+  - **V1:** two rows per city (actual temperature, felt heat), each with its value line, 1991–2020 normal, p10–p90 band, abnormally-high ticks, and UTCI heat/cold stress bands on the felt row; toggle Temperature / Difference from normal.
+  - **Design exploration (not adopted, separate "Heat View Options" artifact):** first four two-row layouts, then four same-graph layouts, for Phoenix. **Dish chose option 3:** excess beyond the normal range, overlaid.
+  - **V2:** one chart per city, heat side only. Excess heat = value − p90 on abnormally-high days, 0 otherwise. Actual temperature = filled shape, felt heat = outline. All months kept. Toggle "Only days that also feel hot". The Temperature/Difference toggle, normal band, ticks and stress bands were removed.
+  - **V2.1:** default smoothing changed to 30-day.
+  - **V2.2:** dots along the top of each chart mark days whose felt heat reached UTCI strong heat stress, 32 °C (89.6 °F). They mark single days at any smoothing, and a checkbox turns them off (on by default).
+- **Judgment calls:**
+  - Title "Heat City Explorer". **Approved by Dish.**
+  - Smoothing rule: trailing mean of the valid days, shown only if ≥ half the window has data **and** the day itself has data. Monthly = calendar-month mean, ≥ half the month, only on days with data. Missing days are gaps in every view, never interpolated. **Claude's choice, approved by Dish.**
+  - Normal and band smoothed with the same window as the value (V1). **Claude's choice, approved by Dish.**
+  - "Per city" y axis: one range shared by both rows in a panel (V1). **Claude's choice, approved by Dish.**
+  - Colours:
+    - V1: actual orange, felt crimson, normal dashed grey.
+    - V2: actual fill orange at 70% opacity, felt outline crimson.
+    - Both themes checked.
+    - **Claude's choice, approved by Dish.**
+  - Default cities: Phoenix, Fresno, San Francisco, Boston, Fairbanks, Brownsville. **Claude's choice, approved by Dish.**
+  - Date presets Full period / Last 3 years / Common window (to 2026-06-12, D9), with UTCI marked "not yet available" after that. **Claude's choice, approved by Dish.**
+  - UTCI cold-stress bands added to the felt row (V1). **Changed by Dish.**
+  - Same-graph layout, excess-heat chart (option 3). **Changed by Dish.**
+  - Heat side only (days below normal sit at 0); all months kept, not cut to a warm season. **Dish's decision, following Claude's recommendation.**
+  - Stress filter as a toggle, off by default. **Changed by Dish.** When on, a day counts for both measures only if felt heat ≥ 78.8 °F (UTCI 26 °C, moderate heat stress); both measures are blank where UTCI is missing. **Claude's choice, approved by Dish.**
+  - Smoothed excess = mean over all valid days in the window, zeros included. **Claude's choice, approved by Dish.**
+  - Abnormally-hot day counts follow the file flags (see the 9 ties above). **Claude's choice, approved by Dish.**
+  - Default smoothing 30-day (V2.1), because at daily resolution over ten years the outline hides the fill. **Changed by Dish (Claude's suggestion).**
+  - A reference level for heat. Dish asked for a national heat-advisory value. **There isn't one:** NWS advisory criteria are heat-index thresholds set by each forecast office (about 95 °F in the north to 108 °F in Florida), and the Western Region, which covers 7 of our 12 cities, uses HeatRisk. The axis is also relative (°F above p90), so no fixed level can be a flat line. **Changed by Dish:** use UTCI strong heat stress (89.6 °F), the same level everywhere; it is a body-stress level, not an NWS advisory.
+  - Display tried on one city (Heat View Options artifact): (a) dots on strong-stress days vs (b) a dotted curve at 89.6 °F minus the date's felt p90. The curve drops below zero every summer in hot cities and rises off the chart in winter, so it reads as spikes. **Dish chose the dots.** Showing them on by default: **Claude's choice, approved by Dish.**
+  - Possible later dataset: actual NWS heat advisories issued per forecast zone (an issued-alert archive, e.g. Iowa Environmental Mesonet; not yet checked) as an "institutional action" row. **Not started.**
+  - No felt-minus-actual view anywhere (D14).
+  - The packing script is not yet in the repo. Proposed: save it as `scripts/viz/01_heat_explorer_data.py`, with the page source as `viz/heat-city-explorer/`. **Open: Dish to decide.**
+- **Not adopted (appendix note):** season-length check (warm/cold days per year, 1991–2025). Run once in the session workspace on copies of the repo files, then **shelved by Dish as too noisy**. Nothing was written to the repo. Summary and method lesson in the project doc `claude/scope-season-length.md`.
+- **SHA-256 (session copies):** page V2.2 `9bf3f6a6b769bf3ee9b82712dcbb319ccbb2549deda8282becb49249724d10a3` · `build_data.py` `22fd41107824e50c213f5e43c301eff27043ff519f3ec2559efd923a23275636`
+
+### Viz · Heat City Explorer V3: search row (Google Trends heat search) · 2026-09-27 · Claude (approved by Dish)
+- **What:** Added an **action row, "Searching for cooling"**, under each city's abnormal-heat chart in the Heat City Explorer (same link, artifact version 5). It is the monthly Google Trends total of the search terms switched on ("air conditioner", "fan", "AC"; all on by default), with switches for each term. The **Monthly** option now draws each month's mean flat across the whole month, so all rows share one resolution. **No repo files created or changed**; everything is computed in the page.
+- **Why:** Dish's question is which signal prompts human action (sensor, body, media). Searching for cooling is the action row next to the two heat measures.
+- **Input:** `data/processed/google-trends/heat-search/*.csv` (Gina's Google Trends Step 3; read only, 12 of the 17 files used), plus the gridMET/ERA5-Land and UTCI finals of V1–V2.2. Background read first: the folder's `README.md`, `data/raw/google-trends/heat-search/trends_sources.csv`, and `logs/data-log-gina.md` Google Trends Steps 1–3.
+- **Script:** the packing script `build_data.py` (session workspace) now also copies the three terms per month from each file. It asserts 129 months (2016-01 → 2026-09) and that `total_interest_index` = the sum of the three terms in every row. Still not in the repo (see the V1 → V2.2 entry).
+- **Search geography per city (Dish's mapping):**
+  - **Cities (per Gina):** Los Angeles, Phoenix, San Diego, Detroit, Bakersfield, Eugene, Fairbanks.
+  - **Metro areas:** San Francisco → San Francisco-Oakland-San Jose; Fresno → Fresno-Visalia; Brownsville → Harlingen-Weslaco-Brownsville-McAllen; Boston → Boston MA-Manchester NH.
+  - **State, fallback:** Ann Arbor → Michigan.
+  - Each row is labelled with its geography, e.g. "searches in Michigan (state)"; the table has a "Search geography" column.
+  - Raymondville, Warren, Springfield, Delano and Pittsburgh are in the mapping but not on this page, because there are no temperature or UTCI files for them.
+- **Checks before building (read only):**
+  - All 12 files: 129 months, total = sum of the terms in every row.
+  - What sets each file's 100: "AC" in 9 files (Phoenix Jul 2026, San Diego Aug 2026, Detroit Jul 2026, Bakersfield Jul 2024, Fresno Jul 2024, Eugene Jun 2026, Fairbanks Jun 2025, Brownsville Jul 2026, Michigan Jul 2026); "fan" in 3 (Los Angeles, San Francisco and Boston, all Jun 2026).
+  - Highest total: Boston 218 (Jun 2026) … Bakersfield 173 (Jul 2024). **Eugene's highest total is Jun 2021 (243), the Pacific Northwest heat dome**, although its 100 is set by AC in Jun 2026.
+  - "air conditioner" is only 6–14% of the total in every file; in Fairbanks it is 0 in 95 of 129 months.
+- **Checks after building:** tooltip values for Jun 2023 match the files (Phoenix 8 + 38 + 47 = 93; San Francisco 83; Fresno 94).
+- **Drawing:**
+  - Monthly step line (green), flat from each month's first day to the next month's, on the same date axis as the heat chart.
+  - **Own y-axis per city** (0 to the highest value in view, whatever the Per city / Shared setting), because Trends files aren't comparable across places.
+  - Tooltip: month, total, each selected term's value, "(partial)" for Sep 2026. The crosshair and drag-to-zoom work on both rows.
+  - Footnote: not a count of searches; each file has its own scale, so compare shapes, not heights; the 100 is a summer month set by AC or fan, mostly 2026; "fan" and "AC" are ambiguous; Sep 2026 is partial; the geography levels.
+- **Judgment calls:**
+  - **Total of the switched-on terms, with on/off switches, all on by default; own y-axis per city; step line; tooltip content; footnote points.** **Specified by Dish.**
+  - **Monthly option drawn flat across the whole month** when at least half its days have data. Before, a month with one or two missing days showed small gaps (e.g. UTCI 28–29 Apr 2021). The value is unchanged and nothing is filled in. **Claude's suggestion, approved by Dish.**
+  - **Search line in green, row height 110 px, "Sep 2026 partial" label on each row.** **Claude's choice, approved by Dish.**
+  - **Row labelled "(city)" for the 7 city files, as Dish asked, with a footnote that the level was not independently verified.** Gina's log records these as "cities, per Gina; level not independently verified". Google Trends normally offers states and metro areas, not cities, and Phoenix's file moves almost exactly with Arizona's (correlation 0.997 on the monthly totals), as a Phoenix metro file would. **Flagged by Claude; to check with Gina.**
+- **Caveats for the appendix:**
+  - Relative index, not counts; scaled within each file.
+  - The scale is anchored on summer 2026 (or 2024/2025) peaks, so earlier years look lower partly because the peak is recent.
+  - The ambiguous terms dominate the total.
+  - Sep 2026 is partial.
+  - The city/metro level is uncertain for 7 files.
+- **SHA-256 (session copies):** page V3 `d4dbf4effb0fb4c81c2427fcb61686b30da2589bc33941ec571e631302a27403` · `build_data.py` `93bf569f236088afa9c5235f3c7d281b7f6edf717669ccb351d52131e8035038`
+- **Version 3.1 (same day, artifact version 6): search line overlaid.** **Changed by Dish:** the search line now sits on the abnormal-heat chart itself, with its own axis on the right (green, labelled "searches"), instead of in a separate row. Each city panel also has its own air conditioner / fan / AC switches, next to the city name, showing that city's search geography. The switches at the top still set every city at once, and clear any city's own choice. Heat chart height 170 → 190 px. **Claude's choice, flagged:** the footnote says the two axes are independent, so where the green line crosses the heat shapes means nothing by itself; compare timing, not heights. Page SHA-256 `1ee53893045af3b114fa7a40181bc22b897d13c28d1f8370827f0026b765ffe4`.
+- **Version 3.2 (same day, artifact version 7): search scaling.** Dish asked how the search line fits its axis, to avoid misleading.
+  - **Problem found:** the right axis had 5% padding and was rounded up to a tidy tick, so a city peaking at 194 (Phoenix) got an axis to 300 and used about two-thirds of the height, while Fresno (176) got 200. The 0–300 sum of three indexes is also not a real unit.
+  - **New default, "Above the usual for that month":** each month's total ÷ the median total of the same calendar month in the previous 3 years, minus 1, in %. Shown only above 0, like the heat excess. Blank before Jan 2019, since it needs three earlier years. Axis 0 → the highest value in view, no padding or rounding. **Changed by Dish** (idea and default: Claude's suggestion).
+    - **First version rejected before publishing:** a fixed 2016–2025 median baseline. It mostly showed the growth in interest over the decade: months above usual were Phoenix 2/48 in 2016–19 vs 42/48 in 2022–25, Fresno 1/48 vs 45/48, Detroit 3/48 vs 42/48, and every city's top month fell in Mar–Apr 2026.
+    - The rolling 3-year baseline balances the early and late periods (e.g. Phoenix 29/36 months above usual in 2019–21, 27/36 in 2023–25) and puts known events on top: Eugene Jun 2021 (+119%, heat dome); Brownsville May 2024 and Jun 2023.
+    - **Rolling 3-year baseline: Claude's suggestion, approved by Dish.**
+  - **Toggle, "% of peak month" (the honest fixed scale):** each month's total ÷ the city's highest month 2016-01 → 2026-09 for the selected terms, fixed 0–100%, unchanged by zooming. **Specified by Dish.**
+  - **Checks:** Phoenix Aug 2023 = 95; the median of Aug 2020–2022 is 87, giving +9%, and the tooltip shows +9%. Tooltip shows the raw total, each term, and the % with its baseline (or the peak month).
+  - **Unresolved, for the appendix:** in Mar–Apr 2026 all three terms jump in every city, including cities that were not hot then. For example, "air conditioner" in Boston was 6 in Apr 2025 and 17 in Apr 2026, and Detroit went from 5 to 17. In the West, Mar 2026 matches the Southwest/California heat, which is still not checked against station records. A jump everywhere at once may be national or a change in Google's data. Flagged on the page; not investigated.
+  - Page SHA-256 `1ca7d16f8cbbe96d62a5e16f21e0417c00a6e09ba84c55278a9ce42780a5df72`.
+
+### Viz · Heat City Explorer V4: heat news overlay + Shared heat axis · 2026-09-27 · Claude (approved by Dish)
+- **What:** Added **heat in the news** (the "media" row of the sensor → body → media → action story) to each city's abnormal-heat chart, as a fourth series: the share of local news stories mentioning the city that are about heat. Also switches to hide the search or news line, for all cities and per city, and the heat axis now defaults to **Shared** (artifact version 8). **No repo files created or changed**; the calculation runs in the page.
+- **Why:** Dish asked to add the media counts next to the heat and search measures, mapping heat share by date.
+- **Input:** `data/processed/heat-media/heat_media_<city>.csv` (`stories`, `city_stories`) and `queries.csv`: Gina's Media Cloud Steps 3–4, pulled into Dish's copy with `git pull` (commit `590ed5a`). Read only. The files' 2026-09-25 row is dropped to match D4 (study end 2026-09-24).
+- **Script:** `build_data.py` (session workspace) now also packs daily heat stories and city stories. It asserts that the story total equals `total_stories` in `queries.csv`, and that heat stories ≤ city stories on every day.
+- **Checks:**
+  - 12 files, 3,921 days each (Fairbanks 3,886: its collection published nothing on 35 days).
+  - Busiest days match known heat waves (Gina's log): LA and SF 2022-09-07, Eugene and Phoenix 2021-06-29, Fresno 2020-09-06.
+  - Page vs file: Phoenix Nov 2021 monthly = 2 of 2,829 city stories (0.07%), same in the tooltip.
+- **Calculation (in the page):**
+  - **Daily:** share = heat stories ÷ city stories × 100; blank when city stories = 0.
+  - **7-day / 30-day / Monthly:** the window's heat stories ÷ its city stories (ratio of sums, Gina's rule for the air row). Blank only when the window has no city story. Monthly drawn flat across the month.
+  - **Fairbanks's 35 missing days** count as 0 and 0, as in Gina's air row.
+- **Drawing:**
+  - Blue-violet line on the heat chart, with its own axis on the far right (0 → the highest share in view, no padding), next to the green search axis. The right margin was widened.
+  - Tooltip: "Heat in the news: 1.2% of city stories (110 of 824)", with window sums in smoothed views.
+  - Table gains "Heat news share (stories)" for the selected period.
+  - Footnote covers the query, collection, method, the per-city scale, small-city spikes, Fairbanks's gaps and ambiguous terms.
+- **Judgment calls:**
+  - **Overlay on the heat chart, not a separate row.** **Changed by Dish** (Claude had recommended a separate row, since the chart already holds two heat shapes and the search line).
+  - **Share as the line, counts in the tooltip; ratio of sums; news axis per city.** **Dish's choice, following Claude's recommendation.** Per city, because collections differ in size (California 1,283 sources, Alaska 77) and city names are ambiguous, so shares aren't comparable between cities.
+  - **Heat axis default = Shared.** Dish asked which is least misleading. Claude: Shared, because every city's heat is in the same unit (°F above its own 90th percentile) and side-by-side panels invite comparison. Per city made a +2 °F Boston peak look like a +8 °F Phoenix one. Searches and news keep their own axes whatever the switch. **Dish's choice, following Claude's recommendation.**
+  - **News colour blue-violet**, not Gina's magenta, which is too close to the crimson felt-heat outline. **Claude's choice, approved by Dish.**
+  - **Show switches** (searches line, heat-news line), global and per city; the global switch clears per-city choices. **Claude's choice, approved by Dish.**
+- **Caveats for the appendix:**
+  - Small cities are spiky (Fairbanks has 66 heat stories in the whole period, Ann Arbor 123, Brownsville 130).
+  - "Eugene" and "Phoenix" are also names.
+  - "heat wave" has non-weather uses.
+  - "heat advisory" is an NWS product name, so coverage partly tracks how often advisories are issued.
+  - Four series on one chart with three independent axes: compare timing, not heights or crossings.
+- **Git note:** a `git status` run from Claude's side earlier left an empty `.git/index.lock` that the session couldn't delete, which blocked Dish's first `git pull`. Dish removed it. From now on Claude runs git read-only with `--no-optional-locks`.
+- **SHA-256 (session copies):** page V4 `19bc33cc5ef4996b86c7c0d68d32584e245e6897c6e7cbe966f1a700ff0e2bdc` · `build_data.py` `dc7702ed8bd53fd21e0dc4e7fb2bf98411e7753abaa7b6a1f81575eb4b946f4b`
+
+### Viz · Heat City Explorer, Dots view: plan + mockup (Eugene) · 2026-09-27 · Claude (waiting for Dish's approval)
+- **What:** Following log Rule 1, a plan and a **one-city mockup with real data** of the planned **View: Graphs | Dots** switch, as a separate artifact, "Heat Dots Mockup" (https://claude.ai/artifact/1pAzvQ3GdJLvPL7dYwoMgu). Nothing is added to the explorer yet. **No data changed**; the mockup is a new way to display the same processed files.
+- **Why:** Dish asked for the dot view Gina built in her air-quality explorer (`logs/data-log-gina.md`, Visualization V1 version 10). Dish's copy of the repo ends at Gina's commit `4b73eec` (version 10); versions 11–13 aren't in the log yet, so the mockup follows version 10 plus Dish's spec.
+- **Input:** the same page data as V4 (gridMET/ERA5-Land and UTCI finals, Google Trends heat search, Media Cloud heat media), Eugene only.
+- **Mockup:**
+  - Rows: actual temperature, felt heat, searches for cooling, heat in the news, plus one grey **comparison row** (daily high in °F) so Dish can choose what the heat rows shade.
+  - One dot per day at 4 px per day; one canvas per year; horizontal scroll; labels pinned on the left.
+  - Smoothing switch; the hover shows all rows plus each dot's shade number.
+  - Colour key with outlined swatches, and a collapsible "This city's shade values" table.
+- **Shading (per city, per row, whole period, recomputed for the smoothing):**
+  - Heat rows: excess above the 90th percentile; baseline 0 = lightest.
+  - News: share of city stories; baseline 0% = lightest; no dot when there is no city story.
+  - Searches: "above the usual for that month"; baseline "at or below usual" = lightest; cut points count **months**; no dots before 2019.
+  - For baseline rows, the non-baseline values are split at the 50th/75th/90th/97th percentiles. The comparison row is split at the 50th/75th/90th/97th/99th percentiles.
+  - Six shades. Light mode runs light → dark; dark mode dim → bright.
+- **Check:** hovering 28 Jun 2021 (30-day) shows actual +3.8 °F and felt +3.2 °F above the 90th percentile (shade 6/6 each), searches +119% (Jun 2021, total 243 vs usual 111, 6/6), news 3.9% (16 of 415, 5/6). The daily-high comparison row is only 3/6, because a 30-day mean of the highs is shaded like any summer.
+- **Judgment calls (all waiting for Dish):**
+  - **Heat rows shade the excess (as in the graph), not the daily high.** Claude's recommendation. Dish's answer ("6 intensity shades for the 4 rows") didn't choose between them, so the mockup shows both.
+  - **Search cut points over months.** **Dish's choice (Claude's recommendation).**
+  - **Strong-heat-stress days** as ticks above the felt row when "Strong heat stress days" is on, not a separate row. **Dish's choice (Claude's recommendation).** Not yet drawn in the mockup.
+  - **Mockup city Eugene.** **Dish's choice (Claude's recommendation).**
+  - **Specified by Dish:** 6 shades, the percentile cut points, the baseline rule, 4 px per day, one canvas per year, and a ramp in each row's hue.
+  - **Claude's choices:** dots 3.6 px across, 18 px rows; the ramp mixes the panel background with the row's hue (13–80%), and the darkest step is the hue darkened (light mode) or brightened (dark mode); swatches get a thin outline.
+- **Note for the appendix:** with smoothing, the baseline means "no abnormally hot day in the whole window". Eugene has only 421 such days at 30-day smoothing, so shade 2 spans small excesses (+0.0 to +0.5 °F).
+- **SHA-256 (session copy):** mockup `0b9165d724d9c20384c7ee8f344ed0a3b16ea68976e1e9dfe78b9966f7db16e7`
+- **Mockup version 2 (same day): value ranges in the legend.** **Changed by Dish:** the colour key at the top now lists, next to each of the 6 swatches, the actual value range of that shade for this city and smoothing (e.g. actual temperature at 30-day: 0 °F · above 0 – +0.5 °F · +0.5 – +0.8 · +0.8 – +1.5 · +1.5 – +2.3 · +2.3 – +3.8 °F above the 90th percentile). **Claude's choices:** the baseline shade reads "0 °F" / "0%" / "0% or below"; values above 0 that round to 0.0 read "above 0"; each row names its unit. The collapsible per-city table stays, with day (or month) counts. **Open for the full build:** with several cities selected, the top legend can show only one city's ranges; proposed to show the city under the pointer (or the first selected), with each panel's table showing its own. SHA-256 `82605d9530685ed4439c50c815d0c4642538b5866a5f02e32adad1e21656321f`.
+- **Mockup version 3 (same day): legend position toggle.** **Changed by Dish:** a **Legend: On top | Under each city** switch. "Under each city" moves the colour key, with its value ranges, into the city panel, just below the dot rows; "On top" keeps it above the panels. This settles the open question from version 2 for the full build: with several cities, "Under each city" shows each city's own ranges. **Claude's choices:** default "On top", as in version 2; the choice is remembered in the browser (localStorage, wrapped in try/catch). SHA-256 `15352f332848c45a643ef27d8f5c9f350f6b9c0e260d2fbbfa641a8d3ccde523`.
+
+### Viz · Heat City Explorer V5: Dots view · 2026-09-27 · Claude (approved by Dish)
+- **What:** Built the approved **View: Graphs | Dots** switch into the Heat City Explorer (same link, artifact version 9). Also added a **Legend: On top | Under each city** switch (Dots only) and **Hide controls / Show controls**. Graphs view is unchanged. **No repo files created or changed; no data changed.** The dots are a second way to display the same page data as V4.
+- **Why:** Dish asked for the dot view Gina built for air quality (Gina's log, Visualization V1 version 10), after approving the Eugene mockup (versions 1–3 above; "ok").
+- **Dots view:**
+  - Per city: rows for actual temperature, felt heat (UTCI), searches for cooling and heat in the news; one dot per day.
+  - 4 px per day; one canvas per year; only the selected date range is drawn. The panels scroll sideways and all scroll together; labels are pinned on the left.
+  - Rows follow the Show switches (global and per city), the search terms and search mode, the smoothing and the "only days that also feel hot" filter.
+  - A tick above the felt-heat row marks a strong heat stress day (felt ≥ 89.6 °F) when "Strong heat stress days" is on.
+  - The hover shows the date and every row's value and shade.
+  - Each city has a collapsible "This city's shade values" table with value ranges and day (month) counts.
+  - Colour key: each row's 6 outlined swatches with their actual value ranges and what the ends mean, plus the note (relative to each city, follows the smoothing, no dot = no data). "On top" shows the city under the pointer (the first city by default); "Under each city" puts each city's own key in its panel.
+- **Shading (approved by Dish):**
+  - 6 shades per city and per row over the whole period, recomputed for the smoothing.
+  - Heat rows (excess above the 90th percentile) and news (share): baseline 0 = lightest; the other values split at the 50th/75th/90th/97th percentiles of the non-baseline values.
+  - Searches: in "above the usual" mode the same rule over months; in "% of peak" mode split at the 50th/75th/90th/97th/99th percentiles of months.
+  - Ramp in each row's hue: light → dark, or dim → bright in dark mode (redrawn when the theme changes).
+  - No dot for a missing day.
+- **Hide controls:** collapses the panel to one line, e.g. "6 cities · Dots · 30-day · 1 Jan 2016 – 24 Sep 2026". Uses a class on the panel and `aria-expanded` on the button, and is remembered in localStorage (try/catch).
+- **Checks (session preview):**
+  - No script errors in either view.
+  - Switching smoothing redraws 6 cities in about 0.4 s.
+  - All 6 panels share one scroll position (set 7,500 px on one, read 7,500 on all).
+  - The hover on Phoenix 28 Jun 2021 (7-day) matches Graphs view: news 86 of 1,117 stories (7.7%, shade 6/6), searches +41% vs the usual June (133 vs 94), strong heat stress day.
+  - Light and dark screenshots checked.
+  - Graphs view screenshot unchanged apart from the new View row.
+- **Judgment calls:**
+  - **Heat rows shade the excess above the 90th percentile; the comparison row is dropped; dots 3.6 px across, 18 px rows; ramp as in the mockup; the smoothed-baseline wording.** **Claude's choices, approved by Dish ("ok").**
+  - **Legend switch.** **Changed by Dish** (mockup version 3). Default "On top". **Claude's choice.**
+  - **Dots view opens at the right-hand end of the selected range** (the most recent days), then keeps its scroll position. **Claude's choice.**
+  - **In Dots view the Y-axis switch and the graph legend are hidden** (they don't apply), and the hint line changes. **Claude's choice.**
+  - **The panel day counts ("Abnormally hot: actual … of … days") use the daily values in both views**, so they don't change with smoothing. **Claude's choice.**
+  - **A theme change redraws the dots** so the ramp matches the theme. **Claude's choice.**
+- **SHA-256 (session copies):** page V5 `ffa0a72c810adecba844714568da59d9bc80f2bc743a067f5b5772c7ccd8f59e` · `build_data.py` `dc7702ed8bd53fd21e0dc4e7fb2bf98411e7753abaa7b6a1f81575eb4b946f4b` (unchanged)
+
+### Viz · San Francisco Air Chevron V1 (dots) → V2 (graphs) · 2026-09-28 · Claude (form study for Dish)
+- **What:** A new, separate artifact, **"San Francisco Air Chevron"** (https://claude.ai/artifact/8N1PMiCBCiDpKiyfmDFSbp), a form study for the scroll story. San Francisco's daily air measures, 2016-01-01 → 2026-09-24, laid along one continuous zigzag: each arm is one year, the direction flips at every 1 January, so every chevron point is a year turn. **No repo files created or changed; no data changed.**
+- **Why:** Dish wanted to test a chevron form (from a halftone reference image) with "each peak marking a turn of the year", for San Francisco air quality, before building more. Dish chose, in chat: zigzag ribbon, all four measures, form study only (V1); then graphs instead of dots, outward on one side, excess above usual (V2).
+- **Input (read only):** `data/processed/metar/final/vis_sanfrancisco_daily.csv` · `data/processed/openaq/step05_averages/pm25_sanfrancisco_daily.csv` · `data/processed/mediacloud-attention/mediacloud_attention_sanfrancisco.csv` · `data/processed/google-trends/air-search/San Francisco-Oakland-San Jose CA-ca-air-search.csv`
+- **Script:** `build_sf.py` packs the data into the page (session workspace only, not in the repo).
+- **Measures:** haze = extinction ÷ CLEAR (0.24308, as in Gina's explorer), `valid_day = 1` only · PM2.5 = reference mean, low-cost mean where no reference · news = `air_share` · searches = monthly "air purifier" (same term as Gina's city groups), every day of a month sharing the value.
+- **V1 (dots):** four lanes of one dot per day (news, PM2.5, haze, searches: hear → sensor → body → act). Dot size **and** shade (Dish's choice) follow the Dots-view rule: 6 shades per measure over the whole period; haze and news baseline (≤ 1.005×, 0%) lightest, others at the 50/75/90/97th percentiles of non-baseline days; PM2.5 and searches at the 50/75/90/97/99th (searches over months). Controls: lane toggles, steepness, lane gap. Event labels: North Bay fires 2017-10-09, Camp Fire 2018-11-08, orange sky 2020-09-09.
+- **V2 (graphs):** two stacked graphs per arm, both rising upward: upper = haze (shaded) + PM2.5 (line), lower = news (shaded) + searches (line). Height = % above San Francisco's own 90th percentile over 2016–2026 (haze 1.07×, PM2.5 13.0 µg/m³, news 2.5%; searches over months), 0 otherwise. Height switch: shared scale or each measure to its own peak. Kept: steepness, event labels; added: time slider (two handles), smoothing daily / 7-day (default) / 30-day / monthly (searches never smoothed).
+- **Finding (story note):** on the orange-sky day, 2020-09-09, airport haze was only 1.40× clear and PM2.5 has no reading, while news share was 16%; haze reached 6.8× on the 10th and 10× on the 11th. The smoke was aloft, so the sensor at the ground missed the day people filmed.
+- **Judgment calls (all Claude's choices, flagged to Dish in chat):**
+  - Lane order, hues (haze orange, PM2.5 crimson, news blue, searches teal) and fonts.
+  - "Air purifier" alone for searches; daily values, no smoothing, in V1.
+  - V2: two stacked lanes, so "all four measures, outward on one side" doesn't overlap four shapes on one baseline.
+  - V2: the graph rises vertically rather than perpendicular to each arm, so it stays continuous at the chevron points. Near each point, January's graph can overlap December's on the arm above; the steepness slider separates them.
+  - V2: "usual high" is one 90th percentile for the whole period (no long baseline like 1991–2020 for these datasets); smoothing averages the daily excess, zeros included, and needs half the window.
+  - V2: shared scale as the default; with it, searches look nearly flat (peak about +100% vs news about +1,700%).
+  - The event dates are from general knowledge, not from a repo source; to be cited before use.
+- **Not checked visually by Claude:** the session browser could not open the page; checked for script syntax errors only.
+- **SHA-256 (session copies):** V1 page `30e1ece599b6ab68f818918c5c16695bfc560f6231e681dfce7afe06c36c0c91` · V2 page `35cac5ad2621a2853edbf743531788052bdf59cf8e570c3b5a677624efd5c954` · `build_sf.py` `96797217d808d108ba6535126c29e55bcd56d5249c9a11522d5039b83f94608a`
+
+### Viz · San Francisco Heat Body (mockup) · 2026-09-28 · Claude (mockup for Dish)
+- **What:** A new, separate artifact, **"San Francisco Heat Body"** (https://claude.ai/artifact/2eMzek1r3872assDKN3Rxh). San Francisco's abnormal heat, 2016-01-01 → 2026-09-24, wrapped around a standing human silhouette. Time runs along the outline, up from the left foot, over the head, and down to the right foot. The skin is 0; distance outward = °F above that date's 1991–2020 90th percentile (the Heat City Explorer measure). Felt heat (UTCI) is a soft blurred red-orange glow; actual temperature (gridMET) is a thin line. **No repo files created or changed; no data changed.**
+- **Why:** Dish found the explorer's excess-heat chart legible and sketched it wrapped around a body outline (notebook sketch `IMG_8876.HEIC`, with a 2016–2026 time slider), with references to cloaked silhouettes and airbrushed figures. Dish chose, in chat: full standing figure; solid dark-green body; felt as the glow, actual as the line (the reverse of the explorer's fill/outline); one city first (San Francisco), grid of 12 later; the circle bar is a time-range slider.
+- **Input (read only):** `data/processed/gridmet/final/temp_sanfrancisco_daily.csv` · `data/processed/utci/final/utci_sanfrancisco_daily.csv` (3,920 rows each, dates identical)
+- **Script:** `build_sf_heat.py` (session workspace only). Excess = value − p90 on `abnormally_high = 1` days, 0 otherwise; UTCI blank where `valid = 0` (ends 2026-06-12).
+- **Controls:** two-handle time slider with presets (full period, last 3 years, common window to 2026-06-12, 2022); smoothing daily / 30-day (default) / monthly, with the explorer's rules; glow softness; hover with values, usual hottest and UTCI stress category; day counts (full period: 596 abnormally hot by thermometer, 399 by the body).
+- **Judgment calls (all Claude's choices, flagged to Dish in chat):**
+  - The silhouette shape (hand-placed points, smoothed); outward directions from heavily smoothed tangents so spikes fan out at the neck and armpits.
+  - One scale for glow and line, set by the largest value in the current range and smoothing, with a scale bar.
+  - Year ticks on the skin; month ticks when the range is under about two years.
+  - Single light look (airbrush on pale paper) in both host themes, to match the references.
+- **Not checked visually by Claude:** as above, script syntax only.
+- **SHA-256 (session copies):** page `4257a06882a081a09f69f43ec39c0b71c6f8cccf6dc04906401f19bc92a0c19c` · `build_sf_heat.py` `71a6ca0793f9d40397b036061754e0499f0788bfb3c2874e4e3bf98beacdc995`
+
+### Viz · Search trends page V1 (San Francisco) → V2 (11 cities combined) · 2026-09-28 · Claude (for Dish)
+- **What:** A new, separate artifact (https://claude.ai/artifact/KNpaYouY49yXs86wPKGpb9, tab title "San Francisco Search Trends"): two monthly line charts, "air conditioner" and "air purifier", Jan 2016 → Sep 2026. V1: San Francisco–Oakland–San Jose metro. V2 adds a switch to **all 11 cities combined**. (V3, the US view, is in Google Trends Step 10 below.) **No repo files created or changed; no data changed.**
+- **Why:** Dish asked for quick single-measure graphs over the ten years, then the same for all cities combined.
+- **Input (read only):** the 11 city files in `data/processed/google-trends/heat-search/` ("air conditioner" column) and `.../air-search/` ("air purifier" column): Bakersfield, Boston, Brownsville (Harlingen metro), Detroit, Eugene, Fairbanks, Fresno (Fresno–Visalia metro), Los Angeles, Phoenix, San Diego, San Francisco (metro). Ann Arbor has no Trends file of its own and is left out.
+- **Combining (V2):** each city's series rescaled to its own highest month = 100, then the plain mean of the 11, every city weighted equally; each city also drawn as a faint line. Hover lists the three highest cities that month.
+- **Result:**
+  - Air conditioner: summer peaks everywhere; highest average months Jun 2026 (80), Jun 2021 (77; Boston, Eugene and Fresno all at their own peak) and Jul 2018 (69).
+  - Air purifier: Apr 2026 (91; 9 of 11 cities at their own peak, a nationwide spike); before that Sep 2020 (44; San Francisco and Eugene at their peak, Fresno 71%).
+- **Trend check (in chat, not saved):** yearly means 2016–2025 per city, Kendall's tau with permutation p and Theil-Sen slope. Air purifier rising (p < 0.05) in 7 of 11 cities (Bakersfield, Boston, Brownsville, Detroit, Los Angeles, Phoenix, San Diego), 11-city average 4 (2016) → 19 (2020) → 19 (2025), mostly a step in 2020. Air conditioner flat in 10 of 11; only Fairbanks rising (mostly zero months). This led to the national check (Google Trends Step 10).
+- **Judgment calls (all Claude's choices, flagged to Dish in chat):**
+  - "Air conditioner" for "air conditioning"; "AC" left out as ambiguous.
+  - Rescale-then-average (a raw sum across downloads isn't meaningful); Fairbanks kept although its mostly-zero series adds noise (offered to drop it).
+  - Each chart on its own axis; the two terms come from different downloads, so heights can't be compared.
+  - Annotation dates and labels (Camp Fire smoke, orange sky, nationwide spike); the Jun 2021 label was first "heat dome" and corrected after checking that Boston also peaked then.
+- **Not checked visually by Claude:** as above, script syntax only.
+- **SHA-256:** see Google Trends Step 10 for the current page (V3).
+
+### Step 10 · Google Trends (US national) · 2026-09-28 · Dish (download) + Claude
+- **What:** Added Dish's national Google Trends download for "air conditioner" (United States, monthly, Jan 2004 → Sep 2026, 273 months), and checked whether it and "air purifier" have risen over time. The file is copied unchanged into `data/raw/google-trends/us-national/`, with a row added to `trends_sources.csv`. For "air purifier" the script uses **Gina's download** (`time_series_US_20031231-1900_20260928-1117.csv`, her Google Trends Step 6), which has the same 273 values as Dish's own air-purifier download. The script writes a monthly copy and yearly means, and prints the trend check.
+- **Why:** Dish asked whether the data supports that air-conditioner and air-purifier searches have increased over time. The city files only cover 2016–2026, which is too short to see a longer trend.
+- **Input:** `data/raw/google-trends/us-national/airconditionersearch2004-2026.csv` (Dish; SHA-256 identical to the copy in Dish's Downloads) · `time_series_US_20031231-1900_20260928-1117.csv` (Gina). Read only.
+- **Duplicate dropped:** Dish's `airpurifersearch2004-2026.csv` was first committed alongside, then found identical in values to Gina's file when pulling; it was removed before pushing so the repo has one raw copy. Step and script renumbered (Google Trends Step 10, script 06) because Gina's log already uses Steps 6–9 and script 05.
+- **Script:** `scripts/google-trends/06_us_national.py` (Google Trends Step 10, after Gina's Steps 6–9).
+- **Rows:** 273 months in → 273 monthly rows + 23 yearly rows (2026 flagged partial, 9 months). Nothing removed.
+- **Output:** `data/processed/google-trends/us-national/us_national_monthly.csv` · `us_national_yearly.csv`
+- **Result (yearly means of full years, 2004–2025):**
+
+  | Term | 2004–2025 | 2004–2015 | 2016–2025 |
+  |---|---|---|---|
+  | air conditioner | rising: tau +0.70, p < 0.001, +0.82/yr | rising: tau +0.48, p 0.03, +0.47/yr | no clear trend: tau +0.20, p 0.49 |
+  | air purifier | rising: tau +0.40, p 0.009, +0.53/yr | falling: tau −0.85, p < 0.001, −0.17/yr | rising: tau +0.82, p < 0.001, +1.67/yr |
+
+  - Air conditioner: yearly mean 14–21 in 2004–2015, 25–32 in 2016–2025; highest in 2020–21, then back to about 27–28.
+  - Air purifier: about 5 in 2008–2015, rising to 9.6 in 2019, a step to about 18 in 2020 that stayed; 2025 (20.7) is the highest full year.
+  - 2026 is a record for both (Jan–Sep mean 52 and 42; Jun 2026 = 100 for air conditioner, Apr 2026 = 100 for air purifier, about five times a normal month). Cause not known; one partial year is not used as trend evidence.
+  - This matches the 11-city check run in chat on 2026-09-28 (not saved): air purifier rising in 7 of 11 cities over 2016–2025, air conditioner flat in 10 of 11.
+- **Judgment calls:**
+  - Kendall's tau with a permutation p-value (10,000 shuffles, seed 1) and the Theil-Sen slope, on yearly means, with 2026 left out as partial. **Claude's choice, flagged to Dish in chat.**
+  - The three windows (full, 2004–2015, 2016–2025). **Claude's choice;** 2016 is the start of the study period.
+  - Search-term vs topic, category and search type are not recorded in the file; `trends_sources.csv` marks them "Dish to confirm" (Gina's row has her own "to confirm" notes).
+  - Each term is its own download, so each file is scaled to its own peak and the two heights can't be compared.
+  - **Caveats (appendix):** the index is a share of all Google searches, not a count; over 22 years changes in how people use Google can move it; Google marks data-collection changes on the Trends chart (dates to be checked on the download page; the 2015 → 2016 air-conditioner jump may partly reflect one).
+- **Viz:** added a "United States, 2004–2026" view to the search trends page (https://claude.ai/artifact/KNpaYouY49yXs86wPKGpb9, version 3), next to the San Francisco and 11-city views. Page source is in the session workspace only.
+- **SHA-256:** page V3 (session copy) `c283796ff99caa235da363068569d16f394e765f5cc995a7773d30c659885edc` · script `96066fedf750c3c07d32bc257a11a192e248e807fa21a40ca67a1f72acf0a83a` · monthly `c380c0c2b2937d5ab314020f92fd064e772ee85a26a06518bee0a011cf08dd04` · yearly `db4b215cc6f422277d9b26bedce0e59c7ee8ce6252eab510c110ec72c3a7a748`
+
+
 ---
 **Actual-temperature status (2026-09-27): done for all 12 cities.** gridMET Steps 1–5b for the 11 continental viz cities (D10; 16 pulled); **Fairbanks from ERA5-Land** (D15, ERA5-Land Steps 1–3). Final files for all 12 in `data/processed/gridmet/final/` (`temp_<city>_daily.csv`, 3,920 rows 2016-01-01 → 2026-09-24, join row for row with UTCI; `_normals.csv`; `_monthly.csv`); the folder name is gridMET but Fairbanks' source is ERA5-Land (blank 2026-09-22 → 09-24). End date settled (D9). Open: N1 (boundary file vs OpenAQ, appendix note); optional PAFA station cross-check for Fairbanks; March 2026 station check.
 
