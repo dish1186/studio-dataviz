@@ -32,6 +32,39 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Analysis A12 · correction to A10: unhealthy-day counts recomputed · 2026-09-28 14:04 EDT · Gina + Claude
+- **What:** Recomputed days > 35.4 µg/m³ per city and year (reference monitors only) under the V3 rules, and compared them with A10's counts. Read from `data/processed/openaq/step05_averages/audit/sensor_day_audit_<city>.csv`. **No files written.**
+  - **Site-day:** mean of the site's sensor-days, using Step 5's pm25_used (negatives set to 0).
+  - **Day:** counted when **any reference site's** site-day is > 35.4.
+  - **Strict:** Step 5 included sensor-days only (≥ 18 of 24 hours).
+  - **Partial:** also sensor-days excluded only for missing hours that have **≥ 12 hours**.
+- **Why:** Gina asked how unhealthy days are defined for Bakersfield. Checking showed that **A10 was looser than stated**:
+  - It used every sensor-day with a value, **whatever its number of hours** (even 1–2 hours).
+  - It took the maximum across sensors rather than site means.
+  - It used raw values.
+- **Bakersfield** (reference sites: S887 "Bakersfield - California Ave" 2016-03 to 2017-05; S6883 same area, from 2017-05; S230814 "Bakersfield - Golden State Hwy", from 2021-08; all in city limits). Days per year 2016–2026 (total):
+  - Strict: 17 3 14 6 28 30 31 9 16 7 13 (**174**)
+  - Partial ≥ 12 h: 18 4 18 7 36 33 33 9 16 8 13 (**195**)
+  - A10 (any hours): 19 30 30 8 40 42 39 10 16 9 13 (256)
+  - The largest A10 overcount was in 2017 (30 vs 4), from short-hour days around the site change in May 2017.
+- **All cities, partial ≥ 12 h (strict):**
+  - Bakersfield 195 (174)
+  - Fresno 164 (145)
+  - Fairbanks 105 (96)
+  - Eugene 53 (47)
+  - Phoenix 53 (50)
+  - Los Angeles 50 (46)
+  - Detroit 48 (43); by year 3 1 1 2 3 0 7 15 2 8 6
+  - San Francisco 27 (14)
+  - Springfield 27 (21)
+  - San Diego 18 (17)
+  - Ann Arbor 17 (15)
+  - Brownsville 12 (12)
+  - Boston 3 (3)
+- **Effect on recommendations:** none. The ranking and Detroit's post-2022 rise hold. **A10's totals should not be used**; use these.
+
+---
+
 ### Analysis A11 · combined correlation table (Pearson r, Spearman ρ, adjusted ρ) · 2026-09-28 14:01 EDT · Gina + Claude
 - **What:** One table per city of monthly "air purifier" searches vs PM2.5, haze and news, with three columns for each pair:
   - **Pearson r** (raw)
