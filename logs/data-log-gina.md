@@ -32,6 +32,17 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Visualization V1 · versions 11–12: dot color key · 2026-09-27 22:32 EDT · Gina + Claude
+- **What:** Added a color key to the dot view.
+  - **Overall key (in the controls, shown in dot view):** one row per measure with its 6 shades and what the ends mean. For example, PM2.5: "below this city's median day → its top 1%"; haze: "clear (1×) → its haziest 3% of hazy days"; news: "no air-quality stories → its top 3% of days with any". It also explains the middle shades, that shades are relative to each city and follow the smoothing, and that no dot = no data.
+  - **Per-city key:** a collapsible "This city's shade values" under each city's dots, giving the actual value range of every shade for that city and smoothing (e.g. Eugene, 7-day: PM2.5 reference "under 5.2 … over 32.1 µg/m³"; news "0% … over 10%").
+  - Version 12 added a thin outline to the key swatches, so the lightest (baseline) shade stays visible in dark mode.
+- **Why:** Gina: "can you add the color key for the dots to the graph".
+- **No data changed.**
+- **Note:** a first attempt at the outline stopped at a text check before saving, so version 11 went out without it; version 12 includes it.
+
+---
+
 ### Visualization V1 · version 10: dot view · 2026-09-27 22:26 EDT · Gina + Claude
 - **What:** Added a **View: Graphs | Dots** switch to the explorer. In **Dots** view, each city panel shows one row per measure with **one dot per day**, darker for higher values. The rows are PM2.5 (two rows, reference and low-cost, in "Reference vs low-cost" mode; one row otherwise), haze, news share and searches. The full period is laid out at 4 px per day (~15,700 px), and the panel **scrolls sideways**. **All panels scroll together**, so dates stay aligned across cities. Row labels stay fixed on the left. Hovering shows the day's values. Graphs view is unchanged. **No data changed.**
 - **Why:** Gina wanted the dot "intensity" format (from Dish's heat chart) to compare measures as horizontal lines, and asked for it as a toggle view. She approved a mockup (Eugene, real data) first, then asked for the full period with horizontal scrolling instead of compressed stripes.
