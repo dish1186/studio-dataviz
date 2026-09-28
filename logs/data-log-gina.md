@@ -32,6 +32,25 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Visualization V1 · version 10: dot view · 2026-09-27 22:26 EDT · Gina + Claude
+- **What:** Added a **View: Graphs | Dots** switch to the explorer. In **Dots** view, each city panel shows one row per measure with **one dot per day**, darker for higher values. The rows are PM2.5 (two rows, reference and low-cost, in "Reference vs low-cost" mode; one row otherwise), haze, news share and searches. The full period is laid out at 4 px per day (~15,700 px), and the panel **scrolls sideways**. **All panels scroll together**, so dates stay aligned across cities. Row labels stay fixed on the left. Hovering shows the day's values. Graphs view is unchanged. **No data changed.**
+- **Why:** Gina wanted the dot "intensity" format (from Dish's heat chart) to compare measures as horizontal lines, and asked for it as a toggle view. She approved a mockup (Eugene, real data) first, then asked for the full period with horizontal scrolling instead of compressed stripes.
+- **Shading rule (per city, per measure, over the whole 2016–2026 period, using the current smoothing):**
+  - **PM2.5 and searches:** 6 shades split at the city's 50th, 75th, 90th, 97th and 99th percentiles.
+  - **Haze and news:** the baseline (haze ≤ 1.005×, clear; news share 0%) is the lightest shade. The other days are split at the 50th, 75th, 90th and 97th percentiles of the non-baseline days.
+  - The darkest dots therefore mean "exceptional for this city"; darkness is **not comparable across cities** in absolute terms.
+  - No dot = no data.
+  - In dark mode the ramps run from dim to bright.
+- **Follows the existing controls:** city selection, groups, date slider (only the selected range is drawn), smoothing (shades the smoothed value), sensor mode and the search-term switches (the search row is the total of the terms switched on; the mockup used "air purifier" alone).
+- **Judgment calls:**
+  - The percentile cut points and 6 shades. **Claude's choice, approved by Gina (mockup).**
+  - Per-city relative shading rather than EPA categories. **Claude's recommendation, approved by Gina.**
+  - Hues matching the graph rows. **Approved by Gina.**
+  - 4 px per day; one canvas per year. **Claude's choice.**
+  - The search row follows the term switches. **Claude's choice, flagged to Gina in chat.**
+
+---
+
 ### Visualization V1 · version 9: zoom undone · 2026-09-27 22:13 EDT · Gina
 - **What:** Reverted version 8. The page is back to version 7: the haze row again uses **one scale across all selected cities**, starting at 1×, as in Dish's handoff rule 3. No ▲ markers or clipping. Everything else from version 7 is unchanged (city groups, news row, search row, monthly option).
 - **Why:** Gina: "ok jk undo that please".
