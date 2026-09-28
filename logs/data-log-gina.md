@@ -32,6 +32,20 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Visualization V1 · version 8: zoomed haze · 2026-09-27 22:12 EDT · Gina + Claude
+- **What:** Each city's haze chart is now **zoomed to its own range**, and single extreme days no longer flatten the rest.
+  - **Top of the y-axis:** the 99th percentile of the haze values in view × 1.15 (at least 1.5×, never above the real maximum). It updates with the date range and smoothing.
+  - **Days above the top** run off the chart (the line is clipped). Each run of such days gets a **▲** marker at the top edge; up to 4 are labelled with their highest value (e.g. "▲ 40×"), skipping any label within 40 px of one already placed.
+  - **Finer ticks:** from 1×, 1.1×, 1.2×, 1.5×, 2×, 3×, 5×, 10×, … with the same 16 px spacing rule.
+  - Unreviewed-day circles and the hover dot stay at the top edge when their value is above it. The tooltip still shows the true value.
+- **Why:** Gina: "zoom in the haze graph a bit for each of the cities… if there's only one that's 40X… it can just go off the graph", so that movements in haze are visible.
+- **Changes Dish's handoff rule 3** (one haze scale across cities). Heights are no longer comparable between cities; the chart label and footnote say so. **Changed by Gina.** (This also covers her earlier, interrupted request for a per-city haze axis.)
+- **Check:** Eugene's haze axis now runs 1× to about 2× (it ran to 40×); San Francisco shows ▲ markers for its smoke days (e.g. 6.8×, 4.3×).
+- **Judgment calls:** the 99th percentile, the × 1.15 headroom, the 1.5× minimum, the 4-label limit and 40 px spacing. **Claude's choice, flagged to Gina in chat.**
+- **No data changed.**
+
+---
+
 ### Visualization V1 · version 7: city groups · 2026-09-27 22:05 EDT · Gina + Claude
 - **What:** The explorer now groups the city panels by **what each city's air-purifier searches follow most closely**, with a switch to turn grouping off. Each panel shows its three correlations, with the strongest highlighted. The page now opens with all 16 cities selected, so every group shows. **No repo files changed**; the correlations were computed in a one-off script in chat (not saved) and built into the page.
 - **Why:** Gina asked for four groups:
