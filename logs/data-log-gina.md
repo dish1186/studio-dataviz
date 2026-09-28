@@ -32,6 +32,23 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Visualization V1 · version 14: search shading toggle (dot view) · 2026-09-27 22:55 EDT · Gina + Claude
+- **What:** Added a **Search shading: vs. whole period | vs. surrounding year** switch. It appears only in Dots view and affects only the search row's shades. "vs. whole period" (the default) is the existing rule. Graphs view, tooltips and all files are unchanged.
+- **"vs. surrounding year" formula:**
+  - For each month: ratio = the month's search total (the terms switched on) ÷ the **median of the 6 months before and 6 months after it** (the month itself is excluded).
+  - A ratio is computed only when at least 6 of those 12 neighbouring months have data, so the first and last months have no dot.
+  - If the median is 0: a 0 month counts as 1× (usual), and a non-zero month gets no dot.
+  - Shades: ratio ≤ 1 (at or below usual) is the lightest. The months above 1 are split at their 50th/75th/90th/97th percentiles, the same rule as haze and news.
+  - The tooltip shows the ratio, the raw index and the median it was compared with.
+- **Why:** Gina: "so the green searching bar is just... dark? what can we do to make this more dynamic".
+  - **Cause:** searches stepped up in 2020 and stayed higher. Under whole-period shading, every month from 2016–2019 was in the lowest shade in all 16 cities, and that shade is the darkest in dark mode. The monthly Trends resolution also makes blocks of about 30 identical dots.
+  - Gina asked how this keeps the data's integrity. The answer given: it is a display-only derived measure; raw values are unchanged and still shown. It answers "unusual for its time?" instead of "how high overall?", and it **hides the post-2020 level shift**, so it is kept as a toggle and labelled on the page. Gina chose "a as a toggle".
+- **Check (all 3 terms):** the darkest months now line up with known events. Eugene 2017-09 and 2020-09, and Springfield 2020-09 (wildfire smoke). San Francisco 2017-10 and 2018-11 (North Bay and Camp fires). Mar–Apr 2020 in 7 cities. Jan 2022 in 7 cities. Apr 2026 in Boston, Los Angeles, Phoenix and San Diego. Fairbanks 2016–2018 stays at the lowest shade, because its Trends months are mostly 0 (low search volume).
+- **Judgment calls:** 6 + 6 month window excluding the month itself; median rather than mean; the 6-neighbour minimum; the zero-median rule. **Claude's choice, flagged to Gina in chat; not yet approved.**
+- **No data changed.**
+
+---
+
 ### Visualization V1 · version 13: hideable controls · 2026-09-27 22:36 EDT · Gina + Claude
 - **What:** Added a "Hide controls / Show controls" button to the top of the sticky control panel. When the panel is hidden it becomes a single line summarizing the current settings: number of cities · view · smoothing · date range (for example, "16 cities · Dots · 7-day · 1 Jan 2016 – 25 Sep 2026"). The page remembers the choice in the browser along with the other settings.
 - **Why:** Gina: "can i make the top part of cities etc hideable".
