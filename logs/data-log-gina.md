@@ -32,6 +32,13 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Visualization V1 · version 13: hideable controls · 2026-09-27 22:36 EDT · Gina + Claude
+- **What:** Added a "Hide controls / Show controls" button to the top of the sticky control panel. When the panel is hidden it becomes a single line summarizing the current settings: number of cities · view · smoothing · date range (for example, "16 cities · Dots · 7-day · 1 Jan 2016 – 25 Sep 2026"). The page remembers the choice in the browser along with the other settings.
+- **Why:** Gina: "can i make the top part of cities etc hideable".
+- **No data changed.**
+
+---
+
 ### Visualization V1 · versions 11–12: dot color key · 2026-09-27 22:32 EDT · Gina + Claude
 - **What:** Added a color key to the dot view.
   - **Overall key (in the controls, shown in dot view):** one row per measure with its 6 shades and what the ends mean. For example, PM2.5: "below this city's median day → its top 1%"; haze: "clear (1×) → its haziest 3% of hazy days"; news: "no air-quality stories → its top 3% of days with any". It also explains the middle shades, that shades are relative to each city and follow the smoothing, and that no dot = no data.
