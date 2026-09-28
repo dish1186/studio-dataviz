@@ -32,6 +32,37 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Visualization V2 · mockups: correlation threads (Eugene) · 2026-09-28 11:47 EDT · Gina + Claude
+- **What:** Two inline chat mockups (not saved as repo files or published) for a planned vertical "threads" visual.
+  1. **Spearman ρ vs Pearson r**, side by side.
+  2. **Thickness vs colour intensity** to show how unusual each variable is.
+- **Why:** Gina asked to see how ρ and r look different, and to compare thickness with colour intensity, before writing the spec prompt.
+- **Gina's decisions so far:**
+  - Both layouts (anchor and best-fit).
+  - Default anchor = searches.
+  - She will download weekly Trends for the featured cities.
+  - Unusualness = colour intensity (comparing with thickness first).
+  - Lead/lag arrows: later (**noted for V2 v2**).
+  - A city dropdown is required.
+- **Mockup method (Eugene; monthly):**
+  - **Series:** "air purifier" searches; haze (≥ 15 valid days per month); news share (sum ÷ sum); PM2.5 (reference; ≥ 15 days).
+  - **Correlation:** each series has its calendar-month mean removed. Rolling **24-month** window of months m−12 … m+11, needing ≥ 18 months.
+  - **Layout:** Spearman ρ and Pearson r of searches vs each variable. Position = correlation distance **d = √(2(1 − r))** from the central search thread, at 62 px per unit. Fixed sides: haze right, news left, PM2.5 right with a 3 px offset.
+  - **Unusualness:** (value − that calendar month's median) ÷ (1.4826 × MAD), clipped to 0–4.
+- **What it showed:**
+  - Pearson r jumps to about 0.98 for every thread in any window containing Sept 2020, so all threads collapse onto searches for 2 years.
+  - Spearman stays moderate (haze 0.1–0.3 around 2020; news about 0.5), and rises in 2021–2026 (0.4–0.57).
+  - Pearson reflects one event; Spearman reflects ordinary months.
+- **Issue found:** haze unusualness saturates (many months at 4+), because most haze months are exactly 1×, so the MAD is tiny. The final version needs a different scale for haze, e.g. a percentile rank within the calendar month. **Not yet decided.**
+- **Judgment calls (Claude's choices, flagged; not yet approved):**
+  - The 24-month window.
+  - Season removal by calendar-month mean.
+  - The MAD-based unusualness score.
+  - Fixed sides for the threads.
+- **No data changed.**
+
+---
+
 ### Analysis A8 · Fairbanks annual and seasonal PM2.5 · 2026-09-28 11:25 EDT · Gina + Claude
 - **What:** Computed Fairbanks' reference PM2.5 averages by year and season, and clarified the day counts in A7. **No files written**; this was a one-off script in chat, reading the explorer bundle (from `data/processed/openaq/step05_averages/pm25_fairbanks_daily.csv`).
 - **Why:** Gina asked for Fairbanks' annual and seasonal average PM2.5, what period the "days above 35" covered, and what drives the winter pollution.
