@@ -32,6 +32,34 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Visualization V1 · version 18: US national line in the trend chart · 2026-09-28 11:21 EDT · Gina + Claude
+- **What:** Added the whole-US "air purifier" series to the national-trend chart as a bold line labelled "US", divided by its own 2016–2019 average (7.69) like the search areas.
+  - The summary line now adds: "Nationally the figure is 2.4×, after 12 flat years: from 2004 to 2015 the US index stayed between 4 and 10."
+  - The tooltip shows the US ratio and raw index.
+  - The note cites the new raw file.
+  - Built with `pm25_bundle_v10.json` (v9 plus `us`, 273 monthly values from 2004-01). **No data changed.**
+- **Why:** Gina: "add to the most recent graph we create".
+- **Check:** the US 2021–2025 average is **2.41×** its 2016–2019 level, close to the 13-area median (**2.5×**). So the median of our areas is a fair stand-in for the national trend.
+- **Readings:**
+  - Top US months: 2026-04 (100), 2026-05 (68), 2026-06 (43), 2026-03 (42), 2020-09 (33), 2023-06 (27).
+  - The spring 2026 spike is the largest in the national series since 2004.
+- **Judgment call:** the line uses the page's ink colour (black in light mode, white in dark), with the median staying green. **Claude's choice, flagged.**
+
+---
+
+### Google Trends · Step 6: US national "air purifier" raw file · 2026-09-28 11:21 EDT · Gina + Claude
+- **What:** Added Gina's download to `data/raw/google-trends/us-national/`, **copied unchanged** under its Google Trends export name: `time_series_US_20031231-1900_20260928-1117.csv`.
+  - Source: ~/Downloads.
+  - `cmp` identical; SHA-256 `0001966d031d789bafc1074c36ef1f0b07ca99c47fdd8a9e4258d921563516eb`.
+  - 273 monthly rows, 2004-01 to 2026-09, one term ("air purifier"), index 0–100 with 100 = 2026-04.
+- Also wrote `data/raw/google-trends/us-national/trends_sources.csv`: one row, same columns as the air-search table. It was written from the file name and contents, not by a script, since it's a single row.
+- Added 4 rows to `data/descriptions/data_descriptions.csv` (the file, its 2 columns, and the sources table).
+- **Why:** Gina: "here's the air purifier search data for the US national - can you push to github as raw data and then also add to the most recent graph we create".
+- **To confirm (Gina):** category and search type were not recorded at download. They are marked "assumed All categories / Web Search" in the sources table.
+- **Note:** this file's 0–100 scale is separate from the state, metro and city files; it is compared only as a ratio to its own 2016–2019 average.
+
+---
+
 ### Analysis A7 · Fairbanks case study · 2026-09-28 11:17 EDT · Gina + Claude
 - **What:** Profiled Fairbanks' PM2.5 (reference only), haze, news share and Trends by calendar month, by season (winter Nov–Feb vs summer Jun–Aug) and by year. Also listed its top PM2.5, winter-PM2.5 and news days. **No files written**; this was a one-off script in chat, reading the explorer bundle.
 - **Why:** Gina: "do a mini case study on fairbanks, alaska. what's happening with its data? what's the story there?"
