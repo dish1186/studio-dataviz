@@ -32,6 +32,22 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Visualization V2 · version 5: zoom · 2026-09-28 12:27 EDT · Gina + Claude
+- **What:** Added zoom to the threads page:
+  - **Drag down the chart** to zoom to a period; the selected weeks fill most of the screen (up to 40×).
+  - **+ / −** zoom by 1.6× around the middle of the screen.
+  - **Show all**, or double-click, returns to the full view.
+  - Presets: **Sept 2020 fires** (2020-08-02 to 10-25), **Summer 2021** (2021-07-04 to 10-03), **Spring 2026** (2026-02-15 to 06-28).
+  - A status line shows the dates in view and the zoom level.
+  - Month labels appear when there is room; week start dates (day of month) appear at high zoom.
+  - The PM2.5 background, threads, markers and hover all follow the zoomed range.
+- **Why:** Gina: "i want to be able to zoom in".
+- **Note:** zooming only stretches time. Correlations, percentiles and PM2.5 colours are computed once for the whole record and don't change.
+- **Judgment calls (Claude's choices):** preset periods; zoom limits (1–40×); zoom step 1.6×.
+- **No data changed.**
+
+---
+
 ### Analysis A9 · San Francisco PM2.5 during the Sept 2020 wildfires · 2026-09-28 12:23 EDT · Gina + Claude
 - **What:** Read San Francisco's daily PM2.5 for 2020-08-16 to 2020-09-25 at the sensor level, including days dropped by the 18-hour rule, alongside the haze index and news counts. **No files written.**
   - PM2.5 from `data/processed/openaq/step04_daily/openaq_pm25_sanfrancisco_daily_sensors.csv`.
