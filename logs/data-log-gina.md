@@ -32,6 +32,21 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Visualization V1 · version 15: groups renamed and reordered · 2026-09-28 10:49 EDT · Gina + Claude
+- **What:** Renamed and reordered the city groups (the method from V1 v7 is unchanged):
+  1. **Search follows haze most strongly:** Ann Arbor, Brownsville
+  2. **Search follows measurement (PM2.5) most strongly:** Fairbanks, Phoenix, Springfield
+  3. **Search follows media most strongly:** Boston, Detroit, Eugene, San Diego, San Francisco
+  4. **Other:** Bakersfield, Delano, Fresno, Los Angeles, Raymondville, Warren
+- **Why:** Gina asked for these four groups.
+- **Membership:** unchanged; each city is still in the group of its strongest measure.
+  - The old groups 1 and 2 were already "strongest measure" groups; their titles ("haze more than the news", "news more than haze") undersold that.
+  - **Delano stays in Other.** It has only haze data (no PM2.5 or news), so there is nothing to compare "most strongly" against. Its reason text was updated, and the footnote now says a city needs at least two of the three measures. **Claude's choice, flagged to Gina in chat; not yet approved.**
+- **Built with:** `pm25_bundle_v8.json`, which is v7 with Delano's reason text changed. **No data changed.**
+- **Note:** the groups still use the V1 v7 correlations (air purifier only, Spearman, 2020-03/04 and 2026-03 to 06 left out), not the A1–A4 numbers.
+
+---
+
 ### Analysis A4 · A1–A3 redone with "air purifier" searches only · 2026-09-28 10:46 EDT · Gina + Claude
 - **What:** Reran the three correlation pairs and the drop-the-top-months check using only the **"air purifier"** Trends series, instead of the total of 3 terms. **No files written**; this was a one-off script in chat. The news ↔ haze numbers don't involve searches and are unchanged from A2.
 - **Why:** Gina: "can you regenerate these results based just on searches for air purifiers?"
