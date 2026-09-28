@@ -32,6 +32,55 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Visualization V3 · version 1: "Unhealthy Air Days" calendar, San Francisco · 2026-09-28 14:11 EDT · Gina + Claude
+- **What:** A new, separate page: https://claude.ai/artifact/ (see chat for the link).
+  - A Jaźwiński-style colour grid: 11 year squares (2016 from 6 Mar; 2026 to 25 Sept) plus a title cartouche.
+  - Each square is 20 × 20 cells with a bold cross = quarters; one cell per day, filled in reading order within each quarter.
+  - **Colour by:** share of reporting sites above 35 µg/m³ (vermilion, 4 steps: 1–25 / 26–50 / 51–75 / 76–100%), or the worst site's EPA AQI category (ochre USG, vermilion Unhealthy, crimson-purple Very Unhealthy, brown Hazardous; Good/Moderate stay paper).
+  - **Toggles:** sensors (all / reference / low-cost); include partial days (**on by default**); calendar / table view.
+  - **Marks:** hatched cells = no site reporting; a corner tick = the cell's colour depends on partial data; a ring = only one low-cost sensor above 35.
+  - Hover shows the date, sites reporting (reference / low-cost), number and share above 35, the highest site and its category, partial and single-sensor notes (with the sensor's site name).
+  - A per-year summary under each square, and notes for the two events confirmed in the data: "Camp Fire smoke · 9–20 Nov" (2018) and "Wildfire smoke · 10–14 Sept" (2020).
+  - The table view gives, per year: days with data, days above 35 (strict / incl. partial), days per AQI category, and no-data days.
+  - Built from `unhealthy_days_sanfrancisco.csv` (Step 6). The city dropdown lists the other featured cities (disabled).
+- **Why:** Gina: "ok - create the whole calendar block for san francisco pls" (the V3 prompt, with the mockup accepted).
+- **Colours checked** (OKLab ΔE ×100, Machado 2009 colour-blindness simulation, adjacent pairs from paper → Hazardous): normal 17.6–21.2, deuteranopia 14.4–20.6, protanopia 12.7–23.6. All above the ΔE 8 target.
+- **Judgment calls (Claude's choices, flagged; not yet approved):**
+  - Colours, fonts (IM Fell English, IM Fell English SC, IBM Plex Sans) and the cartouche wording.
+  - Share steps.
+  - Showing the partial tick only where it changes a cell's colour.
+  - Event notes.
+  - The paper look in both light and dark mode.
+- **No data changed.**
+
+---
+
+### OpenAQ · Step 6: unhealthy days per city and day · 2026-09-28 14:11 EDT · Gina + Claude
+- **What:** New script `scripts/openaq/06_unhealthy_days.py`, which writes `data/processed/openaq/unhealthy_days/unhealthy_days_<city>.csv` (16 files, one row per day from 2016-03-06 to 2026-09-25) and `unhealthy_days_summary.csv`. Added 10 rows to `data/descriptions/data_descriptions.csv`.
+- **Why:** needed for the V3 calendar. Gina approved running it ("create the whole calendar block").
+- **Method:**
+  - Starts from the Step 5 sensor-day audit, so Step 5's cleaning carries over.
+  - **Strict** = Step 5 included sensor-days.
+  - **Partial** = strict plus sensor-days excluded only for missing hours with ≥ 12 hours (low-cost ones unflagged and ≤ 1,000 µg/m³).
+  - Site-day = mean of the site's sensor-days; a site uses strict sensor-days when it has any.
+  - "Above 35" = truncated to 1 decimal, ≥ 35.5.
+  - Category breakpoints and the truncation rule were **verified against the text of 40 CFR Part 58 App. G, Table 2** (Cornell LII): Good 0.0–9.0, Moderate 9.1–35.4, USG 35.5–55.4, Unhealthy 55.5–125.4, Very Unhealthy 125.5–225.4, Hazardous 225.5+; "PM2.5 — truncate to 1 decimal place".
+  - The 24-hour standard of 35 µg/m³, met on the 98th percentile over 3 years, was verified in 40 CFR 50.13.
+  - single_lowcost_flag = exactly one site above 35, it is low-cost, and ≥ 2 sites reported.
+- **Result (whole period; days above 35):**
+  - Reference only, strict / partial: Bakersfield 174/195 · Fresno 145/164 · Fairbanks 96/105 · Eugene 47/53 · Phoenix 50/53 · Los Angeles 46/50 · Detroit 43/48 · Springfield 21/27 · San Diego 17/18 · Ann Arbor 15/17 · **San Francisco 14/27** · Brownsville 12/12 · Boston 3/3 · Delano, Warren, Raymondville 0 (no reference monitor).
+  - All sensors, partial: Fresno 271, Los Angeles 235, Bakersfield 204, **San Francisco 104**, Fairbanks 105.
+  - Single-low-cost-sensor days: Los Angeles 119, Fresno 60, **San Francisco 57**, Ann Arbor 18, Delano 14.
+- **San Francisco by year** (all sensors, partial; single-sensor days in brackets): 2016 0 · 2017 4 · 2018 13 · 2019 0 · 2020 8 · 2021 2 · 2022 27 (24) · 2023 7 (4) · 2024 5 · 2025 29 (26) · 2026 9 (3).
+  - Confirmed events: Camp Fire smoke 2018-11-09 to 11-20 (11 days, 56–175 µg/m³); 2020-09-10 to 09-14 (94–151).
+  - Other clusters (e.g. 2017-09-01 to 04; 2023-09-19 to 23; winter 2024–26) have not been checked against known events.
+- **Judgment calls (flagged; not yet approved):**
+  - The 12-hour partial minimum.
+  - The low-cost outlier rule is not re-applied to partial low-cost sensor-days.
+  - Flag, don't remove, single-sensor days (Claude's suggestion).
+
+---
+
 ### Analysis A12 · correction to A10: unhealthy-day counts recomputed · 2026-09-28 14:04 EDT · Gina + Claude
 - **What:** Recomputed days > 35.4 µg/m³ per city and year (reference monitors only) under the V3 rules, and compared them with A10's counts. Read from `data/processed/openaq/step05_averages/audit/sensor_day_audit_<city>.csv`. **No files written.**
   - **Site-day:** mean of the site's sensor-days, using Step 5's pm25_used (negatives set to 0).

@@ -1,0 +1,17 @@
+city,days_with_data_partial_all,days_above35_strict_ref,days_above35_partial_ref,days_above35_partial_all,single_lowcost_flag_days
+annarbor,3241,15,17,37,18
+bakersfield,3266,174,195,204,9
+boston,2953,3,3,10,7
+brownsville,1171,12,12,12,0
+delano,504,0,0,72,14
+detroit,3204,43,48,66,8
+eugene,3405,47,53,53,0
+fairbanks,3192,96,105,105,0
+fresno,3321,145,164,271,60
+losangeles,3262,46,50,235,119
+phoenix,3271,50,53,60,7
+raymondville,0,0,0,0,0
+sandiego,2569,17,18,30,9
+sanfrancisco,3279,14,27,104,57
+springfield,3187,21,27,27,0
+warren,966,0,0,49,8
