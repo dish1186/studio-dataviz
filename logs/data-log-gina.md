@@ -32,6 +32,25 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Visualization V2 · version 4: smoothed PM2.5 background · 2026-09-28 12:19 EDT · Gina + Claude
+- **What:** The PM2.5 background now defaults to a **centred 7-day average** for each day's band: the day ±3 days, averaging the days that have a value, needing ≥ 3.
+  - A **"7-day smoothed | Daily"** switch (saved in the browser) brings back the raw daily bands.
+  - The key label, colour scale and notes were updated. The colour scale is unchanged.
+- **Why:** Gina: "can we find a way to cut out some of the noise in the pm2.5 background?"
+- **Check (San Francisco, 2,471 days):**
+
+  | | Raw daily | 7-day centred (≥ 3 days) | 15-day centred (≥ 5 days), tested, not used |
+  |---|---|---|---|
+  | Blank days | 403 | 271 | 228 |
+  | Median day-to-day change | 1.8 µg/m³ | 0.43 | 0.22 |
+  | Highest band | 129.0 | 82.8 | 56.4 |
+
+  7 days was chosen because it removes most of the flicker and short gaps while keeping the Sept 2020 peak in the darkest range. 15 days flattened the peak.
+- **Judgment call:** a 7-day centred window with a minimum of 3 days. **Claude's choice, flagged; not yet approved.**
+- **No data changed.**
+
+---
+
 ### Visualization V2 · version 3: PM2.5 as thread or background · 2026-09-28 12:17 EDT · Gina + Claude
 - **What:** Added a **"PM2.5 shown as: Thread | Background"** toggle, saved in the browser. Thread is the default.
   - **Background mode** draws every **day** as a thin band across the chart (7 per week row).
