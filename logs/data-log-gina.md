@@ -32,6 +32,80 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Visualization V2 · version 1: San Francisco weekly threads · 2026-09-28 12:07 EDT · Gina + Claude
+- **What:** A new, separate page, **"Air-quality threads"**: https://claude.ai/artifact/7UB1ipuuUtX2KEcvCUvxWL
+  - San Francisco only; weekly, from 2020-12-27 to 2026-09-27; time runs down the page.
+  - Green "air purifier" search thread in the centre (anchor layout). News on the left, haze and PM2.5 on the right.
+  - **Distance from the centre = rolling Spearman ρ with searches**, on a **linear ρ scale fitted to this city's range**. ρ runs from −0.63 to 0.74, so guides are at −0.75 … +0.75 in steps of 0.25, and ρ = 0 is dashed. This is Gina's "#1: fit the scale to the range". It replaces the mockup's √(2(1−r)) distance, since a labelled linear ρ axis is easier to read in the anchor layout.
+  - A **thickness / colour toggle** shows how unusual each week is.
+  - A city dropdown: the other 4 featured cities are listed but disabled until their weekly data exists.
+  - Checkboxes for haze, news and PM2.5. Hover shows each value, its percentile, ρ and the number of weeks.
+  - A shaded 2024 gap, and a spring 2026 marker.
+- **Why:** Gina: "lets start with san francisco. do #1 at the moment to just fit the scale to the range … just to see how this looks".
+- **Method:**
+  - **Searches:** Step 8 stitched weekly file.
+  - **Haze:** SFO weekly mean extinction ÷ 0.24308, weeks with ≥ 3 valid days.
+  - **News:** weekly sum ÷ sum, weeks with ≥ 20 city stories.
+  - **PM2.5:** reference daily mean, low-cost where none; weeks with ≥ 4 days.
+  - **Correlation:** ρ over weeks i−13 … i+12, needing ≥ 18 weeks with both values. Raw weekly values, no seasonal adjustment.
+  - **Unusualness:** percentile of the week among all weeks (whole record) whose week_start is in the same calendar month. Thickness = 1.6 + 9 × max(0, (p − 0.5)/0.5) px; colour opacity = 0.14 + 0.86 × the same.
+  - Weekly data was computed in a scratch script from the explorer bundle (built from the repo's processed files); not saved in the repo.
+- **What it shows (first look):**
+  - News is the thread closest to searches in mid-2021 (ρ up to about 0.7) and again in spring 2026 (about 0.7). Haze reaches about 0.5 in mid-2021.
+  - In 2022–2023 all threads hover around 0, ranging from −0.3 to +0.35.
+  - In spring 2026 haze swings to −0.54, while searches spiked nationwide.
+- **Judgment calls (Claude's choices, flagged; not yet approved):**
+  - The 26-week window and the 18-week minimum.
+  - No seasonal adjustment.
+  - Linear ρ scale.
+  - Fixed sides.
+  - The weekly minimums.
+  - The percentile pool (whole record, by calendar month; for searches only the 5 downloaded years).
+  - Thickness range.
+- **Known issues for v2:**
+  - Threads jump when a spike week enters or leaves the 26-week window; a tapered (weighted) window would smooth this.
+  - 26 weeks gives ρ an uncertainty of about ±0.35.
+  - SFO summer fog leaves some haze weeks blank.
+  - Best-fit (all-pairs) layout not built yet.
+  - Lead/lag arrows are for later.
+
+---
+
+### Google Trends · Step 8: stitch the weekly San Francisco files · 2026-09-28 12:07 EDT · Gina + Claude
+- **What:** New script `scripts/google-trends/05_sf_weekly_stitch.py`, which writes:
+  - `data/processed/google-trends/air-search-weekly/sf_air_purifier_weekly.csv` (250 weeks)
+  - `sf_air_purifier_weekly_factors.csv`
+  - Raw files are unchanged.
+- **Why:** each weekly file is scaled 0–100 within its own year, so the files can't be joined as-is. Needed for the threads page.
+- **Method:**
+  - Each week's value is spread over its 7 days and averaged by calendar month (months with ≥ 20 days).
+  - Each file gets one factor: the least-squares scale (through 0) onto the monthly San Francisco-Oakland-San Jose "air purifier" values for the same year.
+  - calibrated_index = raw × factor, in the monthly file's units. Weeks in two files are averaged.
+- **Result:**
+  - Factors: 2021 0.2535 · 2022 0.1446 · 2023 0.1816 · 2025 0.1557 · 2026 0.6391.
+  - Fit of weekly-to-monthly averages: r = 0.994 · 0.967 · 0.914 · 0.979 · 0.999; max residual ≤ 1.3 index points.
+  - **Independent check:** the three New Year weeks that appear in two files agree after scaling (gaps 0.10, 0.36, 0.02 index points), although the files were scaled separately.
+- **Limitation:** the monthly file's values are small integers (about 7–10 most months), so the factors carry some rounding error. 2024 is missing.
+- **Judgment call:** calibrating to the monthly file, rather than chaining the one-week overlaps. **Claude's choice, flagged; not yet approved.**
+
+---
+
+### Google Trends · Step 7: weekly San Francisco "air purifier" raw files · 2026-09-28 12:07 EDT · Gina + Claude
+- **What:** Added Gina's 5 downloads to `data/raw/google-trends/air-search-weekly/san-francisco/`, **copied unchanged** under their export names. `cmp` identical to ~/Downloads.
+  - `time_series_807_20210101-0000_20260928-1200.csv`: 2020-12-27 to 2021-12-26, 53 weeks, SHA-256 1a340e2d…1c05
+  - `time_series_807_20220101-0000_20260928-1158.csv`: 2021-12-26 to 2023-01-01, 54 weeks, 7a5b6928…6eef
+  - `time_series_807_20230101-0000_20260928-1157.csv`: 2023-01-01 to 2023-12-31, 53 weeks, d8ed0c3f…81e9
+  - `time_series_807_20250101-0000_20260928-1156.csv`: 2024-12-29 to 2025-12-28, 53 weeks, 9dd5b455…344
+  - `time_series_807_20260101-0000_20260928-1155.csv`: 2025-12-28 to 2026-09-27, 40 weeks, 5caa294a…83fb
+- Also wrote `trends_sources.csv` in that folder (5 rows, same columns as the air-search table) and added 10 rows to `data/descriptions/data_descriptions.csv` (4 raw, 6 processed).
+- **Why:** Gina: "here's some weekly trends data for san francisco which should span 2021-2026 … make sure to log and put in raw data for air search trends".
+- **Findings:**
+  - **2024 is missing**: there is no file covering 2024-01 to 2024-12.
+  - 807 is the metro code for San Francisco-Oakland-San Jose (the same area as the monthly file), inferred from the file name. **Gina to confirm.**
+  - Category and search type were not recorded (marked "assumed" in the sources table).
+
+---
+
 ### Visualization V2 · mockups: correlation threads (Eugene) · 2026-09-28 11:47 EDT · Gina + Claude
 - **What:** Two inline chat mockups (not saved as repo files or published) for a planned vertical "threads" visual.
   1. **Spearman ρ vs Pearson r**, side by side.
