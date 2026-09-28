@@ -32,6 +32,50 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Analysis A1 · searches vs haze correlations · 2026-09-28 10:18 EDT · Gina + Claude
+- **What:** Monthly correlations between **searches (total of air purifier + air filter + n95)** and the **haze index** for all 16 cities. **No files written.** This was a one-off script in chat, reading the explorer bundle (built from `data/processed/google-trends/air-search/` and Dish's frozen `vis_<city>_daily.csv`).
+- **Why:** Gina: "can you calculate the correlation coefficients between searching & haze visibility for each city? … which creates a more compelling story?"
+- **Method:**
+  - **Haze month:** mean extinction of valid days ÷ 0.24308, kept if ≥ 15 valid days (same as the V1 v7 grouping).
+  - **Correlations:** Spearman ρ (rank) and Pearson r, first on the raw monthly values, then on the "vs. surrounding year" ratio for both series (month ÷ median of the 6 months before and 6 after, as in v14).
+  - **Exclusions:** each run was done with and without the COVID-19 and 2026 spike months (2020-03/04 and 2026-03 to 06).
+  - **Outlier check:** Pearson r was also recomputed without each city's single haziest month.
+- **Result (all months; n = 129 months for most cities; 106 Delano, 126 Ann Arbor, 128 Warren):**
+
+  | City | Raw ρ | Raw r | r without haziest month | Surrounding-year ρ | Haziest month: haze · search vs median |
+  |---|---|---|---|---|---|
+  | Eugene | 0.02 | **0.76** | 0.13 | −0.17 | 2020-09 · 7.2× · 8.5× |
+  | Springfield | 0.00 | **0.74** | 0.04 | −0.20 | 2020-09 · 7.2× · 8.2× |
+  | San Francisco | 0.01 | **0.54** | **0.41** | 0.11 | 2018-11 · 2.0× · 5.7× |
+  | Fairbanks | 0.12 | **0.38** | **0.36** | −0.09 | 2019-07 · 2.0× · 2.7× |
+  | Ann Arbor | **0.31** | 0.18 | 0.13 | −0.19 | 2023-06 · 1.8× · 1.9× |
+  | Brownsville | **0.31** | 0.11 | 0.14 | −0.01 | 2022-04 · 1.4× · 1.0× |
+  | Delano | 0.07 | 0.12 | 0.16 | −0.13 | 2017-12 · 1.5× · 0.8× |
+  | Detroit | −0.17 | 0.11 | −0.02 | −0.18 | 2026-07 · 1.6× · 3.2× |
+  | Warren | −0.30 | 0.11 | −0.24 | −0.36 | 2026-07 · 1.5× · 3.1× |
+  | Raymondville | −0.06 | 0.09 | 0.08 | −0.02 | 2024-05 · 1.4× · 1.3× |
+  | Boston | 0.11 | 0.03 | 0.06 | 0.17 | 2024-02 · 1.2× · 1.0× |
+  | San Diego | 0.12 | 0.03 | −0.03 | 0.01 | 2020-09 · 1.3× · 1.9× |
+  | Fresno | −0.27 | 0.01 | −0.08 | **−0.44** | 2020-09 · 2.7× · 2.3× |
+  | Phoenix | 0.13 | −0.02 | −0.01 | 0.05 | 2024-01 · 1.0× · 1.0× |
+  | Bakersfield | −0.06 | −0.04 | −0.03 | −0.35 | 2021-11 · 2.8× · 0.8× |
+  | Los Angeles | −0.09 | −0.09 | −0.10 | 0.18 | 2021-11 · 1.6× · 1.1× |
+
+  Leaving out the COVID-19 and 2026 months changes ρ by ≤ 0.08 in every city.
+- **Reading:**
+  - Ordinary month-to-month haze barely tracks searches: |ρ| < 0.32 everywhere on raw values.
+  - The large Pearson r values in Eugene and Springfield come almost entirely from one month (Sept 2020 smoke) and drop to about 0.1 without it. San Francisco and Fairbanks keep r ≈ 0.4 without their top month (several smoke months each).
+  - Central Valley winter haze (Bakersfield Nov 2021 at 2.8×, Fresno and Delano in December) comes with normal or low searches. Hence the negative ρ in Fresno, Bakersfield and Warren (searches and haze peak in different seasons).
+  - **Interpretation:** searches respond to rare, extreme smoke events, not to routine haze. This is Claude's interpretation, flagged to Gina.
+- **Caveats:**
+  - Correlation, not cause.
+  - Monthly data only.
+  - Pearson is driven by a few months, Spearman by ordinary months; the gap between them is the finding.
+  - The 2026-07 haze in Detroit and Warren has not been checked against a known event.
+  - Searches are metro-area or state-level (fallbacks), not the city itself.
+
+---
+
 ### Visualization V1 · version 14: search shading toggle (dot view) · 2026-09-27 22:55 EDT · Gina + Claude
 - **What:** Added a **Search shading: vs. whole period | vs. surrounding year** switch. It appears only in Dots view and affects only the search row's shades. "vs. whole period" (the default) is the existing rule. Graphs view, tooltips and all files are unchanged.
 - **"vs. surrounding year" formula:**
