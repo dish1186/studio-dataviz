@@ -32,6 +32,35 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Analysis A11 · combined correlation table (Pearson r, Spearman ρ, adjusted ρ) · 2026-09-28 14:01 EDT · Gina + Claude
+- **What:** One table per city of monthly "air purifier" searches vs PM2.5, haze and news, with three columns for each pair:
+  - **Pearson r** (raw)
+  - **Spearman ρ** (raw)
+  - **Adjusted ρ** (season and year removed; the A6 values that set the explorer's groups)
+  - Months: same as A6, i.e. 2020-03/04 and 2026-03 to 06 left out; PM2.5 = reference, low-cost where none, ≥ 15 days.
+  - **No files written.** Raw r and ρ can differ slightly from A4, which kept all months.
+- **Why:** Gina asked for the earlier table of each city's leaning (haze / media / PM2.5), with r and ρ, and for the cities Claude recommends to be highlighted.
+- **Result (r / ρ / adjusted ρ):**
+  - Ann Arbor: PM 0.50/0.12/0.47 · haze 0.36/0.48/0.22 · news 0.45/0.16/0.32
+  - Bakersfield: 0.24/0.25/0.34 · 0.30/0.24/0.26 · −0.04/0.03/0.22
+  - Boston: −0.16/−0.16/0.18 · 0.04/−0.04/0.09 · 0.17/0.37/0.12
+  - Brownsville: 0.03/0.05/−0.18 · 0.21/0.40/0.09 · 0.05/0.07/−0.09
+  - Delano: haze 0.43/0.31/0.48 only
+  - Detroit: 0.45/0.08/0.43 · 0.42/0.10/0.30 · 0.58/0.38/0.52
+  - Eugene: 0.87/0.20/0.56 · 0.88/0.11/0.45 · 0.83/0.32/0.56
+  - Fairbanks: 0.44/0.24/0.48 · 0.72/0.24/0.73 · 0.23/0.18/0.06
+  - Fresno: 0.42/0.26/0.61 · 0.34/−0.00/0.58 · 0.47/0.29/0.36
+  - Los Angeles: −0.01/−0.24/0.11 · 0.10/−0.08/0.18 · 0.55/0.17/0.47
+  - Phoenix: 0.27/0.29/0.32 · 0.10/0.15/0.04 · 0.26/0.10/0.38
+  - Raymondville: haze 0.06/0.00/0.08 only
+  - San Diego: 0.26/0.09/0.22 · 0.30/0.10/0.24 · 0.39/0.23/0.39
+  - San Francisco: 0.74/0.02/0.67 · 0.82/0.06/0.70 · 0.86/0.29/0.78
+  - Springfield: 0.83/0.27/0.58 · 0.92/0.12/0.58 · no news
+  - Warren: 0.62/0.18/0.52 · 0.38/−0.04/0.24 · no news
+- **Recommended featured cities (Claude, flagged):** San Francisco, Eugene, Fairbanks, Bakersfield, Detroit. Brownsville optional as a "false link" example.
+
+---
+
 ### Visualization V3 · mockup: "Unhealthy Air Days" (San Francisco 2020) + single-sensor check · 2026-09-28 13:54 EDT · Gina + Claude
 - **What:**
   1. An inline chat mockup (not saved or published) of one year block: 2020, San Francisco.
