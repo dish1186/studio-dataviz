@@ -32,6 +32,32 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Analysis A8 · Fairbanks annual and seasonal PM2.5 · 2026-09-28 11:25 EDT · Gina + Claude
+- **What:** Computed Fairbanks' reference PM2.5 averages by year and season, and clarified the day counts in A7. **No files written**; this was a one-off script in chat, reading the explorer bundle (from `data/processed/openaq/step05_averages/pm25_fairbanks_daily.csv`).
+- **Why:** Gina asked for Fairbanks' annual and seasonal average PM2.5, what period the "days above 35" covered, and what drives the winter pollution.
+- **Data basis:**
+  - 2,907 of 3,921 days have reference data (2016-03-15 to 2026-09).
+  - Two in-city sites: S1880 **NCore** (from 2016) and S7089 **A Street** (from 2019-06).
+  - The borough's **Hurst Road (North Pole)** monitor is outside the city and not used (Step 3).
+- **Results:**
+  - **Overall:** mean of all days **9.1 µg/m³**; mean of the 12 calendar-month means 9.0.
+  - **Seasonal means:**
+    - Winter Dec–Feb **15.5** (median 13.7)
+    - Spring Mar–May **5.0**
+    - Summer Jun–Aug **9.2** (median 3.5: a few extreme smoke days)
+    - Fall Sep–Nov **6.8**
+    - Heating season Nov–Feb **14.3**
+  - **By year** (mean of days with data; days with data): 2016 8.2 (233) · 2017 9.8 (198) · 2018 6.8 (172) · 2019 11.0 (256) · 2020 8.6 (254) · 2021 11.4 (189) · 2022 11.7 (328) · 2023 8.3 (297) · 2024 9.3 (356) · 2025 8.4 (356) · 2026 through Sept 6.0 (268).
+  - **Days > 35:** the A7 counts (36 winter, 47 summer) are **totals over the whole record** (about 10.5 years), counting only days with data.
+    - By year: 2016 4 · 2017 11 · 2018 0 · 2019 8 · 2020 3 · 2021 4 · 2022 27 · 2023 6 · 2024 9 · 2025 10 · 2026 1.
+    - Winter-season means ranged from 11.9 to 19.9. Winter 2017–18 has only 3 days of data.
+- **Caveats:**
+  - Missing days are not random: the 2017, 2018 and 2021 gaps cover whole months.
+  - These are **not** EPA design values. The annual standard (9.0 µg/m³) and the 24-hour standard (98th percentile of days, averaged over 3 years) need complete-data rules, so these numbers are indicative only.
+- **Winter drivers:** background from general knowledge, given in chat, **not from this repo's data**; to be cited from Alaska DEC and EPA sources before use.
+
+---
+
 ### Visualization V1 · version 18: US national line in the trend chart · 2026-09-28 11:21 EDT · Gina + Claude
 - **What:** Added the whole-US "air purifier" series to the national-trend chart as a bold line labelled "US", divided by its own 2016–2019 average (7.69) like the search areas.
   - The summary line now adds: "Nationally the figure is 2.4×, after 12 flat years: from 2004 to 2015 the US index stayed between 4 and 10."
