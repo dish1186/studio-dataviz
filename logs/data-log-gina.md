@@ -32,6 +32,20 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Google Trends · Step 13: weekly heat, felt heat and searches for the map · 2026-09-29 19:05 EDT · Gina + Claude
+- **What:** Ran `scripts/google-trends/09_heat_map_weekly.py`. Per city and Trends week, it joins:
+  - the weekly high (Step 11)
+  - **felt heat** = the mean of the 7 daily UTCI maxima (`data/processed/utci/final/utci_<city>_daily.csv`; all 7 days must be valid)
+  - AC searches (index and ratio to that year's January-February level)
+- **Why:** The weekly bubble map and gauges on "Find Your Threshold" (Gina: weekly, bubble size and colour = absolute temperature, felt heat as a halo, ring = searchers' threshold).
+- **Cut:** Felt heat ends 2026-06-12 in all five files, so the series stops at the **week of 2026-05-31**, the last full week with felt heat (Gina: "cut the temp data used until when felt data stops").
+- **Rows:** 1,230 in → 1,155 out (231 weeks × 5 cities, 2022-01-02 to 2026-05-31). No weeks before the cut lack felt heat.
+- **Output:** `data/processed/google-trends/heat-threshold/heat_map_weekly.csv`.
+- **Ranges (weekly high / felt heat):** Boston ≤ 91.0 / 15.4-94.6 · San Francisco ≤ 81.1 / 43.4-81.7 · Phoenix ≤ 113.5 / 61.4-120.3 · Detroit ≤ 90.5 / 4.3-95.1 · San Diego ≤ 88.6 / 56.7-99.0 °F.
+- **Judgment call (Claude's choice, not yet approved):** felt heat as the weekly mean of daily UTCI maxima, the same way the weekly high is computed.
+
+---
+
 ### Visualization V5 · versions 5-6: "expected for you" removed · 2026-09-29 18:40 EDT · Gina + Claude
 - **v5:** Removed the sentence "…for someone who runs like you we'd expect about X°F" (Gina found it confusing).
 - **v6 (Gina chose option 1):** Removed "expected for you" everywhere: the card, the column diamond, the legend entry, the footnote and the stored `expected` field.
