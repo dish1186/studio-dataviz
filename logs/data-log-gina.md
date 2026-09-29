@@ -32,6 +32,26 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Visualization V5 · version 7: map-first layout with weekly heat bubbles · 2026-09-29 19:20 EDT · Gina + Claude
+- **What:** The page now opens on a US map, with the "Find your threshold" form in a side panel on the right (Gina's layout).
+  - **Bubbles:** each city has an orange bubble for the week's high (size and colour = absolute °F) and a faint halo for felt heat (UTCI). A ring marks where the city's searchers reach for AC: dashed below it, solid once the week's high passes it ("tipped").
+  - **Time:** a weekly slider with Play (180 ms per week), 2022-01-02 to 2026-05-31. The page opens on the week of 2025-06-22.
+  - **Filters:** a view filter (Map / Gauges) and city chips (all selected by default).
+  - **Hover:** a bubble shows the week's high, felt heat, the searchers' threshold (tipped or degrees to go) and AC searches as × a winter week. A dot shows the first name or "Someone", the threshold vs searchers, and cold/hot.
+  - **People's dots** sit on a spiral outside each city's largest possible bubble.
+  - **Popup:** submitting opens "You reach for cooling at X°F", with the gap to the city's searchers, three facts and the summer-high line. It also says whether the dot was saved.
+  - **Removed:** the separate vertical column and the lower map.
+- **Data:** Google Trends Step 13 `heat_map_weekly.csv`; thresholds and summer highs from Step 12 (before 2026). The shared store and rules are unchanged from v1.
+- **Judgment calls (Claude's choice, not yet approved):**
+  - radius = (°F − 20) × 0.5 px on a 960-wide map
+  - the colour ramp from 50 to 110 °F
+  - the gauge scale 0-125 °F
+  - the default week
+  - the play speed
+  - "tipped" = the weekly high (not felt heat) at or above the threshold
+
+---
+
 ### Google Trends · Step 13: weekly heat, felt heat and searches for the map · 2026-09-29 19:05 EDT · Gina + Claude
 - **What:** Ran `scripts/google-trends/09_heat_map_weekly.py`. Per city and Trends week, it joins:
   - the weekly high (Step 11)
