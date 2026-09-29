@@ -32,6 +32,22 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Analysis A16 · is 2026 the highest year for "air conditioner" searches? · 2026-09-28 21:04 EDT · Gina + Claude
+- **What:** Compared **Jan–Sep means** for every year, so the partial 2026 is compared fairly (a Jan–Sep mean leaves out low autumn months). Done for the US file and the 12 city/state heat-search files; also compared summer peak months. **No files written.**
+- **Why:** Gina asked whether 2026 is the highest year; A15 had set 2026 aside as a partial year.
+- **Result:**
+  - **US** Jan–Sep means: 2016 31 · 2017 31 · 2018 35 · 2019 33 · 2020 39 · 2021 39 · 2022 38 · 2023 33 · 2024 32 · 2025 33 · **2026 52** (the highest; 1.33× the prior best).
+  - US highest summer month: 2021 96 · **2026 100 (June)**.
+  - **Cities: 2026 is the highest year in 8 of 12**, as a multiple of each city's previous best Jan–Sep:
+    - Phoenix ×1.64 · San Diego ×1.46 · LA ×1.32 · SF ×1.27 · Detroit ×1.20 · Michigan ×1.11 · Boston ×1.08 · Brownsville ×1.02
+    - Not the highest: Fresno (2nd; 2021 higher), Bakersfield (2nd; 2021), Eugene (2nd; 2021 heat dome), Fairbanks (4th; 2022).
+- **Correction to A15:** "flat over 2016–2025" holds for full years, but **2026 is a record** nationally and in most cities.
+- **Caveats:**
+  - Dish found that all three terms jump in March–April 2026 in every city, including cool ones; national "air purifier" also peaks in April 2026. So part of the 2026 rise may be national or a Google data change. **Cause not verified.**
+  - The March 2026 heat in CA/AZ is also unverified against station records.
+
+---
+
 ### Analysis A15 · air-conditioner search trend, 2016–2025, by city · 2026-09-28 21:02 EDT · Gina + Claude
 - **What:** Yearly means of the "air conditioner" term per city (raw heat-search files), and the ratio of 2023–25 to 2016–18 for "air conditioner", "AC" and "fan". Compared with Dish's national result (Google Trends Step 10, `data/processed/google-trends/us-national/us_national_yearly.csv`). **No files written.**
 - **Why:** Gina asked how air-conditioner searches trend over the 10 years.
