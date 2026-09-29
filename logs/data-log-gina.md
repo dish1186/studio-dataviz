@@ -32,6 +32,16 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Visualization V5 · versions 5-6: "expected for you" removed · 2026-09-29 18:40 EDT · Gina + Claude
+- **v5:** Removed the sentence "…for someone who runs like you we'd expect about X°F" (Gina found it confusing).
+- **v6 (Gina chose option 1):** Removed "expected for you" everywhere: the card, the column diamond, the legend entry, the footnote and the stored `expected` field.
+  - The red headline number is the person's own answer, compared with the city's searchers.
+  - The cold/hot slider stays on the form and is saved with each dot (`run`, -2 to +2) but does not change the result.
+- **Why:** The expectation was an estimate (city searchers ± up to 6.3 °F, from ASHRAE 55), not measured behaviour, and it read as confusing next to the person's own answer.
+- **Later (option 3):** once enough dots exist, compare self-described cold/hot with stated thresholds using the crowd's own data.
+
+---
+
 ### Visualization V5 · version 4: headline back to "vs searchers" · 2026-09-29 18:02 EDT · Gina + Claude
 - **What:** Gina preferred the earlier phrasing. The headline is again the comparison with the city, e.g. "You reach for cooling at 75°F, 2° above Boston's searchers." The expected-for-you comparison moved into the cards ("Expected for you") and the sentence below ("…we'd expect about 68°F. You hold out 7° longer than that…").
 - No change to the numbers or to what is stored.
