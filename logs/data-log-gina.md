@@ -32,6 +32,18 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Visualization V5 · version 8 + V6 v1: vertical threshold gauges · 2026-09-29 20:45 EDT · Gina + Claude
+- **What:** Gina asked for the vertical threshold mockup (chat widget, "real numbers" version) in two places.
+  1. **As the "Gauges" view of Find Your Threshold (V5 v8):** city tabs; Before 2026 / 2026 so far / All years / Compare; Air and Pollen columns marked "coming soon".
+     - The heat column shows the searchers' point with its 90% range, "start looking", the typical summer high, and the other cities.
+     - A blue "you" star appears after submitting for that city.
+     - In this view the city chips and week slider are hidden, because the thresholds don't change by week.
+  2. **As a standalone page to share with Dish (V6 v1):** "City heat thresholds", https://claude.ai/artifact/RP7JSJJTvQpuH8p9LVFDKQ (private until Gina shares it). No form and no shared data.
+- **Data:** Google Trends Step 12 `heat_surge.csv` (all three periods).
+- **Change from the mockup:** the label "surges" is now "searchers" ("Boston searchers · 73°F"), matching the main page's wording. Otherwise the same design.
+
+---
+
 ### Visualization V5 · version 7: map-first layout with weekly heat bubbles · 2026-09-29 19:20 EDT · Gina + Claude
 - **What:** The page now opens on a US map, with the "Find your threshold" form in a side panel on the right (Gina's layout).
   - **Bubbles:** each city has an orange bubble for the week's high (size and colour = absolute °F) and a faint halo for felt heat (UTCI). A ring marks where the city's searchers reach for AC: dashed below it, solid once the week's high passes it ("tipped").
