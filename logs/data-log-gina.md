@@ -34,11 +34,11 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ### Google Trends · Step 10: weekly "air conditioner" raw files, 5 cities · 2026-09-29 16:36 EDT · Gina + Claude
 - **What:** Added Gina's 5 downloads to `data/raw/google-trends/heat-search-weekly/`, **copied unchanged** under their download names. `cmp` identical to ~/Downloads.
-  - `boston_manch_trends_aircon_5yr.csv`: Boston MA-Manchester NH, SHA-256 8104d376…01b2afd, peak week (100) 2026-05-17
-  - `sanfran_metro_trends_aircon_5yr.csv`: San Francisco-Oakland-San Jose CA, 6f90cca0…22d762c92c, peak 2022-09-04
-  - `phoenix_trends_aircon_5yr.csv`: Phoenix AZ, 3a91cdd2…4efe, peak 2026-06-14
-  - `detroit_trends_aircon_5yr.csv`: Detroit MI, fcbd8a2e…2837, peak 2026-06-28
-  - `sandiego_trends_aircon_5yr.csv`: San Diego CA, 58664ec1…c92c, peak 2022-09-04
+  - `boston_manch_trends_aircon_5yr.csv`: Boston MA-Manchester NH, SHA-256 8104d376…f01b2afd, peak week (100) 2026-05-17
+  - `sanfran_metro_trends_aircon_5yr.csv`: San Francisco-Oakland-San Jose CA, 6f90cca0…404b3a2d, peak 2022-09-04
+  - `phoenix_trends_aircon_5yr.csv`: Phoenix AZ, 3a91cdd2…9d674efe, peak 2026-06-14
+  - `detroit_trends_aircon_5yr.csv`: Detroit MI, fcbd8a2e…72ad2837, peak 2026-06-28
+  - `sandiego_trends_aircon_5yr.csv`: San Diego CA, 58664ec1…d762c92c, peak 2022-09-04
   - Each: search term "air conditioner", "All categories" (file header), weekly, 2021-09-26 to 2026-09-27, 262 weeks, **one 0-100 scale per file across the 5 years** (no stitching needed). The last week is partial (it starts 2 days before the download).
 - Also wrote `trends_sources.csv` in that folder (5 rows, same columns as the other sources tables) and added 4 rows to `data/descriptions/data_descriptions.csv`.
 - **Why:** Gina chose 5 cities (San Francisco, Boston, Phoenix, Detroit, San Diego) and heat only for the first version of "Find Your Threshold"; method B (weekly tipping point), with method A (monthly halfway point) as a check.
