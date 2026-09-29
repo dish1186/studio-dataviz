@@ -32,6 +32,31 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Visualization V5 · version 1: "Find Your Threshold" (heat) · 2026-09-29 17:40 EDT · Gina + Claude
+- **What:** A published page, https://claude.ai/artifact/JcQR4rxqReP5fED7GbgW1s (private until Gina shares it). It has three parts:
+  1. **A form:**
+     - city (Boston, San Francisco, Phoenix, Detroit, San Diego, or "Somewhere else")
+     - "At what temperature do you start reaching for a fan or AC?" (55-110 °F)
+     - "Compared with most people, do you tend to feel cold or hot?" (5 steps: "warm socks in a normal room" to "t-shirt in the fall")
+     - optional first name
+  2. **A live result:** you vs your city's searchers, in degrees, and vs the typical summer high, plus a line on whether that fits the cold/hot answer.
+  3. **A vertical heat column and a shared US map.** The column shows the city's searchers dot and range, "start looking", summer high, you, and other people's answers. On the map, everyone's dots are clustered at their city.
+- **Data shown:** Step 12 `heat_surge.csv`, before-2026 rows (surge = "searchers reach for AC", starts looking, typical summer high). No 2026 comparison on this page.
+- **Shared data:** the artifact database, collection `entries`. There is one document per viewer (id = their opaque user id), holding a list `subs` of {id, city, t, run, name, at}, capped at 50 per person. Multiple submissions are allowed (Gina).
+  - **Rules:** everyone admitted reads; each person writes only their own document; the owner can change anyone's.
+  - **Who can add dots:** only signed-in people at Contributor level or above, meaning organization members or people Gina gives Contributor access. Outside visitors on a public link can view the dots only if they're signed in, and signed-out visitors see nothing shared. Not stored: email, location beyond the city.
+  - **Names:** letters only, 20 characters maximum, with a basic word filter.
+- **Map:** Natural Earth 50m states (`data/raw/basemap/`), US only, coordinates rounded to 0.01°.
+- **Judgment calls (Claude's choice, not yet approved):**
+  - "you vs city" is shown in degrees, not % (°F is not a ratio scale)
+  - the ±3 °F band for "in step with your city"
+  - dot colours (cooler / within 3° / hotter than city)
+  - the "fits how you describe yourself" wording
+  - naming "searchers reach for AC" (to workshop)
+  - the 55-110 °F slider range
+
+---
+
 ### Google Trends · Step 12: heat surge point (headline) + "starts looking" mark · 2026-09-29 17:08 EDT · Gina + Claude
 - **What:** Ran `scripts/google-trends/08_heat_surge.py` (Gina: "ok run the surge point with the starts looking mark"). For each city and period, the **surge point** is the weekly high at which "air conditioner" searches reach **halfway between a normal winter week (1×) and the hot-week level**:
   - hot-week level = median of the hottest 10% of weeks
