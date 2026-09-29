@@ -32,6 +32,25 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Visualization V5 · versions 2-3: cold/hot slider; "expected for you" · 2026-09-29 17:55 EDT · Gina + Claude
+- **v2 (Gina):** "Compared with most people, do you tend to feel cold or hot?" is now a continuous slider, -2 (always cold: warm socks in a normal room) to +2 (always warm: t-shirt in the fall), stored to one decimal.
+- **v3 (Gina chose option 1):** the cold/hot answer now sets an **expected threshold**:
+  - **expected = city searchers' temperature − run × 3.15 °F**, so the two ends shift it by ±6.3 °F. Running warm → earlier; running cold → later.
+  - The headline compares the person's stated temperature with it (e.g. "You hold out 7° longer than we'd expect").
+  - `expected` is saved with each submission.
+  - The vertical column shows it as a hollow diamond. The map colours are unchanged (vs city searchers).
+  - "Somewhere else" gets no expectation.
+- **Source for ±6.3 °F:** 3.5 °C, the half-width of the 80% acceptability band in the ASHRAE Standard 55 adaptive comfort model (90% band ±2.5 °C). Checked via the pythermalcomfort documentation (https://pythermalcomfort.readthedocs.io/en/latest/documentation/models.html) and Wikipedia's ASHRAE 55 article (https://en.wikipedia.org/wiki/ASHRAE_55).
+  - It's used as a rough size for how much individual comfort differs. **It is not a measured link between self-described cold/hot and when people cool down.**
+- **Judgment calls (Claude's choice, not yet approved):**
+  - the linear mapping
+  - using the 80% band (not 90%)
+  - the ±3 °F "lines up with how you describe yourself" band
+  - the headline wording
+- **Later (option 3, Gina):** once enough dots exist, test whether people who say they run warm actually report lower thresholds.
+
+---
+
 ### Visualization V5 · version 1: "Find Your Threshold" (heat) · 2026-09-29 17:40 EDT · Gina + Claude
 - **What:** A published page, https://claude.ai/artifact/JcQR4rxqReP5fED7GbgW1s (private until Gina shares it). It has three parts:
   1. **A form:**
