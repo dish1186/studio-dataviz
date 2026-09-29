@@ -32,6 +32,24 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Analysis A15 · air-conditioner search trend, 2016–2025, by city · 2026-09-28 21:02 EDT · Gina + Claude
+- **What:** Yearly means of the "air conditioner" term per city (raw heat-search files), and the ratio of 2023–25 to 2016–18 for "air conditioner", "AC" and "fan". Compared with Dish's national result (Google Trends Step 10, `data/processed/google-trends/us-national/us_national_yearly.csv`). **No files written.**
+- **Why:** Gina asked how air-conditioner searches trend over the 10 years.
+- **Result:**
+  - **National** (Dish Step 10), yearly means: 2012–15 about 20–21; **2016 25**, 2018 29, **2020–21 32** (peak), 2022 31, 2023–25 27–28. 2026 so far 52, unexplained.
+  - Dish's test: rising over 2004–2025 (tau +0.70); **no clear trend over 2016–2025** (tau +0.20, p 0.49).
+  - **"Air conditioner", 2023–25 ÷ 2016–18, by city:**
+    - LA ×0.83 · San Diego ×0.83 · Brownsville ×0.95 · Detroit ×0.98
+    - SF ×1.01 · Boston ×1.02 · Michigan ×1.04 · Phoenix ×1.05
+    - Bakersfield ×1.08 · Fresno ×1.09 · Eugene ×1.13 · **Fairbanks ×1.95** (very low volume)
+  - Every city's yearly series peaks around 2020–21 (Eugene **16.4 in 2021**, vs about 9 in other years).
+  - **"AC" rose ×1.22–1.71 and "fan" ×1.23–1.45 in every city.** These terms are ambiguous, so the rise may not be about cooling.
+  - Peak months: mostly June–July of 2017–2021; Phoenix and SF in 2026-06.
+- **Reading:** flat to slightly falling over the study period, apart from a 2020–21 bump. The long-term rise is 2004–2015 → 2016+.
+- **Caveats:** city files are scaled to their own highest term (usually "fan" or "AC"), so "air conditioner" values are small integers; compare ratios, not levels.
+
+---
+
 ### Analysis A14 · cooling searches vs abnormal heat, by city; Gina's copy of the Heat City Explorer · 2026-09-28 20:53 EDT · Gina + Claude
 - **What:**
   1. **Correlation analysis** of monthly cooling searches (air conditioner + fan + AC) against abnormal heat, per city. Read from the data embedded in Dish's Heat City Explorer (Gina's download "Heat City Explorer (Copy).html", built from `data/processed/gridmet/final/`, `data/processed/utci/final/`, `data/processed/google-trends/heat-search/` and `data/processed/heat-media/`). **No files written.**
