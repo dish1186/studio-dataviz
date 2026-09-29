@@ -32,6 +32,31 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Analysis A18 · profile of a pollen dataset (~/Downloads/export.csv) · 2026-09-29 10:20 EDT · Gina + Claude
+- **What:** A read-only profile of Gina's download `export.csv` (39,570,491 bytes; 453,554 rows plus header). **Not added to the repo; no files written.**
+- **Why:** Gina: "can you tell me about this dataset?"
+- **Contents:**
+  - **Columns:** POLLEN_SITE, STATE, POLLEN_COUNT, POLLEN_COUNT_CLASS, YEAR (formatted "2,003"), WEEK, DATE ("2003 Apr 03 12:00:00 AM"), POLLEN_TYPE.
+  - **Two pollen types**, GroupedTrees and GroupedWeeds, with 226,777 rows each (one row per site, day and type).
+  - **120 sites** in about 40 states; 2003-01-01 to **2024-06-29**. Rows per year fall from about 27,000 (2010–16) to 13,000 (2023); 2024 is partial.
+  - **Count classes and observed ranges:**
+    - Trees: Absent 0 · Low 1–14 · Moderate 15–89 · High 90–1,400 · Very High ≥ 1,767 (in these data)
+    - Weeds: Absent 0 · Low 1–9 · Moderate 10–49 · High 50–431 · Very High ≥ 566
+    - This matches the National Allergy Bureau (AAAAI) reporting scale in grains/m³.
+    - **The source is not stated in the file.** It looks like the NAB counts distributed via the CDC Environmental Public Health Tracking Network. **Gina to confirm the source and the download settings.**
+  - Class totals: Absent 179,249 · Low 128,365 · Moderate 78,672 · High 60,734 · Very High 6,534. Maximum count 41,320.
+- **Overlap with the study cities, 2016 onward (days with data):**
+  - **Eugene, OR**: 2003–2024; 90–194 days a year.
+  - **Scottsdale (Mayo Clinic), AZ** (Phoenix area): 2019-11 to 2024-06; about 355 days a year.
+  - **San Jose (AAANC), CA** (Bay Area): 2003–2024; 156–351 days a year.
+  - **La Jolla, CA** (in San Diego city limits): to 2021-08; about 345 days a year to 2019.
+  - Walnut Creek, CA: 18–72 days a year.
+  - St. Clair Shores, MI (Detroit suburb): to 2017; Apr–Oct only.
+  - **No station** for Fresno, Bakersfield, Los Angeles (Pasadena/Orange end 2011), Boston (Salem ends 2011), Fairbanks (only Anchorage 2006–08), Brownsville (Corpus Christi 2003–05) or Ann Arbor.
+- **Possible uses (not done):** test whether spring "air purifier" search rises follow tree pollen (Eugene, Phoenix/Scottsdale, SF/San Jose, San Diego/La Jolla). This bears on the A5 caution about shared seasons. It cannot explain spring 2026, since the data ends in June 2024.
+
+---
+
 ### Analysis A17 · reading the "is ac season starting earlier?" page · 2026-09-29 09:29 EDT · Gina + Claude
 - **What:** Read the shared page https://claude.ai/artifact/7RPZWNU3KsJxqSbHvBYiMf (title "When does AC season start?"; credited to bidisha & gina) in full, and recomputed its season starts from its embedded data. **No files written; page not changed.**
   - The embedded values match the raw "air conditioner" column of `data/raw/google-trends/heat-search/` (checked for Eugene: all 12 months of 2016 identical).
