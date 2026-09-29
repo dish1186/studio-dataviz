@@ -32,6 +32,12 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Visualization V5 · version 4: headline back to "vs searchers" · 2026-09-29 18:02 EDT · Gina + Claude
+- **What:** Gina preferred the earlier phrasing. The headline is again the comparison with the city, e.g. "You reach for cooling at 75°F, 2° above Boston's searchers." The expected-for-you comparison moved into the cards ("Expected for you") and the sentence below ("…we'd expect about 68°F. You hold out 7° longer than that…").
+- No change to the numbers or to what is stored.
+
+---
+
 ### Visualization V5 · versions 2-3: cold/hot slider; "expected for you" · 2026-09-29 17:55 EDT · Gina + Claude
 - **v2 (Gina):** "Compared with most people, do you tend to feel cold or hot?" is now a continuous slider, -2 (always cold: warm socks in a normal room) to +2 (always warm: t-shirt in the fall), stored to one decimal.
 - **v3 (Gina chose option 1):** the cold/hot answer now sets an **expected threshold**:
