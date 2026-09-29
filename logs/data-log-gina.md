@@ -32,7 +32,43 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
-### Google Trends · Step 11: heat threshold per city (methods A and B) · 2026-09-29 17:05 EDT · Gina + Claude
+### Google Trends · Step 12: heat surge point (headline) + "starts looking" mark · 2026-09-29 17:08 EDT · Gina + Claude
+- **What:** Ran `scripts/google-trends/08_heat_surge.py` (Gina: "ok run the surge point with the starts looking mark"). For each city and period, the **surge point** is the weekly high at which "air conditioner" searches reach **halfway between a normal winter week (1×) and the hot-week level**:
+  - hot-week level = median of the hottest 10% of weeks
+  - halfway is counted in plain multiples
+  - the crossing is read off a running median of the individual weeks (window = 10% of weeks)
+  - range = 1,000 recomputations on 4-week blocks
+  - "Starts looking" = Step 11 method B, carried over.
+- **Why:** Step 11 showed method B finds where searching first leaves its winter floor (early spring), not where it surges. Gina approved redefining the headline (see Step 11).
+- **Input:** Step 11 outputs `weekly_search_temp_<city>.csv` and `heat_thresholds.csv` (not modified). **Output:** `data/processed/google-trends/heat-threshold/heat_surge.csv` (15 rows).
+- **Results (before 2026, 2022-2025, 209 weeks each):**
+
+  | City | Starts looking | **Surge point (90% range)** | Method A check (monthly) | Typical summer high | Surge minus summer high |
+  |---|---|---|---|---|---|
+  | San Francisco | 58 °F | **62 °F (61-64)** | 66 °F | 68 °F | -6 |
+  | Boston | 47 °F | **73 °F (68-82)** | 66 °F | 80 °F | -7 |
+  | Detroit | 51 °F | **77 °F (75-82)** | 79 °F | 82 °F | -5 |
+  | San Diego | 70 °F | **77 °F (73-80)** | 81 °F | 79 °F | -2 |
+  | Phoenix | 70 °F | **97 °F (88-105)** | 101 °F | 104 °F | -7 |
+
+- **2026 vs before (surge):**
+  - Phoenix **-10 °F** (range -21 to -1): the only shift whose range excludes 0.
+  - San Diego -7 (-10 to +8), Boston -3 (-30 to +13), SF -1 (-3 to +4), Detroit +8 (-28 to +13).
+  - For 2026, 86 (Boston), 33 (SF) and 118 (Detroit) of the 1,000 recomputations never reached the target and are left out of the range.
+- **Findings:**
+  - **Method A agrees with the surge point within 2-7 °F** in every city, whereas it was 8-30 °F from method B. The headline passes its check.
+  - **Every city surges 2-7 °F below its own typical summer high.** People act as it approaches an ordinary summer day for their city, whatever that temperature is (62 °F in SF, 97 °F in Phoenix).
+  - **Phoenix 2026:** part of the drop may be mechanical. Its 2026 hot-week level is lower (3.6× vs 5.1×) because January-February 2026 was already elevated, so the halfway target is lower. **Not verified as a behaviour change.**
+- **Judgment calls (Claude's choice, not yet approved):**
+  - floor = 1× by construction
+  - hottest 10% of weeks (at least 4) for the hot level
+  - halfway in plain multiples
+  - running-median window of 10% of weeks (odd, at least 7)
+  - leaving never-crossing recomputations out of the range
+
+---
+
+### Google Trends · Step 11: heat threshold per city (methods A and B) · 2026-09-29 16:57 EDT · Gina + Claude
 - **What:** Ran `scripts/google-trends/07_heat_threshold.py` (approved by Gina: "ok run the threshold step"). For Boston, San Francisco, Phoenix, Detroit and San Diego:
   - weekly "air conditioner" searches divided by that year's January-February level (`ratio`), paired with the week's mean daily high (gridMET)
   - **Method B:** hockey-stick fit (flat, then rising), for all years, before 2026 and 2026 alone, with a 4-week block bootstrap
