@@ -32,6 +32,22 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Google Trends · Step 10: weekly "air conditioner" raw files, 5 cities · 2026-09-29 16:36 EDT · Gina + Claude
+- **What:** Added Gina's 5 downloads to `data/raw/google-trends/heat-search-weekly/`, **copied unchanged** under their download names. `cmp` identical to ~/Downloads.
+  - `boston_manch_trends_aircon_5yr.csv`: Boston MA-Manchester NH, SHA-256 8104d376…01b2afd, peak week (100) 2026-05-17
+  - `sanfran_metro_trends_aircon_5yr.csv`: San Francisco-Oakland-San Jose CA, 6f90cca0…22d762c92c, peak 2022-09-04
+  - `phoenix_trends_aircon_5yr.csv`: Phoenix AZ, 3a91cdd2…4efe, peak 2026-06-14
+  - `detroit_trends_aircon_5yr.csv`: Detroit MI, fcbd8a2e…2837, peak 2026-06-28
+  - `sandiego_trends_aircon_5yr.csv`: San Diego CA, 58664ec1…c92c, peak 2022-09-04
+  - Each: search term "air conditioner", "All categories" (file header), weekly, 2021-09-26 to 2026-09-27, 262 weeks, **one 0-100 scale per file across the 5 years** (no stitching needed). The last week is partial (it starts 2 days before the download).
+- Also wrote `trends_sources.csv` in that folder (5 rows, same columns as the other sources tables) and added 4 rows to `data/descriptions/data_descriptions.csv`.
+- **Why:** Gina chose 5 cities (San Francisco, Boston, Phoenix, Detroit, San Diego) and heat only for the first version of "Find Your Threshold"; method B (weekly tipping point), with method A (monthly halfway point) as a check.
+- **Findings:**
+  - Search type (Web Search) is not in the file; marked "assumed". **Gina to confirm.**
+  - **2026 sits higher all year**: winter weeks are about 1.5-2x earlier winters in every city (e.g. Phoenix Jan 2026 11-14 vs 7-10), and 3 of 5 cities peak in 2026. Same pattern as Analysis A16. This matters for how the "usual" level is defined in the threshold step.
+
+---
+
 ### Analysis A18 · profile of a pollen dataset (~/Downloads/export.csv) · 2026-09-29 10:20 EDT · Gina + Claude
 - **What:** A read-only profile of Gina's download `export.csv` (39,570,491 bytes; 453,554 rows plus header). **Not added to the repo; no files written.**
 - **Why:** Gina: "can you tell me about this dataset?"
