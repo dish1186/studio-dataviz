@@ -32,6 +32,52 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Analysis A14 · cooling searches vs abnormal heat, by city; Gina's copy of the Heat City Explorer · 2026-09-28 20:53 EDT · Gina + Claude
+- **What:**
+  1. **Correlation analysis** of monthly cooling searches (air conditioner + fan + AC) against abnormal heat, per city. Read from the data embedded in Dish's Heat City Explorer (Gina's download "Heat City Explorer (Copy).html", built from `data/processed/gridmet/final/`, `data/processed/utci/final/`, `data/processed/google-trends/heat-search/` and `data/processed/heat-media/`). **No files written.**
+  2. **Gina's own copy of that page**, published as a separate artifact: https://claude.ai/artifact/TSWHdodsBpUTUtP83sZGQK
+     - Content is unchanged, except the title ("Heat City Explorer (Gina)") and its browser-storage key (`heatx8g`), so its settings don't mix with Dish's.
+     - The downloaded file was read in full before publishing.
+- **Why:** Gina asked which cities show interesting overlaps between buying behaviour and heat, using that page, and for her own editable copy.
+- **Method:**
+  - **Searches:** Dish's "above the usual" measure: each month's total ÷ the median of the same calendar month in the previous 3 years, minus 1 (from 2019-01).
+  - **Heat:** the month's sum of excess degrees above the 1991–2020 p90 (gridMET/ERA5-Land actual temperature), counting **only days whose felt heat is ≥ 78.8 °F** (Dish's "also feels hot" filter). This avoids warm winter days.
+  - **Correlation:** Spearman ρ over 2019-01 to 2025-12 (84 months), leaving out 2026 because of the unexplained nationwide search jump that Dish flagged.
+  - A first pass without the felt-heat filter gave similar values for the warm cities but was confounded by warm winters, e.g. Detroit's February 2024 heat excess with searches −2%.
+- **Result (ρ with heat excess · ρ with the count of such days):**
+  - **Los Angeles 0.58 · 0.59**
+  - Phoenix 0.49 · 0.48
+  - Bakersfield 0.48 · 0.50
+  - Fresno 0.47 · 0.53
+  - San Diego 0.47 · 0.51
+  - **Brownsville 0.47 · 0.47**
+  - San Francisco 0.31 · 0.30
+  - Ann Arbor 0.28 · 0.31
+  - Eugene 0.28 · 0.27
+  - Boston 0.26 · 0.24
+  - Fairbanks 0.19 · 0.19
+  - Detroit 0.18 · 0.18
+- **Notable months (searches vs usual):**
+  - Eugene 2021-06: **+119%**, the largest in any city; heat dome, heat excess 106 °F·days. July back to −1%.
+  - LA 2022-09: +86%.
+  - San Diego 2020-09: +46%.
+  - Fairbanks 2019-07 and 2023-07: +88% and +70%.
+  - Boston 2021-06 and 2025-06: +55% and +66%.
+  - Brownsville 2024-05 (+59%) and 2023-06 (+53%).
+- **Early vs late season:** median search rise in a city's hotter-than-median heat months was **22% for Mar–Jun and 20% for Jul–Oct** across cities. There's no general "first heat" effect: inland cities lean early, coastal cities late.
+- **Reading (Claude's, flagged):**
+  - Private buying tracks heat in the hot inland and southern cities.
+  - In Brownsville, **searches follow heat (0.47) while heat news does not** (A13: news ρ 0.03).
+  - The biggest proportional spikes are in places where heat is rare (Eugene, Fairbanks, Boston): crisis buying.
+- **Caveats:**
+  - Monthly data; "fan" and "AC" are ambiguous terms.
+  - Each Trends file has its own scale.
+  - Search areas are city/metro/state files as in the explorer notes.
+  - No chance test was run; with 84 months, ρ ≈ ±0.2 is within noise.
+  - Correlation, not purchases.
+
+---
+
 ### Analysis A13 · repo survey for topics and case studies (heat + air, not wildfire-led) · 2026-09-28 17:21 EDT · Gina + Claude
 - **What:** A read-only survey of the repo's datasets (both logs, README, processed folders), plus quick checks. **No files written.**
   - Heat datasets read: gridMET/ERA5-Land `temp_<city>_daily.csv`, UTCI `utci_<city>_daily.csv`, `heat_media_<city>.csv`, heat-search raw and processed.
