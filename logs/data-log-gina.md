@@ -32,6 +32,39 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Google Trends · Step 11: heat threshold per city (methods A and B) · 2026-09-29 17:05 EDT · Gina + Claude
+- **What:** Ran `scripts/google-trends/07_heat_threshold.py` (approved by Gina: "ok run the threshold step"). For Boston, San Francisco, Phoenix, Detroit and San Diego:
+  - weekly "air conditioner" searches divided by that year's January-February level (`ratio`), paired with the week's mean daily high (gridMET)
+  - **Method B:** hockey-stick fit (flat, then rising), for all years, before 2026 and 2026 alone, with a 4-week block bootstrap
+  - a within-month heat check
+  - **Method A:** monthly halfway point
+- **Why:** The per-city heat threshold for "Find Your Threshold". Gina chose B as the headline and A as the check, split before-2026 vs 2026.
+- **Input:** `data/raw/google-trends/heat-search-weekly/*_5yr.csv` (Step 10); `data/raw/google-trends/heat-search/` monthly files ("air conditioner" column); `data/raw/gridmet/climateengine/gridmet_tmax_<city>_2016-2026.csv` and `_1991-2020.csv`.
+- **Rows:** 262 weeks per city in → 246 kept (2021 weeks dropped, since 2021 has no Jan-Feb of its own in the file; the last week, 2026-09-27, was dropped for missing temperatures). Monthly: 120 months (2016-2025) + 8 (2026 Jan-Aug).
+- **Output:** `data/processed/google-trends/heat-threshold/weekly_search_temp_<city>.csv` (5), `heat_thresholds.csv` (15 rows).
+- **Results (before 2026):**
+
+  | City | B tipping (90% range) | A halfway | Typical summer high | Within-month ρ (all years) |
+  |---|---|---|---|---|
+  | Boston | 47 °F (43-60) | 66.0 °F | 80.1 °F | 0.75 |
+  | San Francisco | 58 °F (58-59) | 65.8 °F | 68.1 °F | 0.42 |
+  | Phoenix | 70 °F (69-75) | 100.6 °F | 103.8 °F | 0.74 |
+  | Detroit | 51 °F (45-65) | 78.9 °F | 81.7 °F | 0.84 |
+  | San Diego | 70 °F (64-72) | 81.3 °F | 78.8 °F | 0.77 |
+
+  2026 vs before (B): Boston -8 °F (range -21 to +24), SF 0 (0 to +10), Phoenix -1 (-5 to +17), Detroit -16 (-30 to +19), San Diego -6 (-7 to +13).
+- **Findings:**
+  - **The heat check passes everywhere:** within the same month, hotter weeks get more AC searches (ρ 0.42-0.84, shuffle p = 0.001, the smallest possible with 1,000 shuffles). Searches respond to heat, not only to the calendar.
+  - **Method B does not measure a "tipping point" in the intended sense.** It finds where searches first leave their winter floor. That happens in early spring and at cool temperatures (Boston and Detroit around 45-50 °F), long before heat is felt. Binned medians show a gradual climb and then a surge, e.g. Boston before 2026 (ratio by 5 °F bin): 45 °F 1.0 · 50 °F 1.8 · 60 °F 2.5 · 70 °F 3.8 · 75 °F 6.3 · **80 °F 13.2** · 85 °F 14.9. The hockey stick picks the first bend, not the surge.
+  - **Several B estimates and ranges sit on the edge of the search range** (lower edge = the 10th percentile of weekly highs: Boston 39, Detroit 35, SF 58, SD 64, Phoenix 69). So the fit would have gone lower if allowed. This applies especially to all of 2026 and to San Francisco.
+  - **2026 vs before: not distinguishable.** Every shift range includes 0 and spans 10-50 °F. One year (37 weeks) is too little for this method.
+  - Method A lands much closer to "hot" (near each city's typical summer high). The two methods disagree by 8-30 °F, so **B is not usable as the headline as specified.**
+- **Judgment calls:**
+  - All of the method choices listed in the script header were Claude's choices, and Gina approved the plan.
+  - Next: Gina to choose a redefinition (see chat). **Nothing downstream uses these numbers yet.**
+
+---
+
 ### Google Trends · Step 10: weekly "air conditioner" raw files, 5 cities · 2026-09-29 16:36 EDT · Gina + Claude
 - **What:** Added Gina's 5 downloads to `data/raw/google-trends/heat-search-weekly/`, **copied unchanged** under their download names. `cmp` identical to ~/Downloads.
   - `boston_manch_trends_aircon_5yr.csv`: Boston MA-Manchester NH, SHA-256 8104d376…f01b2afd, peak week (100) 2026-05-17
