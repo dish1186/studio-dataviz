@@ -32,6 +32,27 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Analysis A17 · reading the "is ac season starting earlier?" page · 2026-09-29 09:29 EDT · Gina + Claude
+- **What:** Read the shared page https://claude.ai/artifact/7RPZWNU3KsJxqSbHvBYiMf (title "When does AC season start?"; credited to bidisha & gina) in full, and recomputed its season starts from its embedded data. **No files written; page not changed.**
+  - The embedded values match the raw "air conditioner" column of `data/raw/google-trends/heat-search/` (checked for Eugene: all 12 months of 2016 identical).
+  - 11 cities; 128 months (to 2026-08).
+- **Why:** Gina asked for the takeaways and how to read it.
+- **The page's method:** season start = the first month whose searches reach halfway from that year's Jan–Mar low to its peak. City labels show the mean start for 2016–20 and 2021–25, **rounded to a month**.
+- **Recomputed mean start (month index, Jan = 0), 2016–20 → 2021–25:**
+  - Brownsville 4.2→4.0 · Phoenix 4.4→5.0 · Fresno 4.4→4.8 · Bakersfield 4.4→4.2
+  - LA 5.4→5.0 · San Diego 5.6→5.4 · SF 4.4→4.8 · Eugene 5.0→5.0
+  - Boston 4.2→4.6 · Detroit 4.4→4.2 · Fairbanks 4.4→5.0
+  - All changes are within ±0.6 month, in both directions.
+  - **The page's "May → Jun" labels (Phoenix, Fresno, SF, Boston, Fairbanks) come from rounding** (e.g. 4.4 → 4.8), not a one-month shift.
+- **Other patterns:**
+  - Inland and desert cities start in May and peak in June; coastal LA and San Diego start in Jun–Jul and peak Jul–Sep.
+  - **2020** starts in April in Phoenix, Fresno and Bakersfield.
+  - **2023** starts late (July) in Phoenix, Fresno, LA and SF.
+  - **2026** starts in April in 6 cities (Brownsville, Phoenix, Bakersfield, LA, San Diego, SF), the earliest for LA, San Diego and SF. The page itself marks this as the unexplained spring 2026 jump.
+- **Reading (Claude's, flagged):** no evidence that the season starts earlier over 2016–2025. The year-to-year swings (2020 early, 2023 late) are larger than any trend. The causes of 2020 and 2023 were not checked.
+
+---
+
 ### Analysis A16 · is 2026 the highest year for "air conditioner" searches? · 2026-09-28 21:04 EDT · Gina + Claude
 - **What:** Compared **Jan–Sep means** for every year, so the partial 2026 is compared fairly (a Jan–Sep mean leaves out low autumn months). Done for the US file and the 12 city/state heat-search files; also compared summer peak months. **No files written.**
 - **Why:** Gina asked whether 2026 is the highest year; A15 had set 2026 aside as a partial year.
