@@ -32,6 +32,15 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### CDC Tracking · Step 2: daily and weekly HRI ED rates as CSV · 2026-09-30 22:59 EDT · Gina + Claude
+- **What:** Ran `scripts/cdc-tracking/02_daily_weekly_csv.py` (Gina: "make the csv"). It flattens the Step 1 JSON for measures 1238 (daily) and 1237 (weekly) into one row per region and day (or week). Values are copied as given; region states come from the HHS reference.
+- **Output:** `data/processed/cdc-tracking/daily_hri_ed_rate_by_hhs_region.csv` (31,950 rows, 2017-12-31 to 2026-09-29) and `weekly_hri_ed_rate_by_hhs_region.csv` (4,560 rows, weeks ending 2018-01-06 to 2026-09-26; every date is a Saturday).
+- **Units resolved:** **HRI ED visits per 100,000 ED visits (all causes)**, from NSSP syndromic data. CDC's NSSP page for the Heat & Health Tracker describes the same data as "the rate of emergency department (ED) visits associated with heat-related illness ... per 100,000 ED visits by region" (https://www.cdc.gov/nssp/php/partnerships/cdc-heat-health-tracker-uses-nssp-data.html). The API's "per 100,000 population" label doesn't match the values. Descriptions updated.
+- **Also corrected:** the hospitalization file's source link, i=89 → i=88, in 8 description rows and in the Step 1 entry (Gina approved).
+- **Judgment call (Claude's choice, not yet approved):** the weekly date is treated as the week's **last** day (a Saturday labelled "7 Days").
+
+---
+
 ### CDC Tracking · Step 1: heat-related illness measures from the Tracking Network API · 2026-09-30 22:55 EDT · Gina + Claude
 - **What:** Ran `scripts/cdc-tracking/01_download_state_measures.py`. It uses the CDC Tracking Network Data API with the same calls as CDC's R package EPHTrackR, without installing it (Gina chose option 2). It downloads each measure at its geography with no stratification. Responses are saved **unchanged** as JSON in `data/raw/cdc-tracking/measure_<id>_<name>/`. No token (Gina has none yet); 12-second pause between requests; requests sent through curl (Python's urllib failed the HTTPS certificate check on this Mac).
 - **Why:** Gina wants HRI ER visits and mortality data ("i need the daily rates as much as possible"); the Data Explorer was too slow.
@@ -65,7 +74,7 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
   - `footnotes_222222.htm`
   - `General_Information.pdf`
 - Added 8 rows to `data/descriptions/data_descriptions.csv`.
-- **Source:** CDC National Environmental Public Health Tracking Network, Data Explorer, "Hospitalizations for HRI · Annual Number of Hospitalizations for HRI", by state. https://ephtracking.cdc.gov/DataExplorer/?c=35&i=89&m=-1
+- **Source:** CDC National Environmental Public Health Tracking Network, Data Explorer, "Hospitalizations for HRI · Annual Number of Hospitalizations for HRI", by state. https://ephtracking.cdc.gov/DataExplorer/?c=35&i=88&m=-1 (corrected 2026-09-30 from the i=89 link in Gina's message: i=89 is ED visits, i=88 is hospitalizations; the file's footnotes and its exact match with API measure 431 confirm hospitalizations)
 - **Why:** Gina: "push this into the repo as cdc_HRI_hospitalizations_annual and add to the data document its source".
 - **Contents:**
   - 35 states, 2000-2023 (24 years; coverage varies by state).
