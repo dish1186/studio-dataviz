@@ -1083,6 +1083,71 @@ Step · dataset · date · who ran it | What (plain language) | Why | Input file
 - **SHA-256:** page V3 (session copy) `c283796ff99caa235da363068569d16f394e765f5cc995a7773d30c659885edc` · script `96066fedf750c3c07d32bc257a11a192e248e807fa21a40ca67a1f72acf0a83a` · monthly `c380c0c2b2937d5ab314020f92fd064e772ee85a26a06518bee0a011cf08dd04` · yearly `db4b215cc6f422277d9b26bedce0e59c7ee8ce6252eab510c110ec72c3a7a748`
 
 
+
+### Step 1 · Tipping points (searches vs felt heat and smoke) · 2026-09-28 · Dish (asked for it) + Claude
+- **What:** For each city, found the "bend": the level of felt heat (or smoke) above which monthly Google searches stop being flat and start climbing. Fit a hinge model, searches = a + b × max(0, x − k), with k found by grid search and a 90% range from 1,000 bootstrap resamples of months. Compared the bend in °F across cities (absolute trigger?) and ran a within-city test of "hotter than normal here" (relative trigger?). Also checked monthly against weekly data for San Francisco.
+  - **Heat:** y = "air conditioner" + "AC" (the "fan" term left out). x = monthly mean of daily felt-heat high (UTCI °F); also actual tmax (gridMET) as x.
+  - **Smoke:** y = "air purifier". x = the worst PM2.5 day of each month (city daily mean, reference first, low-cost where there's no reference); also the worst visibility day (10 − miles).
+  - **Relative test:** May–Sept months. Searches minus each city's usual month-of-year and year level, correlated with the month's mean felt-heat anomaly (UTCI vs the 1991–2020 normal).
+- **Why:** Dish, after the pin-up: "run the Analysis I haven't run yet … Does Phoenix tip at a higher temperature than Boston? Is the trigger an absolute temperature, or hotter than normal here?"
+- **Input (read only):** `data/processed/google-trends/heat-search/`, `air-search/`, `air-search-weekly/sf_air_purifier_weekly.csv` · `utci/final/utci_<city>_daily.csv` · `gridmet/final/temp_<city>_daily.csv` · `openaq/step05_averages/pm25_<city>_daily.csv` · `metar/final/vis_<city>_daily.csv`
+- **Script:** `scripts/tipping-points/01_breakpoints.py`
+- **Rows:** 11 cities × 126–128 months (heat); 43–121 months (smoke, depending on PM2.5 coverage); SF weekly 336 weeks. Sept 2026 dropped (partial Trends month). UTCI invalid days dropped (UTCI's last valid day is 2026-06-12).
+- **Output:** `data/processed/tipping-points/step01_breakpoints.csv` · `step01_anomaly_test.csv` · `step01_points.json` (points for the mockups)
+- **Result:**
+  - **Heat bends differ by about 25 °F between cities** (felt heat, monthly mean): Boston 54 · Detroit 54 · Eugene 61 · Fairbanks 62 · Los Angeles 75 · Bakersfield 78 · Fresno 78 · Phoenix 79 · Brownsville 80 · San Diego 80 · San Francisco no bend. Many 90% ranges are wide (Phoenix 72–96, Boston 49–73).
+  - A bend beats a straight line clearly (ΔBIC < −6) in 5 of 11 cities (Brownsville, Boston, Detroit, Fairbanks, San Diego), and in more after adjusting searches for each year's level. Elsewhere the curve is only slightly bent.
+  - **Relative trigger: yes, in all 11 cities.** A summer month that felt hotter than normal *for that place* had more searches than usual: r 0.40 (Fairbanks) to 0.70 (Phoenix); every 90% range is above 0.
+  - **Smoke: chronic pollution shows no bend; catastrophic smoke does.** Bakersfield (146 days above 35 µg/m³, worst day 92) and Fresno (122, worst 142): R² ≈ 0.01–0.08. Eugene (30 days, worst 469): R² 0.71, bend at a worst day of 31 µg/m³, carried mostly by Sept 2020 (searches 100, against a median month of 8). SF R² 0.38, Fairbanks 0.40. The visibility version did not beat PM2.5 in any city.
+  - **Granularity (SF):** weekly bend 16 µg/m³ (11–19) vs monthly (2020 onward) 23 (9–23): the same place. Weekly data favors a bend much more strongly (ΔBIC −15 vs +0.4). Monthly locates a bend but is weak evidence for one.
+- **Judgment calls (Claude's choices, flagged to Dish in chat; not yet approved):**
+  - Hinge model and BIC comparison. The grid runs from the 5th to the 90th percentile of x, so a bend at the 90th percentile means "no bend inside the data".
+  - "air conditioner" + "AC" without "fan" (fan also means sports fans and ceiling fans).
+  - Monthly mean of daily felt-heat high as x. It hides single hot days, and the heat bend partly marks "summer has started"; the relative test removes season first for that reason.
+  - Worst day per month for PM2.5 and visibility.
+  - Trends weeks aligned to Sunday starts.
+  - **Caveats (appendix):** Trends heights can't be compared between cities (each is scaled to its own peak); COVID likely co-drives the 2020 air-purifier step; searches are a stand-in for intent, not purchases.
+- **Viz:** mockups page "Where do we tip?" (https://claude.ai/artifact/H2u3sRjmisXjLHiFtFMpXQ, version 1): scale timeline (schematic, dates to verify), heat small multiples, thermometer + relative test, Bakersfield vs Eugene smoke, first-person Eugene 5–20 Sept 2020 strip with placeholder slots for solicited photos and posts. Page source is in the session workspace only.
+- **SHA-256:** script `c6ad365e12cdf98438a91271f409164c4a90f9566f8ebb0eaa35a028872412d8` · breakpoints `f98f7eed67654b9fbea84994f69a65571ec0dd6898ef7f4ef911ef8d7b29c304` · anomaly `501a6d650380160c172d29a46fadf62da4bc79d7da5dcd63297c0d81226cc77e` · points `76993b09a19b84a5e248df31c04dcb9b0af69c3513c9ea524b201d6b015d3394` · page V1 `d9481941789600a0ba6d917471e0407360c3855d935cf0d19f21917dc99289a3`
+
+
+### Step 2 · Tipping points (search spikes first) · 2026-09-28 · Dish (asked for it) + Claude
+- **What:** Started from the reaction instead of fitting a model. For each city, took one Google Trends term exactly as downloaded ("air purifier" from the air-search files, "air conditioner" from the heat-search files), computed each month's jump (this month minus last month), and kept the **3 biggest jumps** per city and term as its spikes. For each spike month, looked up the worst day the city measured that month: the hottest felt-heat day (UTCI high, and °F above the 1991–2020 normal for that date), or the worst PM2.5 day (city daily mean, reference first). These are set against official lines only for display: UTCI "strong heat stress" 89.6 °F; EPA "unhealthy for sensitive groups" 35.5 µg/m³ and the WHO 2021 24-hour guideline 15 µg/m³.
+- **Why:** Dish: "im not following the math, and im worried its too much manipulation of data, what if you started with mapping the slope of google searches and see where it spikes?" This replaces a category-based draft of Step 2 that errored and was deleted before it wrote any files.
+- **Input (read only):** `data/processed/google-trends/heat-search/`, `air-search/` · `utci/final/utci_<city>_daily.csv` · `openaq/step05_averages/pm25_<city>_daily.csv`
+- **Script:** `scripts/tipping-points/02_search_spikes.py`
+- **Rows:** 11 cities × 2 terms × 128 months (Jan 2016 – Aug 2026; Sept 2026 dropped as partial) → 66 spikes (33 per term). Nothing removed.
+- **Output:** `data/processed/tipping-points/step02_series.csv` (every month, with its jump and spike rank) · `step02_spikes.csv`
+- **Result:**
+  - **Heat:** all 33 AC spikes came in a month with a felt-heat day **7–36 °F above normal** for that date. The hottest felt day ranged from 79 °F (San Francisco) to 123 °F (Phoenix). 29 of 33 passed the UTCI 89.6 °F line; the 4 that didn't are San Francisco ×3 and Boston May 2020.
+  - **Smoke:** 32 spikes have PM2.5 data (Brownsville July 2020 has none). **15 came with a local day past the EPA line**, and they line up with smoke events (Nov 2018, Aug–Sept 2020, June 2023, Jan 2025 LA, Alaska summers; event names from memory, to verify). **17 came with clean local air (worst day 10–27)**: 15 of them in March–April 2026, when the jump was top-3 in 9 of 11 cities at once. Cause not known; to check against news.
+  - Bakersfield: 146 days past the EPA line, and only one spike (Nov 2018, 92 µg/m³) matching bad local air.
+- **Judgment calls (Claude's choices, flagged to Dish in chat; not yet approved):**
+  - Top 3 jumps per city (no threshold).
+  - One term per topic: "air conditioner" rather than "AC" (AC is ambiguous); "air purifier" as in Gina's A4.
+  - Worst day of the month as "what happened".
+  - UTCI 89.6 °F as the official heat line. There's no national heat-advisory temperature (NWS criteria are set by each office), so this is a scientific stress category, not an alert level.
+- **Viz:** Mockup F "One official line. Eleven different reactions." added to https://claude.ai/artifact/H2u3sRjmisXjLHiFtFMpXQ (version 2): search lines per city with spikes marked, plus spike months against the official line, toggling heat and smoke. Mockup C headline changed to name only cities where the Step 1 bend beat a straight line (Boston, Brownsville).
+- **SHA-256:** 02_search_spikes.py `a888abf0f241f078ec3364074612149abea4ff264a21b8b7e9da7e4d5837e7b7` · step02_series.csv `564e0619d1b121a29c15ecc57acfae36a79310050d1c5cf8150d742376e1cb91` · step02_spikes.csv `83dcfca4e48f0a14dd22fedc379c1fc7c72dc1109f5efcebc39d3271c531f526` · tipping-points.html `97f8664d0c967d5238f385a63d4fc99607903f7aed5f402cc5d74f51a90a32b4`
+
+
+### Note N2 · the March–April 2026 air-purifier jump · 2026-09-28 · Dish + Claude
+- **What:** Checked possible causes of the air-purifier jump that is top-3 in 9 of 11 cities in March–April 2026 with no bad local air (Step 2). Dish pasted a list of candidate causes; each was checked against the web and, where possible, our own data. **No files written.**
+- **Checks:**
+  - **Record-warm March, early pollen: supported.**
+    - Web: the US was about 7 °F above average in March 2026 (Washington Post), and the pollen season started early (AccuWeather, Climate Central).
+    - Our data: March 2026 was the warmest March of 2016–2026 in felt heat (mean UTCI anomaly) in 6 of 11 cities (Bakersfield, Fresno, San Francisco, Los Angeles, Phoenix, San Diego) and in the top 4 in 10 of 11 (+2.5 to +14.2 °F). Fairbanks was the exception: its coldest March of the period (−11.6 °F).
+    - Pollen itself is not in our data.
+  - **Product launches: partly supported.**
+    - Dyson unveiled its Find+Follow Purifier Cool on 14 April 2026, and a HushJet Purifier Compact came out around the same time (tech press).
+    - The pasted "1,400% surge" was not found.
+    - "Smart air purifier searches +656% year over year" appears only on a gadget blog quoting a keyword tool. Weak source; not used.
+  - **"Updated EPA indoor air guidelines in early 2026": not supported.** EPA's pages say the federal government has not published guidelines or standards for air cleaners. "Indoor air can be 2–5× worse than outdoor" is a long-standing EPA line, not a 2026 change. Not used.
+  - Also found: wildfires in southern Georgia in April 2026, with purifier searches rising in nearby states. That's outside our cities.
+- **Framing (Dish):** two dimensions drive purifier searches. **Pull:** heat, smoke and health (warm spring, pollen). **Push:** marketing and new technology (launches).
+- **Viz:** Mockup F and H wording updated in https://claude.ai/artifact/H2u3sRjmisXjLHiFtFMpXQ (version 7): "cause not yet known" → record-warm March, early pollen and product launches.
+- **Sources:** washingtonpost.com/weather/interactive/2026/spring-flowers-blooming-leaves-out-record-warmth/ · accuweather.com (2026 US Allergy Forecast) · climatecentral.org/climate-matters/2026-allergy-season · digit.in (Dyson Find+Follow announcement) · vacuumwars.com/dyson-hushjet-purifier-compact/ · epa.gov/indoor-air-quality-iaq/guide-air-cleaners-home · the-gadgeteer.com/2026/05/15/ (weak source)
+
 ---
 **Actual-temperature status (2026-09-27): done for all 12 cities.** gridMET Steps 1–5b for the 11 continental viz cities (D10; 16 pulled); **Fairbanks from ERA5-Land** (D15, ERA5-Land Steps 1–3). Final files for all 12 in `data/processed/gridmet/final/` (`temp_<city>_daily.csv`, 3,920 rows 2016-01-01 → 2026-09-24, join row for row with UTCI; `_normals.csv`; `_monthly.csv`); the folder name is gridMET but Fairbanks' source is ERA5-Land (blank 2026-09-22 → 09-24). End date settled (D9). Open: N1 (boundary file vs OpenAQ, appendix note); optional PAFA station cross-check for Fairbanks; March 2026 station check.
 
