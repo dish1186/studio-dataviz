@@ -32,6 +32,16 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### CDC Tracking · Step 3: annual state measures as CSV · 2026-09-30 23:06 EDT · Gina + Claude
+- **What:** Ran `scripts/cdc-tracking/03_annual_state_csv.py` (Gina: "turn the three annual files into simple CSVs"). It flattens the Step 1 JSON (`4_getCoreHolder_all.json`; raw files unchanged) into one row per state and year: state, state_fips, year, value, suppressed. Suppressed values are left **blank, not 0**.
+- **Output** (`data/processed/cdc-tracking/`):
+  - `annual_ed_visits_hri_by_state.csv`: measure 438, 32 states, 2000-2023, 512 rows, none suppressed
+  - `annual_heat_deaths_by_state.csv`: measure 370, 50 states + DC, 2000-2022, 1,173 rows, **605 suppressed**
+  - `annual_hospitalizations_hri_by_state.csv`: measure 431, 35 states, 2000-2023, 674 rows; **identical** to the Data Explorer download (all 674 state-years)
+- **For our cities' states (deaths):** California 0 of 23 years suppressed (e.g. 160 in 2022); Arizona 0 (517 in 2022); Michigan 13 suppressed (16 in 2022); **Massachusetts 18 of 23 suppressed**, including 2020-2022. So heat-death trends for Boston's state are mostly unavailable.
+
+---
+
 ### CDC Tracking · Step 2: daily and weekly HRI ED rates as CSV · 2026-09-30 22:59 EDT · Gina + Claude
 - **What:** Ran `scripts/cdc-tracking/02_daily_weekly_csv.py` (Gina: "make the csv"). It flattens the Step 1 JSON for measures 1238 (daily) and 1237 (weekly) into one row per region and day (or week). Values are copied as given; region states come from the HHS reference.
 - **Output:** `data/processed/cdc-tracking/daily_hri_ed_rate_by_hhs_region.csv` (31,950 rows, 2017-12-31 to 2026-09-29) and `weekly_hri_ed_rate_by_hhs_region.csv` (4,560 rows, weeks ending 2018-01-06 to 2026-09-26; every date is a Saturday).
