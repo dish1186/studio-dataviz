@@ -32,6 +32,24 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Visualization V7 · version 1: "Heat Layers" (Boston, Detroit, Eugene, Bakersfield) · 2026-10-01 18:11 EDT · Gina + Claude
+- **What:** A published page, https://claude.ai/artifact/NHvDgNfNhjAE5jpXWennHo (private until shared). Four vertical temperature lines (10-115 °F in 5° rows). In each row there are translucent overlapping circles, one per layer, styled after Gina's reference image (layered translucent circles, saturated colour, dark core dots, circular legend icons, area strip at the bottom):
+  - **Temperature / felt heat:** circle size = how many weeks in the window had their weekly high (or felt heat) in that row.
+  - **Ice cream searches, AC searches, ER visits:** circle size = how far above the city's median week their average within-city percentile is, in weeks whose high fell in that row (none = typical or below); a solid dot = average in the top fifth.
+  - **Selected week:** a dark dot at the weekly high, a hollow coral dot at felt heat, and rings for ice cream, AC and ER sized by this week's percentile, with a numeric readout below.
+  - **Controls:** each layer toggles from the legend; window "past 52 weeks" (default) or "all 5 years"; a bottom strip of the four cities' weekly highs; a slider with Play; arrow keys; hover on a row for counts and average percentiles.
+- **Data:** new `scripts/viz/heat_layers_data.py` → `data/processed/viz/heat_layers_weekly.csv` (1,044 rows: 4 cities × 261 weeks). Inputs, all read only: gridMET daily maxima; UTCI final daily; Google Trends weekly ice cream (Step 16) and AC (Step 10); monthly AC for Eugene and Bakersfield; CDC weekly HRI ED rate by HHS region (CDC Tracking Step 2).
+- **Region stand-ins (Gina: "do by region where the city-level data isn't available"):** ER uses HHS Region 1 (Boston), 5 (Detroit), 10 (Eugene) and 9 (Bakersfield). AC for Eugene and Bakersfield is **monthly**, since there are no weekly files.
+- **Page source kept in the repo:** `viz/heat-layers/` (template, data.json, build.py), so it survives scratch-space loss.
+- **Judgment calls (Claude's choice, not yet approved):**
+  - the colour per layer: ochre temperature, coral felt heat, magenta ice cream, teal AC, indigo ER
+  - the above-median scaling and the top-fifth core dots
+  - the 52-week default window
+  - the default week (2025-06-22)
+  - the play speed
+
+---
+
 ### Google Trends · Step 16: weekly "ice cream" raw files, 7 metros · 2026-10-01 00:11 EDT · Gina + Claude
 - **What:** Added Gina's 7 weekly downloads to `data/raw/google-trends/icecream-search-weekly/`, **copied unchanged** (byte-identical; the San Francisco file name keeps its space, as exported):
   - `boston_ice_5yr.csv`: Boston MA-Manchester NH, SHA-256 19fddd21…fa7c0f00, peak (100) 2026-06-28; monthly means vs the monthly file r = 0.995 (59 months)

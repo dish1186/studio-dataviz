@@ -1,0 +1,220 @@
+<title>Heat Layers</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@400;500;600&family=IBM+Plex+Mono:wght@400&display=swap">
+<style>
+/* Layout: four vertical temperature lines (one per city) built from stacked 5 °F rows; each row holds translucent
+   overlapping circles, one per layer; a time strip with play at the bottom. Colour carries the layer, nothing else. */
+:root{
+  --bg:#f3f3f1; --stripe:#e8e8e5; --ink:#1d1d22; --ink-2:#5c5c63; --ink-3:#9a9aa1; --line:#d6d6d2;
+  --temp:#c8961f; --felt:#e4572e; --ice:#d61f7c; --ac:#0f8b9b; --er:#2b1d63;
+  --blend:multiply; --sans:"Archivo Narrow","Avenir Next Condensed","Helvetica Neue",Arial,sans-serif; --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#121315; --stripe:#191a1d; --ink:#ececee; --ink-2:#a7a7ae; --ink-3:#6c6c74; --line:#2a2b30;
+  --temp:#e2b13a; --felt:#ff6e46; --ice:#ff4fa0; --ac:#2fc1d2; --er:#9b87ff; --blend:screen; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#121315; --stripe:#191a1d; --ink:#ececee; --ink-2:#a7a7ae; --ink-3:#6c6c74; --line:#2a2b30;
+  --temp:#e2b13a; --felt:#ff6e46; --ice:#ff4fa0; --ac:#2fc1d2; --er:#9b87ff; --blend:screen; color-scheme:dark}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);margin:0;font-size:15px;line-height:1.45}
+.wrap{max-width:1100px;margin:0 auto;padding-inline:20px;padding-block:28px 40px;display:flex;flex-direction:column;gap:18px}
+h1{font-weight:600;font-size:clamp(30px,4.4vw,46px);letter-spacing:.01em;margin:0;line-height:1}
+.lede{color:var(--ink-2);max-width:66ch;margin:8px 0 0}
+.mono{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3)}
+.legend{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center}
+.lg{display:flex;align-items:center;gap:8px;background:none;border:0;padding:4px 2px;color:var(--ink);font:inherit;font-size:14px;cursor:pointer}
+.lg .ic{width:22px;height:22px;border-radius:50%;border:2px solid currentColor;display:grid;place-items:center;position:relative}
+.lg .ic::after{content:"";width:8px;height:8px;border-radius:50%;background:currentColor}
+.lg[aria-pressed=false]{opacity:.35}
+.lg[aria-pressed=false] .ic::after{background:transparent}
+.lg span.t{color:var(--ink)}
+.seg{display:inline-flex;gap:4px;margin-left:auto}
+.seg button{font:inherit;font-size:13px;border:1px solid var(--line);background:transparent;color:var(--ink-2);padding:4px 10px;border-radius:999px;cursor:pointer}
+.seg button[aria-pressed=true]{border-color:var(--ink);color:var(--ink)}
+.stage{position:relative}
+svg{display:block;width:100%;height:auto}
+svg text{font-family:var(--sans)}
+.blend{mix-blend-mode:var(--blend)}
+.tip{position:absolute;pointer-events:none;background:var(--ink);color:var(--bg);font-size:13px;line-height:1.4;padding:7px 9px;border-radius:6px;transform:translate(-50%,calc(-100% - 10px));width:max-content;max-width:240px;z-index:3}
+.time{display:flex;align-items:center;gap:12px}
+.play{font:inherit;font-weight:500;border:1px solid var(--ink);background:transparent;color:var(--ink);border-radius:999px;padding:5px 14px;cursor:pointer;min-width:76px}
+.time input{flex:1;min-width:0;accent-color:var(--ice)}
+.wk{font-family:var(--mono);font-size:13px;min-width:15ch;text-align:right}
+button:focus-visible,input:focus-visible{outline:2px solid var(--ac);outline-offset:2px}
+.foot{font-size:12.5px;color:var(--ink-3);max-width:95ch;margin:0}
+</style>
+
+<div class="wrap">
+  <header>
+    <div class="mono">Heat · what pushes people to act?</div>
+    <h1>Heat layers</h1>
+    <p class="lede">Each column is a temperature line from 10 to 115 °F. In every 5° row, circles grow with how often that heat occurred and with how far above normal people searched or sought care in those weeks. The dark dot is the selected week.</p>
+  </header>
+
+  <div class="legend" id="legend"></div>
+
+  <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+    <span class="mono">Circles built from</span>
+    <div class="seg" role="group" aria-label="Window" style="margin-left:0">
+      <button type="button" id="w52" aria-pressed="true">Past 52 weeks</button>
+      <button type="button" id="wall" aria-pressed="false">All 5 years</button>
+    </div>
+  </div>
+
+  <div class="stage" id="stagebox">
+    <svg id="grid" viewBox="0 0 960 760" role="img" aria-label="Layered heat circles on four vertical temperature lines"></svg>
+    <div class="tip" id="tip" hidden></div>
+  </div>
+
+  <svg id="strip" viewBox="0 0 960 120" role="img" aria-label="Weekly high temperature, four cities, with the selected week"></svg>
+  <div class="time">
+    <button type="button" class="play" id="play">Play</button>
+    <input type="range" id="wkr" min="0" max="0" step="1" aria-label="Week">
+    <span class="wk" id="wklab"></span>
+  </div>
+
+  <p class="foot">Weekly highs: gridMET daily maximum temperature, 7-day mean. Felt heat: UTCI daily maximum, 7-day mean (ends 2026-06-12). Searches: Google Trends "ice cream" and "air conditioner" by metro (Eugene and Bakersfield AC are monthly values). ER: heat-related illness ED visits per 100,000 ED visits, CDC Tracking Network, weekly, by HHS region (Boston Region 1, Detroit Region 5, Eugene Region 10, Bakersfield Region 9). Circle size for searches and ER = how far above the city's typical (median) week their average within-city percentile is in the weeks whose high fell in that row (no circle = typical or below; a solid dot = average in the top fifth); for temperature and felt heat = how many weeks fell in that row. Weeks of 2021-09-26 to 2026-09-20.</p>
+</div>
+
+<script>
+const D = __DATA__;
+const CITY = [["boston","Boston"],["detroit","Detroit"],["eugene","Eugene"],["bakersfield","Bakersfield"]];
+const LAYERS = [["temp","Temperature"],["felt","Felt heat"],["ice","Ice cream searches"],["ac","AC searches"],["er","ER visits"]];
+const OFF = {temp:-46, felt:-24, ice:0, ac:24, er:46};
+const on = {temp:true, felt:true, ice:true, ac:true, er:true};
+const N = D.weeks.length, $ = id => document.getElementById(id), R = Math.round;
+let wi = D.weeks.indexOf("2025-06-22"); if (wi < 0) wi = N - 1;
+let windowAll = false, timer = null;
+const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const fmt = s => new Date(s + "T12:00:00").toLocaleDateString("en-US", {month:"short", day:"numeric", year:"numeric"});
+
+// geometry
+const T0 = 10, T1 = 115, STEP = 5, ROWS = (T1 - T0) / STEP, TOP = 70, ROWH = 31, LEFT = 60, COLW = (960 - LEFT - 10) / 4, RMAX = 30;
+const yT = t => TOP + (T1 - Math.max(T0, Math.min(T1, t))) / (T1 - T0) * (ROWS * ROWH);
+const binOf = t => Math.min(ROWS - 1, Math.max(0, Math.floor((t - T0) / STEP)));
+const cx = i => LEFT + COLW * i + COLW / 2;
+
+// legend toggles
+LAYERS.forEach(([k, label]) => {
+  const b = document.createElement("button"); b.className = "lg"; b.type = "button"; b.style.color = `var(--${k})`;
+  b.setAttribute("aria-pressed", "true"); b.innerHTML = `<span class="ic"></span><span class="t">${label}</span>`;
+  b.onclick = () => { on[k] = !on[k]; b.setAttribute("aria-pressed", on[k]); draw(); };
+  $("legend").appendChild(b);
+});
+const setWin = all => { windowAll = all; $("w52").setAttribute("aria-pressed", !all); $("wall").setAttribute("aria-pressed", all); draw(); };
+$("w52").onclick = () => setWin(false); $("wall").onclick = () => setWin(true);
+
+// above-normal share: 0 at or below the city's median week, 1 at its most extreme
+const lift = (m, n) => n ? Math.max(0, (m - 0.5) / 0.5) : 0;
+function cells(c) {
+  const d = D.cities[c], lo = windowAll ? 0 : Math.max(0, wi - 51), hi = wi;
+  const B = Array.from({length: ROWS}, () => ({n: 0, nf: 0, ice: [], ac: [], er: []}));
+  for (let i = lo; i <= hi; i++) {
+    if (d.high_F[i] != null) { const b = B[binOf(d.high_F[i])]; b.n++;
+      if (d.icecream_pct[i] != null) b.ice.push(d.icecream_pct[i]);
+      if (d.ac_pct[i] != null) b.ac.push(d.ac_pct[i]);
+      if (d.er_pct[i] != null) b.er.push(d.er_pct[i]); }
+    if (d.felt_F[i] != null) B[binOf(d.felt_F[i])].nf++;
+  }
+  const mx = Math.max(1, ...B.map(b => b.n)), mf = Math.max(1, ...B.map(b => b.nf));
+  const mean = a => a.length ? a.reduce((s, x) => s + x, 0) / a.length : 0;
+  return B.map(b => ({n: b.n, nf: b.nf, temp: b.n / mx, felt: b.nf / mf,
+    ice: lift(mean(b.ice), b.ice.length), ac: lift(mean(b.ac), b.ac.length), er: lift(mean(b.er), b.er.length),
+    icem: mean(b.ice), acm: mean(b.ac), erm: mean(b.er)}));
+}
+
+let lastCells = {};
+function draw() {
+  $("wkr").value = wi; $("wklab").textContent = "Week of " + fmt(D.weeks[wi]);
+  let g = "";
+  for (let r = 0; r < ROWS; r++) if (r % 2 === 0) g += `<rect x="0" y="${TOP + r * ROWH}" width="960" height="${ROWH}" fill="var(--stripe)"/>`;
+  for (let t = T0; t <= T1; t += 10) g += `<text x="${LEFT - 14}" y="${yT(t) + 4}" text-anchor="end" font-size="12" fill="var(--ink-3)">${t}°</text>`;
+  CITY.forEach(([c, name], i) => {
+    const x = cx(i), d = D.cities[c], C = cells(c); lastCells[c] = C;
+    g += `<text x="${x}" y="26" text-anchor="middle" font-size="19" font-weight="600" fill="var(--ink)">${name}</text>`;
+    g += `<text x="${x}" y="45" text-anchor="middle" font-size="11.5" fill="var(--ink-3)">ER: HHS ${d.region}${d.ac_res === "monthly" ? " · AC monthly" : ""}</text>`;
+    g += `<line x1="${x}" y1="${TOP}" x2="${x}" y2="${TOP + ROWS * ROWH}" stroke="var(--line)" stroke-width="1"/>`;
+    g += `<g class="blend">`;
+    C.forEach((cell, r) => {
+      const y = TOP + (ROWS - 1 - r) * ROWH + ROWH / 2;
+      ["temp", "felt", "ice", "ac", "er"].forEach(k => {
+        if (!on[k] || !cell[k] || (k !== "felt" && !cell.n) ) return;
+        const rr = Math.max(2, RMAX * Math.sqrt(cell[k]));
+        g += `<circle cx="${x + OFF[k]}" cy="${y}" r="${rr.toFixed(1)}" fill="var(--${k})" fill-opacity=".2" stroke="var(--${k})" stroke-opacity=".6" stroke-width="1"/>`;
+        if (k !== "temp" && k !== "felt" && cell[k + "m"] >= 0.8) g += `<circle cx="${x + OFF[k]}" cy="${y}" r="3.6" fill="var(--${k})"/>`;
+        if ((k === "temp" || k === "felt") && cell[k] >= 0.85) g += `<circle cx="${x + OFF[k]}" cy="${y}" r="3" fill="var(--${k})"/>`;
+      });
+    });
+    g += `</g>`;
+    C.forEach((cell, r) => { const y = TOP + (ROWS - 1 - r) * ROWH; g += `<rect class="cell" data-c="${c}" data-r="${r}" x="${x - COLW / 2 + 4}" y="${y}" width="${COLW - 8}" height="${ROWH}" fill="transparent"/>`; });
+    // the selected week
+    const hiF = d.high_F[wi], fe = d.felt_F[wi];
+    if (hiF != null) {
+      const y = yT(hiF);
+      [["er", d.er_pct[wi], 26], ["ac", d.ac_pct[wi], 20], ["ice", d.icecream_pct[wi], 14]].forEach(([k, p, base]) => {
+        if (on[k] && p != null) g += `<circle cx="${x}" cy="${y}" r="${(6 + base * p).toFixed(1)}" fill="none" stroke="var(--${k})" stroke-width="${1.2 + 2.2 * p}"/>`;
+      });
+      if (on.felt && fe != null) g += `<circle cx="${x}" cy="${yT(fe)}" r="5" fill="var(--bg)" stroke="var(--felt)" stroke-width="2.2"/>`;
+      if (on.temp) g += `<circle cx="${x}" cy="${y}" r="5.5" fill="var(--ink)"/>`;
+      g += `<text x="${x + 40}" y="${y + 4}" font-size="13" font-weight="600" fill="var(--ink)">${R(hiF)}°</text>`;
+      if (on.felt && fe != null) g += `<text x="${x + 40}" y="${y + 19}" font-size="11.5" fill="var(--felt)">feels ${R(fe)}°</text>`;
+    }
+    // this week, as numbers
+    const yb = TOP + ROWS * ROWH + 26;
+    const pc = p => p == null ? "–" : R(p * 100) + "th";
+    [["ice", "ice cream", pc(d.icecream_pct[wi])], ["ac", "AC", pc(d.ac_pct[wi])], ["er", "ER", d.er[wi] == null ? "–" : R(d.er[wi]) + " /100k"]].forEach(([k, l, v], j) => {
+      if (!on[k]) return;
+      g += `<circle cx="${x - 52}" cy="${yb + j * 18 - 4}" r="4" fill="var(--${k})"/><text x="${x - 42}" y="${yb + j * 18}" font-size="12.5" fill="var(--ink-2)">${l}</text><text x="${x + 58}" y="${yb + j * 18}" text-anchor="end" font-size="12.5" font-family="var(--mono)" fill="var(--ink)">${v}</text>`;
+    });
+  });
+  g += `<text x="${LEFT - 14}" y="${TOP + ROWS * ROWH + 26}" text-anchor="end" font-size="11" fill="var(--ink-3)">this week</text>`;
+  g += `<text x="${LEFT - 14}" y="${TOP + ROWS * ROWH + 40}" text-anchor="end" font-size="11" fill="var(--ink-3)">percentile</text>`;
+  $("grid").innerHTML = g;
+  drawStrip();
+}
+
+// bottom strip: weekly highs of the four cities, layered, with the selected week
+function drawStrip() {
+  const W = 960, H = 120, L = 10, Rr = 10, top = 8, bot = 96;
+  const x = i => L + i / (N - 1) * (W - L - Rr), y = t => bot - (t - 10) / 105 * (bot - top);
+  let g = "";
+  CITY.forEach(([c], k) => {
+    const v = D.cities[c].high_F; let p = `M${x(0)} ${bot}`;
+    v.forEach((t, i) => { if (t != null) p += ` L${x(i).toFixed(1)} ${y(t).toFixed(1)}`; });
+    p += ` L${x(N - 1)} ${bot} Z`;
+    g += `<path d="${p}" fill="var(--ink-3)" fill-opacity="${0.12 + k * 0.05}" stroke="var(--ink-3)" stroke-opacity=".5" stroke-width=".8"/>`;
+  });
+  [2022, 2023, 2024, 2025, 2026].forEach(yr => { const i = D.weeks.findIndex(w => w.startsWith(yr + "-01")); if (i >= 0) g += `<line x1="${x(i)}" y1="${top}" x2="${x(i)}" y2="${bot}" stroke="var(--line)"/><text x="${x(i) + 4}" y="${H - 8}" font-size="11.5" fill="var(--ink-3)">${yr}</text>`; });
+  const lo = windowAll ? 0 : Math.max(0, wi - 51);
+  g += `<rect x="${x(lo)}" y="${top}" width="${Math.max(1, x(wi) - x(lo))}" height="${bot - top}" fill="var(--ice)" fill-opacity=".07"/>`;
+  g += `<line x1="${x(wi)}" y1="${top - 4}" x2="${x(wi)}" y2="${bot}" stroke="var(--ink)" stroke-width="1.5"/>`;
+  $("strip").innerHTML = g;
+}
+
+// controls
+$("wkr").max = N - 1;
+$("wkr").addEventListener("input", () => { wi = +$("wkr").value; stop(); draw(); });
+function stop() { if (timer) { clearInterval(timer); timer = null; $("play").textContent = "Play"; } }
+$("play").onclick = () => {
+  if (timer) return stop();
+  if (wi >= N - 1) wi = 0;
+  $("play").textContent = "Pause";
+  timer = setInterval(() => { wi++; if (wi >= N - 1) { wi = N - 1; stop(); } draw(); }, 160);
+};
+$("strip").addEventListener("click", ev => { const b = $("strip").getBoundingClientRect(); wi = Math.max(0, Math.min(N - 1, R((ev.clientX - b.left) / b.width * (N - 1)))); stop(); draw(); });
+
+// hover on a row
+const tip = $("tip");
+$("grid").addEventListener("mousemove", ev => {
+  const t = ev.target.closest(".cell"); if (!t) { tip.hidden = true; return; }
+  const c = t.dataset.c, r = +t.dataset.r, cell = lastCells[c][r], lo = T0 + r * STEP, name = CITY.find(x => x[0] === c)[1];
+  const p = v => R(v * 100) + "th";
+  tip.innerHTML = `<b>${name} · ${lo}–${lo + STEP}°F</b><br>${cell.n} week${cell.n === 1 ? "" : "s"} with highs here, ${cell.nf} felt this hot` +
+    (cell.n ? `<br>avg percentile: ice cream ${p(cell.icem)}, AC ${p(cell.acm)}, ER ${p(cell.erm)}` : "");
+  const b = $("stagebox").getBoundingClientRect(); tip.style.left = (ev.clientX - b.left) + "px"; tip.style.top = (ev.clientY - b.top) + "px"; tip.hidden = false;
+});
+$("grid").addEventListener("mouseleave", () => tip.hidden = true);
+document.addEventListener("keydown", ev => { if (ev.target.tagName === "INPUT") return; if (ev.key === "ArrowRight") { wi = Math.min(N - 1, wi + 1); stop(); draw(); } if (ev.key === "ArrowLeft") { wi = Math.max(0, wi - 1); stop(); draw(); } });
+draw();
+</script>
