@@ -1,0 +1,22 @@
+eugene_event_2026-08-03
+  AutoModerator: 5
+  Eugene-ModTeam: 1
+eugene_base_2024-08-05
+  Eugene-ModTeam: 5
+  sneakpeekbot: 1
+  Fauster: 1
+  haikusbot: 1
+  AmputatorBot: 1
+eugene_base_2025-08-04
+  Eugene-ModTeam: 12
+  Fauster: 2
+  SokkaHaikuBot: 1
+bakersfield_event_2024-12-02
+  AutoModerator: 2
+  Bakersfield-ModTeam: 1
+bakersfield_base_2023-12-04
+  VettedBot: 2
+  Bakersfield-ModTeam: 1
+bakersfield_base_2025-12-01
+  Bakersfield-ModTeam: 1
+  AutoModerator: 1

@@ -1,0 +1,13 @@
+window,city,week_type,kind,raw_rows,duplicate,outside_window,removed_deleted,bot,empty_after_clean,kept,removed_share_of_week
+eugene_event_2026-08-03,Eugene,event,posts,360,0,62,131,0,0,167,0.44
+eugene_event_2026-08-03,Eugene,event,comments,5815,0,944,739,6,54,4072,0.152
+eugene_base_2024-08-05,Eugene,baseline,posts,373,0,69,84,0,0,220,0.276
+eugene_base_2024-08-05,Eugene,baseline,comments,9135,0,1943,466,9,45,6672,0.065
+eugene_base_2025-08-04,Eugene,baseline,posts,379,0,98,92,0,0,189,0.327
+eugene_base_2025-08-04,Eugene,baseline,comments,6605,0,1521,404,15,36,4629,0.079
+bakersfield_event_2024-12-02,Bakersfield,event,posts,150,0,27,52,0,0,71,0.423
+bakersfield_event_2024-12-02,Bakersfield,event,comments,1991,0,421,105,3,4,1458,0.067
+bakersfield_base_2023-12-04,Bakersfield,baseline,posts,112,0,28,30,0,0,54,0.357
+bakersfield_base_2023-12-04,Bakersfield,baseline,comments,1386,0,349,30,3,6,998,0.029
+bakersfield_base_2025-12-01,Bakersfield,baseline,posts,98,0,14,38,0,0,46,0.452
+bakersfield_base_2025-12-01,Bakersfield,baseline,comments,1123,0,124,36,2,6,955,0.036
