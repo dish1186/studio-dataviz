@@ -50,6 +50,7 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
   - No duplicate area-time rows.
   - **Measure 431 matches the Data Explorer download** (`data/raw/cdc_HRI_hospitalizations_annual/`) in all 674 state-years.
   - Peak daily rates line up with known heat waves: Region 1 (incl. Boston) 2025-06-24, Region 5 (incl. Detroit) 2026-07-01 and 2025-06-23, Region 9 (incl. Phoenix, SF, San Diego) 2024-07-11 and 2023-07-20.
+- **Added afterwards:** the PDF `data/raw/cdc-tracking/reference/HHS Regional Offices _ HHS.gov.pdf`, saved by Gina from HHS.gov and copied unchanged (`cmp` identical).
 - **Flags (not yet resolved):**
   - **Rate denominator:** CDC labels the daily and weekly rates "per 100,000 population", but values reach 6,737 (Region 1 peak 1,994). That is implausible per population and looks like a rate per 100,000 ED visits. To verify in the measure's metadata before any use.
   - **HHS regions, not cities:** Phoenix, San Francisco and San Diego are all in Region 9. Region definitions are in `data/raw/cdc-tracking/reference/hhs_regions.md` (from HHS.gov; PDF to be added by Gina). Gina chose not to add the Census-regions page (NCHS), which uses different regions.

@@ -24,4 +24,4 @@ These are **HHS regions**, not the U.S. Census Bureau's 4 regions and 9 division
 - Detroit → Region 5
 - Phoenix, San Francisco and San Diego → Region 9 (all the same region)
 
-**PDF copy:** `HHS Regional Offices _ HHS.gov.pdf` in this folder, if saved. HHS.gov blocks automated downloads, so the PDF has to be saved by hand from the browser.
+**PDF copy:** `HHS Regional Offices _ HHS.gov.pdf` in this folder, saved from the browser by Gina on 2026-09-30 (HHS.gov blocks automated downloads).
