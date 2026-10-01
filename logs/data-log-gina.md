@@ -32,6 +32,29 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### CDC HRI hospitalizations · Step 1: raw annual state file · 2026-09-30 22:24 EDT · Gina + Claude
+- **What:** Added Gina's download `~/Downloads/download.zip` (SHA-256 386742d5…cf85) to `data/raw/cdc_HRI_hospitalizations_annual/`, unzipped. The 3 files are **copied unchanged** (`cmp` identical to the zip contents):
+  - `data_222222.csv` (674 rows + header)
+  - `footnotes_222222.htm`
+  - `General_Information.pdf`
+- Added 8 rows to `data/descriptions/data_descriptions.csv`.
+- **Source:** CDC National Environmental Public Health Tracking Network, Data Explorer, "Hospitalizations for HRI · Annual Number of Hospitalizations for HRI", by state. https://ephtracking.cdc.gov/DataExplorer/?c=35&i=89&m=-1
+- **Why:** Gina: "push this into the repo as cdc_HRI_hospitalizations_annual and add to the data document its source".
+- **Contents:**
+  - 35 states, 2000-2023 (24 years; coverage varies by state).
+  - Value = HRI hospital **admissions** between May 1 and September 30.
+  - Examples: Massachusetts 2000-2021 (22 years); California 2000-2021; Arizona 2005-2023; Michigan 2001-2021.
+- **Things to know before using it:**
+  - Values contain thousands commas ("1,001"). Every row ends with an extra comma, giving a trailing empty column.
+  - **ICD-9 → ICD-10 change on 2015-10-01:** the footnotes warn that differences before and after 2016 may come from coding, not real change.
+  - **Exclusions:** out-of-state admissions (for most states), and VA, IHS and institutionalized patients.
+  - **Suppression:** counties with counts under 6 and population under 100,000 are suppressed (county level only).
+  - **State level only.** It doesn't match our city focus directly (Massachusetts ≠ Boston).
+  - **Data-use terms** (General_Information.pdf): statistical use only, no attempt to identify individuals, acknowledge CDC in any report.
+- **Not checked:** which diagnosis codes define HRI. The footnotes say "primary and other diagnosis codes" but don't list them; the indicator metadata on the Tracking Network should say.
+
+---
+
 ### Plan P1 · revision: VADER only · 2026-09-30 22:09 EDT · Gina + Claude
 - **What:** Removed LIWC (and the NRC alternative) from `docs/reddit-sentiment-methodology.md` (Gina: "take out LIWC, we'll just use VADER").
   - The sentiment score is now the mean VADER compound score per city-week.
