@@ -1,0 +1,101 @@
+item_no,id,window,city,week,kind,stratum,air,air_wide,air_thread,fire,terms
+1,m0fx7hs,bakersfield_event_2024-12-02,Bakersfield,event,comment,Bakersfield|event|thread_only,False,False,True,False,
+2,m09f61e,bakersfield_event_2024-12-02,Bakersfield,event,comment,Bakersfield|event|not_flagged,False,False,False,False,
+3,nsfyft4,bakersfield_base_2025-12-01,Bakersfield,baseline,comment,Bakersfield|baseline|not_flagged,False,False,False,False,
+4,p276k31,eugene_event_2026-08-03,Eugene,event,comment,Eugene|event|flagged,True,True,True,True,smoke;wildfire^
+5,nsguuln,bakersfield_base_2025-12-01,Bakersfield,baseline,comment,Bakersfield|baseline|not_flagged,False,False,False,False,
+6,p1pt471,eugene_event_2026-08-03,Eugene,event,comment,Eugene|event|thread_only,False,True,True,False,mask*
+7,n7me4ma,eugene_base_2025-08-04,Eugene,baseline,comment,Eugene|baseline|thread_only,False,False,True,False,
+8,m0rjbud,bakersfield_event_2024-12-02,Bakersfield,event,comment,Bakersfield|event|thread_only,False,True,True,False,valley fever*
+9,p1ivm0m,eugene_event_2026-08-03,Eugene,event,comment,Eugene|event|flagged,True,True,True,False,particulate;n95
+10,m0ffhwf,bakersfield_event_2024-12-02,Bakersfield,event,comment,Bakersfield|event|near_miss,False,False,False,False,
+11,p1lak8y,eugene_event_2026-08-03,Eugene,event,comment,Eugene|event|thread_only,False,False,True,False,
+12,m0dpivg,bakersfield_event_2024-12-02,Bakersfield,event,comment,Bakersfield|event|thread_only,False,False,True,False,
+13,1emf4yq,eugene_base_2024-08-05,Eugene,baseline,post,Eugene|baseline|flagged,True,True,True,False,smoke
+14,1vk7in5,eugene_event_2026-08-03,Eugene,event,post,Eugene|event|not_flagged,False,False,False,False,
+15,m0a94ct,bakersfield_event_2024-12-02,Bakersfield,event,comment,Bakersfield|event|thread_only,False,True,True,False,valley fever*
+16,p1ze804,eugene_event_2026-08-03,Eugene,event,comment,Eugene|event|thread_only,False,False,True,False,
+17,m0flhqi,bakersfield_event_2024-12-02,Bakersfield,event,comment,Bakersfield|event|not_flagged,False,False,False,False,
+18,ns05fp6,bakersfield_base_2025-12-01,Bakersfield,baseline,comment,Bakersfield|baseline|not_flagged,False,False,False,False,
+19,p224o1x,eugene_event_2026-08-03,Eugene,event,comment,Eugene|event|thread_only,False,False,True,False,
+20,p2ksa07,eugene_event_2026-08-03,Eugene,event,comment,Eugene|event|not_flagged,False,False,False,False,
+21,p1ow71b,eugene_event_2026-08-03,Eugene,event,comment,Eugene|event|flagged,True,True,True,False,air quality
+22,p1lo96c,eugene_event_2026-08-03,Eugene,event,comment,Eugene|event|flagged,True,True,True,False,air quality;purifier
+23,lhb3x7e,eugene_base_2024-08-05,Eugene,baseline,comment,Eugene|baseline|flagged,True,True,True,False,smoke;the air*
+24,lh5eye2,eugene_base_2024-08-05,Eugene,baseline,comment,Eugene|baseline|thread_only,False,False,True,True,fire^
+25,p2ik1m8,eugene_event_2026-08-03,Eugene,event,comment,Eugene|event|not_flagged,False,False,False,False,
+26,n7j8smx,eugene_base_2025-08-04,Eugene,baseline,comment,Eugene|baseline|thread_only,False,False,True,False,
+27,m0a8jdy,bakersfield_event_2024-12-02,Bakersfield,event,comment,Bakersfield|event|near_miss,False,True,True,False,asthma*
+28,m0wp4wz,bakersfield_event_2024-12-02,Bakersfield,event,comment,Bakersfield|event|not_flagged,False,False,False,False,
+29,p1zogw5,eugene_event_2026-08-03,Eugene,event,comment,Eugene|event|flagged,True,True,True,False,smoke
+30,m0gr10m,bakersfield_event_2024-12-02,Bakersfield,event,comment,Bakersfield|event|near_miss,False,False,False,False,
+31,kc9pcsh,bakersfield_base_2023-12-04,Bakersfield,baseline,comment,Bakersfield|baseline|not_flagged,False,False,False,False,
+32,m0s5n0g,bakersfield_event_2024-12-02,Bakersfield,event,comment,Bakersfield|event|not_flagged,False,False,False,False,
+33,p25viac,eugene_event_2026-08-03,Eugene,event,comment,Eugene|event|flagged,True,True,True,False,aqi
+34,m0c7kr3,bakersfield_event_2024-12-02,Bakersfield,event,comment,Bakersfield|event|thread_only,False,True,True,False,cough*;valley fever*
+35,m138r5s,bakersfield_event_2024-12-02,Bakersfield,event,comment,Bakersfield|event|near_miss,False,False,False,False,
+36,p20rbs0,eugene_event_2026-08-03,Eugene,event,comment,Eugene|event|not_flagged,False,False,True,False,
+37,p1ob1dh,eugene_event_2026-08-03,Eugene,event,comment,Eugene|event|thread_only,False,False,True,False,
+38,n6z966c,eugene_base_2025-08-04,Eugene,baseline,comment,Eugene|baseline|not_flagged,False,False,False,False,
+39,m0tghsz,bakersfield_event_2024-12-02,Bakersfield,event,comment,Bakersfield|event|not_flagged,False,False,False,False,
+40,1mm1ze1,eugene_base_2025-08-04,Eugene,baseline,post,Eugene|baseline|flagged,True,True,True,False,smoke
+41,lgyvk1v,eugene_base_2024-08-05,Eugene,baseline,comment,Eugene|baseline|thread_only,False,False,True,False,
+42,m0nzqzh,bakersfield_event_2024-12-02,Bakersfield,event,comment,Bakersfield|event|not_flagged,False,False,False,False,
+43,lgtc9jp,eugene_base_2024-08-05,Eugene,baseline,comment,Eugene|baseline|not_flagged,False,False,False,False,
+44,nrtbegu,bakersfield_base_2025-12-01,Bakersfield,baseline,comment,Bakersfield|baseline|not_flagged,False,False,False,False,
+45,p24ni8c,eugene_event_2026-08-03,Eugene,event,comment,Eugene|event|thread_only,False,False,True,False,
+46,nsqrjml,bakersfield_base_2025-12-01,Bakersfield,baseline,comment,Bakersfield|baseline|not_flagged,False,False,False,False,
+47,p1jiyy3,eugene_event_2026-08-03,Eugene,event,comment,Eugene|event|flagged,True,True,True,False,smoky
+48,m0abprd,bakersfield_event_2024-12-02,Bakersfield,event,comment,Bakersfield|event|thread_only,False,True,True,False,allergies*;valley fever*
+49,lh1kgvp,eugene_base_2024-08-05,Eugene,baseline,comment,Eugene|baseline|thread_only,False,False,True,False,
+50,lgnzytn,eugene_base_2024-08-05,Eugene,baseline,comment,Eugene|baseline|not_flagged,False,False,False,False,
+51,lgvfd2e,eugene_base_2024-08-05,Eugene,baseline,comment,Eugene|baseline|not_flagged,False,False,False,False,
+52,lh3gvr7,eugene_base_2024-08-05,Eugene,baseline,comment,Eugene|baseline|not_flagged,False,False,False,False,
+53,m05oof6,bakersfield_event_2024-12-02,Bakersfield,event,comment,Bakersfield|event|near_miss,False,True,False,False,allergies*
+54,p25oiz7,eugene_event_2026-08-03,Eugene,event,comment,Eugene|event|not_flagged,False,False,False,False,
+55,lh8jlln,eugene_base_2024-08-05,Eugene,baseline,comment,Eugene|baseline|flagged,True,True,True,True,smoke;fire^
+56,lh616sc,eugene_base_2024-08-05,Eugene,baseline,comment,Eugene|baseline|flagged,True,True,True,False,smoky
+57,lh3qzs9,eugene_base_2024-08-05,Eugene,baseline,comment,Eugene|baseline|flagged,True,True,True,False,smoke
+58,m0lg6fz,bakersfield_event_2024-12-02,Bakersfield,event,comment,Bakersfield|event|thread_only,False,False,True,False,
+59,p26ytmh,eugene_event_2026-08-03,Eugene,event,comment,Eugene|event|not_flagged,False,False,True,False,
+60,m0345fy,bakersfield_event_2024-12-02,Bakersfield,event,comment,Bakersfield|event|not_flagged,False,False,False,False,
+61,n7f70lg,eugene_base_2025-08-04,Eugene,baseline,comment,Eugene|baseline|flagged,True,True,True,False,haze
+62,m04dc3j,bakersfield_event_2024-12-02,Bakersfield,event,comment,Bakersfield|event|near_miss,False,False,False,False,
+63,m0zjner,bakersfield_event_2024-12-02,Bakersfield,event,comment,Bakersfield|event|not_flagged,False,False,False,False,
+64,lgozvtm,eugene_base_2024-08-05,Eugene,baseline,comment,Eugene|baseline|not_flagged,False,False,False,False,
+65,m0f5esu,bakersfield_event_2024-12-02,Bakersfield,event,comment,Bakersfield|event|not_flagged,False,False,False,False,
+66,kcuiwsc,bakersfield_base_2023-12-04,Bakersfield,baseline,comment,Bakersfield|baseline|not_flagged,False,False,False,False,
+67,m0a8p3b,bakersfield_event_2024-12-02,Bakersfield,event,comment,Bakersfield|event|thread_only,False,False,True,False,
+68,nsw2fti,bakersfield_base_2025-12-01,Bakersfield,baseline,comment,Bakersfield|baseline|not_flagged,False,False,False,False,
+69,p1lk0c2,eugene_event_2026-08-03,Eugene,event,comment,Eugene|event|thread_only,False,False,True,False,
+70,lh4ndjv,eugene_base_2024-08-05,Eugene,baseline,comment,Eugene|baseline|thread_only,False,False,True,False,
+71,lgz2kwf,eugene_base_2024-08-05,Eugene,baseline,comment,Eugene|baseline|thread_only,False,False,True,False,
+72,m08nvsy,bakersfield_event_2024-12-02,Bakersfield,event,comment,Bakersfield|event|near_miss,False,False,False,False,
+73,n7bjxgu,eugene_base_2025-08-04,Eugene,baseline,comment,Eugene|baseline|not_flagged,False,False,False,False,
+74,n7j5il2,eugene_base_2025-08-04,Eugene,baseline,comment,Eugene|baseline|thread_only,False,False,True,False,
+75,m02uvjq,bakersfield_event_2024-12-02,Bakersfield,event,comment,Bakersfield|event|not_flagged,False,False,False,False,
+76,p258j0y,eugene_event_2026-08-03,Eugene,event,comment,Eugene|event|thread_only,False,False,True,False,
+77,p284ida,eugene_event_2026-08-03,Eugene,event,comment,Eugene|event|thread_only,False,False,True,False,
+78,m0mva3c,bakersfield_event_2024-12-02,Bakersfield,event,comment,Bakersfield|event|near_miss,False,True,False,False,valley fever*
+79,lhgwds1,eugene_base_2024-08-05,Eugene,baseline,comment,Eugene|baseline|flagged,True,True,True,False,smoke
+80,p25t1i8,eugene_event_2026-08-03,Eugene,event,comment,Eugene|event|not_flagged,False,False,False,False,
+81,p2a0cvl,eugene_event_2026-08-03,Eugene,event,comment,Eugene|event|thread_only,False,False,True,False,
+82,n7j8bf3,eugene_base_2025-08-04,Eugene,baseline,comment,Eugene|baseline|thread_only,False,False,True,False,
+83,p1vj774,eugene_event_2026-08-03,Eugene,event,comment,Eugene|event|not_flagged,False,False,False,False,
+84,n7j5xa5,eugene_base_2025-08-04,Eugene,baseline,comment,Eugene|baseline|thread_only,False,False,True,False,
+85,m0ypli3,bakersfield_event_2024-12-02,Bakersfield,event,comment,Bakersfield|event|thread_only,False,False,True,False,
+86,p2prl2v,eugene_event_2026-08-03,Eugene,event,comment,Eugene|event|not_flagged,False,False,False,False,
+87,p2fevjf,eugene_event_2026-08-03,Eugene,event,comment,Eugene|event|not_flagged,False,False,False,False,
+88,n7utiwv,eugene_base_2025-08-04,Eugene,baseline,comment,Eugene|baseline|flagged,True,True,True,False,smoke;haze
+89,m0s5all,bakersfield_event_2024-12-02,Bakersfield,event,comment,Bakersfield|event|thread_only,False,True,True,False,mask*
+90,nso3yrt,bakersfield_base_2025-12-01,Bakersfield,baseline,comment,Bakersfield|baseline|not_flagged,False,False,False,False,
+91,p25w34e,eugene_event_2026-08-03,Eugene,event,comment,Eugene|event|flagged,True,True,True,False,smoke
+92,p278e9w,eugene_event_2026-08-03,Eugene,event,comment,Eugene|event|flagged,True,True,True,False,smoky
+93,lh6ioh5,eugene_base_2024-08-05,Eugene,baseline,comment,Eugene|baseline|flagged,True,True,True,False,aqi;respirator
+94,m0adtre,bakersfield_event_2024-12-02,Bakersfield,event,comment,Bakersfield|event|near_miss,False,True,True,False,asthma*
+95,lh02rau,eugene_base_2024-08-05,Eugene,baseline,comment,Eugene|baseline|not_flagged,False,False,False,False,
+96,lhj077b,eugene_base_2024-08-05,Eugene,baseline,comment,Eugene|baseline|not_flagged,False,False,False,False,
+97,n6w9zqy,eugene_base_2025-08-04,Eugene,baseline,comment,Eugene|baseline|not_flagged,False,False,False,False,
+98,m0c79ep,bakersfield_event_2024-12-02,Bakersfield,event,comment,Bakersfield|event|near_miss,False,False,False,False,
+99,p1l8yrx,eugene_event_2026-08-03,Eugene,event,comment,Eugene|event|flagged,True,True,True,True,smoke;air filter;wildfire^
+100,kcawj6g,bakersfield_base_2023-12-04,Bakersfield,baseline,comment,Bakersfield|baseline|not_flagged,False,False,False,False,

@@ -1,0 +1,25 @@
+CODING GUIDE  (air-talk validation, lexicon v0)
+
+Code each row in the column "code" with ONE letter:
+
+  A  = the text talks about the condition of the AIR: smoke, haze, smog,
+       air quality, AQI, breathing, air purifiers or filters, masks worn because
+       of smoke or bad air, how the sky or air looks or smells, symptoms the
+       writer links to the air.
+       ANY cause (wildfire, inversion, traffic, trucks, field burning), ANY place,
+       ANY time, and even in passing ("great view when the air quality allows it").
+       (Rule clarified 2026-09-30 for the v1 check, decision V12: broad, like the
+        Moore et al. weather-tweet definition, which counted any mention of weather.)
+  F  = about FIRE but not the air: fire news, evacuations, fire locations,
+       firefighters, without saying anything about the air or smoke.
+  N  = neither (everything else, including jokes that only borrow the words,
+       cannabis or cigarette smoke, food, beer, sports slang).
+
+Rules
+  - Code what THIS text is about. Use the thread title only to understand
+    short replies ("same here", "it's awful today") - if the thread is about
+    the smoke and the reply clearly continues that topic, code A.
+  - If you genuinely cannot tell, write "?" in "unsure" and still choose your
+    best letter.
+  - Do not look at the other coder's sheet, the answer key, or the raw data.
+  - Add a short note if a word or phrase fooled the list (e.g. "smoke = vape").

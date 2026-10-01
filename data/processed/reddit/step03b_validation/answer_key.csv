@@ -1,0 +1,217 @@
+item_no,id,window,city,week,kind,stratum,air,air_wide,terms
+1,nsn8dzm,bakersfield_base_2025-12-01,Bakersfield,baseline,comment,Bakersfield|baseline|flagged,True,True,air quality
+2,m03issx,bakersfield_event_2024-12-02,Bakersfield,event,comment,Bakersfield|event|flagged,True,True,smoke
+3,nryvfox,bakersfield_base_2025-12-01,Bakersfield,baseline,comment,Bakersfield|baseline|flagged,True,True,smog
+4,p24n6ck,eugene_event_2026-08-03,Eugene,event,comment,Eugene|event|flagged,True,True,smoke
+5,m0g4w02,bakersfield_event_2024-12-02,Bakersfield,event,comment,Bakersfield|event|flagged,True,True,air quality
+6,m0jhkn6,bakersfield_event_2024-12-02,Bakersfield,event,comment,Bakersfield|event|near_miss,False,False,
+7,lgti2se,eugene_base_2024-08-05,Eugene,baseline,comment,Eugene|baseline|not_flagged,False,False,
+8,m01l6jc,bakersfield_event_2024-12-02,Bakersfield,event,comment,Bakersfield|event|not_flagged,False,False,
+9,nsi7xvh,bakersfield_base_2025-12-01,Bakersfield,baseline,comment,Bakersfield|baseline|not_flagged,False,False,
+10,kct4z00,bakersfield_base_2023-12-04,Bakersfield,baseline,comment,Bakersfield|baseline|not_flagged,False,False,
+11,lgp0hs9,eugene_base_2024-08-05,Eugene,baseline,comment,Eugene|baseline|not_flagged,False,False,
+12,nsva0ls,bakersfield_base_2025-12-01,Bakersfield,baseline,comment,Bakersfield|baseline|not_flagged,False,False,
+13,kc1frq3,bakersfield_base_2023-12-04,Bakersfield,baseline,comment,Bakersfield|baseline|not_flagged,False,False,
+14,1h7tbta,bakersfield_event_2024-12-02,Bakersfield,event,post,Bakersfield|event|near_miss,False,False,
+15,nrppmrl,bakersfield_base_2025-12-01,Bakersfield,baseline,comment,Bakersfield|baseline|not_flagged,False,False,
+16,lgxysx3,eugene_base_2024-08-05,Eugene,baseline,comment,Eugene|baseline|flagged,True,True,smoke
+17,m0sbhoz,bakersfield_event_2024-12-02,Bakersfield,event,comment,Bakersfield|event|near_miss,False,False,
+18,m0flu1n,bakersfield_event_2024-12-02,Bakersfield,event,comment,Bakersfield|event|near_miss,False,False,
+19,1vgr6m9,eugene_event_2026-08-03,Eugene,event,post,Eugene|event|flagged,True,True,air quality;mask*
+20,p29q2cc,eugene_event_2026-08-03,Eugene,event,comment,Eugene|event|not_flagged,False,False,
+21,1ha2mye,bakersfield_event_2024-12-02,Bakersfield,event,post,Bakersfield|event|near_miss,False,False,
+22,m0ro986,bakersfield_event_2024-12-02,Bakersfield,event,comment,Bakersfield|event|flagged,True,True,can't breathe
+23,m0txzg3,bakersfield_event_2024-12-02,Bakersfield,event,comment,Bakersfield|event|flagged,True,True,air quality
+24,m0zvw3d,bakersfield_event_2024-12-02,Bakersfield,event,comment,Bakersfield|event|not_flagged,False,False,
+25,m0twmzn,bakersfield_event_2024-12-02,Bakersfield,event,comment,Bakersfield|event|flagged,True,True,air quality
+26,p1kzxzl,eugene_event_2026-08-03,Eugene,event,comment,Eugene|event|flagged,True,True,air quality
+27,kcvk1s2,bakersfield_base_2023-12-04,Bakersfield,baseline,comment,Bakersfield|baseline|not_flagged,False,False,
+28,nsucokz,bakersfield_base_2025-12-01,Bakersfield,baseline,comment,Bakersfield|baseline|not_flagged,False,False,
+29,p1rdf8e,eugene_event_2026-08-03,Eugene,event,comment,Eugene|event|flagged,True,True,smoke;particulate
+30,p26v8ro,eugene_event_2026-08-03,Eugene,event,comment,Eugene|event|not_flagged,False,False,
+31,p2020df,eugene_event_2026-08-03,Eugene,event,comment,Eugene|event|flagged,True,True,purifier
+32,p1zkmpy,eugene_event_2026-08-03,Eugene,event,comment,Eugene|event|flagged,True,True,smoke
+33,kcg3rmj,bakersfield_base_2023-12-04,Bakersfield,baseline,comment,Bakersfield|baseline|not_flagged,False,False,
+34,p1sgejf,eugene_event_2026-08-03,Eugene,event,comment,Eugene|event|not_flagged,False,False,
+35,m09zr0l,bakersfield_event_2024-12-02,Bakersfield,event,comment,Bakersfield|event|near_miss,False,False,
+36,nsv4mss,bakersfield_base_2025-12-01,Bakersfield,baseline,comment,Bakersfield|baseline|not_flagged,False,False,
+37,m0ovui1,bakersfield_event_2024-12-02,Bakersfield,event,comment,Bakersfield|event|flagged,True,True,air quality
+38,p1ldb5j,eugene_event_2026-08-03,Eugene,event,comment,Eugene|event|flagged,True,True,smoke;named fire types;fire*
+39,p1im46q,eugene_event_2026-08-03,Eugene,event,comment,Eugene|event|not_flagged,False,False,
+40,kcg5mdz,bakersfield_base_2023-12-04,Bakersfield,baseline,comment,Bakersfield|baseline|not_flagged,False,False,
+41,m0cf9ck,bakersfield_event_2024-12-02,Bakersfield,event,comment,Bakersfield|event|near_miss,False,False,
+42,m0m0xyp,bakersfield_event_2024-12-02,Bakersfield,event,comment,Bakersfield|event|not_flagged,False,False,
+43,kc4alo7,bakersfield_base_2023-12-04,Bakersfield,baseline,comment,Bakersfield|baseline|not_flagged,False,False,
+44,m0vqwde,bakersfield_event_2024-12-02,Bakersfield,event,comment,Bakersfield|event|flagged,True,True,air quality
+45,n7tjney,eugene_base_2025-08-04,Eugene,baseline,comment,Eugene|baseline|not_flagged,False,False,
+46,p1wb6jv,eugene_event_2026-08-03,Eugene,event,comment,Eugene|event|flagged,True,True,air quality
+47,p1ixwx1,eugene_event_2026-08-03,Eugene,event,comment,Eugene|event|flagged,True,True,smoke
+48,m0rxuea,bakersfield_event_2024-12-02,Bakersfield,event,comment,Bakersfield|event|near_miss,False,False,
+49,m0x9sx6,bakersfield_event_2024-12-02,Bakersfield,event,comment,Bakersfield|event|not_flagged,False,False,
+50,m0sw0bo,bakersfield_event_2024-12-02,Bakersfield,event,comment,Bakersfield|event|not_flagged,False,False,
+51,m0c1not,bakersfield_event_2024-12-02,Bakersfield,event,comment,Bakersfield|event|flagged,True,True,air quality
+52,p2lxe1r,eugene_event_2026-08-03,Eugene,event,comment,Eugene|event|not_flagged,False,False,
+53,p2sa51s,eugene_event_2026-08-03,Eugene,event,comment,Eugene|event|not_flagged,False,False,
+54,n7lk0v8,eugene_base_2025-08-04,Eugene,baseline,comment,Eugene|baseline|not_flagged,False,False,
+55,ns3r21l,bakersfield_base_2025-12-01,Bakersfield,baseline,comment,Bakersfield|baseline|not_flagged,False,False,
+56,m0tdo6v,bakersfield_event_2024-12-02,Bakersfield,event,comment,Bakersfield|event|flagged,True,True,air quality
+57,m0voa56,bakersfield_event_2024-12-02,Bakersfield,event,comment,Bakersfield|event|near_miss,False,False,
+58,nrqpn3z,bakersfield_base_2025-12-01,Bakersfield,baseline,comment,Bakersfield|baseline|flagged,True,True,air quality
+59,p2cq5u7,eugene_event_2026-08-03,Eugene,event,comment,Eugene|event|not_flagged,False,False,
+60,lhgisp6,eugene_base_2024-08-05,Eugene,baseline,comment,Eugene|baseline|not_flagged,False,False,
+61,n6y846i,eugene_base_2025-08-04,Eugene,baseline,comment,Eugene|baseline|flagged,True,True,particulate
+62,m0x8ox3,bakersfield_event_2024-12-02,Bakersfield,event,comment,Bakersfield|event|near_miss,False,False,
+63,m0a94uf,bakersfield_event_2024-12-02,Bakersfield,event,comment,Bakersfield|event|near_miss,False,False,
+64,lgpj5eh,eugene_base_2024-08-05,Eugene,baseline,comment,Eugene|baseline|flagged,True,True,wildfire;fire*
+65,m09hyw1,bakersfield_event_2024-12-02,Bakersfield,event,comment,Bakersfield|event|flagged,True,True,inversion
+66,1h55u6l,bakersfield_event_2024-12-02,Bakersfield,event,post,Bakersfield|event|flagged,True,True,smog
+67,lgpf03v,eugene_base_2024-08-05,Eugene,baseline,comment,Eugene|baseline|flagged,True,True,wildfire;fire*
+68,m0w3mp9,bakersfield_event_2024-12-02,Bakersfield,event,comment,Bakersfield|event|not_flagged,False,False,
+69,p2bmqcy,eugene_event_2026-08-03,Eugene,event,comment,Eugene|event|flagged,True,True,can't breathe
+70,m0a4sjz,bakersfield_event_2024-12-02,Bakersfield,event,comment,Bakersfield|event|near_miss,False,False,
+71,m0mb52r,bakersfield_event_2024-12-02,Bakersfield,event,comment,Bakersfield|event|not_flagged,False,False,
+72,1h5fw0f,bakersfield_event_2024-12-02,Bakersfield,event,post,Bakersfield|event|not_flagged,False,False,
+73,p2jay2o,eugene_event_2026-08-03,Eugene,event,comment,Eugene|event|not_flagged,False,False,
+74,kc6u5c5,bakersfield_base_2023-12-04,Bakersfield,baseline,comment,Bakersfield|baseline|not_flagged,False,False,
+75,p2bq9e6,eugene_event_2026-08-03,Eugene,event,comment,Eugene|event|flagged,True,True,air quality
+76,m0rtr1j,bakersfield_event_2024-12-02,Bakersfield,event,comment,Bakersfield|event|near_miss,False,False,
+77,1h8aob5,bakersfield_event_2024-12-02,Bakersfield,event,post,Bakersfield|event|flagged,True,True,air quality
+78,p2dzquo,eugene_event_2026-08-03,Eugene,event,comment,Eugene|event|not_flagged,False,False,
+79,lhjb7x6,eugene_base_2024-08-05,Eugene,baseline,comment,Eugene|baseline|not_flagged,False,False,
+80,1h707ua,bakersfield_event_2024-12-02,Bakersfield,event,post,Bakersfield|event|not_flagged,False,False,
+81,m0e1744,bakersfield_event_2024-12-02,Bakersfield,event,comment,Bakersfield|event|flagged,True,True,air quality
+82,p2bml99,eugene_event_2026-08-03,Eugene,event,comment,Eugene|event|not_flagged,False,False,
+83,kcq1sqr,bakersfield_base_2023-12-04,Bakersfield,baseline,comment,Bakersfield|baseline|flagged,True,True,air quality
+84,kcnjvf3,bakersfield_base_2023-12-04,Bakersfield,baseline,comment,Bakersfield|baseline|flagged,True,True,smog
+85,p1zvfk6,eugene_event_2026-08-03,Eugene,event,comment,Eugene|event|flagged,True,True,air quality
+86,m0u3cvf,bakersfield_event_2024-12-02,Bakersfield,event,comment,Bakersfield|event|flagged,True,True,bad air
+87,1enfn22,eugene_base_2024-08-05,Eugene,baseline,post,Eugene|baseline|flagged,True,True,fire season;fire*
+88,m0xkrqq,bakersfield_event_2024-12-02,Bakersfield,event,comment,Bakersfield|event|not_flagged,False,False,
+89,nrru1yl,bakersfield_base_2025-12-01,Bakersfield,baseline,comment,Bakersfield|baseline|flagged,True,True,air pollution;pollution
+90,kccn9oa,bakersfield_base_2023-12-04,Bakersfield,baseline,comment,Bakersfield|baseline|not_flagged,False,False,
+91,lgp8yv4,eugene_base_2024-08-05,Eugene,baseline,comment,Eugene|baseline|flagged,True,True,named fire types;fire*
+92,m0a8ykh,bakersfield_event_2024-12-02,Bakersfield,event,comment,Bakersfield|event|near_miss,False,False,
+93,lhnmqaw,eugene_base_2024-08-05,Eugene,baseline,comment,Eugene|baseline|flagged,True,True,smoke
+94,p24chk4,eugene_event_2026-08-03,Eugene,event,comment,Eugene|event|not_flagged,False,False,
+95,m0fq87x,bakersfield_event_2024-12-02,Bakersfield,event,comment,Bakersfield|event|near_miss,False,False,
+96,ns6ms2g,bakersfield_base_2025-12-01,Bakersfield,baseline,comment,Bakersfield|baseline|flagged,True,True,air quality
+97,m0dodkc,bakersfield_event_2024-12-02,Bakersfield,event,comment,Bakersfield|event|not_flagged,False,False,
+98,nru6zlg,bakersfield_base_2025-12-01,Bakersfield,baseline,comment,Bakersfield|baseline|not_flagged,False,False,
+99,lhkhn3b,eugene_base_2024-08-05,Eugene,baseline,comment,Eugene|baseline|flagged,True,True,smoke
+100,lgnaekd,eugene_base_2024-08-05,Eugene,baseline,comment,Eugene|baseline|flagged,True,True,wildfire
+101,p1zlrr3,eugene_event_2026-08-03,Eugene,event,comment,Eugene|event|flagged,True,True,aqi
+102,p2asi45,eugene_event_2026-08-03,Eugene,event,comment,Eugene|event|flagged,True,True,smoke;smoky;fire*
+103,n7uhzwz,eugene_base_2025-08-04,Eugene,baseline,comment,Eugene|baseline|not_flagged,False,False,
+104,p2aoz46,eugene_event_2026-08-03,Eugene,event,comment,Eugene|event|flagged,True,True,aqi
+105,m0rn7e5,bakersfield_event_2024-12-02,Bakersfield,event,comment,Bakersfield|event|near_miss,False,False,
+106,p1t4um7,eugene_event_2026-08-03,Eugene,event,comment,Eugene|event|not_flagged,False,False,
+107,m0i63o1,bakersfield_event_2024-12-02,Bakersfield,event,comment,Bakersfield|event|not_flagged,False,False,
+108,m0vjl2w,bakersfield_event_2024-12-02,Bakersfield,event,comment,Bakersfield|event|not_flagged,False,False,
+109,lguzynb,eugene_base_2024-08-05,Eugene,baseline,comment,Eugene|baseline|not_flagged,False,False,
+110,lh097yw,eugene_base_2024-08-05,Eugene,baseline,comment,Eugene|baseline|flagged,True,True,can't breathe
+111,p1wb89b,eugene_event_2026-08-03,Eugene,event,comment,Eugene|event|not_flagged,False,True,fire*
+112,kcggmjy,bakersfield_base_2023-12-04,Bakersfield,baseline,comment,Bakersfield|baseline|not_flagged,False,False,
+113,p202xtj,eugene_event_2026-08-03,Eugene,event,comment,Eugene|event|flagged,True,True,smoke;smog
+114,m0j0wao,bakersfield_event_2024-12-02,Bakersfield,event,comment,Bakersfield|event|near_miss,False,False,
+115,n7ps076,eugene_base_2025-08-04,Eugene,baseline,comment,Eugene|baseline|not_flagged,False,False,
+116,m0g713z,bakersfield_event_2024-12-02,Bakersfield,event,comment,Bakersfield|event|not_flagged,False,False,
+117,kc8y9q9,bakersfield_base_2023-12-04,Bakersfield,baseline,comment,Bakersfield|baseline|not_flagged,False,False,
+118,m0xsz8t,bakersfield_event_2024-12-02,Bakersfield,event,comment,Bakersfield|event|flagged,True,True,inversion
+119,kcch4co,bakersfield_base_2023-12-04,Bakersfield,baseline,comment,Bakersfield|baseline|flagged,True,True,smoke
+120,lhaq3gw,eugene_base_2024-08-05,Eugene,baseline,comment,Eugene|baseline|not_flagged,False,False,
+121,m0s8kj0,bakersfield_event_2024-12-02,Bakersfield,event,comment,Bakersfield|event|flagged,True,True,air quality
+122,lh5piza,eugene_base_2024-08-05,Eugene,baseline,comment,Eugene|baseline|flagged,True,True,air quality;fire season;fire*
+123,p1vs1ta,eugene_event_2026-08-03,Eugene,event,comment,Eugene|event|flagged,True,True,smoke;pollution
+124,p2l27cf,eugene_event_2026-08-03,Eugene,event,comment,Eugene|event|not_flagged,False,False,
+125,p1l07n3,eugene_event_2026-08-03,Eugene,event,comment,Eugene|event|flagged,True,True,smoke
+126,m05vni8,bakersfield_event_2024-12-02,Bakersfield,event,comment,Bakersfield|event|near_miss,False,False,
+127,m0f59r6,bakersfield_event_2024-12-02,Bakersfield,event,comment,Bakersfield|event|not_flagged,False,False,
+128,m0a7ttd,bakersfield_event_2024-12-02,Bakersfield,event,comment,Bakersfield|event|near_miss,False,False,
+129,p1l11sc,eugene_event_2026-08-03,Eugene,event,comment,Eugene|event|not_flagged,False,False,
+130,m0zd891,bakersfield_event_2024-12-02,Bakersfield,event,comment,Bakersfield|event|not_flagged,False,False,
+131,p2orv25,eugene_event_2026-08-03,Eugene,event,comment,Eugene|event|not_flagged,False,False,
+132,n7jmlei,eugene_base_2025-08-04,Eugene,baseline,comment,Eugene|baseline|not_flagged,False,False,
+133,m0bhgl5,bakersfield_event_2024-12-02,Bakersfield,event,comment,Bakersfield|event|flagged,True,True,air quality
+134,lgo2wga,eugene_base_2024-08-05,Eugene,baseline,comment,Eugene|baseline|not_flagged,False,False,
+135,lh04lsi,eugene_base_2024-08-05,Eugene,baseline,comment,Eugene|baseline|flagged,True,True,smoke
+136,1vgfdx5,eugene_event_2026-08-03,Eugene,event,post,Eugene|event|not_flagged,False,False,
+137,m0br5yp,bakersfield_event_2024-12-02,Bakersfield,event,comment,Bakersfield|event|not_flagged,False,False,
+138,n7ogrpb,eugene_base_2025-08-04,Eugene,baseline,comment,Eugene|baseline|not_flagged,False,False,
+139,lgnyeyk,eugene_base_2024-08-05,Eugene,baseline,comment,Eugene|baseline|flagged,True,True,wildfire
+140,kcn0kbj,bakersfield_base_2023-12-04,Bakersfield,baseline,comment,Bakersfield|baseline|not_flagged,False,False,
+141,1h8kpyx,bakersfield_event_2024-12-02,Bakersfield,event,post,Bakersfield|event|near_miss,False,False,
+142,m0ftrkr,bakersfield_event_2024-12-02,Bakersfield,event,comment,Bakersfield|event|not_flagged,False,False,
+143,lh1u73e,eugene_base_2024-08-05,Eugene,baseline,comment,Eugene|baseline|flagged,True,True,air quality
+144,lh0d218,eugene_base_2024-08-05,Eugene,baseline,comment,Eugene|baseline|not_flagged,False,False,
+145,m0sdh97,bakersfield_event_2024-12-02,Bakersfield,event,comment,Bakersfield|event|flagged,True,True,smog;fog*
+146,kcq2k1y,bakersfield_base_2023-12-04,Bakersfield,baseline,comment,Bakersfield|baseline|flagged,True,True,air quality
+147,p1zwhqb,eugene_event_2026-08-03,Eugene,event,comment,Eugene|event|not_flagged,False,False,
+148,kcq1jzb,bakersfield_base_2023-12-04,Bakersfield,baseline,comment,Bakersfield|baseline|flagged,True,True,air quality
+149,nsfpe2k,bakersfield_base_2025-12-01,Bakersfield,baseline,comment,Bakersfield|baseline|not_flagged,False,False,
+150,m0pqeg6,bakersfield_event_2024-12-02,Bakersfield,event,comment,Bakersfield|event|not_flagged,False,False,
+151,m11j2hk,bakersfield_event_2024-12-02,Bakersfield,event,comment,Bakersfield|event|not_flagged,False,False,
+152,m0v0xdy,bakersfield_event_2024-12-02,Bakersfield,event,comment,Bakersfield|event|not_flagged,False,False,
+153,p1nxudn,eugene_event_2026-08-03,Eugene,event,comment,Eugene|event|not_flagged,False,False,
+154,m0ahtti,bakersfield_event_2024-12-02,Bakersfield,event,comment,Bakersfield|event|flagged,True,True,air quality;bad air
+155,lh1no9a,eugene_base_2024-08-05,Eugene,baseline,comment,Eugene|baseline|not_flagged,False,False,
+156,lh8pnfd,eugene_base_2024-08-05,Eugene,baseline,comment,Eugene|baseline|flagged,True,True,pollution
+157,n74p472,eugene_base_2025-08-04,Eugene,baseline,comment,Eugene|baseline|flagged,True,True,named fire types;fire*
+158,lhi3497,eugene_base_2024-08-05,Eugene,baseline,comment,Eugene|baseline|flagged,True,True,named fire types;fire*
+159,p2dhsdn,eugene_event_2026-08-03,Eugene,event,comment,Eugene|event|not_flagged,False,False,
+160,m0rj02d,bakersfield_event_2024-12-02,Bakersfield,event,comment,Bakersfield|event|flagged,True,True,purifier
+161,n7c78tj,eugene_base_2025-08-04,Eugene,baseline,comment,Eugene|baseline|not_flagged,False,False,
+162,ns0tsxg,bakersfield_base_2025-12-01,Bakersfield,baseline,comment,Bakersfield|baseline|flagged,True,True,air quality
+163,ns6vc5g,bakersfield_base_2025-12-01,Bakersfield,baseline,comment,Bakersfield|baseline|flagged,True,True,smoke
+164,lhp5sgv,eugene_base_2024-08-05,Eugene,baseline,comment,Eugene|baseline|not_flagged,False,False,
+165,m0saap8,bakersfield_event_2024-12-02,Bakersfield,event,comment,Bakersfield|event|near_miss,False,False,
+166,ns64h1e,bakersfield_base_2025-12-01,Bakersfield,baseline,comment,Bakersfield|baseline|not_flagged,False,False,
+167,nrt9xie,bakersfield_base_2025-12-01,Bakersfield,baseline,comment,Bakersfield|baseline|flagged,True,True,air quality
+168,m0b93tn,bakersfield_event_2024-12-02,Bakersfield,event,comment,Bakersfield|event|near_miss,False,False,
+169,p26g5yr,eugene_event_2026-08-03,Eugene,event,comment,Eugene|event|not_flagged,False,False,
+170,p1hs76o,eugene_event_2026-08-03,Eugene,event,comment,Eugene|event|not_flagged,False,False,
+171,1vfl23r,eugene_event_2026-08-03,Eugene,event,post,Eugene|event|flagged,True,True,smoky
+172,ns2cnq2,bakersfield_base_2025-12-01,Bakersfield,baseline,comment,Bakersfield|baseline|not_flagged,False,False,
+173,p1sszyg,eugene_event_2026-08-03,Eugene,event,comment,Eugene|event|flagged,True,True,smoke
+174,lhhulxa,eugene_base_2024-08-05,Eugene,baseline,comment,Eugene|baseline|flagged,True,True,smoke
+175,m0x3n9q,bakersfield_event_2024-12-02,Bakersfield,event,comment,Bakersfield|event|near_miss,False,False,
+176,m0beetj,bakersfield_event_2024-12-02,Bakersfield,event,comment,Bakersfield|event|near_miss,False,False,
+177,nsnjr7u,bakersfield_base_2025-12-01,Bakersfield,baseline,comment,Bakersfield|baseline|flagged,True,True,air quality
+178,1mlsamk,eugene_base_2025-08-04,Eugene,baseline,post,Eugene|baseline|flagged,True,True,wildfire
+179,ns1b2nl,bakersfield_base_2025-12-01,Bakersfield,baseline,comment,Bakersfield|baseline|not_flagged,False,False,
+180,m0a8obg,bakersfield_event_2024-12-02,Bakersfield,event,comment,Bakersfield|event|flagged,True,True,air quality
+181,ns9f8pg,bakersfield_base_2025-12-01,Bakersfield,baseline,comment,Bakersfield|baseline|not_flagged,False,False,
+182,p2bvmeg,eugene_event_2026-08-03,Eugene,event,comment,Eugene|event|flagged,True,True,smoke
+183,p2rh5q2,eugene_event_2026-08-03,Eugene,event,comment,Eugene|event|flagged,True,True,smoke
+184,m10tiyw,bakersfield_event_2024-12-02,Bakersfield,event,comment,Bakersfield|event|near_miss,False,False,
+185,n7m9tym,eugene_base_2025-08-04,Eugene,baseline,comment,Eugene|baseline|not_flagged,False,False,
+186,lh0b8zn,eugene_base_2024-08-05,Eugene,baseline,comment,Eugene|baseline|flagged,True,True,smoke
+187,p2cajur,eugene_event_2026-08-03,Eugene,event,comment,Eugene|event|not_flagged,False,False,
+188,nsez4u1,bakersfield_base_2025-12-01,Bakersfield,baseline,comment,Bakersfield|baseline|flagged,True,True,particulate
+189,lgokufr,eugene_base_2024-08-05,Eugene,baseline,comment,Eugene|baseline|not_flagged,False,False,
+190,1h60r2q,bakersfield_event_2024-12-02,Bakersfield,event,post,Bakersfield|event|flagged,True,True,air quality
+191,lh1ased,eugene_base_2024-08-05,Eugene,baseline,comment,Eugene|baseline|flagged,True,True,wildfire;fire*
+192,lgo9uid,eugene_base_2024-08-05,Eugene,baseline,comment,Eugene|baseline|flagged,True,True,wildfire
+193,n760fz4,eugene_base_2025-08-04,Eugene,baseline,comment,Eugene|baseline|not_flagged,False,False,
+194,n74wf33,eugene_base_2025-08-04,Eugene,baseline,comment,Eugene|baseline|not_flagged,False,False,
+195,m05y69r,bakersfield_event_2024-12-02,Bakersfield,event,comment,Bakersfield|event|not_flagged,False,False,
+196,m0for1r,bakersfield_event_2024-12-02,Bakersfield,event,comment,Bakersfield|event|flagged,True,True,air quality;purifier
+197,lhjc1hh,eugene_base_2024-08-05,Eugene,baseline,comment,Eugene|baseline|not_flagged,False,False,
+198,m0zaftw,bakersfield_event_2024-12-02,Bakersfield,event,comment,Bakersfield|event|flagged,True,True,purifier
+199,p1ko5hy,eugene_event_2026-08-03,Eugene,event,comment,Eugene|event|flagged,True,True,smoky
+200,m04ggzn,bakersfield_event_2024-12-02,Bakersfield,event,comment,Bakersfield|event|not_flagged,False,False,
+201,ns6ejhh,bakersfield_base_2025-12-01,Bakersfield,baseline,comment,Bakersfield|baseline|flagged,True,True,air pollution;pollution
+202,m0a3ptw,bakersfield_event_2024-12-02,Bakersfield,event,comment,Bakersfield|event|flagged,True,True,air quality;bad air
+203,n7lzm7d,eugene_base_2025-08-04,Eugene,baseline,comment,Eugene|baseline|flagged,True,True,smoke;fire*
+204,p1q8xgq,eugene_event_2026-08-03,Eugene,event,comment,Eugene|event|flagged,True,True,aqi
+205,lgnn6os,eugene_base_2024-08-05,Eugene,baseline,comment,Eugene|baseline|flagged,True,True,smoke
+206,lhab6uy,eugene_base_2024-08-05,Eugene,baseline,comment,Eugene|baseline|not_flagged,False,False,
+207,n6zu5jj,eugene_base_2025-08-04,Eugene,baseline,comment,Eugene|baseline|not_flagged,False,False,
+208,n7imwhi,eugene_base_2025-08-04,Eugene,baseline,comment,Eugene|baseline|not_flagged,False,False,
+209,m0x4pst,bakersfield_event_2024-12-02,Bakersfield,event,comment,Bakersfield|event|not_flagged,False,False,
+210,p1r8jy0,eugene_event_2026-08-03,Eugene,event,comment,Eugene|event|not_flagged,False,False,
+211,m05m08g,bakersfield_event_2024-12-02,Bakersfield,event,comment,Bakersfield|event|not_flagged,False,False,
+212,nrr6fh2,bakersfield_base_2025-12-01,Bakersfield,baseline,comment,Bakersfield|baseline|not_flagged,False,False,
+213,p2bwknx,eugene_event_2026-08-03,Eugene,event,comment,Eugene|event|not_flagged,False,False,
+214,kcjs3w8,bakersfield_base_2023-12-04,Bakersfield,baseline,comment,Bakersfield|baseline|not_flagged,False,False,
+215,p2brm4y,eugene_event_2026-08-03,Eugene,event,comment,Eugene|event|flagged,True,True,smoke
+216,lgygnua,eugene_base_2024-08-05,Eugene,baseline,comment,Eugene|baseline|flagged,True,True,wildfire

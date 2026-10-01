@@ -1,0 +1,10 @@
+stratum,city,week,group,n_coded,coded_A,coded_F,coded_N,measure,strict,strict_lo,strict_hi,lenient_AorF
+Bakersfield|baseline|flagged,Bakersfield,baseline,flagged,16,10,0,6,precision (share truly about the air),0.625,0.3864064709793481,0.815190174452472,0.625
+Bakersfield|baseline|not_flagged,Bakersfield,baseline,not_flagged,24,0,2,22,miss rate (share of unflagged that were about the air),0.0,0.0,0.13798057582897535,
+Bakersfield|event|flagged,Bakersfield,event,flagged,25,20,1,4,precision (share truly about the air),0.8,0.6086866446346177,0.9113954589934752,0.84
+Bakersfield|event|near_miss,Bakersfield,event,near_miss,24,12,0,12,miss rate (share of unflagged that were about the air),0.5,0.31427131627763083,0.6857286837223692,
+Bakersfield|event|not_flagged,Bakersfield,event,not_flagged,22,1,0,21,miss rate (share of unflagged that were about the air),0.045454545454545456,0.008069219301147859,0.21798489499518053,
+Eugene|baseline|flagged,Eugene,baseline,flagged,22,3,14,5,precision (share truly about the air),0.13636363636363635,0.04748917264236269,0.3333541187947,0.7727272727272727
+Eugene|baseline|not_flagged,Eugene,baseline,not_flagged,21,1,2,18,miss rate (share of unflagged that were about the air),0.047619047619047616,0.008455769471923294,0.22669816586235464,
+Eugene|event|flagged,Eugene,event,flagged,23,20,2,1,precision (share truly about the air),0.8695652173913043,0.678721020269818,0.954624234856553,0.9565217391304348
+Eugene|event|not_flagged,Eugene,event,not_flagged,22,2,0,20,miss rate (share of unflagged that were about the air),0.09090909090909091,0.025294896282837792,0.2781538065838578,
