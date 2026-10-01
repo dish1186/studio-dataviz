@@ -1,0 +1,7 @@
+window,city,week_type,topic_thread_comments,topic_thread_removed_share,other_comments,other_removed_share
+eugene_event_2026-08-03,Eugene,event,644,0.15838509316770186,4167,0.15286777057835374
+eugene_base_2024-08-05,Eugene,baseline,57,0.03508771929824561,7081,0.06552746787176952
+eugene_base_2025-08-04,Eugene,baseline,47,0.0,4986,0.08102687525070197
+bakersfield_event_2024-12-02,Bakersfield,event,70,0.014285714285714285,1493,0.06965840589417281
+bakersfield_base_2023-12-04,Bakersfield,baseline,0,,1028,0.029182879377431907
+bakersfield_base_2025-12-01,Bakersfield,baseline,0,,991,0.03632694248234107

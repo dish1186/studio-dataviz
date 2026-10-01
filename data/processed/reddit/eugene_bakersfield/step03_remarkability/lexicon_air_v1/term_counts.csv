@@ -1,0 +1,121 @@
+term,window,items
+air filter,eugene_base_2025-08-04,1
+air filter,eugene_event_2026-08-03,6
+air is bad,bakersfield_event_2024-12-02,2
+air is bad,eugene_event_2026-08-03,2
+air pollution,bakersfield_base_2025-12-01,2
+air pollution,eugene_base_2024-08-05,2
+air pollution,eugene_base_2025-08-04,1
+air quality,bakersfield_base_2023-12-04,3
+air quality,bakersfield_base_2025-12-01,6
+air quality,bakersfield_event_2024-12-02,16
+air quality,eugene_base_2024-08-05,7
+air quality,eugene_base_2025-08-04,2
+air quality,eugene_event_2026-08-03,30
+allergies*,bakersfield_base_2023-12-04,1
+allergies*,bakersfield_event_2024-12-02,11
+allergies*,eugene_base_2024-08-05,7
+allergies*,eugene_base_2025-08-04,7
+allergies*,eugene_event_2026-08-03,5
+aqi,eugene_base_2024-08-05,5
+aqi,eugene_event_2026-08-03,31
+ash*,eugene_base_2024-08-05,1
+ash*,eugene_event_2026-08-03,9
+asthma*,bakersfield_base_2025-12-01,2
+asthma*,bakersfield_event_2024-12-02,15
+asthma*,eugene_base_2024-08-05,3
+asthma*,eugene_event_2026-08-03,8
+bad air,bakersfield_event_2024-12-02,3
+bad air,eugene_event_2026-08-03,6
+can't breathe,bakersfield_event_2024-12-02,1
+can't breathe,eugene_base_2024-08-05,1
+can't breathe,eugene_event_2026-08-03,2
+cannot see the view,bakersfield_event_2024-12-02,1
+congested*,bakersfield_event_2024-12-02,3
+congested*,eugene_base_2024-08-05,4
+congested*,eugene_base_2025-08-04,3
+cough*,bakersfield_event_2024-12-02,4
+cough*,eugene_base_2024-08-05,6
+cough*,eugene_base_2025-08-04,7
+cough*,eugene_event_2026-08-03,2
+evacuation^,eugene_base_2024-08-05,5
+evacuation^,eugene_base_2025-08-04,6
+evacuation^,eugene_event_2026-08-03,7
+fire season^,eugene_base_2024-08-05,11
+fire season^,eugene_base_2025-08-04,1
+fire season^,eugene_event_2026-08-03,6
+fire^,bakersfield_base_2023-12-04,3
+fire^,bakersfield_base_2025-12-01,3
+fire^,bakersfield_event_2024-12-02,6
+fire^,eugene_base_2024-08-05,136
+fire^,eugene_base_2025-08-04,50
+fire^,eugene_event_2026-08-03,73
+fog*,bakersfield_event_2024-12-02,1
+fog*,eugene_base_2024-08-05,2
+fog*,eugene_base_2025-08-04,3
+fog*,eugene_event_2026-08-03,8
+haze,eugene_base_2025-08-04,2
+haze,eugene_event_2026-08-03,4
+hazy,eugene_event_2026-08-03,1
+hepa,eugene_base_2024-08-05,1
+hepa,eugene_event_2026-08-03,1
+horizon*,bakersfield_event_2024-12-02,1
+horizon*,eugene_base_2024-08-05,1
+horizon*,eugene_base_2025-08-04,1
+inversion,bakersfield_event_2024-12-02,1
+inversion,eugene_base_2025-08-04,1
+inversion (plain)*,bakersfield_event_2024-12-02,2
+inversion (plain)*,eugene_base_2025-08-04,1
+mask*,bakersfield_event_2024-12-02,2
+mask*,eugene_base_2024-08-05,19
+mask*,eugene_base_2025-08-04,9
+mask*,eugene_event_2026-08-03,20
+n95,eugene_base_2024-08-05,2
+n95,eugene_base_2025-08-04,1
+n95,eugene_event_2026-08-03,7
+named fire types^,eugene_base_2024-08-05,8
+named fire types^,eugene_base_2025-08-04,1
+named fire types^,eugene_event_2026-08-03,7
+orange sky,eugene_event_2026-08-03,1
+particulate,bakersfield_base_2025-12-01,1
+particulate,eugene_base_2024-08-05,1
+particulate,eugene_base_2025-08-04,1
+particulate,eugene_event_2026-08-03,6
+pm2.5,eugene_event_2026-08-03,1
+pollution*,bakersfield_base_2025-12-01,2
+pollution*,eugene_base_2024-08-05,9
+pollution*,eugene_base_2025-08-04,1
+pollution*,eugene_event_2026-08-03,4
+purifier,bakersfield_event_2024-12-02,3
+purifier,eugene_base_2024-08-05,1
+purifier,eugene_event_2026-08-03,12
+red sun,eugene_event_2026-08-03,1
+respirator,eugene_base_2024-08-05,1
+respirator,eugene_event_2026-08-03,3
+smog,bakersfield_base_2023-12-04,1
+smog,bakersfield_base_2025-12-01,1
+smog,bakersfield_event_2024-12-02,1
+smog,eugene_event_2026-08-03,1
+smoke,bakersfield_base_2025-12-01,1
+smoke,eugene_base_2024-08-05,42
+smoke,eugene_base_2025-08-04,8
+smoke,eugene_event_2026-08-03,116
+smoked*,bakersfield_event_2024-12-02,1
+smoked*,eugene_base_2024-08-05,6
+smoked*,eugene_base_2025-08-04,1
+smoked*,eugene_event_2026-08-03,2
+smoky,eugene_base_2024-08-05,8
+smoky,eugene_base_2025-08-04,1
+smoky,eugene_event_2026-08-03,16
+the air*,bakersfield_base_2023-12-04,1
+the air*,bakersfield_base_2025-12-01,5
+the air*,bakersfield_event_2024-12-02,13
+the air*,eugene_base_2024-08-05,15
+the air*,eugene_base_2025-08-04,4
+the air*,eugene_event_2026-08-03,24
+valley fever*,bakersfield_base_2025-12-01,2
+valley fever*,bakersfield_event_2024-12-02,9
+what's wrong with the air,bakersfield_event_2024-12-02,1
+wildfire^,eugene_base_2024-08-05,16
+wildfire^,eugene_base_2025-08-04,6
+wildfire^,eugene_event_2026-08-03,17
