@@ -32,6 +32,22 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Google Trends · Step 16: weekly "ice cream" raw files, 7 metros · 2026-10-01 00:11 EDT · Gina + Claude
+- **What:** Added Gina's 7 weekly downloads to `data/raw/google-trends/icecream-search-weekly/`, **copied unchanged** (byte-identical; the San Francisco file name keeps its space, as exported):
+  - `boston_ice_5yr.csv`: Boston MA-Manchester NH, SHA-256 19fddd21…fa7c0f00, peak (100) 2026-06-28; monthly means vs the monthly file r = 0.995 (59 months)
+  - `san fran_ice_5yr.csv`: San Francisco-Oakland-San Jose CA, SHA-256 9eb8c50e…88bdddae, peak (100) 2026-07-12; monthly means vs the monthly file r = 0.991 (59 months)
+  - `phoenix_ice_5yr.csv`: Phoenix AZ, SHA-256 a69efda8…97e86915, peak (100) 2026-05-17; monthly means vs the monthly file r = 0.991 (59 months)
+  - `detroit_ice_5yr.csv`: Detroit MI, SHA-256 d4e164ac…17126c85, peak (100) 2026-06-28; monthly means vs the monthly file r = 0.995 (59 months)
+  - `sandiego_ice_5yr.csv`: San Diego CA, SHA-256 da66ce4e…6689f25a, peak (100) 2026-07-12; monthly means vs the monthly file r = 0.989 (59 months)
+  - `eugene_ice_5yr.csv`: Eugene OR, SHA-256 c16ab59f…87701c4a, peak (100) 2026-06-14; monthly means vs the monthly file r = 0.995 (59 months)
+  - `bakersfield_ice_5yr.csv`: Bakersfield CA, SHA-256 b81a0aa1…360d04ea, peak (100) 2026-07-12; monthly means vs the monthly file r = 0.991 (59 months)
+- Each file: "ice cream" as a search term, All categories, **weekly**, 2021-09-26 to 2026-09-27 (262 weeks), one 0-100 scale per file; the last week is partial. Also wrote `trends_sources.csv` and added 4 rows to `data/descriptions/data_descriptions.csv`.
+- **Why:** Gina: "replace the monthly files ... or add them as weekly". The weekly files allow a weekly ice cream threshold like the AC one (Steps 11-12). **Added as weekly; the monthly files (Step 14) are kept,** since raw files are never deleted.
+- **Check:** each weekly file, averaged to calendar months (months with ≥ 20 days, excluding partial 2026-09), was correlated with the monthly file for the same city (r above).
+- **Note:** 2026 holds the weekly peak in every city.
+
+---
+
 ### Google Trends · Step 15: weekly "eye drops" raw files, 7 metros · 2026-10-01 00:07 EDT · Gina + Claude
 - **What:** Added Gina's 7 downloads to `data/raw/google-trends/eyedrops-search/`, **copied unchanged** (byte-identical to ~/Downloads):
   - `bos_man_drops_5yr.csv`: Boston MA-Manchester NH, SHA-256 84b2b41d…757bf1e1, peak (100) 2023-10-29, weeks = 0: 0
