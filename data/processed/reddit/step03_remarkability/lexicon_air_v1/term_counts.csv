@@ -1,0 +1,42 @@
+term,eugene_event_2026-08-03,eugene_base_2024-08-05,eugene_base_2025-08-04,bakersfield_event_2024-12-02,bakersfield_base_2023-12-04,bakersfield_base_2025-12-01,total
+fire^,73,136,50,6,3,3,271
+smoke,116,42,8,0,0,1,167
+air quality,30,7,2,16,3,6,64
+the air*,24,15,4,13,1,5,62
+mask*,20,19,9,2,0,0,50
+wildfire^,17,16,6,0,0,0,39
+aqi,31,5,0,0,0,0,36
+allergies*,5,7,7,11,1,0,31
+asthma*,8,3,0,15,0,2,28
+smoky,16,8,1,0,0,0,25
+cough*,2,6,7,4,0,0,19
+evacuation^,7,5,6,0,0,0,18
+fire season^,6,11,1,0,0,0,18
+purifier,12,1,0,3,0,0,16
+pollution*,4,9,1,0,0,2,16
+named fire types^,7,8,1,0,0,0,16
+fog*,8,2,3,1,0,0,14
+valley fever*,0,0,0,9,0,2,11
+congested*,0,4,3,3,0,0,10
+n95,7,2,1,0,0,0,10
+smoked*,2,6,1,1,0,0,10
+ash*,9,1,0,0,0,0,10
+bad air,6,0,0,3,0,0,9
+particulate,6,1,1,0,0,1,9
+air filter,6,0,1,0,0,0,7
+haze,4,0,2,0,0,0,6
+air pollution,0,2,1,0,0,2,5
+air is bad,2,0,0,2,0,0,4
+respirator,3,1,0,0,0,0,4
+smog,1,0,0,1,1,1,4
+can't breathe,2,1,0,1,0,0,4
+inversion (plain)*,0,0,1,2,0,0,3
+horizon*,0,1,1,1,0,0,3
+inversion,0,0,1,1,0,0,2
+hepa,1,1,0,0,0,0,2
+orange sky,1,0,0,0,0,0,1
+pm2.5,1,0,0,0,0,0,1
+red sun,1,0,0,0,0,0,1
+hazy,1,0,0,0,0,0,1
+cannot see the view,0,0,0,1,0,0,1
+what's wrong with the air,0,0,0,1,0,0,1
