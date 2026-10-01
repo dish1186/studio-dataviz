@@ -1,0 +1,71 @@
+register,term,set,bakersfield_base_2023-12-04,bakersfield_base_2025-12-01,bakersfield_event_2024-12-02,eugene_base_2024-08-05,eugene_base_2025-08-04,eugene_event_2026-08-03
+alarm,extreme words,air,1,5,3,7,1,19
+alarm,extreme words,other,11,18,22,129,98,63
+alarm,fear,air,0,0,2,8,1,6
+alarm,fear,other,8,8,9,62,73,33
+comfort,cooling off,air,0,0,0,0,0,1
+comfort,cooling off,other,0,0,0,1,0,0
+comfort,dogs and kids outside,air,0,0,0,1,2,18
+comfort,dogs and kids outside,other,10,12,21,161,131,39
+comfort,events,air,0,0,1,19,4,18
+comfort,events,other,40,32,40,313,179,107
+comfort,exercise and outdoors,air,0,4,2,15,9,69
+comfort,exercise and outdoors,other,54,77,67,359,274,172
+comfort,fans and AC,air,0,0,0,1,2,37
+comfort,fans and AC,other,5,22,3,35,18,19
+comfort,information seeking,air,0,0,1,5,2,39
+comfort,information seeking,other,15,7,24,61,56,53
+comfort,plans cancelled,air,0,0,0,1,1,14
+comfort,plans cancelled,other,21,4,14,64,39,24
+comfort,purifier and filters,air,0,0,3,2,1,29
+comfort,purifier and filters,other,0,0,0,0,4,1
+comfort,sleep,air,0,0,2,0,2,5
+comfort,sleep,other,7,2,2,21,18,25
+comfort,stay inside,air,0,0,0,3,1,7
+comfort,stay inside,other,0,0,2,8,6,1
+comfort,windows,air,0,0,0,0,1,6
+comfort,windows,other,0,1,0,4,3,1
+institution,agencies,air,0,0,0,2,0,19
+institution,agencies,other,3,6,5,40,54,8
+institution,industry,air,0,0,0,3,0,8
+institution,industry,other,0,1,1,22,16,10
+institution,local government,air,0,0,0,2,0,4
+institution,local government,other,8,6,10,67,60,26
+institution,policy,air,1,0,1,3,1,8
+institution,policy,other,23,16,21,161,147,37
+institution,should do,other,1,1,1,19,15,5
+meaning,climate,air,0,0,0,0,0,8
+meaning,climate,other,0,0,1,25,4,8
+meaning,every year,air,0,2,0,1,1,9
+meaning,every year,other,2,1,4,22,48,9
+meaning,getting worse,air,1,0,0,2,0,3
+meaning,getting worse,other,0,0,1,16,27,13
+meaning,never like this,air,1,0,0,0,0,3
+meaning,never like this,other,3,7,7,49,31,16
+meaning,new normal,air,0,0,0,0,0,1
+meaning,used to,air,0,0,2,6,3,23
+meaning,used to,other,30,28,45,286,141,93
+meaning,what is this,air,0,0,0,1,1,4
+meaning,what is this,other,2,1,3,24,8,3
+normalizing,always been,air,0,0,0,0,0,1
+normalizing,always been,other,5,2,8,18,16,9
+normalizing,doesn't bother me,air,0,0,5,1,0,0
+normalizing,doesn't bother me,other,0,0,2,16,9,8
+normalizing,grew up here,air,0,0,6,1,0,3
+normalizing,grew up here,other,0,4,1,12,10,0
+normalizing,just how it is,other,0,1,1,3,3,0
+normalizing,used to it,other,0,0,1,5,0,0
+safety,breathing and lungs,air,0,3,8,13,1,21
+safety,breathing and lungs,other,2,1,1,7,9,5
+safety,care,air,1,0,1,2,2,6
+safety,care,other,20,7,10,59,28,53
+safety,conditions,air,2,4,36,20,17,13
+safety,conditions,other,2,0,0,12,5,6
+safety,health,air,0,1,5,7,7,18
+safety,health,other,15,11,13,98,62,63
+safety,numbers,air,0,0,0,6,0,32
+safety,protection,air,0,0,2,21,9,26
+safety,safe,air,0,0,0,6,4,12
+safety,safe,other,12,17,22,145,122,60
+safety,vulnerable people,air,0,0,5,2,4,16
+safety,vulnerable people,other,37,14,43,186,130,57
