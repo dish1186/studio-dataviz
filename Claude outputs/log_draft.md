@@ -1,0 +1,39 @@
+### Viz · Heat City Explorer V1 → V2.2 · 2026-09-27 · Claude (approved by Dish)
+- **What:** A new, separate artifact, **"Heat City Explorer"** (https://claude.ai/artifact/1gHjG67CiMoj8VDZLsN71J), showing actual temperature (sensor) and felt heat (embodied) for the 12 cities, 2016-01-01 → 2026-09-24, in the format of the PM2.5 City Explorer (d3 7.9, city chips, date slider, drag-to-zoom, per-city/shared y axis, "About the data", days-with-data table). Space is kept for the heat media and search rows. The air-quality artifact was not touched.
+- **Why:** To see the sensor and embodied rows together before the media and search rows are added.
+- **Input:** `data/processed/gridmet/final/temp_<city>_daily.csv` · `data/processed/utci/final/utci_<city>_daily.csv` (12 + 12 files, read only; 3,920 rows each, dates identical)
+- **Script:** the data is packed into the page by `build_data.py`, which is only in the session workspace (not in the repo; see the last judgment call). It copies tmax/utci_max, normal, p10, p90, abnormally_high and stress_category per day, rounded to 0.1 °F. No smoothing or filtering there: every derived value is computed in the page.
+- **Checks:** dates identical across the 24 files; UTCI blanks match `valid = 0` exactly (106 days per city: 2021-04-28/29 and 2026-06-13 → 09-24); Fairbanks temperature blank 2026-09-22 → 09-24; no blank normals.
+- **Finding for the appendix:** 9 city-days have `abnormally_high = 1` although the value equals p90 at 2 decimals (temp: Ann Arbor 2024-06-19, Bakersfield 2022-08-16, Brownsville 2024-06-16, Eugene 2025-05-27, Phoenix 2021-11-04; UTCI: Boston 2024-04-29, Brownsville 2025-10-25, San Diego 2021-02-22 and 2022-06-08). The flags were set on unrounded values. The page keeps the file flags.
+- **Versions:**
+  - **V1:** two rows per city (actual temperature, felt heat), each with its value line, 1991–2020 normal, p10–p90 band, abnormally-high ticks, and UTCI heat/cold stress bands on the felt row; toggle Temperature / Difference from normal.
+  - **Design exploration (not adopted, separate "Heat View Options" artifact):** first four two-row layouts, then four same-graph layouts, for Phoenix. **Dish chose option 3:** excess beyond the normal range, overlaid.
+  - **V2:** one chart per city, heat side only. Excess heat = value − p90 on abnormally-high days, 0 otherwise. Actual temperature = filled shape, felt heat = outline. All months kept. Toggle "Only days that also feel hot". The Temperature/Difference toggle, normal band, ticks and stress bands were removed.
+  - **V2.1:** default smoothing changed to 30-day.
+  - **V2.2:** dots along the top of each chart mark days whose felt heat reached UTCI strong heat stress, 32 °C (89.6 °F). They mark single days at any smoothing, and a checkbox turns them off (on by default).
+- **Judgment calls:**
+  - Title "Heat City Explorer". **Approved by Dish.**
+  - Smoothing rule: trailing mean of the valid days, shown only if ≥ half the window has data **and** the day itself has data. Monthly = calendar-month mean, ≥ half the month, only on days with data. Missing days are gaps in every view, never interpolated. **Claude's choice, approved by Dish.**
+  - Normal and band smoothed with the same window as the value (V1). **Claude's choice, approved by Dish.**
+  - "Per city" y axis: one range shared by both rows in a panel (V1). **Claude's choice, approved by Dish.**
+  - Colours:
+    - V1: actual orange, felt crimson, normal dashed grey.
+    - V2: actual fill orange at 70% opacity, felt outline crimson.
+    - Both themes checked.
+    - **Claude's choice, approved by Dish.**
+  - Default cities: Phoenix, Fresno, San Francisco, Boston, Fairbanks, Brownsville. **Claude's choice, approved by Dish.**
+  - Date presets Full period / Last 3 years / Common window (to 2026-06-12, D9), with UTCI marked "not yet available" after that. **Claude's choice, approved by Dish.**
+  - UTCI cold-stress bands added to the felt row (V1). **Changed by Dish.**
+  - Same-graph layout, excess-heat chart (option 3). **Changed by Dish.**
+  - Heat side only (days below normal sit at 0); all months kept, not cut to a warm season. **Dish's decision, following Claude's recommendation.**
+  - Stress filter as a toggle, off by default. **Changed by Dish.** When on, a day counts for both measures only if felt heat ≥ 78.8 °F (UTCI 26 °C, moderate heat stress); both measures are blank where UTCI is missing. **Claude's choice, approved by Dish.**
+  - Smoothed excess = mean over all valid days in the window, zeros included. **Claude's choice, approved by Dish.**
+  - Abnormally-hot day counts follow the file flags (see the 9 ties above). **Claude's choice, approved by Dish.**
+  - Default smoothing 30-day (V2.1), because at daily resolution over ten years the outline hides the fill. **Changed by Dish (Claude's suggestion).**
+  - A reference level for heat. Dish asked for a national heat-advisory value. **There isn't one:** NWS advisory criteria are heat-index thresholds set by each forecast office (about 95 °F in the north to 108 °F in Florida), and the Western Region, which covers 7 of our 12 cities, uses HeatRisk. The axis is also relative (°F above p90), so no fixed level can be a flat line. **Changed by Dish:** use UTCI strong heat stress (89.6 °F), the same level everywhere; it is a body-stress level, not an NWS advisory.
+  - Display tried on one city (Heat View Options artifact): (a) dots on strong-stress days vs (b) a dotted curve at 89.6 °F minus the date's felt p90. The curve drops below zero every summer in hot cities and rises off the chart in winter, so it reads as spikes. **Dish chose the dots.** Showing them on by default: **Claude's choice, approved by Dish.**
+  - Possible later dataset: actual NWS heat advisories issued per forecast zone (an issued-alert archive, e.g. Iowa Environmental Mesonet; not yet checked) as an "institutional action" row. **Not started.**
+  - No felt-minus-actual view anywhere (D14).
+  - The packing script is not yet in the repo. Proposed: save it as `scripts/viz/01_heat_explorer_data.py`, with the page source as `viz/heat-city-explorer/`. **Open: Dish to decide.**
+- **Not adopted (appendix note):** season-length check (warm/cold days per year, 1991–2025). Run once in the session workspace on copies of the repo files, then **shelved by Dish as too noisy**. Nothing was written to the repo. Summary and method lesson in the project doc `claude/scope-season-length.md`.
+- **SHA-256 (session copies):** page V2.2 `9bf3f6a6b769bf3ee9b82712dcbb319ccbb2549deda8282becb49249724d10a3` · `build_data.py` `22fd41107824e50c213f5e43c301eff27043ff519f3ec2559efd923a23275636`
