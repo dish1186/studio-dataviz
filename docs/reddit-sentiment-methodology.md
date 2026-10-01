@@ -28,7 +28,7 @@ We will combine posts from city subreddits for Boston, San Francisco, Phoenix, D
 - felt heat (UTCI)
 - fine-particle pollution (OpenAQ PM2.5)
 
-for January 2022 to May 2026. A bag-of-words classifier, validated by hand, will flag heat-related and air-quality-related posts. Sentiment will be scored with a lexicon-based tool designed for social media (VADER). Panel regressions with city and seasonal fixed effects will estimate how:
+for January 2022 to May 2026. A bag-of-words classifier, validated by hand, will flag heat-related and air-quality-related posts. Sentiment will be scored with VADER, a lexicon-based tool designed for social media. Panel regressions with city and seasonal fixed effects will estimate how:
 - **(i)** the frequency of heat and air-quality posts, and
 - **(ii)** the sentiment of those posts and of all other posts
 
@@ -135,9 +135,8 @@ Following the model study, posts are classified with predefined term lists rathe
 
 ### 2. Measuring sentiment
 
-- **Primary tool: VADER** (Hutto & Gilbert, 2014). A rule-based lexicon tuned for social-media text, handling negation, intensifiers, capitals and emoticons. Each post gets a compound score from −1 to +1. Free and open source.
-- **Secondary tool: LIWC** (Linguistic Inquiry and Word Count). The model study's second measure. It counts words in categories such as positive emotion, negative emotion, anxiety and anger. **LIWC requires a paid licence.** **[decision]** If it isn't available, an open lexicon such as the NRC Emotion Lexicon is a substitute for the emotion categories.
-- **Composite score:** as in the model study, positive minus negative sentiment. For VADER, use the mean compound score per city-week. For LIWC, use positive-emotion % minus negative-emotion %.
+- **Tool: VADER only** (Hutto & Gilbert, 2014). A rule-based lexicon tuned for social-media text, handling negation, intensifiers, capitals and emoticons. Each post gets a compound score from −1 to +1, plus the proportions of positive, neutral and negative text. Free and open source. The model study also used LIWC; this project uses VADER only (Gina, 2026-09-30).
+- **Scores:** the main score is the mean VADER compound score per city-week. As a check closer to the model study's positive-minus-negative composite, also report the mean of VADER's positive proportion minus its negative proportion.
 - **Two sentiment outcomes per city-week:**
   1. the sentiment of **topic posts** (heat or air quality): how people feel when they talk about the event
   2. the sentiment of **all other posts**: whether the event shifts mood more broadly (the model study's main sentiment test)
@@ -187,7 +186,7 @@ The baseline specification follows the model study's principal model:
 - Topic share instead of log counts.
 - Excluding the 2-3 largest single events (e.g. the June 2023 eastern wildfire smoke, the September 2022 western heat wave) to check that one week isn't driving the results.
 - Term lists with and without the most ambiguous words ("hot", "smoke", "AC").
-- LIWC (or the NRC lexicon) in place of VADER.
+- VADER positive-minus-negative proportions in place of the compound score.
 - Dropping 2023 around Reddit's API change and the subreddit blackouts of June 2023, when posting volumes were unusual.
 
 ---
@@ -224,15 +223,13 @@ The baseline specification follows the model study's principal model:
 1. Subreddits: city-only, or add suburbs and neighbourhoods?
 2. Submissions only, or submissions plus comments?
 3. Data access route (official API vs archives), checked against current terms.
-4. LIWC licence, or an open alternative?
-5. Frequency outcome: log counts, or share of posts?
-6. Whether news coverage enters as a control.
-7. Ethics review requirement.
+4. Frequency outcome: log counts, or share of posts?
+5. Whether news coverage enters as a control.
+6. Ethics review requirement.
 
 ## References
 
 - Moore, F. C., Obradovich, N., Lehner, F., & Baylis, P. (2019). Rapidly declining remarkability of temperature anomalies may obscure public perception of climate change. *Proceedings of the National Academy of Sciences*, 116(11), 4905–4910. https://doi.org/10.1073/pnas.1816541116 (open access: https://pmc.ncbi.nlm.nih.gov/articles/PMC6421414/)
 - Hutto, C. J., & Gilbert, E. (2014). VADER: A parsimonious rule-based model for sentiment analysis of social media text. *Proceedings of the International AAAI Conference on Web and Social Media*, 8(1). **[to verify: pages]**
-- Pennebaker, J. W., and colleagues. Linguistic Inquiry and Word Count (LIWC). **[to verify: the version used by the model study, and the current LIWC-22 citation]**
 - U.S. EPA, 40 CFR Part 58, Appendix G (AQI breakpoints). Used in OpenAQ Step 6.
 - Reddit Data API Terms and Developer Terms. **[to read and cite the current versions before any collection]**

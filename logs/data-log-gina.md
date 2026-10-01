@@ -32,6 +32,15 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Plan P1 · revision: VADER only · 2026-09-30 22:09 EDT · Gina + Claude
+- **What:** Removed LIWC (and the NRC alternative) from `docs/reddit-sentiment-methodology.md` (Gina: "take out LIWC, we'll just use VADER").
+  - The sentiment score is now the mean VADER compound score per city-week.
+  - The positive-minus-negative VADER proportions serve as a check, close to the model study's composite.
+  - The LIWC licence decision and the LIWC reference are removed.
+  - The document still notes that the model study itself used LIWC.
+
+---
+
 ### Plan P1 · Reddit sentiment and post-frequency methodology (draft) · 2026-09-30 21:48 EDT · Gina + Claude
 - **What:** A draft methodology document, `docs/reddit-sentiment-methodology.md`. **No data collected and nothing run.**
 - **Why:** Gina asked for a methodology, modelled on Moore, Obradovich, Lehner & Baylis (2019, *PNAS*, doi:10.1073/pnas.1816541116), for testing whether heat events and air-quality events are associated with different post frequency or sentiment on Reddit.
