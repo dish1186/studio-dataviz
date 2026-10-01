@@ -1,0 +1,58 @@
+topic,x_metric,search,city,n,k,k_lo,k_hi,a,b,r2_hinge,r2_linear,dbic_hinge_minus_linear,k_percentile,share_months_above_k
+heat,felt_heat_f,air conditioner + AC,bakersfield,126,77.54,69.37,80.56,19.73,1.789,0.633,0.626,2.6,31.7,68.3
+heat,actual_temp_f,air conditioner + AC,bakersfield,128,71.4,65.19,79.34,19.51,1.793,0.669,0.64,-5.9,37.5,62.5
+heat,felt_heat_f (searches year-adjusted),air conditioner + AC,bakersfield,126,76.94,73.92,81.46,19.09,1.829,0.721,0.708,-1.2,29.4,70.6
+heat,felt_heat_f,air conditioner + AC,fresno,126,77.64,72.21,83.75,20.44,1.673,0.639,0.621,-1.0,32.5,67.5
+heat,actual_temp_f,air conditioner + AC,fresno,128,70.24,67.47,78.21,20.21,1.779,0.666,0.633,-7.3,38.3,61.7
+heat,felt_heat_f (searches year-adjusted),air conditioner + AC,fresno,126,78.32,74.58,84.43,20.65,1.769,0.717,0.69,-6.5,34.1,65.9
+heat,felt_heat_f,air conditioner + AC,brownsville,126,80.07,77.33,84.32,33.29,2.245,0.648,0.608,-8.7,25.4,74.6
+heat,actual_temp_f,air conditioner + AC,brownsville,128,79.03,76.13,82.35,32.93,3.063,0.682,0.643,-10.0,27.3,72.7
+heat,felt_heat_f (searches year-adjusted),air conditioner + AC,brownsville,126,81.32,79.32,87.07,34.45,2.412,0.785,0.73,-23.6,27.8,72.2
+heat,felt_heat_f,air conditioner + AC,sanfrancisco,126,54.61,54.61,54.61,36.1,1.051,0.098,0.102,5.4,5.6,94.4
+heat,actual_temp_f,air conditioner + AC,sanfrancisco,128,57.25,57.02,59.28,29.62,2.18,0.262,0.261,4.8,6.2,93.8
+heat,felt_heat_f (searches year-adjusted),air conditioner + AC,sanfrancisco,126,54.61,54.61,54.61,36.29,1.086,0.13,0.135,5.6,5.6,94.4
+heat,felt_heat_f,air conditioner + AC,boston,126,54.13,49.09,73.37,21.12,1.418,0.55,0.5,-8.4,44.4,55.6
+heat,actual_temp_f,air conditioner + AC,boston,128,60.95,53.28,71.69,22.6,2.193,0.587,0.521,-14.1,50.8,49.2
+heat,felt_heat_f (searches year-adjusted),air conditioner + AC,boston,126,54.59,50.01,64.21,21.45,1.466,0.62,0.561,-13.3,44.4,55.6
+heat,felt_heat_f,air conditioner + AC,detroit,126,54.08,48.84,73.99,19.78,1.253,0.541,0.478,-11.2,45.2,54.8
+heat,actual_temp_f,air conditioner + AC,detroit,128,58.92,52.58,74.98,19.84,1.84,0.562,0.476,-18.2,46.1,53.9
+heat,felt_heat_f (searches year-adjusted),air conditioner + AC,detroit,126,55.65,50.41,63.54,20.27,1.369,0.656,0.577,-21.0,46.0,54.0
+heat,felt_heat_f,air conditioner + AC,eugene,126,61.2,53.64,65.43,25.44,1.971,0.45,0.433,1.0,34.9,65.1
+heat,actual_temp_f,air conditioner + AC,eugene,128,60.27,56.59,65.78,25.38,2.349,0.548,0.512,-5.1,43.8,56.2
+heat,felt_heat_f (searches year-adjusted),air conditioner + AC,eugene,126,62.41,60.29,65.43,26.16,2.167,0.592,0.552,-6.8,42.1,57.9
+heat,felt_heat_f,air conditioner + AC,fairbanks,126,61.54,56.62,72.79,31.9,2.55,0.461,0.221,-41.4,65.1,34.9
+heat,actual_temp_f,air conditioner + AC,fairbanks,128,60.09,51.61,64.62,33.62,3.842,0.462,0.259,-36.2,71.9,28.1
+heat,felt_heat_f (searches year-adjusted),air conditioner + AC,fairbanks,126,61.54,58.03,70.68,32.23,2.559,0.615,0.309,-68.7,65.1,34.9
+heat,felt_heat_f,air conditioner + AC,losangeles,126,74.89,71.92,88.0,22.7,2.33,0.493,0.477,0.8,16.7,83.3
+heat,actual_temp_f,air conditioner + AC,losangeles,128,75.65,65.85,81.73,30.07,4.185,0.53,0.495,-4.4,54.7,45.3
+heat,felt_heat_f (searches year-adjusted),air conditioner + AC,losangeles,126,80.05,75.88,84.8,27.95,3.22,0.603,0.557,-9.1,41.3,58.7
+heat,felt_heat_f,air conditioner + AC,phoenix,126,78.76,71.76,96.12,21.49,1.414,0.613,0.606,2.4,27.0,73.0
+heat,actual_temp_f,air conditioner + AC,phoenix,128,81.09,72.86,96.87,22.95,1.947,0.661,0.631,-5.8,37.5,62.5
+heat,felt_heat_f (searches year-adjusted),air conditioner + AC,phoenix,126,80.43,76.43,97.46,22.45,1.542,0.748,0.727,-5.4,29.4,70.6
+heat,felt_heat_f,air conditioner + AC,sandiego,126,80.2,69.92,86.1,28.46,3.58,0.548,0.505,-6.7,57.1,42.9
+heat,actual_temp_f,air conditioner + AC,sandiego,128,73.04,66.49,78.45,29.09,4.586,0.481,0.439,-5.0,51.6,48.4
+heat,felt_heat_f (searches year-adjusted),air conditioner + AC,sandiego,126,80.58,77.91,84.77,28.51,4.094,0.691,0.597,-28.5,57.1,42.9
+smoke,pm25_worst_day,air purifier,bakersfield,119,53.4,11.15,53.4,7.96,0.125,0.012,0.003,3.7,89.9,10.1
+smoke,haze_worst_day_10_minus_vis_mi,air purifier,bakersfield,128,6.05,0.06,6.51,7.47,0.991,0.012,0.0,3.3,70.3,29.7
+smoke,pm25_worst_day,air purifier,fresno,120,48.6,14.47,48.6,9.17,0.175,0.082,0.045,-0.0,90.0,10.0
+smoke,haze_worst_day_10_minus_vis_mi,air purifier,fresno,128,7.51,0.0,7.51,8.7,8.725,0.089,0.0,-7.1,89.8,10.2
+smoke,pm25_worst_day,air purifier,brownsville,43,17.66,13.01,30.72,6.43,0.06,0.017,0.017,3.8,32.6,67.4
+smoke,haze_worst_day_10_minus_vis_mi,air purifier,brownsville,128,0.0,0.0,3.34,3.63,0.622,0.113,0.113,4.9,0.0,73.4
+smoke,pm25_worst_day,air purifier,sanfrancisco,120,18.74,9.08,25.04,8.24,0.316,0.378,0.365,2.3,73.3,26.7
+smoke,haze_worst_day_10_minus_vis_mi,air purifier,sanfrancisco,128,4.27,4.27,4.27,7.85,6.906,0.337,0.128,-30.1,89.8,10.2
+smoke,pm25_worst_day,air purifier,boston,108,21.61,7.64,23.03,8.13,0.114,0.004,0.004,4.6,87.0,13.0
+smoke,haze_worst_day_10_minus_vis_mi,air purifier,boston,128,0.0,0.0,3.9,7.59,-0.066,0.001,0.001,4.9,0.0,78.1
+smoke,pm25_worst_day,air purifier,detroit,118,26.71,13.2,33.78,7.09,0.078,0.195,0.184,3.2,75.4,24.6
+smoke,haze_worst_day_10_minus_vis_mi,air purifier,detroit,128,5.98,1.08,5.98,6.79,3.977,0.127,0.033,-8.4,89.8,10.2
+smoke,pm25_worst_day,air purifier,eugene,121,31.3,4.67,31.3,6.86,0.19,0.705,0.675,-6.9,89.3,9.9
+smoke,haze_worst_day_10_minus_vis_mi,air purifier,eugene,128,3.94,0.14,3.94,6.56,5.209,0.268,0.139,-16.0,89.8,10.2
+smoke,pm25_worst_day,air purifier,fairbanks,120,48.9,48.9,48.9,1.17,0.24,0.401,0.307,-12.8,89.2,9.2
+smoke,haze_worst_day_10_minus_vis_mi,air purifier,fairbanks,128,3.21,3.14,3.21,1.2,3.004,0.205,0.154,-3.2,89.8,10.2
+smoke,pm25_worst_day,air purifier,losangeles,117,33.69,15.05,34.01,8.16,0.288,0.042,0.005,0.3,87.2,12.8
+smoke,haze_worst_day_10_minus_vis_mi,air purifier,losangeles,128,1.82,1.82,6.5,8.69,-0.242,0.003,0.003,4.8,8.6,91.4
+smoke,pm25_worst_day,air purifier,phoenix,117,7.89,7.89,31.17,10.43,0.021,0.003,0.003,4.8,5.1,94.9
+smoke,haze_worst_day_10_minus_vis_mi,air purifier,phoenix,128,0.81,0.0,1.7,10.25,-0.536,0.002,0.0,4.6,71.1,28.9
+smoke,pm25_worst_day,air purifier,sandiego,92,20.7,11.96,24.2,9.75,0.371,0.043,0.033,3.6,75.0,25.0
+smoke,haze_worst_day_10_minus_vis_mi,air purifier,sandiego,128,4.14,0.53,4.51,8.18,1.663,0.012,0.002,3.5,87.5,12.5
+smoke,pm25_worst_day (weekly),air purifier (weekly),sanfrancisco,336,16.45,10.61,18.85,10.53,0.992,0.362,0.321,-15.2,86.0,14.0
+smoke,"pm25_worst_day (monthly, 2020+)",air purifier,sanfrancisco,80,23.45,9.11,23.45,10.46,0.516,0.434,0.405,0.4,90.0,10.0
