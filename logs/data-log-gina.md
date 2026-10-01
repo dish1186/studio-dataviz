@@ -32,6 +32,24 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Google Trends · Step 15: weekly "eye drops" raw files, 7 metros · 2026-10-01 00:07 EDT · Gina + Claude
+- **What:** Added Gina's 7 downloads to `data/raw/google-trends/eyedrops-search/`, **copied unchanged** (byte-identical to ~/Downloads):
+  - `bos_man_drops_5yr.csv`: Boston MA-Manchester NH, SHA-256 84b2b41d…757bf1e1, peak (100) 2023-10-29, weeks = 0: 0
+  - `sanfran_eyedrops_5yr.csv`: San Francisco-Oakland-San Jose CA, SHA-256 068f4faf…02d49688, peak (100) 2026-03-29, weeks = 0: 0
+  - `phoenix_drops_5yr.csv`: Phoenix AZ, SHA-256 5a6350e6…357153bc, peak (100) 2026-04-12, weeks = 0: 0
+  - `detroit_drops_5yr.csv`: Detroit MI, SHA-256 deee98a4…a0613f73, peak (100) 2023-10-29, weeks = 0: 0
+  - `sandiego_drops_5yr.csv`: San Diego CA, SHA-256 0df6f306…cb4a3327, peak (100) 2026-04-05, weeks = 0: 0
+  - `eugene_drops_5yr.csv`: Eugene OR, SHA-256 c3f49d7b…af4393bb, peak (100) 2026-05-24, weeks = 0: 153
+  - `bakersfield_drops_5yr.csv`: Bakersfield CA, SHA-256 7b37bfdb…d76febcf, peak (100) 2023-03-19, weeks = 0: 98
+- Each file: "eye drops" as a **search term**, All categories, Web Search (file header and Gina's screenshot), **weekly**, 2021-09-26 to 2026-09-27 (262 weeks), one 0-100 scale per file; the last week is partial. Also wrote `trends_sources.csv` and added 4 rows to `data/descriptions/data_descriptions.csv`.
+- **Why:** Gina asked for eye drops searches, a possible signal of eye irritation from smoke, pollen or dry heat.
+- **Flags:**
+  - **Eugene and Bakersfield are sparse:** many weeks are 0, which in Google Trends usually means too little search volume rather than none. Treat them with caution, or use monthly data for those two.
+  - **Shared spikes in every city** in the weeks of **2023-01-29, 2023-03-19 and 2023-10-29** (Boston's peak = 100 is 2023-10-29). The same week everywhere points to national news rather than local conditions. **Possibly the 2023 eye-drop recalls and FDA warnings; not verified.** These weeks should be checked before reading any spike as a reaction to air or heat.
+  - **Spring 2026 is high in every city** (late March to May), like the AC and ice cream searches.
+
+---
+
 ### NIFC fire perimeters · Step 1: raw WFIGS Interagency Fire Perimeters table · 2026-09-30 23:54 EDT · Gina + Claude
 - **What:** Added Gina's export `WFIGS_Interagency_Perimeters_-8039255302361386572.csv` (36.4 MB; SHA-256 72d47c80…62439570) to `data/raw/nifc-wfigs-perimeters/`, **copied unchanged** (`cmp` identical). Added 13 rows to `data/descriptions/data_descriptions.csv`, with the source link.
 - **Source:** NIFC, WFIGS Interagency Fire Perimeters, https://data-nifc.opendata.arcgis.com/datasets/nifc::wfigs-interagency-fire-perimeters/explore?location=-0.000000%2C0.000000%2C2.00&showTable=true (table view, exported as CSV by Gina on 2026-09-30).
