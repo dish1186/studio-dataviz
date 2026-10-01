@@ -1,0 +1,21 @@
+{
+  "study": "eugene_bakersfield",
+  "topic_name": "air",
+  "lexicon_topic": "data/lexicons/lexicon_air_v1.csv",
+  "lexicon_registers": "data/lexicons/lexicon_registers_v0.csv",
+  "near_miss_cities": ["Bakersfield"],
+  "cities": {
+    "Eugene":      {"subreddit": "Eugene",      "timezone": "America/Los_Angeles",
+                    "raw": ["data/raw/reddit/arctic-shift/eugene_*.jsonl"]},
+    "Bakersfield": {"subreddit": "bakersfield", "timezone": "America/Los_Angeles",
+                    "raw": ["data/raw/reddit/arctic-shift/bakersfield_*.jsonl"]}
+  },
+  "windows": [
+    {"name": "eugene_event_2026-08-03",      "city": "Eugene",      "type": "event",    "start": "2026-08-03"},
+    {"name": "eugene_base_2024-08-05",       "city": "Eugene",      "type": "baseline", "start": "2024-08-05"},
+    {"name": "eugene_base_2025-08-04",       "city": "Eugene",      "type": "baseline", "start": "2025-08-04"},
+    {"name": "bakersfield_event_2024-12-02", "city": "Bakersfield", "type": "event",    "start": "2024-12-02"},
+    {"name": "bakersfield_base_2023-12-04",  "city": "Bakersfield", "type": "baseline", "start": "2023-12-04"},
+    {"name": "bakersfield_base_2025-12-01",  "city": "Bakersfield", "type": "baseline", "start": "2025-12-01"}
+  ]
+}

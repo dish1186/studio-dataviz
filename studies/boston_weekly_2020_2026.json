@@ -1,0 +1,23 @@
+{
+  "study": "boston_weekly_2020_2026",
+  "topic_name": "heat",
+  "lexicon_topic": "data/lexicons/lexicon_heat_v0.csv",
+  "lexicon_registers": "data/lexicons/lexicon_registers_v0.csv",
+  "cities": {
+    "Boston": {
+      "subreddit": "boston",
+      "timezone": "America/New_York",
+      "raw": [
+        "data/raw/reddit/arctic-shift/boston_*.jsonl"
+      ]
+    }
+  },
+  "periods": [
+    {
+      "city": "Boston",
+      "start": "2020-01-05",
+      "end": "2026-09-26",
+      "bin_days": 7
+    }
+  ]
+}

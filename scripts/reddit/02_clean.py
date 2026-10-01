@@ -1,83 +1,61 @@
 #!/usr/bin/env python3
 """
-scripts/reddit/02_clean.py
+scripts/reddit/02_clean.py  (study version)
 
-Step 02 of the Reddit case study (Eugene vs Bakersfield: do people react to
-harm or to abnormality?). Reads the 12 raw Arctic Shift downloads and writes
-one cleaned file per window. Nothing is scored or classified here.
+Step 02: reads the raw Arctic Shift downloads for every city in a study file,
+keeps each post or comment that falls inside one of the study's windows, and
+writes one cleaned file for the whole study. Nothing is scored here.
 
 Run from the repo root:
-    python scripts/reddit/02_clean.py            # all windows
-    python scripts/reddit/02_clean.py --force    # overwrite existing outputs
+    python3 scripts/reddit/02_clean.py --study studies/eugene_bakersfield.json
+    python3 scripts/reddit/02_clean.py --study studies/boston_heat_2026.json --force
 
-Input:   data/raw/reddit/arctic-shift/<window>_posts.jsonl
-         data/raw/reddit/arctic-shift/<window>_comments.jsonl
-Output:  data/processed/reddit/step02_clean/<window>.csv   one row per kept post or comment
-         data/processed/reddit/step02_clean/summary.csv    rows in, rows dropped (by reason), rows kept
-         data/processed/reddit/step02_clean/per_day.csv    kept rows per local day
-         data/processed/reddit/step02_clean/bots_found.txt bot accounts dropped (for audit)
+Input:   the raw files listed under each city's "raw" in the study file, anywhere on disk
+         (default: data/raw/reddit/arctic-shift/<city>_*.jsonl). Formats: .jsonl/.ndjson (Arctic
+         Shift download tool), .json lists (Arctic Shift web search), .zst dumps (needs zstandard).
+         Posts and comments can be in the same or separate files; downloads can overlap
+         (duplicates are dropped by id).
+Output:  data/processed/reddit/<study>/step02_clean/
+           items.csv          one row per kept post or comment per window (text, no usernames)
+           removed.csv        removed/deleted comments: window, id, thread id only (no text),
+                              used by step 03's removal check
+           summary.csv        per window and kind: raw rows in window, removed, bot, empty, kept
+           per_day.csv        kept rows per local day
+           bots_found.txt     bot accounts dropped, for audit
 
-What happens to each raw row, in this order (first reason that applies wins):
-    1. duplicate id                    -> dropped ("duplicate")
-    2. outside the local week          -> dropped ("outside_window")
-    3. removed or deleted              -> dropped ("removed_deleted")
-    4. posted by a bot                 -> dropped ("bot")
-    5. no text left after cleaning     -> dropped ("empty_after_clean")
-    6. otherwise                       -> kept
-
-Claude defaults (log these as decisions, change any you disagree with):
-    C1  Week = local Monday 00:00 to the next Monday 00:00, in America/Los_Angeles
-        for both cities (handles PDT in August and PST in December).
-    C2  Removed or deleted = any of: _meta.removal_type set; _meta.was_deleted_later
-        true; removed_by_category set; author "[deleted]"; body/selftext "[removed]"
-        or "[deleted]". Archived text of removed items is never used, even where
-        the archive kept it.
-    C3  Bots = an explicit list of known bot accounts (BOTS below), "<sub>-ModTeam"
-        accounts, and comments distinguished as "moderator" (official mod notices).
-        Revised 2026-09-30 after auditing bots_found.txt: the earlier "name ends in
-        bot" rule also caught human accounts ending in "robot". The accounts dropped
-        are listed in bots_found.txt for audit.
-    C4  Usernames are not carried into processed files. "u/name" mentions inside
-        text become "u/[user]".
-    C5  Text cleaning: HTML entities decoded; quoted lines (starting with ">") removed,
-        since they are someone else's words; markdown links [text](url) kept as text;
-        bare URLs removed; markdown symbols (*, _, ~, #, `) removed; whitespace collapsed.
-    C6  A post's text = title + body. Link-only posts keep their title.
-    C7  Comments are kept even when their parent post was removed or falls outside
-        the week; each comment is judged on its own time and status.
-    C8  thread_id = the post id (for posts) or the parent post id from link_id
-        (for comments). Used later for the thread-level bootstrap.
+Rules (unchanged from the Eugene/Bakersfield run; log as decisions):
+    C1  Window = local midnight on its start date to local midnight after its last day,
+        in the city's own time zone (from the study file). Default 7 days.
+    C2  Removed or deleted = _meta.removal_type set, _meta.was_deleted_later true,
+        removed_by_category set, author "[deleted]", or text "[removed]"/"[deleted]".
+    C3  Bots = the explicit list below, "<sub>-ModTeam" accounts, and comments
+        distinguished as "moderator".
+    C4  Usernames are not carried over; "u/name" in text becomes "u/[user]".
+    C5  Text cleaning: HTML entities decoded; quoted lines (">") removed; markdown links kept
+        as text; URLs removed; markdown symbols removed; whitespace collapsed.
+    C6  A post's text = title + body.
+    C7  Comments are judged on their own time and status, whatever happened to their post.
+    C8  thread_id = the post's id, or the parent post id from link_id for comments.
+    C9  (study version) A post or comment inside several overlapping windows is kept once
+        per window. A file's kind is read from each row (rows with a title are posts).
 """
 
 import argparse
+import csv
 import html
 import json
 import re
 import sys
 from collections import Counter, defaultdict
-from datetime import date, datetime, time, timedelta, timezone
+from datetime import datetime, timezone
 from pathlib import Path
-from zoneinfo import ZoneInfo
 
 import pandas as pd
 
-RAW = Path("data/raw/reddit/arctic-shift")
-OUT = Path("data/processed/reddit/step02_clean")
-TZ = ZoneInfo("America/Los_Angeles")   # C1
-
-# window name, city, week type, subreddit, first local day of the week (a Monday)
-WINDOWS = [
-    ("eugene_event_2026-08-03",      "Eugene",      "event",    "Eugene",      date(2026, 8, 3)),
-    ("eugene_base_2024-08-05",       "Eugene",      "baseline", "Eugene",      date(2024, 8, 5)),
-    ("eugene_base_2025-08-04",       "Eugene",      "baseline", "Eugene",      date(2025, 8, 4)),
-    ("bakersfield_event_2024-12-02", "Bakersfield", "event",    "bakersfield", date(2024, 12, 2)),
-    ("bakersfield_base_2023-12-04",  "Bakersfield", "baseline", "bakersfield", date(2023, 12, 4)),
-    ("bakersfield_base_2025-12-01",  "Bakersfield", "baseline", "bakersfield", date(2025, 12, 1)),
-]
-KINDS = ["posts", "comments"]
+sys.path.insert(0, str(Path(__file__).parent))
+from study import load_study, raw_files, WindowIndex   # noqa: E402
 
 GONE_TEXT = {"[removed]", "[deleted]"}
-# C3 (revised after audit of bots_found.txt, 2026-09-30): explicit list, not a name pattern.
 BOTS = {"automoderator", "sneakpeekbot", "haikusbot", "sokkahaikubot", "amputatorbot", "vettedbot",
         "wikisummarizerbot", "remindmebot", "savevideo", "savevideobot", "repostsleuthbot"}
 MODTEAM = re.compile(r"-modteam$", re.IGNORECASE)
@@ -86,32 +64,24 @@ MD_LINK = re.compile(r"\[([^\]]*)\]\([^)]*\)")
 USER = re.compile(r"(?<![\w/])/?u/[A-Za-z0-9_-]+")
 MD_SYMBOLS = re.compile(r"[*_~`#]+")
 SPACES = re.compile(r"\s+")
+COLS = ["window", "city", "group", "week_type", "kind", "id", "thread_id", "parent_id", "created_utc",
+        "created_local", "local_date", "score", "num_comments", "text_clean", "n_chars"]
+csv.field_size_limit(10**9)
 
 
-def week_bounds(monday):
-    start = datetime.combine(monday, time(0, 0), TZ)
-    end = datetime.combine(monday + timedelta(days=7), time(0, 0), TZ)
-    return int(start.timestamp()), int(end.timestamp())
-
-
-def is_removed(x, kind):                                         # C2
+def is_removed(x, kind):
     meta = x.get("_meta") or {}
-    body = (x.get("selftext") if kind == "posts" else x.get("body")) or ""
-    return bool(
-        meta.get("removal_type")
-        or meta.get("was_deleted_later")
-        or x.get("removed_by_category")
-        or x.get("author") == "[deleted]"
-        or body.strip() in GONE_TEXT
-    )
+    body = (x.get("selftext") if kind == "post" else x.get("body")) or ""
+    return bool(meta.get("removal_type") or meta.get("was_deleted_later") or x.get("removed_by_category")
+                or x.get("author") == "[deleted]" or body.strip() in GONE_TEXT)
 
 
-def is_bot(x, kind):                                             # C3
+def is_bot(x, kind):
     a = x.get("author") or ""
-    return a.lower() in BOTS or bool(MODTEAM.search(a)) or (kind == "comments" and x.get("distinguished") == "moderator")
+    return a.lower() in BOTS or bool(MODTEAM.search(a)) or (kind == "comment" and x.get("distinguished") == "moderator")
 
 
-def clean(text):                                                 # C4, C5
+def clean(text):
     t = html.unescape(text or "")
     t = "\n".join(line for line in t.split("\n") if not line.lstrip().startswith(">"))
     t = MD_LINK.sub(r"\1", t)
@@ -122,113 +92,165 @@ def clean(text):                                                 # C4, C5
     return SPACES.sub(" ", t).strip()
 
 
-def read_jsonl(path):
-    rows, bad = [], 0
-    with open(path, encoding="utf-8") as f:
-        for line in f:
+def iter_rows(path):
+    """Yields one dict per post/comment from .jsonl / .ndjson (one object per line), a .json file
+    holding a list (Arctic Shift web search download), or a .zst dump (Arctic Shift / Academic
+    Torrents; needs `pip3 install zstandard`). Lines that cannot be read are counted, not fatal."""
+    p = str(path)
+    if p.endswith(".zst"):
+        import io
+        import zstandard
+        with open(p, "rb") as fh:
+            stream = io.TextIOWrapper(zstandard.ZstdDecompressor(max_window_size=2**31).stream_reader(fh), encoding="utf-8")
+            for line in stream:
+                if line.strip():
+                    try:
+                        yield json.loads(line)
+                    except json.JSONDecodeError:
+                        yield None
+        return
+    with open(p, encoding="utf-8") as fh:
+        first = fh.read(1)
+        while first and first.isspace():
+            first = fh.read(1)
+        fh.seek(0)
+        if first == "[":
+            data = json.load(fh)
+            for x in (data.get("data", data) if isinstance(data, dict) else data):
+                yield x
+            return
+        for line in fh:
             if line.strip():
                 try:
-                    rows.append(json.loads(line))
+                    yield json.loads(line)
                 except json.JSONDecodeError:
-                    bad += 1
-    if bad:
-        print(f"    WARNING: {bad} unreadable lines in {path.name}")
-    return rows
+                    yield None
 
 
 def main():
     ap = argparse.ArgumentParser()
+    ap.add_argument("--study", required=True, help="study file, e.g. studies/eugene_bakersfield.json")
     ap.add_argument("--force", action="store_true", help="overwrite existing outputs")
     args = ap.parse_args()
-
+    S = load_study(args.study)
+    OUT = S["out"] / "step02_clean"
+    if (OUT / "items.csv").exists() and not args.force:
+        raise SystemExit(f"{OUT/'items.csv'} exists; use --force to overwrite")
     OUT.mkdir(parents=True, exist_ok=True)
-    summary, per_day, bots = [], [], defaultdict(Counter)
+    print(f"study {S['name']}: {len(S['windows'])} windows in {len(S['cities'])} cities")
 
-    for name, city, wtype, sub, monday in WINDOWS:
-        out_path = OUT / f"{name}.csv"
-        if out_path.exists() and not args.force:
-            print(f"\n{name}: {out_path} exists, skipping (use --force to overwrite)")
+    stats = defaultdict(Counter)          # (window, kind) -> reasons
+    bots = defaultdict(Counter)
+    f_items = open(OUT / "items.csv", "w", newline="", encoding="utf-8")
+    f_rem = open(OUT / "removed.csv", "w", newline="", encoding="utf-8")
+    wi, wr = csv.writer(f_items), csv.writer(f_rem)
+    wi.writerow(COLS)
+    wr.writerow(["window", "id", "thread_id"])
+
+    for city, info in S["cities"].items():
+        cw = [w for w in S["windows"] if w["city"] == city]
+        if not cw:
             continue
-        start, end = week_bounds(monday)
-        print(f"\n{name}  local {monday} to {monday + timedelta(days=6)} "
-              f"(UTC {datetime.fromtimestamp(start, timezone.utc):%Y-%m-%d %H:%M} -> "
-              f"{datetime.fromtimestamp(end, timezone.utc):%Y-%m-%d %H:%M})")
-        kept = []
-        for kind in KINDS:
-            path = RAW / f"{name}_{kind}.jsonl"
-            if not path.exists():
-                print(f"    MISSING: {path}")
-                continue
-            raw = read_jsonl(path)
-            ts = [int(float(x["created_utc"])) for x in raw]
-            # coverage check: does the raw file span the whole local week?
-            if ts and (min(ts) > start + 3600 or max(ts) < end - 3600):
-                print(f"    WARNING: raw {kind} cover {datetime.fromtimestamp(min(ts), timezone.utc):%m-%d %H:%M} -> "
-                      f"{datetime.fromtimestamp(max(ts), timezone.utc):%m-%d %H:%M} UTC; the week may be incomplete")
-            subs = Counter(x.get("subreddit") for x in raw)
-            if {str(s).lower() for s in subs} - {sub.lower()}:
-                print(f"    WARNING: unexpected subreddits {dict(subs)}")
+        idx = WindowIndex(cw)
+        files = raw_files(S, city)
+        print(f"\n{city}: r/{info['subreddit']}, {len(cw)} windows, {len(files)} raw files")
+        if not files:
+            print("    MISSING: no raw files matched", info.get("raw"))
+            continue
+        seen, n_dup, n_out, n_bad, tmin, tmax = set(), 0, 0, 0, None, None
+        subs = Counter()
+        for path in files:
+            n_file = 0
+            for x in iter_rows(path):
+                    if x is None:
+                        n_bad += 1
+                        continue
+                    n_file += 1
+                    if x.get("id") in seen:
+                        n_dup += 1
+                        continue
+                    seen.add(x.get("id"))
+                    t = int(float(x["created_utc"]))
+                    tmin, tmax = (t if tmin is None else min(tmin, t)), (t if tmax is None else max(tmax, t))
+                    subs[str(x.get("subreddit", "")).lower()] += 1
+                    hits = idx.find(t)
+                    if not hits:
+                        n_out += 1
+                        continue
+                    kind = "post" if "title" in x else "comment"
+                    removed, bot = is_removed(x, kind), is_bot(x, kind)
+                    if kind == "post":
+                        text, thread, parent = clean((x.get("title") or "") + "\n" + (x.get("selftext") or "")), x["id"], ""
+                    else:
+                        text, thread, parent = clean(x.get("body")), (x.get("link_id") or "").replace("t3_", ""), x.get("parent_id") or ""
+                    for w in hits:
+                        st = stats[(w["name"], kind)]
+                        st["raw_in_window"] += 1
+                        if removed:
+                            st["removed_deleted"] += 1
+                            if kind == "comment":
+                                wr.writerow([w["name"], x["id"], thread])
+                            continue
+                        if bot:
+                            st["bot"] += 1
+                            bots[w["name"]][x.get("author") or "(none)"] += 1
+                            continue
+                        if not text:
+                            st["empty_after_clean"] += 1
+                            continue
+                        local = datetime.fromtimestamp(t, w["tz"])
+                        wi.writerow([w["name"], city, w["group"], w["type"], kind, x["id"], thread, parent, t,
+                                     local.strftime("%Y-%m-%d %H:%M"), local.strftime("%Y-%m-%d"), x.get("score"),
+                                     x.get("num_comments") if kind == "post" else "", text, len(text)])
+                        st["kept"] += 1
+            print(f"    {path}: {n_file} rows")
+        print(f"    raw rows {len(seen) + n_dup}: duplicates {n_dup}, outside every window {n_out}, unreadable {n_bad}")
+        if set(subs) - {info["subreddit"].lower()}:
+            print(f"    WARNING: unexpected subreddits {dict(subs)}")
+        if tmin is not None:
+            first, last = min(w["t0"] for w in cw), max(w["t1"] for w in cw)
+            if tmin > first + 3600 or tmax < last - 3600:
+                print(f"    WARNING: raw data covers {datetime.fromtimestamp(tmin, timezone.utc):%Y-%m-%d %H:%M} -> "
+                      f"{datetime.fromtimestamp(tmax, timezone.utc):%Y-%m-%d %H:%M} UTC, but the windows run "
+                      f"{datetime.fromtimestamp(first, timezone.utc):%Y-%m-%d} -> {datetime.fromtimestamp(last, timezone.utc):%Y-%m-%d}; "
+                      f"some windows may be incomplete")
+    f_items.close()
+    f_rem.close()
 
-            reasons, seen = Counter(), set()
-            for x in raw:
-                t = int(float(x["created_utc"]))
-                if x["id"] in seen:
-                    reasons["duplicate"] += 1; continue
-                seen.add(x["id"])
-                if not (start <= t < end):
-                    reasons["outside_window"] += 1; continue
-                if is_removed(x, kind):
-                    reasons["removed_deleted"] += 1; continue
-                if is_bot(x, kind):
-                    reasons["bot"] += 1
-                    bots[name][x.get("author") or "(none)"] += 1
-                    continue
-                if kind == "posts":                                   # C6
-                    text = clean((x.get("title") or "") + "\n" + (x.get("selftext") or ""))
-                    thread = x["id"]
-                else:
-                    text = clean(x.get("body"))
-                    thread = (x.get("link_id") or "").replace("t3_", "")   # C8
-                if not text:
-                    reasons["empty_after_clean"] += 1; continue
-                local = datetime.fromtimestamp(t, TZ)
-                kept.append({
-                    "window": name, "city": city, "week_type": wtype, "kind": kind[:-1],
-                    "id": x["id"], "thread_id": thread,
-                    "parent_id": (x.get("parent_id") or "") if kind == "comments" else "",
-                    "created_utc": t, "created_local": local.strftime("%Y-%m-%d %H:%M"),
-                    "local_date": local.strftime("%Y-%m-%d"),
-                    "score": x.get("score"), "num_comments": x.get("num_comments") if kind == "posts" else None,
-                    "text_clean": text, "n_chars": len(text),
-                })
-                reasons["kept"] += 1
-            row = {"window": name, "city": city, "week_type": wtype, "kind": kind, "raw_rows": len(raw),
-                   **{r: reasons.get(r, 0) for r in ["duplicate", "outside_window", "removed_deleted", "bot", "empty_after_clean", "kept"]}}
-            in_week = len(raw) - row["duplicate"] - row["outside_window"]
-            row["removed_share_of_week"] = round(row["removed_deleted"] / in_week, 3) if in_week else None
-            summary.append(row)
-            print(f"    {kind}: raw {len(raw)} | dup {row['duplicate']} | outside {row['outside_window']} | "
-                  f"removed {row['removed_deleted']} ({row['removed_share_of_week']}) | bot {row['bot']} | "
-                  f"empty {row['empty_after_clean']} | KEPT {row['kept']}")
+    rows = []
+    for w in S["windows"]:
+        for kind in ["post", "comment"]:
+            st = stats[(w["name"], kind)]
+            inw = st["raw_in_window"]
+            rows.append({"window": w["name"], "city": w["city"], "group": w["group"], "week_type": w["type"],
+                         "start": w["start"].isoformat(), "end": w["end"].isoformat(), "kind": kind,
+                         "raw_in_window": inw, "removed_deleted": st["removed_deleted"], "bot": st["bot"],
+                         "empty_after_clean": st["empty_after_clean"], "kept": st["kept"],
+                         "removed_share": round(st["removed_deleted"] / inw, 3) if inw else None})
+    summ = pd.DataFrame(rows)
+    summ.to_csv(OUT / "summary.csv", index=False)
+    items = pd.read_csv(OUT / "items.csv", usecols=["window", "local_date", "kind"])
+    pd_ = items.groupby(["window", "local_date", "kind"]).size().unstack(fill_value=0).reset_index()
+    pd_.to_csv(OUT / "per_day.csv", index=False)
+    with open(OUT / "bots_found.txt", "w") as f:
+        for name, c in bots.items():
+            f.write(f"{name}\n" + "".join(f"  {a}: {n}\n" for a, n in c.most_common()))
 
-        df = pd.DataFrame(kept)
-        if not df.empty:
-            df = df.sort_values("created_utc")
-            df.to_csv(out_path, index=False)
-            days = df.groupby(["local_date", "kind"]).size().unstack(fill_value=0)
-            for d, r in days.iterrows():
-                per_day.append({"window": name, "local_date": d, **r.to_dict()})
-            print(f"    per local day:\n" + "\n".join(f"      {d}  " + "  ".join(f"{k} {v}" for k, v in r.items()) for d, r in days.iterrows()))
-            print(f"    -> {out_path}")
-
-    if summary:
-        pd.DataFrame(summary).to_csv(OUT / "summary.csv", index=False)
-        pd.DataFrame(per_day).fillna(0).to_csv(OUT / "per_day.csv", index=False)
-        with open(OUT / "bots_found.txt", "w") as f:
-            for name, c in bots.items():
-                f.write(f"{name}\n" + "".join(f"  {a}: {n}\n" for a, n in c.most_common()))
-        print(f"\nsummary -> {OUT / 'summary.csv'}\nper day -> {OUT / 'per_day.csv'}\nbots    -> {OUT / 'bots_found.txt'}")
+    show = summ.pivot_table(index="window", columns="kind", values=["kept", "removed_share"], sort=False)
+    print("\nPER WINDOW (kept rows; share removed)")
+    many = len(S["windows"]) > 30
+    for w in (S["windows"][:10] + [None] + S["windows"][-5:]) if many else S["windows"]:
+        if w is None:
+            print("    ...")
+            continue
+        r = show.loc[w["name"]]
+        print(f"  {w['name']:32s} {w['type']:8s} {w['start']}..{w['end']}  posts {int(r[('kept','post')]):5d}  "
+              f"comments {int(r[('kept','comment')]):6d}  removed posts {r[('removed_share','post')]}  comments {r[('removed_share','comment')]}")
+    empty = summ.groupby("window").kept.sum()
+    if (empty == 0).any():
+        print(f"\nWARNING: {int((empty == 0).sum())} windows have no kept items: {list(empty[empty == 0].index)[:10]}")
+    print(f"\noutputs -> {OUT}/")
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    main()

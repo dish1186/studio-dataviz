@@ -1,0 +1,38 @@
+{
+  "study": "boston_smoke_2023",
+  "topic_name": "air",
+  "lexicon_topic": "data/lexicons/lexicon_air_v1.csv",
+  "lexicon_registers": "data/lexicons/lexicon_registers_v0.csv",
+  "cities": {
+    "Boston": {
+      "subreddit": "boston",
+      "timezone": "America/New_York",
+      "raw": [
+        "data/raw/reddit/arctic-shift/boston_*.jsonl"
+      ]
+    }
+  },
+  "windows": [
+    {
+      "name": "boston_event_2023-06-05",
+      "city": "Boston",
+      "type": "event",
+      "start": "2023-06-05",
+      "group": "June 2023 Canadian smoke"
+    },
+    {
+      "name": "boston_base_2024-06-03",
+      "city": "Boston",
+      "type": "baseline",
+      "start": "2024-06-03",
+      "group": "June 2023 Canadian smoke"
+    },
+    {
+      "name": "boston_base_2025-06-02",
+      "city": "Boston",
+      "type": "baseline",
+      "start": "2025-06-02",
+      "group": "June 2023 Canadian smoke"
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "study": "boston_heat_2026",
+  "topic_name": "heat",
+  "lexicon_topic": "data/lexicons/lexicon_heat_v0.csv",
+  "lexicon_registers": "data/lexicons/lexicon_registers_v0.csv",
+  "near_miss_cities": [],
+  "near_miss_hint": "\\b(?:sweat\\w*|sun|outside|sleep\\w*|fan\\w*|cool\\w*|water|beach|pool|warm\\w*|summer)\\b",
+  "cities": {
+    "Boston": {
+      "subreddit": "boston",
+      "timezone": "America/New_York",
+      "raw": [
+        "data/raw/reddit/arctic-shift/boston_*.jsonl"
+      ]
+    }
+  },
+  "windows": [
+    {
+      "name": "boston_event_2026-05-18",
+      "city": "Boston",
+      "type": "event",
+      "start": "2026-05-18",
+      "group": "May 2026 early heat"
+    },
+    {
+      "name": "boston_base_2025-05-19",
+      "city": "Boston",
+      "type": "baseline",
+      "start": "2025-05-19",
+      "group": "May 2026 early heat"
+    },
+    {
+      "name": "boston_base_2024-05-20",
+      "city": "Boston",
+      "type": "baseline",
+      "start": "2024-05-20",
+      "group": "May 2026 early heat"
+    },
+    {
+      "name": "boston_event_2026-06-29",
+      "city": "Boston",
+      "type": "event",
+      "start": "2026-06-29",
+      "group": "July 2026 heat wave"
+    },
+    {
+      "name": "boston_base_2025-06-30",
+      "city": "Boston",
+      "type": "baseline",
+      "start": "2025-06-30",
+      "group": "July 2026 heat wave"
+    },
+    {
+      "name": "boston_base_2024-07-01",
+      "city": "Boston",
+      "type": "baseline",
+      "start": "2024-07-01",
+      "group": "July 2026 heat wave"
+    }
+  ]
+}

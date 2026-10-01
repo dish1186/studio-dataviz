@@ -1,233 +1,157 @@
 #!/usr/bin/env python3
 """
-scripts/reddit/03_remarkability.py
+scripts/reddit/03_remarkability.py  (study version)
 
-Step 03 of the Reddit case study. Moore et al. (2019)'s first measure,
-"remarkability": how much of a city's conversation is about the air in a
-week, compared with ordinary weeks in the same city.
+Step 03: Moore et al. (2019)'s first measure, "remarkability": what share of a
+city's conversation is about the topic (air by default) in each window, and, for
+event windows, how much higher that is than the same city's baseline windows.
 
 Run from the repo root:
-    python3 scripts/reddit/03_remarkability.py
+    python3 scripts/reddit/03_remarkability.py --study studies/eugene_bakersfield.json
 
-Input:   data/processed/reddit/step02_clean/<window>.csv
-         data/lexicons/lexicon_air_v1.csv        (the word list; edit this, not the code;
-                                                  pick another with --lexicon PATH)
-         data/raw/reddit/arctic-shift/<window>_comments.jsonl   (only for the removal check)
-Output:  data/processed/reddit/step03_remarkability/<lexicon name>/
-           items_flagged.csv      every kept post/comment: air flag, wide flag, matched terms (no text)
-           share_by_window.csv    air-talk share per window, with 95% ranges
-           lift.csv               event share / mean baseline share, per city, with 95% ranges
-           term_counts.csv        how many items each term matched, per window (for auditing the lexicon)
-           daily_share.csv        air-talk share per local day
-           removal_check.csv      removal rate of comments in air threads vs other threads
+Input:   data/processed/reddit/<study>/step02_clean/items.csv and removed.csv
+         the topic word list named in the study file (default lexicon_air_v1.csv)
+Output:  data/processed/reddit/<study>/step03_remarkability/<lexicon name>/
+           items_flagged.csv   every item: topic, topic_wide, topic_thread, separate measures, terms (no text)
+           share_by_window.csv topic share per window with 95% ranges (a weekly series for period windows)
+           lift.csv            each event window vs the mean of its group's baselines
+           term_counts.csv     items each term matched, per window (long format)
+           daily_share.csv     topic share per local day
+           removal_check.csv   share of comments removed in topic threads vs other threads
 
-How an item is flagged:
-    1. Every "exclude" pattern is blanked out of the text first (e.g. "smokehouse",
-       "hazy IPA", "smoke weed"), so it cannot trigger a match.
-    2. air      = at least one "include" pattern matches          (main measure)
-    3. air_wide = at least one "include" or "candidate" matches   (sensitivity measure)
-
-Claude defaults (log these as decisions, change any you disagree with):
-    R1  Main measure = air share of all kept posts + comments together (each item
-        counts once, as in Moore et al. where each tweet counted once).
-        Posts-only and comments-only shares are reported alongside.
-    R2  Baseline share for a city = mean of its two baseline weeks' shares.
-        Lift = event share / baseline share.
-    R3  95% ranges from a bootstrap that resamples whole threads (a post plus its
-        comments) with replacement, 2,000 draws, seed 20261001. Each window is
-        resampled independently. Thread-level resampling mirrors Moore et al.
-        clustering errors by state: comments in one thread are not independent.
-    R4  Removal check, using only the removal flags and thread ids, never the text of
-        removed items: a thread counts as an "air thread" if its post was kept and
-        flagged air. Compares the share of comments removed in air threads vs other
-        threads, per window.
-    R6  Added after the first run (2026-09-30): the difference in share (event minus
-        baseline, percentage points) with its own 95% range. The ratio's range is
-        unstable when bootstrap draws give a baseline of zero (Bakersfield, few air
-        items); those draws are left out of the ratio's range and their share is reported.
-    R7  Added with lexicon v1 (2026-09-30): "fire" words are a separate measure, never
-        counted as air talk (validation showed they were mostly fire news). New measure
-        air_thread: an item counts if it is air talk itself, or is a comment in a thread
-        whose opening post is air talk (validation showed many replies are about the air
-        without using any listed word). Results are written to a subfolder named after
-        the lexicon file, so v0 and v1 results sit side by side.
-    R5  Lexicon v0 is a draft by Claude. It must be validated by hand (next step)
-        and frozen before any result is reported.
+Rules (as in the Eugene/Bakersfield run; log as decisions):
+    R1  Main measure = topic share of all kept posts + comments. Posts-only and comments-only too.
+    R2  Baseline = mean of the group's baseline windows' shares. Lift = event / baseline.
+    R3  95% ranges: whole-thread bootstrap, 2,000 draws, seed 20261001.
+    R4  Removal check uses removal flags and thread ids only, never removed text.
+    R6  Difference (event minus baseline, percentage points) with its own range; bootstrap draws
+        with a zero baseline are left out of the ratio's range and counted.
+    R7  Word-list types other than include/candidate/exclude (e.g. "fire") are separate measures,
+        never counted as topic talk. topic_thread = topic talk, or a comment in a thread whose
+        opening post is topic talk.
+    R8  (study version) Groups come from the study file: every event window is compared with the
+        baseline windows of its own group. Period windows get shares (a series) but no lift.
 """
 
 import argparse
-import csv
-import json
-import re
+import sys
 from pathlib import Path
 
 import numpy as np
 import pandas as pd
 
-CLEAN = Path("data/processed/reddit/step02_clean")
-RAW = Path("data/raw/reddit/arctic-shift")
-LEX_DEFAULT = "data/lexicons/lexicon_air_v1.csv"
-OUT_ROOT = Path("data/processed/reddit/step03_remarkability")   # results go in a subfolder named after the lexicon file
-B, SEED = 2000, 20261001   # R3
+sys.path.insert(0, str(Path(__file__).parent))
+from study import load_study, load_topic_lexicon, flag_topic, boot_mean, comparisons, topic_for   # noqa: E402
 
-WINDOWS = [  # same names and order as 02_clean.py
-    ("eugene_event_2026-08-03",      "Eugene",      "event"),
-    ("eugene_base_2024-08-05",       "Eugene",      "baseline"),
-    ("eugene_base_2025-08-04",       "Eugene",      "baseline"),
-    ("bakersfield_event_2024-12-02", "Bakersfield", "event"),
-    ("bakersfield_base_2023-12-04",  "Bakersfield", "baseline"),
-    ("bakersfield_base_2025-12-01",  "Bakersfield", "baseline"),
-]
-
-
-def load_lexicon(path):
-    rows = list(csv.DictReader(open(path, encoding="utf-8")))
-    lex = {"include": [], "candidate": [], "exclude": [], "fire": []}
-    for r in rows:
-        lex[r["type"].strip()].append((r["term"], re.compile(r["pattern"], re.IGNORECASE)))
-    print(f"lexicon {path}: " + ", ".join(f"{k} {len(v)}" for k, v in lex.items()))
-    return lex
-
-
-def flag(text, lex):
-    t = text or ""
-    for _, p in lex["exclude"]:
-        t = p.sub(" ", t)
-    inc = [term for term, p in lex["include"] if p.search(t)]
-    cand = [term for term, p in lex["candidate"] if p.search(t)]
-    fire = [term for term, p in lex["fire"] if p.search(t)]
-    return bool(inc), bool(inc or cand), bool(fire), inc + [c + "*" for c in cand] + [f + "^" for f in fire]
-
-
-def boot_share(df, col, rng):
-    """Thread-level bootstrap of the share of items with df[col] True."""
-    g = df.groupby("thread_id")[col].agg(["sum", "count"])
-    s, n = g["sum"].to_numpy(), g["count"].to_numpy()
-    idx = rng.integers(0, len(g), size=(B, len(g)))
-    return s[idx].sum(1) / n[idx].sum(1)
-
-
-def is_removed(x):  # same rule as 02_clean.py C2, comments only
-    meta = x.get("_meta") or {}
-    return bool(meta.get("removal_type") or meta.get("was_deleted_later") or x.get("removed_by_category")
-                or x.get("author") == "[deleted]" or (x.get("body") or "").strip() in {"[removed]", "[deleted]"})
+B, SEED = 2000, 20261001
 
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--lexicon", default=LEX_DEFAULT, help="path to the lexicon CSV")
+    ap.add_argument("--study", required=True)
+    ap.add_argument("--lexicon", help="override the study file's topic word list")
     args = ap.parse_args()
-    LEX = Path(args.lexicon)
-    OUT = OUT_ROOT / LEX.stem
+    S = load_study(args.study)
+    LEX, TOPIC = topic_for(S, args.lexicon)
+    S["topic"] = TOPIC
+    OUT = S["out"] / "step03_remarkability" / LEX.stem
     OUT.mkdir(parents=True, exist_ok=True)
-    lex = load_lexicon(LEX)
+    lex = load_topic_lexicon(LEX)
+    seps = sorted(lex["separate"])
+    print(f"topic '{S['topic']}', word list {LEX}: include {len(lex['include'])}, candidate {len(lex['candidate'])}, "
+          f"exclude {len(lex['exclude'])}" + "".join(f", {k} {len(v)} (separate)" for k, v in lex["separate"].items()))
     rng = np.random.default_rng(SEED)
 
-    frames = []
-    for name, city, wtype in WINDOWS:
-        d = pd.read_csv(CLEAN / f"{name}.csv", dtype={"id": str, "thread_id": str})
-        f = d["text_clean"].astype(str).map(lambda t: flag(t, lex))
-        d["air"], d["air_wide"], d["fire"], d["terms"] = f.str[0], f.str[1], f.str[2], f.str[3].map(lambda x: ";".join(x))
-        # R7 thread context: a comment also counts if the post that opened its thread is air talk
-        air_posts = set(d[(d.kind == "post") & d.air].id)
-        d["air_thread"] = d.air | ((d.kind == "comment") & d.thread_id.isin(air_posts))
-        frames.append(d)
-    items = pd.concat(frames, ignore_index=True)
+    items = pd.read_csv(S["out"] / "step02_clean" / "items.csv", dtype={"id": str, "thread_id": str})
+    f = items["text_clean"].astype(str).map(lambda t: flag_topic(t, lex))
+    items["topic"], items["topic_wide"] = f.str[0], f.str[1]
+    for k in seps:
+        items[k] = f.map(lambda r: r[2][k])
+    items["terms"] = f.map(lambda r: ";".join(r[3]))
+    tp = items[(items.kind == "post") & items.topic][["window", "id"]]
+    tp_set = set(zip(tp.window, tp.id))
+    items["topic_thread"] = items.topic | ((items.kind == "comment") &
+                                           pd.Series(list(zip(items.window, items.thread_id)), index=items.index).isin(tp_set))
     items.drop(columns=["text_clean"]).to_csv(OUT / "items_flagged.csv", index=False)
 
-    # share by window, with bootstrap draws kept for the lift
     rows, draws = [], {}
-    for name, city, wtype in WINDOWS:
-        d = items[items.window == name]
-        row = {"window": name, "city": city, "week_type": wtype, "n_items": len(d),
-               "n_threads": d.thread_id.nunique(), "n_air": int(d.air.sum()), "n_air_wide": int(d.air_wide.sum())}
-        row["n_air_thread"], row["n_fire"] = int(d.air_thread.sum()), int(d.fire.sum())
-        row["fire_share"] = d.fire.mean()
-        for col in ["air", "air_wide", "air_thread"]:
-            bs = boot_share(d, col, rng)
-            draws[(name, col)] = bs
-            row[f"{col}_share"] = d[col].mean()
-            row[f"{col}_lo"], row[f"{col}_hi"] = np.percentile(bs, [2.5, 97.5])
+    for w in S["windows"]:
+        d = items[items.window == w["name"]]
+        row = {"window": w["name"], "city": w["city"], "group": w["group"], "week_type": w["type"],
+               "start": w["start"].isoformat(), "n_items": len(d), "n_threads": d.thread_id.nunique(),
+               "n_topic": int(d.topic.sum()), "n_topic_wide": int(d.topic_wide.sum()), "n_topic_thread": int(d.topic_thread.sum())}
+        for k in seps:
+            row[f"{k}_share"] = d[k].mean() if len(d) else np.nan
+        for col in ["topic", "topic_wide", "topic_thread"]:
+            bs = boot_mean(d, col, rng, B) if len(d) else np.full(B, np.nan)
+            draws[(w["name"], col)] = bs
+            row[f"{col}_share"] = d[col].mean() if len(d) else np.nan
+            row[f"{col}_lo"], row[f"{col}_hi"] = (np.nanpercentile(bs, [2.5, 97.5]) if len(d) else (np.nan, np.nan))
         for kind in ["post", "comment"]:
             k = d[d.kind == kind]
-            row[f"air_share_{kind}s"] = k.air.mean() if len(k) else np.nan
+            row[f"topic_share_{kind}s"] = k.topic.mean() if len(k) else np.nan
         rows.append(row)
     share = pd.DataFrame(rows)
     share.to_csv(OUT / "share_by_window.csv", index=False)
+    si = share.set_index("window")
 
-    # lift = event / mean(baselines)
     lifts = []
-    for city in ["Eugene", "Bakersfield"]:
-        w = [n for n, c, t in WINDOWS if c == city]
-        ev, bases = w[0], w[1:]
-        for col in ["air", "air_wide", "air_thread"]:
-            e = share.set_index("window").loc[ev, f"{col}_share"]
-            b = np.mean([share.set_index("window").loc[x, f"{col}_share"] for x in bases])
-            bb = np.mean([draws[(x, col)] for x in bases], axis=0)
-            diff = draws[(ev, col)] - bb                                   # R6
+    for c in comparisons(S):
+        for col in ["topic", "topic_wide", "topic_thread"]:
+            e = si.loc[c["event"], f"{col}_share"]
+            b = np.mean([si.loc[x, f"{col}_share"] for x in c["baselines"]])
+            bb = np.mean([draws[(x, col)] for x in c["baselines"]], axis=0)
+            diff = draws[(c["event"], col)] - bb
             ok = bb > 0
-            ratio = draws[(ev, col)][ok] / bb[ok]
-            lo, hi = np.percentile(ratio, [2.5, 97.5])
+            ratio = draws[(c["event"], col)][ok] / bb[ok]
+            lo, hi = np.percentile(ratio, [2.5, 97.5]) if ok.any() else (np.nan, np.nan)
             dlo, dhi = np.percentile(diff, [2.5, 97.5])
-            lifts.append({"city": city, "measure": col, "event_share": e, "baseline_share": b,
-                          "lift": e / b if b else np.nan, "lift_lo": lo, "lift_hi": hi,
+            lifts.append({"group": c["group"], "event": c["event"], "baselines": ";".join(c["baselines"]), "measure": col,
+                          "event_share": e, "baseline_share": b, "lift": e / b if b else np.nan, "lift_lo": lo, "lift_hi": hi,
                           "diff_pp": 100 * (e - b), "diff_lo_pp": 100 * dlo, "diff_hi_pp": 100 * dhi,
                           "share_draws_baseline_zero": round(1 - ok.mean(), 4)})
     lift = pd.DataFrame(lifts)
     lift.to_csv(OUT / "lift.csv", index=False)
 
-    # term counts per window (audit)
-    tc = (items.assign(term=items.terms.str.split(";")).explode("term")
-          .query("term != ''").groupby(["term", "window"]).size().unstack(fill_value=0))
-    tc = tc.reindex(columns=[n for n, _, _ in WINDOWS], fill_value=0)
-    tc["total"] = tc.sum(axis=1)
-    tc.sort_values("total", ascending=False).to_csv(OUT / "term_counts.csv")
-
-    # daily share
-    daily = items.groupby(["window", "local_date"]).agg(n=("air", "size"), n_air=("air", "sum"))
-    daily["air_share"] = daily.n_air / daily.n
+    tc = (items.assign(term=items.terms.str.split(";")).explode("term").query("term != ''")
+          .groupby(["term", "window"]).size().rename("items").reset_index())
+    tc.to_csv(OUT / "term_counts.csv", index=False)
+    daily = items.groupby(["window", "local_date"]).agg(n=("topic", "size"), n_topic=("topic", "sum"))
+    daily["topic_share"] = daily.n_topic / daily.n
     daily.reset_index().to_csv(OUT / "daily_share.csv", index=False)
 
-    # removal check (R4): flags and thread ids only
+    rem = pd.read_csv(S["out"] / "step02_clean" / "removed.csv", dtype={"id": str, "thread_id": str})
     rc = []
-    for name, city, wtype in WINDOWS:
-        d = items[items.window == name]
-        air_threads = set(d[(d.kind == "post") & d.air].id)
-        lo, hi = d.created_utc.min(), d.created_utc.max()
-        tot = {True: [0, 0], False: [0, 0]}   # air thread? -> [removed, all]
-        with open(RAW / f"{name}_comments.jsonl", encoding="utf-8") as fh:
-            for line in fh:
-                if not line.strip():
-                    continue
-                x = json.loads(line)
-                t = int(float(x["created_utc"]))
-                if not (lo <= t <= hi):
-                    continue
-                k = (x.get("link_id") or "").replace("t3_", "") in air_threads
-                tot[k][1] += 1
-                tot[k][0] += is_removed(x)
-        rc.append({"window": name, "city": city, "week_type": wtype,
-                   "air_thread_comments": tot[True][1], "air_thread_removed_share": tot[True][0] / tot[True][1] if tot[True][1] else np.nan,
-                   "other_comments": tot[False][1], "other_removed_share": tot[False][0] / tot[False][1] if tot[False][1] else np.nan})
+    for w in S["windows"]:
+        d = items[(items.window == w["name"])]
+        tt = set(d[(d.kind == "post") & d.topic].id)
+        kept_c = d[d.kind == "comment"]
+        r = rem[rem.window == w["name"]]
+        kin, kout = kept_c.thread_id.isin(tt), r.thread_id.isin(tt)
+        a_all, o_all = kin.sum() + kout.sum(), (~kin).sum() + (~kout).sum()
+        rc.append({"window": w["name"], "city": w["city"], "week_type": w["type"],
+                   "topic_thread_comments": int(a_all), "topic_thread_removed_share": kout.sum() / a_all if a_all else np.nan,
+                   "other_comments": int(o_all), "other_removed_share": (~kout).sum() / o_all if o_all else np.nan})
     pd.DataFrame(rc).to_csv(OUT / "removal_check.csv", index=False)
 
-    # printout
-    pd.set_option("display.width", 200)
-    print("\nAIR-TALK SHARE BY WINDOW (main measure; 95% range)")
-    for r in share.itertuples():
-        print(f"  {r.window:30s} items {r.n_items:5d}  air {r.n_air:4d}  share {100*r.air_share:5.2f}%  "
-              f"[{100*r.air_lo:.2f}-{100*r.air_hi:.2f}]   wide {100*r.air_wide_share:5.2f}%   thread {100*r.air_thread_share:5.2f}%   fire {100*r.fire_share:5.2f}%   "
-              f"posts {100*r.air_share_posts:5.2f}%  comments {100*r.air_share_comments:5.2f}%")
-    print("\nLIFT (event share / mean baseline share) and DIFFERENCE (event minus baseline, percentage points)")
-    for r in lift.itertuples():
-        print(f"  {r.city:12s} {r.measure:9s} event {100*r.event_share:5.2f}%  baseline {100*r.baseline_share:5.2f}%  "
-              f"lift {r.lift:5.2f}x [{r.lift_lo:.2f}-{r.lift_hi:.2f}]   "
-              f"diff {r.diff_pp:+.2f} pp [{r.diff_lo_pp:+.2f} to {r.diff_hi_pp:+.2f}]   "
-              f"(draws with zero baseline: {100*r.share_draws_baseline_zero:.1f}%)")
-    print("\nTOP TERMS (items matched; * = candidate, wide measure only; ^ = fire, reported separately, never air talk)")
-    print(tc.sort_values("total", ascending=False).head(20).to_string())
-    print("\nREMOVAL CHECK (share of comments removed)")
-    print(pd.DataFrame(rc)[["window", "air_thread_comments", "air_thread_removed_share", "other_comments", "other_removed_share"]].round(3).to_string(index=False))
+    print(f"\n{S['topic'].upper()}-TALK SHARE BY WINDOW (main measure; 95% range)")
+    many = len(S["windows"]) > 30
+    show = share if not many else pd.concat([share.head(5), share.sort_values("topic_share", ascending=False).head(10)])
+    if many:
+        print(f"  {len(share)} windows; first 5, then the 10 highest weeks:")
+    for r in show.itertuples():
+        print(f"  {r.window:32s} {r.week_type:8s} items {r.n_items:6d}  {S['topic']} {r.n_topic:5d}  share {100*r.topic_share:5.2f}% "
+              f"[{100*r.topic_lo:.2f}-{100*r.topic_hi:.2f}]  wide {100*r.topic_wide_share:5.2f}%  thread {100*r.topic_thread_share:5.2f}%"
+              + "".join(f"  {k} {100*getattr(r, k + '_share'):5.2f}%" for k in seps))
+    if len(lift):
+        print("\nLIFT (event share / mean of its group's baselines) and DIFFERENCE (percentage points)")
+        for r in lift.itertuples():
+            print(f"  {r.event:32s} {r.measure:12s} event {100*r.event_share:5.2f}%  baseline {100*r.baseline_share:5.2f}%  "
+                  f"lift {r.lift:5.2f}x [{r.lift_lo:.2f}-{r.lift_hi:.2f}]  diff {r.diff_pp:+.2f} pp [{r.diff_lo_pp:+.2f} to {r.diff_hi_pp:+.2f}]"
+                  f"  (zero-baseline draws {100*r.share_draws_baseline_zero:.1f}%)")
+    top = tc.groupby("term")["items"].sum().sort_values(ascending=False).head(15)
+    print("\nTOP TERMS (items matched, all windows; * = candidate, ^ = separate measure)")
+    print("  " + ", ".join(f"{t} {n}" for t, n in top.items()))
     print(f"\noutputs -> {OUT}/")
 
 

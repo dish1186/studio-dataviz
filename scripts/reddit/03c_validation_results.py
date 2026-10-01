@@ -1,41 +1,28 @@
 #!/usr/bin/env python3
 """
-scripts/reddit/03c_validation_results.py
+scripts/reddit/03c_validation_results.py  (study version)
 
-Scores Dish's hand codes against the word list (lexicon v0), group by group.
+Scores one coder's sheet against the word list, group by group.
 
 Run from the repo root:
-    python3 scripts/reddit/03c_validation_results.py
+    python3 scripts/reddit/03c_validation_results.py --study studies/boston_heat_2026.json --coder dish
 
-Input:   data/processed/reddit/step03b_validation/coding_sheet_dish.csv   (codes A / F / N)
-         data/processed/reddit/step03b_validation/answer_key.csv
-         data/processed/reddit/step03_remarkability/items_flagged.csv     (group sizes)
-Output:  data/processed/reddit/step03c_validation/
-           stratum_results.csv   per group: how often the list was right
-           corrected_shares.csv  air-talk share per city and week, before and after correcting
-                                 for the list's measured mistakes
-           false_positives.csv   flagged items Dish coded N (or F): which words fooled the list
-           missed_air.csv        not-flagged items Dish coded A: vocabulary the list is missing
-
-Claude defaults (log as decisions):
-    V6  Single coder (Dish). Gina's sheet is not used, so no between-coder agreement is
-        reported; this is a stated limitation (Moore et al. used three coders per tweet).
-    V7  "Correct" for a flagged item = coded A (strict) or A/F (lenient).
-        For a not-flagged item, a miss = coded A.
-    V8  95% ranges for proportions are Wilson intervals (behave well with small groups
-        and with 0 or 100%).
-    V9  Corrected share = (flagged items x strict precision + not-flagged items x miss rate)
-        / all items, within each city and week type. Baseline weeks are pooled here, as in
-        the sample. Near-miss items are NOT used for this (they were chosen on purpose).
+Output:  data/processed/reddit/<study>/step03c_validation/<word list name>[_<tag>]/
+           stratum_results.csv, corrected_shares.csv, false_positives.csv, missed.csv
+Rules: V6 one coder; V7 correct = A (strict) or A/F (lenient), miss = coded A when not flagged;
+V8 Wilson 95% intervals; V9 corrected share = (flagged x precision + not flagged x miss rate) / all,
+per city and week type; near-miss groups are not used for it.
 """
 
 import argparse
+import sys
 from math import sqrt
 from pathlib import Path
 
 import pandas as pd
 
-
+sys.path.insert(0, str(Path(__file__).parent))
+from study import load_study, topic_for   # noqa: E402
 
 
 def wilson(k, n, z=1.96):
@@ -50,83 +37,62 @@ def wilson(k, n, z=1.96):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--sample", default="data/processed/reddit/step03b_validation", help="folder with the coding sheet and answer key")
-    ap.add_argument("--flags", default="data/processed/reddit/step03_remarkability/items_flagged.csv")
-    ap.add_argument("--out", default="data/processed/reddit/step03c_validation")
+    ap.add_argument("--study", required=True)
+    ap.add_argument("--lexicon")
+    ap.add_argument("--tag", default="")
+    ap.add_argument("--coder", default="dish")
     args = ap.parse_args()
-    V, FLAG, OUT = Path(args.sample), Path(args.flags), Path(args.out)
+    S = load_study(args.study)
+    lex, _ = topic_for(S, args.lexicon)
+    sub = lex.stem + (f"_{args.tag}" if args.tag else "")
+    V, OUT = S["out"] / "step03b_validation" / sub, S["out"] / "step03c_validation" / sub
     OUT.mkdir(parents=True, exist_ok=True)
-    sheet = pd.read_csv(V / "coding_sheet_dish.csv", encoding="utf-8-sig")
+    sheet = pd.read_csv(V / f"coding_sheet_{args.coder}.csv", encoding="utf-8-sig")
     key = pd.read_csv(V / "answer_key.csv")
     d = key.merge(sheet[["item_no", "text", "code", "unsure", "note"]], on="item_no", how="left")
-    d["code"] = d["code"].astype(str).str.strip().str.upper().str[:1].replace({"N": "N", "A": "A", "F": "F"})
+    d["code"] = d["code"].astype(str).str.strip().str.upper().str[:1]
     bad = d[~d.code.isin(["A", "F", "N"])]
     if len(bad):
         print(f"WARNING: {len(bad)} items without a valid code (A/F/N), left out: item_no {bad.item_no.tolist()[:20]}")
     d = d[d.code.isin(["A", "F", "N"])]
-    print(f"{len(d)} coded items; unsure marked on {d.unsure.notna().sum()}")
-
-    # group sizes in the full data
-    items = pd.read_csv(FLAG)
-    items["week"] = items.week_type.where(items.week_type == "event", "baseline")
-    sizes = items.groupby(["city", "week", "air"]).size()
+    print(f"{len(d)} coded items")
+    items = pd.read_csv(S["out"] / "step03_remarkability" / lex.stem / "items_flagged.csv").drop_duplicates("id")
+    sizes = items.groupby(["city", "week_type", "topic"]).size()
 
     rows = []
     for stratum, g in d.groupby("stratum"):
         city, week, kind = stratum.split("|")
-        n = len(g)
-        a, f = (g.code == "A").sum(), (g.code == "F").sum()
-        r = {"stratum": stratum, "city": city, "week": week, "group": kind, "n_coded": n,
-             "coded_A": a, "coded_F": f, "coded_N": n - a - f}
-        if kind in ("flagged", "thread_only"):
-            r["measure"] = "precision (share truly about the air)"
-            r["strict"], r["strict_lo"], r["strict_hi"] = wilson(a, n)
-            r["lenient_AorF"] = (a + f) / n
-        else:
-            r["measure"] = "miss rate (share of unflagged that were about the air)"
-            r["strict"], r["strict_lo"], r["strict_hi"] = wilson(a, n)
+        n, a, f = len(g), (g.code == "A").sum(), (g.code == "F").sum()
+        r = {"stratum": stratum, "city": city, "week": week, "group": kind, "n_coded": n, "coded_A": a, "coded_F": f, "coded_N": n - a - f}
+        r["strict"], r["strict_lo"], r["strict_hi"] = wilson(a, n)
+        r["lenient_AorF"] = (a + f) / n
         rows.append(r)
     res = pd.DataFrame(rows)
     res.to_csv(OUT / "stratum_results.csv", index=False)
-
-    # corrected shares (V9)
+    ri = res.set_index("stratum")
     corr = []
-    for city in ["Eugene", "Bakersfield"]:
-        for week in ["event", "baseline"]:
-            try:
-                prec = res.set_index("stratum").loc[f"{city}|{week}|flagged", "strict"]
-                miss = res.set_index("stratum").loc[f"{city}|{week}|not_flagged", "strict"]
-            except KeyError:
-                continue
-            nf, nn = sizes.get((city, week, True), 0), sizes.get((city, week, False), 0)
-            raw = nf / (nf + nn)
-            fixed = (nf * prec + nn * miss) / (nf + nn)
-            corr.append({"city": city, "week": week, "items": nf + nn, "flagged": nf,
-                         "precision": prec, "miss_rate": miss,
-                         "share_word_list": raw, "share_corrected": fixed,
-                         "est_recall": (nf * prec) / (nf * prec + nn * miss) if (nf * prec + nn * miss) else float("nan")})
-    corr = pd.DataFrame(corr)
-    corr.to_csv(OUT / "corrected_shares.csv", index=False)
+    for (city, week) in sorted({(r.city, r.week) for r in res.itertuples()}):
+        try:
+            prec, miss = ri.loc[f"{city}|{week}|flagged", "strict"], ri.loc[f"{city}|{week}|not_flagged", "strict"]
+        except KeyError:
+            continue
+        nf, nn = sizes.get((city, week, True), 0), sizes.get((city, week, False), 0)
+        corr.append({"city": city, "week": week, "items": nf + nn, "flagged": nf, "precision": prec, "miss_rate": miss,
+                     "share_word_list": nf / (nf + nn), "share_corrected": (nf * prec + nn * miss) / (nf + nn)})
+    pd.DataFrame(corr).to_csv(OUT / "corrected_shares.csv", index=False)
+    fp = d[d.stratum.str.endswith(("|flagged", "|thread_only")) & (d.code != "A")]
+    fp[["item_no", "stratum", "code", "terms", "note", "text"]].to_csv(OUT / "false_positives.csv", index=False)
+    miss = d[d.stratum.str.endswith(("|not_flagged", "|near_miss")) & (d.code == "A")]
+    miss[["item_no", "stratum", "note", "text"]].to_csv(OUT / "missed.csv", index=False)
 
-    fp = d[(d.stratum.str.endswith("|flagged") | d.stratum.str.endswith("|thread_only")) & (d.code != "A")][["item_no", "stratum", "code", "terms", "note", "text"]]
-    fp.to_csv(OUT / "false_positives.csv", index=False)
-    miss = d[(d.stratum.str.endswith("|not_flagged") | d.stratum.str.endswith("|near_miss")) & (d.code == "A")][["item_no", "stratum", "note", "text"]]
-    miss.to_csv(OUT / "missed_air.csv", index=False)
-
-    pd.set_option("display.width", 200, "display.max_colwidth", 90)
-    print("\nBY GROUP  (flagged: precision = share truly about the air;  not flagged: miss rate)")
+    print("\nBY GROUP  (flagged / thread only: share truly about the topic;  not flagged / near miss: share missed)")
     for r in res.itertuples():
-        extra = f"   A or F {100*r.lenient_AorF:.0f}%" if r.group in ("flagged", "thread_only") else ""
-        print(f"  {r.stratum:34s} n {r.n_coded:3d}  A {r.coded_A:3d} F {r.coded_F:3d} N {r.coded_N:3d}   "
-              f"{100*r.strict:5.1f}% [{100*r.strict_lo:.0f}-{100*r.strict_hi:.0f}]{extra}")
-    print("\nAIR-TALK SHARE: word list vs corrected for measured mistakes")
-    for r in corr.itertuples():
-        print(f"  {r.city:12s} {r.week:8s} word list {100*r.share_word_list:5.2f}%   corrected {100*r.share_corrected:5.2f}%   "
-              f"(precision {100*r.precision:.0f}%, miss rate {100*r.miss_rate:.1f}%, est. recall {100*r.est_recall:.0f}%)")
-    print("\nWORDS BEHIND FALSE ALARMS (flagged but coded N or F)")
+        print(f"  {r.stratum:40s} n {r.n_coded:3d}  A {r.coded_A:3d} F {r.coded_F:3d} N {r.coded_N:3d}   "
+              f"{100*r.strict:5.1f}% [{100*r.strict_lo:.0f}-{100*r.strict_hi:.0f}]")
+    print("\nWORDS BEHIND FALSE ALARMS")
     t = fp.assign(term=fp.terms.fillna("").str.split(";")).explode("term")
     print(t[t.term != ""].groupby(["term", "code"]).size().unstack(fill_value=0).to_string() if len(t) else "  none")
-    print(f"\nMISSED AIR TALK (not flagged but coded A): {len(miss)} items -> {OUT/'missed_air.csv'}")
+    print(f"\nMISSED: {len(miss)} items -> {OUT/'missed.csv'}")
     for r in miss.itertuples():
         print(f"  #{r.item_no} [{r.stratum}] {str(r.text)[:140]}")
     print(f"\noutputs -> {OUT}/")
