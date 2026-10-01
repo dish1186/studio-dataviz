@@ -32,6 +32,32 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### CDC Tracking · Step 1: heat-related illness measures from the Tracking Network API · 2026-09-30 22:55 EDT · Gina + Claude
+- **What:** Ran `scripts/cdc-tracking/01_download_state_measures.py`. It uses the CDC Tracking Network Data API with the same calls as CDC's R package EPHTrackR, without installing it (Gina chose option 2). It downloads each measure at its geography with no stratification. Responses are saved **unchanged** as JSON in `data/raw/cdc-tracking/measure_<id>_<name>/`. No token (Gina has none yet); 12-second pause between requests; requests sent through curl (Python's urllib failed the HTTPS certificate check on this Mac).
+- **Why:** Gina wants HRI ER visits and mortality data ("i need the daily rates as much as possible"); the Data Explorer was too slow.
+- **Results:**
+
+  | Measure | What | Geography | Coverage | Rows |
+  |---|---|---|---|---|
+  | **1238** | **Daily** rate of HRI-associated ED visits (non-VA) | 10 HHS regions | 2017-12-31 to **2026-09-29**, no missing days | 31,950 |
+  | 1385 | Daily rate (VA) | HHS regions | **skipped**: the API offers no unstratified level | 0 |
+  | 1237 | Weekly rate (non-VA) | 10 HHS regions | 456 weeks, 2018-2026 | 4,560 |
+  | 438 | Annual number of ED visits for HRI | 32 states | 24 years | 512 |
+  | 370 | Annual number of heat-related deaths (May-Sep) | 50 states + DC | 23 years; **605 of 1,173 rows suppressed** (blank) | 1,173 |
+  | 431 | Annual number of hospitalizations for HRI | 35 states | 24 years | 674 |
+
+- **Checks:**
+  - No duplicate area-time rows.
+  - **Measure 431 matches the Data Explorer download** (`data/raw/cdc_HRI_hospitalizations_annual/`) in all 674 state-years.
+  - Peak daily rates line up with known heat waves: Region 1 (incl. Boston) 2025-06-24, Region 5 (incl. Detroit) 2026-07-01 and 2025-06-23, Region 9 (incl. Phoenix, SF, San Diego) 2024-07-11 and 2023-07-20.
+- **Flags (not yet resolved):**
+  - **Rate denominator:** CDC labels the daily and weekly rates "per 100,000 population", but values reach 6,737 (Region 1 peak 1,994). That is implausible per population and looks like a rate per 100,000 ED visits. To verify in the measure's metadata before any use.
+  - **HHS regions, not cities:** Phoenix, San Francisco and San Diego are all in Region 9. Region definitions are in `data/raw/cdc-tracking/reference/hhs_regions.md` (from HHS.gov; PDF to be added by Gina). Gina chose not to add the Census-regions page (NCHS), which uses different regions.
+  - The earlier hospitalization download's description cites the Explorer link `i=89`, which is the ED-visits indicator; the hospitalization indicator is `i=88`. Gina to confirm the correction.
+- **Size:** about 50 MB of JSON (daily: 10 files of about 4.7 MB).
+
+---
+
 ### CDC HRI hospitalizations · Step 1: raw annual state file · 2026-09-30 22:24 EDT · Gina + Claude
 - **What:** Added Gina's download `~/Downloads/download.zip` (SHA-256 386742d5…cf85) to `data/raw/cdc_HRI_hospitalizations_annual/`, unzipped. The 3 files are **copied unchanged** (`cmp` identical to the zip contents):
   - `data_222222.csv` (674 rows + header)
