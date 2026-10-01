@@ -32,6 +32,26 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Google Trends · Step 14: monthly "ice cream" raw files, 7 metros · 2026-09-30 23:36 EDT · Gina + Claude
+- **What:** Added Gina's 7 downloads to `data/raw/google-trends/icecream-search/`, **copied unchanged** (`cmp` identical to ~/Downloads):
+  - `bos_manch_icecream_21-26.csv`: Boston MA-Manchester NH, SHA-256 e0f5ab6c…91eea998, peak (100) 2025-07
+  - `sanfran_icecream_21-26.csv`: San Francisco-Oakland-San Jose CA, SHA-256 f4d92253…2f58fa16, peak (100) 2026-07
+  - `phoenix_icecream_21-26.csv`: Phoenix AZ, SHA-256 0c9fcc32…300b92b5, peak (100) 2026-06
+  - `detroit_icecream_21-26.csv`: Detroit MI, SHA-256 2eff4f7c…de671856, peak (100) 2026-06, 2026-07
+  - `sandiego_icecream_21-26.csv`: San Diego CA, SHA-256 c1f668b2…8ffd936f, peak (100) 2026-07
+  - `eugene_icecream_21-26.csv`: Eugene OR, SHA-256 e9e00d30…2b0d048b, peak (100) 2025-07
+  - `bakersfield_icecream_21-26.csv`: Bakersfield CA, SHA-256 9873e0c0…a5e5374c, peak (100) 2026-07
+- Each file: columns `Time, ice cream`; **monthly**, 2021-10-01 to 2026-09-01 (60 months); one 0-100 scale per file. The last month is partial (downloaded 2026-09-30).
+- Also wrote `trends_sources.csv` in that folder and added 4 rows to `data/descriptions/data_descriptions.csv`.
+- **Why:** Gina: "its the trends reports for ice cream searches". This is an ice cream demand signal by city, alongside AC searches, for heat thresholds.
+- **Findings / flags:**
+  - **Monthly, not weekly.** The AC files are weekly. The heat-threshold method (Steps 11-12) uses weekly data, so monthly files support only the coarser monthly check (method A). **[decision]** Weekly downloads would be needed for a weekly ice cream threshold.
+  - **Geography is not in the files** (no header line, unlike the AC files). It is inferred from the file names. **Gina to confirm**, along with term vs topic, category and search type.
+  - **2026 sets the peak (100) in 6 of 7 cities** (Boston's peak is 2025-07). That's the same "2026 runs higher" pattern seen in AC searches (Step 10, Analysis A16).
+  - Seasonality is strongest in Boston (winter about 22-35 vs summer 80-100) and weakest in San Diego and Phoenix (about 40-50 vs 70-100).
+
+---
+
 ### CDC Tracking · Step 3: annual state measures as CSV · 2026-09-30 23:06 EDT · Gina + Claude
 - **What:** Ran `scripts/cdc-tracking/03_annual_state_csv.py` (Gina: "turn the three annual files into simple CSVs"). It flattens the Step 1 JSON (`4_getCoreHolder_all.json`; raw files unchanged) into one row per state and year: state, state_fips, year, value, suppressed. Suppressed values are left **blank, not 0**.
 - **Output** (`data/processed/cdc-tracking/`):
