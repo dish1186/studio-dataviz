@@ -32,6 +32,21 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Plan P1 · Reddit sentiment and post-frequency methodology (draft) · 2026-09-30 21:48 EDT · Gina + Claude
+- **What:** A draft methodology document, `docs/reddit-sentiment-methodology.md`. **No data collected and nothing run.**
+- **Why:** Gina asked for a methodology, modelled on Moore, Obradovich, Lehner & Baylis (2019, *PNAS*, doi:10.1073/pnas.1816541116), for testing whether heat events and air-quality events are associated with different post frequency or sentiment on Reddit.
+- **Design in brief:**
+  - city subreddits for the 5 heat cities; weekly, 2022-01-02 to 2026-05-31
+  - bag-of-words heat and air-quality term lists with hand validation
+  - VADER (plus LIWC or an open alternative)
+  - city, city-by-month-of-year and year fixed effects
+  - exposures from existing steps (gridMET anomaly vs 1991-2020, UTCI, OpenAQ unhealthy days)
+  - heat vs air compared on within-city percentiles
+- **Source check:** The PNAS page and PDF returned 403. Methods details were read from the open-access copy on PubMed Central (PMC6421414): 2.18 billion tweets, March 2014 to November 2016; 6,000 hand-validated tweets; VADER and LIWC; PRISM with a 1981-1990 baseline; county, state-by-month-of-year and year fixed effects; state-clustered standard errors.
+- **Open decisions:** listed at the end of the document. Default choices are flagged "Claude's choice, not yet approved".
+
+---
+
 ### Visualization V5 · version 8 + V6 v1: vertical threshold gauges · 2026-09-29 20:45 EDT · Gina + Claude
 - **What:** Gina asked for the vertical threshold mockup (chat widget, "real numbers" version) in two places.
   1. **As the "Gauges" view of Find Your Threshold (V5 v8):** city tabs; Before 2026 / 2026 so far / All years / Compare; Air and Pollen columns marked "coming soon".
