@@ -47,7 +47,7 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 - **Findings / flags:**
   - **Monthly, not weekly.** The AC files are weekly. The heat-threshold method (Steps 11-12) uses weekly data, so monthly files support only the coarser monthly check (method A). **[decision]** Weekly downloads would be needed for a weekly ice cream threshold.
   - **Geography is not in the files** (no header line, unlike the AC files). It is inferred from the file names. **Gina to confirm**, along with term vs topic, category and search type.
-  - **2026 sets the peak (100) in 6 of 7 cities** (Boston's peak is 2025-07). That's the same "2026 runs higher" pattern seen in AC searches (Step 10, Analysis A16).
+  - **2026 sets the peak (100) in 5 of 7 cities** (Boston and Eugene peak in 2025-07). That's the same "2026 runs higher" pattern seen in AC searches (Step 10, Analysis A16).
   - Seasonality is strongest in Boston (winter about 22-35 vs summer 80-100) and weakest in San Diego and Phoenix (about 40-50 vs 70-100).
 
 ---
