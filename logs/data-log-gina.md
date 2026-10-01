@@ -32,6 +32,25 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### NIFC fire perimeters · Step 1: raw WFIGS Interagency Fire Perimeters table · 2026-09-30 23:54 EDT · Gina + Claude
+- **What:** Added Gina's export `WFIGS_Interagency_Perimeters_-8039255302361386572.csv` (36.4 MB; SHA-256 72d47c80…62439570) to `data/raw/nifc-wfigs-perimeters/`, **copied unchanged** (`cmp` identical). Added 13 rows to `data/descriptions/data_descriptions.csv`, with the source link.
+- **Source:** NIFC, WFIGS Interagency Fire Perimeters, https://data-nifc.opendata.arcgis.com/datasets/nifc::wfigs-interagency-fire-perimeters/explore?location=-0.000000%2C0.000000%2C2.00&showTable=true (table view, exported as CSV by Gina on 2026-09-30).
+- **Why:** Gina asked about wildfire data, as context for the smoke and PM2.5 work.
+- **Contents:**
+  - 42,372 perimeters × 120 columns. Fires discovered 2016-03-24 to **2026-09-30** (only 14 rows before 2020).
+  - Most recent discovery: Chilcoot, Plumas County CA, 2026-09-30 20:16. Latest perimeter update: Dome, CA, 2026-10-01 02:59. Both times are probably UTC; not stated.
+  - Wildfire 40,797, prescribed 1,575. Final perimeters 20,854, daily 19,326.
+  - Largest 2026 fires: Morrill NE (642,029 acres), Big Grass OR (575,163).
+- **Compared with Gina's year-to-date export** (`WFIGS_Interagency_Perimeters_YearToDate_8242010358053195020.csv`, **not added**): it has the same 120 columns and 7,552 rows, all of them identical to rows in this file (same GlobalID and acres).
+  - This file has one extra 2026 fire: Horn Mountain, AL, discovered "1/1/2026 3:07 AM". If that is UTC, it was the evening of 2025-12-31 locally, which would explain why the year-to-date export left it out (Claude's reading, not confirmed).
+  - The year-to-date file adds nothing, so only this file was stored (Gina).
+- **Limits:**
+  - No polygon geometry in the CSV.
+  - US only: Canadian fires, such as the source of the June 2023 smoke over Boston, are absent.
+  - Coverage before 2020 is nearly empty; NIFC keeps a separate historical perimeter dataset.
+
+---
+
 ### Google Trends · Step 14: monthly "ice cream" raw files, 7 metros · 2026-09-30 23:36 EDT · Gina + Claude
 - **What:** Added Gina's 7 downloads to `data/raw/google-trends/icecream-search/`, **copied unchanged** (`cmp` identical to ~/Downloads):
   - `bos_manch_icecream_21-26.csv`: Boston MA-Manchester NH, SHA-256 e0f5ab6c…91eea998, peak (100) 2025-07
