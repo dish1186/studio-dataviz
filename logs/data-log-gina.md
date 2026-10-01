@@ -32,6 +32,17 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Google Trends · Step 17: weekly "air conditioner" raw files for Eugene and Bakersfield · 2026-10-01 18:26 EDT · Gina + Claude
+- **What:** Added two downloads to `data/raw/google-trends/heat-search-weekly/`, **copied unchanged** (byte-identical):
+  - `eugene_aircon_5yr.csv`: Eugene OR, SHA-256 d5697bcc…695ab49d, 262 weeks 2021-09-26 to 2026-09-27, weeks = 0: 124
+  - `bakersfield_aircon_5yr.csv`: Bakersfield CA, SHA-256 9e28253f…1deee13b, 262 weeks 2021-09-26 to 2026-09-27, weeks = 0: 122
+- Added rows to that folder's `trends_sources.csv` and 1 row to `data/descriptions/data_descriptions.csv`.
+- **Why:** Weekly AC for Eugene and Bakersfield, which were monthly stand-ins in Visualization V7.
+- **Not added:** a fresh Detroit download (`detroit_aircon_5yr.csv`). It differs slightly from the Step 10 file (Google Trends sampling); Gina: "use the original detroit one".
+- **Flag:** many winter weeks are 0 in both cities, which usually means too little search volume.
+
+---
+
 ### Visualization V7 · version 1: "Heat Layers" (Boston, Detroit, Eugene, Bakersfield) · 2026-10-01 18:11 EDT · Gina + Claude
 - **What:** A published page, https://claude.ai/artifact/NHvDgNfNhjAE5jpXWennHo (private until shared). Four vertical temperature lines (10-115 °F in 5° rows). In each row there are translucent overlapping circles, one per layer, styled after Gina's reference image (layered translucent circles, saturated colour, dark core dots, circular legend icons, area strip at the bottom):
   - **Temperature / felt heat:** circle size = how many weeks in the window had their weekly high (or felt heat) in that row.
