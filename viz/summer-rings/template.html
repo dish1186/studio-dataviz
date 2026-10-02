@@ -27,6 +27,7 @@ svg{display:block;width:100%;height:auto}svg text{font-family:var(--sans)}
 .key{display:flex;flex-direction:column;gap:8px;font-size:13px;color:var(--ink-2)}
 .mono{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3)}
 .tip{position:absolute;pointer-events:none;background:var(--ink);color:var(--bg);font-size:12.5px;line-height:1.4;padding:6px 9px;border-radius:6px;transform:translate(-50%,calc(-100% - 10px));width:max-content;max-width:250px;z-index:2}
+.sel{font:inherit;font-size:13px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:4px 8px}
 .foot{font-size:12.5px;color:var(--ink-3);max-width:95ch;margin:0}
 .ramp{height:12px;border-radius:6px;background:linear-gradient(90deg,var(--h0),var(--h1),var(--h2),var(--h3),var(--h4),var(--h5))}
 </style>
@@ -39,7 +40,8 @@ svg{display:block;width:100%;height:auto}svg text{font-family:var(--sans)}
   <div class="bar" id="layers" role="group" aria-label="Layers"></div>
   <div class="bar" style="gap:12px">
     <label for="sz" style="font-size:13px;color:var(--ink-2)">Bubble size</label><input type="range" id="sz" min="0.4" max="2.5" step="0.1" value="1" style="width:150px;accent-color:var(--ac)"><output id="szo" style="font-family:var(--mono);font-size:12px;min-width:3ch">1.0×</output>
-    <label for="thr" style="font-size:13px;color:var(--ink-2)">Show reactions above</label><select id="thr" style="font:inherit;font-size:13px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:4px 8px"><option value="0.5" selected>the summer median (top 50%)</option><option value="0.7">top 30%</option><option value="0.8">top 20%</option><option value="0.9">top 10%</option></select>
+    <label for="thrs" style="font-size:13px;color:var(--ink-2)">Searches shown</label><select id="thrs" class="sel"><option value="0.5">top 50%</option><option value="0.75" selected>top 25%</option><option value="0.9">top 10%</option></select>
+    <label for="thre" style="font-size:13px;color:var(--ink-2)">ER days shown</label><select id="thre" class="sel"><option value="0.5">top 50%</option><option value="0.75" selected>top 25%</option><option value="0.9">top 10%</option></select>
   </div>
   <div class="grid">
     <div class="stage" id="stage"><svg id="v" viewBox="0 0 760 760" role="img" aria-label="Radial view of Detroit's summers with heat and reactions"></svg><div class="tip" id="tip" hidden></div></div>
@@ -53,7 +55,7 @@ svg{display:block;width:100%;height:auto}svg text{font-family:var(--sans)}
       <div id="stats" style="margin-top:6px"></div>
     </aside>
   </div>
-  <p class="foot">Heat: daily maximum temperature, gridMET (Climate Engine), Detroit, 2022-05-01 to 2026-09-24. Reactions: heat-related illness ED visits per 100,000 ED visits, daily, CDC Tracking Network, HHS Region 5; Google Trends weekly search interest in “ice cream” and “air conditioner”, Detroit metro (search bubbles sit mid-week). Size and depth of colour = where the day or week ranks among Detroit’s May–September values, 2022–2026 (the chosen threshold = smallest shown, the maximum = largest). Zone temperatures are exploratory estimates, not yet a finalised analysis step.</p>
+  <p class="foot">Heat: daily maximum temperature, gridMET (Climate Engine), Detroit, 2022-05-01 to 2026-09-24. Reactions: heat-related illness ED visits per 100,000 ED visits, daily, CDC Tracking Network, HHS Region 5; Google Trends weekly search interest in “ice cream” and “air conditioner”, Detroit metro (search bubbles sit mid-week). Size and depth of colour = where the day or week ranks among Detroit’s May–September values, 2022–2026 (only the top 25% are shown by default; the cut-off = smallest bubble, the maximum = largest). Zone temperatures are exploratory estimates, not yet a finalised analysis step.</p>
 </div>
 <script>
 const D=__DATA__;
@@ -61,7 +63,7 @@ const Z=[{t:-99,n:"Comfortable"},{t:56,n:"Goldilocks · ice cream rises"},{t:74,
 const HV=["--h0","--h1","--h2","--h3","--h4","--h5"];
 const zoneOf=T=>{let k=0;Z.forEach((z,i)=>{if(T>=z.t)k=i});return k};
 const EV=[["ice","Ice cream searches","--ice",0.28,"week"],["ac","AC searches","--ac",0.5,"week"],["er","Heat ER visits","--er",0.72,"day"]];
-const on={heat:true,ice:true,ac:true,er:true,labels:true};let SZ=1,THR=0.5;
+const on={heat:true,ice:true,ac:true,er:true,labels:true};let SZ=1,TS=0.75,TE=0.75;const thr=k=>k==="er"?TE:TS;
 const LAY=[["heat","Heat glow","--h4"],["ice","Ice cream","--ice"],["ac","AC","--ac"],["er","Heat ER","--er"],["labels","Years and months",null]];
 const CX=380,CY=380,R0=95,BW=54,YEARS=[2022,2023,2024,2025,2026],R=Math.round;
 const doy=d=>{const X=new Date(d+"T12:00:00");return (X-new Date(X.getFullYear(),4,1,12))/864e5};
@@ -70,7 +72,7 @@ const addDays=(d,n)=>{const X=new Date(d+"T12:00:00");X.setDate(X.getDate()+n);r
 const P=(r,a)=>[CX+r*Math.cos(a),CY+r*Math.sin(a)];
 const events=[];D.days.forEach(d=>{if(d[2]!=null)events.push({k:"er",d:d[0],p:d[2],v:d[3]})});
 ["ice","ac"].forEach(k=>D[k].forEach(w=>{const m=addDays(w[0],3);if(+m.slice(5,7)>=5&&+m.slice(5,7)<=9)events.push({k,d:m,p:w[2],v:w[1],w:w[0]})}));
-const radius=e=>{const x=(e.p-THR)/(1-THR);return SZ*(1.2+(e.k==="er"?13:16)*Math.pow(Math.max(0,x),1.5))};
+const radius=e=>{const T=thr(e.k),x=(e.p-T)/(1-T);return SZ*(2+(e.k==="er"?17:24)*Math.pow(Math.max(0,x),1.3))};
 function draw(){
  const lb=document.getElementById("layers");lb.innerHTML="";LAY.forEach(([k,l,c])=>{const b=document.createElement("button");b.className="tg";b.type="button";b.innerHTML=(c?`<i style="background:var(${c})"></i>`:"")+l;b.setAttribute("aria-pressed",on[k]);b.onclick=()=>{on[k]=!on[k];draw()};lb.appendChild(b)});
  let s=`<defs><filter id="blur" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="11"/></filter></defs>`;
@@ -82,18 +84,18 @@ function draw(){
   ["May","Jun","Jul","Aug","Sep"].forEach((m,i)=>{const[x,y]=P(R0+5*BW+20,ang(`2022-0${5+i}-15`));s+=`<text x="${x.toFixed(1)}" y="${(y+4).toFixed(1)}" text-anchor="middle" font-size="12" fill="var(--ink-2)" style="font-family:var(--serif);font-style:italic">${m}</text>`})}
  // reactions: bubbles, one hue per kind, size and opacity by intensity
  s+=`<g style="mix-blend-mode:var(--blend)">`;
- events.filter(e=>on[e.k]&&e.p>=THR).sort((p,q)=>p.p-q.p).forEach(e=>{const j=YEARS.indexOf(+e.d.slice(0,4));if(j<0)return;const ev=EV.find(x=>x[0]===e.k),[x,y]=P(R0+j*BW+ev[3]*(BW-2),ang(e.d)),x01=(e.p-THR)/(1-THR);
-  s+=`<circle class="ev" data-k="${e.k}" data-d="${e.d}" data-p="${e.p}" data-v="${e.v}" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${radius(e).toFixed(1)}" fill="var(${ev[2]})" fill-opacity="${(0.22+0.5*x01).toFixed(2)}"/>`});
+ events.filter(e=>on[e.k]&&e.p>=thr(e.k)).sort((p,q)=>p.p-q.p).forEach(e=>{const j=YEARS.indexOf(+e.d.slice(0,4));if(j<0)return;const ev=EV.find(x=>x[0]===e.k),[x,y]=P(R0+j*BW+ev[3]*(BW-2),ang(e.d)),x01=(e.p-thr(e.k))/(1-thr(e.k));
+  s+=`<circle class="ev" data-k="${e.k}" data-d="${e.d}" data-p="${e.p}" data-v="${e.v}" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${radius(e).toFixed(1)}" fill="var(${ev[2]})" fill-opacity="${(0.35+0.5*x01).toFixed(2)}"/>`});
  s+=`</g>`;
  s+=`<text x="${CX}" y="${CY-6}" text-anchor="middle" font-size="22" fill="var(--ink)" style="font-family:var(--serif)">Detroit</text><text x="${CX}" y="${CY+14}" text-anchor="middle" font-size="11.5" fill="var(--ink-3)">May → Sep</text>`;
  document.getElementById("v").innerHTML=s;
  document.getElementById("zones").innerHTML=Z.slice(1).map(z=>`<div><b style="color:var(--ink);font-weight:500">${z.t}°F</b> ${z.n}</div>`).join("");
- document.getElementById("evkey").innerHTML=EV.map(([k,l,c,,u])=>`<div style="display:flex;align-items:center;gap:8px;margin-top:4px"><svg width="44" height="18">${[3,5.5,8.5].map((r,i)=>`<circle cx="${6+i*13}" cy="9" r="${r}" fill="var(${c})" fill-opacity="${0.3+0.25*i}"/>`).join("")}</svg><span style="text-align:left;flex:1"><b style="color:var(--ink);font-weight:500">${l}</b> (per ${u})</span></div>`).join("")+`<div style="margin-top:6px">Small and pale = just above the threshold you choose; large and deep = Detroit’s most intense summer days and weeks. Lanes inside each ring: ice cream, AC, ER.</div>`;
+ document.getElementById("evkey").innerHTML=EV.map(([k,l,c,,u])=>`<div style="display:grid;grid-template-columns:48px 1fr;align-items:center;gap:6px;margin-top:4px;text-align:left"><svg width="44" height="18">${[3,5.5,8.5].map((r,i)=>`<circle cx="${6+i*13}" cy="9" r="${r}" fill="var(${c})" fill-opacity="${0.3+0.25*i}"/>`).join("")}</svg><span style="text-align:left;flex:1"><b style="color:var(--ink);font-weight:500">${l}</b> (per ${u})</span></div>`).join("")+`<div style="margin-top:6px">Small and pale = just above the threshold you choose; large and deep = Detroit’s most intense summer days and weeks. Lanes inside each ring: ice cream, AC, ER.</div>`;
  const cnt=y=>{const ds=D.days.filter(d=>+d[0].slice(0,4)===y);return [ds.filter(d=>d[1]>=74).length,ds.filter(d=>d[1]>=78).length,events.filter(e=>e.k==="er"&&e.p>=0.9&&+e.d.slice(0,4)===y).length]};
  document.getElementById("stats").innerHTML=`<div class="mono">Per summer</div><table style="font-size:12.5px;border-collapse:collapse;margin-top:4px;width:100%"><tr style="color:var(--ink-3)"><td></td><td style="text-align:right">days 74°+</td><td style="text-align:right">78°+</td><td style="text-align:right">top-10% ER days</td></tr>`+YEARS.map(y=>{const c=cnt(y);return `<tr><td>${y}${y===2026?"*":""}</td>${c.map(v=>`<td style="text-align:right;font-family:var(--mono)">${v}</td>`).join("")}</tr>`}).join("")+`</table><div style="font-size:11.5px;color:var(--ink-3);margin-top:4px">*to Sep 24</div>`;
 }
 document.getElementById("sz").addEventListener("input",e=>{SZ=+e.target.value;document.getElementById("szo").textContent=SZ.toFixed(1)+"×";draw()});
-document.getElementById("thr").addEventListener("change",e=>{THR=+e.target.value;draw()});
+document.getElementById("thrs").addEventListener("change",e=>{TS=+e.target.value;draw()});document.getElementById("thre").addEventListener("change",e=>{TE=+e.target.value;draw()});
 const tip=document.getElementById("tip"),fmt=d=>new Date(d+"T12:00:00").toLocaleDateString("en-US",{month:"short",day:"numeric",year:"numeric"});
 document.getElementById("v").addEventListener("mousemove",ev=>{const t=ev.target.closest(".ev,.day");if(!t){tip.hidden=true;return}const b=document.getElementById("stage").getBoundingClientRect();
  if(t.classList.contains("day"))tip.innerHTML=`${fmt(t.dataset.d)}<br>high ${R(+t.dataset.t)}°F · ${Z[zoneOf(+t.dataset.t)].n.toLowerCase()}`;

@@ -32,6 +32,15 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Visualization V9 · version 6: more dramatic, top 25% only · 2026-10-01 22:24 EDT · Gina + Claude
+- **What (Gina: "make it more dramatic - maybe only top 75% of searches?"):** Read as **only the strongest quarter** (above the 75th percentile). There are now separate cut-off selectors for searches and ER days, both defaulting to **top 25%** (options 50 / 25 / 10%).
+  - Bubbles are bigger: radius = 2 + (17 ER, 24 searches) × x^1.3, where x = position above the cut-off (0-1).
+  - Bubbles are more opaque (0.35-0.85).
+  - The legend layout is fixed.
+- **Judgment call:** "top 75%" was read as "above the 75th percentile" (the top quarter). Gina to confirm.
+
+---
+
 ### Visualization V9 · version 5: heat as a blurred glow; bubbles sized by intensity · 2026-10-01 22:21 EDT · Gina + Claude
 - **What (Gina: "not bigger by frequency, but bigger by intensity ... temperature as a blurry gradient behind ... different colors ... lower the threshold to top 50% if it looks better"):**
   - **Heat glow:** the daily wedges (warm ramp, stepping at the exploratory zone edges) are drawn under a Gaussian blur (σ = 11 px), so they read as a soft gradient field (after Gina's second reference image). Hovering still gives the day's high.
