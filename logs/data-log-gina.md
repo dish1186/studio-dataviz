@@ -32,6 +32,37 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Google Trends · Step 19: weekly "air purifier" raw files for Detroit, Phoenix, San Diego, San Francisco; Analysis A32 · purifier searches vs PM2.5 · 2026-10-02 00:03 EDT · Gina + Claude
+- **What:** Gina downloaded the remaining four metros.
+  - Claude copied each file unchanged to `data/raw/google-trends/air-search-weekly/` and checked it is byte-identical:
+    - `detroit_purifier_5yr.csv`
+    - `phoenix_purifier_5yr.csv`
+    - `sandiego_purifier_5yr.csv` (from `san diego-air-purifier-last5yr.csv`)
+    - `sanfrancisco_purifier_5yr.csv` (from `sanfran-airpurifier-last5yr.csv`)
+  - Renaming is Claude's choice, not yet approved.
+  - 262 weeks each, no zero weeks. Added a row to `data/descriptions/data_descriptions.csv`.
+- **A32 (read only, the A31 script with these cities):**
+  - **Detroit:**
+    - Its three worst PM weeks are its top purifier weeks:
+      - Jul 12-18, 2026: mean 91.7 µg/m³, 8.6× typical → index 100, the highest week in 5 years, above the national spring surge.
+      - Jun 25-Jul 1, 2023: 56.6 µg/m³, 5.7× → 50 (99th percentile).
+      - Jun 4-10, 2023: 36.5 µg/m³, 3.7× → 24 (95th percentile).
+    - Checked the Jul 2026 week: Jul 16 averaged 290 µg/m³ across 19 sites (reference monitors 294 µg/m³ across 7 sites, "hazardous"); Jul 15-17 were above 64 µg/m³. It is not a single faulty sensor.
+    - Partial ρ: abnormality −0.24 (−0.37, −0.08), danger 0.21 (0.05, 0.36). But abnormality and danger correlate 0.94 in Detroit, so these partials are not interpretable.
+  - **Phoenix:**
+    - Its worst PM weeks (winter, mean 27-34 µg/m³, 1.8-2.5× typical) drew ordinary purifier interest (28th-89th percentile).
+    - Correlations near 0; partial abnormality −0.17 (−0.31, −0.02).
+  - **San Diego:**
+    - Only 1 week with an unhealthy day (Dec 29, 2024: index 24, 92nd percentile).
+    - Jan 5, 2025 index 31 (94th percentile) with ordinary PM: the week of the Los Angeles fires, so likely news-driven.
+    - Correlations near 0.
+  - **San Francisco:**
+    - Worst PM week Sep 17, 2023 (24.5 µg/m³, 3.3×) → index 29 (94th percentile).
+    - Simple ρ 0.24-0.25 without the spring surge; partials near 0.
+  - **The spring 2026 surge** (Mar 22 to Jun 2026) appears in all 7 cities, with no PM cause.
+
+---
+
 ### Google Trends · Step 18: weekly "air purifier" raw files for Eugene, Boston and Bakersfield; Analysis A31 · purifier searches vs PM2.5 · 2026-10-02 00:00 EDT · Gina + Claude
 - **What:** Gina downloaded weekly Google Trends "air purifier" (past 5 years, All categories) for three metros, after A29 showed only monthly purifier data existed.
   - Claude copied the files unchanged from `~/Downloads/` to `data/raw/google-trends/air-search-weekly/` and checked each copy is byte-identical:
