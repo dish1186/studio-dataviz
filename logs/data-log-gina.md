@@ -32,6 +32,19 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Analysis A19-A20 · hottest days per year; patterns in the weekly heat signals · 2026-10-01 21:23 EDT · Gina + Claude
+- **A19 (saved):** `scripts/analysis/hottest_days.py` → `data/processed/analysis/hottest_10_days_per_year.csv`: the 10 hottest days per year (gridMET daily maximum), 2016-2026, four cities, with UTCI felt heat. Gina: "what are the 10 hottest days of the year per year for these 4 cities?"
+  - Hottest single days: Boston 102 °F (2025-06-24); Detroit 97 °F (five days in 2026 and on 2026-09-02); Eugene 110 °F (2021-06-27, the Pacific Northwest heat dome); Bakersfield 114 °F (2022-09-06).
+- **A20 (read-only, nothing saved):** patterns in the weekly series behind Visualization V8 (Gina: "is there anything insightful or surprising").
+  - Spearman ρ with the weekly high: ice cream 0.68-0.81, AC 0.71-0.84, ER 0.79-0.94 (Bakersfield ER 0.94).
+  - Cross-lag: searches correlate best with temperature **3 or more weeks later** (the edge of the range tested; they lead the seasonal warm-up). ER correlates best in the **same week**.
+  - The 10 highest ER weeks in each city fall almost all in the hottest 10% of weeks (temperature percentile 0.83-1.0).
+  - Summer felt heat minus actual high: Boston +3.5, Detroit +3.6, Eugene +1.8, Bakersfield +5.0 °F.
+  - **2026 vs 2022-2025, January-August:** Boston has the same mean weekly high (63.0 vs 63.2 °F) but ice cream +20%, AC +40%, ER +25%. Detroit (+0.4 °F): ER +31%. Bakersfield (+2.5 °F): ER +26%. Eugene ER is lower.
+  - **Caveats:** search levels can shift for reasons unrelated to behaviour. ER is regional, and NSSP coverage can change over time. Neither is verified for 2026.
+
+---
+
 ### Visualization V8 · version 1: "Heat Signals Over Time" (stacked weekly lines) · 2026-10-01 21:20 EDT · Gina + Claude
 - **What:** A published page, https://claude.ai/artifact/PS8GB7HzJx21oWKpMzFCYf (private until shared). Gina: "a line graph with time on the x axis ... different graphs below each other ... a dropdown per city".
   - City dropdown: Boston, Detroit, Eugene, Bakersfield.
