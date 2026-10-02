@@ -32,6 +32,34 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Mockups M1-M3 · Eugene vs Bakersfield: thresholds over time, dangerous vs abnormal, sentiment layer (chat widgets, not artifacts); Analysis A34 · 2026-10-02 00:57 EDT · Gina + Claude
+- **What (Gina: "help me layer up a couple of mockups (not artifacts, just widgets) following this line of thought ... in the context of bakersfield and eugene"):** three inline chat widgets following Gina's three questions. Not published or saved. All numbers come from repo files via the computations below; nothing is typed in by hand.
+- **A34 (read only) for M1:**
+  - **Per-summer ER threshold** (sources: `viz/heat-field/data.json`): the lowest 3 °F felt-heat band (≥ 4 days) where over half of days had a top-25% ER rate, with the next band agreeing.
+    - Eugene: 2022 90 °F, 2023 90, 2024 87, 2025 93.
+    - Bakersfield: 111, 102, 108, 105.
+    - All summers together: Eugene 90, Bakersfield 108.
+  - **AC searches threshold:**
+    - Eugene: 99 in 2022 and 2024; none in 2023 or 2025.
+    - Bakersfield: 111, 105, 108; none in 2025.
+  - **Share of dangerous days (felt ≥ 89.6 °F) with a strong reaction, by month (ER / AC searches):**
+    - Eugene: Jun 91/91, Jul 95/76, Aug 73/31, Sep 16/0.
+    - Bakersfield: Jun 33/40, Jul 61/69, Aug 34/0, Sep 7/6.
+    - Bakersfield's August AC 0% reflects zero-volume weeks in its AC file.
+  - **Air: weeks with any day above 35.4 µg/m³**, purifier searches registered (index > 0), spring 2026 surge left out: Eugene 6 of 6, Bakersfield 5 of 32.
+- **M2:** the V10 field for both cities with a heat/air toggle. Air: weekly PM2.5 against "× usual for the month". The vertical line at 2× usual is Claude's choice, not yet approved.
+- **M3:** from Dish's Reddit outputs:
+  - `step03_remarkability/lexicon_air_v1/lift.csv` and `share_by_window.csv` (event range)
+  - `step05_language/wide/register_summary.csv`
+  - `step04_mood/mood_by_window.csv` (air-talk composite)
+  - Quotes: one fragment from `logs/findings-reddit-case-study.md` and one paraphrase.
+- **Note:** the first send of M2 went out with empty data placeholders and rendered blank; it was re-sent with the data.
+- **Caveats:**
+  - The per-summer thresholds rest on few days per band, so year-to-year moves of ±3-6 °F are within noise.
+  - Four summers is too short to show change across years. The clearer change is within a season.
+
+---
+
 ### Analysis A33 · which cities resemble Eugene (rare danger) or Bakersfield (familiar danger)? (read only) · 2026-10-02 00:38 EDT · Gina + Claude
 - **What (Gina: "are there other cities that i could categorize similarly to eugene and bakersfield?"):** counted days with any PM2.5 site above 35.4 µg/m³ for all 14 OpenAQ cities with data, 2016-03-12 to 2026-09-25, by season and year (`data/processed/openaq/unhealthy_days/`). Also took median daily PM2.5 from `step05_averages`. Heat categories come from V10 and A25. Nothing saved.
 - **Unhealthy-air days (Nov-Feb / Jun-Oct; median PM2.5 µg/m³):**
