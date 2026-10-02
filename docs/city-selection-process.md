@@ -1,51 +1,15 @@
 # City selection process
 
-How the study's cities were chosen, as of 2 October 2026. Every step below is logged in detail in `logs/data-log-gina.md` (step names in brackets).
+How the study's cities were chosen, as of 2 October 2026: the American Lung Association's top 25 metros for short-term particle pollution, one city per metro. Every step below is logged in detail in `logs/data-log-gina.md` (step names in brackets).
 
 ---
 
-## Phase 1: the first city list (26–27 September 2026)
+## Selection steps (2 October 2026)
 
-**Source list.** Gina supplied the American Lung Association's *State of the Air 2026* PM2.5 rankings as a screenshot: 15 metro areas with their short-term and year-round particle pollution ranks. The metros name 36 individual cities in 10 states. [City-selection Step 1; transcribed in `data/raw/city-selection/ala_sota2026_pm25_rankings_transcribed.csv`]
-
-- *Open item from the start:* both screenshots ended at Houston-Pasadena, TX, with a scroll arrow below, so the list may have been cut short.
-
-**News coverage of air quality.** For each metro, Media Cloud was used to measure how much local news covers air quality. [City-selection Steps 2–6]
-
-- **State level:** stories matching `("air pollution" OR "air quality")` in each state's local news collection, 25 Sep 2024 – 25 Sep 2026, divided by the number of sources in the collection.
-- **National level:** the same search with the state name, in the US national collection.
-- **City level:** `("air pollution" OR "air quality") AND "[city]"` for each of the 36 cities, in its state's collection.
-
-**Pollution × coverage groups.** Each city got a pollution score (the mean of its metro's two ALA ranks) and a coverage index. Cities were then sorted into four groups: high or low pollution × high or low coverage, under both the state-level and city-level methods. 16 of the 36 cities changed group depending on the method. [City-selection Steps 7–8; `data/processed/city-selection/news_coverage_ala_comparison.xlsx`]
-
-**Cities carried into the data pipelines.** The environmental data (OpenAQ PM2.5, gridMET temperature, UTCI felt heat, METAR visibility) was then pulled for 16 cities from this list, plus Boston and San Diego as comparison cities:
-
-> Ann Arbor, Bakersfield, Boston, Brownsville, Delano, Detroit, Eugene, Fairbanks, Fresno, Los Angeles, Phoenix, Raymondville, San Diego, San Francisco, Springfield, Warren
-
-[OpenAQ Steps 1–6, Decisions OA-D1 to OA-D7]
-
----
-
-## Phase 2: the two case studies (late September 2026)
-
-**Eugene and Bakersfield** became the case-study pair through Dish's Reddit study (`studies/eugene_bakersfield.json`, `logs/findings-reddit-case-study.md`). It compares one bad-air week in each city with the same calendar week in two neighbouring years:
-
-| City | Event week | Comparison weeks |
-|---|---|---|
-| Eugene | 3–9 Aug 2026 (wildfire smoke) | 5–11 Aug 2024, 4–10 Aug 2025 |
-| Bakersfield | 2–8 Dec 2024 (winter haze) | 4–10 Dec 2023, 1–7 Dec 2025 |
-
-- **The reason for choosing these two cities and weeks is not written down in the repo** (Analysis A36). The findings describe the contrast: Eugene's week was "less dangerous, very unusual"; Bakersfield's was the "worst week since 2016, but familiar". Dish has been asked to document her selection.
-- **Ranks:** both metros are in the ALA top 3 for short-term particle pollution: Eugene-Springfield #2, Bakersfield-Delano #3.
-
----
-
-## Phase 3: extending to the full ALA top 25 (2 October 2026)
-
-1. **New list.** Gina supplied the ALA *State of the Air 2026* top 25 metros for **short-term particle pollution**. Its ranks match the short-term ranks transcribed in Phase 1 (e.g. Eugene-Springfield 2, Bakersfield-Delano 3, Brownsville 4, Fresno 6).
+1. **New list.** Gina supplied the ALA *State of the Air 2026* top 25 metros for **short-term particle pollution**. 
 2. **Cross-check against OpenAQ (Analysis A45).** The 25 metros name 49 individual cities. We had PM2.5 data for 13 of them.
 3. **One city per metro (Gina's decision).** To keep the comparison simple, each metro is represented by **its first-listed city**: 25 cities. 8 were already covered; 17 were missing.
-4. **New data pull (OpenAQ Batch 2, Steps 1–6).** The 17 missing cities were pulled with the same pipeline, rules and study period as the original 16 (6 Mar 2016 – 25 Sep 2026). One exception: Indianapolis uses the Census boundary for the consolidated city-county ("Indianapolis city (balance)"). All 786 original OpenAQ files were left unchanged.
+4. **New data pull (OpenAQ Batch 2, Steps 1–6).** The 17 missing cities were pulled with the same pipeline, rules and study period as the 8 already covered (6 Mar 2016 – 25 Sep 2026). One exception: Indianapolis uses the Census boundary for the consolidated city-county ("Indianapolis city (balance)"). The earlier OpenAQ files were left unchanged.
 5. **Coverage check.** Each city's coverage is the share of the 3,856 days in the study period with a city daily PM2.5 average. Groups:
    - strong: 70% or more
    - partial: 40–69%
@@ -131,8 +95,6 @@ ALA rank = *State of the Air 2026*, short-term particle pollution (ties as given
 
 ## Open items
 
-1. **Phase 1 list:** confirm whether the original ALA screenshot list continued past Houston-Pasadena.
-2. **Case studies:** Dish to document why Eugene and Bakersfield, and how the event weeks were chosen.
-3. **Approvals:** Gina to approve the coverage-group boundaries and the subreddit choices.
-4. **Batch-2 summary files:** decide whether to merge them into the original summary files.
-5. **Metros with weak data** (Minot, Helena, Boise City): decide whether to keep them, or to swap in the metro's second city where it has better data.
+1. **Approvals:** Gina to approve the coverage-group boundaries and the subreddit choices.
+2. **Summary files:** decide whether to merge the batch-2 OpenAQ summary files with the earlier ones.
+3. **Metros with weak data** (Minot, Helena, Boise City): decide whether to keep them, or to swap in the metro's second city where it has better data.

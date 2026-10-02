@@ -32,6 +32,12 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Doc D1 · version 2: Phase 3 only · 2026-10-02 18:55 EDT · Gina + Claude
+- **What (Gina: "just include phase 3 and onwards, prior isn't relevant anymore"):** removed the Phase 1 (first city list, Media Cloud coverage) and Phase 2 (Eugene/Bakersfield case study) sections from `docs/city-selection-process.md`, and the open items tied to them. The 25-city table, subreddit notes and Reddit rules are unchanged. Copy in the session folder updated.
+- The removed history stays in this log (city-selection Steps 1-9, Analysis A36).
+
+---
+
 ### Doc D1 · city selection process, with subreddits · 2026-10-02 18:52 EDT · Gina + Claude
 - **What (Gina: "create a document detailing this city selection process so far, and then add the /[City name] reddit to the table"):** wrote `docs/city-selection-process.md`, covering:
   - Phase 1: the first city list and Media Cloud coverage (city-selection Steps 1-9)
