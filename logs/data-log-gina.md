@@ -64,6 +64,10 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
     - Bakersfield: 4 of 23 (no reaction point).
     - Boston, San Diego, San Francisco: ≤ 1 unhealthy week.
 - **Other choices (Claude's, not yet approved):** the 28-day ER block; the EPA band edges; the 75th-percentile spike definition.
+- **Correction (later the same day, after Gina asked how "Before 2026" is calculated):**
+  - The `heat_rule` docstring in `build.py` said the hottest 10% came from May-Sep rows; the code uses the hottest 10% of all rows in the period. The docstring is now fixed; results are unchanged.
+  - "Before 2026" = all weeks or days dated 2022-2025 pooled into one calculation (not per year).
+  - For Eugene and Bakersfield, the winter level is pooled over those years, whereas the five Step 12 cities use each year's own Jan-Feb level.
 
 ---
 

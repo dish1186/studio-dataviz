@@ -49,7 +49,8 @@ def curve_cross(pts, floor, hot):
         if y1 < target <= y2: return x1 + (target - y1) / (y2 - y1) * (x2 - x1)
     return None
 def heat_rule(rows):
-    """rows = [(date, x, y)]; floor = Jan-Feb median y; hot = median y of the hottest 10% (x) of May-Sep rows."""
+    """rows = [(date, x, y)] for all months of the period; floor = Jan-Feb median y (pooled over the period's years);
+    hot = median y of the hottest 10% (by x) of all rows in the period."""
     win = [y for d, x, y in rows if d[5:7] in ("01", "02")]
     if not win: return None
     pts = [(x, y) for d, x, y in rows]; k = max(4, round(0.10 * len(pts)))
