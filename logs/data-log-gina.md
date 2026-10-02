@@ -32,6 +32,25 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Analysis A22 · temperature normals and summer anomalies (read only) · 2026-10-01 22:31 EDT · Gina + Claude
+- **What:** Checked that 1991-2020 daily normals already exist: Dish's gridMET pipeline, `data/processed/gridmet/final/temp_<city>_daily.csv`, with normal_f, p10_f, p90_f, anomaly_f and abnormally_high (±7-day window, 30 years). The same exists for felt heat (UTCI final files). Summarised for the four cities (nothing saved). Gina: "do we have any data on the normal temperatures ... to calculate the delta above normal?"
+- **Normal daily high:**
+  - May 1: Boston 62.6, Detroit 64.6, Eugene 64.9, Bakersfield 81.4 °F.
+  - Jul 15: Boston 83.0, Detroit 84.1, Eugene 82.7, Bakersfield 98.3 °F.
+- **May-Sep mean anomaly (°F), 2022 / 2023 / 2024 / 2025 / 2026:**
+  - Boston +1.9 / −0.3 / +1.2 / +1.0 / +2.1
+  - Detroit +1.4 / −1.2 / +1.6 / +0.2 / +0.4
+  - Eugene +0.6 / +3.5 / +1.9 / +3.0 / +1.5
+  - Bakersfield +1.2 / −2.7 / +2.4 / +1.1 / +1.3
+- **Days ≥ 10 °F above normal (May-Sep), same years:**
+  - Boston 21 / 13 / 16 / 24 / 26
+  - Detroit 16 / 9 / 14 / 14 / 15
+  - Eugene 20 / 30 / 29 / 29 / 20
+  - Bakersfield 8 / 7 / 17 / 6 / 13
+- **Caveat (Dish's log):** a possible gridMET outlier in Detroit's baseline (2013-09-10, 104.8 °F) affects early-September normals only.
+
+---
+
 ### Visualization V9 · version 8: zoomed out · 2026-10-01 22:28 EDT · Gina + Claude
 - **What:** A margin is added around the radial view (viewBox widened from 760 to 900, centred) and its width is capped at 640 px, so the whole circle and the outer bubbles fit with room around them. Layout only.
 
