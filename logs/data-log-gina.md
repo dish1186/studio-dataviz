@@ -32,6 +32,29 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Analysis A33 · which cities resemble Eugene (rare danger) or Bakersfield (familiar danger)? (read only) · 2026-10-02 00:38 EDT · Gina + Claude
+- **What (Gina: "are there other cities that i could categorize similarly to eugene and bakersfield?"):** counted days with any PM2.5 site above 35.4 µg/m³ for all 14 OpenAQ cities with data, 2016-03-12 to 2026-09-25, by season and year (`data/processed/openaq/unhealthy_days/`). Also took median daily PM2.5 from `step05_averages`. Heat categories come from V10 and A25. Nothing saved.
+- **Unhealthy-air days (Nov-Feb / Jun-Oct; median PM2.5 µg/m³):**
+  - Fresno 250 (196 / 51; 10.2)
+  - Los Angeles 210 (109 / 69; 11.7)
+  - Bakersfield 182 (139 / 42; 11.1)
+  - Fairbanks 96 (48 / 48; 5.0)
+  - San Francisco 90 (45 / 45; 6.5)
+  - Delano 72 (since 2025 only, low-cost sensors)
+  - Detroit 59 (22 / 33; 9.2)
+  - Phoenix 53 (46 / 7; 6.8)
+  - Eugene 47 (13 / 33; 4.6)
+  - Ann Arbor 30 (6 / 24; 7.7)
+  - San Diego 26 (19 / 6; 9.5)
+  - Springfield OR 21 (0 / 21; 4.7)
+  - Brownsville 12 (sparse data)
+  - Boston 9 (1 / 8; 6.0)
+- **By year (selected):**
+  - Los Angeles 1-11 per year to 2021, then 22-64. San Francisco 2-8 most years, 26 in 2022, 29 in 2025. Fresno 13-34 most years, 63 in 2025. Detroit 20 in 2026.
+- **Caveat:** "any site" counts rise with the number of sensors. Low-cost sensors were added from about 2023-2025 in several cities, so later years may be inflated. Not yet checked against reference-only counts.
+
+---
+
 ### Visualization V11 · version 3: black on white in every theme, PNG export · 2026-10-02 00:16 EDT · Gina + Claude
 - **What (Gina: "i need it black and i need to be able to export as png"):**
   - New `viz/purifier-lines/render_png.py` (pure Python, no libraries) draws the same chart as version 2 at 3120 × 1440 px:
