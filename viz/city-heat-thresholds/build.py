@@ -8,6 +8,11 @@ Layer 1 "Heat · AC searches": the 5 original cities use Google Trends Step 12 (
   candidate range for the bend (10th-90th percentile of the city's 2022-2026 weekly highs). (v2 first used a fixed 30-100 F
   range, which let the bend sit below all data in 2026 Bakersfield and gave a meaningless 32 F; fixed.) A bend at either
   edge of the range is reported as no clear start point (Bakersfield: every period).
+Layer 1b "Heat · ice cream searches" (added after v3): Google Trends weekly "ice cream", all 7 cities, Step 12's method
+  exactly (ice cream has non-zero winter values everywhere): ratio = week / that year's Jan-Feb median; hot level = median
+  ratio of the hottest 10% of weeks; surge = where a running median of the ratio (weeks sorted by weekly high, window 10%,
+  odd, >= 7) reaches (1 + hot) / 2; "starts looking" = Step 11's hockey stick on log2(ratio), bend searched over the city's
+  10th-90th percentile of weekly highs, edges reported as no clear start. Same periods and 4-week block bootstrap.
 Layer 2 "Heat · ER visits": the same halfway rule on DAILY heat-related ER visits (per 100,000 ER visits, HHS region)
   against the DAILY high: floor = Jan-Feb median, hot level = median of the hottest 10% of days, running-median window
   10% of days. Region: Boston 1, Detroit 5, Eugene 10, Phoenix / San Diego / San Francisco / Bakersfield 9 (shared).
@@ -64,6 +69,31 @@ def air_rule(rows):
     if n < 20: return None
     floor = st.median(y for _, y in pts[: n // 2]); k = max(4, round(0.10 * n))
     return curve_cross(pts, floor, st.median(y for _, y in pts[-k:]))
+ICEF = {"boston": "boston_ice_5yr.csv", "sanfrancisco": "san fran_ice_5yr.csv", "phoenix": "phoenix_ice_5yr.csv", "detroit": "detroit_ice_5yr.csv",
+        "sandiego": "sandiego_ice_5yr.csv", "eugene": "eugene_ice_5yr.csv", "bakersfield": "bakersfield_ice_5yr.csv"}
+def ratio_rows(rows):
+    usual = {}
+    for d, x, y in rows:
+        if d[5:7] in ("01", "02"): usual.setdefault(d[:4], []).append(y)
+    usual = {k: st.median(v) for k, v in usual.items()}
+    return [(d, x, y / usual[d[:4]]) for d, x, y in rows if usual.get(d[:4], 0) > 0]
+def ratio_rule(rows):
+    rr = ratio_rows(rows)
+    if len(rr) < 20: return None
+    pts = [(x, y) for _, x, y in rr]; k = max(4, round(0.10 * len(pts)))
+    return curve_cross(pts, 1.0, st.median(y for _, y in sorted(pts)[-k:]))
+def ratio_hockey(rows, city):
+    rr = ratio_rows(rows); best = None
+    pts = [(x, math.log2(y)) for _, x, y in rr if y > 0]
+    for t0 in GRID[city]:
+        xs = [max(0.0, x - t0) for x, _ in pts]; ys = [y for _, y in pts]; mx, my = st.mean(xs), st.mean(ys)
+        sxx = sum((a - mx) ** 2 for a in xs)
+        if sxx == 0: continue
+        b = sum((a - mx) * (c - my) for a, c in zip(xs, ys)) / sxx; a0 = my - b * mx
+        sse = sum((c - a0 - b * a) ** 2 for a, c in zip(xs, ys))
+        if b > 0 and (best is None or sse < best[1]): best = (t0, sse)
+    if not best or best[0] in (GRID[city][0], GRID[city][-1]): return None
+    return best[0]
 GRID = {}  # per city: Step 11's candidate range, 10th to 90th percentile of all 2022-2026 weekly highs
 def hockey(rows, city=None):
     pts = [(x, math.log2(1 + y)) for d, x, y in rows]; best = None
@@ -105,6 +135,12 @@ for c, (name, ab, acf, reg) in CITIES.items():
         s0 = dt.date.fromisoformat(w); ds = [T.get((s0 + dt.timedelta(i)).isoformat()) for i in range(7)]
         if all(x is not None for x in ds) and 2022 <= s0.year <= 2026: wk.append((w, st.mean(ds), v))
     o = {"n": name, "a": ab, "region": reg, "sum": round(summer, 1)}
+    Ts = sorted(x for _, x, _ in wk); GRID[c] = range(math.ceil(Ts[len(Ts) // 10]), math.floor(Ts[len(Ts) * 9 // 10]) + 1)
+    iw = []
+    for w, v in trends(f"data/raw/google-trends/icecream-search-weekly/{ICEF[c]}"):
+        s0 = dt.date.fromisoformat(w); ds = [T.get((s0 + dt.timedelta(i)).isoformat()) for i in range(7)]
+        if all(x is not None for x in ds) and 2022 <= s0.year <= 2026: iw.append((w, st.mean(ds), v))
+    o["ice"] = summarise({p: [r for r in iw if int(r[0][:4]) in y] for p, y in PER.items()}, ratio_rule, 4, lambda rows, c=c: ratio_hockey(rows, c))
     if c in ("eugene", "bakersfield"):
         Ts = sorted(x for _, x, _ in wk); GRID[c] = range(math.ceil(Ts[len(Ts) // 10]), math.floor(Ts[len(Ts) * 9 // 10]) + 1)
         o["search"] = summarise({p: [r for r in wk if int(r[0][:4]) in y] for p, y in PER.items()}, heat_rule, 4, lambda rows, c=c: hockey(rows, c))
@@ -133,6 +169,6 @@ for c, (name, ab, acf, reg) in CITIES.items():
     o["typ_pm"] = round(st.median(st.median([pm[k] for k in pm if "2022" <= k[:4] <= "2026"]) for _ in [0]), 1)
     o["worst_pm_week"] = round(max(m for _, m, _ in aw), 1)
     OUT[c] = o
-    print(name, "| search", {p: (v["s"], v.get("ci"), v.get("st")) for p, v in o["search"].items()}, "| check", o.get("search_check_index_method"),
+    print(name, "| ice", {p: (v["s"], v.get("ci"), v.get("st")) for p, v in o["ice"].items()}, "| search", {p: (v["s"], v.get("ci"), v.get("st")) for p, v in o["search"].items()}, "| check", o.get("search_check_index_method"),
           "\n   ER", {p: (v["s"], v["ci"], v["n"]) for p, v in o["er"].items()}, "\n   air", o["air"], "typ", o["typ_pm"], "worst wk", o["worst_pm_week"], "summer", o["sum"])
 json.dump(OUT, open("viz/city-heat-thresholds/data.json", "w"), separators=(",", ":"))

@@ -32,6 +32,28 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Visualization V13 · version 4: ice cream layer · 2026-10-02 13:25 EDT · Gina + Claude
+- **What (Gina: "put ice cream searches in the city heat thresholds"):**
+  - New layer "Heat · ice cream" for all seven cities, using Step 12's method exactly (ice cream has non-zero winter values everywhere):
+    - each week's searches as a multiple of that year's Jan-Feb median
+    - take-off = halfway to the hottest-10%-weeks level, with a running median and a 4-week block bootstrap
+    - "start rising" = Step 11 hockey stick on log2(ratio), searched over the city's 10th-90th percentile of weekly highs; edges reported as no clear start
+  - The AC point is shown as a comparison ring. The page notes that ice cream also follows the calendar.
+  - Sources: `data/raw/google-trends/icecream-search-weekly/`; weekly highs from gridMET.
+- **Take-off points, before 2026** (°F, 90% range):
+  - Boston 72.7 (60.0-75.1)
+  - San Francisco 61.8 (57.7-62.3)
+  - Phoenix 95.0 (85.5-105.2)
+  - Detroit 74.6 (64.2-76.8)
+  - San Diego 67.9 (65.2-78.8)
+  - Eugene 72.5 (64.7-78.7)
+  - Bakersfield 86.4 (74.7-93.3)
+  - "Start rising" found only for Boston (44 °F) and Detroit (47 °F); edges elsewhere.
+- **Side effect:** adding the ice cream bootstrap shifts the random-number sequence, so the AC ranges for Eugene and Bakersfield moved by ≤ 0.3 °F (e.g. Bakersfield 79.3-93.0, was 79.5-93.1). Point values are unchanged.
+- Republished as version 4 at https://claude.ai/artifact/RP7JSJJTvQpuH8p9LVFDKQ.
+
+---
+
 ### Analysis A41 · does reaction follow visible haze (airport visibility) more than PM2.5? (read only) · 2026-10-02 13:23 EDT · Gina + Claude
 - **What (Gina: "lets test this", the visible vs invisible danger idea):** 7 cities, weekly (Sunday-Saturday).
   - A week's PM2.5 = its worst day (OpenAQ `all_mean`, ≥ 4 days).
