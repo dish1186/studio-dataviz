@@ -32,6 +32,27 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Analysis A45 · ALA top-25 metros vs our OpenAQ PM2.5 coverage (read only) · 2026-10-02 17:27 EDT · Gina + Claude
+- **What (Gina pasted a 25-metro list, Fairbanks-College to Yakima, ranked as in ALA *State of the Air 2026* short-term particle pollution, and asked to cross it with our OpenAQ PM2.5 data):**
+  - Source: `data/processed/openaq/step05_averages/pm25_city_coverage_summary.csv` (overall rows; study period 2016-03-06 to 2026-09-25, 3,856 days). Nothing saved.
+- **Metros with data (share of study days with a city mean; sites):**
+  - Fairbanks 75%, 2 sites
+  - Eugene 83% (3) and Springfield 76% (2)
+  - Bakersfield 77% (5); Delano 13% (from 2025-04-17, low-cost only)
+  - Brownsville 30% (12); Raymondville 0%
+  - Fresno 78% (7)
+  - Los Angeles 79% (248)
+  - Detroit 79% (36), Ann Arbor 79% (15), Warren 24% (from 2023-12-21)
+  - Phoenix 80% (27)
+  - San Francisco 76% (62). San Jose and Oakland are not separate cities in our data.
+- **Metros with no OpenAQ data downloaded (16):**
+  - Visalia, Seattle-Tacoma, Bismarck, McAllen-Edinburg, Minot, Pittsburgh, El Centro, Indianapolis
+  - Medford-Grants Pass, Boise, Lancaster, Bend, Salt Lake City-Provo-Orem, Helena, Logan, Yakima
+  - Pittsburgh has gridMET temperature and METAR files but no PM2.5.
+- **In our data but not on the list:** Boston (69%), San Diego (63%).
+
+---
+
 ### Visualization V13 · version 5: air layer as a PM2.5 gauge like the AC layer · 2026-10-02 14:21 EDT · Gina + Claude
 - **What (Gina: "i need this structure but have the vertical temp gauge be pm2.5 and have searching for air purifiers be pointed. you dont have to follow the same calculation as heat, just do what makes sense so that the data is legible. this will need to include all annual data"):**
   - The air layer now mirrors the AC gauge: PM2.5 log scale (2-150 µg/m³, worst day of the week).
