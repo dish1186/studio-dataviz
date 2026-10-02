@@ -32,6 +32,24 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Doc D1 · city selection process, with subreddits · 2026-10-02 18:52 EDT · Gina + Claude
+- **What (Gina: "create a document detailing this city selection process so far, and then add the /[City name] reddit to the table"):** wrote `docs/city-selection-process.md`, covering:
+  - Phase 1: the first city list and Media Cloud coverage (city-selection Steps 1-9)
+  - Phase 2: Dish's Eugene/Bakersfield case study (Analysis A36)
+  - Phase 3: the ALA short-term top 25, first city per metro, OpenAQ Batch 2, and coverage groups (A45, Batch 2)
+  - A 25-row table with ALA rank, PM2.5 coverage, data runs, coverage group and subreddit.
+- **Subreddit lookup (read only):**
+  - Arctic Shift's subreddit records (`https://arctic-shift.photon-reddit.com/api/subreddits/search`), queried with curl on 2026-10-02. The in-app browser is not allowed to open reddit.com.
+  - Fields used: display name, subscribers, archived post count, earliest archived post. No posts or comments downloaded; nothing saved besides the doc.
+- **Chosen subreddits** (city's own, most active; Claude's choice, not yet approved):
+  - Regional: r/imperialvalley for El Centro (no r/ElCentro).
+  - r/lancaster (r/LancasterPA is closed); r/medford (covers the Rogue Valley).
+  - r/Mcallen is very small (1,446 subscribers, 152 posts; r/RGV not found).
+  - r/Logan and r/helena over near-empty r/LoganUtah and r/HelenaMT; r/Brownsville over near-empty r/BrownsvilleTX.
+- **Also copied** to the session folder for Gina.
+
+---
+
 ### OpenAQ · Batch 2, Steps 1-6: PM2.5 for 17 more ALA top-25 cities · 2026-10-02 18:22 EDT · Gina + Claude
 - **What (Gina: "lets pull the data for the 17 missing cities from the openAQ database. same structure and segmentation as our previous pulls" and "i need to make sure its the exact same timeline"; plan approved "its a go"):**
   - The first-listed city of each ALA *State of the Air 2026* top-25 metro we lacked: Visalia, Seattle, Bismarck, McAllen, Minot, Pittsburgh, El Centro, Indianapolis, Medford, Boise City, Lancaster, Bend, San Jose, Salt Lake City, Helena, Logan, Yakima.
