@@ -1,0 +1,140 @@
+<title>City Heat Thresholds</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#f3f5f6; --panel:#ffffff; --ink:#15212b; --ink-2:#4f5d68; --ink-3:#8795a0; --line:#d9e0e5;
+  --heat:#d8452b; --er:#5b3fb5; --air:#2f7d6b; --epa:#c0392b;
+  --display:"Bricolage Grotesque", "Avenir Next", "Segoe UI", sans-serif;
+  --body:"IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0f161c; --panel:#17212a; --ink:#e8eef2; --ink-2:#a9b6c0; --ink-3:#6f7d88; --line:#2a3743;
+  --heat:#ff6a4d; --er:#a48cff; --air:#5fc9ac; --epa:#ff7a6b; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0f161c; --panel:#17212a; --ink:#e8eef2; --ink-2:#a9b6c0; --ink-3:#6f7d88; --line:#2a3743;
+  --heat:#ff6a4d; --er:#a48cff; --air:#5fc9ac; --epa:#ff7a6b; color-scheme:dark}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.5;margin:0}
+.wrap{max-width:780px;margin:0 auto;padding-inline:20px;padding-block:20px 36px;display:flex;flex-direction:column;gap:16px}
+h1{font-family:var(--display);font-weight:700;font-size:clamp(28px,4vw,42px);line-height:1.02;margin:0;letter-spacing:-.01em}
+.lede{color:var(--ink-2);max-width:62ch;margin:6px 0 0}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3)}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px;min-width:0}
+.gctl{display:flex;flex-direction:column;gap:8px;margin-top:4px}
+.rowl{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.lbl{font-size:12px;color:var(--ink-3);min-width:3.5em}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.gtab{font:inherit;font-size:13px;padding:4px 12px;border-radius:8px;border:1px solid var(--line);background:transparent;color:var(--ink-2);cursor:pointer}
+.gtab[aria-pressed=true]{border-color:var(--ink);color:var(--ink);background:var(--bg);font-weight:500}
+.gtab:disabled{opacity:.4;cursor:default}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:8px;overflow:hidden;flex-wrap:wrap}
+.seg button{font:inherit;font-size:13.5px;border:0;background:transparent;color:var(--ink-2);padding:6px 12px;font-weight:500;cursor:pointer}
+.seg button[aria-pressed=true]{background:var(--ink);color:var(--panel)}
+.seg button:focus-visible,.gtab:focus-visible{outline:2px solid var(--er);outline-offset:2px}
+.gread{font-size:15px;line-height:1.6;margin:8px 0 0;max-width:75ch}
+.gread b{font-weight:500}
+.muted{color:var(--ink-3)}
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:12px;color:var(--ink-2);margin-top:8px}
+.legend i{display:inline-block;vertical-align:-2px;margin-right:6px}
+svg text{font-family:var(--body)}
+.foot{font-size:12px;color:var(--ink-3);max-width:90ch;margin:0}
+.foot b{color:var(--ink-2);font-weight:500}
+</style>
+<div class="wrap">
+  <header>
+    <div class="eyebrow">Heat and air &#183; what are our own thresholds for action?</div>
+    <h1>City heat thresholds</h1>
+    <p class="lede">Three layers for seven cities. When searches for &#8220;air conditioner&#8221; take off; when heat-related ER visits climb; and how often bad air brings searches for an air purifier.</p>
+  </header>
+  <section class="panel">
+    <div class="gctl">
+      <div class="rowl"><span class="lbl">Layer</span><div class="seg" id="layers" role="group" aria-label="Layer"></div></div>
+      <div class="rowl"><span class="lbl">City</span><div class="chips" id="gcities"></div></div>
+      <div class="rowl"><span class="lbl">Years</span><div class="chips" id="gperiods"></div></div>
+    </div>
+    <svg id="stage" viewBox="0 0 640 500" width="100%" role="img" aria-label="Vertical scale with the selected city's threshold for the selected layer"></svg>
+    <div class="legend" id="legend"></div>
+    <p class="gread" id="gread"></p>
+  </section>
+  <p class="foot" id="foot"></p>
+</div>
+<script>
+const G={"boston":{"n":"Boston","a":"BOS","region":"Region 1","sum":80.1,"search":{"all":{"s":78.8,"ci":[66.7,82.1],"st":44.0,"n":246},"pre":{"s":73.0,"ci":[68.0,82.3],"st":47.0,"n":209},"y26":{"s":70.3,"ci":[49.2,85.2],"st":39.0,"n":37}},"search_method":"Step 12 (as published)","search_check_index_method":{"all":81.43000625,"pre":73.91364285714286,"y26":70.30065},"er":{"all":{"s":86.3,"ci":[83.4,87.9],"boot_missing":0,"n":1728},"pre":{"s":85.6,"ci":[82.2,87.7],"boot_missing":0,"n":1461},"y26":{"s":89.1,"ci":[81.4,89.8],"boot_missing":27,"n":267}},"air":{"bands":[{"lo":0,"hi":12,"n":156,"k":24},{"lo":12,"hi":35.5,"n":64,"k":21},{"lo":35.5,"hi":55.5,"n":1,"k":0},{"lo":55.5,"hi":10000,"n":0,"k":0}],"react":null,"spike_above":20,"n":221},"typ_pm":5.3,"worst_pm_week":41.1},"sanfrancisco":{"n":"San Francisco","a":"SF","region":"Region 9","sum":68.1,"search":{"all":{"s":61.8,"ci":[61.2,63.3],"st":58.0,"n":246},"pre":{"s":62.3,"ci":[61.4,64.0],"st":58.0,"n":209},"y26":{"s":60.8,"ci":[60.4,65.5],"st":58.0,"n":37}},"search_method":"Step 12 (as published)","search_check_index_method":{"all":62.352221428571426,"pre":62.601817857142855,"y26":60.852046875},"er":{"all":{"s":62.9,"ci":[61.0,64.9],"boot_missing":0,"n":1728},"pre":{"s":63.2,"ci":[61.1,65.0],"boot_missing":0,"n":1461},"y26":{"s":60.1,"ci":[59.2,64.2],"boot_missing":26,"n":267}},"air":{"bands":[{"lo":0,"hi":12,"n":164,"k":24},{"lo":12,"hi":35.5,"n":59,"k":18},{"lo":35.5,"hi":55.5,"n":1,"k":1},{"lo":55.5,"hi":10000,"n":0,"k":0}],"react":null,"spike_above":15,"n":224},"typ_pm":5.9,"worst_pm_week":42.6},"phoenix":{"n":"Phoenix","a":"PHX","region":"Region 9","sum":103.8,"search":{"all":{"s":95.5,"ci":[87.1,103.2],"st":70.0,"n":246},"pre":{"s":96.6,"ci":[87.8,105.2],"st":70.0,"n":209},"y26":{"s":86.3,"ci":[82.5,91.6],"st":69.0,"n":37}},"search_method":"Step 12 (as published)","search_check_index_method":{"all":99.21035714285713,"pre":102.61061428571429,"y26":86.32501785714285},"er":{"all":{"s":104.7,"ci":[103.1,105.5],"boot_missing":0,"n":1728},"pre":{"s":104.7,"ci":[102.8,105.8],"boot_missing":0,"n":1461},"y26":{"s":105.1,"ci":[102.3,106.5],"boot_missing":36,"n":267}},"air":{"bands":[{"lo":0,"hi":12,"n":144,"k":22},{"lo":12,"hi":35.5,"n":73,"k":21},{"lo":35.5,"hi":55.5,"n":2,"k":0},{"lo":55.5,"hi":10000,"n":4,"k":2}],"react":null,"spike_above":17,"n":223},"typ_pm":6.5,"worst_pm_week":106.1},"detroit":{"n":"Detroit","a":"DET","region":"Region 5","sum":81.7,"search":{"all":{"s":75.4,"ci":[74.0,83.0],"st":47.0,"n":246},"pre":{"s":76.7,"ci":[74.6,82.4],"st":51.0,"n":209},"y26":{"s":84.7,"ci":[49.6,89.1],"st":35.0,"n":37}},"search_method":"Step 12 (as published)","search_check_index_method":{"all":75.28793214285714,"pre":76.66793928571428,"y26":84.73102499999999},"er":{"all":{"s":84.8,"ci":[82.7,85.8],"boot_missing":0,"n":1728},"pre":{"s":84.9,"ci":[82.2,85.9],"boot_missing":0,"n":1461},"y26":{"s":87.3,"ci":[79.2,90.5],"boot_missing":35,"n":267}},"air":{"bands":[{"lo":0,"hi":12,"n":54,"k":6},{"lo":12,"hi":35.5,"n":152,"k":29},{"lo":35.5,"hi":55.5,"n":12,"k":4},{"lo":55.5,"hi":10000,"n":3,"k":3}],"react":55.5,"spike_above":14,"n":221},"typ_pm":8.7,"worst_pm_week":290.1},"sandiego":{"n":"San Diego","a":"SD","region":"Region 9","sum":78.8,"search":{"all":{"s":74.4,"ci":[72.9,79.9],"st":65.0,"n":246},"pre":{"s":77.3,"ci":[73.3,79.8],"st":70.0,"n":209},"y26":{"s":70.0,"ci":[69.3,85.3],"st":64.0,"n":37}},"search_method":"Step 12 (as published)","search_check_index_method":{"all":77.22618571428572,"pre":76.74695714285714,"y26":69.99447142857143},"er":{"all":{"s":77.0,"ci":[73.9,80.6],"boot_missing":0,"n":1728},"pre":{"s":76.2,"ci":[74.0,77.9],"boot_missing":0,"n":1461},"y26":{"s":73.0,"ci":[71.7,83.1],"boot_missing":27,"n":267}},"air":{"bands":[{"lo":0,"hi":12,"n":73,"k":11},{"lo":12,"hi":35.5,"n":147,"k":30},{"lo":35.5,"hi":55.5,"n":1,"k":1},{"lo":55.5,"hi":10000,"n":0,"k":0}],"react":null,"spike_above":16,"n":221},"typ_pm":9.4,"worst_pm_week":37.4},"eugene":{"n":"Eugene","a":"EUG","region":"Region 10","sum":79.9,"search":{"all":{"s":73.4,"ci":[68.2,82.3],"boot_missing":0,"n":246,"st":54},"pre":{"s":76.0,"ci":[70.3,85.2],"boot_missing":0,"n":209,"st":52},"y26":{"s":73.9,"ci":[62.9,82.3],"boot_missing":126,"n":37,"st":56}},"search_method":"index (winter level 0)","er":{"all":{"s":86.1,"ci":[82.3,88.5],"boot_missing":0,"n":1728},"pre":{"s":87.4,"ci":[82.3,89.4],"boot_missing":0,"n":1461},"y26":{"s":81.3,"ci":[77.1,85.5],"boot_missing":24,"n":267}},"air":{"bands":[{"lo":0,"hi":12,"n":153,"k":40},{"lo":12,"hi":35.5,"n":63,"k":10},{"lo":35.5,"hi":55.5,"n":2,"k":2},{"lo":55.5,"hi":10000,"n":4,"k":4}],"react":35.5,"spike_above":19,"n":222},"typ_pm":4.3,"worst_pm_week":109.4},"bakersfield":{"n":"Bakersfield","a":"BAK","region":"Region 9","sum":96.6,"search":{"all":{"s":83.1,"ci":[77.3,91.1],"boot_missing":0,"n":246,"st":60},"pre":{"s":85.6,"ci":[79.5,93.1],"boot_missing":0,"n":209,"st":61},"y26":{"s":74.2,"ci":[63.7,86.1],"boot_missing":95,"n":37,"st":32}},"search_method":"index (winter level 0)","er":{"all":{"s":95.4,"ci":[94.2,96.8],"boot_missing":0,"n":1728},"pre":{"s":95.8,"ci":[94.0,97.3],"boot_missing":0,"n":1461},"y26":{"s":95.3,"ci":[93.4,96.0],"boot_missing":22,"n":267}},"air":{"bands":[{"lo":0,"hi":12,"n":40,"k":6},{"lo":12,"hi":35.5,"n":156,"k":34},{"lo":35.5,"hi":55.5,"n":20,"k":4},{"lo":55.5,"hi":10000,"n":3,"k":0}],"react":null,"spike_above":0,"n":219},"typ_pm":10.9,"worst_pm_week":61.0}};
+const ORDER=["eugene","bakersfield","boston","detroit","phoenix","sandiego","sanfrancisco"];
+const LAYERS={search:"Heat \u00b7 AC searches",er:"Heat \u00b7 ER visits",air:"Air \u00b7 purifier searches"};
+const GP={pre:"Before 2026",y26:"2026 so far",all:"All years",cmp:"Compare"};
+const gauge={city:"eugene",per:"pre",layer:"search"};
+const R=Math.round,$=id=>document.getElementById(id);
+const spread=(L,gap)=>{L.sort((a,b)=>a.y-b.y);for(let i=1;i<L.length;i++)if(L[i].y-L[i-1].y<gap)L[i].y=L[i-1].y+gap;return L};
+function tabs(){
+  const mk=(el,obj,key,label,dis)=>{el.innerHTML="";for(const k in obj){const b=document.createElement("button");b.type="button";b.className=el.id=="layers"?"":"gtab";b.textContent=label(obj[k],k);
+    b.setAttribute("aria-pressed",gauge[key]===k);if(dis&&dis(k))b.disabled=true;b.onclick=()=>{gauge[key]=k;tabs();draw()};el.appendChild(b)}};
+  mk($("layers"),LAYERS,"layer",v=>v);
+  const C={};ORDER.forEach(k=>C[k]=G[k]);mk($("gcities"),C,"city",v=>v.n);
+  if(gauge.layer=="air")gauge.per="all";
+  mk($("gperiods"),GP,"per",v=>v,k=>gauge.layer=="air"&&k!="all");
+}
+function col(x,label,sub,live,TOP,BOT){let s=`<text x="${x}" y="484" text-anchor="middle" font-size="14" font-weight="${live?500:400}" fill="${live?"var(--ink)":"var(--ink-2)"}">${label}</text>`;
+  s+=`<line x1="${x}" y1="${TOP}" x2="${x}" y2="${BOT}" stroke="${live?"var(--ink-3)":"var(--line)"}" stroke-width="2"${live?"":' stroke-dasharray="4 5"'}/>`;
+  if(!live)s+=`<text x="${x-10}" y="${(TOP+BOT)/2}" text-anchor="middle" transform="rotate(-90 ${x-10} ${(TOP+BOT)/2})" font-size="12" fill="var(--ink-3)">${sub}</text>`;return s}
+function heatSVG(){
+  const lay=gauge.layer,city=gauge.city,per=gauge.per,key=per=="cmp"?"pre":per,v=G[city],col1=lay=="er"?"var(--er)":"var(--heat)";
+  const TOP=30,BOT=450,T0=30,T1=115,HX=330,y=t=>BOT-(Math.max(T0,Math.min(T1,t))-T0)/(T1-T0)*(BOT-TOP);
+  let s=col(70,"Air","switch to the air layer",false,TOP,BOT)+col(HX,lay=="er"?"Heat \u00b7 ER visits":"Heat \u00b7 AC searches","",true,TOP,BOT)+col(590,"Pollen","pollen, coming soon",false,TOP,BOT);
+  for(let t=T0;t<=T1;t+=5){s+=`<line x1="${HX-4}" y1="${y(t)}" x2="${HX+4}" y2="${y(t)}" stroke="var(--ink-3)"/>`;if(t%10===0)s+=`<text x="${HX+10}" y="${y(t)+4}" font-size="11" fill="var(--ink-3)">${t}\u00b0</text>`}
+  const L1=lay,others=ORDER.filter(k=>k!==city&&G[k][L1][key].s!=null).map(k=>({k,t:G[k][L1][key].s}));
+  spread(others.map(o=>({...o,y:y(o.t)+4})),15).forEach(o=>{const Y=y(o.t);s+=`<circle cx="${HX}" cy="${Y}" r="4.5" fill="var(--ink-3)" stroke="var(--panel)" stroke-width="2"/><line x1="${HX+6}" y1="${Y}" x2="${HX+44}" y2="${o.y-4}" stroke="var(--line)"/><text x="${HX+48}" y="${o.y}" font-size="11" fill="var(--ink-2)">${G[o.k].a} ${R(o.t)}\u00b0${lay=="er"&&G[o.k].region=="Region 9"?"*":""}</text>`});
+  s+=`<line x1="${HX-26}" y1="${y(v.sum)}" x2="${HX+26}" y2="${y(v.sum)}" stroke="var(--ink-2)" stroke-width="2" stroke-dasharray="3 2"/>`;
+  const d=v[L1];let Lb=[],read;
+  if(lay=="er"&&per!="cmp"&&v.search[key].s!=null){const g=v.search[key].s;s+=`<circle cx="${HX}" cy="${y(g)}" r="7" fill="none" stroke="var(--heat)" stroke-width="1.5" stroke-dasharray="2 2"/>`;Lb.push({y:y(g)+4,ty:y(g),t:`AC searches \u00b7 ${R(g)}\u00b0`,w:400})}
+  if(per=="cmp"){const a=d.pre,b=d.y26;
+    if(a.ci)s+=`<rect x="${HX-22}" y="${y(a.ci[1])}" width="8" height="${y(a.ci[0])-y(a.ci[1])}" rx="4" fill="${col1}" opacity=".35"/>`;
+    if(b.ci)s+=`<rect x="${HX+14}" y="${y(b.ci[1])}" width="8" height="${y(b.ci[0])-y(b.ci[1])}" rx="4" fill="none" stroke="${col1}" stroke-width="1.5" stroke-dasharray="3 2"/>`;
+    if(a.s!=null)s+=`<circle cx="${HX}" cy="${y(a.s)}" r="9" fill="${col1}" stroke="var(--panel)" stroke-width="2"/>`;
+    if(b.s!=null)s+=`<circle cx="${HX}" cy="${y(b.s)}" r="8" fill="var(--panel)" stroke="${col1}" stroke-width="2.5"/>`;
+    Lb.push({y:y(a.s)+4,ty:y(a.s),t:`before 2026 \u00b7 ${R(a.s)}\u00b0`,w:500},{y:y(b.s)+4,ty:y(b.s),t:`2026 so far \u00b7 ${R(b.s)}\u00b0`,w:500},{y:y(v.sum)+4,ty:y(v.sum),t:`typical summer \u00b7 ${R(v.sum)}\u00b0`,w:400});
+    const dd=R(b.s-a.s);read=`${v.n}: ${lay=="er"?"heat-related ER visits climb":"searchers reach for AC"} at <b>${R(a.s)}\u00b0F</b> before 2026 and <b>${R(b.s)}\u00b0F</b> in 2026 so far (${dd===0?"no change":Math.abs(dd)+"\u00b0 "+(dd<0?"lower":"higher")}). <span class="muted">2026 is one partial year: treat it as a hint, not a change.</span>`;
+  }else{const a=d[key];
+    if(a.ci)s+=`<rect x="${HX-8}" y="${y(a.ci[1])}" width="16" height="${y(a.ci[0])-y(a.ci[1])}" rx="8" fill="${col1}" opacity=".25"/>`;
+    if(lay=="search"&&a.st!=null){s+=`<circle cx="${HX}" cy="${y(a.st)}" r="6" fill="var(--panel)" stroke="var(--heat)" stroke-width="2.5"/>`;Lb.push({y:y(a.st)+4,ty:y(a.st),t:`start looking \u00b7 ${R(a.st)}\u00b0`,w:400})}
+    if(a.s!=null){s+=`<circle cx="${HX}" cy="${y(a.s)}" r="9" fill="${col1}" stroke="var(--panel)" stroke-width="2"/>`;Lb.push({y:y(a.s)+5,ty:y(a.s),t:`${v.n} ${lay=="er"?"ER visits climb":"searchers"} \u00b7 ${R(a.s)}\u00b0F`,w:500})}
+    Lb.push({y:y(v.sum)+4,ty:y(v.sum),t:`typical summer \u00b7 ${R(v.sum)}\u00b0`,w:400});
+    const gap=R(v.sum-a.s);
+    if(lay=="search")read=`${v.n} starts looking for air conditioners around <b>${R(a.st)}\u00b0F</b>, and its searchers reach for AC at <b>${R(a.s)}\u00b0F</b>${a.ci?` (likely ${R(a.ci[0])}\u2013${R(a.ci[1])}\u00b0)`:""}, ${Math.abs(gap)}\u00b0 ${gap>=0?"below":"above"} a typical ${v.n} summer high. <span class="muted">${GP[per]}${per=="y26"?"; one partial year, wide ranges":""}.</span>`;
+    else{const g=v.search[key].s,dg=R(a.s-g);read=`In ${v.n}, heat-related ER visits climb at <b>${R(a.s)}\u00b0F</b>${a.ci?` (likely ${R(a.ci[0])}\u2013${R(a.ci[1])}\u00b0)`:""}: ${Math.abs(gap)}\u00b0 ${gap>=0?"below":"above"} a typical summer high, and ${Math.abs(dg)}\u00b0 ${dg>=0?"above":"below"} where searchers reach for AC (${R(g)}\u00b0F). <span class="muted">${v.region=="Region 9"?`ER data cover all of HHS Region 9 (AZ, CA, HI, NV), shared with ${ORDER.filter(k=>k!==city&&G[k].region=="Region 9").map(k=>G[k].n).join(", ")}, so this mostly reflects inland heat${city=="sanfrancisco"||city=="sandiego"?"; read it as regional, not local":""}.`:`ER data cover HHS ${v.region}.`}</span>`}}
+  spread(Lb,17).forEach(l=>{s+=`<line x1="${HX-30}" y1="${l.ty}" x2="${HX-46}" y2="${l.y-4}" stroke="var(--line)"/><text x="${HX-50}" y="${l.y}" text-anchor="end" font-size="${l.w===500?13:12}" font-weight="${l.w}" fill="${l.w===500?"var(--ink)":"var(--ink-2)"}">${l.t}</text>`});
+  return {svg:s,read};
+}
+function airSVG(){
+  const city=gauge.city,v=G[city],A=v.air;
+  const TOP=30,BOT=450,P0=2,P1=150,AX=330,y=p=>BOT-(Math.log(Math.max(P0,Math.min(P1,p)))-Math.log(P0))/(Math.log(P1)-Math.log(P0))*(BOT-TOP);
+  let s=col(70,"Heat","switch to a heat layer",false,TOP,BOT)+col(AX,"Air \u00b7 purifier searches","",true,TOP,BOT)+col(590,"Pollen","pollen, coming soon",false,TOP,BOT);
+  [2,5,10,20,35.5,55.5,100,150].forEach(p=>{s+=`<line x1="${AX-4}" y1="${y(p)}" x2="${AX+4}" y2="${y(p)}" stroke="var(--ink-3)"/><text x="${AX+10}" y="${y(p)+4}" font-size="11" fill="var(--ink-3)">${p}</text>`});
+  s+=`<text x="${AX+10}" y="${TOP-12}" font-size="11" fill="var(--ink-3)">\u00b5g/m\u00b3 PM2.5, worst day of the week</text>`;
+  A.bands.forEach(b=>{const yt=y(Math.min(b.hi,P1)),yb=y(Math.max(b.lo,P0)),sh=b.n?b.k/b.n:null;
+    s+=`<rect x="${AX-12}" y="${yt+1}" width="24" height="${yb-yt-2}" rx="6" fill="var(--air)" opacity="${sh==null?0.05:0.12+0.75*sh}"/>`;
+    s+=`<text x="${AX-20}" y="${(yt+yb)/2+4}" text-anchor="end" font-size="12" fill="${b.n?"var(--ink)":"var(--ink-3)"}">${b.n?`${R(100*b.k/b.n)}% of ${b.n} week${b.n==1?"":"s"}`:"no weeks"}</text>`});
+  s+=`<line x1="${AX-60}" y1="${y(35.5)}" x2="${AX+60}" y2="${y(35.5)}" stroke="var(--epa)" stroke-width="1.5" stroke-dasharray="5 3"/><text x="${AX+64}" y="${y(35.5)-4}" font-size="11" fill="var(--epa)">EPA unhealthy for sensitive groups</text>`;
+  s+=`<line x1="${AX-26}" y1="${y(v.typ_pm)}" x2="${AX+26}" y2="${y(v.typ_pm)}" stroke="var(--ink-2)" stroke-width="2" stroke-dasharray="3 2"/><text x="${AX+64}" y="${y(v.typ_pm)+4}" font-size="11" fill="var(--ink-2)">typical day \u00b7 ${v.typ_pm}</text>`;
+  s+=`<path d="M${AX+14} ${y(v.worst_pm_week)}l8 -5v10z" fill="var(--ink-2)"/><text x="${AX+64}" y="${y(v.worst_pm_week)+4}" font-size="11" fill="var(--ink-2)">worst week \u00b7 ${v.worst_pm_week}</text>`;
+  if(A.react!=null)s+=`<circle cx="${AX}" cy="${y(Math.max(A.react,P0))}" r="9" fill="var(--air)" stroke="var(--panel)" stroke-width="2"/>`;
+  const others=ORDER.filter(k=>k!==city).map(k=>({k,r:G[k].air.react}));
+  const L=others.map((o,i)=>({o,y:o.r!=null?y(Math.max(o.r,P0)):TOP+8+i*15}));
+  spread(L,15).forEach(l=>s+=`<text x="${30}" y="${l.y+4}" font-size="11" fill="var(--ink-3)">${G[l.o.k].a} ${l.o.r!=null?"\u2265"+l.o.r:"\u2013"}</text>`);
+  s+=`<text x="30" y="${TOP-12}" font-size="11" fill="var(--ink-3)">other cities' reaction point</text>`;
+  const bad=A.bands.filter(b=>b.lo>=35.5),bn=bad.reduce((a,b)=>a+b.n,0),bk=bad.reduce((a,b)=>a+b.k,0);
+  const read=bn?`In ${v.n}, <b>${bk} of ${bn}</b> weeks with unhealthy air (a day at or above 35.5 \u00b5g/m\u00b3) brought a spike in air purifier searches, against ${R(100*A.bands[0].k/Math.max(1,A.bands[0].n))}% of clean weeks. ${A.react!=null?`More than half of weeks spike from <b>${A.react} \u00b5g/m\u00b3</b>.`:`Searches never spiked in more than half of any band's weeks.`} <span class="muted">2022\u20132026 together; ${bn<4?"very few bad-air weeks, so read with care; ":""}a spike = searches above the city's 75th percentile${A.spike_above==0?" (here: any searches at all)":""}.</span>`:`${v.n} had no week with unhealthy air in 2022\u20132026, so there is nothing to react to. <span class="muted">Its worst week peaked at ${v.worst_pm_week} \u00b5g/m\u00b3.</span>`;
+  return {svg:s,read};
+}
+function legend(){
+  if(gauge.layer=="air")return `<span><i><svg width="14" height="14"><rect width="14" height="14" rx="4" fill="var(--air)" opacity=".7"/></svg></i>darker = more weeks with a purifier spike</span><span><i><svg width="14" height="14"><circle cx="7" cy="7" r="6" fill="var(--air)"/></svg></i>reaction point (over half of weeks spike)</span><span><i><svg width="18" height="14"><line x1="1" y1="7" x2="17" y2="7" stroke="var(--epa)" stroke-width="2" stroke-dasharray="4 2"/></svg></i>EPA line</span><span><i><svg width="18" height="14"><line x1="1" y1="7" x2="17" y2="7" stroke="var(--ink-2)" stroke-width="2" stroke-dasharray="3 2"/></svg></i>typical day 2022\u20132026</span>`;
+  const c=gauge.layer=="er"?"var(--er)":"var(--heat)";
+  return `<span><i><svg width="14" height="14"><circle cx="7" cy="7" r="6" fill="${c}"/></svg></i>${gauge.layer=="er"?"ER visits climb":"searchers reach for AC"}, with likely range</span>${gauge.layer=="search"?`<span><i><svg width="14" height="14"><circle cx="7" cy="7" r="4.5" fill="none" stroke="var(--heat)" stroke-width="2"/></svg></i>start looking</span>`:`<span><i><svg width="14" height="14"><circle cx="7" cy="7" r="5" fill="none" stroke="var(--heat)" stroke-width="1.5" stroke-dasharray="2 2"/></svg></i>AC searches, for comparison</span>`}<span><i><svg width="18" height="14"><line x1="1" y1="7" x2="17" y2="7" stroke="var(--ink-2)" stroke-width="2" stroke-dasharray="3 2"/></svg></i>typical summer high (1991\u20132020)</span><span><i><svg width="14" height="14"><circle cx="7" cy="7" r="4" fill="var(--ink-3)"/></svg></i>other cities${gauge.layer=="er"?" (* = shared HHS Region 9)":""}</span>`;
+}
+function draw(){const o=gauge.layer=="air"?airSVG():heatSVG();$("stage").innerHTML=o.svg;$("gread").innerHTML=o.read;$("legend").innerHTML=legend()}
+$("foot").innerHTML=`<b>Heat \u00b7 AC searches.</b> The weekly high at which Google searches for \u201cair conditioner\u201d get halfway from a normal January\u2013February week to their hottest-weeks level, with a 90% range from 1,000 resamples of 4-week blocks; \u201cstart looking\u201d = where searches first rise off the winter level (Google Trends Steps 11\u201312). Eugene and Bakersfield (added): their winter searches are zero in most weeks, so the halfway point is taken on the search index itself and \u201cstart looking\u201d on log2(1 + index); the same rule lands within 0\u20136\u00b0 of the published values for the other five cities. <b>Heat \u00b7 ER visits.</b> The same halfway rule on daily heat-related ER visits (per 100,000 ER visits, CDC Environmental Public Health Tracking, by HHS region) against the daily high: halfway from a January\u2013February day to the hottest 10% of days, 90% range from 1,000 resamples of 28-day blocks. Region 9 is one series for Phoenix, San Diego, San Francisco and Bakersfield. <b>Air \u00b7 purifier searches.</b> Weekly Google Trends \u201cair purifier\u201d, 2022\u20132026, each week placed by its worst day of PM2.5 (OpenAQ city mean); spike = above the city's 75th percentile of weeks (or any searches, where that is zero); bands follow EPA breakpoints; the reaction point is the first band (2+ weeks) where more than half of weeks spike. Weeks 22 Mar\u201328 Jun 2026 are left out (a national surge with no local air cause). Weekly highs: gridMET; typical summer high = June\u2013August average, 1991\u20132020. 2026 runs January to September. Associations, not causes. MDE studio project, 2026.`;
+tabs();draw();
+</script>

@@ -32,6 +32,41 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Visualization V13 · City Heat Thresholds v2: Eugene and Bakersfield added; ER and air layers · 2026-10-02 10:39 EDT · Gina + Claude
+- **What (Gina: "add bakersfield and eugene to the existing city heat thresholds artifact ... and create a second visual layer on top to toggle"; asked which layer: "Both"):**
+  - Updated https://claude.ai/artifact/RP7JSJJTvQpuH8p9LVFDKQ (version 2), keeping the v1 gauge design.
+  - Seven cities, and a Layer switch with three options:
+    1. Heat · AC searches (v1 layer)
+    2. Heat · ER visits
+    3. Air · purifier searches
+  - Periods for the heat layers: Before 2026 / 2026 so far / All years / Compare.
+  - **Script:** `viz/city-heat-thresholds/build.py` → `data.json`; page `template.html` → `city-heat-thresholds.html`.
+- **AC searches:**
+  - The five original cities are unchanged (Google Trends Step 12 `heat_surge.csv`).
+  - Eugene and Bakersfield: Jan-Feb searches are 0 in most weeks, so Step 12's ratio is undefined. The same halfway rule is applied on the index (target = (winter median + hottest-10%-weeks median) / 2), and "start looking" is a hockey stick on log2(1 + index). Claude's adaptation, not yet approved.
+  - Check: on the five original cities the index rule gives within 0-6 °F of the published values (e.g. Boston pre 73.9 vs 73.0; Phoenix pre 102.6 vs 96.6).
+  - Before 2026: Eugene surge 76.0 °F (70.3-85.2), start looking 52; Bakersfield 85.6 (79.5-93.1), start looking 61.
+- **ER visits (new):** the same halfway rule on daily heat-related ER visits vs the daily high (2022-2026; 28-day blocks; 1,000 reps; 90%). Before 2026:
+  - Boston 85.6 (82.2-87.7)
+  - Detroit 84.9 (82.2-85.9)
+  - Eugene 87.4 (82.3-89.4)
+  - Phoenix 104.7 (102.8-105.8)
+  - Bakersfield 95.8 (94.0-97.3)
+  - San Diego 76.2 and San Francisco 63.2 (shared Region 9, flagged on the page as regional, not local)
+- **Air (new):**
+  - A halfway rule on weekly mean PM2.5 was tried first and **rejected**: it put "surges" at 4-14 µg/m³, below normal air, because purifier searches follow the season.
+  - Final measure: share of weeks with a purifier spike (above the city's 75th percentile, or any searches where that is 0) by the week's worst PM2.5 day, in EPA bands (< 12, 12-35.4, 35.5-55.4, 55.5+), 2022-2026, without the spring-2026 surge.
+  - Reaction point = first band (≥ 2 weeks) where more than half of weeks spike.
+  - Results:
+    - Eugene: 6 of 6 unhealthy weeks spiked (reaction 35.5).
+    - Detroit: 4 of 12 at 35.5-55.4, 3 of 3 at 55.5+ (reaction 55.5).
+    - Phoenix: 2 of 6.
+    - Bakersfield: 4 of 23 (no reaction point).
+    - Boston, San Diego, San Francisco: ≤ 1 unhealthy week.
+- **Other choices (Claude's, not yet approved):** the 28-day ER block; the EPA band edges; the 75th-percentile spike definition.
+
+---
+
 ### Google Trends · Step 21: daily "air conditioner" files, Eugene and Bakersfield, summers 2024-2026; Analysis A39 · daily AC thresholds · 2026-10-02 10:13 EDT · Gina + Claude
 - **What:** Gina downloaded five more per-summer daily files (May 1-Sep 30). Claude copied each unchanged (byte-identical) to `data/raw/google-trends/heat-search-daily/`:
   - `bakersfield_aircon_daily_2024.csv` (from `bakersfield_aurcon_summer_2024.csv`)
