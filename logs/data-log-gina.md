@@ -46,7 +46,7 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 - **AC searches react to the first heat, not the most heat:**
   - Weeks averaging a high ≥ 82 °F drew a mean AC index of 52 in May (2 weeks), 60 in June (8), 25 in July (17) and 16 in August (9).
   - The year's peak AC week was the hottest week in 2023-2026, all of them in late May or June. In 2022 the AC peak came on June 12 (index 53), while the hottest week, Jul 17 (88.9 °F), drew only 31.
-  - In 2024, 2025 and 2026 the first top-25% AC week was the same week as the first 84 °F day. In 2022 it was a few days earlier, in 2023 one day earlier and in 2025 twelve days later.
+  - In 4 of 5 summers (2022, 2023, 2024, 2026) the first top-25% AC week is the week that contains the first 84 °F day. In 2025 it came about two weeks later (first 84 °F day Jun 3; AC week starting Jun 15).
 - **Per summer:**
   - Hot days (top 25% actual) 46 / 29 / 35 / 41 / 43; 2026 runs to Sep 24 only.
   - Dangerous days 28 / 16 / 38 / 40 / 2; 2026 felt-heat data ends Jun 12.
