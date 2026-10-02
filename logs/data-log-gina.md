@@ -32,6 +32,27 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Mockup M4 · "Goldilocks ladder": one combined view for Gina's three questions (chat widget) · 2026-10-02 09:34 EDT · Gina + Claude
+- **What (Gina: "i basically need a combination of views that look at these three questions"):** one inline widget, Eugene vs Bakersfield, with a heat/air toggle. All views share one hazard scale (felt heat °F, or PM2.5 µg/m³). Not published or saved.
+- **On that scale:**
+  - **Each city's "normal" band** (middle 80% and 50% of days). This answers *how relative is perception*.
+    - Summer felt heat: Eugene p10-p90 66.6-93.2 °F (p25-p75 74.6-87.7); Bakersfield 87.3-108.9 (92.9-105.1).
+    - Daily PM2.5 since 2016-03-12: Eugene 2.1-12.8 µg/m³ (3.0-7.3); Bakersfield 5.5-27.6 (7.7-16.5).
+    - Sources: `viz/heat-field/data.json`; `pm25_<city>_daily.csv` `all_mean`.
+  - **The fixed body danger line:** 89.6 °F felt, or 35.5 µg/m³.
+  - **Action over time:**
+    - Heat: the per-summer ER thresholds from A34, with AC searches as rings.
+    - Air: the bad-air weeks from A31 and A34 (filled = purifier searches registered).
+  - **Cards for normalization:**
+    - Heat: share of summer days that were dangerous but normal for the date (Eugene 6%, 39 of 655; Bakersfield 73%, 477 of 655) and the ER-spike share on those days (54% vs 24%; V10 data).
+    - Air: Dish's Reddit air-talk share and normalizing share, plus the "grew up here, no issues" fragment.
+- **Claude's choices, not yet approved:**
+  - The 80% and 50% bands as "normal"
+  - Shading 89.6-108 °F as "tolerated danger" (Bakersfield's mid-range threshold)
+  - The layout
+
+---
+
 ### Analysis A36 · how Dish's Reddit cities and weeks were chosen, and how they rank (read only) · 2026-10-02 08:54 EDT · Gina + Claude
 - **What (Gina: "how did she choose those dates and those cities?"):** searched the repo for the selection record, then ranked the two event weeks among all Monday-Sunday weeks since 2016. Nothing saved.
 - **What the repo says:**
