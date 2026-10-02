@@ -32,6 +32,18 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Doc D1 · version 4: subreddit method rewritten; final list of 13 cities · 2026-10-02 19:02 EDT · Gina + Claude
+- **What (Gina: "update the how subreddits were chosen, and add the final list of cities with 75% or more of coverage during the period"):**
+  - Rewrote "How the subreddits were chosen" in `docs/city-selection-process.md` as numbered steps: source (Arctic Shift lookup), Gina's r/[city name] rule, name matching, choosing among variants, and the result (24 of 25 pass; El Centro not available).
+  - Added step 7 and a "Final list" section: the **13 cities with ≥ 75% PM2.5 coverage**, all with city subreddits:
+    - Fairbanks, Eugene, Bakersfield, Fresno
+    - Los Angeles, Seattle, Detroit, Pittsburgh
+    - Indianapolis, Phoenix, San Jose, Salt Lake City, Yakima
+  - Just below the cut-off: Visalia 74%, Medford 73%, Lancaster 71%.
+- **Values:** coverage from the step05 coverage summaries; subreddit figures from the D1 lookup. No new data.
+
+---
+
 ### Doc D1 · version 3: subreddit rule, El Centro removed · 2026-10-02 18:56 EDT · Gina
 - **What (Gina: "if the city doesnt have a /[city] reddit page, mark it as not available. we will remove it from consideration"):**
   - Applied the rule to the 25 first cities, using the Arctic Shift lookup from D1. **Only El Centro fails**: no r/ElCentro, only the regional r/imperialvalley.

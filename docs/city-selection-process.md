@@ -27,7 +27,31 @@ How the study's cities were chosen, as of 2 October 2026: the American Lung Asso
 | Too thin: under 15% | 2 | Minot (12), Helena (23) |
 | **Total in consideration** | **24** | (El Centro, 45% coverage, removed: no city subreddit) |
 
-**13 cities have 75% coverage or more:** Pittsburgh, Eugene, Seattle, Indianapolis, Phoenix, Salt Lake City, Yakima, Los Angeles, Detroit, Fresno, Bakersfield, San Jose, Fairbanks.
+7. **Final list: 75% coverage or more.** Of the 24 cities with a city subreddit, the 13 with PM2.5 data on at least 75% of the study days form the final list (below).
+
+---
+
+## Final list: 13 cities with 75% or more PM2.5 coverage
+
+All 13 have their own city subreddit. Coverage = share of 6 Mar 2016 – 25 Sep 2026 (3,856 days) with a city daily PM2.5 average; every city's data runs Mar 2016 – Sep 2026. Subreddit figures are from the Arctic Shift archive, 2 Oct 2026.
+
+| ALA rank | City | PM2.5 coverage | Subreddit | Subscribers | Archived posts |
+|---|---|---|---|---|---|
+| 1 | Fairbanks, AK | 75% | [r/Fairbanks](https://www.reddit.com/r/Fairbanks/) | 14,478 | 10,199 |
+| 2 | Eugene, OR | 83% | [r/Eugene](https://www.reddit.com/r/Eugene/) | 76,986 | 101,285 |
+| 3 | Bakersfield, CA | 77% | [r/bakersfield](https://www.reddit.com/r/bakersfield/) | 37,935 | 36,653 |
+| 6 | Fresno, CA | 78% | [r/fresno](https://www.reddit.com/r/fresno/) | 54,909 | 49,005 |
+| 7 | Los Angeles, CA | 79% | [r/LosAngeles](https://www.reddit.com/r/LosAngeles/) | 724,594 | 404,999 |
+| 8 | Seattle, WA | 83% | [r/Seattle](https://www.reddit.com/r/Seattle/) | 632,527 | 367,298 |
+| 11 (tie) | Detroit, MI | 79% | [r/Detroit](https://www.reddit.com/r/Detroit/) | 214,048 | 120,884 |
+| 13 (tie) | Pittsburgh, PA | 84% | [r/pittsburgh](https://www.reddit.com/r/pittsburgh/) | 244,225 | 227,634 |
+| 15 (tie) | Indianapolis, IN | 83% | [r/indianapolis](https://www.reddit.com/r/indianapolis/) | 147,506 | 109,100 |
+| 18 (tie) | Phoenix, AZ | 80% | [r/phoenix](https://www.reddit.com/r/phoenix/) | 310,042 | 152,515 |
+| 21 (tie) | San Jose, CA | 77% | [r/SanJose](https://www.reddit.com/r/SanJose/) | 209,849 | 100,657 |
+| 22 | Salt Lake City, UT | 80% | [r/SaltLakeCity](https://www.reddit.com/r/SaltLakeCity/) | 210,983 | 175,547 |
+| 25 (tie) | Yakima, WA | 80% | [r/Yakima](https://www.reddit.com/r/Yakima/) | 12,797 | 4,995 |
+
+**Just below the cut-off:** Visalia (74%), Medford (73%) and Lancaster (71%). All three have city subreddits.
 
 ---
 
@@ -73,17 +97,19 @@ ALA rank = *State of the Air 2026*, short-term particle pollution (ties as given
 
 ### How the subreddits were chosen
 
-**Rule (Gina):** the city must have its own subreddit, r/[city name]; if it doesn't, it is marked *not available* and removed from consideration. Where several exist, the most active one is used (Claude's choice, not yet approved). Boise City counts via r/Boise, since "Boise City" is the Census name for Boise.
+1. **Source.** Each city's subreddit was looked up in the Arctic Shift Reddit archive's subreddit records on 2 Oct 2026. That's the same archive the Reddit pipeline downloads from; the in-app browser is not allowed to open reddit.com. Only names, subscriber counts and archived post counts were read; no posts were downloaded.
+2. **Rule (Gina).** A city stays in consideration only if it has its own subreddit named for the city: **r/[city name]**. If it doesn't, the city is marked *not available* and removed from consideration.
+3. **Matching the name.** The subreddit name must be the city's name; capitalisation doesn't matter (r/bakersfield, r/SanJose). One case uses the common name rather than the Census name: **Boise City → r/Boise**. Claude's reading, not yet approved.
+4. **If several exist,** the most active one is used: Claude's choice, not yet approved.
+   - **Logan:** r/Logan over the nearly empty r/LoganUtah.
+   - **Helena:** r/helena over r/HelenaMT.
+   - **Brownsville:** r/Brownsville over r/BrownsvilleTX.
+   - **Lancaster:** r/lancaster over the closed r/LancasterPA.
+5. **Result.** 24 of the 25 cities pass. **El Centro is not available:** there is no r/ElCentro, only the regional r/imperialvalley, so it was removed.
 
-**Exceptions:**
-- **El Centro: not available.** No r/ElCentro was found; the regional r/imperialvalley doesn't meet the rule. Removed from consideration.
-- **Lancaster:** r/lancaster covers Lancaster City and County. r/LancasterPA is closed and points there.
-- **Medford:** r/medford covers Medford and the Rogue Valley. r/RogueValley is much smaller (688 subscribers).
-- **McAllen:** r/Mcallen is very small (1,446 subscribers, 152 archived posts). A Rio Grande Valley subreddit (r/RGV) was not found in the archive.
-- **Logan and Helena:** r/LoganUtah and r/HelenaMT exist but are nearly empty (fewer than 5 subscribers); the older r/Logan and r/helena are used.
-- **Brownsville:** r/BrownsvilleTX is nearly empty, so r/Brownsville is used. It describes itself as Brownsville, TX.
-
-**Thin subreddits.** Several have too few posts for a weekly analysis like Dish's: McAllen, Minot, Bismarck, Brownsville, Helena. They suit only single big events, if any.
+**Notes**
+- **Subreddits that also cover the surrounding area:** several city subreddits describe themselves as covering the county or valley too: r/lancaster (Lancaster County), r/medford (Rogue Valley), r/Boise (Treasure Valley), r/Detroit (Southeast Michigan). They still meet the rule because they are named for the city.
+- **Thin subreddits:** McAllen, Minot, Bismarck, Brownsville and Helena have few posts (McAllen: 152 archived posts in total), too few for a weekly analysis. None of them is in the final 75% list.
 
 ---
 
