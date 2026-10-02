@@ -32,6 +32,33 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Analysis A24 · Detroit summer rings takeaways (read only) · 2026-10-01 22:51 EDT · Gina + Claude
+- **What (Gina: "what are the takeaways from this visual for detroit?"):** Summarised `viz/summer-rings/detroit.json` (May-Sep 2022-2026). Nothing saved.
+- **Heat ER rate (CDC Region 5, per 100,000 ED visits), median by daily high:**
+  - < 70 °F: 13
+  - 70-75 °F: 28
+  - 75-80 °F: 46
+  - 80-85 °F: 87
+  - 85-90 °F: 207
+  - ≥ 90 °F: 498
+  - Dangerous felt-heat days (UTCI strong stress): median 248.5 vs 42 on other days.
+- **Top-10% ER days (77):** 64 were top-25% actual-temperature days, 52 top-25% above-normal days, 44 UTCI-dangerous days.
+- **AC searches react to the first heat, not the most heat:**
+  - Weeks averaging a high ≥ 82 °F drew a mean AC index of 52 in May (2 weeks), 60 in June (8), 25 in July (17) and 16 in August (9).
+  - The year's peak AC week was the hottest week in 2023-2026, all of them in late May or June. In 2022 the AC peak came on June 12 (index 53), while the hottest week, Jul 17 (88.9 °F), drew only 31.
+  - In 2024, 2025 and 2026 the first top-25% AC week was the same week as the first 84 °F day. In 2022 it was a few days earlier, in 2023 one day earlier and in 2025 twelve days later.
+- **Per summer:**
+  - Hot days (top 25% actual) 46 / 29 / 35 / 41 / 43; 2026 runs to Sep 24 only.
+  - Dangerous days 28 / 16 / 38 / 40 / 2; 2026 felt-heat data ends Jun 12.
+  - Top-10% ER days 13 / 10 / 12 / 23 / 19.
+- **Caveats:**
+  - The ER data covers the 6-state HHS Region 5, not Detroit.
+  - Trends values are relative within one download.
+  - These are associations, not causes.
+  - The 82 °F week cut-off is Claude's choice, not yet approved.
+
+---
+
 ### Visualization V9 · version 10: glow checkboxes (actual / above normal / felt heat) and "only dangerous days" · 2026-10-01 22:43 EDT · Gina + Claude
 - **What (Gina: "add a checkbox for temperature and then also add a checkbox to show felt heat with the same logic (10/25/50%) and also to show only heat glow for days where heat is dangerous to humans (strong heat stress or higher UTCI)"):**
   - Three glow checkboxes: **Actual temperature** (daily high, gridMET), **Above 1991-2020 normal** (anomaly_f, as in v9) and **Felt heat (UTCI)** (utci_max_f from `data/processed/utci/final/utci_detroit_daily.csv`). Each uses the same top 50 / 25 / 10% selector.
