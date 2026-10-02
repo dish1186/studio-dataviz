@@ -32,6 +32,39 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Analysis A41 · does reaction follow visible haze (airport visibility) more than PM2.5? (read only) · 2026-10-02 13:23 EDT · Gina + Claude
+- **What (Gina: "lets test this", the visible vs invisible danger idea):** 7 cities, weekly (Sunday-Saturday).
+  - A week's PM2.5 = its worst day (OpenAQ `all_mean`, ≥ 4 days).
+  - Its haze = its worst day's light extinction from Dish's METAR final files (`data/processed/metar/final/vis_<city>_daily.csv`; valid dry daytime days, ≥ 4 days).
+  - Outcomes: weekly "air purifier" searches (2022-2026, spring-2026 surge left out) and Media Cloud air-quality stories (2016-2026).
+  - Spearman and partial Spearman (each measure with the other held fixed); 3-week block bootstrap, 1000 reps (A28 helpers).
+  - Event split: unhealthy weeks (worst day ≥ 35.5) that were visibly hazy (worst day visibility ≤ 5 miles; Claude's cut, not yet approved) vs not.
+  - Script in Claude's scratchpad (`a41_visibility.py`); nothing saved.
+- **Correlations are weak everywhere** (|ρ| ≤ 0.23). Partial ρ, PM2.5 / haze (95% CI):
+  - Eugene purifier: +0.12 (−0.01, +0.24) / −0.04 (−0.17, +0.09). Eugene news: +0.09 (0.00, +0.19) / +0.13 (+0.04, +0.22).
+  - Bakersfield purifier: +0.04 / +0.04. Bakersfield news: −0.04 / +0.07 (all CIs include 0).
+  - Detroit purifier: +0.10 / +0.13 (−0.00, +0.26). Detroit news: +0.13 (+0.02, +0.24) / −0.12 (−0.23, −0.03).
+  - Phoenix news: −0.11 / +0.12 (+0.03, +0.21).
+  - San Francisco purifier: +0.22 (+0.08, +0.35) / −0.02.
+  - PM2.5 and haze correlate +0.38 (Eugene), +0.69 (Bakersfield), +0.12 to +0.61 elsewhere.
+- **Event split (spike = above the city's 75th percentile, or > 0 where that is 0):**
+  - **Eugene:**
+    - Purifier spikes in 4 of 4 visibly hazy unhealthy weeks and 2 of 2 not-visibly-hazy unhealthy weeks.
+    - News spikes in 7 of 8 hazy unhealthy weeks (mean 20.6 stories) vs 2 of 3 not hazy (mean 4.0).
+  - **Bakersfield:**
+    - **21 of its 22 unhealthy purifier weeks were visibly hazy** (visibility ≤ 5 miles), yet only 4 of 21 brought purifier spikes.
+    - News: 18 of 54 hazy unhealthy weeks spiked. Visibly hazy weeks with PM below 35.5: 6 of 22 purifier spikes, 16 of 44 news spikes.
+  - **Detroit:** purifier 4 of 7 hazy vs 3 of 8 not hazy; news 6 of 7 (mean 73) vs 7 of 10 (mean 21).
+- **Reading:**
+  - Visibility does not explain the Eugene-Bakersfield gap. Bakersfield's bad air was visibly hazy too, and still drew few reactions.
+  - Within Eugene and Detroit, visible haze goes with more news coverage (bigger story counts) but not with a clearly different search response.
+- **Caveats:**
+  - METAR visibility is capped at 10 miles; 51% of Bakersfield's and 93% of Boston's valid days are at the cap.
+  - Airports are point samples, and only dry daytime hours count, so humid winter-haze hours may be dropped.
+  - Low-visibility haze is not the same as smoke you can see and smell.
+
+---
+
 ### Analysis A40 · typical PM2.5 by calendar month, Eugene and Bakersfield (read only) · 2026-10-02 13:13 EDT · Gina + Claude
 - **What (Gina: "do we have typical air quality values for each city to measure the unusual / difference?"):**
   - Median and 90th percentile of daily PM2.5 (`pm25_<city>_daily.csv`, `all_mean`) by calendar month, 2016-03-12 to 2025-12-31. Nothing saved.
