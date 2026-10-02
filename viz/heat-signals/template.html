@@ -23,15 +23,16 @@ select:focus-visible{outline:2px solid var(--ac);outline-offset:2px}
 .val{font-family:var(--mono);font-size:13px;color:var(--ink)}
 svg{display:block;width:100%;height:auto}svg text{font-family:var(--sans)}
 .foot{font-size:12.5px;color:var(--ink-3);max-width:95ch;margin:0}
+.seg{font:inherit;font-size:13px;border:1px solid var(--line);background:var(--panel);color:var(--ink-2);border-radius:999px;padding:5px 12px;cursor:pointer}.seg[aria-pressed=true]{border-color:var(--ink);color:var(--ink);font-weight:500}.seg:focus-visible{outline:2px solid var(--ac);outline-offset:2px}
 .key{display:inline-flex;align-items:center;gap:6px;margin-right:12px;font-size:12.5px;color:var(--ink-2)}
 .key i{display:inline-block;width:16px;height:2.5px;border-radius:2px}
 </style>
 <div class="wrap">
   <header>
     <h1>Heat signals over time</h1>
-    <p class="lede">Weekly heat, felt heat, and three responses for one city, stacked on the same timeline. Shaded bands are summers (June to August). Hover anywhere to read the same week across every chart.</p>
+    <p class="lede">Weekly heat, felt heat, and three responses for one city, stacked on the same timeline. Shaded bands are summers (June to August); “May–Sep only” drops the winters and sets each warm season side by side. Hover anywhere to read the same week across every chart.</p>
   </header>
-  <div class="bar"><label for="city" style="font-size:14px;color:var(--ink-2)">City</label><select id="city"><option value="boston">Boston</option><option value="detroit">Detroit</option><option value="eugene">Eugene</option><option value="bakersfield">Bakersfield</option></select><span id="wk" class="val"></span></div>
+  <div class="bar"><label for="city" style="font-size:14px;color:var(--ink-2)">City</label><select id="city"><option value="boston">Boston</option><option value="detroit">Detroit</option><option value="eugene">Eugene</option><option value="bakersfield">Bakersfield</option></select><div role="group" aria-label="Season" style="display:inline-flex;gap:4px"><button type="button" class="seg" id="vall" aria-pressed="true">All year</button><button type="button" class="seg" id="vwarm" aria-pressed="false">May–Sep only</button></div><span id="wk" class="val"></span></div>
   <div id="charts" style="display:flex;flex-direction:column;gap:10px"></div>
   <p class="foot">Weekly high: mean of 7 daily maxima (gridMET). Felt heat: mean of 7 daily UTCI maxima (ends 2026-06-12). Ice cream and AC: Google Trends weekly search interest for the metro, 0–100, each file scaled to its own peak, so only the shape compares across cities. Heat ER: heat-related illness ED visits per 100,000 ED visits, CDC Tracking Network, by HHS region (<span id="reg"></span>). Weeks of 2021-09-26 to 2026-09-20.</p>
 </div>
@@ -44,24 +45,27 @@ const PANELS=[{id:"heat",t:"Temperature",u:"°F",s:[["t","weekly high","var(--te
  {id:"ice",t:"Ice cream searches",u:"index 0–100",s:[["i","ice cream","var(--ice)"]]},
  {id:"ac",t:"Air conditioner searches",u:"index 0–100",s:[["a","air conditioner","var(--ac)"]]},
  {id:"er",t:"Heat-related ER visits",u:"per 100,000 ED visits",s:[["e","heat ER","var(--er)"]]}];
-const VW=960,VH=170,L=46,R=12,T=10,B=24,x=i=>L+i/(N-1)*(VW-L-R);
+const VW=960,VH=170,L=46,R=12,T=10,B=24,GAP=3;
+let warm=false,IDX=[],POS={},NX=1;
+function layout(){IDX=[];POS={};let k=0,prevY=null;for(let i=0;i<N;i++){const d=wd(i),m=d.getMonth();if(warm&&(m<4||m>8||d.getFullYear()<2022))continue;if(warm&&prevY!==null&&d.getFullYear()!==prevY)k+=GAP;POS[i]=k;IDX.push(i);prevY=d.getFullYear();k++}NX=Math.max(1,k-1)}
+const x=i=>L+POS[i]/NX*(VW-L-R);
 let city="boston",S={};
 function nice(m){const p=Math.pow(10,Math.floor(Math.log10(m))),f=m/p;return (f<=1?1:f<=2?2:f<=5?5:10)*p}
-function build(){S={};["t","f","i","a","e"].forEach(k=>S[k]=parse(D[city][k]));document.getElementById("reg").textContent=D[city].reg;
+function build(){layout();S={};["t","f","i","a","e"].forEach(k=>S[k]=parse(D[city][k]));document.getElementById("reg").textContent=D[city].reg;
  const box=document.getElementById("charts");box.innerHTML="";
- PANELS.forEach(P=>{let lo=Infinity,hi=-Infinity;P.s.forEach(([k])=>S[k].forEach(v=>{if(v!=null){lo=Math.min(lo,v);hi=Math.max(hi,v)}}));
+ PANELS.forEach(P=>{let lo=Infinity,hi=-Infinity;P.s.forEach(([k])=>IDX.forEach(i=>{const v=S[k][i];if(v!=null){lo=Math.min(lo,v);hi=Math.max(hi,v)}}));
   if(P.id!=="heat")lo=0;else{lo=Math.floor(lo/10)*10;}hi=P.id==="heat"?Math.ceil(hi/10)*10:nice(hi);
   const y=v=>T+(1-(v-lo)/(hi-lo))*(VH-T-B);let g="";
-  for(let i=0;i<N;i++){const d=wd(i);if(d.getMonth()===5&&d.getDate()<=7){let j=i;while(j<N&&wd(j).getMonth()<=7&&wd(j).getMonth()>=5)j++;g+=`<rect x="${x(i)}" y="${T}" width="${x(Math.min(j,N-1))-x(i)}" height="${VH-T-B}" fill="var(--summer)"/>`}}
+  if(!warm)for(let i=0;i<N;i++){const d=wd(i);if(d.getMonth()===5&&d.getDate()<=7){let j=i;while(j<N&&wd(j).getMonth()<=7&&wd(j).getMonth()>=5)j++;g+=`<rect x="${x(i)}" y="${T}" width="${x(Math.min(j,N-1))-x(i)}" height="${VH-T-B}" fill="var(--summer)"/>`}}
   const steps=4;for(let k=0;k<=steps;k++){const v=lo+(hi-lo)*k/steps;g+=`<line x1="${L}" y1="${y(v)}" x2="${VW-R}" y2="${y(v)}" stroke="var(--line)"/><text x="${L-6}" y="${y(v)+4}" text-anchor="end" font-size="11" fill="var(--ink-3)">${Math.round(v)}</text>`}
-  for(let i=0;i<N;i++){const d=wd(i);if(d.getMonth()===0&&d.getDate()<=7)g+=`<line x1="${x(i)}" y1="${T}" x2="${x(i)}" y2="${VH-B}" stroke="var(--ink-3)" stroke-opacity=".4"/><text x="${x(i)+4}" y="${VH-8}" font-size="11" fill="var(--ink-3)">${d.getFullYear()}</text>`}
-  P.s.forEach(([k,lab,col],n)=>{let p="",pen=false;S[k].forEach((v,i)=>{if(v==null){pen=false;return}p+=(pen?"L":"M")+x(i).toFixed(1)+" "+y(v).toFixed(1);pen=true});g+=`<path d="${p}" fill="none" stroke="${col}" stroke-width="${n?1.5:2}" ${n?'stroke-dasharray="4 2"':""} stroke-linejoin="round"/>`});
+  let lastY=null;IDX.forEach(i=>{const d=wd(i),yy=d.getFullYear();if(yy!==lastY&&(warm||d.getMonth()===0)){g+=`<line x1="${x(i)}" y1="${T}" x2="${x(i)}" y2="${VH-B}" stroke="var(--ink-3)" stroke-opacity=".4"/><text x="${x(i)+4}" y="${VH-8}" font-size="11" fill="var(--ink-3)">${warm?yy+" May–Sep":yy}</text>`}if(warm||d.getMonth()===0)lastY=yy});
+  P.s.forEach(([k,lab,col],n)=>{let p="",pen=false,prev=null;IDX.forEach(i=>{const v=S[k][i];if(v==null||(prev!==null&&POS[i]-POS[prev]>1)){pen=false}if(v==null){prev=i;return}p+=(pen?"L":"M")+x(i).toFixed(1)+" "+y(v).toFixed(1);pen=true;prev=i});g+=`<path d="${p}" fill="none" stroke="${col}" stroke-width="${n?1.5:2}" ${n?'stroke-dasharray="4 2"':""} stroke-linejoin="round"/>`});
   g+=`<g class="hov" hidden><line class="hl" y1="${T}" y2="${VH-B}" stroke="var(--ink)" stroke-width="1"/>${P.s.map(([k,,c])=>`<circle class="hd" data-k="${k}" r="4" fill="${c}" stroke="var(--panel)" stroke-width="1.5"/>`).join("")}</g>`;
   g+=`<rect class="hit" x="${L}" y="0" width="${VW-L-R}" height="${VH}" fill="transparent"/>`;
   const card=document.createElement("div");card.className="card";card.dataset.lo=lo;card.dataset.hi=hi;
   card.innerHTML=`<div class="ttl"><b>${P.t}</b><span>${P.s.length>1?P.s.map(([,l,c],n)=>`<span class="key"><i style="background:${c};${n?"opacity:.8":""}"></i>${l}</span>`).join(""):""}${P.u}</span></div><div class="val" data-p="${P.id}">&nbsp;</div><svg viewBox="0 0 ${VW} ${VH}" role="img" aria-label="${P.t} by week"></svg>`;
   card.querySelector("svg").innerHTML=g;card._y=y;card._P=P;box.appendChild(card)});
- box.querySelectorAll(".hit").forEach(h=>{h.addEventListener("mousemove",ev=>{const b=h.ownerSVGElement.getBoundingClientRect(),vx=(ev.clientX-b.left)/b.width*VW;hover(Math.max(0,Math.min(N-1,Math.round((vx-L)/(VW-L-R)*(N-1)))))});h.addEventListener("mouseleave",()=>hover(null))});
+ box.querySelectorAll(".hit").forEach(h=>{h.addEventListener("mousemove",ev=>{const b=h.ownerSVGElement.getBoundingClientRect(),vx=(ev.clientX-b.left)/b.width*VW;{const p=(vx-L)/(VW-L-R)*NX;let best=IDX[0];IDX.forEach(i=>{if(Math.abs(POS[i]-p)<Math.abs(POS[best]-p))best=i});hover(best)}});h.addEventListener("mouseleave",()=>hover(null))});
  hover(null);
 }
 function hover(i){document.getElementById("wk").textContent=i==null?"":"Week of "+fmt(wd(i));
@@ -70,5 +74,7 @@ function hover(i){document.getElementById("wk").textContent=i==null?"":"Week of 
   g.querySelectorAll(".hd").forEach(d=>{const v=S[d.dataset.k][i];if(v==null){d.setAttribute("r",0);return}d.setAttribute("r",4);d.setAttribute("cx",x(i));d.setAttribute("cy",c._y(v))});
   val.textContent=P.s.map(([k,l])=>`${l}: ${S[k][i]==null?"n/a":S[k][i]}${P.id==="heat"?"°F":""}`).join("   ·   ")})}
 document.getElementById("city").addEventListener("change",e=>{city=e.target.value;build()});
+const setW=w=>{warm=w;document.getElementById("vall").setAttribute("aria-pressed",!w);document.getElementById("vwarm").setAttribute("aria-pressed",w);build()};
+document.getElementById("vall").onclick=()=>setW(false);document.getElementById("vwarm").onclick=()=>setW(true);
 build();
 </script>

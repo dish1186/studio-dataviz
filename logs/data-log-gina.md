@@ -32,6 +32,16 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Visualization V8 · version 2: "May-Sep only" view · 2026-10-01 21:37 EDT · Gina + Claude
+- **What:** Added an "All year / May-Sep only" toggle to Heat Signals Over Time (https://claude.ai/artifact/PS8GB7HzJx21oWKpMzFCYf).
+  - May-Sep only shows the weeks starting May-September, 2022-2026, each warm season placed side by side with a small gap (the single September 2021 week is left out).
+  - Lines break between seasons, and the y-axes rescale to the warm-season values.
+  - Hover snaps to the nearest shown week.
+- **Why:** Gina asked for this view after Analysis A21.
+- No data changes. Source updated in `viz/heat-signals/`.
+
+---
+
 ### Analysis A21 · the weekly heat signals, May-September only · 2026-10-01 21:26 EDT · Gina + Claude
 - **What:** A20 repeated on May-September weeks only (109 weeks per city, 2022-2026). Read only, nothing saved. Gina: "what if we shorten the data to only may-september".
 - **Spearman ρ with the weekly high (all year → May-Sep):**
