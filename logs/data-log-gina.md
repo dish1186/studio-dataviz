@@ -32,6 +32,44 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Analysis A25 · heat-action relationships across 7 cities (read only) · 2026-10-01 23:00 EDT · Gina + Claude
+- **What (Gina: "what about for the rest of the cities? are there clear trends one way or another in the context of these heat action relationships"):**
+  - Repeated the A23/A24 checks for Boston, Detroit, Eugene, Bakersfield, Phoenix, San Diego and San Francisco, May-Sep 2022-2026. These are the 7 cities that have weekly AC and ice cream Trends files. Nothing saved.
+  - Inputs: gridMET and UTCI final daily files; `daily_hri_ed_rate_by_hhs_region.csv` (Boston R1, Detroit R5, Eugene R10, the 4 California/Arizona cities R9); weekly Trends AC and ice cream raw files.
+- **ER rate vs daily high, Spearman ρ (high / anomaly):**
+  - Boston 0.80 / 0.58; Detroit 0.81 / 0.53; Eugene 0.82 / 0.62
+  - Bakersfield 0.80 / 0.46; Phoenix 0.89 / 0.56; San Diego 0.58 / 0.51; San Francisco 0.10 / 0.01
+  - Raw temperature beats anomaly in every city.
+- **Median ER rate by the city's own daily-high quartiles (< q25 / q25-50 / q50-75 / q75-90 / ≥ q90):**
+  - Boston 10 / 22 / 46 / 118 / 401 (q90 = 89.5 °F)
+  - Detroit 17 / 46 / 86 / 169 / 360 (88.6)
+  - Eugene 14 / 40 / 98 / 152 / 452 (91.4)
+  - Bakersfield 99 / 218 / 422 / 590 / 810 (104.4)
+  - Phoenix 88 / 218 / 420 / 620 / 924 (110.8)
+  - San Diego 119 / 286 / 415 / 480 / 549 (84.7)
+  - San Francisco 230 / 352 / 332 / 282 / 314 (71.9)
+- **Dangerous felt-heat days (UTCI strong or worse) per summer, 2022-2025:**
+  - Boston 29-34; Detroit 16-40; Eugene 29-34
+  - Bakersfield 122-136 and Phoenix 143-150, out of 153 days
+  - San Diego 38-56; San Francisco 0
+- **AC searches in each city's hottest quarter of weeks, mean index by month (number of weeks):**
+  - Boston: Jun 60 (8), Jul 38 (13), Aug 22 (5)
+  - Detroit: Jun 66 (7), Jul 27 (12), Aug 17 (6)
+  - Eugene: Jun 59 (3), Jul 43 (13), Aug 31 (10)
+  - Bakersfield: Jun 64 (3), Jul 52 (12), Aug 32 (10)
+  - Phoenix: Jun 61 (5), Jul 58 (16), Aug 44 (6)
+  - San Diego: no hot weeks before July; Jul 30 (6), Aug 27 (15), Sep 40 (6)
+  - San Francisco: AC ρ 0.06 (no relationship)
+- **Year's AC peak week before the hottest week:** Boston 4 of 5 years; Detroit 1 of 5 (its hottest week is usually early); Eugene 3; Bakersfield 3; Phoenix 3; San Diego 2; San Francisco 3.
+- **Ice cream vs weekly high ρ:** Boston 0.66, Detroit 0.49, Eugene 0.52, Bakersfield 0.34, Phoenix 0.36, San Diego 0.20, San Francisco −0.26.
+- **Caveats:**
+  - Region 9 ER is one series shared by Bakersfield, Phoenix, San Diego and San Francisco, so their ER results are not independent. They mostly reflect inland heat, which is why San Francisco shows no link.
+  - Eugene UTCI has no 2026 summer days.
+  - Quartile bins and the "hottest quarter of weeks" cut are Claude's choices, not yet approved.
+  - These are associations, not causes.
+
+---
+
 ### Analysis A24 · Detroit summer rings takeaways (read only) · 2026-10-01 22:51 EDT · Gina + Claude
 - **What (Gina: "what are the takeaways from this visual for detroit?"):** Summarised `viz/summer-rings/detroit.json` (May-Sep 2022-2026). Nothing saved.
 - **Heat ER rate (CDC Region 5, per 100,000 ED visits), median by daily high:**
