@@ -32,6 +32,38 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Google Trends · Step 21: daily "air conditioner" files, Eugene and Bakersfield, summers 2024-2026; Analysis A39 · daily AC thresholds · 2026-10-02 10:13 EDT · Gina + Claude
+- **What:** Gina downloaded five more per-summer daily files (May 1-Sep 30). Claude copied each unchanged (byte-identical) to `data/raw/google-trends/heat-search-daily/`:
+  - `bakersfield_aircon_daily_2024.csv` (from `bakersfield_aurcon_summer_2024.csv`)
+  - `eugene_aircon_daily_2025.csv`
+  - `bakersfield_aircon_daily_2025.csv`
+  - `bakersfield_aircon_daily_2026.csv` (from `baker-aircon-summer-2026.csv`)
+  - `eugene_aircon_daily_2026.csv`
+  - Renaming is Claude's choice. Added a row to `data/descriptions/data_descriptions.csv`.
+- **File notes:**
+  - Zero days of 153: Bakersfield 136 (2024), 149 (2025), 132 (2026); Eugene 129 (2024), 133 (2025), 112 (2026).
+  - Both 2026 files have a run of small nonzero values from Sep 18 to Sep 30, unlike any earlier part of the series (likely Google's preliminary recent data). A39 drops Sep 18-30 in every year so years stay comparable (Claude's choice, not yet approved).
+- **A39 (read only):**
+  - Method: the V12 method, with yes/no "searches registered that day" (index > 0) as the reaction, on May 1-Sep 17 days.
+    - Threshold = the felt heat or daily high where P(registered) = 50%; 7-day block bootstrap, 300 reps.
+    - Shown here as "not reached" if above the year's hottest day.
+    - Felt heat ends Jun 12, 2026, so 2026 felt-heat results use 43 days.
+  - **Eugene:**
+    - Threshold, felt heat: 2024 101.6 °F (90.2-111.1), 2025 100.4 (92.8-108.6).
+    - Threshold, daily high: 2024 96.8 °F (89.3-110.4), 2025 97.5 (90.9-105.9), 2026 92.5 (88.2-102.3).
+    - Dangerous days (felt ≥ 89.6) with registered searches: 29% (2024) and 39% (2025), vs 14% and 8% on cooler days.
+    - Days with a high ≥ 90 °F in 2026: 71% vs 14%.
+  - **Bakersfield:**
+    - Threshold not reached in any year (2024 would be 125.9 °F felt, above the hottest day of 115).
+    - Dangerous days with registered searches: 13% (2024, of 124), 3% (2025, of 124), 13% (2026, of 31, felt to Jun 12).
+    - Only 17, 4 and 12 days with any registered searches.
+- **Caveats:**
+  - Zeros mean "too little volume", and Bakersfield's are not explained by size: it is the larger metro.
+  - Wording may differ, for example Spanish searches or "AC repair" / "swamp cooler". Claude's guess, not checked.
+  - Each file is scaled to its own summer peak, so only yes/no and thresholds are compared across years.
+
+---
+
 ### Google Trends · Step 20: daily "air conditioner" test file, Eugene, summer 2024 · 2026-10-02 10:08 EDT · Gina + Claude
 - **What:**
   - Gina downloaded one daily Google Trends file (May 1-Sep 30, 2024) to test whether per-summer daily data can replace the weekly 5-year files for per-year thresholds (V12).
