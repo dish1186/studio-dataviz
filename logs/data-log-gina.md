@@ -32,6 +32,35 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Google Trends · Step 18: weekly "air purifier" raw files for Eugene, Boston and Bakersfield; Analysis A31 · purifier searches vs PM2.5 · 2026-10-02 00:00 EDT · Gina + Claude
+- **What:** Gina downloaded weekly Google Trends "air purifier" (past 5 years, All categories) for three metros, after A29 showed only monthly purifier data existed.
+  - Claude copied the files unchanged from `~/Downloads/` to `data/raw/google-trends/air-search-weekly/` and checked each copy is byte-identical:
+    - `eugene_purifier_5yr.csv` (from `eugene-airpurifier-last5yr.csv`)
+    - `boston_purifier_5yr.csv`
+    - `bakersfield_purifier_5yr.csv`
+  - Renaming to `<city>_purifier_5yr.csv` is Claude's choice, not yet approved.
+  - 262 weeks each, 2021-09-26 to 2026-09-27; the last week is partial. Added a row to `data/descriptions/data_descriptions.csv`.
+- **File notes:**
+  - Zero weeks (too little search volume): Eugene 186 of 262, Bakersfield 202, Boston 0.
+  - All three files have a large spring 2026 surge (Mar 22 to Jun 2026, peaks 65-100) with no local PM2.5 cause: likely national (unknown driver). It should not be read as a local air reaction.
+- **A31 (read only):** the A29 method with weekly purifier searches, 2021-09-26 to 2026-09-25.
+  - Script and output in Claude's scratchpad (`a31_purifier.py`); not yet saved to the repo.
+  - **Correlations are near zero in all three cities**, with or without the spring 2026 surge: |ρ| ≤ 0.13, and every CI includes 0. Most weeks are 0, so a correlation can't capture this measure; the event weeks can.
+  - **Eugene:**
+    - All 6 weeks with a day above 35.4 µg/m³ had purifier searches (mean index 51 vs 8 in other weeks; nonzero 100% vs 27%).
+    - Smoke week Aug 2-8, 2026: index 88 (99th percentile). Its 4 worst PM weeks sat at the 77th-99th percentiles.
+    - The top week of all, Aug 13-19, 2023 (index 100), had PM2.5 3.9× typical.
+  - **Bakersfield:**
+    - Its 5 worst PM weeks in five years (mean 43-53 µg/m³, 4-7 unhealthy days each, including Dec 1-7, 2024) **all had a purifier index of 0**.
+    - The 32 weeks with a day above 35.4: mean index 4.9, nonzero 16%. Other weeks: 9.5, 25%.
+  - **Boston:** only 1 week with an unhealthy day; no relation.
+- **Caveats:**
+  - Zeros mean too little volume, not none. Bakersfield is the larger metro, so its zeros are not explained by size.
+  - Bakersfield's bad weeks are winter haze (holiday season); Eugene's are smoke.
+  - These are associations, not causes.
+
+---
+
 ### Analysis A30 · Eugene vs Bakersfield through the "Goldilocks zone" lens (read only) · 2026-10-01 23:56 EDT · Gina + Claude
 - **What (Gina: "what does this conversation look like in the context of bakersfield and eugene (the two case studies)?"):** pulled together A25-A29, V10 and Dish's Reddit findings for the two cities, and added two counts. Nothing saved.
 - **New count 1: share of days with a top-25% heat-ER rate, by 5 °F felt-heat band** (`viz/heat-field/data.json`, May-Sep 2022 to 2026-06-12):
