@@ -32,6 +32,20 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Visualization V8 · version 1: "Heat Signals Over Time" (stacked weekly lines) · 2026-10-01 21:20 EDT · Gina + Claude
+- **What:** A published page, https://claude.ai/artifact/PS8GB7HzJx21oWKpMzFCYf (private until shared). Gina: "a line graph with time on the x axis ... different graphs below each other ... a dropdown per city".
+  - City dropdown: Boston, Detroit, Eugene, Bakersfield.
+  - Four stacked weekly line charts on one time axis, 2021-09-26 to 2026-09-20: temperature (weekly high, solid, with felt heat dashed on the same °F axis); ice cream searches; air conditioner searches; heat-related ER visits (per 100,000 ED visits, HHS region).
+  - Summers (June-August) are shaded.
+  - Hovering shows the same week in every chart, with values.
+- **Data:** `data/processed/viz/heat_layers_weekly.csv` (V7). AC for Eugene and Bakersfield now uses the weekly files from Google Trends Step 17 (V7 had monthly stand-ins). No new calculations: values are plotted as given.
+- **Page source:** `viz/heat-signals/` (template, data.json, built page).
+- **Also during this session (mockups only, not logged as data steps, not published):** chat sketches exploring threshold displays (ladder, response curves, seasonal arc/clock, zone clocks, dot clouds, flowers, timelines into bubbles). Their threshold numbers were quick exploratory calculations.
+  - One mockup briefly used hand-typed approximate week lines for Detroit, Eugene and Bakersfield; it was corrected with real values in the next message.
+  - **Before any threshold numbers go on a page, they will be computed as a proper logged step.**
+
+---
+
 ### Google Trends · Step 17: weekly "air conditioner" raw files for Eugene and Bakersfield · 2026-10-01 18:26 EDT · Gina + Claude
 - **What:** Added two downloads to `data/raw/google-trends/heat-search-weekly/`, **copied unchanged** (byte-identical):
   - `eugene_aircon_5yr.csv`: Eugene OR, SHA-256 d5697bcc…695ab49d, 262 weeks 2021-09-26 to 2026-09-27, weeks = 0: 124
