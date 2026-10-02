@@ -28,6 +28,7 @@ svg{display:block;width:100%;height:auto}svg text{font-family:var(--sans)}
 .mono{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3)}
 .tip{position:absolute;pointer-events:none;background:var(--ink);color:var(--bg);font-size:12.5px;line-height:1.4;padding:6px 9px;border-radius:6px;transform:translate(-50%,calc(-100% - 10px));width:max-content;max-width:250px;z-index:2}
 .sel{font:inherit;font-size:13px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:4px 8px}
+.cb{font-size:13px;color:var(--ink);display:inline-flex;gap:6px;align-items:center;cursor:pointer}.cb input{accent-color:var(--h5);width:15px;height:15px}
 .foot{font-size:12.5px;color:var(--ink-3);max-width:95ch;margin:0}
 .ramp{height:12px;border-radius:6px;background:linear-gradient(90deg,var(--h0),var(--h1),var(--h2),var(--h3),var(--h4),var(--h5))}
 </style>
@@ -35,20 +36,26 @@ svg{display:block;width:100%;height:auto}svg text{font-family:var(--sans)}
   <header>
     <div class="mono">Detroit · summers 2022–2026</div>
     <h1>Detroit summer rings</h1>
-    <p class="lede">Each ring is one summer, May 1 at the top running clockwise to September 30; the oldest summer sits at the centre. The soft glow marks days that were unusually hot <i>for the date</i>: hotter than Detroit’s 1991–2020 average high for that day of the year. The bubbles are the weeks and days when people reacted more than usual: pink for ice cream searches, teal for AC searches, indigo for heat-related ER visits. The more intense the reaction, the bigger and deeper the bubble.</p>
+    <p class="lede">Each ring is one summer, May 1 at the top running clockwise to September 30; the oldest summer sits at the centre. The soft glow marks Detroit’s hottest summer days: by actual temperature, by how far above the 1991–2020 normal they were, or by felt heat, and optionally only the days hot enough to be dangerous to people. The bubbles are the weeks and days when people reacted more than usual: pink for ice cream searches, teal for AC searches, indigo for heat-related ER visits. The more intense the reaction, the bigger and deeper the bubble.</p>
   </header>
   <div class="bar" id="layers" role="group" aria-label="Layers"></div>
+  <fieldset class="bar" style="border:0;padding:0;margin:0;gap:14px"><legend class="mono" style="float:left;margin-right:10px;padding:0">Glow shows</legend>
+    <label class="cb"><input type="checkbox" id="g_temp" checked> Actual temperature</label>
+    <label class="cb"><input type="checkbox" id="g_anom"> Above 1991–2020 normal</label>
+    <label class="cb"><input type="checkbox" id="g_felt"> Felt heat (UTCI)</label>
+    <label class="cb" style="border-left:1px solid var(--line);padding-left:14px"><input type="checkbox" id="g_dang"> Only days dangerous to humans <span style="color:var(--ink-3)">(UTCI strong heat stress or higher)</span></label>
+  </fieldset>
   <div class="bar" style="gap:12px">
     <label for="sz" style="font-size:13px;color:var(--ink-2)">Bubble size</label><input type="range" id="sz" min="0.4" max="2.5" step="0.1" value="1" style="width:150px;accent-color:var(--ac)"><output id="szo" style="font-family:var(--mono);font-size:12px;min-width:3ch">1.0×</output>
     <span role="group" aria-label="View" style="display:inline-flex;gap:4px"><button type="button" class="tg" id="p25" aria-pressed="true">Top 25%</button><button type="button" class="tg" id="p10" aria-pressed="false">Top 10% only</button></span>
     <label for="thrs" style="font-size:13px;color:var(--ink-2)">Searches shown</label><select id="thrs" class="sel"><option value="0.5">top 50%</option><option value="0.75" selected>top 25%</option><option value="0.9">top 10%</option></select>
     <label for="thre" style="font-size:13px;color:var(--ink-2)">ER days shown</label><select id="thre" class="sel"><option value="0.5">top 50%</option><option value="0.75" selected>top 25%</option><option value="0.9">top 10%</option></select>
-    <label for="thrh" style="font-size:13px;color:var(--ink-2)">Hot-for-the-date days shown</label><select id="thrh" class="sel"><option value="0.5">top 50%</option><option value="0.75" selected>top 25%</option><option value="0.9">top 10%</option></select>
+    <label for="thrh" style="font-size:13px;color:var(--ink-2)">Hot days shown</label><select id="thrh" class="sel"><option value="0.5">top 50%</option><option value="0.75" selected>top 25%</option><option value="0.9">top 10%</option></select>
   </div>
   <div class="grid">
     <div class="stage" id="stage"><svg id="v" viewBox="-70 -70 900 900" role="img" aria-label="Radial view of Detroit's summers with heat and reactions"></svg><div class="tip" id="tip" hidden></div></div>
     <aside class="key">
-      <div class="mono">Hotter than normal (the glow)</div><div style="font-size:12.5px">Each day’s high minus the 1991–2020 average high for that date. Only days in the chosen top share glow; deeper = further above normal.</div>
+      <div class="mono">Heat (the glow)</div><div id="glowtxt" style="font-size:12.5px"></div>
       <div class="ramp"></div>
       <div id="heatcuts" style="display:flex;justify-content:space-between;font-size:11.5px;color:var(--ink-3)"></div>
       <div id="zones" style="font-size:12.5px"></div>
@@ -57,7 +64,7 @@ svg{display:block;width:100%;height:auto}svg text{font-family:var(--sans)}
       <div id="stats" style="margin-top:6px"></div>
     </aside>
   </div>
-  <p class="foot">Heat: daily maximum temperature minus the 1991–2020 normal for the date (±7-day window, 30 years), gridMET (Climate Engine), Detroit, 2022-05-01 to 2026-09-24; percentile among the May–September days shown. Reactions: heat-related illness ED visits per 100,000 ED visits, daily, CDC Tracking Network, HHS Region 5; Google Trends weekly search interest in “ice cream” and “air conditioner”, Detroit metro (search bubbles sit mid-week). Size and depth of colour = where the day or week ranks among Detroit’s May–September values, 2022–2026 (only the top 25% are shown by default; the cut-off = smallest bubble, the maximum = largest). Zone temperatures are exploratory estimates, not yet a finalised analysis step.</p>
+  <p class="foot">Heat: daily maximum temperature, gridMET (Climate Engine), and its difference from the 1991–2020 normal for the date (±7-day window); felt heat = daily maximum UTCI (ERA5-HEAT) with its heat-stress category, to 2026-06-12; percentiles among Detroit’s May–September days 2022–2026. “Dangerous” = UTCI strong heat stress or higher (felt ≥ 32°C / 89.6°F). Reactions: heat-related illness ED visits per 100,000 ED visits, daily, CDC Tracking Network, HHS Region 5; Google Trends weekly search interest in “ice cream” and “air conditioner”, Detroit metro (search bubbles sit mid-week). Size and depth of colour = where the day or week ranks among Detroit’s May–September values, 2022–2026 (only the top 25% are shown by default; the cut-off = smallest bubble, the maximum = largest). Zone temperatures are exploratory estimates, not yet a finalised analysis step.</p>
 </div>
 <script>
 const D=__DATA__;
@@ -65,7 +72,12 @@ const Z=[{t:-99,n:"Comfortable"},{t:56,n:"Goldilocks · ice cream rises"},{t:74,
 const HV=["--h0","--h1","--h2","--h3","--h4","--h5"];
 const zoneOf=T=>{let k=0;Z.forEach((z,i)=>{if(T>=z.t)k=i});return k};
 const EV=[["ice","Ice cream searches","--ice",0.28,"week"],["ac","AC searches","--ac",0.5,"week"],["er","Heat ER visits","--er",0.72,"day"]];
-const on={heat:true,ice:true,ac:true,er:true,labels:true};let SZ=1,TS=0.75,TE=0.75,TH=0.75;const thr=k=>k==="er"?TE:TS;
+const on={heat:true,ice:true,ac:true,er:true,labels:true};let SZ=1,TS=0.75,TE=0.75,TH=0.75;const G={temp:true,anom:false,felt:false,dang:false};
+const DANGER=["Strong heat stress","Very strong heat stress","Extreme heat stress"];
+function glow(d){let best=-1;const m=[["temp",d[7]],["anom",d[5]],["felt",d[9]]].filter(([k,p])=>G[k]&&p!=null);
+ m.forEach(([k,p])=>{if(p>=TH)best=Math.max(best,(p-TH)/(1-TH))});
+ if(G.dang){if(!DANGER.includes(d[10]))return -1;if(!m.length)best=d[9]!=null?Math.max(0,(d[9]-0.5)/0.5):0.5}
+ return best}const thr=k=>k==="er"?TE:TS;
 const LAY=[["heat","Heat glow","--h4"],["ice","Ice cream","--ice"],["ac","AC","--ac"],["er","Heat ER","--er"],["labels","Years and months",null]];
 const CX=380,CY=380,R0=95,BW=54,YEARS=[2022,2023,2024,2025,2026],R=Math.round;
 const doy=d=>{const X=new Date(d+"T12:00:00");return (X-new Date(X.getFullYear(),4,1,12))/864e5};
@@ -79,9 +91,9 @@ function draw(){
  const lb=document.getElementById("layers");lb.innerHTML="";LAY.forEach(([k,l,c])=>{const b=document.createElement("button");b.className="tg";b.type="button";b.innerHTML=(c?`<i style="background:var(${c})"></i>`:"")+l;b.setAttribute("aria-pressed",on[k]);b.onclick=()=>{on[k]=!on[k];draw()};lb.appendChild(b)});
  let s=`<defs><filter id="blur" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="11"/></filter></defs>`;
  // heat glow: one wedge per day, blurred together into a soft field
- if(on.heat){s+=`<g filter="url(#blur)" opacity=".95">`;D.days.forEach(d=>{const j=YEARS.indexOf(+d[0].slice(0,4));if(j<0||d[5]<TH)return;const a0=ang(d[0])-0.03,a1=ang(d[0])+0.03,ri=R0+j*BW-6,ro=ri+BW+10,[x0,y0]=P(ri,a0),[x1,y1]=P(ri,a1),[x2,y2]=P(ro,a1),[x3,y3]=P(ro,a0);
-  s+=`<path d="M${x0.toFixed(1)} ${y0.toFixed(1)} A${ri} ${ri} 0 0 1 ${x1.toFixed(1)} ${y1.toFixed(1)} L${x2.toFixed(1)} ${y2.toFixed(1)} A${ro} ${ro} 0 0 0 ${x3.toFixed(1)} ${y3.toFixed(1)} Z" fill="var(${HV[Math.min(5,1+Math.floor(5*(d[5]-TH)/(1-TH)))]})"/>`});s+=`</g>`;
-  D.days.forEach(d=>{const j=YEARS.indexOf(+d[0].slice(0,4));if(j<0)return;const[x,y]=P(R0+j*BW+BW/2,ang(d[0]));s+=`<circle class="day" data-d="${d[0]}" data-t="${d[1]}" data-a="${d[4]}" data-n="${d[6]}" data-p="${d[5]}" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="4" fill="transparent"/>`})}
+ if(on.heat){s+=`<g filter="url(#blur)" opacity=".95">`;D.days.forEach(d=>{const j=YEARS.indexOf(+d[0].slice(0,4)),g=glow(d);if(j<0||g<0)return;const a0=ang(d[0])-0.03,a1=ang(d[0])+0.03,ri=R0+j*BW-6,ro=ri+BW+10,[x0,y0]=P(ri,a0),[x1,y1]=P(ri,a1),[x2,y2]=P(ro,a1),[x3,y3]=P(ro,a0);
+  s+=`<path d="M${x0.toFixed(1)} ${y0.toFixed(1)} A${ri} ${ri} 0 0 1 ${x1.toFixed(1)} ${y1.toFixed(1)} L${x2.toFixed(1)} ${y2.toFixed(1)} A${ro} ${ro} 0 0 0 ${x3.toFixed(1)} ${y3.toFixed(1)} Z" fill="var(${HV[Math.min(5,1+Math.floor(5*g))]})"/>`});s+=`</g>`;
+  D.days.forEach(d=>{const j=YEARS.indexOf(+d[0].slice(0,4));if(j<0)return;const[x,y]=P(R0+j*BW+BW/2,ang(d[0]));s+=`<circle class="day" data-d="${d[0]}" data-t="${d[1]}" data-a="${d[4]}" data-n="${d[6]}" data-p="${d[5]}" data-f="${d[8]??""}" data-c="${d[10]??""}" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="4" fill="transparent"/>`})}
  if(on.labels){YEARS.forEach((y,j)=>{s+=`<text x="${CX+3}" y="${CY-R0-j*BW-2}" font-size="9.5" fill="var(--ink-2)" style="paint-order:stroke;stroke:var(--bg);stroke-width:3px">${y}</text>`});
   ["May","Jun","Jul","Aug","Sep"].forEach((m,i)=>{const[x,y]=P(R0+5*BW+20,ang(`2022-0${5+i}-15`));s+=`<text x="${x.toFixed(1)}" y="${(y+4).toFixed(1)}" text-anchor="middle" font-size="12" fill="var(--ink-2)" style="font-family:var(--serif);font-style:italic">${m}</text>`})}
  // reactions: bubbles, one hue per kind, size and opacity by intensity
@@ -91,11 +103,14 @@ function draw(){
  s+=`</g>`;
  s+=`<text x="${CX}" y="${CY-6}" text-anchor="middle" font-size="22" fill="var(--ink)" style="font-family:var(--serif)">Detroit</text><text x="${CX}" y="${CY+14}" text-anchor="middle" font-size="11.5" fill="var(--ink-3)">May → Sep</text>`;
  document.getElementById("v").innerHTML=s;
- document.getElementById("zones").innerHTML=`<div>Top 50% of summer days: ≥ +${D.anomCuts["0.5"].toFixed(1)}°F · top 25%: ≥ +${D.anomCuts["0.75"].toFixed(1)}°F · top 10%: ≥ +${D.anomCuts["0.9"].toFixed(1)}°F above normal.</div>`;const cut=D.anomCuts[String(TH)];const mx=Math.max(...D.days.map(d=>d[4]));document.getElementById("heatcuts").innerHTML=`<span>+${cut.toFixed(0)}°F</span><span>+${mx.toFixed(0)}°F</span>`;
+ const k=String(TH),parts=[];if(G.temp)parts.push(`actual high ≥ ${R(D.tempCuts[k])}°F`);if(G.anom)parts.push(`≥ +${D.anomCuts[k].toFixed(1)}°F above the 1991–2020 normal`);if(G.felt)parts.push(`felt heat ≥ ${R(D.feltCuts[k])}°F`);
+ document.getElementById("glowtxt").innerHTML=(parts.length?`Days in the top ${R((1-TH)*100)}% of Detroit summer days by ${parts.join(", or ")}.`:G.dang?"":"No measure selected.")+(G.dang?` ${parts.length?"Of those, only":"Only"} days with <b style="color:var(--ink);font-weight:500">strong heat stress or worse</b> (UTCI felt heat ≥ 89.6°F; 124 of the 655 summer days with felt-heat data, none past “strong”). Felt heat ends 2026-06-12.`:"")+` Deeper = further into the top share.`;
+ document.getElementById("zones").innerHTML="";document.getElementById("heatcuts").innerHTML=`<span>at the cut-off</span><span>the most extreme</span>`;
  document.getElementById("evkey").innerHTML=EV.map(([k,l,c,,u])=>`<div style="display:grid;grid-template-columns:48px 1fr;align-items:center;gap:6px;margin-top:4px;text-align:left"><svg width="44" height="18">${[3,5.5,8.5].map((r,i)=>`<circle cx="${6+i*13}" cy="9" r="${r}" fill="var(${c})" fill-opacity="${0.3+0.25*i}"/>`).join("")}</svg><span style="text-align:left;flex:1"><b style="color:var(--ink);font-weight:500">${l}</b> (per ${u})</span></div>`).join("")+`<div style="margin-top:6px">Small and pale = just above the threshold you choose; large and deep = Detroit’s most intense summer days and weeks. Lanes inside each ring: ice cream, AC, ER.</div>`;
  const cnt=y=>{const ds=D.days.filter(d=>+d[0].slice(0,4)===y);return [ds.filter(d=>d[4]>=5).length,ds.filter(d=>d[4]>=10).length,events.filter(e=>e.k==="er"&&e.p>=0.9&&+e.d.slice(0,4)===y).length]};
  document.getElementById("stats").innerHTML=`<div class="mono">Per summer</div><table style="font-size:12.5px;border-collapse:collapse;margin-top:4px;width:100%"><tr style="color:var(--ink-3)"><td></td><td style="text-align:right">days +5°</td><td style="text-align:right">+10°</td><td style="text-align:right">top-10% ER days</td></tr>`+YEARS.map(y=>{const c=cnt(y);return `<tr><td>${y}${y===2026?"*":""}</td>${c.map(v=>`<td style="text-align:right;font-family:var(--mono)">${v}</td>`).join("")}</tr>`}).join("")+`</table><div style="font-size:11.5px;color:var(--ink-3);margin-top:4px">*to Sep 24</div>`;
 }
+["temp","anom","felt","dang"].forEach(k=>document.getElementById("g_"+k).addEventListener("change",e=>{G[k]=e.target.checked;draw()}));
 document.getElementById("sz").addEventListener("input",e=>{SZ=+e.target.value;document.getElementById("szo").textContent=SZ.toFixed(1)+"×";draw()});
 const syncP=()=>{document.getElementById("p25").setAttribute("aria-pressed",TS===0.75&&TE===0.75&&TH===0.75);document.getElementById("p10").setAttribute("aria-pressed",TS===0.9&&TE===0.9&&TH===0.9)};
 const preset=v=>{TS=TE=TH=v;["thrs","thre","thrh"].forEach(id=>document.getElementById(id).value=String(v));syncP();draw()};
@@ -103,7 +118,7 @@ document.getElementById("p25").onclick=()=>preset(0.75);document.getElementById(
 document.getElementById("thrs").addEventListener("change",e=>{TS=+e.target.value;syncP();draw()});document.getElementById("thre").addEventListener("change",e=>{TE=+e.target.value;syncP();draw()});document.getElementById("thrh").addEventListener("change",e=>{TH=+e.target.value;syncP();draw()});
 const tip=document.getElementById("tip"),fmt=d=>new Date(d+"T12:00:00").toLocaleDateString("en-US",{month:"short",day:"numeric",year:"numeric"});
 document.getElementById("v").addEventListener("mousemove",ev=>{const t=ev.target.closest(".ev,.day");if(!t){tip.hidden=true;return}const b=document.getElementById("stage").getBoundingClientRect();
- if(t.classList.contains("day")){const a=+t.dataset.a;tip.innerHTML=`${fmt(t.dataset.d)}<br>high ${R(+t.dataset.t)}°F vs normal ${R(+t.dataset.n)}°F<br><b>${a>=0?"+":""}${a.toFixed(1)}°F</b> for the date · hotter than ${R(+t.dataset.p*100)}% of summer days`}
+ if(t.classList.contains("day")){const a=+t.dataset.a;tip.innerHTML=`${fmt(t.dataset.d)}<br>high ${R(+t.dataset.t)}°F · normal ${R(+t.dataset.n)}°F (${a>=0?"+":""}${a.toFixed(1)}°)<br>${t.dataset.f?`felt ${R(+t.dataset.f)}°F · ${t.dataset.c.toLowerCase()}`:"felt heat not available"}`}
  else{const k=t.dataset.k,lab={ice:"ice cream searches",ac:"AC searches",er:"heat ER visits"}[k];tip.innerHTML=`${k==="er"?fmt(t.dataset.d):"week of "+fmt(addDays(t.dataset.d,-3))}<br>${lab}: higher than ${R(+t.dataset.p*100)}% of Detroit summer ${k==="er"?"days":"weeks"}<br>${k==="er"?R(+t.dataset.v)+" per 100,000 ED visits":"search index "+t.dataset.v}`}
  tip.style.left=(ev.clientX-b.left)+"px";tip.style.top=(ev.clientY-b.top)+"px";tip.hidden=false});
 document.getElementById("v").addEventListener("mouseleave",()=>tip.hidden=true);

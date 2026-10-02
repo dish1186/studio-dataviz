@@ -32,6 +32,21 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Visualization V9 · version 10: glow checkboxes (actual / above normal / felt heat) and "only dangerous days" · 2026-10-01 22:43 EDT · Gina + Claude
+- **What (Gina: "add a checkbox for temperature and then also add a checkbox to show felt heat with the same logic (10/25/50%) and also to show only heat glow for days where heat is dangerous to humans (strong heat stress or higher UTCI)"):**
+  - Three glow checkboxes: **Actual temperature** (daily high, gridMET), **Above 1991-2020 normal** (anomaly_f, as in v9) and **Felt heat (UTCI)** (utci_max_f from `data/processed/utci/final/utci_detroit_daily.csv`). Each uses the same top 50 / 25 / 10% selector.
+  - Detroit May-Sep 2022-2026 cut-offs: actual high top 50% ≥ 79.9 °F, top 25% ≥ 84.4 °F, top 10% ≥ 88.6 °F. Felt heat top 50% ≥ 83.0 °F, top 25% ≥ 88.1 °F, top 10% ≥ 92.8 °F.
+  - **Only days dangerous to humans** keeps the glow only on days whose UTCI stress_category is strong heat stress or higher (felt ≥ 32 °C / 89.6 °F). That is 124 of the 655 Detroit summer days with felt-heat data; no day reached very strong. With no measure ticked, it shows all dangerous days.
+  - Hover now also shows felt heat and the stress category.
+- **Claude's choices, not yet approved:**
+  - "Actual temperature" is ticked by default (v9 used the anomaly). This follows A23, where raw temperature tracked reactions best.
+  - With several boxes ticked, a day glows if it is in the top share on **any** ticked measure. Colour depth = the largest of its distances into the top share.
+  - Percentiles for each measure are computed only among the days that have that measure.
+  - Felt-heat data ends 2026-06-12. Later 2026 days never glow for felt heat or "dangerous".
+- **Data:** `viz/summer-rings/detroit.json`. Adds per day: percentile of the high, felt heat (UTCI max °F), its percentile and the stress category. Also adds tempCuts and feltCuts. Template and page: `viz/summer-rings/template.html`, `detroit-rings.html`. Published at https://claude.ai/artifact/PSmL12W3Tn7JwYQ8SVJwkP (version 10).
+
+---
+
 ### Visualization V9 · version 9: glow = degrees above the 1991-2020 normal; Analysis A23 · temperature vs anomaly · 2026-10-01 22:34 EDT · Gina + Claude
 - **What (Gina: "make the heat glow ... just the difference in measured temp and 1991-2020 average high, following the same 10/25/50%"):**
   - The glow now uses `anomaly_f` from `data/processed/gridmet/final/temp_detroit_daily.csv` (daily high minus the 1991-2020 ±7-day normal; Dish's pipeline).
