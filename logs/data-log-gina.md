@@ -32,6 +32,15 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Visualization V9 · version 3: closer to the reference image · 2026-10-01 22:11 EDT · Gina + Claude
+- **What (Gina: "make it look more like that"):**
+  - The solid temperature wedges are replaced by **dotted radial streaks**, one per day. The number of dots grows with the high (one per 4 °F above 50 °F, up to 12), and the colour and opacity step up at the zone edges.
+  - **Event bubbles** are more translucent, with no outlines, and stay inside the reference palette: ice cream = peach to orange, AC = vermilion to red, heat ER = oxblood to near-black.
+  - Ring outlines and month spokes are removed; the year labels are small.
+- No data changes.
+
+---
+
 ### Visualization V9 · version 2: event colours and bubble-size controls · 2026-10-01 22:05 EDT · Gina + Claude
 - **What (Gina: "larger bubbles = more events. different events also need different colors"):**
   - Each event type has its own hue, in three shades for the tiers (top 20% / 10% / 5%): ice cream = pink, AC = teal, heat ER = oxblood to near-black.
