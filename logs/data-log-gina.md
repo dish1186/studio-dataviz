@@ -32,6 +32,22 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Visualization V11 · version 3: black on white in every theme, PNG export · 2026-10-02 00:16 EDT · Gina + Claude
+- **What (Gina: "i need it black and i need to be able to export as png"):**
+  - New `viz/purifier-lines/render_png.py` (pure Python, no libraries) draws the same chart as version 2 at 3120 × 1440 px:
+    - 7 black lines, 3.3 px (the SVG's 1.1 at 3×), anti-aliased
+    - faint baseline; 60 px padding
+    - 4-week centred average, last partial week left out
+  - Two outputs:
+    - `purifier-lines.png` (white background)
+    - `purifier-lines-transparent.png` (transparent background, black lines)
+  - The page now shows the white PNG itself, embedded, on a white page in every theme. Right-click > Save Image As saves the full-resolution PNG; the artifact viewer blocks page-started downloads.
+  - Both PNGs were also sent to Gina directly.
+- Republished as version 3 at https://claude.ai/artifact/5FcA8wTGAqHtqjqiuzkcZ4.
+- **Claude's choices, not yet approved:** PNG size and padding; keeping the faint baseline; also making a transparent version.
+
+---
+
 ### Visualization V11 · version 2: all black lines, no text · 2026-10-02 00:14 EDT · Gina + Claude
 - **What (Gina: "make it just all black lines" and "take out all text"):**
   - All seven lines are now black (near-white in dark mode), 1.1 px.

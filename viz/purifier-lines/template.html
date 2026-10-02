@@ -1,22 +1,12 @@
 <title>Purifier Searches</title>
 <style>
 /* Seven metros' weekly "air purifier" searches (Google Trends, each scaled to its own peak), 4-week centred average,
-   2021-09-26 to 2026-09-20; the last partial week is left out. No text by design (Gina); sources in logs/data-log-gina.md V11. */
-:root{--bg:#fbfaf8;--line:#111110;--base:#d9d5cf}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#151514;--line:#f2f0ec;--base:#3a3835;color-scheme:dark}}
-:root[data-theme="dark"]{--bg:#151514;--line:#f2f0ec;--base:#3a3835;color-scheme:dark}
-body{margin:0;background:var(--bg)}
+   2021-09-26 to 2026-09-20; last partial week left out. Black lines on white in every theme, no text (Gina).
+   The chart is the PNG rendered by render_png.py, embedded so it can be saved with right-click > Save Image As.
+   Sources: logs/data-log-gina.md, V11. */
+:root{color-scheme:light}
+body{margin:0;background:#ffffff}
 .wrap{max-width:1040px;margin:0 auto;padding-inline:20px;padding-block:48px}
-svg{display:block;width:100%;height:auto}
-path{fill:none;stroke:var(--line);stroke-width:1.1;stroke-linejoin:round;stroke-linecap:round}
+img{display:block;width:100%;height:auto}
 </style>
-<div class="wrap"><svg id="v" viewBox="0 0 1000 440" role="img" aria-label="Weekly air purifier search interest, seven US metros, September 2021 to September 2026, as overlapping black lines"></svg></div>
-<script>
-const D0=__DATA__;
-const weeks=D0.weeks.slice(0,-1),n=weeks.length;  // drop the last, partial week
-const x=i=>i/(n-1)*1000,y=v=>430-v/100*420;
-const sm=v=>v.map((_,i)=>{const s=v.slice(Math.max(0,i-1),Math.min(n,i+3));return s.reduce((a,b)=>a+b,0)/s.length});
-let g=`<line x1="0" x2="1000" y1="430" y2="430" stroke="var(--base)"/>`;
-D0.series.forEach(s=>{const v=sm(s.v.slice(0,-1));g+=`<path d="${v.map((t,i)=>(i?"L":"M")+x(i).toFixed(1)+" "+y(t).toFixed(1)).join("")}"/>`});
-document.getElementById("v").innerHTML=g;
-</script>
+<div class="wrap"><img src="data:image/png;base64,__PNG__" alt="Weekly air purifier search interest, seven US metros, September 2021 to September 2026, as overlapping black lines" width="3120" height="1440"></div>
