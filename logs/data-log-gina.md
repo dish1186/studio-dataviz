@@ -32,6 +32,22 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Visualization V9 · version 9: glow = degrees above the 1991-2020 normal; Analysis A23 · temperature vs anomaly · 2026-10-01 22:34 EDT · Gina + Claude
+- **What (Gina: "make the heat glow ... just the difference in measured temp and 1991-2020 average high, following the same 10/25/50%"):**
+  - The glow now uses `anomaly_f` from `data/processed/gridmet/final/temp_detroit_daily.csv` (daily high minus the 1991-2020 ±7-day normal; Dish's pipeline).
+  - Only days in the chosen top share of May-Sep 2022-2026 anomalies glow. A new "Hot-for-the-date days shown" selector (50 / 25 / 10%) is synced with the Top 25% / Top 10% buttons.
+  - Deeper colour = further above the cut-off. Detroit cut-offs: top 50% ≥ +0.6 °F, top 25% ≥ +5.2 °F, top 10% ≥ +9.7 °F above normal.
+  - Hover shows the high, the normal and the difference.
+  - The side table now counts days ≥ +5 °F and ≥ +10 °F above normal.
+- **A23 (read only, nothing saved): does "above normal" track reactions better than raw temperature in Detroit, May-Sep 2022-2026?** Spearman ρ:
+  - Daily ER rate: high 0.81 vs anomaly 0.53.
+  - Weekly ice cream: weekly mean high 0.46 vs anomaly 0.14.
+  - Weekly AC: high 0.62 vs anomaly 0.42.
+  - **Within summer, raw temperature tracks reactions clearly better than "degrees above normal"** in Detroit. Not yet checked for other cities.
+- **Data:** `viz/summer-rings/detroit.json` (adds anomaly, its percentile and the normal per day).
+
+---
+
 ### Analysis A22 · temperature normals and summer anomalies (read only) · 2026-10-01 22:31 EDT · Gina + Claude
 - **What:** Checked that 1991-2020 daily normals already exist: Dish's gridMET pipeline, `data/processed/gridmet/final/temp_<city>_daily.csv`, with normal_f, p10_f, p90_f, anomaly_f and abnormally_high (±7-day window, 30 years). The same exists for felt heat (UTCI final files). Summarised for the four cities (nothing saved). Gina: "do we have any data on the normal temperatures ... to calculate the delta above normal?"
 - **Normal daily high:**
