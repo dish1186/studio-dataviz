@@ -32,6 +32,27 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Google Trends · Step 20: daily "air conditioner" test file, Eugene, summer 2024 · 2026-10-02 10:08 EDT · Gina + Claude
+- **What:**
+  - Gina downloaded one daily Google Trends file (May 1-Sep 30, 2024) to test whether per-summer daily data can replace the weekly 5-year files for per-year thresholds (V12).
+  - Claude copied it unchanged to `data/raw/google-trends/heat-search-daily/eugene_aircon_daily_2024.csv` (byte-identical; SHA-256 starts `fbd304e6cdde3303`). Renamed from `eugene-aircon-may-sept.csv`; the new name is Claude's choice, not yet approved.
+  - Gina's message said 2025; the file's dates are all 2024. Added a row to `data/descriptions/data_descriptions.csv`.
+- **Check (read only)** against Eugene felt heat (`utci_eugene_daily.csv`) and daily high (`temp_eugene_daily.csv`):
+  - 153 days; **129 are zero** (too little volume); 24 days have registered searches.
+  - Share of days with registered searches by felt heat:
+    - 70-75 °F 5%
+    - 75-80 °F 15%
+    - 80-85 °F 15%
+    - 85-90 °F 29%
+    - 90-95 °F 11%
+    - 95-100 °F 50% (6 days)
+    - 100-105 °F 75% (4 days)
+  - Spearman: index vs felt heat 0.31, vs daily high 0.37, vs previous day's felt heat 0.35.
+  - Top days: Jul 6 (100; 100.7 °F felt) and Jul 7-10 (59-82), the July 2024 heat wave. Also May 11 (72; 86.2 °F felt), the first warm weekend.
+- **Reading:** daily resolution works, but for Eugene mostly as "did searches register that day" (yes/no), not as a smooth index.
+
+---
+
 ### Mockup M5 · thermometer view; Analysis A38 · "normal" range per year (read only) · 2026-10-02 10:03 EDT · Gina + Claude
 - **M5 (chat widget, Gina: "that visual structure is not intuitive ... we could consider the vertical thermometer thing"):**
   - Two thermometers (Eugene, Bakersfield) on one shared scale, with a heat/air toggle and a year slider.
