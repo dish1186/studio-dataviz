@@ -39,7 +39,7 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
   - Direct labels at each line's end. Hovering a label highlights that line; a crosshair tooltip lists all seven values for the week.
   - Toggle: 4-week average or weekly.
   - A shaded band marks the spring 2026 surge (2026-03-22 to 2026-06-28). Four smoke labels: Detroit Jun 25, 2023 and Jul 12, 2026; Eugene Aug 13, 2023 and Aug 2, 2026 (weeks from A31/A32).
-- **Script:** `viz/purifier-lines/build.py` → `data.json`; page `template.html` → `purifier-lines.html`. Published at https://claude.ai/artifact/AqxTKLSlx3sdj0AgFAvxuo.
+- **Script:** `viz/purifier-lines/build.py` → `data.json`; page `template.html` → `purifier-lines.html`. Published at https://claude.ai/artifact/5FcA8wTGAqHtqjqiuzkcZ4.
 - **Claude's choices, not yet approved:**
   - 4-week centred average (the week, one before, two after) is the default view.
   - The last, partial week (2026-09-27) is left out.
