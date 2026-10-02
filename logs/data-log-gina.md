@@ -32,6 +32,23 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Analysis A21 · the weekly heat signals, May-September only · 2026-10-01 21:26 EDT · Gina + Claude
+- **What:** A20 repeated on May-September weeks only (109 weeks per city, 2022-2026). Read only, nothing saved. Gina: "what if we shorten the data to only may-september".
+- **Spearman ρ with the weekly high (all year → May-Sep):**
+  - ER stays high: 0.84-0.87.
+  - Ice cream drops: Boston 0.68, Detroit 0.49, Eugene 0.55, Bakersfield 0.35.
+  - AC drops: 0.51-0.63.
+  - Much of the searches' year-round link with temperature is the season itself. Within the warm season, **ER is the signal most tied to heat**.
+- **Felt heat (UTCI) correlates slightly *less* than the plain weekly high** for every signal in every city (e.g. Boston ER 0.78 vs 0.84).
+- **Lags (May-Sep):** ER peaks in the same week (0) everywhere. AC correlates both in the same week and 3 weeks ahead. Ice cream correlates best 2-3 weeks ahead.
+- **2026 vs 2022-2025 at the same weekly temperature (5 °F bins, May-Aug):**
+  - The 2026 rise is in **mild early-season weeks** (65-75 °F), e.g. Boston AC ×1.3-1.5, Detroit AC ×1.9-3.8.
+  - It is **not** in the hottest weeks (Boston 80-85 °F: AC ×0.9, ER ×0.7).
+  - This refines A20: 2026 shows stronger reactions to moderate early heat, not to extreme heat.
+- **Caveats:** few weeks per bin (2-6 for 2026). Search-level shifts and ER coverage changes are not checked.
+
+---
+
 ### Analysis A19-A20 · hottest days per year; patterns in the weekly heat signals · 2026-10-01 21:23 EDT · Gina + Claude
 - **A19 (saved):** `scripts/analysis/hottest_days.py` → `data/processed/analysis/hottest_10_days_per_year.csv`: the 10 hottest days per year (gridMET daily maximum), 2016-2026, four cities, with UTCI felt heat. Gina: "what are the 10 hottest days of the year per year for these 4 cities?"
   - Hottest single days: Boston 102 °F (2025-06-24); Detroit 97 °F (five days in 2026 and on 2026-09-02); Eugene 110 °F (2021-06-27, the Pacific Northwest heat dome); Bakersfield 114 °F (2022-09-06).
