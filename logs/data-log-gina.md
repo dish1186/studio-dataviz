@@ -32,6 +32,15 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Visualization V9 · version 4: bubble size grows more with frequency · 2026-10-01 22:16 EDT · Gina + Claude
+- **What (Gina: "they need to be larger for higher frequency"):** bubble radius = 1.5 + 1.1 × n^0.85 px (× the size slider). n = same-type events in the chosen window; a search event-week = 7 days, divided by 3.
+  - Before: 1.6 + 2.2 × √n.
+  - An isolated event is about 2.6 px; a ±2-week run of 29 ER days is about 21 px.
+  - The slider now runs 0.4-2.5×.
+- No data changes.
+
+---
+
 ### Visualization V9 · version 3: closer to the reference image · 2026-10-01 22:11 EDT · Gina + Claude
 - **What (Gina: "make it look more like that"):**
   - The solid temperature wedges are replaced by **dotted radial streaks**, one per day. The number of dots grows with the high (one per 4 °F above 50 °F, up to 12), and the colour and opacity step up at the zone edges.

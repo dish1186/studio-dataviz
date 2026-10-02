@@ -38,7 +38,7 @@ svg{display:block;width:100%;height:auto}svg text{font-family:var(--sans)}
   </header>
   <div class="bar" id="layers" role="group" aria-label="Layers"></div>
   <div class="bar" style="gap:14px">
-    <label for="sz" style="font-size:13px;color:var(--ink-2)">Bubble size</label><input type="range" id="sz" min="0.4" max="3" step="0.1" value="1" style="width:160px;accent-color:var(--c3)"><output id="szo" style="font-family:var(--mono);font-size:12px;min-width:3ch">1.0×</output>
+    <label for="sz" style="font-size:13px;color:var(--ink-2)">Bubble size</label><input type="range" id="sz" min="0.4" max="2.5" step="0.1" value="1" style="width:160px;accent-color:var(--c3)"><output id="szo" style="font-family:var(--mono);font-size:12px;min-width:3ch">1.0×</output>
     <label for="win" style="font-size:13px;color:var(--ink-2)">Bigger = more events within</label>
     <select id="win" style="font:inherit;font-size:13px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:4px 8px"><option value="month">the same month</option><option value="2w" selected>±2 weeks</option><option value="1w">±1 week</option><option value="none">(no size: all equal)</option></select>
   </div>
@@ -88,7 +88,7 @@ function draw(){
   ["May","Jun","Jul","Aug","Sep"].forEach((m,i)=>{const r2=R0+5*BW+18;const a=ang(`2022-0${5+i}-15`);s+=`<text x="${CX+r2*Math.cos(a)}" y="${CY+r2*Math.sin(a)+4}" text-anchor="middle" font-size="12" fill="var(--ink-2)" style="font-family:var(--serif);font-style:italic">${m}</text>`;})}
  // event dots: lane by type, colour by tier, size by how many events of that type that month
  s+=`<g style="mix-blend-mode:var(--blend)">`;
- events.filter(e=>on[e.k]).map(e=>{e.n=nearby(e);return e}).sort((p,q)=>q.n*weight(q)-p.n*weight(p)||p.tier-q.tier).forEach(e=>{const j=YEARS.indexOf(+e.d.slice(0,4));if(j<0)return;const lane=EV.find(x=>x[0]===e.k)[2],rr=R0+j*BW+lane*(BW-3),a=ang(e.d),n=e.n,rad=SZ*(WIN==="none"?3.2:1.6+2.2*Math.sqrt(n*weight(e)/(e.k==="er"?1:4)));
+ events.filter(e=>on[e.k]).map(e=>{e.n=nearby(e);return e}).sort((p,q)=>q.n*weight(q)-p.n*weight(p)||p.tier-q.tier).forEach(e=>{const j=YEARS.indexOf(+e.d.slice(0,4));if(j<0)return;const lane=EV.find(x=>x[0]===e.k)[2],rr=R0+j*BW+lane*(BW-3),a=ang(e.d),n=e.n,rad=SZ*(WIN==="none"?3.2:1.5+1.1*Math.pow(n*weight(e)/(e.k==="er"?1:3),0.85));
   s+=`<circle class="ev" data-k="${e.k}" data-d="${e.d}" data-t="${e.tier}" data-v="${e.v}" data-n="${n}" cx="${P(rr,a).split(" ")[0]}" cy="${P(rr,a).split(" ")[1]}" r="${rad.toFixed(1)}" fill="var(${COL[e.k][e.tier]})" fill-opacity="${(0.32+0.14*e.tier).toFixed(2)}"/>`});
  s+=`</g>`;
  s+=`<text x="${CX}" y="${CY-6}" text-anchor="middle" font-size="22" fill="var(--ink)" style="font-family:var(--serif)">Detroit</text><text x="${CX}" y="${CY+14}" text-anchor="middle" font-size="11.5" fill="var(--ink-3)">May → Sep</text>`;
