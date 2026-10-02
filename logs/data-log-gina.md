@@ -32,6 +32,50 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Analysis A35 · fires near Eugene and Bakersfield, and during Dish's study weeks (read only) · 2026-10-02 08:50 EDT · Gina + Claude
+- **What (Gina: "what fires have impacted both eugene and bakersfield? look at the fire start point data" and "look at the dates dish chose for worst pollution"):**
+  - Source: NIFC WFIGS perimeters raw table (NIFC Step 1). Wildfires only (`attr_IncidentTypeCategory` = WF), deduplicated by incident name + discovery date: 35,153 fires.
+  - Size = the largest of incident size, GIS acres, final acres and calculated acres.
+  - Start point = `attr_InitialLatitude`/`attr_InitialLongitude`. Great-circle distance to Eugene (44.0521, −123.0868) and Bakersfield (35.3733, −119.0187), city-hall-area points chosen by Claude.
+  - "Active" = discovered on or before the window end and contained or out on or after its start (or no end date), discovered at most 90-120 days before the window. These are Claude's choices, not yet approved.
+  - PM2.5 from OpenAQ `pm25_<city>_daily.csv`. Script in Claude's scratchpad (`a35_fires.py`); nothing saved.
+- **Dish's windows** (`studies/eugene_bakersfield.json`): Eugene event Aug 3-9, 2026 (baselines Aug 5-11, 2024 and Aug 4-10, 2025); Bakersfield event Dec 2-8, 2024 (baselines Dec 4-10, 2023 and Dec 1-7, 2025).
+- **Eugene event week:**
+  - 245 wildfires were active within 600 km. PM2.5 peaked at 109.4 µg/m³ on Aug 5 (20× typical; 3 days above 35.4).
+  - None of these fires started in Lane County.
+  - Nearest within 250 km (≥ 1,000 acres):
+    - Castle, Douglas County, 3,615 acres, 113 km
+    - Akawa Butte, 27,491 acres, 140 km
+    - Bench, 67,238 acres, 152 km (Jefferson County)
+    - Austin, Clackamas County, started Aug 9
+    - Wrights Spring, Klamath County, started Aug 5, 210 km
+  - Largest farther away: Big Grass (Malheur, 579,170 acres, 491 km), Crosswhite (Wheeler, 355,065 acres, 244 km), Biscar (Lassen CA, 69,355 acres, 451 km).
+  - Start points alone cannot say which fire caused the smoke.
+- **Bakersfield event week:**
+  - Only 22 fires were "active" within 600 km. All were late-season or long-running records: Bridge (LA County, started Sep 8), Line (Sep 6), Boone (Sep 3), Horseshoe (Inyo, 4.5k acres).
+  - No new or large fire. Consistent with winter inversion haze, not smoke. PM2.5 max 61.0 µg/m³ on Dec 7; 7 of 7 days above 35.4.
+  - The baseline weeks also had no large new fires.
+- **Large fires (≥ 20,000 acres) starting within 600 km of both cities, 2020-2026:** 12. Peak PM2.5 in each city while each fire was active:
+  - **Aug-Sep 2020** (Doe/August Complex, Claremont/North Complex, Sheep, Wallbridge, Loyalton): Eugene max 468.5 µg/m³ (Sep 13), Bakersfield 86.2 (Aug 23).
+  - **2021** (Dixie, Sugar): Eugene 33.2, Bakersfield 73.0 (Oct 4).
+  - **2022 Mosquito:** Eugene 80.1, Bakersfield 40.4.
+  - **2024 Park:** Eugene 26.1, Bakersfield 22.1.
+  - **2026 Biscar, Bug, Stallion:** Eugene 109.4 (Aug 5, during Biscar), Bakersfield ≤ 14.7.
+- **Fires near each city at those peaks (≥ 10,000 acres within 250 km):**
+  - Eugene Sep 2020: Holiday Farm (Lane, 70 km), Archie Creek (82 km), Beachie Creek (107 km), Riverside (136 km).
+  - Bakersfield Aug-Sep 2020: Castle (Tulare, 102 km), Lake (93 km), Bobcat, Creek (Fresno, 204 km).
+  - Bakersfield Oct 2021: French (Kern, 55 km), Windy (83 km), Colony (134 km).
+  - Eugene Aug 2021: Gales (38 km) and Chaos (68 km), Lane County.
+  - Eugene Oct 2022: Cedar Creek (Lane, 85 km).
+  - So the shared peaks mostly came from each city's own nearby fires, not from one shared fire.
+- **Caveats:**
+  - Start points only (no perimeters, no wind or smoke plumes).
+  - Containment dates are often far after active burning.
+  - Canadian fires are absent.
+  - PM2.5 "while active" can come from other fires.
+
+---
+
 ### Mockups M1-M3 · Eugene vs Bakersfield: thresholds over time, dangerous vs abnormal, sentiment layer (chat widgets, not artifacts); Analysis A34 · 2026-10-02 00:57 EDT · Gina + Claude
 - **What (Gina: "help me layer up a couple of mockups (not artifacts, just widgets) following this line of thought ... in the context of bakersfield and eugene"):** three inline chat widgets following Gina's three questions. Not published or saved. All numbers come from repo files via the computations below; nothing is typed in by hand.
 - **A34 (read only) for M1:**
