@@ -32,6 +32,21 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Visualization V13 · version 3: "start looking" fixed for Eugene and Bakersfield · 2026-10-02 12:58 EDT · Gina + Claude
+- **What (Gina: "why does bakersfield start looking at 30 degrees"):**
+  - In v2, the hockey-stick bend for the two added cities was searched over a fixed 30-100 °F range. Step 11 uses the city's 10th-90th percentile of weekly highs.
+  - In 2026 Bakersfield's weeks never fell below about 56 °F, so any bend below that fit equally well, and the fit landed at the range edge (32 °F): a meaningless value. **Claude's error.**
+  - Fixed in `viz/city-heat-thresholds/build.py`: Step 11's range per city (Eugene 48-85 °F, Bakersfield 61-100 °F). A bend at either edge of the range is now reported as "no clear start point".
+- **Results:**
+  - Eugene start looking: 52 (before 2026), 56 (2026), 54 (all).
+  - Bakersfield: at the range edge (61) in every period, so shown as "no clear point where searching starts (searches do not flatten out in cooler weeks)".
+  - Surge points unchanged: Eugene 76.0, 73.9, 73.4; Bakersfield 85.6, 74.2, 83.1.
+  - The edge rule was not applied to the five Step 12 cities, whose published values are unchanged.
+- Republished as version 3 at https://claude.ai/artifact/RP7JSJJTvQpuH8p9LVFDKQ.
+- **Also answered in chat (read only):** the weekly list behind "Eugene 6 of 6 vs Bakersfield 4 of 23" unhealthy-air weeks with purifier spikes, with weekly news counts. Bakersfield's Dec 1-7, 2024 week: worst day 61.0 µg/m³, 7 unhealthy days, purifier 0, news 0.
+
+---
+
 ### Visualization V13 · City Heat Thresholds v2: Eugene and Bakersfield added; ER and air layers · 2026-10-02 10:39 EDT · Gina + Claude
 - **What (Gina: "add bakersfield and eugene to the existing city heat thresholds artifact ... and create a second visual layer on top to toggle"; asked which layer: "Both"):**
   - Updated https://claude.ai/artifact/RP7JSJJTvQpuH8p9LVFDKQ (version 2), keeping the v1 gauge design.

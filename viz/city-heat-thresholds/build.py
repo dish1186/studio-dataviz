@@ -4,7 +4,10 @@ Layer 1 "Heat · AC searches": the 5 original cities use Google Trends Step 12 (
   Jan-Feb level) is undefined. Equivalent rule on the index itself: target = halfway between the Jan-Feb median and the
   median of the hottest 10% of weeks; the surge point is where a running median of searches (sorted by weekly high,
   window 10% of weeks, odd, >= 7) first reaches it. With a non-zero winter level this is the same target as Step 12's
-  (1 + hot ratio) / 2. "Starts looking": Step 11's hockey stick, fitted to log2(1 + index) because log2(0) is undefined.
+  (1 + hot ratio) / 2. "Starts looking": Step 11's hockey stick, fitted to log2(1 + index) because log2(0) is undefined, with Step 11's
+  candidate range for the bend (10th-90th percentile of the city's 2022-2026 weekly highs). (v2 first used a fixed 30-100 F
+  range, which let the bend sit below all data in 2026 Bakersfield and gave a meaningless 32 F; fixed.) A bend at either
+  edge of the range is reported as no clear start point (Bakersfield: every period).
 Layer 2 "Heat · ER visits": the same halfway rule on DAILY heat-related ER visits (per 100,000 ER visits, HHS region)
   against the DAILY high: floor = Jan-Feb median, hot level = median of the hottest 10% of days, running-median window
   10% of days. Region: Boston 1, Detroit 5, Eugene 10, Phoenix / San Diego / San Francisco / Bakersfield 9 (shared).
@@ -61,16 +64,18 @@ def air_rule(rows):
     if n < 20: return None
     floor = st.median(y for _, y in pts[: n // 2]); k = max(4, round(0.10 * n))
     return curve_cross(pts, floor, st.median(y for _, y in pts[-k:]))
-def hockey(rows):
+GRID = {}  # per city: Step 11's candidate range, 10th to 90th percentile of all 2022-2026 weekly highs
+def hockey(rows, city=None):
     pts = [(x, math.log2(1 + y)) for d, x, y in rows]; best = None
-    for t0 in range(30, 101):
+    for t0 in GRID[city]:
         xs = [max(0.0, x - t0) for x, _ in pts]; ys = [y for _, y in pts]; mx, my = st.mean(xs), st.mean(ys)
         sxx = sum((a - mx) ** 2 for a in xs)
         if sxx == 0: continue
         b = sum((a - mx) * (c - my) for a, c in zip(xs, ys)) / sxx; a0 = my - b * mx
         sse = sum((c - a0 - b * a) ** 2 for a, c in zip(xs, ys))
         if b > 0 and (best is None or sse < best[1]): best = (t0, sse)
-    return best[0] if best else None
+    if not best or best[0] in (GRID[city][0], GRID[city][-1]): return None  # bend at the edge of the range = no clear start
+    return best[0]
 def boot(rows, rule, block):
     blocks = [rows[i:i + block] for i in range(0, len(rows), block)]; v = []
     for _ in range(N_BOOT):
@@ -101,7 +106,8 @@ for c, (name, ab, acf, reg) in CITIES.items():
         if all(x is not None for x in ds) and 2022 <= s0.year <= 2026: wk.append((w, st.mean(ds), v))
     o = {"n": name, "a": ab, "region": reg, "sum": round(summer, 1)}
     if c in ("eugene", "bakersfield"):
-        o["search"] = summarise({p: [r for r in wk if int(r[0][:4]) in y] for p, y in PER.items()}, heat_rule, 4, hockey)
+        Ts = sorted(x for _, x, _ in wk); GRID[c] = range(math.ceil(Ts[len(Ts) // 10]), math.floor(Ts[len(Ts) * 9 // 10]) + 1)
+        o["search"] = summarise({p: [r for r in wk if int(r[0][:4]) in y] for p, y in PER.items()}, heat_rule, 4, lambda rows, c=c: hockey(rows, c))
         o["search_method"] = "index (winter level 0)"
     else:
         o["search"] = {p: {"s": float(S12[(c, PMAP[p])]["surge_F"]), "ci": [float(S12[(c, PMAP[p])]["surge_ci90_low_F"]), float(S12[(c, PMAP[p])]["surge_ci90_high_F"])],
