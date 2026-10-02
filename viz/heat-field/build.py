@@ -32,7 +32,9 @@ for r in csv.DictReader(open("data/processed/cdc-tracking/daily_hri_ed_rate_by_h
 
 def trends(folder, f):
     rows = list(csv.reader(open(f"data/raw/google-trends/{folder}/{f}")))[3:]
-    return {w: (0 if v == "<1" else int(v)) for w, v in rows if w and "2022" <= w[:4] <= "2026"}
+    # keep weeks that overlap May-Sep (a week starting up to 6 days before May 1 still covers May days)
+    keep = lambda w: "2022" <= w[:4] <= "2026" and (summer(w) or w[5:] >= "04-25" and w[5:7] == "04")
+    return {w: (0 if v == "<1" else int(v)) for w, v in rows if w and keep(w)}
 
 out = {}
 for c, (label, reg, acf, icf) in CITIES.items():

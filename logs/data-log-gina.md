@@ -32,6 +32,25 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Visualization V10 · version 2: fix to search percentiles; Analysis A26 · strongest and strangest correlations · 2026-10-01 23:15 EDT · Gina + Claude
+- **Fix (found by Claude):** in version 1, AC and ice cream percentiles were ranked against all weeks of 2022-2026, including winter. Summer weeks therefore looked "top 25%" far too often.
+  - `build.py` now ranks only the weeks that overlap May-Sep, including weeks starting Apr 25-30.
+  - This corrects the Detroit AC numbers given to Gina in chat for version 1 (80% / 80% / 40% for dangerous-normal / safe-abnormal / safe-normal). The corrected figures are 48% / 65% / 17%. ER figures were unaffected.
+  - Republished as version 2 at https://claude.ai/artifact/RyJ4E3jnfxmh5JDvEeWFWY.
+- **A26 (Gina: "which cities have the strongest / strangest correllations?"):** read only, from A25 and the corrected `viz/heat-field/data.json`. Share of days with a top-25% reaction, ER / AC / ice cream:
+
+| City | safe·normal | safe·abnormal | dangerous·normal | dangerous·abnormal |
+|---|---|---|---|---|
+| Detroit | 11 / 17 / 22 | 40 / 65 / 35 (20 days) | 73 / 48 / 39 | 92 / 71 / 37 |
+| Boston | 7 / 20 / 14 | 54 / 36 / 13 | 77 / 42 / 36 | 95 / 69 / 43 |
+| Eugene | 11 / 17 / 20 | 49 / 36 / 28 | 54 / 28 / 18 | 83 / 57 / 44 |
+| Bakersfield | 0 / 7 / 10 | – | 24 / 27 / 21 | 64 / 58 / 34 |
+| Phoenix | 0 / 6 / 6 | – | 18 / 17 / 18 | 69 / 48 / 28 |
+| San Diego | 15 / 10 / 22 | 0 / 14 / 14 (7 days) | 47 / 41 / 15 | 64 / 59 / 21 |
+| San Francisco | 24 / 19 / 19 | 33 / 50 / 22 | – | – |
+
+---
+
 ### Visualization V10 · Heat Field (abnormal vs dangerous) · version 1 draft · 2026-10-01 23:10 EDT · Gina + Claude
 - **What (Gina: "x axis is abnormal / normal heat and the y axis is dangerous (high heat stress) and non-dangerous and the dots will be frequency of different events that fit into that dynamic"; one visual to answer: relationship over time, abnormality or danger, thresholds for action):**
   - Each May-Sep 2022-2026 day is a grey dot.
