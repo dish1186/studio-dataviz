@@ -32,6 +32,65 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Analysis A28 · correlations of actions with abnormal and dangerous heat, 7 cities (read only so far) · 2026-10-01 23:33 EDT · Gina + Claude
+- **What (Gina: "give me the final and precise statistical correllations between the actions (ice cream, ac, and ER) and the different types of heat (abnormal and dangerous)"):**
+  - Spearman ρ, May-Sep 2022 to 2026-06-12 (felt heat ends then).
+  - **Abnormality** = `anomaly_f` (daily high − 1991-2020 normal for the date, gridMET).
+  - **Danger** = `utci_max_f` (felt heat).
+  - **Partial ρ** = each heat type with the other held constant.
+  - **ER**: daily, n = 655 days.
+  - **AC and ice cream**: weekly Trends value vs the week's mean abnormality and mean felt heat (weeks with ≥ 5 May-Sep days), n = 92 weeks.
+  - 95% CIs: moving-block bootstrap (7-day blocks daily, 3-week blocks weekly; 2000 reps; seed 1). These account for runs of similar days.
+- **Script and output:** Claude's scratchpad (`a28_correlations.py`, `a28_heat_action_correlations.csv`). Not yet saved to the repo; to propose to Gina.
+- **Partial ρ (95% CI), abnormality | danger:**
+
+| City | ER | AC | Ice cream |
+|---|---|---|---|
+| Boston | 0.19 (0.08, 0.29) / **0.66** (0.57, 0.72) | **0.50** (0.29, 0.64) / 0.22 (−0.06, 0.49) | 0.17 (−0.12, 0.37) / **0.48** (0.25, 0.66) |
+| Detroit | 0.09 (−0.03, 0.20) / **0.68** (0.60, 0.74) | 0.30 (−0.04, 0.56) / **0.40** (0.15, 0.62) | 0.03 (−0.28, 0.27) / **0.32** (0.07, 0.54) |
+| Eugene | 0.19 (0.07, 0.30) / **0.62** (0.52, 0.69) | **0.46** (0.25, 0.63) / 0.07 (−0.18, 0.34) | **0.30** (0.04, 0.50) / 0.18 (−0.07, 0.42) |
+| Phoenix | −0.12 (−0.25, 0.02) / **0.86** (0.83, 0.89) | 0.17 (−0.13, 0.38) / **0.32** (0.04, 0.61) | 0.07 / 0.12 (both CIs include 0) |
+| Bakersfield | −0.22 (−0.33, −0.08) / **0.74** (0.65, 0.80) | **0.38** (0.14, 0.57) / 0.21 (−0.02, 0.42) | 0.11 / 0.13 (both CIs include 0) |
+| San Diego | 0.06 (−0.08, 0.19) / **0.49** (0.35, 0.59) | **0.48** (0.14, 0.68) / 0.37 (0.02, 0.66) | **0.29** (0.01, 0.53) / −0.08 (−0.35, 0.21) |
+| San Francisco | −0.06 / 0.16 (0.01, 0.28) | **0.34** (0.13, 0.51) / −0.19 (−0.46, 0.08) | 0.09 / **−0.31** (−0.57, −0.02) |
+
+- **Simple ρ (abnormality / danger / actual high):**
+  - ER:
+    - Boston 0.59 / 0.79 / 0.80
+    - Detroit 0.51 / 0.77 / 0.81
+    - Eugene 0.63 / 0.78 / 0.82
+    - Phoenix 0.56 / 0.91 / 0.90
+    - Bakersfield 0.45 / 0.79 / 0.80
+    - San Diego 0.49 / 0.65 / 0.58
+    - San Francisco 0.02 / 0.15 / 0.11
+  - AC:
+    - Boston 0.62 / 0.46 / 0.52
+    - Detroit 0.48 / 0.54 / 0.65
+    - Eugene 0.56 / 0.36 / 0.48
+    - Phoenix 0.42 / 0.49 / 0.56
+    - Bakersfield 0.56 / 0.48 / 0.53
+    - San Diego 0.69 / 0.65 / 0.67
+    - San Francisco 0.30 / −0.06 / 0.13
+  - Ice cream:
+    - Boston 0.42 / 0.59 / 0.64
+    - Detroit 0.21 / 0.38 / 0.48
+    - Eugene 0.44 / 0.39 / 0.50
+    - Phoenix 0.18 / 0.20 / 0.30
+    - Bakersfield 0.23 / 0.24 / 0.31
+    - San Diego 0.31 / 0.14 / 0.15
+    - San Francisco −0.03 / −0.31 / −0.24
+- **Reading:**
+  - ER tracks danger in every city. Once felt heat is held constant, abnormality adds little or nothing; it is slightly negative in Bakersfield.
+  - AC searches lean to abnormality in 5 of 7 cities (Boston, Eugene, Bakersfield, San Diego, San Francisco). Detroit and Phoenix lean to danger, but their CIs overlap.
+  - Ice cream is weak: danger in Boston and Detroit, abnormality in Eugene and San Diego, nothing in Phoenix and Bakersfield.
+- **Caveats:**
+  - Region 9 ER is one series shared by 4 cities.
+  - The two heat types are correlated (ρ 0.36-0.70), which widens the partial CIs.
+  - Season is not removed. The AC "abnormality" link overlaps the early-season effect found in A27.
+  - These are associations, not causes.
+
+---
+
 ### Analysis A27 · robustness of two A26 findings (read only) · 2026-10-01 23:29 EDT · Gina + Claude
 - **What (Gina: "tell me about this", on the Detroit AC and Phoenix/Bakersfield findings):** checked both findings against season and against how hot the felt heat was. Source: `viz/heat-field/data.json`; top-25% reactions. Nothing saved.
 - **Detroit, "AC follows unusual heat, not danger" → better read as "AC follows early-season heat":**
