@@ -1,0 +1,393 @@
+[
+ {
+  "meta": {
+   "name": "openaq-api",
+   "website": "/",
+   "page": 1,
+   "limit": 1000,
+   "found": 4
+  },
+  "results": [
+   {
+    "id": 342,
+    "name": "Lancaster",
+    "locality": "Lancaster",
+    "timezone": "America/New_York",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 4,
+     "name": "Unknown Governmental Organization"
+    },
+    "provider": {
+     "id": 119,
+     "name": "AirNow"
+    },
+    "isMobile": false,
+    "isMonitor": true,
+    "instruments": [
+     {
+      "id": 2,
+      "name": "Government Monitor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 1767,
+      "name": "o3 ppm",
+      "parameter": {
+       "id": 10,
+       "name": "o3",
+       "units": "ppm",
+       "displayName": "O\u2083"
+      }
+     },
+     {
+      "id": 588,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 40.0467,
+     "longitude": -76.2833
+    },
+    "licenses": [
+     {
+      "id": 33,
+      "name": "US Public Domain",
+      "attribution": {
+       "name": "Unknown Governmental Organization",
+       "url": null
+      },
+      "dateFrom": "2016-01-30",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -76.2833,
+     40.0467,
+     -76.2833,
+     40.0467
+    ],
+    "distance": 1912.02644856,
+    "datetimeFirst": {
+     "utc": "2016-03-07T15:00:00Z",
+     "local": "2016-03-07T10:00:00-05:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-10-02T21:00:00Z",
+     "local": "2026-10-02T17:00:00-04:00"
+    }
+   },
+   {
+    "id": 1242,
+    "name": "Lancaster DW",
+    "locality": "Lancaster",
+    "timezone": "America/New_York",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 4,
+     "name": "Unknown Governmental Organization"
+    },
+    "provider": {
+     "id": 119,
+     "name": "AirNow"
+    },
+    "isMobile": false,
+    "isMonitor": true,
+    "instruments": [
+     {
+      "id": 2,
+      "name": "Government Monitor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 2232,
+      "name": "o3 ppm",
+      "parameter": {
+       "id": 10,
+       "name": "o3",
+       "units": "ppm",
+       "displayName": "O\u2083"
+      }
+     },
+     {
+      "id": 2233,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 40.0439,
+     "longitude": -76.1125
+    },
+    "licenses": [
+     {
+      "id": 33,
+      "name": "US Public Domain",
+      "attribution": {
+       "name": "Unknown Governmental Organization",
+       "url": null
+      },
+      "dateFrom": "2016-01-30",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -76.1125,
+     40.0439,
+     -76.1125,
+     40.0439
+    ],
+    "distance": 16356.29252009,
+    "datetimeFirst": {
+     "utc": "2016-03-06T20:00:00Z",
+     "local": "2016-03-06T15:00:00-05:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-10-02T21:00:00Z",
+     "local": "2026-10-02T17:00:00-04:00"
+    }
+   },
+   {
+    "id": 5052625,
+    "name": "Beverly Drive",
+    "locality": null,
+    "timezone": "America/New_York",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 15923,
+     "name": "Johnny Makkar"
+    },
+    "provider": {
+     "id": 66,
+     "name": "AirGradient"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 24,
+      "name": "AirGradient Open Air Generation 1 (O-1PST)"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 13583718,
+      "name": "pm1 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 19,
+       "name": "pm1",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM1"
+      }
+     },
+     {
+      "id": 13583719,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     },
+     {
+      "id": 13583720,
+      "name": "relativehumidity %",
+      "parameter": {
+       "id": 98,
+       "name": "relativehumidity",
+       "units": "%",
+       "displayName": "RH"
+      }
+     },
+     {
+      "id": 13583721,
+      "name": "temperature c",
+      "parameter": {
+       "id": 100,
+       "name": "temperature",
+       "units": "c",
+       "displayName": "Temperature (C)"
+      }
+     },
+     {
+      "id": 13583722,
+      "name": "um003 particles/cm\u00b3",
+      "parameter": {
+       "id": 125,
+       "name": "um003",
+       "units": "particles/cm\u00b3",
+       "displayName": "PM0.3 count"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 40.0755,
+     "longitude": -76.3041689
+    },
+    "licenses": [
+     {
+      "id": 41,
+      "name": "CC BY 4.0",
+      "attribution": {
+       "name": "Johnny Makkar",
+       "url": null
+      },
+      "dateFrom": "2023-07-15",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -76.3041689,
+     40.0755,
+     -76.3041689,
+     40.0755
+    ],
+    "distance": 3908.46266156,
+    "datetimeFirst": {
+     "utc": "2025-07-12T20:00:00Z",
+     "local": "2025-07-12T16:00:00-04:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-10-02T21:00:00Z",
+     "local": "2026-10-02T17:00:00-04:00"
+    }
+   },
+   {
+    "id": 6454599,
+    "name": "Murrell",
+    "locality": null,
+    "timezone": "America/New_York",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 12,
+     "name": "AirGradient"
+    },
+    "provider": {
+     "id": 66,
+     "name": "AirGradient"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 24,
+      "name": "AirGradient Open Air Generation 1 (O-1PST)"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 16996571,
+      "name": "pm1 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 19,
+       "name": "pm1",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM1"
+      }
+     },
+     {
+      "id": 16996572,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     },
+     {
+      "id": 16996573,
+      "name": "relativehumidity %",
+      "parameter": {
+       "id": 98,
+       "name": "relativehumidity",
+       "units": "%",
+       "displayName": "RH"
+      }
+     },
+     {
+      "id": 16996574,
+      "name": "temperature c",
+      "parameter": {
+       "id": 100,
+       "name": "temperature",
+       "units": "c",
+       "displayName": "Temperature (C)"
+      }
+     },
+     {
+      "id": 16996575,
+      "name": "um003 particles/cm\u00b3",
+      "parameter": {
+       "id": 125,
+       "name": "um003",
+       "units": "particles/cm\u00b3",
+       "displayName": "PM0.3 count"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 40.1563122,
+     "longitude": -76.1669794
+    },
+    "licenses": [
+     {
+      "id": 41,
+      "name": "CC BY 4.0",
+      "attribution": {
+       "name": "AirGradient",
+       "url": null
+      },
+      "dateFrom": "2023-07-15",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -76.1669794,
+     40.1563122,
+     -76.1669794,
+     40.1563122
+    ],
+    "distance": 17396.79754956,
+    "datetimeFirst": {
+     "utc": "2026-07-21T21:00:00Z",
+     "local": "2026-07-21T17:00:00-04:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-10-02T21:00:00Z",
+     "local": "2026-10-02T17:00:00-04:00"
+    }
+   }
+  ]
+ }
+]

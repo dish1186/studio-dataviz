@@ -1,0 +1,3452 @@
+city_slug,date_local,site_id,sensor_class,site_mean_ugm3,n_sensors,sensor_ids
+medford,2016-03-17,S1777,reference,4.66,1,3136
+medford,2016-03-18,S1777,reference,5.78,1,3136
+medford,2016-03-19,S1777,reference,6.11,1,3136
+medford,2016-03-20,S1777,reference,5.26,1,3136
+medford,2016-03-21,S1777,reference,3.22,1,3136
+medford,2016-03-22,S1777,reference,4.03,1,3136
+medford,2016-03-23,S1777,reference,8.3,1,3136
+medford,2016-03-24,S1777,reference,3.76,1,3136
+medford,2016-03-25,S1777,reference,5.9,1,3136
+medford,2016-03-26,S1777,reference,7.28,1,3136
+medford,2016-03-27,S1777,reference,5.07,1,3136
+medford,2016-03-30,S1777,reference,7.19,1,3136
+medford,2016-04-01,S1777,reference,5.52,1,3136
+medford,2016-04-02,S1777,reference,5.95,1,3136
+medford,2016-04-03,S1777,reference,4.3,1,3136
+medford,2016-04-04,S1777,reference,1.7,1,3136
+medford,2016-04-05,S1777,reference,3.62,1,3136
+medford,2016-04-06,S1777,reference,3.25,1,3136
+medford,2016-04-07,S1777,reference,3.69,1,3136
+medford,2016-04-08,S1777,reference,4.7,1,3136
+medford,2016-04-09,S1777,reference,5.24,1,3136
+medford,2016-04-10,S1777,reference,3.48,1,3136
+medford,2016-04-12,S1777,reference,2.06,1,3136
+medford,2016-04-13,S1777,reference,2.65,1,3136
+medford,2016-04-14,S1777,reference,2.76,1,3136
+medford,2016-04-15,S1777,reference,5.6,1,3136
+medford,2016-04-16,S1777,reference,3.83,1,3136
+medford,2016-04-17,S1777,reference,3.58,1,3136
+medford,2016-04-18,S1777,reference,3.97,1,3136
+medford,2016-04-19,S1777,reference,9.18,1,3136
+medford,2016-04-20,S1777,reference,5.6,1,3136
+medford,2016-04-21,S1777,reference,3.62,1,3136
+medford,2016-04-22,S1777,reference,2.29,1,3136
+medford,2016-04-24,S1777,reference,3.23,1,3136
+medford,2016-04-25,S1777,reference,2.63,1,3136
+medford,2016-04-26,S1777,reference,6.71,1,3136
+medford,2016-04-29,S1777,reference,3.32,1,3136
+medford,2016-04-30,S1777,reference,5.58,1,3136
+medford,2016-05-01,S1777,reference,3.41,1,3136
+medford,2016-05-02,S1777,reference,2.95,1,3136
+medford,2016-05-03,S1777,reference,6.07,1,3136
+medford,2016-05-04,S1777,reference,6.29,1,3136
+medford,2016-05-05,S1777,reference,5.09,1,3136
+medford,2016-05-06,S1777,reference,4.8,1,3136
+medford,2016-05-07,S1777,reference,5.73,1,3136
+medford,2016-05-08,S1777,reference,3.24,1,3136
+medford,2016-05-09,S1777,reference,3.87,1,3136
+medford,2016-05-10,S1777,reference,2.53,1,3136
+medford,2016-05-11,S1777,reference,2.82,1,3136
+medford,2016-05-12,S1777,reference,4.19,1,3136
+medford,2016-05-13,S1777,reference,4.71,1,3136
+medford,2016-05-14,S1777,reference,2.6,1,3136
+medford,2016-05-15,S1777,reference,1.59,1,3136
+medford,2016-05-16,S1777,reference,1.7,1,3136
+medford,2016-05-17,S1777,reference,4.12,1,3136
+medford,2016-05-18,S1777,reference,4.58,1,3136
+medford,2016-05-19,S1777,reference,0.783,1,3136
+medford,2016-05-20,S1777,reference,0.979,1,3136
+medford,2016-05-21,S1777,reference,1.68,1,3136
+medford,2016-05-22,S1777,reference,1.73,1,3136
+medford,2016-05-23,S1777,reference,1.63,1,3136
+medford,2016-05-24,S1777,reference,2.15,1,3136
+medford,2016-05-25,S1777,reference,2.13,1,3136
+medford,2016-05-26,S1777,reference,2.84,1,3136
+medford,2016-05-27,S1777,reference,4.56,1,3136
+medford,2016-05-29,S1777,reference,3.82,1,3136
+medford,2016-05-30,S1777,reference,3.79,1,3136
+medford,2016-05-31,S1777,reference,5.05,1,3136
+medford,2016-06-01,S1777,reference,4.25,1,3136
+medford,2016-06-02,S1777,reference,2.42,1,3136
+medford,2016-06-03,S1777,reference,2.81,1,3136
+medford,2016-06-04,S1777,reference,4.62,1,3136
+medford,2016-06-05,S1777,reference,5.71,1,3136
+medford,2016-06-06,S1777,reference,6.94,1,3136
+medford,2016-06-07,S1777,reference,7.05,1,3136
+medford,2016-06-08,S1777,reference,3.61,1,3136
+medford,2016-06-09,S1777,reference,2.7,1,3136
+medford,2016-06-10,S1777,reference,1.05,1,3136
+medford,2016-06-11,S1777,reference,1.67,1,3136
+medford,2016-06-12,S1777,reference,1.76,1,3136
+medford,2016-06-13,S1777,reference,1.93,1,3136
+medford,2016-06-14,S1777,reference,1.09,1,3136
+medford,2016-06-15,S1777,reference,2.09,1,3136
+medford,2016-06-16,S1777,reference,2.03,1,3136
+medford,2016-06-17,S1777,reference,1.99,1,3136
+medford,2016-06-18,S1777,reference,1.43,1,3136
+medford,2016-06-19,S1777,reference,1.9,1,3136
+medford,2016-06-20,S1777,reference,2.42,1,3136
+medford,2016-06-21,S1777,reference,2.96,1,3136
+medford,2016-06-22,S1777,reference,2.41,1,3136
+medford,2016-06-23,S1777,reference,1.78,1,3136
+medford,2016-06-24,S1777,reference,1.18,1,3136
+medford,2016-06-25,S1777,reference,2.14,1,3136
+medford,2016-06-26,S1777,reference,2.68,1,3136
+medford,2016-06-28,S1777,reference,4.7,1,3136
+medford,2016-06-29,S1777,reference,3.03,1,3136
+medford,2016-06-30,S1777,reference,3.14,1,3136
+medford,2016-07-01,S1777,reference,2.11,1,3136
+medford,2016-07-02,S1777,reference,3.55,1,3136
+medford,2016-07-03,S1777,reference,7.93,1,3136
+medford,2016-07-04,S1777,reference,11.1,1,3136
+medford,2016-07-05,S1777,reference,9.04,1,3136
+medford,2016-07-06,S1777,reference,7.79,1,3136
+medford,2016-07-07,S1777,reference,7.98,1,3136
+medford,2016-07-08,S1777,reference,7.77,1,3136
+medford,2016-07-09,S1777,reference,6.66,1,3136
+medford,2016-07-10,S1777,reference,6.6,1,3136
+medford,2016-07-11,S1777,reference,6.95,1,3136
+medford,2016-07-12,S1777,reference,7.39,1,3136
+medford,2016-07-23,S1777,reference,7.56,1,3136
+medford,2016-07-24,S1777,reference,7.83,1,3136
+medford,2016-07-25,S1777,reference,8.55,1,3136
+medford,2016-07-26,S1777,reference,9.17,1,3136
+medford,2016-07-28,S1777,reference,8.82,1,3136
+medford,2016-07-29,S1777,reference,10.1,1,3136
+medford,2016-07-30,S1777,reference,8.49,1,3136
+medford,2016-07-31,S1777,reference,7.45,1,3136
+medford,2016-08-01,S1777,reference,7.43,1,3136
+medford,2016-08-04,S1777,reference,9.01,1,3136
+medford,2016-08-05,S1777,reference,9.06,1,3136
+medford,2016-08-06,S1777,reference,8.46,1,3136
+medford,2016-08-07,S1777,reference,7.92,1,3136
+medford,2016-08-08,S1777,reference,7.6,1,3136
+medford,2016-08-09,S1777,reference,7.36,1,3136
+medford,2016-08-10,S1777,reference,7.47,1,3136
+medford,2016-08-11,S1777,reference,8.25,1,3136
+medford,2016-08-12,S1777,reference,9.14,1,3136
+medford,2016-08-13,S1777,reference,10.3,1,3136
+medford,2016-08-14,S1777,reference,10.2,1,3136
+medford,2016-08-15,S1777,reference,8.84,1,3136
+medford,2016-08-18,S1777,reference,8.98,1,3136
+medford,2016-08-19,S1777,reference,11.2,1,3136
+medford,2016-08-20,S1777,reference,10.9,1,3136
+medford,2016-08-21,S1777,reference,8.87,1,3136
+medford,2016-08-22,S1777,reference,7.17,1,3136
+medford,2016-08-23,S1777,reference,11.5,1,3136
+medford,2016-08-24,S1777,reference,9.6,1,3136
+medford,2016-08-25,S1777,reference,9.0,1,3136
+medford,2016-08-27,S1777,reference,9.65,1,3136
+medford,2016-08-28,S1777,reference,10.6,1,3136
+medford,2016-08-29,S1777,reference,16.7,1,3136
+medford,2016-08-30,S1777,reference,9.03,1,3136
+medford,2016-08-31,S1777,reference,8.16,1,3136
+medford,2016-09-01,S1777,reference,11.0,1,3136
+medford,2016-09-02,S1777,reference,7.77,1,3136
+medford,2016-09-03,S1777,reference,7.36,1,3136
+medford,2016-09-04,S1777,reference,7.06,1,3136
+medford,2016-09-05,S1777,reference,6.94,1,3136
+medford,2016-09-06,S1777,reference,7.02,1,3136
+medford,2016-09-07,S1777,reference,7.03,1,3136
+medford,2016-09-08,S1777,reference,7.35,1,3136
+medford,2016-09-09,S1777,reference,7.6,1,3136
+medford,2016-09-10,S1777,reference,8.06,1,3136
+medford,2016-09-11,S1777,reference,7.27,1,3136
+medford,2016-09-12,S1777,reference,7.04,1,3136
+medford,2016-09-13,S1777,reference,7.08,1,3136
+medford,2016-09-14,S1777,reference,7.69,1,3136
+medford,2016-09-15,S1777,reference,8.26,1,3136
+medford,2016-09-27,S1777,reference,8.88,1,3136
+medford,2016-09-28,S1777,reference,8.38,1,3136
+medford,2016-09-29,S1777,reference,8.51,1,3136
+medford,2016-09-30,S1777,reference,9.31,1,3136
+medford,2016-10-01,S1777,reference,7.89,1,3136
+medford,2016-10-02,S1777,reference,7.76,1,3136
+medford,2016-10-03,S1777,reference,4.51,1,3136
+medford,2016-10-04,S1777,reference,2.77,1,3136
+medford,2016-10-05,S1777,reference,3.56,1,3136
+medford,2016-10-06,S1777,reference,3.64,1,3136
+medford,2016-10-07,S1777,reference,3.08,1,3136
+medford,2016-10-08,S1777,reference,2.9,1,3136
+medford,2016-10-09,S1777,reference,3.08,1,3136
+medford,2016-10-10,S1777,reference,3.15,1,3136
+medford,2016-10-11,S1777,reference,1.45,1,3136
+medford,2016-10-12,S1777,reference,2.68,1,3136
+medford,2016-10-18,S1777,reference,3.16,1,3136
+medford,2016-10-19,S1777,reference,8.95,1,3136
+medford,2016-10-20,S1777,reference,11.6,1,3136
+medford,2016-10-24,S1777,reference,6.08,1,3136
+medford,2016-10-26,S1777,reference,13.3,1,3136
+medford,2016-10-27,S1777,reference,6.21,1,3136
+medford,2016-10-28,S1777,reference,14.7,1,3136
+medford,2016-10-29,S1777,reference,12.3,1,3136
+medford,2016-10-30,S1777,reference,6.44,1,3136
+medford,2016-10-31,S1777,reference,7.76,1,3136
+medford,2016-11-01,S1777,reference,7.17,1,3136
+medford,2016-11-02,S1777,reference,14.6,1,3136
+medford,2016-11-03,S1777,reference,14.1,1,3136
+medford,2016-11-04,S1777,reference,18.2,1,3136
+medford,2016-11-05,S1777,reference,14.5,1,3136
+medford,2016-11-06,S1777,reference,4.78,1,3136
+medford,2016-11-07,S1777,reference,10.6,1,3136
+medford,2016-11-08,S1777,reference,13.1,1,3136
+medford,2016-11-09,S1777,reference,11.6,1,3136
+medford,2016-11-10,S1777,reference,14.1,1,3136
+medford,2016-11-11,S1777,reference,20.0,1,3136
+medford,2016-11-12,S1777,reference,5.08,1,3136
+medford,2016-11-13,S1777,reference,11.0,1,3136
+medford,2016-11-14,S1777,reference,10.4,1,3136
+medford,2016-11-15,S1777,reference,6.53,1,3136
+medford,2016-11-16,S1777,reference,8.97,1,3136
+medford,2016-11-19,S1777,reference,3.34,1,3136
+medford,2016-11-22,S1777,reference,12.1,1,3136
+medford,2016-11-25,S1777,reference,0.729,1,3136
+medford,2016-11-26,S1777,reference,2.23,1,3136
+medford,2016-11-27,S1777,reference,3.35,1,3136
+medford,2016-11-28,S1777,reference,5.16,1,3136
+medford,2016-11-29,S1777,reference,11.0,1,3136
+medford,2016-11-30,S1777,reference,10.9,1,3136
+medford,2016-12-01,S1777,reference,14.3,1,3136
+medford,2016-12-02,S1777,reference,13.0,1,3136
+medford,2016-12-03,S1777,reference,15.1,1,3136
+medford,2016-12-04,S1777,reference,12.5,1,3136
+medford,2016-12-05,S1777,reference,6.82,1,3136
+medford,2016-12-06,S1777,reference,18.8,1,3136
+medford,2016-12-07,S1777,reference,9.27,1,3136
+medford,2016-12-08,S1777,reference,10.9,1,3136
+medford,2016-12-09,S1777,reference,13.2,1,3136
+medford,2016-12-10,S1777,reference,9.28,1,3136
+medford,2016-12-11,S1777,reference,13.0,1,3136
+medford,2016-12-12,S1777,reference,13.9,1,3136
+medford,2016-12-13,S1777,reference,14.0,1,3136
+medford,2016-12-14,S1777,reference,11.0,1,3136
+medford,2016-12-15,S1777,reference,4.51,1,3136
+medford,2016-12-16,S1777,reference,9.13,1,3136
+medford,2016-12-17,S1777,reference,22.1,1,3136
+medford,2016-12-18,S1777,reference,23.5,1,3136
+medford,2016-12-19,S1777,reference,21.6,1,3136
+medford,2016-12-20,S1777,reference,22.5,1,3136
+medford,2016-12-21,S1777,reference,14.7,1,3136
+medford,2016-12-22,S1777,reference,17.6,1,3136
+medford,2016-12-25,S1777,reference,13.6,1,3136
+medford,2016-12-26,S1777,reference,18.7,1,3136
+medford,2016-12-27,S1777,reference,19.2,1,3136
+medford,2016-12-28,S1777,reference,13.1,1,3136
+medford,2016-12-29,S1777,reference,16.0,1,3136
+medford,2016-12-30,S1777,reference,7.41,1,3136
+medford,2016-12-31,S1777,reference,13.5,1,3136
+medford,2017-01-02,S1777,reference,9.02,1,3136
+medford,2017-01-03,S1777,reference,14.5,1,3136
+medford,2017-01-04,S1777,reference,20.4,1,3136
+medford,2017-01-05,S1777,reference,20.1,1,3136
+medford,2017-01-10,S1777,reference,10.9,1,3136
+medford,2017-01-11,S1777,reference,9.3,1,3136
+medford,2017-01-12,S1777,reference,15.3,1,3136
+medford,2017-01-13,S1777,reference,18.0,1,3136
+medford,2017-01-14,S1777,reference,29.0,1,3136
+medford,2017-01-17,S1777,reference,19.7,1,3136
+medford,2017-01-18,S1777,reference,0.947,1,3136
+medford,2017-01-19,S1777,reference,7.5,1,3136
+medford,2017-01-20,S1777,reference,2.59,1,3136
+medford,2017-01-21,S1777,reference,5.44,1,3136
+medford,2017-01-24,S1777,reference,17.4,1,3136
+medford,2017-01-25,S1777,reference,20.6,1,3136
+medford,2017-08-12,S1777,reference,20.5,1,3136
+medford,2017-08-13,S1777,reference,8.98,1,3136
+medford,2017-08-14,S1777,reference,17.6,1,3136
+medford,2017-08-15,S1777,reference,17.7,1,3136
+medford,2017-08-16,S1777,reference,24.1,1,3136
+medford,2017-08-17,S1777,reference,16.6,1,3136
+medford,2017-08-18,S1777,reference,26.5,1,3136
+medford,2017-08-19,S1777,reference,31.6,1,3136
+medford,2017-08-22,S1777,reference,87.1,1,3136
+medford,2017-08-23,S1777,reference,80.0,1,3136
+medford,2017-08-24,S1777,reference,28.7,1,3136
+medford,2017-08-26,S1777,reference,51.8,1,3136
+medford,2017-08-27,S1777,reference,73.2,1,3136
+medford,2017-08-28,S1777,reference,118.0,1,3136
+medford,2017-08-31,S1777,reference,43.9,1,3136
+medford,2017-09-01,S1777,reference,83.1,1,3136
+medford,2017-09-02,S1777,reference,147.0,1,3136
+medford,2017-09-08,S1777,reference,42.5,1,3136
+medford,2017-09-09,S1777,reference,27.7,1,3136
+medford,2017-09-10,S1777,reference,19.8,1,3136
+medford,2017-09-11,S1777,reference,25.9,1,3136
+medford,2017-09-12,S1777,reference,26.0,1,3136
+medford,2017-09-13,S1777,reference,23.6,1,3136
+medford,2017-09-14,S1777,reference,8.79,1,3136
+medford,2017-09-15,S1777,reference,20.1,1,3136
+medford,2017-09-17,S1777,reference,39.2,1,3136
+medford,2018-02-18,S1777,reference,5.21,1,3136
+medford,2018-05-19,S8696,reference,3.42,1,25247
+medford,2018-05-20,S8696,reference,4.3,1,25247
+medford,2018-05-21,S8696,reference,4.35,1,25247
+medford,2018-05-25,S8696,reference,4.48,1,25247
+medford,2018-05-26,S8696,reference,2.55,1,25247
+medford,2018-05-27,S8696,reference,3.29,1,25247
+medford,2018-05-28,S8696,reference,2.58,1,25247
+medford,2018-05-29,S8696,reference,2.87,1,25247
+medford,2018-05-30,S8696,reference,1.96,1,25247
+medford,2018-05-31,S8696,reference,1.84,1,25247
+medford,2018-06-01,S8696,reference,2.39,1,25247
+medford,2018-06-02,S8696,reference,2.21,1,25247
+medford,2018-06-03,S8696,reference,2.6,1,25247
+medford,2018-06-04,S8696,reference,2.04,1,25247
+medford,2018-06-06,S8696,reference,2.81,1,25247
+medford,2018-06-15,S8696,reference,1.9,1,25247
+medford,2018-06-18,S8696,reference,3.32,1,25247
+medford,2018-06-19,S8696,reference,5.84,1,25247
+medford,2018-06-20,S8696,reference,6.82,1,25247
+medford,2018-06-21,S8696,reference,4.89,1,25247
+medford,2018-06-22,S8696,reference,2.77,1,25247
+medford,2018-06-23,S8696,reference,2.5,1,25247
+medford,2018-06-24,S8696,reference,2.63,1,25247
+medford,2018-06-25,S8696,reference,1.75,1,25247
+medford,2018-06-26,S8696,reference,1.97,1,25247
+medford,2018-06-28,S8696,reference,2.2,1,25247
+medford,2018-06-30,S8696,reference,2.34,1,25247
+medford,2018-07-01,S8696,reference,1.73,1,25247
+medford,2018-07-02,S8696,reference,1.52,1,25247
+medford,2018-07-03,S8696,reference,2.09,1,25247
+medford,2018-07-05,S8696,reference,10.1,1,25247
+medford,2018-07-06,S8696,reference,7.72,1,25247
+medford,2018-07-07,S8696,reference,7.29,1,25247
+medford,2018-07-08,S8696,reference,7.83,1,25247
+medford,2018-07-10,S8696,reference,7.93,1,25247
+medford,2018-07-12,S8696,reference,9.0,1,25247
+medford,2018-07-13,S8696,reference,9.88,1,25247
+medford,2018-07-14,S8696,reference,10.3,1,25247
+medford,2018-07-15,S8696,reference,9.86,1,25247
+medford,2018-07-18,S8696,reference,33.4,1,25247
+medford,2018-07-21,S8696,reference,86.5,1,25247
+medford,2018-07-22,S8696,reference,94.8,1,25247
+medford,2018-07-23,S8696,reference,137.0,1,25247
+medford,2018-07-24,S8696,reference,83.5,1,25247
+medford,2018-07-25,S8696,reference,71.4,1,25247
+medford,2018-07-26,S8696,reference,40.0,1,25247
+medford,2018-07-27,S8696,reference,48.8,1,25247
+medford,2018-07-28,S8696,reference,51.4,1,25247
+medford,2018-07-29,S8696,reference,89.2,1,25247
+medford,2018-07-30,S8696,reference,62.4,1,25247
+medford,2018-07-31,S8696,reference,37.7,1,25247
+medford,2018-08-01,S8696,reference,50.9,1,25247
+medford,2018-08-02,S8696,reference,25.3,1,25247
+medford,2018-08-03,S8696,reference,31.3,1,25247
+medford,2018-08-04,S8696,reference,40.3,1,25247
+medford,2018-08-05,S8696,reference,80.8,1,25247
+medford,2018-08-06,S8696,reference,141.0,1,25247
+medford,2018-08-07,S8696,reference,90.7,1,25247
+medford,2018-08-08,S8696,reference,88.2,1,25247
+medford,2018-08-09,S8696,reference,165.0,1,25247
+medford,2018-08-10,S8696,reference,118.0,1,25247
+medford,2018-08-11,S8696,reference,67.2,1,25247
+medford,2018-08-12,S8696,reference,27.2,1,25247
+medford,2018-08-13,S8696,reference,42.3,1,25247
+medford,2018-08-17,S8696,reference,37.1,1,25247
+medford,2018-08-18,S8696,reference,28.9,1,25247
+medford,2018-08-19,S8696,reference,25.2,1,25247
+medford,2018-08-20,S8696,reference,42.4,1,25247
+medford,2018-08-24,S8696,reference,36.0,1,25247
+medford,2018-08-25,S8696,reference,26.8,1,25247
+medford,2018-08-26,S8696,reference,15.6,1,25247
+medford,2018-08-27,S8696,reference,10.8,1,25247
+medford,2018-08-28,S8696,reference,10.4,1,25247
+medford,2018-09-07,S8696,reference,43.3,1,25247
+medford,2018-09-08,S8696,reference,30.7,1,25247
+medford,2018-09-09,S8696,reference,29.2,1,25247
+medford,2018-09-10,S8696,reference,27.5,1,25247
+medford,2018-09-11,S8696,reference,9.68,1,25247
+medford,2018-09-12,S8696,reference,9.09,1,25247
+medford,2018-09-13,S8696,reference,14.9,1,25247
+medford,2018-09-14,S8696,reference,19.9,1,25247
+medford,2018-09-16,S8696,reference,9.85,1,25247
+medford,2018-09-17,S8696,reference,12.1,1,25247
+medford,2018-09-18,S8696,reference,11.7,1,25247
+medford,2018-09-19,S8696,reference,8.82,1,25247
+medford,2018-09-20,S8696,reference,9.12,1,25247
+medford,2018-09-21,S8696,reference,11.7,1,25247
+medford,2018-09-22,S8696,reference,13.7,1,25247
+medford,2018-09-23,S8696,reference,8.53,1,25247
+medford,2018-09-24,S8696,reference,9.74,1,25247
+medford,2018-09-25,S8696,reference,10.4,1,25247
+medford,2018-09-26,S8696,reference,11.5,1,25247
+medford,2018-09-27,S8696,reference,20.9,1,25247
+medford,2018-09-28,S8696,reference,51.9,1,25247
+medford,2018-09-29,S8696,reference,17.0,1,25247
+medford,2018-09-30,S8696,reference,9.66,1,25247
+medford,2018-10-01,S8696,reference,9.55,1,25247
+medford,2018-10-02,S8696,reference,8.42,1,25247
+medford,2018-10-03,S8696,reference,3.98,1,25247
+medford,2018-10-04,S8696,reference,4.69,1,25247
+medford,2018-10-05,S8696,reference,10.5,1,25247
+medford,2018-10-06,S8696,reference,9.36,1,25247
+medford,2018-10-07,S8696,reference,3.26,1,25247
+medford,2018-10-08,S8696,reference,2.87,1,25247
+medford,2018-10-09,S8696,reference,2.43,1,25247
+medford,2018-10-12,S8696,reference,6.85,1,25247
+medford,2018-10-13,S8696,reference,7.28,1,25247
+medford,2018-10-16,S8696,reference,4.89,1,25247
+medford,2018-10-19,S8696,reference,9.26,1,25247
+medford,2018-10-21,S8696,reference,10.5,1,25247
+medford,2018-10-22,S8696,reference,13.8,1,25247
+medford,2018-10-23,S8696,reference,12.9,1,25247
+medford,2018-10-24,S8696,reference,12.4,1,25247
+medford,2018-10-25,S8696,reference,8.49,1,25247
+medford,2018-10-26,S8696,reference,6.49,1,25247
+medford,2018-10-27,S8696,reference,3.74,1,25247
+medford,2018-10-28,S8696,reference,1.66,1,25247
+medford,2018-10-29,S8696,reference,3.6,1,25247
+medford,2018-10-30,S8696,reference,5.66,1,25247
+medford,2018-11-01,S8696,reference,14.4,1,25247
+medford,2018-11-02,S8696,reference,6.19,1,25247
+medford,2018-11-03,S8696,reference,8.4,1,25247
+medford,2019-01-18,S8696,reference,6.14,1,25247
+medford,2019-01-19,S8696,reference,2.97,1,25247
+medford,2019-01-20,S8696,reference,1.99,1,25247
+medford,2019-01-21,S8696,reference,4.05,1,25247
+medford,2019-01-22,S8696,reference,9.8,1,25247
+medford,2019-01-23,S8696,reference,8.99,1,25247
+medford,2019-01-24,S8696,reference,7.23,1,25247
+medford,2019-01-25,S8696,reference,16.2,1,25247
+medford,2019-01-26,S8696,reference,18.2,1,25247
+medford,2019-01-27,S8696,reference,25.5,1,25247
+medford,2019-01-28,S8696,reference,22.5,1,25247
+medford,2019-01-29,S8696,reference,24.8,1,25247
+medford,2019-01-30,S8696,reference,16.7,1,25247
+medford,2019-01-31,S8696,reference,14.5,1,25247
+medford,2019-02-01,S8696,reference,18.9,1,25247
+medford,2019-02-02,S8696,reference,13.3,1,25247
+medford,2019-02-03,S8696,reference,4.98,1,25247
+medford,2019-02-04,S8696,reference,2.66,1,25247
+medford,2019-02-05,S8696,reference,4.85,1,25247
+medford,2019-02-06,S8696,reference,9.48,1,25247
+medford,2019-02-07,S8696,reference,15.6,1,25247
+medford,2019-02-08,S8696,reference,17.0,1,25247
+medford,2019-02-09,S8696,reference,5.62,1,25247
+medford,2019-02-10,S8696,reference,4.35,1,25247
+medford,2019-02-13,S8696,reference,3.95,1,25247
+medford,2019-02-14,S8696,reference,3.62,1,25247
+medford,2019-02-15,S8696,reference,1.88,1,25247
+medford,2019-02-16,S8696,reference,1.16,1,25247
+medford,2019-02-17,S8696,reference,4.56,1,25247
+medford,2019-02-18,S8696,reference,7.68,1,25247
+medford,2019-02-19,S8696,reference,10.0,1,25247
+medford,2019-02-20,S8696,reference,4.19,1,25247
+medford,2019-02-21,S8696,reference,5.02,1,25247
+medford,2019-02-22,S8696,reference,5.39,1,25247
+medford,2019-02-23,S8696,reference,10.4,1,25247
+medford,2019-02-24,S8696,reference,4.29,1,25247
+medford,2019-02-25,S8696,reference,1.98,1,25247
+medford,2019-02-26,S8696,reference,8.78,1,25247
+medford,2019-02-27,S8696,reference,7.49,1,25247
+medford,2019-02-28,S8696,reference,8.33,1,25247
+medford,2019-03-01,S8696,reference,10.2,1,25247
+medford,2019-03-02,S8696,reference,9.69,1,25247
+medford,2019-03-03,S8696,reference,9.77,1,25247
+medford,2019-03-04,S8696,reference,8.14,1,25247
+medford,2019-03-05,S8696,reference,9.56,1,25247
+medford,2019-03-06,S8696,reference,10.4,1,25247
+medford,2019-03-07,S8696,reference,5.51,1,25247
+medford,2019-03-08,S8696,reference,5.6,1,25247
+medford,2019-03-09,S8696,reference,8.94,1,25247
+medford,2019-03-10,S8696,reference,5.17,1,25247
+medford,2019-03-11,S8696,reference,10.0,1,25247
+medford,2019-03-12,S8696,reference,4.7,1,25247
+medford,2019-03-13,S8696,reference,2.05,1,25247
+medford,2019-03-15,S8696,reference,7.37,1,25247
+medford,2019-03-19,S8696,reference,5.68,1,25247
+medford,2019-03-20,S8696,reference,2.09,1,25247
+medford,2019-03-21,S8696,reference,2.6,1,25247
+medford,2019-03-22,S8696,reference,6.45,1,25247
+medford,2019-03-23,S8696,reference,8.5,1,25247
+medford,2019-03-24,S8696,reference,6.63,1,25247
+medford,2019-03-25,S8696,reference,1.78,1,25247
+medford,2019-03-26,S8696,reference,4.25,1,25247
+medford,2019-03-28,S8696,reference,2.55,1,25247
+medford,2019-03-29,S8696,reference,3.88,1,25247
+medford,2019-03-30,S8696,reference,4.62,1,25247
+medford,2019-03-31,S8696,reference,6.22,1,25247
+medford,2019-04-19,S8696,reference,3.54,1,25247
+medford,2019-04-20,S8696,reference,1.29,1,25247
+medford,2019-04-21,S8696,reference,2.15,1,25247
+medford,2019-04-22,S8696,reference,4.4,1,25247
+medford,2019-04-23,S8696,reference,4.19,1,25247
+medford,2019-04-26,S8696,reference,6.99,1,25247
+medford,2019-04-27,S8696,reference,4.28,1,25247
+medford,2019-04-28,S8696,reference,2.48,1,25247
+medford,2019-04-29,S8696,reference,3.05,1,25247
+medford,2019-04-30,S8696,reference,3.79,1,25247
+medford,2019-05-01,S8696,reference,4.87,1,25247
+medford,2019-05-02,S8696,reference,6.34,1,25247
+medford,2019-05-03,S8696,reference,5.21,1,25247
+medford,2019-05-04,S8696,reference,4.38,1,25247
+medford,2019-05-05,S8696,reference,7.25,1,25247
+medford,2019-05-06,S8696,reference,3.61,1,25247
+medford,2019-05-07,S8696,reference,4.2,1,25247
+medford,2019-05-08,S8696,reference,3.97,1,25247
+medford,2019-05-09,S8696,reference,4.33,1,25247
+medford,2019-05-10,S8696,reference,3.79,1,25247
+medford,2019-05-11,S8696,reference,5.5,1,25247
+medford,2019-05-12,S8696,reference,4.86,1,25247
+medford,2019-05-14,S8696,reference,2.54,1,25247
+medford,2019-05-15,S8696,reference,2.85,1,25247
+medford,2019-05-16,S8696,reference,0.883,1,25247
+medford,2019-05-17,S8696,reference,1.72,1,25247
+medford,2019-05-18,S8696,reference,2.7,1,25247
+medford,2019-05-19,S8696,reference,1.01,1,25247
+medford,2019-05-20,S8696,reference,2.18,1,25247
+medford,2019-05-21,S8696,reference,1.14,1,25247
+medford,2019-05-22,S8696,reference,3.56,1,25247
+medford,2019-05-23,S8696,reference,2.86,1,25247
+medford,2019-05-24,S8696,reference,3.5,1,25247
+medford,2019-05-25,S8696,reference,1.4,1,25247
+medford,2019-05-26,S8696,reference,0.971,1,25247
+medford,2019-05-27,S8696,reference,2.3,1,25247
+medford,2019-05-28,S8696,reference,6.17,1,25247
+medford,2019-05-29,S8696,reference,12.4,1,25247
+medford,2019-05-30,S8696,reference,9.84,1,25247
+medford,2019-05-31,S8696,reference,7.64,1,25247
+medford,2019-06-01,S8696,reference,8.41,1,25247
+medford,2019-06-02,S8696,reference,5.0,1,25247
+medford,2019-06-03,S8696,reference,4.3,1,25247
+medford,2019-06-04,S8696,reference,3.04,1,25247
+medford,2019-06-05,S8696,reference,2.49,1,25247
+medford,2019-06-06,S8696,reference,1.83,1,25247
+medford,2019-06-08,S8696,reference,1.68,1,25247
+medford,2019-06-09,S8696,reference,2.09,1,25247
+medford,2019-06-10,S8696,reference,3.01,1,25247
+medford,2019-06-11,S8696,reference,4.93,1,25247
+medford,2019-06-13,S8696,reference,3.93,1,25247
+medford,2019-06-14,S8696,reference,3.74,1,25247
+medford,2019-06-15,S8696,reference,2.35,1,25247
+medford,2019-06-16,S8696,reference,2.15,1,25247
+medford,2019-06-17,S8696,reference,2.53,1,25247
+medford,2019-06-21,S8696,reference,2.29,1,25247
+medford,2019-06-22,S8696,reference,3.39,1,25247
+medford,2019-06-23,S8696,reference,2.29,1,25247
+medford,2019-06-24,S8696,reference,2.32,1,25247
+medford,2019-06-25,S8696,reference,2.55,1,25247
+medford,2019-06-26,S8696,reference,2.19,1,25247
+medford,2019-06-27,S8696,reference,1.49,1,25247
+medford,2019-06-28,S8696,reference,3.0,1,25247
+medford,2019-06-29,S8696,reference,4.74,1,25247
+medford,2019-06-30,S8696,reference,4.55,1,25247
+medford,2019-07-01,S8696,reference,5.29,1,25247
+medford,2019-07-03,S8696,reference,4.31,1,25247
+medford,2019-07-04,S8696,reference,11.8,1,25247
+medford,2019-07-05,S8696,reference,7.73,1,25247
+medford,2019-07-06,S8696,reference,6.56,1,25247
+medford,2019-07-07,S8696,reference,5.66,1,25247
+medford,2019-07-08,S8696,reference,5.47,1,25247
+medford,2019-07-09,S8696,reference,6.28,1,25247
+medford,2019-07-10,S8696,reference,5.48,1,25247
+medford,2019-07-11,S8696,reference,2.94,1,25247
+medford,2019-07-13,S8696,reference,4.16,1,25247
+medford,2019-07-14,S8696,reference,4.77,1,25247
+medford,2019-07-15,S8696,reference,3.92,1,25247
+medford,2019-07-16,S8696,reference,3.65,1,25247
+medford,2019-07-17,S8696,reference,4.18,1,25247
+medford,2019-07-18,S8696,reference,4.86,1,25247
+medford,2019-07-19,S8696,reference,4.39,1,25247
+medford,2019-07-20,S8696,reference,4.97,1,25247
+medford,2019-07-21,S8696,reference,5.65,1,25247
+medford,2019-07-22,S8696,reference,5.71,1,25247
+medford,2019-07-23,S8696,reference,4.7,1,25247
+medford,2019-07-24,S8696,reference,4.65,1,25247
+medford,2019-07-25,S8696,reference,32.4,1,25247
+medford,2019-07-26,S8696,reference,90.5,1,25247
+medford,2019-07-27,S8696,reference,61.9,1,25247
+medford,2019-07-28,S8696,reference,81.7,1,25247
+medford,2019-07-29,S8696,reference,54.8,1,25247
+medford,2019-07-30,S8696,reference,37.2,1,25247
+medford,2019-07-31,S8696,reference,17.3,1,25247
+medford,2019-08-01,S8696,reference,12.2,1,25247
+medford,2019-08-03,S8696,reference,9.56,1,25247
+medford,2019-08-04,S8696,reference,8.08,1,25247
+medford,2019-08-05,S8696,reference,9.95,1,25247
+medford,2019-08-06,S8696,reference,10.9,1,25247
+medford,2019-08-07,S8696,reference,9.35,1,25247
+medford,2019-08-08,S8696,reference,5.95,1,25247
+medford,2019-08-09,S8696,reference,6.36,1,25247
+medford,2019-08-10,S8696,reference,4.96,1,25247
+medford,2019-08-12,S8696,reference,7.05,1,25247
+medford,2019-08-13,S8696,reference,7.7,1,25247
+medford,2019-08-15,S8696,reference,5.58,1,25247
+medford,2019-08-16,S8696,reference,4.97,1,25247
+medford,2019-08-17,S8696,reference,5.55,1,25247
+medford,2019-08-18,S8696,reference,5.71,1,25247
+medford,2019-08-19,S8696,reference,6.01,1,25247
+medford,2019-08-20,S8696,reference,6.14,1,25247
+medford,2019-08-21,S8696,reference,5.56,1,25247
+medford,2019-08-22,S8696,reference,5.03,1,25247
+medford,2019-08-23,S8696,reference,5.74,1,25247
+medford,2019-08-29,S8696,reference,6.22,1,25247
+medford,2019-08-30,S8696,reference,5.37,1,25247
+medford,2019-08-31,S8696,reference,4.05,1,25247
+medford,2019-09-01,S8696,reference,3.13,1,25247
+medford,2019-09-02,S8696,reference,3.98,1,25247
+medford,2019-09-03,S8696,reference,4.44,1,25247
+medford,2019-09-04,S8696,reference,5.0,1,25247
+medford,2019-09-05,S8696,reference,6.47,1,25247
+medford,2019-09-06,S8696,reference,6.2,1,25247
+medford,2019-09-07,S8696,reference,5.08,1,25247
+medford,2019-09-08,S8696,reference,2.4,1,25247
+medford,2019-09-09,S8696,reference,2.54,1,25247
+medford,2019-09-11,S8696,reference,2.91,1,25247
+medford,2019-09-12,S8696,reference,3.61,1,25247
+medford,2019-09-13,S8696,reference,4.13,1,25247
+medford,2019-09-14,S8696,reference,3.98,1,25247
+medford,2019-09-15,S8696,reference,3.35,1,25247
+medford,2019-09-16,S8696,reference,3.22,1,25247
+medford,2019-09-17,S8696,reference,3.92,1,25247
+medford,2019-09-18,S8696,reference,4.51,1,25247
+medford,2019-09-19,S8696,reference,3.87,1,25247
+medford,2019-09-20,S8696,reference,5.53,1,25247
+medford,2019-09-21,S8696,reference,5.04,1,25247
+medford,2019-09-22,S8696,reference,5.67,1,25247
+medford,2019-09-23,S8696,reference,4.55,1,25247
+medford,2019-09-25,S8696,reference,6.23,1,25247
+medford,2019-09-26,S8696,reference,6.28,1,25247
+medford,2019-09-27,S8696,reference,4.95,1,25247
+medford,2019-09-28,S8696,reference,2.95,1,25247
+medford,2019-09-29,S8696,reference,5.23,1,25247
+medford,2019-09-30,S8696,reference,3.88,1,25247
+medford,2019-10-01,S8696,reference,5.2,1,25247
+medford,2019-10-02,S8696,reference,7.48,1,25247
+medford,2019-10-03,S8696,reference,4.28,1,25247
+medford,2019-10-04,S8696,reference,5.73,1,25247
+medford,2019-10-05,S8696,reference,5.12,1,25247
+medford,2019-10-06,S8696,reference,5.1,1,25247
+medford,2019-10-07,S8696,reference,7.63,1,25247
+medford,2019-10-08,S8696,reference,5.72,1,25247
+medford,2019-10-11,S8696,reference,10.2,1,25247
+medford,2019-10-12,S8696,reference,10.5,1,25247
+medford,2019-10-13,S8696,reference,10.2,1,25247
+medford,2019-10-14,S8696,reference,10.9,1,25247
+medford,2019-10-15,S8696,reference,13.0,1,25247
+medford,2019-10-16,S8696,reference,12.2,1,25247
+medford,2019-10-17,S8696,reference,4.55,1,25247
+medford,2019-10-18,S8696,reference,6.25,1,25247
+medford,2019-10-19,S8696,reference,7.2,1,25247
+medford,2019-10-20,S8696,reference,6.93,1,25247
+medford,2019-10-21,S8696,reference,7.18,1,25247
+medford,2019-10-22,S8696,reference,7.88,1,25247
+medford,2019-10-23,S8696,reference,6.57,1,25247
+medford,2019-10-24,S8696,reference,9.75,1,25247
+medford,2019-10-25,S8696,reference,9.68,1,25247
+medford,2019-10-26,S8696,reference,5.05,1,25247
+medford,2019-10-27,S8696,reference,7.53,1,25247
+medford,2019-10-28,S8696,reference,8.95,1,25247
+medford,2019-10-29,S8696,reference,6.33,1,25247
+medford,2019-10-30,S8696,reference,5.7,1,25247
+medford,2019-10-31,S8696,reference,11.2,1,25247
+medford,2019-11-01,S8696,reference,13.7,1,25247
+medford,2019-11-02,S8696,reference,13.6,1,25247
+medford,2019-11-03,S8696,reference,12.0,1,25247
+medford,2019-11-04,S8696,reference,11.9,1,25247
+medford,2019-11-05,S8696,reference,15.9,1,25247
+medford,2019-11-06,S8696,reference,18.3,1,25247
+medford,2019-11-07,S8696,reference,15.1,1,25247
+medford,2019-11-10,S8696,reference,14.7,1,25247
+medford,2019-11-11,S8696,reference,11.2,1,25247
+medford,2019-11-12,S8696,reference,12.3,1,25247
+medford,2019-11-13,S8696,reference,10.8,1,25247
+medford,2019-11-14,S8696,reference,15.6,1,25247
+medford,2019-11-15,S8696,reference,14.8,1,25247
+medford,2019-11-16,S8696,reference,10.6,1,25247
+medford,2019-11-17,S8696,reference,10.5,1,25247
+medford,2019-11-18,S8696,reference,11.2,1,25247
+medford,2019-11-19,S8696,reference,4.87,1,25247
+medford,2019-11-20,S8696,reference,10.8,1,25247
+medford,2019-11-21,S8696,reference,12.2,1,25247
+medford,2019-11-22,S8696,reference,12.7,1,25247
+medford,2019-11-23,S8696,reference,15.5,1,25247
+medford,2019-11-24,S8696,reference,20.8,1,25247
+medford,2019-11-25,S8696,reference,12.9,1,25247
+medford,2019-11-26,S8696,reference,7.26,1,25247
+medford,2019-11-27,S8696,reference,4.21,1,25247
+medford,2019-11-28,S8696,reference,8.19,1,25247
+medford,2019-11-29,S8696,reference,11.8,1,25247
+medford,2019-11-30,S8696,reference,6.12,1,25247
+medford,2019-12-01,S8696,reference,3.75,1,25247
+medford,2019-12-02,S8696,reference,13.0,1,25247
+medford,2019-12-03,S8696,reference,15.8,1,25247
+medford,2019-12-04,S8696,reference,17.3,1,25247
+medford,2019-12-05,S8696,reference,14.9,1,25247
+medford,2019-12-06,S8696,reference,4.8,1,25247
+medford,2019-12-07,S8696,reference,10.4,1,25247
+medford,2019-12-10,S8696,reference,12.7,1,25247
+medford,2019-12-11,S8696,reference,16.5,1,25247
+medford,2019-12-12,S8696,reference,14.6,1,25247
+medford,2019-12-13,S8696,reference,6.77,1,25247
+medford,2019-12-14,S8696,reference,10.0,1,25247
+medford,2019-12-15,S8696,reference,11.9,1,25247
+medford,2019-12-16,S8696,reference,14.0,1,25247
+medford,2019-12-17,S8696,reference,12.4,1,25247
+medford,2019-12-18,S8696,reference,8.37,1,25247
+medford,2019-12-19,S8696,reference,10.3,1,25247
+medford,2019-12-20,S8696,reference,1.87,1,25247
+medford,2019-12-22,S8696,reference,8.48,1,25247
+medford,2019-12-23,S8696,reference,6.54,1,25247
+medford,2019-12-24,S8696,reference,8.96,1,25247
+medford,2019-12-25,S8696,reference,5.0,1,25247
+medford,2019-12-26,S8696,reference,9.6,1,25247
+medford,2019-12-27,S8696,reference,13.8,1,25247
+medford,2019-12-28,S8696,reference,17.0,1,25247
+medford,2019-12-29,S8696,reference,23.1,1,25247
+medford,2019-12-30,S8696,reference,17.3,1,25247
+medford,2019-12-31,S8696,reference,8.71,1,25247
+medford,2020-01-01,S8696,reference,10.3,1,25247
+medford,2020-01-02,S8696,reference,11.0,1,25247
+medford,2020-01-03,S8696,reference,14.0,1,25247
+medford,2020-01-04,S8696,reference,6.67,1,25247
+medford,2020-01-05,S8696,reference,10.6,1,25247
+medford,2020-01-06,S8696,reference,9.55,1,25247
+medford,2020-01-09,S8696,reference,8.27,1,25247
+medford,2020-01-10,S8696,reference,9.65,1,25247
+medford,2020-01-11,S8696,reference,4.79,1,25247
+medford,2020-01-12,S8696,reference,6.08,1,25247
+medford,2020-01-13,S8696,reference,7.3,1,25247
+medford,2020-01-14,S8696,reference,4.87,1,25247
+medford,2020-01-17,S8696,reference,12.9,1,25247
+medford,2020-01-18,S8696,reference,8.26,1,25247
+medford,2020-01-19,S8696,reference,14.1,1,25247
+medford,2020-01-20,S8696,reference,12.3,1,25247
+medford,2020-01-21,S8696,reference,6.94,1,25247
+medford,2020-01-22,S8696,reference,9.95,1,25247
+medford,2020-01-23,S8696,reference,13.0,1,25247
+medford,2020-01-24,S8696,reference,8.03,1,25247
+medford,2020-01-25,S8696,reference,7.65,1,25247
+medford,2020-01-26,S8696,reference,6.57,1,25247
+medford,2020-01-27,S8696,reference,8.2,1,25247
+medford,2020-01-28,S8696,reference,5.9,1,25247
+medford,2020-01-29,S8696,reference,11.2,1,25247
+medford,2020-01-30,S8696,reference,10.9,1,25247
+medford,2020-01-31,S8696,reference,15.5,1,25247
+medford,2020-02-01,S8696,reference,9.22,1,25247
+medford,2020-02-02,S8696,reference,4.05,1,25247
+medford,2020-02-03,S8696,reference,8.25,1,25247
+medford,2020-02-04,S8696,reference,10.6,1,25247
+medford,2020-02-05,S8696,reference,9.03,1,25247
+medford,2020-02-08,S8696,reference,5.54,1,25247
+medford,2020-02-09,S8696,reference,9.44,1,25247
+medford,2020-02-10,S8696,reference,12.0,1,25247
+medford,2020-02-11,S8696,reference,12.3,1,25247
+medford,2020-02-12,S8696,reference,12.5,1,25247
+medford,2020-02-13,S8696,reference,10.5,1,25247
+medford,2020-02-14,S8696,reference,5.0,1,25247
+medford,2020-02-15,S8696,reference,10.3,1,25247
+medford,2020-02-16,S8696,reference,7.86,1,25247
+medford,2020-02-17,S8696,reference,8.78,1,25247
+medford,2020-02-18,S8696,reference,12.0,1,25247
+medford,2020-02-19,S8696,reference,10.3,1,25247
+medford,2020-02-20,S8696,reference,11.0,1,25247
+medford,2020-02-21,S8696,reference,12.3,1,25247
+medford,2020-02-22,S8696,reference,13.0,1,25247
+medford,2020-02-25,S8696,reference,9.29,1,25247
+medford,2020-02-26,S8696,reference,10.4,1,25247
+medford,2020-02-27,S8696,reference,11.7,1,25247
+medford,2020-02-28,S8696,reference,10.4,1,25247
+medford,2020-02-29,S8696,reference,3.43,1,25247
+medford,2020-03-01,S8696,reference,8.99,1,25247
+medford,2020-03-02,S8696,reference,9.75,1,25247
+medford,2020-03-03,S8696,reference,8.2,1,25247
+medford,2020-03-04,S8696,reference,7.23,1,25247
+medford,2020-03-05,S8696,reference,9.9,1,25247
+medford,2020-03-06,S8696,reference,7.8,1,25247
+medford,2020-03-09,S8696,reference,7.86,1,25247
+medford,2020-03-10,S8696,reference,8.08,1,25247
+medford,2020-03-11,S8696,reference,8.47,1,25247
+medford,2020-03-12,S8696,reference,9.16,1,25247
+medford,2020-03-13,S8696,reference,7.74,1,25247
+medford,2020-03-14,S8696,reference,2.89,1,25247
+medford,2020-03-15,S8696,reference,6.41,1,25247
+medford,2020-03-16,S8696,reference,5.69,1,25247
+medford,2020-03-17,S8696,reference,6.45,1,25247
+medford,2020-03-18,S8696,reference,3.86,1,25247
+medford,2020-03-19,S8696,reference,7.24,1,25247
+medford,2020-03-20,S8696,reference,5.96,1,25247
+medford,2020-03-24,S8696,reference,3.91,1,25247
+medford,2020-03-25,S8696,reference,4.51,1,25247
+medford,2020-03-26,S8696,reference,6.4,1,25247
+medford,2020-03-27,S8696,reference,6.41,1,25247
+medford,2020-03-28,S8696,reference,7.87,1,25247
+medford,2020-03-29,S8696,reference,4.78,1,25247
+medford,2020-03-30,S8696,reference,2.65,1,25247
+medford,2020-03-31,S8696,reference,3.66,1,25247
+medford,2020-04-01,S8696,reference,3.71,1,25247
+medford,2020-04-02,S8696,reference,4.03,1,25247
+medford,2020-04-03,S8696,reference,4.09,1,25247
+medford,2020-04-04,S8696,reference,5.96,1,25247
+medford,2020-04-05,S8696,reference,5.91,1,25247
+medford,2020-04-06,S8696,reference,3.65,1,25247
+medford,2020-04-08,S8696,reference,6.76,1,25247
+medford,2020-04-09,S8696,reference,6.13,1,25247
+medford,2020-04-10,S8696,reference,6.13,1,25247
+medford,2020-04-11,S8696,reference,4.89,1,25247
+medford,2020-04-12,S8696,reference,5.03,1,25247
+medford,2020-04-13,S8696,reference,5.03,1,25247
+medford,2020-04-14,S8696,reference,5.43,1,25247
+medford,2020-04-15,S8696,reference,5.02,1,25247
+medford,2020-04-16,S8696,reference,3.72,1,25247
+medford,2020-04-17,S8696,reference,4.75,1,25247
+medford,2020-04-18,S8696,reference,4.59,1,25247
+medford,2020-04-19,S8696,reference,4.23,1,25247
+medford,2020-04-20,S8696,reference,7.96,1,25247
+medford,2020-04-21,S8696,reference,4.45,1,25247
+medford,2020-04-22,S8696,reference,7.33,1,25247
+medford,2020-04-23,S8696,reference,5.6,1,25247
+medford,2020-04-26,S8696,reference,2.53,1,25247
+medford,2020-04-27,S8696,reference,3.33,1,25247
+medford,2020-04-28,S8696,reference,3.11,1,25247
+medford,2020-04-30,S8696,reference,3.3,1,25247
+medford,2020-05-01,S8696,reference,4.11,1,25247
+medford,2020-05-02,S8696,reference,3.75,1,25247
+medford,2020-05-04,S8696,reference,5.13,1,25247
+medford,2020-05-05,S8696,reference,4.24,1,25247
+medford,2020-05-08,S8696,reference,4.37,1,25247
+medford,2020-05-09,S8696,reference,5.51,1,25247
+medford,2020-05-10,S8696,reference,6.2,1,25247
+medford,2020-05-11,S8696,reference,3.78,1,25247
+medford,2020-05-15,S8696,reference,4.71,1,25247
+medford,2020-05-16,S8696,reference,3.42,1,25247
+medford,2020-05-17,S8696,reference,2.35,1,25247
+medford,2020-05-18,S8696,reference,2.61,1,25247
+medford,2020-05-19,S8696,reference,2.37,1,25247
+medford,2020-05-20,S8696,reference,2.27,1,25247
+medford,2020-05-21,S8696,reference,2.34,1,25247
+medford,2020-05-22,S8696,reference,2.23,1,25247
+medford,2020-05-23,S8696,reference,3.13,1,25247
+medford,2020-05-24,S8696,reference,2.82,1,25247
+medford,2020-05-25,S8696,reference,2.82,1,25247
+medford,2020-05-26,S8696,reference,2.97,1,25247
+medford,2020-05-27,S8696,reference,3.68,1,25247
+medford,2020-05-29,S8696,reference,6.29,1,25247
+medford,2020-05-31,S8696,reference,2.55,1,25247
+medford,2020-06-01,S8696,reference,3.47,1,25247
+medford,2020-06-02,S8696,reference,4.26,1,25247
+medford,2020-06-03,S8696,reference,3.79,1,25247
+medford,2020-06-04,S8696,reference,3.16,1,25247
+medford,2020-06-05,S8696,reference,3.89,1,25247
+medford,2020-06-08,S8696,reference,2.7,1,25247
+medford,2020-06-09,S8696,reference,2.95,1,25247
+medford,2020-06-10,S8696,reference,2.62,1,25247
+medford,2020-06-11,S8696,reference,2.84,1,25247
+medford,2020-06-12,S8696,reference,3.18,1,25247
+medford,2020-06-13,S8696,reference,2.45,1,25247
+medford,2020-06-14,S8696,reference,2.6,1,25247
+medford,2020-06-15,S8696,reference,2.37,1,25247
+medford,2020-06-17,S8696,reference,2.91,1,25247
+medford,2020-06-18,S8696,reference,3.56,1,25247
+medford,2020-06-19,S8696,reference,6.6,1,25247
+medford,2020-06-20,S8696,reference,4.63,1,25247
+medford,2020-06-21,S8696,reference,2.33,1,25247
+medford,2020-06-23,S8696,reference,4.26,1,25247
+medford,2020-06-24,S8696,reference,4.47,1,25247
+medford,2020-06-26,S8696,reference,4.58,1,25247
+medford,2020-06-27,S8696,reference,3.48,1,25247
+medford,2020-06-28,S8696,reference,2.04,1,25247
+medford,2020-06-29,S8696,reference,2.59,1,25247
+medford,2020-06-30,S8696,reference,2.88,1,25247
+medford,2020-07-01,S8696,reference,2.78,1,25247
+medford,2020-07-04,S8696,reference,11.6,1,25247
+medford,2020-07-05,S8696,reference,13.2,1,25247
+medford,2020-07-07,S8696,reference,2.97,1,25247
+medford,2020-07-08,S8696,reference,3.75,1,25247
+medford,2020-07-09,S8696,reference,4.43,1,25247
+medford,2020-07-10,S8696,reference,3.9,1,25247
+medford,2020-07-12,S8696,reference,3.58,1,25247
+medford,2020-07-13,S8696,reference,3.23,1,25247
+medford,2020-07-14,S8696,reference,4.12,1,25247
+medford,2020-07-15,S8696,reference,4.61,1,25247
+medford,2020-07-16,S8696,reference,4.02,1,25247
+medford,2020-07-17,S8696,reference,3.5,1,25247
+medford,2020-07-18,S8696,reference,3.65,1,25247
+medford,2020-07-21,S8696,reference,6.26,1,25247
+medford,2020-07-22,S8696,reference,4.66,1,25247
+medford,2020-07-23,S8696,reference,3.3,1,25247
+medford,2020-07-24,S8696,reference,3.35,1,25247
+medford,2020-07-25,S8696,reference,3.55,1,25247
+medford,2020-07-26,S8696,reference,5.02,1,25247
+medford,2020-07-27,S8696,reference,10.2,1,25247
+medford,2020-08-06,S8696,reference,4.06,1,25247
+medford,2020-08-21,S8696,reference,2.35,1,25247
+medford,2020-08-22,S8696,reference,3.74,1,25247
+medford,2020-08-23,S8696,reference,16.4,1,25247
+medford,2020-08-24,S8696,reference,25.5,1,25247
+medford,2020-08-25,S8696,reference,13.8,1,25247
+medford,2020-08-26,S8696,reference,5.33,1,25247
+medford,2020-08-27,S8696,reference,4.62,1,25247
+medford,2020-08-28,S8696,reference,7.44,1,25247
+medford,2020-08-29,S8696,reference,6.81,1,25247
+medford,2020-08-30,S8696,reference,2.89,1,25247
+medford,2020-09-01,S8696,reference,4.78,1,25247
+medford,2020-09-02,S8696,reference,6.08,1,25247
+medford,2020-09-05,S8696,reference,12.8,1,25247
+medford,2020-09-07,S8696,reference,14.0,1,25247
+medford,2020-09-08,S8696,reference,40.7,1,25247
+medford,2020-09-09,S8696,reference,8.32,1,25247
+medford,2020-09-11,S8696,reference,271.0,1,25247
+medford,2020-09-12,S8696,reference,275.0,1,25247
+medford,2020-09-15,S8696,reference,189.0,1,25247
+medford,2020-09-16,S8696,reference,203.0,1,25247
+medford,2020-09-18,S8696,reference,23.8,1,25247
+medford,2020-09-19,S8696,reference,14.8,1,25247
+medford,2020-09-20,S8696,reference,11.1,1,25247
+medford,2020-09-21,S8696,reference,21.9,1,25247
+medford,2020-09-24,S8696,reference,5.44,1,25247
+medford,2020-09-25,S8696,reference,8.44,1,25247
+medford,2020-09-26,S8696,reference,10.6,1,25247
+medford,2020-09-27,S8696,reference,6.13,1,25247
+medford,2020-09-28,S8696,reference,5.23,1,25247
+medford,2020-09-29,S8696,reference,5.99,1,25247
+medford,2020-09-30,S8696,reference,23.0,1,25247
+medford,2020-10-01,S8696,reference,44.3,1,25247
+medford,2020-10-06,S8696,reference,41.5,1,25247
+medford,2020-10-07,S8696,reference,82.7,1,25247
+medford,2020-10-08,S8696,reference,90.5,1,25247
+medford,2020-10-09,S8696,reference,71.0,1,25247
+medford,2020-10-10,S8696,reference,29.1,1,25247
+medford,2020-10-13,S8696,reference,4.45,1,25247
+medford,2020-10-14,S8696,reference,3.47,1,25247
+medford,2020-10-16,S8696,reference,6.27,1,25247
+medford,2020-10-17,S8696,reference,5.75,1,25247
+medford,2020-10-18,S8696,reference,6.57,1,25247
+medford,2020-10-19,S8696,reference,6.95,1,25247
+medford,2020-10-24,S8696,reference,5.06,1,25247
+medford,2020-10-25,S8696,reference,5.92,1,25247
+medford,2020-10-26,S8696,reference,8.93,1,25247
+medford,2020-10-27,S8696,reference,11.7,1,25247
+medford,2020-10-28,S8696,reference,10.6,1,25247
+medford,2020-10-30,S8696,reference,10.5,1,25247
+medford,2020-11-01,S8696,reference,12.4,1,25247
+medford,2020-11-04,S8696,reference,12.4,1,25247
+medford,2020-11-05,S8696,reference,9.73,1,25247
+medford,2020-11-06,S8696,reference,2.63,1,25247
+medford,2020-11-08,S8696,reference,4.4,1,25247
+medford,2020-11-09,S8696,reference,12.0,1,25247
+medford,2020-11-10,S8696,reference,9.43,1,25247
+medford,2020-11-11,S8696,reference,8.67,1,25247
+medford,2020-11-12,S8696,reference,11.4,1,25247
+medford,2020-11-13,S8696,reference,6.13,1,25247
+medford,2020-11-14,S8696,reference,8.13,1,25247
+medford,2020-11-15,S8696,reference,7.03,1,25247
+medford,2020-11-16,S8696,reference,10.3,1,25247
+medford,2020-11-17,S8696,reference,5.16,1,25247
+medford,2020-11-18,S8696,reference,5.47,1,25247
+medford,2020-11-19,S8696,reference,8.95,1,25247
+medford,2020-11-20,S8696,reference,21.6,1,25247
+medford,2020-11-23,S8696,reference,20.4,1,25247
+medford,2020-11-26,S8696,reference,11.8,1,25247
+medford,2020-11-27,S8696,reference,14.6,1,25247
+medford,2020-11-28,S8696,reference,16.1,1,25247
+medford,2020-11-29,S8696,reference,14.9,1,25247
+medford,2020-11-30,S8696,reference,13.5,1,25247
+medford,2020-12-01,S8696,reference,14.9,1,25247
+medford,2020-12-04,S8696,reference,23.8,1,25247
+medford,2020-12-06,S8696,reference,13.0,1,25247
+medford,2020-12-07,S8696,reference,13.5,1,25247
+medford,2020-12-08,S8696,reference,18.5,1,25247
+medford,2020-12-09,S8696,reference,16.3,1,25247
+medford,2020-12-10,S8696,reference,11.1,1,25247
+medford,2020-12-14,S8696,reference,9.86,1,25247
+medford,2020-12-15,S8696,reference,13.0,1,25247
+medford,2020-12-16,S8696,reference,12.1,1,25247
+medford,2020-12-17,S8696,reference,6.73,1,25247
+medford,2020-12-19,S8696,reference,16.3,1,25247
+medford,2020-12-20,S8696,reference,17.8,1,25247
+medford,2020-12-22,S8696,reference,8.96,1,25247
+medford,2020-12-23,S8696,reference,10.4,1,25247
+medford,2020-12-24,S8696,reference,16.4,1,25247
+medford,2020-12-25,S8696,reference,6.1,1,25247
+medford,2020-12-26,S8696,reference,7.27,1,25247
+medford,2020-12-27,S8696,reference,10.3,1,25247
+medford,2020-12-28,S8696,reference,13.9,1,25247
+medford,2020-12-29,S8696,reference,17.0,1,25247
+medford,2021-01-03,S8696,reference,14.8,1,25247
+medford,2021-01-04,S8696,reference,4.9,1,25247
+medford,2021-01-05,S8696,reference,12.9,1,25247
+medford,2021-01-06,S8696,reference,11.2,1,25247
+medford,2021-01-07,S8696,reference,9.42,1,25247
+medford,2021-01-08,S8696,reference,7.96,1,25247
+medford,2021-01-11,S8696,reference,14.5,1,25247
+medford,2021-01-12,S8696,reference,5.03,1,25247
+medford,2021-01-13,S8696,reference,6.01,1,25247
+medford,2021-01-14,S8696,reference,11.6,1,25247
+medford,2021-01-15,S8696,reference,12.0,1,25247
+medford,2021-01-16,S8696,reference,12.8,1,25247
+medford,2021-01-17,S8696,reference,14.3,1,25247
+medford,2021-01-18,S8696,reference,9.89,1,25247
+medford,2021-01-19,S8696,reference,10.2,1,25247
+medford,2021-01-20,S8696,reference,16.7,1,25247
+medford,2021-01-21,S8696,reference,16.7,1,25247
+medford,2021-01-23,S8696,reference,9.55,1,25247
+medford,2021-01-24,S8696,reference,11.1,1,25247
+medford,2021-01-25,S8696,reference,6.34,1,25247
+medford,2021-01-26,S8696,reference,8.57,1,25247
+medford,2021-01-27,S8696,reference,5.87,1,25247
+medford,2021-01-28,S8696,reference,12.2,1,25247
+medford,2021-01-29,S8696,reference,8.86,1,25247
+medford,2021-02-02,S8696,reference,6.35,1,25247
+medford,2021-02-03,S8696,reference,7.26,1,25247
+medford,2021-02-04,S8696,reference,13.9,1,25247
+medford,2021-02-05,S8696,reference,15.9,1,25247
+medford,2021-02-06,S8696,reference,15.8,1,25247
+medford,2021-02-07,S8696,reference,15.2,1,25247
+medford,2021-02-10,S8696,reference,13.8,1,25247
+medford,2021-02-11,S8696,reference,14.4,1,25247
+medford,2021-02-12,S8696,reference,14.4,1,25247
+medford,2021-02-13,S8696,reference,7.86,1,25247
+medford,2021-02-18,S8696,reference,8.04,1,25247
+medford,2021-02-21,S8696,reference,9.54,1,25247
+medford,2021-02-22,S8696,reference,14.4,1,25247
+medford,2021-02-23,S8696,reference,8.93,1,25247
+medford,2021-02-24,S8696,reference,8.86,1,25247
+medford,2021-02-25,S8696,reference,6.92,1,25247
+medford,2021-03-01,S8696,reference,10.3,1,25247
+medford,2021-03-04,S8696,reference,10.6,1,25247
+medford,2021-03-05,S8696,reference,4.33,1,25247
+medford,2021-03-06,S8696,reference,4.57,1,25247
+medford,2021-03-07,S8696,reference,5.06,1,25247
+medford,2021-03-08,S8696,reference,7.27,1,25247
+medford,2021-03-12,S8696,reference,7.1,1,25247
+medford,2021-03-13,S8696,reference,9.22,1,25247
+medford,2021-03-15,S8696,reference,3.56,1,25247
+medford,2021-03-17,S8696,reference,6.45,1,25247
+medford,2021-03-18,S8696,reference,2.82,1,25247
+medford,2021-03-19,S8696,reference,4.3,1,25247
+medford,2021-03-21,S8696,reference,3.37,1,25247
+medford,2021-03-22,S8696,reference,3.78,1,25247
+medford,2021-03-23,S8696,reference,5.21,1,25247
+medford,2021-03-25,S8696,reference,3.2,1,25247
+medford,2021-03-26,S8696,reference,6.79,1,25247
+medford,2021-03-27,S8696,reference,5.75,1,25247
+medford,2021-03-29,S8696,reference,4.23,1,25247
+medford,2021-03-30,S8696,reference,5.9,1,25247
+medford,2021-04-05,S8696,reference,4.04,1,25247
+medford,2021-04-06,S8696,reference,5.83,1,25247
+medford,2021-04-07,S8696,reference,6.48,1,25247
+medford,2021-04-08,S8696,reference,3.24,1,25247
+medford,2021-04-10,S8696,reference,3.28,1,25247
+medford,2021-04-17,S8696,reference,9.2,1,25247
+medford,2021-04-18,S8696,reference,5.7,1,25247
+medford,2021-04-19,S8696,reference,5.33,1,25247
+medford,2021-04-23,S8696,reference,7.04,1,25247
+medford,2021-04-28,S8696,reference,4.53,1,25247
+medford,2021-05-05,S8696,reference,4.53,1,25247
+medford,2021-05-06,S8696,reference,3.22,1,25247
+medford,2021-05-15,S8696,reference,5.0,1,25247
+medford,2021-05-16,S8696,reference,3.94,1,25247
+medford,2021-05-17,S8696,reference,3.55,1,25247
+medford,2021-05-19,S8696,reference,2.14,1,25247
+medford,2021-06-02,S8696,reference,6.65,1,25247
+medford,2021-06-05,S8696,reference,2.44,1,25247
+medford,2021-06-07,S8696,reference,2.42,1,25247
+medford,2021-06-12,S8696,reference,4.06,1,25247
+medford,2021-06-13,S8696,reference,2.42,1,25247
+medford,2021-06-14,S8696,reference,2.13,1,25247
+medford,2021-06-19,S8696,reference,4.3,1,25247
+medford,2021-06-20,S8696,reference,6.17,1,25247
+medford,2021-06-21,S8696,reference,6.03,1,25247
+medford,2021-06-22,S8696,reference,7.09,1,25247
+medford,2021-06-23,S8696,reference,4.82,1,25247
+medford,2021-06-26,S8696,reference,4.95,1,25247
+medford,2021-06-27,S8696,reference,6.4,1,25247
+medford,2021-07-02,S8696,reference,9.7,1,25247
+medford,2021-07-03,S8696,reference,9.47,1,25247
+medford,2021-07-04,S8696,reference,17.4,1,25247
+medford,2021-07-05,S8696,reference,11.7,1,25247
+medford,2021-07-06,S8696,reference,6.21,1,25247
+medford,2021-07-08,S8696,reference,5.25,1,25247
+medford,2021-07-13,S8696,reference,16.7,1,25247
+medford,2021-07-18,S8696,reference,5.51,1,25247
+medford,2021-07-22,S8696,reference,6.34,1,25247
+medford,2021-07-23,S8696,reference,10.2,1,25247
+medford,2021-07-24,S8696,reference,11.1,1,25247
+medford,2021-08-06,S8696,reference,29.2,1,25247
+medford,2021-08-07,S8696,reference,42.6,1,25247
+medford,2021-08-10,S8696,reference,125.0,1,25247
+medford,2021-08-11,S8696,reference,130.0,1,25247
+medford,2021-08-12,S8696,reference,137.0,1,25247
+medford,2021-08-13,S8696,reference,106.0,1,25247
+medford,2021-08-14,S8696,reference,145.0,1,25247
+medford,2021-08-15,S8696,reference,114.0,1,25247
+medford,2021-08-16,S8696,reference,18.3,1,25247
+medford,2021-08-17,S8696,reference,4.51,1,25247
+medford,2021-08-18,S8696,reference,41.2,1,25247
+medford,2021-08-20,S8696,reference,32.2,1,25247
+medford,2021-08-21,S8696,reference,17.0,1,25247
+medford,2021-08-22,S8696,reference,31.4,1,25247
+medford,2021-08-23,S8696,reference,32.6,1,25247
+medford,2021-08-24,S8696,reference,57.3,1,25247
+medford,2021-08-25,S8696,reference,43.2,1,25247
+medford,2021-08-26,S8696,reference,21.7,1,25247
+medford,2021-08-27,S8696,reference,36.7,1,25247
+medford,2021-08-28,S8696,reference,63.1,1,25247
+medford,2021-08-31,S8696,reference,52.5,1,25247
+medford,2021-09-01,S8696,reference,61.5,1,25247
+medford,2021-09-02,S8696,reference,64.5,1,25247
+medford,2021-09-03,S8696,reference,81.6,1,25247
+medford,2021-09-04,S8696,reference,124.0,1,25247
+medford,2021-09-05,S8696,reference,129.0,1,25247
+medford,2021-09-06,S8696,reference,92.4,1,25247
+medford,2021-09-07,S8696,reference,84.4,1,25247
+medford,2021-09-08,S8696,reference,42.8,1,25247
+medford,2021-09-09,S8696,reference,51.4,1,25247
+medford,2021-09-10,S8696,reference,32.2,1,25247
+medford,2021-09-11,S8696,reference,15.7,1,25247
+medford,2021-09-12,S8696,reference,15.7,1,25247
+medford,2021-09-13,S8696,reference,17.1,1,25247
+medford,2021-09-14,S8696,reference,24.7,1,25247
+medford,2021-09-15,S8696,reference,17.3,1,25247
+medford,2021-09-16,S8696,reference,22.1,1,25247
+medford,2021-09-17,S8696,reference,31.7,1,25247
+medford,2021-09-18,S8696,reference,5.93,1,25247
+medford,2021-09-19,S8696,reference,3.63,1,25247
+medford,2021-09-20,S8696,reference,4.43,1,25247
+medford,2021-09-21,S8696,reference,5.13,1,25247
+medford,2021-09-22,S8696,reference,5.4,1,25247
+medford,2021-09-23,S8696,reference,4.3,1,25247
+medford,2021-09-24,S8696,reference,5.64,1,25247
+medford,2021-09-25,S8696,reference,12.8,1,25247
+medford,2021-09-26,S8696,reference,6.64,1,25247
+medford,2021-09-27,S8696,reference,3.84,1,25247
+medford,2021-09-30,S8696,reference,5.09,1,25247
+medford,2021-10-01,S8696,reference,4.46,1,25247
+medford,2021-10-02,S8696,reference,6.93,1,25247
+medford,2021-10-03,S8696,reference,6.5,1,25247
+medford,2021-10-04,S8696,reference,6.75,1,25247
+medford,2021-10-05,S8696,reference,4.63,1,25247
+medford,2021-10-06,S8696,reference,3.54,1,25247
+medford,2021-10-07,S8696,reference,4.77,1,25247
+medford,2021-10-08,S8696,reference,4.98,1,25247
+medford,2021-10-09,S8696,reference,5.24,1,25247
+medford,2021-10-10,S8696,reference,6.24,1,25247
+medford,2021-10-11,S8696,reference,3.09,1,25247
+medford,2021-10-12,S8696,reference,4.85,1,25247
+medford,2021-10-13,S8696,reference,3.87,1,25247
+medford,2021-10-14,S8696,reference,3.6,1,25247
+medford,2021-10-15,S8696,reference,5.73,1,25247
+medford,2021-10-16,S8696,reference,7.03,1,25247
+medford,2021-10-17,S8696,reference,5.55,1,25247
+medford,2021-10-18,S8696,reference,3.6,1,25247
+medford,2021-10-19,S8696,reference,4.99,1,25247
+medford,2021-10-20,S8696,reference,4.94,1,25247
+medford,2021-10-21,S8696,reference,3.96,1,25247
+medford,2021-10-22,S8696,reference,3.2,1,25247
+medford,2021-10-23,S8696,reference,3.12,1,25247
+medford,2021-10-24,S8696,reference,2.18,1,25247
+medford,2021-10-25,S8696,reference,6.5,1,25247
+medford,2021-10-26,S8696,reference,9.01,1,25247
+medford,2021-10-27,S8696,reference,9.96,1,25247
+medford,2021-10-30,S8696,reference,5.73,1,25247
+medford,2021-10-31,S8696,reference,6.83,1,25247
+medford,2021-11-01,S8696,reference,5.06,1,25247
+medford,2021-11-02,S8696,reference,8.42,1,25247
+medford,2021-11-03,S8696,reference,9.06,1,25247
+medford,2021-11-04,S8696,reference,4.14,1,25247
+medford,2021-11-05,S8696,reference,10.5,1,25247
+medford,2021-11-09,S8696,reference,4.69,1,25247
+medford,2021-11-10,S8696,reference,11.3,1,25247
+medford,2021-11-11,S8696,reference,17.2,1,25247
+medford,2021-11-12,S8696,reference,15.3,1,25247
+medford,2021-11-13,S8696,reference,15.2,1,25247
+medford,2021-11-14,S8696,reference,12.5,1,25247
+medford,2021-11-15,S8696,reference,11.6,1,25247
+medford,2021-11-16,S8696,reference,8.83,1,25247
+medford,2021-11-17,S8696,reference,20.6,1,25247
+medford,2021-11-18,S8696,reference,15.4,1,25247
+medford,2021-11-19,S8696,reference,9.86,1,25247
+medford,2021-11-20,S8696,reference,14.3,1,25247
+medford,2021-11-21,S8696,reference,21.0,1,25247
+medford,2021-11-22,S8696,reference,20.5,1,25247
+medford,2021-11-23,S8696,reference,13.8,1,25247
+medford,2021-11-24,S8696,reference,15.5,1,25247
+medford,2021-11-25,S8696,reference,20.3,1,25247
+medford,2021-11-26,S8696,reference,14.8,1,25247
+medford,2021-11-29,S8696,reference,7.44,1,25247
+medford,2021-11-30,S8696,reference,8.61,1,25247
+medford,2021-12-01,S8696,reference,14.3,1,25247
+medford,2021-12-02,S8696,reference,11.4,1,25247
+medford,2021-12-03,S8696,reference,11.3,1,25247
+medford,2021-12-04,S8696,reference,10.7,1,25247
+medford,2021-12-05,S8696,reference,9.85,1,25247
+medford,2021-12-06,S8696,reference,8.59,1,25247
+medford,2021-12-07,S8696,reference,12.0,1,25247
+medford,2021-12-08,S8696,reference,10.9,1,25247
+medford,2021-12-09,S8696,reference,7.76,1,25247
+medford,2021-12-10,S8696,reference,13.1,1,25247
+medford,2021-12-11,S8696,reference,9.24,1,25247
+medford,2021-12-12,S8696,reference,5.05,1,25247
+medford,2021-12-13,S8696,reference,6.65,1,25247
+medford,2021-12-14,S8696,reference,10.7,1,25247
+medford,2021-12-15,S8696,reference,8.68,1,25247
+medford,2021-12-16,S8696,reference,11.5,1,25247
+medford,2021-12-17,S8696,reference,11.4,1,25247
+medford,2021-12-18,S8696,reference,18.2,1,25247
+medford,2021-12-19,S8696,reference,11.7,1,25247
+medford,2021-12-20,S8696,reference,5.6,1,25247
+medford,2021-12-22,S8696,reference,11.3,1,25247
+medford,2021-12-23,S8696,reference,6.0,1,25247
+medford,2021-12-24,S8696,reference,4.95,1,25247
+medford,2021-12-25,S8696,reference,10.8,1,25247
+medford,2021-12-26,S8696,reference,3.51,1,25247
+medford,2021-12-29,S8696,reference,11.4,1,25247
+medford,2021-12-30,S8696,reference,10.3,1,25247
+medford,2021-12-31,S8696,reference,12.6,1,25247
+medford,2022-01-01,S8696,reference,13.5,1,25247
+medford,2022-01-03,S8696,reference,2.52,1,25247
+medford,2022-01-04,S8696,reference,5.08,1,25247
+medford,2022-01-05,S8696,reference,11.9,1,25247
+medford,2022-01-06,S8696,reference,7.93,1,25247
+medford,2022-01-07,S8696,reference,6.2,1,25247
+medford,2022-01-08,S8696,reference,8.59,1,25247
+medford,2022-01-09,S8696,reference,12.4,1,25247
+medford,2022-01-10,S8696,reference,13.2,1,25247
+medford,2022-01-11,S8696,reference,15.7,1,25247
+medford,2022-01-12,S8696,reference,15.1,1,25247
+medford,2022-01-13,S8696,reference,10.4,1,25247
+medford,2022-01-14,S8696,reference,12.9,1,25247
+medford,2022-01-15,S8696,reference,13.9,1,25247
+medford,2022-01-16,S8696,reference,16.9,1,25247
+medford,2022-01-17,S8696,reference,20.0,1,25247
+medford,2022-01-18,S8696,reference,15.7,1,25247
+medford,2022-01-19,S8696,reference,9.95,1,25247
+medford,2022-01-20,S8696,reference,13.5,1,25247
+medford,2022-01-21,S8696,reference,10.6,1,25247
+medford,2022-01-22,S8696,reference,17.0,1,25247
+medford,2022-01-23,S8696,reference,15.5,1,25247
+medford,2022-01-24,S8696,reference,13.7,1,25247
+medford,2022-01-25,S8696,reference,11.0,1,25247
+medford,2022-01-28,S8696,reference,14.1,1,25247
+medford,2022-01-29,S8696,reference,14.4,1,25247
+medford,2022-01-30,S8696,reference,11.2,1,25247
+medford,2022-01-31,S8696,reference,8.01,1,25247
+medford,2022-02-03,S8696,reference,11.0,1,25247
+medford,2022-02-04,S8696,reference,11.9,1,25247
+medford,2022-02-05,S8696,reference,12.2,1,25247
+medford,2022-02-06,S8696,reference,11.7,1,25247
+medford,2022-02-07,S8696,reference,12.6,1,25247
+medford,2022-02-08,S8696,reference,12.2,1,25247
+medford,2022-02-09,S8696,reference,13.4,1,25247
+medford,2022-02-10,S8696,reference,11.4,1,25247
+medford,2022-02-11,S8696,reference,11.4,1,25247
+medford,2022-02-12,S8696,reference,13.7,1,25247
+medford,2022-02-13,S8696,reference,17.2,1,25247
+medford,2022-02-14,S8696,reference,8.85,1,25247
+medford,2022-02-15,S8696,reference,6.08,1,25247
+medford,2022-02-16,S8696,reference,7.05,1,25247
+medford,2022-02-17,S8696,reference,9.74,1,25247
+medford,2022-02-18,S8696,reference,9.19,1,25247
+medford,2022-02-19,S8696,reference,10.7,1,25247
+medford,2022-02-20,S8696,reference,8.49,1,25247
+medford,2022-02-21,S8696,reference,5.31,1,25247
+medford,2022-02-22,S8696,reference,6.6,1,25247
+medford,2022-02-23,S8696,reference,11.5,1,25247
+medford,2022-02-24,S8696,reference,13.0,1,25247
+medford,2022-02-27,S8696,reference,3.88,1,25247
+medford,2022-02-28,S8696,reference,5.98,1,25247
+medford,2022-03-03,S8696,reference,3.65,1,25247
+medford,2022-03-04,S8696,reference,5.1,1,25247
+medford,2022-03-05,S8696,reference,5.97,1,25247
+medford,2022-03-06,S8696,reference,11.0,1,25247
+medford,2022-03-07,S8696,reference,10.0,1,25247
+medford,2022-03-08,S8696,reference,8.1,1,25247
+medford,2022-03-09,S8696,reference,5.55,1,25247
+medford,2022-03-10,S8696,reference,6.64,1,25247
+medford,2022-03-11,S8696,reference,9.84,1,25247
+medford,2022-03-13,S8696,reference,3.83,1,25247
+medford,2022-03-14,S8696,reference,7.12,1,25247
+medford,2022-03-15,S8696,reference,4.95,1,25247
+medford,2022-03-16,S8696,reference,5.57,1,25247
+medford,2022-03-17,S8696,reference,6.65,1,25247
+medford,2022-03-18,S8696,reference,6.57,1,25247
+medford,2022-03-19,S8696,reference,5.49,1,25247
+medford,2022-03-21,S8696,reference,7.44,1,25247
+medford,2022-03-25,S8696,reference,6.02,1,25247
+medford,2022-03-26,S8696,reference,4.19,1,25247
+medford,2022-03-27,S8696,reference,4.86,1,25247
+medford,2022-03-29,S8696,reference,4.39,1,25247
+medford,2022-03-30,S8696,reference,3.74,1,25247
+medford,2022-03-31,S8696,reference,5.49,1,25247
+medford,2022-04-01,S8696,reference,6.13,1,25247
+medford,2022-04-02,S8696,reference,4.4,1,25247
+medford,2022-04-03,S8696,reference,5.33,1,25247
+medford,2022-04-04,S8696,reference,4.17,1,25247
+medford,2022-04-05,S8696,reference,5.08,1,25247
+medford,2022-04-06,S8696,reference,6.41,1,25247
+medford,2022-04-07,S8696,reference,7.72,1,25247
+medford,2022-04-08,S8696,reference,4.79,1,25247
+medford,2022-04-09,S8696,reference,4.25,1,25247
+medford,2022-04-10,S8696,reference,3.7,1,25247
+medford,2022-04-11,S8696,reference,2.67,1,25247
+medford,2022-04-12,S8696,reference,3.48,1,25247
+medford,2022-04-13,S8696,reference,3.61,1,25247
+medford,2022-04-15,S8696,reference,4.32,1,25247
+medford,2022-04-16,S8696,reference,3.67,1,25247
+medford,2022-04-17,S8696,reference,6.37,1,25247
+medford,2022-04-18,S8696,reference,5.75,1,25247
+medford,2022-04-19,S8696,reference,5.7,1,25247
+medford,2022-04-20,S8696,reference,5.05,1,25247
+medford,2022-04-21,S8696,reference,3.47,1,25247
+medford,2022-04-22,S8696,reference,4.11,1,25247
+medford,2022-04-23,S8696,reference,4.86,1,25247
+medford,2022-04-24,S8696,reference,4.41,1,25247
+medford,2022-04-26,S8696,reference,4.73,1,25247
+medford,2022-04-28,S8696,reference,5.64,1,25247
+medford,2022-04-29,S8696,reference,5.1,1,25247
+medford,2022-04-30,S8696,reference,4.48,1,25247
+medford,2022-05-01,S8696,reference,3.86,1,25247
+medford,2022-05-02,S8696,reference,2.92,1,25247
+medford,2022-05-03,S8696,reference,3.41,1,25247
+medford,2022-05-04,S8696,reference,4.32,1,25247
+medford,2022-05-05,S8696,reference,3.5,1,25247
+medford,2022-05-06,S8696,reference,3.89,1,25247
+medford,2022-05-07,S8696,reference,2.91,1,25247
+medford,2022-05-08,S8696,reference,2.87,1,25247
+medford,2022-05-09,S8696,reference,2.94,1,25247
+medford,2022-05-10,S8696,reference,3.58,1,25247
+medford,2022-05-11,S8696,reference,4.38,1,25247
+medford,2022-05-12,S8696,reference,3.88,1,25247
+medford,2022-05-13,S8696,reference,5.08,1,25247
+medford,2022-05-14,S8696,reference,4.53,1,25247
+medford,2022-05-15,S8696,reference,3.81,1,25247
+medford,2022-05-16,S8696,reference,3.69,1,25247
+medford,2022-05-17,S8696,reference,4.07,1,25247
+medford,2022-05-18,S8696,reference,5.03,1,25247
+medford,2022-05-19,S8696,reference,3.77,1,25247
+medford,2022-05-20,S8696,reference,3.65,1,25247
+medford,2022-05-21,S8696,reference,4.84,1,25247
+medford,2022-05-24,S8696,reference,4.91,1,25247
+medford,2022-05-25,S8696,reference,5.22,1,25247
+medford,2022-05-28,S8696,reference,3.4,1,25247
+medford,2022-05-29,S8696,reference,2.46,1,25247
+medford,2022-05-30,S8696,reference,2.72,1,25247
+medford,2022-06-02,S8696,reference,4.43,1,25247
+medford,2022-06-03,S8696,reference,3.55,1,25247
+medford,2022-06-04,S8696,reference,4.97,1,25247
+medford,2022-06-05,S8696,reference,3.05,1,25247
+medford,2022-06-06,S8696,reference,3.42,1,25247
+medford,2022-06-07,S8696,reference,4.05,1,25247
+medford,2022-06-08,S8696,reference,3.93,1,25247
+medford,2022-06-09,S8696,reference,4.15,1,25247
+medford,2022-06-10,S8696,reference,2.98,1,25247
+medford,2022-06-11,S8696,reference,2.47,1,25247
+medford,2022-06-12,S8696,reference,2.43,1,25247
+medford,2022-06-13,S8696,reference,3.46,1,25247
+medford,2022-06-14,S8696,reference,9.33,1,25247
+medford,2022-06-15,S8696,reference,7.93,1,25247
+medford,2022-06-16,S8696,reference,3.92,1,25247
+medford,2022-06-17,S8696,reference,3.77,1,25247
+medford,2022-06-18,S8696,reference,4.18,1,25247
+medford,2022-06-19,S8696,reference,5.33,1,25247
+medford,2022-06-20,S8696,reference,4.8,1,25247
+medford,2022-06-21,S8696,reference,4.76,1,25247
+medford,2022-06-22,S8696,reference,4.57,1,25247
+medford,2022-06-23,S8696,reference,3.79,1,25247
+medford,2022-06-24,S8696,reference,3.68,1,25247
+medford,2022-06-27,S8696,reference,4.83,1,25247
+medford,2022-06-28,S8696,reference,3.55,1,25247
+medford,2022-06-29,S8696,reference,3.73,1,25247
+medford,2022-06-30,S8696,reference,4.24,1,25247
+medford,2022-07-01,S8696,reference,4.86,1,25247
+medford,2022-07-02,S8696,reference,6.85,1,25247
+medford,2022-07-03,S8696,reference,5.32,1,25247
+medford,2022-07-04,S8696,reference,8.93,1,25247
+medford,2022-07-05,S8696,reference,5.01,1,25247
+medford,2022-07-06,S8696,reference,3.13,1,25247
+medford,2022-07-07,S8696,reference,3.35,1,25247
+medford,2022-07-08,S8696,reference,4.47,1,25247
+medford,2022-07-09,S8696,reference,4.76,1,25247
+medford,2022-07-10,S8696,reference,4.51,1,25247
+medford,2022-07-11,S8696,reference,5.51,1,25247
+medford,2022-07-12,S8696,reference,7.03,1,25247
+medford,2022-07-13,S8696,reference,4.58,1,25247
+medford,2022-07-14,S8696,reference,5.17,1,25247
+medford,2022-07-15,S8696,reference,2.78,1,25247
+medford,2022-07-16,S8696,reference,1.33,1,25247
+medford,2022-07-17,S8696,reference,1.33,1,25247
+medford,2022-07-18,S8696,reference,1.3,1,25247
+medford,2022-07-19,S8696,reference,2.91,1,25247
+medford,2022-07-21,S8696,reference,6.43,1,25247
+medford,2022-07-22,S8696,reference,4.45,1,25247
+medford,2022-07-23,S8696,reference,3.17,1,25247
+medford,2022-07-24,S8696,reference,4.46,1,25247
+medford,2022-07-25,S8696,reference,6.06,1,25247
+medford,2022-07-27,S8696,reference,10.9,1,25247
+medford,2022-07-28,S8696,reference,10.7,1,25247
+medford,2022-07-29,S8696,reference,13.1,1,25247
+medford,2022-07-30,S8696,reference,17.7,1,25247
+medford,2022-07-31,S8696,reference,36.8,1,25247
+medford,2022-08-01,S8696,reference,22.9,1,25247
+medford,2022-08-02,S8696,reference,16.2,1,25247
+medford,2022-08-03,S8696,reference,16.8,1,25247
+medford,2022-08-04,S8696,reference,5.05,1,25247
+medford,2022-08-05,S8696,reference,4.21,1,25247
+medford,2022-08-06,S8696,reference,4.95,1,25247
+medford,2022-08-07,S8696,reference,7.45,1,25247
+medford,2022-08-08,S8696,reference,18.6,1,25247
+medford,2022-08-09,S8696,reference,19.5,1,25247
+medford,2022-08-10,S8696,reference,10.4,1,25247
+medford,2022-08-11,S8696,reference,17.8,1,25247
+medford,2022-08-12,S8696,reference,19.1,1,25247
+medford,2022-08-13,S8696,reference,4.64,1,25247
+medford,2022-08-14,S8696,reference,4.45,1,25247
+medford,2022-08-15,S8696,reference,5.75,1,25247
+medford,2022-08-16,S8696,reference,6.21,1,25247
+medford,2022-08-17,S8696,reference,7.1,1,25247
+medford,2022-08-18,S8696,reference,7.66,1,25247
+medford,2022-08-19,S8696,reference,14.1,1,25247
+medford,2022-08-20,S8696,reference,5.07,1,25247
+medford,2022-08-21,S8696,reference,3.39,1,25247
+medford,2022-08-22,S8696,reference,7.19,1,25247
+medford,2022-08-23,S8696,reference,4.79,1,25247
+medford,2022-08-26,S8696,reference,8.38,1,25247
+medford,2022-08-27,S8696,reference,3.01,1,25247
+medford,2022-08-28,S8696,reference,13.7,1,25247
+medford,2022-08-29,S8696,reference,37.3,1,25247
+medford,2022-08-30,S8696,reference,75.4,1,25247
+medford,2022-08-31,S8696,reference,45.0,1,25247
+medford,2022-09-01,S8696,reference,60.4,1,25247
+medford,2022-09-02,S8696,reference,48.6,1,25247
+medford,2022-09-03,S8696,reference,50.6,1,25247
+medford,2022-09-04,S8696,reference,15.3,1,25247
+medford,2022-09-05,S8696,reference,7.85,1,25247
+medford,2022-09-06,S8696,reference,11.3,1,25247
+medford,2022-09-07,S8696,reference,18.9,1,25247
+medford,2022-09-08,S8696,reference,5.73,1,25247
+medford,2022-09-09,S8696,reference,15.1,1,25247
+medford,2022-09-10,S8696,reference,19.3,1,25247
+medford,2022-09-11,S8696,reference,16.4,1,25247
+medford,2022-09-12,S8696,reference,19.7,1,25247
+medford,2022-09-13,S8696,reference,7.02,1,25247
+medford,2022-09-14,S8696,reference,7.18,1,25247
+medford,2022-09-15,S8696,reference,6.5,1,25247
+medford,2022-09-16,S8696,reference,6.59,1,25247
+medford,2022-09-17,S8696,reference,5.2,1,25247
+medford,2022-09-18,S8696,reference,5.11,1,25247
+medford,2022-09-19,S8696,reference,4.48,1,25247
+medford,2022-09-20,S8696,reference,3.4,1,25247
+medford,2022-09-21,S8696,reference,3.62,1,25247
+medford,2022-09-22,S8696,reference,4.48,1,25247
+medford,2022-09-23,S8696,reference,5.5,1,25247
+medford,2022-09-25,S8696,reference,7.58,1,25247
+medford,2022-09-26,S8696,reference,6.94,1,25247
+medford,2022-09-27,S8696,reference,6.74,1,25247
+medford,2022-09-28,S8696,reference,3.78,1,25247
+medford,2022-09-29,S8696,reference,2.75,1,25247
+medford,2022-09-30,S8696,reference,4.52,1,25247
+medford,2022-10-01,S8696,reference,7.06,1,25247
+medford,2022-10-02,S8696,reference,6.97,1,25247
+medford,2022-10-03,S8696,reference,7.75,1,25247
+medford,2022-10-04,S8696,reference,8.38,1,25247
+medford,2022-10-05,S8696,reference,10.6,1,25247
+medford,2022-10-06,S8696,reference,15.1,1,25247
+medford,2022-10-07,S8696,reference,12.3,1,25247
+medford,2022-10-08,S8696,reference,19.5,1,25247
+medford,2022-10-09,S8696,reference,25.6,1,25247
+medford,2022-10-10,S8696,reference,21.3,1,25247
+medford,2022-10-11,S8696,reference,23.1,1,25247
+medford,2022-10-12,S8696,reference,15.8,1,25247
+medford,2022-10-13,S8696,reference,11.2,1,25247
+medford,2022-10-14,S8696,reference,10.5,1,25247
+medford,2022-10-15,S8696,reference,10.5,1,25247
+medford,2022-10-16,S8696,reference,7.72,1,25247
+medford,2022-10-17,S8696,reference,9.86,1,25247
+medford,2022-10-18,S8696,reference,10.1,1,25247
+medford,2022-10-19,S8696,reference,9.8,1,25247
+medford,2022-10-20,S8696,reference,15.5,1,25247
+medford,2022-10-21,S8696,reference,22.5,1,25247
+medford,2022-10-22,S8696,reference,2.49,1,25247
+medford,2022-10-23,S8696,reference,2.74,1,25247
+medford,2022-10-25,S8696,reference,5.76,1,25247
+medford,2022-10-26,S8696,reference,6.82,1,25247
+medford,2022-10-27,S8696,reference,7.21,1,25247
+medford,2022-10-28,S8696,reference,8.22,1,25247
+medford,2022-10-29,S8696,reference,10.1,1,25247
+medford,2022-10-30,S8696,reference,9.2,1,25247
+medford,2022-10-31,S8696,reference,9.29,1,25247
+medford,2022-11-01,S8696,reference,3.65,1,25247
+medford,2022-11-02,S8696,reference,3.75,1,25247
+medford,2022-11-03,S8696,reference,5.1,1,25247
+medford,2022-11-04,S8696,reference,11.0,1,25247
+medford,2022-11-05,S8696,reference,7.15,1,25247
+medford,2022-11-06,S8696,reference,4.66,1,25247
+medford,2022-11-07,S8696,reference,3.59,1,25247
+medford,2022-11-08,S8696,reference,5.98,1,25247
+medford,2022-11-09,S8696,reference,9.34,1,25247
+medford,2022-11-10,S8696,reference,14.6,1,25247
+medford,2022-11-11,S8696,reference,13.9,1,25247
+medford,2022-11-12,S8696,reference,10.6,1,25247
+medford,2022-11-13,S8696,reference,12.7,1,25247
+medford,2022-11-14,S8696,reference,12.0,1,25247
+medford,2022-11-15,S8696,reference,10.8,1,25247
+medford,2022-11-16,S8696,reference,13.4,1,25247
+medford,2022-11-17,S8696,reference,22.2,1,25247
+medford,2022-11-18,S8696,reference,13.0,1,25247
+medford,2022-11-19,S8696,reference,10.8,1,25247
+medford,2022-11-20,S8696,reference,16.0,1,25247
+medford,2022-11-21,S8696,reference,16.8,1,25247
+medford,2022-11-24,S8696,reference,15.6,1,25247
+medford,2022-11-25,S8696,reference,13.9,1,25247
+medford,2022-11-26,S8696,reference,11.6,1,25247
+medford,2022-11-27,S8696,reference,10.5,1,25247
+medford,2022-11-28,S8696,reference,9.93,1,25247
+medford,2022-11-29,S8696,reference,10.8,1,25247
+medford,2022-11-30,S8696,reference,8.2,1,25247
+medford,2022-12-01,S8696,reference,4.55,1,25247
+medford,2022-12-02,S8696,reference,9.74,1,25247
+medford,2022-12-03,S8696,reference,14.5,1,25247
+medford,2022-12-04,S8696,reference,15.6,1,25247
+medford,2022-12-05,S8696,reference,9.63,1,25247
+medford,2022-12-06,S8696,reference,21.4,1,25247
+medford,2022-12-07,S8696,reference,15.7,1,25247
+medford,2022-12-08,S8696,reference,13.4,1,25247
+medford,2022-12-09,S8696,reference,6.43,1,25247
+medford,2022-12-10,S8696,reference,2.84,1,25247
+medford,2022-12-11,S8696,reference,6.41,1,25247
+medford,2022-12-12,S8696,reference,5.33,1,25247
+medford,2022-12-13,S8696,reference,27.2,1,25247
+medford,2022-12-14,S8696,reference,26.7,1,25247
+medford,2022-12-15,S8696,reference,20.3,1,25247
+medford,2022-12-16,S8696,reference,15.0,1,25247
+medford,2022-12-17,S8696,reference,19.1,1,25247
+medford,2022-12-18,S8696,reference,24.0,1,25247
+medford,2022-12-19,S8696,reference,22.5,1,25247
+medford,2022-12-20,S8696,reference,20.0,1,25247
+medford,2022-12-21,S8696,reference,22.0,1,25247
+medford,2022-12-24,S8696,reference,10.4,1,25247
+medford,2022-12-25,S8696,reference,12.6,1,25247
+medford,2022-12-26,S8696,reference,4.92,1,25247
+medford,2022-12-27,S8696,reference,3.01,1,25247
+medford,2022-12-28,S8696,reference,6.93,1,25247
+medford,2022-12-29,S8696,reference,4.25,1,25247
+medford,2022-12-30,S8696,reference,6.57,1,25247
+medford,2022-12-31,S8696,reference,11.0,1,25247
+medford,2023-01-01,S8696,reference,15.2,1,25247
+medford,2023-01-02,S8696,reference,9.18,1,25247
+medford,2023-01-03,S8696,reference,14.3,1,25247
+medford,2023-01-04,S8696,reference,4.24,1,25247
+medford,2023-01-05,S8696,reference,3.06,1,25247
+medford,2023-01-06,S8696,reference,4.7,1,25247
+medford,2023-01-07,S8696,reference,1.85,1,25247
+medford,2023-01-08,S8696,reference,3.11,1,25247
+medford,2023-01-09,S8696,reference,4.09,1,25247
+medford,2023-01-10,S8696,reference,4.47,1,25247
+medford,2023-01-16,S8696,reference,12.4,1,25247
+medford,2023-01-17,S8696,reference,9.76,1,25247
+medford,2023-01-18,S8696,reference,7.79,1,25247
+medford,2023-01-19,S8696,reference,9.95,1,25247
+medford,2023-01-20,S8696,reference,12.5,1,25247
+medford,2023-01-23,S8696,reference,15.2,1,25247
+medford,2023-01-24,S8696,reference,14.8,1,25247
+medford,2023-01-25,S8696,reference,12.2,1,25247
+medford,2023-01-26,S8696,reference,11.8,1,25247
+medford,2023-01-27,S8696,reference,8.58,1,25247
+medford,2023-01-28,S8696,reference,6.72,1,25247
+medford,2023-01-29,S8696,reference,4.88,1,25247
+medford,2023-01-30,S8696,reference,9.76,1,25247
+medford,2023-01-31,S8696,reference,10.8,1,25247
+medford,2023-02-14,S8696,reference,3.15,1,25247
+medford,2023-03-19,S8696,reference,6.48,1,25247
+medford,2023-03-21,S8696,reference,5.85,1,25247
+medford,2023-03-22,S8696,reference,5.69,1,25247
+medford,2023-03-24,S8696,reference,3.62,1,25247
+medford,2023-03-25,S8696,reference,3.91,1,25247
+medford,2023-03-26,S8696,reference,4.75,1,25247
+medford,2023-03-27,S8696,reference,5.27,1,25247
+medford,2023-03-28,S8696,reference,1.96,1,25247
+medford,2023-03-29,S8696,reference,2.79,1,25247
+medford,2023-03-30,S8696,reference,5.3,1,25247
+medford,2023-03-31,S8696,reference,3.4,1,25247
+medford,2023-04-01,S8696,reference,2.8,1,25247
+medford,2023-04-02,S8696,reference,2.5,1,25247
+medford,2023-04-03,S8696,reference,2.44,1,25247
+medford,2023-04-04,S8696,reference,3.0,1,25247
+medford,2023-04-05,S8696,reference,5.17,1,25247
+medford,2023-04-06,S8696,reference,4.68,1,25247
+medford,2023-04-07,S8696,reference,3.03,1,25247
+medford,2023-04-08,S8696,reference,5.47,1,25247
+medford,2023-04-09,S8696,reference,6.82,1,25247
+medford,2023-04-10,S8696,reference,4.63,1,25247
+medford,2023-04-11,S8696,reference,2.79,1,25247
+medford,2023-04-12,S8696,reference,3.75,1,25247
+medford,2023-04-13,S8696,reference,5.08,1,25247
+medford,2023-04-14,S8696,reference,4.13,1,25247
+medford,2023-04-15,S8696,reference,4.7,1,25247
+medford,2023-04-16,S8696,reference,4.34,1,25247
+medford,2023-04-17,S8696,reference,5.1,1,25247
+medford,2023-04-18,S8696,reference,2.53,1,25247
+medford,2023-04-19,S8696,reference,3.74,1,25247
+medford,2023-04-20,S8696,reference,5.48,1,25247
+medford,2023-04-21,S8696,reference,6.14,1,25247
+medford,2023-04-23,S8696,reference,2.39,1,25247
+medford,2023-04-26,S8696,reference,4.29,1,25247
+medford,2023-04-27,S8696,reference,4.99,1,25247
+medford,2023-04-28,S8696,reference,5.93,1,25247
+medford,2023-04-29,S8696,reference,6.52,1,25247
+medford,2023-04-30,S8696,reference,2.99,1,25247
+medford,2023-05-01,S8696,reference,3.04,1,25247
+medford,2023-05-02,S8696,reference,2.55,1,25247
+medford,2023-05-03,S8696,reference,2.85,1,25247
+medford,2023-05-04,S8696,reference,3.13,1,25247
+medford,2023-05-05,S8696,reference,2.78,1,25247
+medford,2023-05-06,S8696,reference,3.3,1,25247
+medford,2023-05-07,S8696,reference,4.45,1,25247
+medford,2023-05-08,S8696,reference,3.24,1,25247
+medford,2023-05-09,S8696,reference,3.22,1,25247
+medford,2023-05-10,S8696,reference,3.49,1,25247
+medford,2023-05-11,S8696,reference,4.25,1,25247
+medford,2023-05-12,S8696,reference,4.64,1,25247
+medford,2023-05-13,S8696,reference,5.19,1,25247
+medford,2023-05-14,S8696,reference,3.98,1,25247
+medford,2023-05-16,S8696,reference,6.57,1,25247
+medford,2023-05-17,S8696,reference,6.97,1,25247
+medford,2023-05-18,S8696,reference,6.5,1,25247
+medford,2023-05-19,S8696,reference,6.87,1,25247
+medford,2023-05-20,S8696,reference,7.05,1,25247
+medford,2023-05-21,S8696,reference,3.59,1,25247
+medford,2023-05-22,S8696,reference,3.66,1,25247
+medford,2023-05-23,S8696,reference,4.27,1,25247
+medford,2023-05-24,S8696,reference,4.74,1,25247
+medford,2023-05-27,S8696,reference,7.5,1,25247
+medford,2023-05-28,S8696,reference,5.76,1,25247
+medford,2023-05-29,S8696,reference,5.12,1,25247
+medford,2023-05-30,S8696,reference,4.33,1,25247
+medford,2023-05-31,S8696,reference,4.86,1,25247
+medford,2023-06-01,S8696,reference,4.21,1,25247
+medford,2023-06-02,S8696,reference,4.83,1,25247
+medford,2023-06-03,S8696,reference,5.5,1,25247
+medford,2023-06-04,S8696,reference,4.56,1,25247
+medford,2023-06-05,S8696,reference,4.27,1,25247
+medford,2023-06-06,S8696,reference,5.3,1,25247
+medford,2023-06-07,S8696,reference,5.34,1,25247
+medford,2023-06-08,S8696,reference,4.58,1,25247
+medford,2023-06-09,S8696,reference,4.36,1,25247
+medford,2023-06-10,S8696,reference,4.05,1,25247
+medford,2023-06-11,S8696,reference,4.2,1,25247
+medford,2023-06-12,S8696,reference,4.34,1,25247
+medford,2023-06-13,S8696,reference,4.97,1,25247
+medford,2023-06-14,S8696,reference,2.83,1,25247
+medford,2023-06-15,S8696,reference,4.0,1,25247
+medford,2023-06-16,S8696,reference,6.12,1,25247
+medford,2023-06-17,S8696,reference,2.72,1,25247
+medford,2023-06-18,S8696,reference,1.88,1,25247
+medford,2023-06-19,S8696,reference,1.74,1,25247
+medford,2023-06-20,S8696,reference,2.09,1,25247
+medford,2023-06-21,S8696,reference,4.08,1,25247
+medford,2023-06-22,S8696,reference,3.56,1,25247
+medford,2023-06-23,S8696,reference,3.83,1,25247
+medford,2023-06-24,S8696,reference,4.63,1,25247
+medford,2023-06-25,S8696,reference,5.06,1,25247
+medford,2023-06-26,S8696,reference,4.48,1,25247
+medford,2023-06-27,S8696,reference,4.89,1,25247
+medford,2023-06-28,S8696,reference,5.6,1,25247
+medford,2023-06-29,S8696,reference,5.8,1,25247
+medford,2023-06-30,S8696,reference,5.73,1,25247
+medford,2023-07-01,S8696,reference,4.48,1,25247
+medford,2023-07-02,S8696,reference,4.55,1,25247
+medford,2023-07-03,S8696,reference,3.71,1,25247
+medford,2023-07-04,S8696,reference,16.0,1,25247
+medford,2023-07-05,S8696,reference,9.02,1,25247
+medford,2023-07-06,S8696,reference,12.1,1,25247
+medford,2023-07-07,S8696,reference,7.83,1,25247
+medford,2023-07-08,S8696,reference,4.17,1,25247
+medford,2023-07-09,S8696,reference,3.7,1,25247
+medford,2023-07-10,S8696,reference,2.77,1,25247
+medford,2023-07-11,S8696,reference,3.65,1,25247
+medford,2023-07-12,S8696,reference,5.62,1,25247
+medford,2023-07-13,S8696,reference,4.76,1,25247
+medford,2023-07-15,S8696,reference,5.2,1,25247
+medford,2023-07-16,S8696,reference,5.14,1,25247
+medford,2023-07-17,S8696,reference,2.63,1,25247
+medford,2023-07-18,S8696,reference,3.99,1,25247
+medford,2023-08-03,S1374217,reference,10.6,1,6672460
+medford,2023-08-04,S1374217,reference,11.7,1,6672460
+medford,2023-08-05,S1374217,reference,10.1,1,6672460
+medford,2023-08-06,S1374217,reference,7.41,1,6672460
+medford,2023-08-07,S1374217,reference,7.75,1,6672460
+medford,2023-08-08,S1374217,reference,6.5,1,6672460
+medford,2023-08-09,S1374217,reference,6.46,1,6672460
+medford,2023-08-10,S1374217,reference,5.51,1,6672460
+medford,2023-08-11,S1374217,reference,4.27,1,6672460
+medford,2023-08-12,S1374217,reference,14.6,1,6672460
+medford,2023-08-13,S1374217,reference,10.6,1,6672460
+medford,2023-08-14,S1374217,reference,10.3,1,6672460
+medford,2023-08-15,S1374217,reference,14.9,1,6672460
+medford,2023-08-16,S1374217,reference,18.4,1,6672460
+medford,2023-08-17,S1374217,reference,94.7,1,6672460
+medford,2023-08-18,S1374217,reference,78.3,1,6672460
+medford,2023-08-19,S1374217,reference,28.3,1,6672460
+medford,2023-08-20,S1374217,reference,47.8,1,6672460
+medford,2023-08-21,S1374217,reference,71.1,1,6672460
+medford,2023-08-22,S1374217,reference,131.0,1,6672460
+medford,2023-08-23,S1374217,reference,61.1,1,6672460
+medford,2023-08-24,S1374217,reference,72.2,1,6672460
+medford,2023-08-25,S1374217,reference,138.0,1,6672460
+medford,2023-08-26,S1374217,reference,86.1,1,6672460
+medford,2023-08-27,S1374217,reference,139.0,1,6672460
+medford,2023-08-28,S1374217,reference,160.0,1,6672460
+medford,2023-08-29,S1374217,reference,62.4,1,6672460
+medford,2023-08-30,S1374217,reference,31.6,1,6672460
+medford,2023-08-31,S1374217,reference,28.0,1,6672460
+medford,2023-09-01,S1374217,reference,15.3,1,6672460
+medford,2023-09-02,S1374217,reference,7.47,1,6672460
+medford,2023-09-03,S1374217,reference,8.95,1,6672460
+medford,2023-09-04,S1374217,reference,4.75,1,6672460
+medford,2023-09-05,S1374217,reference,4.65,1,6672460
+medford,2023-09-06,S1374217,reference,6.92,1,6672460
+medford,2023-09-07,S1374217,reference,8.55,1,6672460
+medford,2023-09-08,S1374217,reference,13.6,1,6672460
+medford,2023-09-09,S1374217,reference,14.1,1,6672460
+medford,2023-09-10,S1374217,reference,14.8,1,6672460
+medford,2023-09-11,S1374217,reference,11.1,1,6672460
+medford,2023-09-12,S1374217,reference,5.81,1,6672460
+medford,2023-09-13,S1374217,reference,3.75,1,6672460
+medford,2023-09-14,S1374217,reference,4.45,1,6672460
+medford,2023-09-15,S1374217,reference,4.61,1,6672460
+medford,2023-09-16,S1374217,reference,29.4,1,6672460
+medford,2023-09-17,S1374217,reference,23.1,1,6672460
+medford,2023-09-18,S1374217,reference,6.25,1,6672460
+medford,2023-09-19,S1374217,reference,4.97,1,6672460
+medford,2023-09-20,S1374217,reference,3.78,1,6672460
+medford,2023-09-21,S1374217,reference,4.2,1,6672460
+medford,2023-09-22,S1374217,reference,21.9,1,6672460
+medford,2023-09-23,S1374217,reference,67.2,1,6672460
+medford,2023-09-24,S1374217,reference,45.4,1,6672460
+medford,2023-09-25,S1374217,reference,16.1,1,6672460
+medford,2023-09-26,S1374217,reference,6.63,1,6672460
+medford,2023-09-27,S1374217,reference,3.63,1,6672460
+medford,2023-09-28,S1374217,reference,4.04,1,6672460
+medford,2023-09-29,S1374217,reference,4.27,1,6672460
+medford,2023-09-30,S1374217,reference,3.79,1,6672460
+medford,2023-10-01,S1374217,reference,7.07,1,6672460
+medford,2023-10-02,S1374217,reference,6.07,1,6672460
+medford,2023-10-03,S1374217,reference,5.1,1,6672460
+medford,2023-10-04,S1374217,reference,4.14,1,6672460
+medford,2023-10-05,S1374217,reference,4.43,1,6672460
+medford,2023-10-06,S1374217,reference,5.31,1,6672460
+medford,2023-10-07,S1374217,reference,7.96,1,6672460
+medford,2023-10-08,S1374217,reference,10.0,1,6672460
+medford,2023-10-09,S1374217,reference,7.13,1,6672460
+medford,2023-10-10,S1374217,reference,4.34,1,6672460
+medford,2023-10-11,S1374217,reference,3.74,1,6672460
+medford,2023-10-12,S1374217,reference,4.98,1,6672460
+medford,2023-10-13,S1374217,reference,5.62,1,6672460
+medford,2023-10-14,S1374217,reference,10.1,1,6672460
+medford,2023-10-15,S1374217,reference,11.7,1,6672460
+medford,2023-10-16,S1374217,reference,11.0,1,6672460
+medford,2023-10-17,S1374217,reference,5.67,1,6672460
+medford,2023-10-18,S1374217,reference,6.58,1,6672460
+medford,2023-10-19,S1374217,reference,7.97,1,6672460
+medford,2023-10-20,S1374217,reference,11.2,1,6672460
+medford,2023-10-21,S1374217,reference,8.45,1,6672460
+medford,2023-10-22,S1374217,reference,7.14,1,6672460
+medford,2023-10-23,S1374217,reference,8.2,1,6672460
+medford,2023-10-24,S1374217,reference,10.8,1,6672460
+medford,2023-10-25,S1374217,reference,6.67,1,6672460
+medford,2023-10-26,S1374217,reference,6.12,1,6672460
+medford,2023-10-27,S1374217,reference,8.1,1,6672460
+medford,2023-10-28,S1374217,reference,11.4,1,6672460
+medford,2023-10-29,S1374217,reference,13.5,1,6672460
+medford,2023-10-30,S1374217,reference,11.3,1,6672460
+medford,2023-10-31,S1374217,reference,13.7,1,6672460
+medford,2023-11-01,S1374217,reference,14.0,1,6672460
+medford,2023-11-02,S1374217,reference,15.6,1,6672460
+medford,2023-11-03,S1374217,reference,15.7,1,6672460
+medford,2023-11-04,S1374217,reference,15.0,1,6672460
+medford,2023-11-05,S1374217,reference,5.12,1,6672460
+medford,2023-11-06,S1374217,reference,3.83,1,6672460
+medford,2023-11-07,S1374217,reference,6.05,1,6672460
+medford,2023-11-08,S1374217,reference,13.5,1,6672460
+medford,2023-11-09,S1374217,reference,14.0,1,6672460
+medford,2023-11-10,S1374217,reference,11.7,1,6672460
+medford,2023-11-11,S1374217,reference,14.7,1,6672460
+medford,2023-11-12,S1374217,reference,14.1,1,6672460
+medford,2023-11-13,S1374217,reference,16.2,1,6672460
+medford,2023-11-14,S1374217,reference,13.2,1,6672460
+medford,2023-11-15,S1374217,reference,14.2,1,6672460
+medford,2023-11-16,S1374217,reference,14.9,1,6672460
+medford,2023-11-17,S1374217,reference,17.9,1,6672460
+medford,2023-11-18,S1374217,reference,13.1,1,6672460
+medford,2023-11-19,S1374217,reference,6.08,1,6672460
+medford,2023-11-20,S1374217,reference,10.5,1,6672460
+medford,2023-11-21,S1374217,reference,15.6,1,6672460
+medford,2023-11-22,S1374217,reference,16.1,1,6672460
+medford,2023-11-23,S1374217,reference,11.1,1,6672460
+medford,2023-11-24,S1374217,reference,10.2,1,6672460
+medford,2023-11-26,S1374217,reference,17.1,1,6672460
+medford,2023-11-27,S1374217,reference,17.9,1,6672460
+medford,2023-11-28,S1374217,reference,19.3,1,6672460
+medford,2023-11-29,S1374217,reference,18.9,1,6672460
+medford,2023-11-30,S1374217,reference,17.1,1,6672460
+medford,2023-12-01,S1374217,reference,8.13,1,6672460
+medford,2023-12-02,S1374217,reference,11.6,1,6672460
+medford,2023-12-03,S1374217,reference,9.42,1,6672460
+medford,2023-12-04,S1374217,reference,10.4,1,6672460
+medford,2023-12-05,S1374217,reference,8.58,1,6672460
+medford,2023-12-06,S1374217,reference,7.62,1,6672460
+medford,2023-12-07,S1374217,reference,4.55,1,6672460
+medford,2023-12-08,S1374217,reference,11.8,1,6672460
+medford,2023-12-09,S1374217,reference,16.8,1,6672460
+medford,2023-12-10,S1374217,reference,18.2,1,6672460
+medford,2023-12-11,S1374217,reference,14.7,1,6672460
+medford,2023-12-12,S1374217,reference,9.55,1,6672460
+medford,2023-12-13,S1374217,reference,12.3,1,6672460
+medford,2023-12-14,S1374217,reference,18.1,1,6672460
+medford,2023-12-15,S1374217,reference,22.1,1,6672460
+medford,2023-12-16,S1374217,reference,28.0,1,6672460
+medford,2023-12-17,S1374217,reference,29.9,1,6672460
+medford,2023-12-18,S1374217,reference,11.7,1,6672460
+medford,2023-12-19,S1374217,reference,4.89,1,6672460
+medford,2023-12-20,S1374217,reference,8.49,1,6672460
+medford,2023-12-21,S1374217,reference,10.2,1,6672460
+medford,2023-12-22,S1374217,reference,9.56,1,6672460
+medford,2023-12-23,S1374217,reference,17.6,1,6672460
+medford,2023-12-24,S1374217,reference,18.1,1,6672460
+medford,2023-12-25,S1374217,reference,19.1,1,6672460
+medford,2023-12-26,S1374217,reference,13.2,1,6672460
+medford,2023-12-27,S1374217,reference,2.98,1,6672460
+medford,2023-12-28,S1374217,reference,7.24,1,6672460
+medford,2023-12-29,S1374217,reference,2.81,1,6672460
+medford,2023-12-30,S1374217,reference,5.3,1,6672460
+medford,2023-12-31,S1374217,reference,16.4,1,6672460
+medford,2024-01-01,S1374217,reference,20.0,1,6672460
+medford,2024-01-02,S1374217,reference,8.03,1,6672460
+medford,2024-01-03,S1374217,reference,10.2,1,6672460
+medford,2024-01-04,S1374217,reference,7.6,1,6672460
+medford,2024-01-05,S1374217,reference,6.72,1,6672460
+medford,2024-01-06,S1374217,reference,6.17,1,6672460
+medford,2024-01-07,S1374217,reference,6.36,1,6672460
+medford,2024-01-08,S1374217,reference,7.94,1,6672460
+medford,2024-01-09,S1374217,reference,3.86,1,6672460
+medford,2024-01-10,S1374217,reference,6.45,1,6672460
+medford,2024-01-11,S1374217,reference,8.6,1,6672460
+medford,2024-01-12,S1374217,reference,7.19,1,6672460
+medford,2024-01-13,S1374217,reference,4.63,1,6672460
+medford,2024-01-14,S1374217,reference,6.27,1,6672460
+medford,2024-01-15,S1374217,reference,7.79,1,6672460
+medford,2024-01-16,S1374217,reference,9.96,1,6672460
+medford,2024-01-17,S1374217,reference,6.42,1,6672460
+medford,2024-01-18,S1374217,reference,10.3,1,6672460
+medford,2024-01-19,S1374217,reference,7.21,1,6672460
+medford,2024-01-20,S1374217,reference,4.01,1,6672460
+medford,2024-01-21,S1374217,reference,6.35,1,6672460
+medford,2024-01-22,S1374217,reference,8.32,1,6672460
+medford,2024-01-23,S1374217,reference,8.02,1,6672460
+medford,2024-01-24,S1374217,reference,6.37,1,6672460
+medford,2024-01-25,S1374217,reference,8.67,1,6672460
+medford,2024-01-26,S1374217,reference,6.36,1,6672460
+medford,2024-01-27,S1374217,reference,7.81,1,6672460
+medford,2024-01-28,S1374217,reference,11.2,1,6672460
+medford,2024-01-29,S1374217,reference,9.25,1,6672460
+medford,2024-01-30,S1374217,reference,6.21,1,6672460
+medford,2024-02-02,S1374217,reference,6.87,1,6672460
+medford,2024-02-03,S1374217,reference,11.3,1,6672460
+medford,2024-02-04,S1374217,reference,6.62,1,6672460
+medford,2024-02-05,S1374217,reference,3.81,1,6672460
+medford,2024-02-06,S1374217,reference,4.08,1,6672460
+medford,2024-02-07,S1374217,reference,8.77,1,6672460
+medford,2024-02-08,S1374217,reference,4.59,1,6672460
+medford,2024-02-09,S1374217,reference,5.7,1,6672460
+medford,2024-02-10,S1374217,reference,11.8,1,6672460
+medford,2024-02-11,S1374217,reference,11.5,1,6672460
+medford,2024-02-12,S1374217,reference,7.06,1,6672460
+medford,2024-02-13,S1374217,reference,8.91,1,6672460
+medford,2024-02-14,S1374217,reference,8.1,1,6672460
+medford,2024-02-15,S1374217,reference,9.75,1,6672460
+medford,2024-02-16,S1374217,reference,6.38,1,6672460
+medford,2024-02-17,S1374217,reference,3.11,1,6672460
+medford,2024-02-18,S1374217,reference,4.73,1,6672460
+medford,2024-02-19,S1374217,reference,3.78,1,6672460
+medford,2024-02-20,S1374217,reference,4.96,1,6672460
+medford,2024-02-21,S1374217,reference,5.99,1,6672460
+medford,2024-02-22,S1374217,reference,8.68,1,6672460
+medford,2024-02-23,S1374217,reference,10.1,1,6672460
+medford,2024-02-24,S1374217,reference,8.89,1,6672460
+medford,2024-02-25,S1374217,reference,8.44,1,6672460
+medford,2024-02-26,S1374217,reference,3.54,1,6672460
+medford,2024-02-27,S1374217,reference,5.99,1,6672460
+medford,2024-02-28,S1374217,reference,10.7,1,6672460
+medford,2024-02-29,S1374217,reference,3.59,1,6672460
+medford,2024-03-01,S1374217,reference,3.25,1,6672460
+medford,2024-03-02,S1374217,reference,4.21,1,6672460
+medford,2024-03-03,S1374217,reference,6.23,1,6672460
+medford,2024-03-04,S1374217,reference,6.03,1,6672460
+medford,2024-03-05,S1374217,reference,3.93,1,6672460
+medford,2024-03-06,S1374217,reference,3.51,1,6672460
+medford,2024-03-07,S1374217,reference,7.15,1,6672460
+medford,2024-03-08,S1374217,reference,10.1,1,6672460
+medford,2024-03-09,S1374217,reference,8.08,1,6672460
+medford,2024-03-10,S1374217,reference,3.0,1,6672460
+medford,2024-03-11,S1374217,reference,7.03,1,6672460
+medford,2024-03-12,S1374217,reference,3.05,1,6672460
+medford,2024-03-13,S1374217,reference,5.35,1,6672460
+medford,2024-03-14,S1374217,reference,5.71,1,6672460
+medford,2024-03-15,S1374217,reference,5.87,1,6672460
+medford,2024-03-16,S1374217,reference,5.38,1,6672460
+medford,2024-03-17,S1374217,reference,7.97,1,6672460
+medford,2024-03-18,S1374217,reference,6.95,1,6672460
+medford,2024-03-19,S1374217,reference,6.45,1,6672460
+medford,2024-03-21,S1374217,reference,7.02,1,6672460
+medford,2024-03-22,S1374217,reference,5.82,1,6672460
+medford,2024-03-23,S1374217,reference,3.8,1,6672460
+medford,2024-03-24,S1374217,reference,4.52,1,6672460
+medford,2024-03-25,S1374217,reference,3.67,1,6672460
+medford,2024-03-26,S1374217,reference,3.98,1,6672460
+medford,2024-03-27,S1374217,reference,4.51,1,6672460
+medford,2024-03-28,S1374217,reference,3.29,1,6672460
+medford,2024-03-29,S1374217,reference,4.78,1,6672460
+medford,2024-03-30,S1374217,reference,6.78,1,6672460
+medford,2024-03-31,S1374217,reference,5.99,1,6672460
+medford,2024-04-01,S1374217,reference,6.15,1,6672460
+medford,2024-04-02,S1374217,reference,5.34,1,6672460
+medford,2024-04-03,S1374217,reference,3.6,1,6672460
+medford,2024-04-04,S1374217,reference,3.65,1,6672460
+medford,2024-04-05,S1374217,reference,3.04,1,6672460
+medford,2024-04-06,S1374217,reference,3.36,1,6672460
+medford,2024-04-07,S1374217,reference,3.04,1,6672460
+medford,2024-04-08,S1374217,reference,3.99,1,6672460
+medford,2024-04-09,S1374217,reference,4.26,1,6672460
+medford,2024-04-10,S1374217,reference,4.48,1,6672460
+medford,2024-04-11,S1374217,reference,4.18,1,6672460
+medford,2024-04-12,S1374217,reference,4.38,1,6672460
+medford,2024-04-13,S1374217,reference,5.53,1,6672460
+medford,2024-04-14,S1374217,reference,4.08,1,6672460
+medford,2024-04-15,S1374217,reference,5.39,1,6672460
+medford,2024-04-16,S1374217,reference,5.24,1,6672460
+medford,2024-04-17,S1374217,reference,5.22,1,6672460
+medford,2024-04-18,S1374217,reference,4.45,1,6672460
+medford,2024-04-19,S1374217,reference,3.64,1,6672460
+medford,2024-04-20,S1374217,reference,3.42,1,6672460
+medford,2024-04-21,S1374217,reference,3.05,1,6672460
+medford,2024-04-22,S1374217,reference,4.52,1,6672460
+medford,2024-04-23,S1374217,reference,4.75,1,6672460
+medford,2024-04-24,S1374217,reference,4.12,1,6672460
+medford,2024-04-25,S1374217,reference,4.27,1,6672460
+medford,2024-04-26,S1374217,reference,2.16,1,6672460
+medford,2024-04-27,S1374217,reference,2.38,1,6672460
+medford,2024-04-28,S1374217,reference,2.71,1,6672460
+medford,2024-04-29,S1374217,reference,2.74,1,6672460
+medford,2024-04-30,S1374217,reference,2.54,1,6672460
+medford,2024-05-01,S1374217,reference,2.85,1,6672460
+medford,2024-05-02,S1374217,reference,2.16,1,6672460
+medford,2024-05-03,S1374217,reference,3.49,1,6672460
+medford,2024-05-04,S1374217,reference,2.03,1,6672460
+medford,2024-05-05,S1374217,reference,2.73,1,6672460
+medford,2024-05-06,S1374217,reference,3.08,1,6672460
+medford,2024-05-07,S1374217,reference,2.15,1,6672460
+medford,2024-05-08,S1374217,reference,3.09,1,6672460
+medford,2024-05-09,S1374217,reference,3.39,1,6672460
+medford,2024-05-10,S1374217,reference,4.03,1,6672460
+medford,2024-05-11,S1374217,reference,4.4,1,6672460
+medford,2024-05-12,S1374217,reference,4.47,1,6672460
+medford,2024-05-13,S1374217,reference,4.22,1,6672460
+medford,2024-05-14,S1374217,reference,3.45,1,6672460
+medford,2024-05-15,S1374217,reference,3.28,1,6672460
+medford,2024-05-16,S1374217,reference,3.3,1,6672460
+medford,2024-05-17,S1374217,reference,2.81,1,6672460
+medford,2024-05-18,S1374217,reference,3.73,1,6672460
+medford,2024-05-19,S1374217,reference,2.5,1,6672460
+medford,2024-05-20,S1374217,reference,2.62,1,6672460
+medford,2024-05-21,S1374217,reference,3.56,1,6672460
+medford,2024-05-22,S1374217,reference,2.08,1,6672460
+medford,2024-05-23,S1374217,reference,3.51,1,6672460
+medford,2024-05-24,S1374217,reference,3.58,1,6672460
+medford,2024-05-25,S1374217,reference,2.43,1,6672460
+medford,2024-05-26,S1374217,reference,3.91,1,6672460
+medford,2024-05-27,S1374217,reference,3.44,1,6672460
+medford,2024-05-28,S1374217,reference,2.98,1,6672460
+medford,2024-05-29,S1374217,reference,2.25,1,6672460
+medford,2024-05-30,S1374217,reference,2.29,1,6672460
+medford,2024-05-31,S1374217,reference,2.76,1,6672460
+medford,2024-06-01,S1374217,reference,2.98,1,6672460
+medford,2024-06-02,S1374217,reference,2.09,1,6672460
+medford,2024-06-03,S1374217,reference,2.61,1,6672460
+medford,2024-06-04,S1374217,reference,3.41,1,6672460
+medford,2024-06-05,S1374217,reference,3.61,1,6672460
+medford,2024-06-06,S1374217,reference,3.69,1,6672460
+medford,2024-06-07,S1374217,reference,4.57,1,6672460
+medford,2024-06-08,S1374217,reference,4.47,1,6672460
+medford,2024-06-09,S1374217,reference,3.46,1,6672460
+medford,2024-06-10,S1374217,reference,3.39,1,6672460
+medford,2024-06-11,S1374217,reference,3.91,1,6672460
+medford,2024-06-12,S1374217,reference,3.39,1,6672460
+medford,2024-06-13,S1374217,reference,3.42,1,6672460
+medford,2024-06-14,S1374217,reference,2.72,1,6672460
+medford,2024-06-15,S1374217,reference,2.13,1,6672460
+medford,2024-06-16,S1374217,reference,2.43,1,6672460
+medford,2024-06-17,S1374217,reference,2.03,1,6672460
+medford,2024-06-18,S1374217,reference,2.58,1,6672460
+medford,2024-06-19,S1374217,reference,3.15,1,6672460
+medford,2024-06-20,S1374217,reference,4.43,1,6672460
+medford,2024-06-21,S1374217,reference,6.41,1,6672460
+medford,2024-06-22,S1374217,reference,6.35,1,6672460
+medford,2024-06-23,S1374217,reference,3.6,1,6672460
+medford,2024-06-24,S1374217,reference,2.92,1,6672460
+medford,2024-06-25,S1374217,reference,4.16,1,6672460
+medford,2024-06-26,S1374217,reference,2.8,1,6672460
+medford,2024-06-27,S1374217,reference,1.94,1,6672460
+medford,2024-06-28,S1374217,reference,2.23,1,6672460
+medford,2024-06-29,S1374217,reference,3.48,1,6672460
+medford,2024-06-30,S1374217,reference,2.07,1,6672460
+medford,2024-07-01,S1374217,reference,2.98,1,6672460
+medford,2024-07-02,S1374217,reference,3.93,1,6672460
+medford,2024-07-03,S1374217,reference,4.09,1,6672460
+medford,2024-07-04,S1374217,reference,16.1,1,6672460
+medford,2024-07-05,S1374217,reference,10.5,1,6672460
+medford,2024-07-06,S1374217,reference,7.07,1,6672460
+medford,2024-07-07,S1374217,reference,5.79,1,6672460
+medford,2024-07-08,S1374217,reference,22.2,1,6672460
+medford,2024-07-09,S1374217,reference,11.9,1,6672460
+medford,2024-07-10,S1374217,reference,8.43,1,6672460
+medford,2024-07-11,S1374217,reference,5.05,1,6672460
+medford,2024-07-12,S1374217,reference,5.88,1,6672460
+medford,2024-07-13,S1374217,reference,6.71,1,6672460
+medford,2024-07-14,S1374217,reference,7.28,1,6672460
+medford,2024-07-15,S1374217,reference,7.65,1,6672460
+medford,2024-07-16,S1374217,reference,8.14,1,6672460
+medford,2024-07-17,S1374217,reference,6.52,1,6672460
+medford,2024-07-18,S1374217,reference,4.95,1,6672460
+medford,2024-07-19,S1374217,reference,4.5,1,6672460
+medford,2024-07-20,S1374217,reference,33.8,1,6672460
+medford,2024-07-21,S1374217,reference,12.7,1,6672460
+medford,2024-07-22,S1374217,reference,24.0,1,6672460
+medford,2024-07-23,S1374217,reference,30.5,1,6672460
+medford,2024-07-24,S1374217,reference,15.6,1,6672460
+medford,2024-07-25,S1374217,reference,7.44,1,6672460
+medford,2024-07-26,S1374217,reference,29.3,1,6672460
+medford,2024-07-27,S1374217,reference,34.4,1,6672460
+medford,2024-07-28,S1374217,reference,10.3,1,6672460
+medford,2024-07-29,S1374217,reference,8.33,1,6672460
+medford,2024-07-30,S1374217,reference,2.28,1,6672460
+medford,2024-07-31,S1374217,reference,12.9,1,6672460
+medford,2024-08-01,S1374217,reference,32.7,1,6672460
+medford,2024-08-01,S2999793,low-cost,31.4,2,10141014; 10141092
+medford,2024-08-02,S1374217,reference,15.1,1,6672460
+medford,2024-08-02,S2999793,low-cost,15.95,2,10141014; 10141092
+medford,2024-08-03,S1374217,reference,21.5,1,6672460
+medford,2024-08-03,S2999793,low-cost,22.5,2,10141014; 10141092
+medford,2024-08-04,S1374217,reference,19.8,1,6672460
+medford,2024-08-04,S2999793,low-cost,21.05,2,10141014; 10141092
+medford,2024-08-05,S1374217,reference,17.0,1,6672460
+medford,2024-08-05,S2999793,low-cost,18.8,2,10141014; 10141092
+medford,2024-08-06,S1374217,reference,13.6,1,6672460
+medford,2024-08-06,S2999793,low-cost,18.15,2,10141014; 10141092
+medford,2024-08-07,S1374217,reference,36.8,1,6672460
+medford,2024-08-07,S2999793,low-cost,39.8,2,10141014; 10141092
+medford,2024-08-08,S1374217,reference,65.7,1,6672460
+medford,2024-08-08,S2999793,low-cost,66.0,2,10141014; 10141092
+medford,2024-08-09,S1374217,reference,26.6,1,6672460
+medford,2024-08-09,S2999793,low-cost,29.6,2,10141014; 10141092
+medford,2024-08-10,S1374217,reference,24.1,1,6672460
+medford,2024-08-10,S2999793,low-cost,27.4,2,10141014; 10141092
+medford,2024-08-11,S1374217,reference,36.9,1,6672460
+medford,2024-08-11,S2999793,low-cost,39.65,2,10141014; 10141092
+medford,2024-08-12,S1374217,reference,4.86,1,6672460
+medford,2024-08-12,S2999793,low-cost,6.255,2,10141014; 10141092
+medford,2024-08-13,S1374217,reference,4.32,1,6672460
+medford,2024-08-13,S2999793,low-cost,5.885,2,10141014; 10141092
+medford,2024-08-14,S1374217,reference,6.95,1,6672460
+medford,2024-08-14,S2999793,low-cost,7.41,2,10141014; 10141092
+medford,2024-08-15,S1374217,reference,14.2,1,6672460
+medford,2024-08-15,S2999793,low-cost,16.2,2,10141014; 10141092
+medford,2024-08-16,S1374217,reference,10.4,1,6672460
+medford,2024-08-16,S2999793,low-cost,11.55,2,10141014; 10141092
+medford,2024-08-17,S1374217,reference,6.09,1,6672460
+medford,2024-08-17,S2999793,low-cost,7.08,2,10141014; 10141092
+medford,2024-08-18,S1374217,reference,6.44,1,6672460
+medford,2024-08-18,S2999793,low-cost,7.485,2,10141014; 10141092
+medford,2024-08-19,S1374217,reference,4.46,1,6672460
+medford,2024-08-19,S2999793,low-cost,5.86,2,10141014; 10141092
+medford,2024-08-20,S1374217,reference,4.0,1,6672460
+medford,2024-08-20,S2999793,low-cost,5.71,2,10141014; 10141092
+medford,2024-08-21,S1374217,reference,4.68,1,6672460
+medford,2024-08-21,S2999793,low-cost,5.77,2,10141014; 10141092
+medford,2024-08-22,S1374217,reference,4.9,1,6672460
+medford,2024-08-22,S2999793,low-cost,6.45,2,10141014; 10141092
+medford,2024-08-23,S1374217,reference,3.74,1,6672460
+medford,2024-08-23,S2999793,low-cost,4.905,2,10141014; 10141092
+medford,2024-08-24,S1374217,reference,4.04,1,6672460
+medford,2024-08-24,S2999793,low-cost,5.535,2,10141014; 10141092
+medford,2024-08-25,S1374217,reference,4.94,1,6672460
+medford,2024-08-25,S2999793,low-cost,5.99,2,10141014; 10141092
+medford,2024-08-26,S1374217,reference,5.9,1,6672460
+medford,2024-08-26,S2999793,low-cost,6.695,2,10141014; 10141092
+medford,2024-08-27,S1374217,reference,5.99,1,6672460
+medford,2024-08-28,S1374217,reference,5.4,1,6672460
+medford,2024-08-29,S1374217,reference,6.33,1,6672460
+medford,2024-08-29,S2999793,low-cost,7.275,2,10141014; 10141092
+medford,2024-08-30,S1374217,reference,8.02,1,6672460
+medford,2024-08-30,S2999793,low-cost,9.57,2,10141014; 10141092
+medford,2024-08-31,S1374217,reference,9.43,1,6672460
+medford,2024-08-31,S2999793,low-cost,11.5,2,10141014; 10141092
+medford,2024-09-01,S1374217,reference,7.36,1,6672460
+medford,2024-09-01,S2999793,low-cost,9.27,2,10141014; 10141092
+medford,2024-09-02,S1374217,reference,4.49,1,6672460
+medford,2024-09-02,S2999793,low-cost,6.21,2,10141014; 10141092
+medford,2024-09-03,S1374217,reference,5.11,1,6672460
+medford,2024-09-03,S2999793,low-cost,6.545,2,10141014; 10141092
+medford,2024-09-04,S1374217,reference,15.5,1,6672460
+medford,2024-09-05,S1374217,reference,19.8,1,6672460
+medford,2024-09-06,S1374217,reference,15.7,1,6672460
+medford,2024-09-07,S1374217,reference,15.9,1,6672460
+medford,2024-09-08,S1374217,reference,26.4,1,6672460
+medford,2024-09-08,S2999793,low-cost,31.4,2,10141014; 10141092
+medford,2024-09-09,S1374217,reference,18.1,1,6672460
+medford,2024-09-09,S2999793,low-cost,20.65,2,10141014; 10141092
+medford,2024-09-10,S1374217,reference,9.13,1,6672460
+medford,2024-09-10,S2999793,low-cost,12.0,2,10141014; 10141092
+medford,2024-09-11,S1374217,reference,2.75,1,6672460
+medford,2024-09-11,S2999793,low-cost,3.94,2,10141014; 10141092
+medford,2024-09-12,S1374217,reference,2.91,1,6672460
+medford,2024-09-12,S2999793,low-cost,3.86,2,10141014; 10141092
+medford,2024-09-13,S1374217,reference,5.34,1,6672460
+medford,2024-09-14,S1374217,reference,5.24,1,6672460
+medford,2024-09-14,S2999793,low-cost,6.77,2,10141014; 10141092
+medford,2024-09-15,S1374217,reference,2.3,1,6672460
+medford,2024-09-15,S2999793,low-cost,3.65,2,10141014; 10141092
+medford,2024-09-16,S1374217,reference,4.11,1,6672460
+medford,2024-09-16,S2999793,low-cost,5.36,2,10141014; 10141092
+medford,2024-09-17,S1374217,reference,5.03,1,6672460
+medford,2024-09-17,S2999793,low-cost,5.92,2,10141014; 10141092
+medford,2024-09-18,S1374217,reference,3.43,1,6672460
+medford,2024-09-18,S2999793,low-cost,4.44,2,10141014; 10141092
+medford,2024-09-19,S1374217,reference,4.3,1,6672460
+medford,2024-09-19,S2999793,low-cost,5.245,2,10141014; 10141092
+medford,2024-09-20,S2999793,low-cost,5.365,2,10141014; 10141092
+medford,2024-09-20,S3071926,reference,4.24,1,10679406
+medford,2024-09-21,S2999793,low-cost,6.88,2,10141014; 10141092
+medford,2024-09-21,S3071926,reference,5.11,1,10679406
+medford,2024-09-22,S2999793,low-cost,9.365,2,10141014; 10141092
+medford,2024-09-22,S3071926,reference,7.48,1,10679406
+medford,2024-09-23,S2999793,low-cost,7.555,2,10141014; 10141092
+medford,2024-09-23,S3071926,reference,6.33,1,10679406
+medford,2024-09-24,S2999793,low-cost,7.865,2,10141014; 10141092
+medford,2024-09-24,S3071926,reference,6.28,1,10679406
+medford,2024-09-25,S2999793,low-cost,6.445,2,10141014; 10141092
+medford,2024-09-25,S3071926,reference,4.93,1,10679406
+medford,2024-09-26,S2999793,low-cost,4.005,2,10141014; 10141092
+medford,2024-09-26,S3071926,reference,2.91,1,10679406
+medford,2024-09-27,S2999793,low-cost,4.69,2,10141014; 10141092
+medford,2024-09-27,S3071926,reference,3.55,1,10679406
+medford,2024-09-28,S2999793,low-cost,6.51,2,10141014; 10141092
+medford,2024-09-28,S3071926,reference,5.23,1,10679406
+medford,2024-09-29,S2999793,low-cost,4.955,2,10141014; 10141092
+medford,2024-09-29,S3071926,reference,4.05,1,10679406
+medford,2024-09-30,S2999793,low-cost,5.735,2,10141014; 10141092
+medford,2024-09-30,S3071926,reference,4.51,1,10679406
+medford,2024-10-01,S3071926,reference,6.01,1,10679406
+medford,2024-10-02,S2999793,low-cost,12.15,2,10141014; 10141092
+medford,2024-10-02,S3071926,reference,8.8,1,10679406
+medford,2024-10-03,S2999793,low-cost,15.4,2,10141014; 10141092
+medford,2024-10-03,S3071926,reference,12.1,1,10679406
+medford,2024-10-04,S2999793,low-cost,9.69,2,10141014; 10141092
+medford,2024-10-04,S3071926,reference,8.28,1,10679406
+medford,2024-10-05,S2999793,low-cost,6.48,2,10141014; 10141092
+medford,2024-10-06,S2999793,low-cost,5.445,2,10141014; 10141092
+medford,2024-10-06,S3071926,reference,4.74,1,10679406
+medford,2024-10-07,S2999793,low-cost,6.125,2,10141014; 10141092
+medford,2024-10-07,S3071926,reference,4.81,1,10679406
+medford,2024-10-08,S2999793,low-cost,6.635,2,10141014; 10141092
+medford,2024-10-08,S3071926,reference,5.25,1,10679406
+medford,2024-10-09,S2999793,low-cost,6.225,2,10141014; 10141092
+medford,2024-10-09,S3071926,reference,5.07,1,10679406
+medford,2024-10-10,S2999793,low-cost,5.575,2,10141014; 10141092
+medford,2024-10-10,S3071926,reference,4.68,1,10679406
+medford,2024-10-11,S2999793,low-cost,8.995,2,10141014; 10141092
+medford,2024-10-12,S2999793,low-cost,8.235,2,10141014; 10141092
+medford,2024-10-13,S2999793,low-cost,6.015,2,10141014; 10141092
+medford,2024-10-14,S2999793,low-cost,6.92,2,10141014; 10141092
+medford,2024-10-14,S3071926,reference,5.69,1,10679406
+medford,2024-10-15,S2999793,low-cost,4.87,2,10141014; 10141092
+medford,2024-10-15,S3071926,reference,4.07,1,10679406
+medford,2024-10-16,S2999793,low-cost,2.975,2,10141014; 10141092
+medford,2024-10-16,S3071926,reference,2.7,1,10679406
+medford,2024-10-17,S2999793,low-cost,5.42,2,10141014; 10141092
+medford,2024-10-17,S3071926,reference,4.43,1,10679406
+medford,2024-10-18,S2999793,low-cost,6.345,2,10141014; 10141092
+medford,2024-10-18,S3071926,reference,5.23,1,10679406
+medford,2024-10-19,S2999793,low-cost,5.98,2,10141014; 10141092
+medford,2024-10-19,S3071926,reference,4.99,1,10679406
+medford,2024-10-20,S2999793,low-cost,7.53,2,10141014; 10141092
+medford,2024-10-20,S3071926,reference,6.86,1,10679406
+medford,2024-10-21,S2999793,low-cost,4.745,2,10141014; 10141092
+medford,2024-10-21,S3071926,reference,3.97,1,10679406
+medford,2024-10-22,S2999793,low-cost,5.945,2,10141014; 10141092
+medford,2024-10-22,S3071926,reference,5.33,1,10679406
+medford,2024-10-23,S2999793,low-cost,6.645,2,10141014; 10141092
+medford,2024-10-23,S3071926,reference,6.14,1,10679406
+medford,2024-10-24,S2999793,low-cost,9.2,2,10141014; 10141092
+medford,2024-10-24,S3071926,reference,7.6,1,10679406
+medford,2024-10-25,S2999793,low-cost,11.3,2,10141014; 10141092
+medford,2024-10-25,S3071926,reference,9.7,1,10679406
+medford,2024-10-26,S2999793,low-cost,8.285,2,10141014; 10141092
+medford,2024-10-26,S3071926,reference,6.75,1,10679406
+medford,2024-10-27,S2999793,low-cost,4.035,2,10141014; 10141092
+medford,2024-10-27,S3071926,reference,3.2,1,10679406
+medford,2024-10-28,S2999793,low-cost,5.94,2,10141014; 10141092
+medford,2024-10-28,S3071926,reference,5.46,1,10679406
+medford,2024-10-29,S2999793,low-cost,10.3,2,10141014; 10141092
+medford,2024-10-29,S3071926,reference,9.34,1,10679406
+medford,2024-10-30,S2999793,low-cost,8.815,2,10141014; 10141092
+medford,2024-10-30,S3071926,reference,8.15,1,10679406
+medford,2024-10-31,S2999793,low-cost,12.25,2,10141014; 10141092
+medford,2024-10-31,S3071926,reference,11.5,1,10679406
+medford,2024-11-01,S2999793,low-cost,7.19,2,10141014; 10141092
+medford,2024-11-01,S3071926,reference,6.65,1,10679406
+medford,2024-11-02,S2999793,low-cost,7.55,2,10141014; 10141092
+medford,2024-11-02,S3071926,reference,7.16,1,10679406
+medford,2024-11-03,S2999793,low-cost,6.97,2,10141014; 10141092
+medford,2024-11-03,S3071926,reference,6.23,1,10679406
+medford,2024-11-04,S2999793,low-cost,9.185,2,10141014; 10141092
+medford,2024-11-04,S3071926,reference,8.63,1,10679406
+medford,2024-11-05,S2999793,low-cost,12.25,2,10141014; 10141092
+medford,2024-11-05,S3071926,reference,11.6,1,10679406
+medford,2024-11-06,S2999793,low-cost,8.615,2,10141014; 10141092
+medford,2024-11-06,S3071926,reference,7.02,1,10679406
+medford,2024-11-07,S2999793,low-cost,11.1,2,10141014; 10141092
+medford,2024-11-07,S3071926,reference,9.14,1,10679406
+medford,2024-11-08,S2999793,low-cost,15.95,2,10141014; 10141092
+medford,2024-11-08,S3071926,reference,14.0,1,10679406
+medford,2024-11-09,S2999793,low-cost,16.3,2,10141014; 10141092
+medford,2024-11-09,S3071926,reference,14.0,1,10679406
+medford,2024-11-10,S2999793,low-cost,18.9,2,10141014; 10141092
+medford,2024-11-10,S3071926,reference,16.9,1,10679406
+medford,2024-11-11,S2999793,low-cost,5.405,2,10141014; 10141092
+medford,2024-11-11,S3071926,reference,4.33,1,10679406
+medford,2024-11-12,S2999793,low-cost,5.695,2,10141014; 10141092
+medford,2024-11-12,S3071926,reference,5.07,1,10679406
+medford,2024-11-13,S2999793,low-cost,3.935,2,10141014; 10141092
+medford,2024-11-13,S3071926,reference,3.31,1,10679406
+medford,2024-11-14,S2999793,low-cost,7.135,2,10141014; 10141092
+medford,2024-11-14,S3071926,reference,6.51,1,10679406
+medford,2024-11-15,S2999793,low-cost,14.0,2,10141014; 10141092
+medford,2024-11-15,S3071926,reference,12.6,1,10679406
+medford,2024-11-16,S2999793,low-cost,19.6,2,10141014; 10141092
+medford,2024-11-16,S3071926,reference,17.0,1,10679406
+medford,2024-11-17,S2999793,low-cost,13.7,2,10141014; 10141092
+medford,2024-11-17,S3071926,reference,12.4,1,10679406
+medford,2024-11-18,S2999793,low-cost,6.265,2,10141014; 10141092
+medford,2024-11-18,S3071926,reference,5.76,1,10679406
+medford,2024-11-19,S2999793,low-cost,8.72,2,10141014; 10141092
+medford,2024-11-19,S3071926,reference,7.5,1,10679406
+medford,2024-11-20,S2999793,low-cost,4.065,2,10141014; 10141092
+medford,2024-11-20,S3071926,reference,3.6,1,10679406
+medford,2024-11-21,S2999793,low-cost,6.895,2,10141014; 10141092
+medford,2024-11-21,S3071926,reference,6.35,1,10679406
+medford,2024-11-22,S2999793,low-cost,3.235,2,10141014; 10141092
+medford,2024-11-22,S3071926,reference,2.5,1,10679406
+medford,2024-11-23,S2999793,low-cost,9.39,2,10141014; 10141092
+medford,2024-11-23,S3071926,reference,8.69,1,10679406
+medford,2024-11-24,S2999793,low-cost,6.81,2,10141014; 10141092
+medford,2024-11-24,S3071926,reference,5.35,1,10679406
+medford,2024-11-25,S2999793,low-cost,5.09,2,10141014; 10141092
+medford,2024-11-25,S3071926,reference,4.63,1,10679406
+medford,2024-11-26,S2999793,low-cost,8.665,2,10141014; 10141092
+medford,2024-11-26,S3071926,reference,7.41,1,10679406
+medford,2024-11-27,S2999793,low-cost,15.4,2,10141014; 10141092
+medford,2024-11-27,S3071926,reference,15.0,1,10679406
+medford,2024-11-28,S2999793,low-cost,20.85,2,10141014; 10141092
+medford,2024-11-28,S3071926,reference,20.1,1,10679406
+medford,2024-11-29,S2999793,low-cost,19.25,2,10141014; 10141092
+medford,2024-11-29,S3071926,reference,16.6,1,10679406
+medford,2024-11-30,S2999793,low-cost,17.9,2,10141014; 10141092
+medford,2024-11-30,S3071926,reference,15.3,1,10679406
+medford,2024-12-01,S2999793,low-cost,19.95,2,10141014; 10141092
+medford,2024-12-01,S3071926,reference,17.3,1,10679406
+medford,2024-12-02,S2999793,low-cost,26.9,2,10141014; 10141092
+medford,2024-12-02,S3071926,reference,27.7,1,10679406
+medford,2024-12-03,S2999793,low-cost,29.55,2,10141014; 10141092
+medford,2024-12-03,S3071926,reference,30.3,1,10679406
+medford,2024-12-04,S2999793,low-cost,30.35,2,10141014; 10141092
+medford,2024-12-04,S3071926,reference,30.8,1,10679406
+medford,2024-12-05,S2999793,low-cost,25.4,2,10141014; 10141092
+medford,2024-12-05,S3071926,reference,24.8,1,10679406
+medford,2024-12-06,S2999793,low-cost,24.9,2,10141014; 10141092
+medford,2024-12-06,S3071926,reference,24.7,1,10679406
+medford,2024-12-07,S2999793,low-cost,22.1,2,10141014; 10141092
+medford,2024-12-07,S3071926,reference,21.1,1,10679406
+medford,2024-12-08,S2999793,low-cost,9.67,2,10141014; 10141092
+medford,2024-12-08,S3071926,reference,9.38,1,10679406
+medford,2024-12-09,S2999793,low-cost,17.05,2,10141014; 10141092
+medford,2024-12-09,S3071926,reference,16.3,1,10679406
+medford,2024-12-10,S2999793,low-cost,25.15,2,10141014; 10141092
+medford,2024-12-10,S3071926,reference,24.6,1,10679406
+medford,2024-12-11,S2999793,low-cost,21.3,2,10141014; 10141092
+medford,2024-12-11,S3071926,reference,20.0,1,10679406
+medford,2024-12-12,S2999793,low-cost,10.25,2,10141014; 10141092
+medford,2024-12-12,S3071926,reference,8.14,1,10679406
+medford,2024-12-13,S2999793,low-cost,9.46,2,10141014; 10141092
+medford,2024-12-13,S3071926,reference,8.5,1,10679406
+medford,2024-12-14,S2999793,low-cost,5.605,2,10141014; 10141092
+medford,2024-12-14,S3071926,reference,5.1,1,10679406
+medford,2024-12-15,S2999793,low-cost,10.6,2,10141014; 10141092
+medford,2024-12-15,S3071926,reference,10.2,1,10679406
+medford,2024-12-16,S2999793,low-cost,4.15,2,10141014; 10141092
+medford,2024-12-16,S3071926,reference,3.53,1,10679406
+medford,2024-12-17,S2999793,low-cost,11.85,2,10141014; 10141092
+medford,2024-12-17,S3071926,reference,11.5,1,10679406
+medford,2024-12-18,S2999793,low-cost,10.6,2,10141014; 10141092
+medford,2024-12-18,S3071926,reference,10.4,1,10679406
+medford,2024-12-19,S2999793,low-cost,14.0,2,10141014; 10141092
+medford,2024-12-19,S3071926,reference,13.7,1,10679406
+medford,2024-12-20,S2999793,low-cost,11.55,2,10141014; 10141092
+medford,2024-12-20,S3071926,reference,10.6,1,10679406
+medford,2024-12-21,S2999793,low-cost,6.19,2,10141014; 10141092
+medford,2024-12-21,S3071926,reference,5.93,1,10679406
+medford,2024-12-22,S2999793,low-cost,10.85,2,10141014; 10141092
+medford,2024-12-22,S3071926,reference,11.0,1,10679406
+medford,2024-12-23,S2999793,low-cost,5.89,2,10141014; 10141092
+medford,2024-12-23,S3071926,reference,5.91,1,10679406
+medford,2024-12-24,S2999793,low-cost,3.865,2,10141014; 10141092
+medford,2024-12-24,S3071926,reference,3.88,1,10679406
+medford,2024-12-25,S2999793,low-cost,6.73,2,10141014; 10141092
+medford,2024-12-25,S3071926,reference,6.28,1,10679406
+medford,2024-12-26,S2999793,low-cost,4.71,2,10141014; 10141092
+medford,2024-12-26,S3071926,reference,4.83,1,10679406
+medford,2024-12-27,S2999793,low-cost,4.055,2,10141014; 10141092
+medford,2024-12-27,S3071926,reference,3.9,1,10679406
+medford,2024-12-28,S2999793,low-cost,7.205,2,10141014; 10141092
+medford,2024-12-28,S3071926,reference,8.4,1,10679406
+medford,2024-12-29,S2999793,low-cost,5.24,2,10141014; 10141092
+medford,2024-12-29,S3071926,reference,5.46,1,10679406
+medford,2024-12-30,S2999793,low-cost,10.15,2,10141014; 10141092
+medford,2024-12-30,S3071926,reference,10.4,1,10679406
+medford,2024-12-31,S2999793,low-cost,10.4,2,10141014; 10141092
+medford,2024-12-31,S3071926,reference,9.66,1,10679406
+medford,2025-01-01,S2999793,low-cost,8.905,2,10141014; 10141092
+medford,2025-01-01,S3071926,reference,8.32,1,10679406
+medford,2025-01-02,S2999793,low-cost,11.85,2,10141014; 10141092
+medford,2025-01-02,S3071926,reference,11.9,1,10679406
+medford,2025-01-03,S2999793,low-cost,7.84,2,10141014; 10141092
+medford,2025-01-03,S3071926,reference,7.67,1,10679406
+medford,2025-01-04,S2999793,low-cost,7.485,2,10141014; 10141092
+medford,2025-01-04,S3071926,reference,7.16,1,10679406
+medford,2025-01-05,S2999793,low-cost,9.28,2,10141014; 10141092
+medford,2025-01-05,S3071926,reference,8.43,1,10679406
+medford,2025-01-06,S2999793,low-cost,10.7,2,10141014; 10141092
+medford,2025-01-06,S3071926,reference,10.5,1,10679406
+medford,2025-01-07,S3071926,reference,11.3,1,10679406
+medford,2025-01-08,S2999793,low-cost,13.9,2,10141014; 10141092
+medford,2025-01-08,S3071926,reference,14.2,1,10679406
+medford,2025-01-09,S2999793,low-cost,16.95,2,10141014; 10141092
+medford,2025-01-09,S3071926,reference,15.6,1,10679406
+medford,2025-01-10,S2999793,low-cost,17.3,2,10141014; 10141092
+medford,2025-01-10,S3071926,reference,15.2,1,10679406
+medford,2025-01-11,S3071926,reference,9.87,1,10679406
+medford,2025-01-12,S3071926,reference,8.31,1,10679406
+medford,2025-01-13,S3071926,reference,15.1,1,10679406
+medford,2025-01-14,S2999793,low-cost,19.95,2,10141014; 10141092
+medford,2025-01-14,S3071926,reference,17.6,1,10679406
+medford,2025-01-15,S2999793,low-cost,24.5,2,10141014; 10141092
+medford,2025-01-15,S3071926,reference,22.3,1,10679406
+medford,2025-01-16,S2999793,low-cost,23.2,2,10141014; 10141092
+medford,2025-01-16,S3071926,reference,24.6,1,10679406
+medford,2025-01-17,S2999793,low-cost,21.25,2,10141014; 10141092
+medford,2025-01-17,S3071926,reference,18.0,1,10679406
+medford,2025-01-18,S2999793,low-cost,21.6,2,10141014; 10141092
+medford,2025-01-18,S3071926,reference,19.8,1,10679406
+medford,2025-01-19,S2999793,low-cost,22.05,2,10141014; 10141092
+medford,2025-01-19,S3071926,reference,18.4,1,10679406
+medford,2025-01-20,S2999793,low-cost,21.55,2,10141014; 10141092
+medford,2025-01-20,S3071926,reference,18.4,1,10679406
+medford,2025-01-21,S3071926,reference,21.9,1,10679406
+medford,2025-01-22,S2999793,low-cost,21.8,2,10141014; 10141092
+medford,2025-01-22,S3071926,reference,18.7,1,10679406
+medford,2025-01-23,S2999793,low-cost,23.7,2,10141014; 10141092
+medford,2025-01-23,S3071926,reference,19.3,1,10679406
+medford,2025-01-24,S2999793,low-cost,20.45,2,10141014; 10141092
+medford,2025-01-24,S3071926,reference,16.4,1,10679406
+medford,2025-01-25,S3071926,reference,11.2,1,10679406
+medford,2025-01-26,S3071926,reference,14.4,1,10679406
+medford,2025-01-27,S3071926,reference,16.9,1,10679406
+medford,2025-01-28,S2999793,low-cost,20.0,2,10141014; 10141092
+medford,2025-01-28,S3071926,reference,17.0,1,10679406
+medford,2025-01-29,S2999793,low-cost,23.15,2,10141014; 10141092
+medford,2025-01-29,S3071926,reference,18.1,1,10679406
+medford,2025-01-30,S2999793,low-cost,22.55,2,10141014; 10141092
+medford,2025-01-30,S3071926,reference,18.0,1,10679406
+medford,2025-01-31,S2999793,low-cost,14.9,2,10141014; 10141092
+medford,2025-01-31,S3071926,reference,12.0,1,10679406
+medford,2025-02-01,S2999793,low-cost,13.1,2,10141014; 10141092
+medford,2025-02-01,S3071926,reference,11.2,1,10679406
+medford,2025-02-02,S3071926,reference,5.21,1,10679406
+medford,2025-02-03,S3071926,reference,14.0,1,10679406
+medford,2025-02-04,S2999793,low-cost,19.9,2,10141014; 10141092
+medford,2025-02-04,S3071926,reference,18.6,1,10679406
+medford,2025-02-05,S2999793,low-cost,17.05,2,10141014; 10141092
+medford,2025-02-05,S3071926,reference,14.2,1,10679406
+medford,2025-02-06,S3071926,reference,19.6,1,10679406
+medford,2025-02-07,S2999793,low-cost,9.03,2,10141014; 10141092
+medford,2025-02-07,S3071926,reference,7.62,1,10679406
+medford,2025-02-08,S2999793,low-cost,11.15,2,10141014; 10141092
+medford,2025-02-08,S3071926,reference,9.09,1,10679406
+medford,2025-02-09,S2999793,low-cost,13.35,2,10141014; 10141092
+medford,2025-02-09,S3071926,reference,10.5,1,10679406
+medford,2025-02-10,S2999793,low-cost,11.85,2,10141014; 10141092
+medford,2025-02-10,S3071926,reference,9.77,1,10679406
+medford,2025-02-11,S2999793,low-cost,8.835,2,10141014; 10141092
+medford,2025-02-11,S3071926,reference,6.64,1,10679406
+medford,2025-02-12,S2999793,low-cost,9.2,2,10141014; 10141092
+medford,2025-02-12,S3071926,reference,6.97,1,10679406
+medford,2025-02-13,S2999793,low-cost,3.63,2,10141014; 10141092
+medford,2025-02-13,S3071926,reference,2.37,1,10679406
+medford,2025-02-14,S2999793,low-cost,5.27,2,10141014; 10141092
+medford,2025-02-14,S3071926,reference,4.04,1,10679406
+medford,2025-02-15,S2999793,low-cost,11.45,2,10141014; 10141092
+medford,2025-02-15,S3071926,reference,9.35,1,10679406
+medford,2025-02-16,S2999793,low-cost,7.285,2,10141014; 10141092
+medford,2025-02-16,S3071926,reference,6.47,1,10679406
+medford,2025-02-17,S2999793,low-cost,7.25,2,10141014; 10141092
+medford,2025-02-17,S3071926,reference,6.23,1,10679406
+medford,2025-02-18,S2999793,low-cost,9.645,2,10141014; 10141092
+medford,2025-02-18,S3071926,reference,8.55,1,10679406
+medford,2025-02-19,S2999793,low-cost,10.55,2,10141014; 10141092
+medford,2025-02-19,S3071926,reference,8.52,1,10679406
+medford,2025-02-20,S2999793,low-cost,8.61,2,10141014; 10141092
+medford,2025-02-20,S3071926,reference,7.5,1,10679406
+medford,2025-02-21,S2999793,low-cost,13.7,2,10141014; 10141092
+medford,2025-02-21,S3071926,reference,10.9,1,10679406
+medford,2025-02-22,S2999793,low-cost,11.55,2,10141014; 10141092
+medford,2025-02-22,S3071926,reference,9.95,1,10679406
+medford,2025-02-23,S2999793,low-cost,4.96,2,10141014; 10141092
+medford,2025-02-23,S3071926,reference,4.37,1,10679406
+medford,2025-02-24,S2999793,low-cost,3.92,2,10141014; 10141092
+medford,2025-02-24,S3071926,reference,3.25,1,10679406
+medford,2025-02-25,S2999793,low-cost,6.095,2,10141014; 10141092
+medford,2025-02-25,S3071926,reference,4.91,1,10679406
+medford,2025-02-26,S3071926,reference,9.46,1,10679406
+medford,2025-02-27,S2999793,low-cost,10.45,2,10141014; 10141092
+medford,2025-02-27,S3071926,reference,8.68,1,10679406
+medford,2025-02-28,S2999793,low-cost,10.8,2,10141014; 10141092
+medford,2025-02-28,S3071926,reference,9.93,1,10679406
+medford,2025-03-01,S2999793,low-cost,10.95,2,10141014; 10141092
+medford,2025-03-01,S3071926,reference,8.3,1,10679406
+medford,2025-03-02,S2999793,low-cost,3.78,2,10141014; 10141092
+medford,2025-03-02,S3071926,reference,3.17,1,10679406
+medford,2025-03-03,S3071926,reference,6.88,1,10679406
+medford,2025-03-04,S2999793,low-cost,8.255,2,10141014; 10141092
+medford,2025-03-04,S3071926,reference,6.91,1,10679406
+medford,2025-03-05,S2999793,low-cost,4.7,2,10141014; 10141092
+medford,2025-03-05,S3071926,reference,3.7,1,10679406
+medford,2025-03-06,S2999793,low-cost,6.75,2,10141014; 10141092
+medford,2025-03-06,S3071926,reference,4.8,1,10679406
+medford,2025-03-07,S2999793,low-cost,10.95,2,10141014; 10141092
+medford,2025-03-07,S3071926,reference,8.31,1,10679406
+medford,2025-03-08,S2999793,low-cost,12.25,2,10141014; 10141092
+medford,2025-03-09,S2999793,low-cost,9.94,2,10141014; 10141092
+medford,2025-03-10,S2999793,low-cost,10.75,2,10141014; 10141092
+medford,2025-03-11,S3071926,reference,8.26,1,10679406
+medford,2025-03-12,S2999793,low-cost,5.06,2,10141014; 10141092
+medford,2025-03-12,S3071926,reference,4.22,1,10679406
+medford,2025-03-13,S2999793,low-cost,4.655,2,10141014; 10141092
+medford,2025-03-13,S3071926,reference,3.54,1,10679406
+medford,2025-03-14,S2999793,low-cost,3.4,2,10141014; 10141092
+medford,2025-03-15,S2999793,low-cost,4.8,2,10141014; 10141092
+medford,2025-03-16,S2999793,low-cost,3.225,2,10141014; 10141092
+medford,2025-03-17,S2999793,low-cost,3.55,2,10141014; 10141092
+medford,2025-03-18,S2999793,low-cost,6.65,2,10141014; 10141092
+medford,2025-03-18,S3071926,reference,5.1,1,10679406
+medford,2025-03-19,S2999793,low-cost,7.01,2,10141014; 10141092
+medford,2025-03-19,S3071926,reference,5.53,1,10679406
+medford,2025-03-20,S2999793,low-cost,5.315,2,10141014; 10141092
+medford,2025-03-20,S3071926,reference,4.18,1,10679406
+medford,2025-03-21,S2999793,low-cost,6.165,2,10141014; 10141092
+medford,2025-03-21,S3071926,reference,4.7,1,10679406
+medford,2025-03-22,S2999793,low-cost,5.695,2,10141014; 10141092
+medford,2025-03-22,S3071926,reference,5.33,1,10679406
+medford,2025-03-23,S2999793,low-cost,8.01,2,10141014; 10141092
+medford,2025-03-23,S3071926,reference,6.7,1,10679406
+medford,2025-03-24,S2999793,low-cost,6.655,2,10141014; 10141092
+medford,2025-03-24,S3071926,reference,5.12,1,10679406
+medford,2025-03-25,S2999793,low-cost,12.2,2,10141014; 10141092
+medford,2025-03-25,S3071926,reference,9.8,1,10679406
+medford,2025-03-26,S2999793,low-cost,6.175,2,10141014; 10141092
+medford,2025-03-27,S2999793,low-cost,3.08,2,10141014; 10141092
+medford,2025-03-28,S2999793,low-cost,3.295,2,10141014; 10141092
+medford,2025-03-29,S2999793,low-cost,4.88,2,10141014; 10141092
+medford,2025-03-30,S2999793,low-cost,3.99,2,10141014; 10141092
+medford,2025-03-31,S2999793,low-cost,3.075,2,10141014; 10141092
+medford,2025-04-01,S2999793,low-cost,3.245,2,10141014; 10141092
+medford,2025-04-01,S3071926,reference,2.36,1,10679406
+medford,2025-04-02,S2999793,low-cost,4.425,2,10141014; 10141092
+medford,2025-04-02,S3071926,reference,3.37,1,10679406
+medford,2025-04-03,S2999793,low-cost,6.39,2,10141014; 10141092
+medford,2025-04-03,S3071926,reference,4.49,1,10679406
+medford,2025-04-04,S2999793,low-cost,6.67,2,10141014; 10141092
+medford,2025-04-04,S3071926,reference,5.0,1,10679406
+medford,2025-04-05,S2999793,low-cost,8.125,2,10141014; 10141092
+medford,2025-04-05,S3071926,reference,5.86,1,10679406
+medford,2025-04-06,S2999793,low-cost,7.755,2,10141014; 10141092
+medford,2025-04-06,S3071926,reference,6.68,1,10679406
+medford,2025-04-07,S2999793,low-cost,6.4,2,10141014; 10141092
+medford,2025-04-07,S3071926,reference,4.88,1,10679406
+medford,2025-04-08,S2999793,low-cost,5.425,2,10141014; 10141092
+medford,2025-04-08,S3071926,reference,4.35,1,10679406
+medford,2025-04-09,S2999793,low-cost,5.885,2,10141014; 10141092
+medford,2025-04-09,S3071926,reference,4.94,1,10679406
+medford,2025-04-10,S2999793,low-cost,5.6,2,10141014; 10141092
+medford,2025-04-10,S3071926,reference,4.88,1,10679406
+medford,2025-04-11,S2999793,low-cost,3.195,2,10141014; 10141092
+medford,2025-04-11,S3071926,reference,2.3,1,10679406
+medford,2025-04-12,S2999793,low-cost,5.215,2,10141014; 10141092
+medford,2025-04-12,S3071926,reference,3.79,1,10679406
+medford,2025-04-13,S2999793,low-cost,9.355,2,10141014; 10141092
+medford,2025-04-13,S3071926,reference,7.19,1,10679406
+medford,2025-04-14,S2999793,low-cost,8.89,2,10141014; 10141092
+medford,2025-04-14,S3071926,reference,6.99,1,10679406
+medford,2025-04-15,S2999793,low-cost,7.875,2,10141014; 10141092
+medford,2025-04-15,S3071926,reference,6.3,1,10679406
+medford,2025-04-16,S2999793,low-cost,7.85,2,10141014; 10141092
+medford,2025-04-16,S3071926,reference,5.86,1,10679406
+medford,2025-04-17,S2999793,low-cost,7.805,2,10141014; 10141092
+medford,2025-04-17,S3071926,reference,5.81,1,10679406
+medford,2025-04-18,S2999793,low-cost,8.015,2,10141014; 10141092
+medford,2025-04-18,S3071926,reference,5.21,1,10679406
+medford,2025-04-19,S2999793,low-cost,6.575,2,10141014; 10141092
+medford,2025-04-19,S3071926,reference,4.86,1,10679406
+medford,2025-04-20,S2999793,low-cost,6.38,2,10141014; 10141092
+medford,2025-04-20,S3071926,reference,4.98,1,10679406
+medford,2025-04-21,S2999793,low-cost,4.48,2,10141014; 10141092
+medford,2025-04-21,S3071926,reference,3.11,1,10679406
+medford,2025-04-22,S2999793,low-cost,5.275,2,10141014; 10141092
+medford,2025-04-22,S3071926,reference,3.74,1,10679406
+medford,2025-04-23,S2999793,low-cost,5.465,2,10141014; 10141092
+medford,2025-04-23,S3071926,reference,4.1,1,10679406
+medford,2025-04-24,S2999793,low-cost,6.59,2,10141014; 10141092
+medford,2025-04-24,S3071926,reference,4.95,1,10679406
+medford,2025-04-25,S2999793,low-cost,5.535,2,10141014; 10141092
+medford,2025-04-25,S3071926,reference,4.23,1,10679406
+medford,2025-04-26,S2999793,low-cost,5.025,2,10141014; 10141092
+medford,2025-04-26,S3071926,reference,4.2,1,10679406
+medford,2025-04-27,S2999793,low-cost,6.395,2,10141014; 10141092
+medford,2025-04-27,S3071926,reference,4.9,1,10679406
+medford,2025-04-28,S2999793,low-cost,7.155,2,10141014; 10141092
+medford,2025-04-28,S3071926,reference,5.18,1,10679406
+medford,2025-04-29,S3071926,reference,3.72,1,10679406
+medford,2025-04-30,S2999793,low-cost,6.27,2,10141014; 10141092
+medford,2025-04-30,S3071926,reference,4.78,1,10679406
+medford,2025-05-01,S2999793,low-cost,7.78,2,10141014; 10141092
+medford,2025-05-01,S3071926,reference,6.28,1,10679406
+medford,2025-05-02,S3071926,reference,4.43,1,10679406
+medford,2025-05-03,S2999793,low-cost,3.485,2,10141014; 10141092
+medford,2025-05-03,S3071926,reference,2.28,1,10679406
+medford,2025-05-04,S2999793,low-cost,5.595,2,10141014; 10141092
+medford,2025-05-04,S3071926,reference,4.27,1,10679406
+medford,2025-05-05,S3071926,reference,4.07,1,10679406
+medford,2025-05-06,S2999793,low-cost,6.19,2,10141014; 10141092
+medford,2025-05-06,S3071926,reference,4.61,1,10679406
+medford,2025-05-07,S3071926,reference,4.29,1,10679406
+medford,2025-05-08,S3071926,reference,3.53,1,10679406
+medford,2025-05-09,S2999793,low-cost,6.025,2,10141014; 10141092
+medford,2025-05-09,S3071926,reference,4.61,1,10679406
+medford,2025-05-10,S2999793,low-cost,5.955,2,10141014; 10141092
+medford,2025-05-10,S3071926,reference,4.41,1,10679406
+medford,2025-05-11,S3071926,reference,2.91,1,10679406
+medford,2025-05-12,S2999793,low-cost,2.995,2,10141014; 10141092
+medford,2025-05-12,S3071926,reference,2.6,1,10679406
+medford,2025-05-13,S3071926,reference,2.68,1,10679406
+medford,2025-05-14,S2999793,low-cost,5.61,2,10141014; 10141092
+medford,2025-05-14,S3071926,reference,4.28,1,10679406
+medford,2025-05-15,S3071926,reference,4.59,1,10679406
+medford,2025-05-16,S2999793,low-cost,5.08,2,10141014; 10141092
+medford,2025-05-16,S3071926,reference,3.61,1,10679406
+medford,2025-05-17,S2999793,low-cost,3.975,2,10141014; 10141092
+medford,2025-05-17,S3071926,reference,2.71,1,10679406
+medford,2025-05-18,S3071926,reference,3.98,1,10679406
+medford,2025-05-19,S2999793,low-cost,5.17,2,10141014; 10141092
+medford,2025-05-19,S3071926,reference,3.98,1,10679406
+medford,2025-05-20,S3071926,reference,2.78,1,10679406
+medford,2025-05-21,S3071926,reference,3.64,1,10679406
+medford,2025-05-22,S3071926,reference,3.9,1,10679406
+medford,2025-05-23,S3071926,reference,5.19,1,10679406
+medford,2025-05-24,S2999793,low-cost,7.05,2,10141014; 10141092
+medford,2025-05-24,S3071926,reference,5.48,1,10679406
+medford,2025-05-25,S3071926,reference,4.26,1,10679406
+medford,2025-05-26,S3071926,reference,3.15,1,10679406
+medford,2025-05-27,S3071926,reference,3.78,1,10679406
+medford,2025-05-28,S2999793,low-cost,6.165,2,10141014; 10141092
+medford,2025-05-28,S3071926,reference,5.12,1,10679406
+medford,2025-05-29,S2999793,low-cost,4.645,2,10141014; 10141092
+medford,2025-05-29,S3071926,reference,3.58,1,10679406
+medford,2025-05-30,S3071926,reference,5.33,1,10679406
+medford,2025-05-31,S2999793,low-cost,5.65,2,10141014; 10141092
+medford,2025-05-31,S3071926,reference,4.73,1,10679406
+medford,2025-06-01,S2999793,low-cost,4.175,2,10141014; 10141092
+medford,2025-06-01,S3071926,reference,3.15,1,10679406
+medford,2025-06-02,S2999793,low-cost,4.78,2,10141014; 10141092
+medford,2025-06-02,S3071926,reference,3.79,1,10679406
+medford,2025-06-03,S3071926,reference,4.0,1,10679406
+medford,2025-06-04,S3071926,reference,4.19,1,10679406
+medford,2025-06-05,S2999793,low-cost,6.34,2,10141014; 10141092
+medford,2025-06-05,S3071926,reference,4.28,1,10679406
+medford,2025-06-06,S3071926,reference,5.73,1,10679406
+medford,2025-06-07,S3071926,reference,6.58,1,10679406
+medford,2025-06-08,S2999793,low-cost,8.46,2,10141014; 10141092
+medford,2025-06-08,S3071926,reference,7.0,1,10679406
+medford,2025-06-09,S2999793,low-cost,9.295,2,10141014; 10141092
+medford,2025-06-09,S3071926,reference,7.61,1,10679406
+medford,2025-06-10,S2999793,low-cost,9.91,2,10141014; 10141092
+medford,2025-06-10,S3071926,reference,7.59,1,10679406
+medford,2025-06-11,S2999793,low-cost,6.94,2,10141014; 10141092
+medford,2025-06-11,S3071926,reference,5.59,1,10679406
+medford,2025-06-12,S3071926,reference,5.17,1,10679406
+medford,2025-06-13,S3071926,reference,4.48,1,10679406
+medford,2025-06-14,S3071926,reference,4.68,1,10679406
+medford,2025-06-15,S2999793,low-cost,6.8,2,10141014; 10141092
+medford,2025-06-15,S3071926,reference,4.83,1,10679406
+medford,2025-06-16,S3071926,reference,4.95,1,10679406
+medford,2025-06-18,S3071926,reference,3.86,1,10679406
+medford,2025-06-19,S3071926,reference,3.74,1,10679406
+medford,2025-06-20,S2999793,low-cost,4.285,2,10141014; 10141092
+medford,2025-06-20,S3071926,reference,2.86,1,10679406
+medford,2025-06-21,S2999793,low-cost,3.25,2,10141014; 10141092
+medford,2025-06-21,S3071926,reference,2.23,1,10679406
+medford,2025-06-22,S2999793,low-cost,4.04,2,10141014; 10141092
+medford,2025-06-22,S3071926,reference,3.05,1,10679406
+medford,2025-06-23,S2999793,low-cost,4.955,2,10141014; 10141092
+medford,2025-06-23,S3071926,reference,3.82,1,10679406
+medford,2025-06-24,S2999793,low-cost,8.29,2,10141014; 10141092
+medford,2025-06-24,S3071926,reference,6.36,1,10679406
+medford,2025-06-25,S2999793,low-cost,9.325,2,10141014; 10141092
+medford,2025-06-25,S3071926,reference,7.62,1,10679406
+medford,2025-06-26,S3071926,reference,3.77,1,10679406
+medford,2025-06-27,S2999793,low-cost,4.01,1,10141092
+medford,2025-06-27,S3071926,reference,2.95,1,10679406
+medford,2025-06-28,S3071926,reference,3.18,1,10679406
+medford,2025-06-29,S3071926,reference,4.03,1,10679406
+medford,2025-06-30,S3071926,reference,5.28,1,10679406
+medford,2025-07-01,S3071926,reference,5.78,1,10679406
+medford,2025-07-02,S3071926,reference,3.44,1,10679406
+medford,2025-07-03,S3071926,reference,3.11,1,10679406
+medford,2025-07-04,S2999793,low-cost,7.695,2,10141014; 10141092
+medford,2025-07-04,S3071926,reference,5.64,1,10679406
+medford,2025-07-05,S3071926,reference,5.16,1,10679406
+medford,2025-07-06,S2999793,low-cost,6.695,2,10141014; 10141092
+medford,2025-07-06,S3071926,reference,5.19,1,10679406
+medford,2025-07-07,S3071926,reference,5.45,1,10679406
+medford,2025-07-08,S3071926,reference,8.53,1,10679406
+medford,2025-07-09,S2999793,low-cost,11.3,2,10141014; 10141092
+medford,2025-07-09,S3071926,reference,10.2,1,10679406
+medford,2025-07-10,S2999793,low-cost,3.985,2,10141014; 10141092
+medford,2025-07-10,S3071926,reference,3.08,1,10679406
+medford,2025-07-11,S2999793,low-cost,4.26,2,10141014; 10141092
+medford,2025-07-11,S3071926,reference,3.55,1,10679406
+medford,2025-07-12,S2999793,low-cost,6.745,2,10141014; 10141092
+medford,2025-07-12,S3071926,reference,5.66,1,10679406
+medford,2025-07-13,S3071926,reference,4.89,1,10679406
+medford,2025-07-14,S2999793,low-cost,4.755,2,10141014; 10141092
+medford,2025-07-14,S3071926,reference,4.03,1,10679406
+medford,2025-07-15,S2999793,low-cost,4.135,2,10141014; 10141092
+medford,2025-07-15,S3071926,reference,3.62,1,10679406
+medford,2025-07-16,S2999793,low-cost,20.4,2,10141014; 10141092
+medford,2025-07-16,S3071926,reference,16.3,1,10679406
+medford,2025-07-17,S2999793,low-cost,14.35,2,10141014; 10141092
+medford,2025-07-17,S3071926,reference,11.4,1,10679406
+medford,2025-07-18,S2999793,low-cost,17.4,2,10141014; 10141092
+medford,2025-07-18,S3071926,reference,13.5,1,10679406
+medford,2025-07-19,S2999793,low-cost,7.465,2,10141014; 10141092
+medford,2025-07-19,S3071926,reference,5.65,1,10679406
+medford,2025-07-20,S2999793,low-cost,4.16,2,10141014; 10141092
+medford,2025-07-20,S3071926,reference,3.59,1,10679406
+medford,2025-07-21,S2999793,low-cost,3.81,2,10141014; 10141092
+medford,2025-07-21,S3071926,reference,2.66,1,10679406
+medford,2025-07-22,S2999793,low-cost,4.61,2,10141014; 10141092
+medford,2025-07-22,S3071926,reference,3.53,1,10679406
+medford,2025-07-23,S2999793,low-cost,7.2,2,10141014; 10141092
+medford,2025-07-23,S3071926,reference,5.96,1,10679406
+medford,2025-07-24,S2999793,low-cost,7.63,2,10141014; 10141092
+medford,2025-07-24,S3071926,reference,6.34,1,10679406
+medford,2025-07-25,S2999793,low-cost,5.605,2,10141014; 10141092
+medford,2025-07-25,S3071926,reference,4.26,1,10679406
+medford,2025-07-26,S2999793,low-cost,4.08,2,10141014; 10141092
+medford,2025-07-26,S3071926,reference,2.91,1,10679406
+medford,2025-07-27,S2999793,low-cost,3.92,2,10141014; 10141092
+medford,2025-07-27,S3071926,reference,2.87,1,10679406
+medford,2025-07-28,S2999793,low-cost,4.72,2,10141014; 10141092
+medford,2025-07-28,S3071926,reference,3.57,1,10679406
+medford,2025-07-29,S2999793,low-cost,5.945,2,10141014; 10141092
+medford,2025-07-29,S3071926,reference,4.64,1,10679406
+medford,2025-07-30,S2999793,low-cost,6.15,2,10141014; 10141092
+medford,2025-07-30,S3071926,reference,5.13,1,10679406
+medford,2025-07-31,S2999793,low-cost,7.545,2,10141014; 10141092
+medford,2025-07-31,S3071926,reference,6.37,1,10679406
+medford,2025-08-01,S2999793,low-cost,8.045,2,10141014; 10141092
+medford,2025-08-01,S3071926,reference,6.7,1,10679406
+medford,2025-08-02,S2999793,low-cost,5.95,2,10141014; 10141092
+medford,2025-08-02,S3071926,reference,4.72,1,10679406
+medford,2025-08-03,S3071926,reference,3.57,1,10679406
+medford,2025-08-04,S2999793,low-cost,4.945,2,10141014; 10141092
+medford,2025-08-04,S3071926,reference,3.53,1,10679406
+medford,2025-08-05,S2999793,low-cost,5.405,2,10141014; 10141092
+medford,2025-08-05,S3071926,reference,3.87,1,10679406
+medford,2025-08-06,S2999793,low-cost,4.77,2,10141014; 10141092
+medford,2025-08-06,S3071926,reference,3.4,1,10679406
+medford,2025-08-07,S2999793,low-cost,3.835,2,10141014; 10141092
+medford,2025-08-07,S3071926,reference,2.77,1,10679406
+medford,2025-08-08,S2999793,low-cost,4.68,2,10141014; 10141092
+medford,2025-08-08,S3071926,reference,3.26,1,10679406
+medford,2025-08-09,S2999793,low-cost,7.19,2,10141014; 10141092
+medford,2025-08-09,S3071926,reference,5.7,1,10679406
+medford,2025-08-10,S2999793,low-cost,9.695,2,10141014; 10141092
+medford,2025-08-10,S3071926,reference,7.24,1,10679406
+medford,2025-08-11,S2999793,low-cost,9.115,2,10141014; 10141092
+medford,2025-08-11,S3071926,reference,7.66,1,10679406
+medford,2025-08-12,S2999793,low-cost,9.415,2,10141014; 10141092
+medford,2025-08-12,S3071926,reference,8.04,1,10679406
+medford,2025-08-13,S2999793,low-cost,9.685,2,10141014; 10141092
+medford,2025-08-13,S3071926,reference,7.87,1,10679406
+medford,2025-08-14,S2999793,low-cost,3.915,2,10141014; 10141092
+medford,2025-08-14,S3071926,reference,2.82,1,10679406
+medford,2025-08-15,S2999793,low-cost,3.825,2,10141014; 10141092
+medford,2025-08-15,S3071926,reference,2.62,1,10679406
+medford,2025-08-16,S2999793,low-cost,3.09,2,10141014; 10141092
+medford,2025-08-16,S3071926,reference,2.27,1,10679406
+medford,2025-08-17,S2999793,low-cost,4.09,2,10141014; 10141092
+medford,2025-08-17,S3071926,reference,3.05,1,10679406
+medford,2025-08-18,S3071926,reference,3.08,1,10679406
+medford,2025-08-19,S2999793,low-cost,5.185,2,10141014; 10141092
+medford,2025-08-19,S3071926,reference,3.83,1,10679406
+medford,2025-08-20,S2999793,low-cost,5.03,2,10141014; 10141092
+medford,2025-08-20,S3071926,reference,3.88,1,10679406
+medford,2025-08-21,S2999793,low-cost,5.345,2,10141014; 10141092
+medford,2025-08-21,S3071926,reference,4.45,1,10679406
+medford,2025-08-22,S2999793,low-cost,7.48,2,10141014; 10141092
+medford,2025-08-22,S3071926,reference,6.22,1,10679406
+medford,2025-08-23,S2999793,low-cost,12.4,2,10141014; 10141092
+medford,2025-08-23,S3071926,reference,9.63,1,10679406
+medford,2025-08-24,S2999793,low-cost,17.1,2,10141014; 10141092
+medford,2025-08-24,S3071926,reference,13.1,1,10679406
+medford,2025-08-25,S2999793,low-cost,14.25,2,10141014; 10141092
+medford,2025-08-25,S3071926,reference,11.2,1,10679406
+medford,2025-08-26,S2999793,low-cost,29.3,2,10141014; 10141092
+medford,2025-08-26,S3071926,reference,23.6,1,10679406
+medford,2025-08-27,S2999793,low-cost,18.75,2,10141014; 10141092
+medford,2025-08-27,S3071926,reference,13.8,1,10679406
+medford,2025-08-28,S2999793,low-cost,11.4,2,10141014; 10141092
+medford,2025-08-28,S3071926,reference,8.18,1,10679406
+medford,2025-08-29,S2999793,low-cost,11.2,2,10141014; 10141092
+medford,2025-08-29,S3071926,reference,7.85,1,10679406
+medford,2025-08-30,S2999793,low-cost,17.95,2,10141014; 10141092
+medford,2025-08-30,S3071926,reference,12.2,1,10679406
+medford,2025-08-31,S2999793,low-cost,14.2,2,10141014; 10141092
+medford,2025-08-31,S3071926,reference,10.1,1,10679406
+medford,2025-09-01,S2999793,low-cost,14.15,2,10141014; 10141092
+medford,2025-09-01,S3071926,reference,10.5,1,10679406
+medford,2025-09-02,S2999793,low-cost,19.0,2,10141014; 10141092
+medford,2025-09-02,S3071926,reference,15.6,1,10679406
+medford,2025-09-03,S2999793,low-cost,14.0,2,10141014; 10141092
+medford,2025-09-03,S3071926,reference,11.2,1,10679406
+medford,2025-09-04,S2999793,low-cost,19.5,2,10141014; 10141092
+medford,2025-09-04,S3071926,reference,15.9,1,10679406
+medford,2025-09-05,S2999793,low-cost,34.45,2,10141014; 10141092
+medford,2025-09-05,S3071926,reference,28.3,1,10679406
+medford,2025-09-06,S2999793,low-cost,37.0,2,10141014; 10141092
+medford,2025-09-06,S3071926,reference,32.0,1,10679406
+medford,2025-09-07,S2999793,low-cost,30.3,2,10141014; 10141092
+medford,2025-09-07,S3071926,reference,28.9,1,10679406
+medford,2025-09-08,S3071926,reference,22.8,1,10679406
+medford,2025-09-09,S3071926,reference,4.61,1,10679406
+medford,2025-09-10,S3071926,reference,4.86,1,10679406
+medford,2025-09-11,S2999793,low-cost,8.175,2,10141014; 10141092
+medford,2025-09-11,S3071926,reference,7.41,1,10679406
+medford,2025-09-12,S2999793,low-cost,13.2,2,10141014; 10141092
+medford,2025-09-12,S3071926,reference,11.8,1,10679406
+medford,2025-09-13,S2999793,low-cost,14.9,2,10141014; 10141092
+medford,2025-09-13,S3071926,reference,13.0,1,10679406
+medford,2025-09-14,S2999793,low-cost,4.88,2,10141014; 10141092
+medford,2025-09-14,S3071926,reference,3.7,1,10679406
+medford,2025-09-15,S2999793,low-cost,4.305,2,10141014; 10141092
+medford,2025-09-15,S3071926,reference,3.35,1,10679406
+medford,2025-09-16,S2999793,low-cost,5.225,2,10141014; 10141092
+medford,2025-09-16,S3071926,reference,3.72,1,10679406
+medford,2025-09-17,S2999793,low-cost,7.07,2,10141014; 10141092
+medford,2025-09-17,S3071926,reference,5.53,1,10679406
+medford,2025-09-18,S2999793,low-cost,7.025,2,10141014; 10141092
+medford,2025-09-18,S3071926,reference,5.66,1,10679406
+medford,2025-09-19,S2999793,low-cost,8.74,2,10141014; 10141092
+medford,2025-09-19,S3071926,reference,7.28,1,10679406
+medford,2025-09-20,S2999793,low-cost,8.795,2,10141014; 10141092
+medford,2025-09-20,S3071926,reference,7.4,1,10679406
+medford,2025-09-21,S2999793,low-cost,5.535,2,10141014; 10141092
+medford,2025-09-21,S3071926,reference,3.94,1,10679406
+medford,2025-09-22,S2999793,low-cost,4.845,2,10141014; 10141092
+medford,2025-09-22,S3071926,reference,3.62,1,10679406
+medford,2025-09-23,S2999793,low-cost,5.2,2,10141014; 10141092
+medford,2025-09-23,S3071926,reference,4.01,1,10679406
+medford,2025-09-24,S2999793,low-cost,7.835,2,10141014; 10141092
+medford,2025-09-24,S3071926,reference,6.37,1,10679406
+medford,2025-09-25,S2999793,low-cost,11.25,2,10141014; 10141092
+medford,2025-09-25,S3071926,reference,8.42,1,10679406
+medford,2025-09-26,S3071926,reference,5.23,1,10679406
+medford,2025-09-27,S2999793,low-cost,12.0,2,10141014; 10141092
+medford,2025-09-27,S3071926,reference,9.49,1,10679406
+medford,2025-09-28,S2999793,low-cost,64.75,2,10141014; 10141092
+medford,2025-09-28,S3071926,reference,55.4,1,10679406
+medford,2025-09-29,S2999793,low-cost,12.2,2,10141014; 10141092
+medford,2025-09-29,S3071926,reference,10.2,1,10679406
+medford,2025-09-30,S2999793,low-cost,5.14,2,10141014; 10141092
+medford,2025-09-30,S3071926,reference,4.66,1,10679406
+medford,2025-10-01,S2999793,low-cost,4.07,2,10141014; 10141092
+medford,2025-10-01,S3071926,reference,3.42,1,10679406
+medford,2025-10-02,S2999793,low-cost,4.51,2,10141014; 10141092
+medford,2025-10-02,S3071926,reference,3.92,1,10679406
+medford,2025-10-03,S2999793,low-cost,4.2,2,10141014; 10141092
+medford,2025-10-03,S3071926,reference,3.3,1,10679406
+medford,2025-10-04,S2999793,low-cost,4.435,2,10141014; 10141092
+medford,2025-10-04,S3071926,reference,3.35,1,10679406
+medford,2025-10-05,S2999793,low-cost,4.72,2,10141014; 10141092
+medford,2025-10-05,S3071926,reference,3.81,1,10679406
+medford,2025-10-06,S2999793,low-cost,6.325,2,10141014; 10141092
+medford,2025-10-06,S3071926,reference,4.64,1,10679406
+medford,2025-10-07,S2999793,low-cost,6.615,2,10141014; 10141092
+medford,2025-10-07,S3071926,reference,4.7,1,10679406
+medford,2025-10-08,S2999793,low-cost,6.42,2,10141014; 10141092
+medford,2025-10-08,S3071926,reference,4.56,1,10679406
+medford,2025-10-09,S2999793,low-cost,4.87,2,10141014; 10141092
+medford,2025-10-09,S3071926,reference,3.6,1,10679406
+medford,2025-10-10,S2999793,low-cost,4.39,2,10141014; 10141092
+medford,2025-10-10,S3071926,reference,3.91,1,10679406
+medford,2025-10-11,S3071926,reference,4.75,1,10679406
+medford,2025-10-12,S2999793,low-cost,5.785,2,10141014; 10141092
+medford,2025-10-12,S3071926,reference,4.48,1,10679406
+medford,2025-10-13,S2999793,low-cost,4.285,2,10141014; 10141092
+medford,2025-10-13,S3071926,reference,3.7,1,10679406
+medford,2025-10-14,S2999793,low-cost,6.185,2,10141014; 10141092
+medford,2025-10-14,S3071926,reference,4.7,1,10679406
+medford,2025-10-15,S2999793,low-cost,8.515,2,10141014; 10141092
+medford,2025-10-15,S3071926,reference,6.87,1,10679406
+medford,2025-10-16,S2999793,low-cost,9.175,2,10141014; 10141092
+medford,2025-10-16,S3071926,reference,7.33,1,10679406
+medford,2025-10-17,S2999793,low-cost,8.455,2,10141014; 10141092
+medford,2025-10-17,S3071926,reference,7.25,1,10679406
+medford,2025-10-18,S2999793,low-cost,8.83,2,10141014; 10141092
+medford,2025-10-18,S3071926,reference,7.21,1,10679406
+medford,2025-10-19,S2999793,low-cost,7.92,2,10141014; 10141092
+medford,2025-10-19,S3071926,reference,6.64,1,10679406
+medford,2025-10-20,S3071926,reference,7.23,1,10679406
+medford,2025-10-21,S2999793,low-cost,10.4,2,10141014; 10141092
+medford,2025-10-21,S3071926,reference,9.05,1,10679406
+medford,2025-10-22,S2999793,low-cost,11.15,2,10141014; 10141092
+medford,2025-10-22,S3071926,reference,9.02,1,10679406
+medford,2025-10-23,S2999793,low-cost,11.5,1,10141014
+medford,2025-10-23,S3071926,reference,9.6,1,10679406
+medford,2025-10-24,S3071926,reference,7.48,1,10679406
+medford,2025-10-25,S3071926,reference,4.19,1,10679406
+medford,2025-10-26,S2999793,low-cost,5.115,2,10141014; 10141092
+medford,2025-10-26,S3071926,reference,4.5,1,10679406
+medford,2025-10-27,S3071926,reference,6.9,1,10679406
+medford,2025-10-28,S2999793,low-cost,9.045,2,10141014; 10141092
+medford,2025-10-28,S3071926,reference,7.6,1,10679406
+medford,2025-10-29,S2999793,low-cost,7.515,2,10141014; 10141092
+medford,2025-10-29,S3071926,reference,6.86,1,10679406
+medford,2025-10-30,S3071926,reference,11.5,1,10679406
+medford,2025-10-31,S2999793,low-cost,18.95,2,10141014; 10141092
+medford,2025-10-31,S3071926,reference,16.1,1,10679406
+medford,2025-11-01,S2999793,low-cost,17.9,2,10141014; 10141092
+medford,2025-11-01,S3071926,reference,15.4,1,10679406
+medford,2025-11-02,S3071926,reference,6.24,1,10679406
+medford,2025-11-03,S2999793,low-cost,9.745,2,10141014; 10141092
+medford,2025-11-03,S3071926,reference,9.11,1,10679406
+medford,2025-11-04,S2999793,low-cost,6.58,2,10141014; 10141092
+medford,2025-11-04,S3071926,reference,6.35,1,10679406
+medford,2025-11-05,S2999793,low-cost,3.735,2,10141014; 10141092
+medford,2025-11-05,S3071926,reference,3.15,1,10679406
+medford,2025-11-06,S2999793,low-cost,11.9,2,10141014; 10141092
+medford,2025-11-06,S3071926,reference,11.4,1,10679406
+medford,2025-11-07,S2999793,low-cost,9.565,2,10141014; 10141092
+medford,2025-11-07,S3071926,reference,9.7,1,10679406
+medford,2025-11-08,S2999793,low-cost,14.25,2,10141014; 10141092
+medford,2025-11-08,S3071926,reference,13.6,1,10679406
+medford,2025-11-09,S2999793,low-cost,17.6,2,10141014; 10141092
+medford,2025-11-09,S3071926,reference,17.6,1,10679406
+medford,2025-11-10,S2999793,low-cost,15.95,2,10141014; 10141092
+medford,2025-11-10,S3071926,reference,14.9,1,10679406
+medford,2025-11-11,S2999793,low-cost,19.45,2,10141014; 10141092
+medford,2025-11-11,S3071926,reference,19.4,1,10679406
+medford,2025-11-12,S2999793,low-cost,18.0,2,10141014; 10141092
+medford,2025-11-12,S3071926,reference,14.0,1,10679406
+medford,2025-11-13,S3071926,reference,2.27,1,10679406
+medford,2025-11-15,S2999793,low-cost,9.195,2,10141014; 10141092
+medford,2025-11-16,S2999793,low-cost,15.1,2,10141014; 10141092
+medford,2025-11-17,S2999793,low-cost,5.58,2,10141014; 10141092
+medford,2025-11-18,S2999793,low-cost,7.38,2,10141014; 10141092
+medford,2025-11-19,S2999793,low-cost,15.7,2,10141014; 10141092
+medford,2025-11-20,S2999793,low-cost,6.145,2,10141014; 10141092
+medford,2025-11-20,S3071926,reference,6.46,1,10679406
+medford,2025-11-21,S2999793,low-cost,18.5,2,10141014; 10141092
+medford,2025-11-21,S3071926,reference,16.2,1,10679406
+medford,2025-11-22,S3071926,reference,24.3,1,10679406
+medford,2025-11-23,S3071926,reference,21.4,1,10679406
+medford,2025-11-24,S2999793,low-cost,20.55,2,10141014; 10141092
+medford,2025-11-24,S3071926,reference,18.2,1,10679406
+medford,2025-11-25,S2999793,low-cost,12.5,2,10141014; 10141092
+medford,2025-11-25,S3071926,reference,11.2,1,10679406
+medford,2025-11-26,S2999793,low-cost,18.65,2,10141014; 10141092
+medford,2025-11-26,S3071926,reference,16.8,1,10679406
+medford,2025-11-27,S2999793,low-cost,19.0,2,10141014; 10141092
+medford,2025-11-27,S3071926,reference,17.1,1,10679406
+medford,2025-11-28,S2999793,low-cost,16.15,2,10141014; 10141092
+medford,2025-11-28,S3071926,reference,14.4,1,10679406
+medford,2025-11-29,S2999793,low-cost,16.55,2,10141014; 10141092
+medford,2025-11-29,S3071926,reference,15.7,1,10679406
+medford,2025-11-30,S2999793,low-cost,13.8,2,10141014; 10141092
+medford,2025-11-30,S3071926,reference,11.6,1,10679406
+medford,2025-12-01,S2999793,low-cost,13.7,2,10141014; 10141092
+medford,2025-12-01,S3071926,reference,11.7,1,10679406
+medford,2025-12-02,S2999793,low-cost,16.55,2,10141014; 10141092
+medford,2025-12-02,S3071926,reference,14.6,1,10679406
+medford,2025-12-03,S2999793,low-cost,19.3,2,10141014; 10141092
+medford,2025-12-03,S3071926,reference,16.7,1,10679406
+medford,2025-12-04,S2999793,low-cost,22.75,2,10141014; 10141092
+medford,2025-12-04,S3071926,reference,18.8,1,10679406
+medford,2025-12-05,S2999793,low-cost,25.3,2,10141014; 10141092
+medford,2025-12-05,S3071926,reference,23.1,1,10679406
+medford,2025-12-06,S2999793,low-cost,22.05,2,10141014; 10141092
+medford,2025-12-06,S3071926,reference,22.9,1,10679406
+medford,2025-12-07,S2999793,low-cost,13.65,2,10141014; 10141092
+medford,2025-12-07,S3071926,reference,13.5,1,10679406
+medford,2025-12-08,S2999793,low-cost,19.95,2,10141014; 10141092
+medford,2025-12-08,S3071926,reference,19.3,1,10679406
+medford,2025-12-09,S2999793,low-cost,14.15,2,10141014; 10141092
+medford,2025-12-09,S3071926,reference,13.4,1,10679406
+medford,2025-12-10,S2999793,low-cost,13.2,2,10141014; 10141092
+medford,2025-12-10,S3071926,reference,13.0,1,10679406
+medford,2025-12-11,S2999793,low-cost,8.81,2,10141014; 10141092
+medford,2025-12-11,S3071926,reference,8.32,1,10679406
+medford,2025-12-12,S2999793,low-cost,10.4,2,10141014; 10141092
+medford,2025-12-12,S3071926,reference,9.65,1,10679406
+medford,2025-12-13,S2999793,low-cost,12.35,2,10141014; 10141092
+medford,2025-12-13,S3071926,reference,11.1,1,10679406
+medford,2025-12-14,S2999793,low-cost,14.15,2,10141014; 10141092
+medford,2025-12-14,S3071926,reference,13.0,1,10679406
+medford,2025-12-15,S3071926,reference,15.0,1,10679406
+medford,2025-12-16,S2999793,low-cost,14.3,2,10141014; 10141092
+medford,2025-12-16,S3071926,reference,13.2,1,10679406
+medford,2025-12-17,S2999793,low-cost,5.65,1,10141014
+medford,2025-12-17,S3071926,reference,5.48,1,10679406
+medford,2025-12-18,S2999793,low-cost,8.24,2,10141014; 10141092
+medford,2025-12-18,S3071926,reference,7.19,1,10679406
+medford,2025-12-19,S2999793,low-cost,4.115,2,10141014; 10141092
+medford,2025-12-19,S3071926,reference,4.02,1,10679406
+medford,2025-12-20,S2999793,low-cost,9.405,2,10141014; 10141092
+medford,2025-12-20,S3071926,reference,8.33,1,10679406
+medford,2025-12-21,S2999793,low-cost,12.4,2,10141014; 10141092
+medford,2025-12-21,S3071926,reference,10.4,1,10679406
+medford,2025-12-22,S2999793,low-cost,12.3,2,10141014; 10141092
+medford,2025-12-22,S3071926,reference,10.5,1,10679406
+medford,2025-12-23,S3071926,reference,16.0,1,10679406
+medford,2025-12-24,S2999793,low-cost,10.325,2,10141014; 10141092
+medford,2025-12-24,S3071926,reference,8.06,1,10679406
+medford,2025-12-25,S2999793,low-cost,3.65,2,10141014; 10141092
+medford,2025-12-25,S3071926,reference,3.59,1,10679406
+medford,2025-12-26,S2999793,low-cost,5.82,2,10141014; 10141092
+medford,2025-12-26,S3071926,reference,5.15,1,10679406
+medford,2025-12-27,S2999793,low-cost,8.545,2,10141014; 10141092
+medford,2025-12-27,S3071926,reference,7.69,1,10679406
+medford,2025-12-28,S2999793,low-cost,16.05,2,10141014; 10141092
+medford,2025-12-28,S3071926,reference,13.7,1,10679406
+medford,2025-12-29,S3071926,reference,15.5,1,10679406
+medford,2025-12-30,S2999793,low-cost,20.45,2,10141014; 10141092
+medford,2025-12-30,S3071926,reference,18.0,1,10679406
+medford,2025-12-31,S2999793,low-cost,21.8,2,10141014; 10141092
+medford,2025-12-31,S3071926,reference,19.3,1,10679406
+medford,2026-01-01,S2999793,low-cost,26.4,2,10141014; 10141092
+medford,2026-01-01,S3071926,reference,24.9,1,10679406
+medford,2026-01-02,S2999793,low-cost,10.0,2,10141014; 10141092
+medford,2026-01-02,S3071926,reference,8.23,1,10679406
+medford,2026-01-03,S2999793,low-cost,4.715,2,10141014; 10141092
+medford,2026-01-03,S3071926,reference,4.2,1,10679406
+medford,2026-01-04,S2999793,low-cost,3.31,2,10141014; 10141092
+medford,2026-01-04,S3071926,reference,2.99,1,10679406
+medford,2026-01-05,S2999793,low-cost,3.725,2,10141014; 10141092
+medford,2026-01-05,S3071926,reference,3.45,1,10679406
+medford,2026-01-06,S2999793,low-cost,10.7,2,10141014; 10141092
+medford,2026-01-06,S3071926,reference,9.55,1,10679406
+medford,2026-01-07,S2999793,low-cost,9.555,2,10141014; 10141092
+medford,2026-01-07,S3071926,reference,8.33,1,10679406
+medford,2026-01-08,S3071926,reference,7.42,1,10679406
+medford,2026-01-09,S2999793,low-cost,13.65,2,10141014; 10141092
+medford,2026-01-09,S3071926,reference,13.3,1,10679406
+medford,2026-01-10,S2999793,low-cost,20.85,2,10141014; 10141092
+medford,2026-01-10,S3071926,reference,19.1,1,10679406
+medford,2026-01-11,S2999793,low-cost,22.15,2,10141014; 10141092
+medford,2026-01-11,S3071926,reference,19.9,1,10679406
+medford,2026-01-12,S2999793,low-cost,25.35,2,10141014; 10141092
+medford,2026-01-12,S3071926,reference,23.2,1,10679406
+medford,2026-01-13,S2999793,low-cost,28.85,2,10141014; 10141092
+medford,2026-01-13,S3071926,reference,27.4,1,10679406
+medford,2026-01-14,S2999793,low-cost,27.55,2,10141014; 10141092
+medford,2026-01-14,S3071926,reference,25.9,1,10679406
+medford,2026-01-15,S2999793,low-cost,25.5,2,10141014; 10141092
+medford,2026-01-15,S3071926,reference,21.9,1,10679406
+medford,2026-01-16,S2999793,low-cost,27.05,2,10141014; 10141092
+medford,2026-01-16,S3071926,reference,24.6,1,10679406
+medford,2026-01-17,S2999793,low-cost,27.05,2,10141014; 10141092
+medford,2026-01-17,S3071926,reference,25.6,1,10679406
+medford,2026-01-18,S2999793,low-cost,25.05,2,10141014; 10141092
+medford,2026-01-18,S3071926,reference,24.2,1,10679406
+medford,2026-01-19,S2999793,low-cost,23.45,2,10141014; 10141092
+medford,2026-01-19,S3071926,reference,20.6,1,10679406
+medford,2026-01-20,S2999793,low-cost,24.2,2,10141014; 10141092
+medford,2026-01-20,S3071926,reference,21.4,1,10679406
+medford,2026-01-21,S2999793,low-cost,24.6,2,10141014; 10141092
+medford,2026-01-21,S3071926,reference,22.2,1,10679406
+medford,2026-01-22,S2999793,low-cost,22.05,2,10141014; 10141092
+medford,2026-01-22,S3071926,reference,18.2,1,10679406
+medford,2026-01-23,S2999793,low-cost,19.7,2,10141014; 10141092
+medford,2026-01-23,S3071926,reference,17.3,1,10679406
+medford,2026-01-24,S2999793,low-cost,19.75,2,10141014; 10141092
+medford,2026-01-24,S3071926,reference,16.4,1,10679406
+medford,2026-01-25,S2999793,low-cost,20.95,2,10141014; 10141092
+medford,2026-01-25,S3071926,reference,17.8,1,10679406
+medford,2026-01-26,S2999793,low-cost,24.55,2,10141014; 10141092
+medford,2026-01-26,S3071926,reference,21.0,1,10679406
+medford,2026-01-27,S2999793,low-cost,21.35,2,10141014; 10141092
+medford,2026-01-27,S3071926,reference,16.6,1,10679406
+medford,2026-01-28,S2999793,low-cost,14.6,2,10141014; 10141092
+medford,2026-01-28,S3071926,reference,12.9,1,10679406
+medford,2026-01-29,S2999793,low-cost,16.9,2,10141014; 10141092
+medford,2026-01-29,S3071926,reference,15.3,1,10679406
+medford,2026-01-30,S2999793,low-cost,22.85,2,10141014; 10141092
+medford,2026-01-30,S3071926,reference,20.7,1,10679406
+medford,2026-01-31,S2999793,low-cost,21.5,2,10141014; 10141092
+medford,2026-01-31,S3071926,reference,19.0,1,10679406
+medford,2026-02-01,S2999793,low-cost,17.55,2,10141014; 10141092
+medford,2026-02-01,S3071926,reference,14.4,1,10679406
+medford,2026-02-02,S2999793,low-cost,16.95,2,10141014; 10141092
+medford,2026-02-02,S3071926,reference,14.1,1,10679406
+medford,2026-02-03,S2999793,low-cost,14.85,2,10141014; 10141092
+medford,2026-02-03,S3071926,reference,15.5,1,10679406
+medford,2026-02-04,S2999793,low-cost,17.55,2,10141014; 10141092
+medford,2026-02-04,S3071926,reference,16.4,1,10679406
+medford,2026-02-05,S2999793,low-cost,17.95,2,10141014; 10141092
+medford,2026-02-05,S3071926,reference,14.8,1,10679406
+medford,2026-02-06,S2999793,low-cost,16.9,2,10141014; 10141092
+medford,2026-02-06,S3071926,reference,14.0,1,10679406
+medford,2026-02-07,S2999793,low-cost,17.6,2,10141014; 10141092
+medford,2026-02-07,S3071926,reference,15.5,1,10679406
+medford,2026-02-08,S2999793,low-cost,10.6,2,10141014; 10141092
+medford,2026-02-08,S3071926,reference,8.98,1,10679406
+medford,2026-02-09,S2999793,low-cost,8.295,2,10141014; 10141092
+medford,2026-02-09,S3071926,reference,8.8,1,10679406
+medford,2026-02-10,S2999793,low-cost,10.9,2,10141014; 10141092
+medford,2026-02-10,S3071926,reference,10.5,1,10679406
+medford,2026-02-11,S2999793,low-cost,8.7,2,10141014; 10141092
+medford,2026-02-11,S3071926,reference,7.95,1,10679406
+medford,2026-02-12,S2999793,low-cost,7.64,2,10141014; 10141092
+medford,2026-02-12,S3071926,reference,6.44,1,10679406
+medford,2026-02-13,S2999793,low-cost,9.22,2,10141014; 10141092
+medford,2026-02-13,S3071926,reference,8.0,1,10679406
+medford,2026-02-14,S2999793,low-cost,10.25,2,10141014; 10141092
+medford,2026-02-14,S3071926,reference,8.87,1,10679406
+medford,2026-02-15,S2999793,low-cost,14.75,2,10141014; 10141092
+medford,2026-02-15,S3071926,reference,12.5,1,10679406
+medford,2026-02-16,S2999793,low-cost,9.125,2,10141014; 10141092
+medford,2026-02-16,S3071926,reference,7.73,1,10679406
+medford,2026-02-17,S2999793,low-cost,7.235,2,10141014; 10141092
+medford,2026-02-17,S3071926,reference,6.03,1,10679406
+medford,2026-02-18,S2999793,low-cost,6.915,2,10141014; 10141092
+medford,2026-02-18,S3071926,reference,5.9,1,10679406
+medford,2026-02-19,S2999793,low-cost,5.45,2,10141014; 10141092
+medford,2026-02-19,S3071926,reference,4.7,1,10679406
+medford,2026-02-20,S2999793,low-cost,8.54,2,10141014; 10141092
+medford,2026-02-20,S3071926,reference,6.48,1,10679406
+medford,2026-02-21,S2999793,low-cost,3.58,2,10141014; 10141092
+medford,2026-02-21,S3071926,reference,2.25,1,10679406
+medford,2026-02-22,S3071926,reference,1.87,1,10679406
+medford,2026-02-23,S2999793,low-cost,7.03,2,10141014; 10141092
+medford,2026-02-23,S3071926,reference,6.67,1,10679406
+medford,2026-02-24,S2999793,low-cost,8.46,2,10141014; 10141092
+medford,2026-02-24,S3071926,reference,8.17,1,10679406
+medford,2026-02-25,S2999793,low-cost,8.11,2,10141014; 10141092
+medford,2026-02-25,S3071926,reference,7.76,1,10679406
+medford,2026-02-26,S2999793,low-cost,7.64,2,10141014; 10141092
+medford,2026-02-26,S3071926,reference,6.62,1,10679406
+medford,2026-02-27,S2999793,low-cost,7.305,2,10141014; 10141092
+medford,2026-02-27,S3071926,reference,7.64,1,10679406
+medford,2026-02-28,S2999793,low-cost,12.2,2,10141014; 10141092
+medford,2026-02-28,S3071926,reference,11.6,1,10679406
+medford,2026-03-01,S2999793,low-cost,9.635,2,10141014; 10141092
+medford,2026-03-01,S3071926,reference,8.94,1,10679406
+medford,2026-03-02,S2999793,low-cost,6.235,2,10141014; 10141092
+medford,2026-03-02,S3071926,reference,5.77,1,10679406
+medford,2026-03-03,S2999793,low-cost,7.56,2,10141014; 10141092
+medford,2026-03-03,S3071926,reference,6.48,1,10679406
+medford,2026-03-04,S2999793,low-cost,4.13,2,10141014; 10141092
+medford,2026-03-04,S3071926,reference,3.35,1,10679406
+medford,2026-03-05,S2999793,low-cost,5.325,2,10141014; 10141092
+medford,2026-03-05,S3071926,reference,4.22,1,10679406
+medford,2026-03-06,S2999793,low-cost,8.55,2,10141014; 10141092
+medford,2026-03-06,S3071926,reference,7.54,1,10679406
+medford,2026-03-07,S2999793,low-cost,7.145,2,10141014; 10141092
+medford,2026-03-07,S3071926,reference,6.38,1,10679406
+medford,2026-03-08,S2999793,low-cost,6.015,2,10141014; 10141092
+medford,2026-03-08,S3071926,reference,5.27,1,10679406
+medford,2026-03-09,S2999793,low-cost,6.635,2,10141014; 10141092
+medford,2026-03-09,S3071926,reference,5.55,1,10679406
+medford,2026-03-10,S2999793,low-cost,10.05,2,10141014; 10141092
+medford,2026-03-10,S3071926,reference,7.74,1,10679406
+medford,2026-03-11,S2999793,low-cost,12.25,2,10141014; 10141092
+medford,2026-03-11,S3071926,reference,10.2,1,10679406
+medford,2026-03-12,S2999793,low-cost,6.605,2,10141014; 10141092
+medford,2026-03-12,S3071926,reference,5.42,1,10679406
+medford,2026-03-13,S2999793,low-cost,6.005,2,10141014; 10141092
+medford,2026-03-13,S3071926,reference,5.34,1,15675774
+medford,2026-03-14,S2999793,low-cost,4.905,2,10141014; 10141092
+medford,2026-03-14,S3071926,reference,4.0,1,15675774
+medford,2026-03-15,S3071926,reference,7.13,1,15675774
+medford,2026-03-16,S2999793,low-cost,13.0,2,10141014; 10141092
+medford,2026-03-16,S3071926,reference,11.4,1,15675774
+medford,2026-03-17,S2999793,low-cost,13.55,2,10141014; 10141092
+medford,2026-03-17,S3071926,reference,10.5,1,15675774
+medford,2026-03-18,S2999793,low-cost,7.765,2,10141014; 10141092
+medford,2026-03-18,S3071926,reference,6.58,1,15675774
+medford,2026-03-19,S2999793,low-cost,9.94,2,10141014; 10141092
+medford,2026-03-19,S3071926,reference,8.13,1,15675774
+medford,2026-03-20,S2999793,low-cost,9.565,2,10141014; 10141092
+medford,2026-03-20,S3071926,reference,8.08,1,15675774
+medford,2026-03-21,S2999793,low-cost,5.44,2,10141014; 10141092
+medford,2026-03-21,S3071926,reference,4.8,1,15675774
+medford,2026-03-22,S2999793,low-cost,8.65,2,10141014; 10141092
+medford,2026-03-22,S3071926,reference,6.35,1,15675774
+medford,2026-03-23,S2999793,low-cost,10.55,2,10141014; 10141092
+medford,2026-03-23,S3071926,reference,8.14,1,15675774
+medford,2026-03-24,S2999793,low-cost,4.415,2,10141014; 10141092
+medford,2026-03-24,S3071926,reference,3.18,1,15675774
+medford,2026-03-25,S2999793,low-cost,4.65,2,10141014; 10141092
+medford,2026-03-25,S3071926,reference,3.92,1,15675774
+medford,2026-03-26,S2999793,low-cost,6.275,2,10141014; 10141092
+medford,2026-03-26,S3071926,reference,4.35,1,15675774
+medford,2026-03-27,S2999793,low-cost,7.905,2,10141014; 10141092
+medford,2026-03-27,S3071926,reference,5.65,1,15675774
+medford,2026-03-28,S2999793,low-cost,8.29,2,10141014; 10141092
+medford,2026-03-28,S3071926,reference,6.29,1,15675774
+medford,2026-03-29,S2999793,low-cost,9.4,2,10141014; 10141092
+medford,2026-03-29,S3071926,reference,6.93,1,15675774
+medford,2026-03-30,S2999793,low-cost,7.07,2,10141014; 10141092
+medford,2026-03-30,S3071926,reference,6.0,1,15675774
+medford,2026-03-31,S2999793,low-cost,7.54,2,10141014; 10141092
+medford,2026-03-31,S3071926,reference,6.07,1,15675774
+medford,2026-04-01,S2999793,low-cost,3.84,2,10141014; 10141092
+medford,2026-04-01,S3071926,reference,2.41,1,15675774
+medford,2026-04-02,S2999793,low-cost,4.17,2,10141014; 10141092
+medford,2026-04-02,S3071926,reference,2.55,1,15675774
+medford,2026-04-03,S2999793,low-cost,6.655,2,10141014; 10141092
+medford,2026-04-03,S3071926,reference,5.1,1,15675774
+medford,2026-04-04,S2999793,low-cost,6.955,2,10141014; 10141092
+medford,2026-04-04,S3071926,reference,3.94,1,15675774
+medford,2026-04-05,S2999793,low-cost,6.33,2,10141014; 10141092
+medford,2026-04-05,S3071926,reference,4.08,1,15675774
+medford,2026-04-06,S3071926,reference,3.93,1,15675774
+medford,2026-04-07,S3071926,reference,4.8,1,15675774
+medford,2026-04-08,S3071926,reference,4.2,1,15675774
+medford,2026-04-09,S3071926,reference,3.67,1,15675774
+medford,2026-04-10,S3071926,reference,5.41,1,15675774
+medford,2026-04-11,S3071926,reference,4.14,1,15675774
+medford,2026-04-12,S3071926,reference,2.77,1,15675774
+medford,2026-04-13,S3071926,reference,2.47,1,15675774
+medford,2026-04-14,S3071926,reference,3.77,1,15675774
+medford,2026-04-15,S2999793,low-cost,5.29,2,10141014; 10141092
+medford,2026-04-15,S3071926,reference,4.0,1,15675774
+medford,2026-04-16,S3071926,reference,4.2,1,15675774
+medford,2026-04-17,S3071926,reference,4.45,1,15675774
+medford,2026-04-18,S2999793,low-cost,6.445,2,10141014; 10141092
+medford,2026-04-18,S3071926,reference,4.01,1,15675774
+medford,2026-04-19,S3071926,reference,4.15,1,15675774
+medford,2026-04-20,S3071926,reference,2.73,1,15675774
+medford,2026-04-21,S3071926,reference,2.35,1,15675774
+medford,2026-04-22,S3071926,reference,2.45,1,15675774
+medford,2026-04-23,S3071926,reference,3.25,1,15675774
+medford,2026-04-24,S3071926,reference,4.07,1,15675774
+medford,2026-04-25,S2999793,low-cost,6.715,2,10141014; 10141092
+medford,2026-04-25,S3071926,reference,4.75,1,15675774
+medford,2026-04-26,S2999793,low-cost,6.255,2,10141014; 10141092
+medford,2026-04-26,S3071926,reference,4.22,1,15675774
+medford,2026-04-27,S3071926,reference,4.61,1,15675774
+medford,2026-04-28,S3071926,reference,4.95,1,15675774
+medford,2026-04-29,S3071926,reference,4.0,1,15675774
+medford,2026-04-30,S2999793,low-cost,8.255,2,10141014; 10141092
+medford,2026-04-30,S3071926,reference,5.36,1,15675774
+medford,2026-05-01,S2999793,low-cost,8.04,2,10141014; 10141092
+medford,2026-05-01,S3071926,reference,6.09,1,15675774
+medford,2026-05-02,S3071926,reference,6.69,1,15675774
+medford,2026-05-03,S3071926,reference,5.56,1,15675774
+medford,2026-05-04,S3071926,reference,4.84,1,15675774
+medford,2026-05-05,S2999793,low-cost,6.22,2,10141014; 10141092
+medford,2026-05-05,S3071926,reference,4.2,1,15675774
+medford,2026-05-06,S3071926,reference,4.95,1,15675774
+medford,2026-05-07,S3071926,reference,4.48,1,15675774
+medford,2026-05-08,S3071926,reference,4.04,1,15675774
+medford,2026-05-09,S3071926,reference,5.25,1,15675774
+medford,2026-05-10,S2999793,low-cost,6.45,2,10141014; 10141092
+medford,2026-05-10,S3071926,reference,4.8,1,15675774
+medford,2026-05-11,S2999793,low-cost,6.81,2,10141014; 10141092
+medford,2026-05-11,S3071926,reference,4.96,1,15675774
+medford,2026-05-12,S2999793,low-cost,7.185,2,10141014; 10141092
+medford,2026-05-12,S3071926,reference,4.6,1,15675774
+medford,2026-05-13,S3071926,reference,2.15,1,15675774
+medford,2026-05-14,S3071926,reference,2.84,1,15675774
+medford,2026-05-15,S3071926,reference,2.94,1,15675774
+medford,2026-05-16,S3071926,reference,2.22,1,15675774
+medford,2026-05-17,S3071926,reference,2.09,1,15675774
+medford,2026-05-18,S3071926,reference,2.98,1,15675774
+medford,2026-05-19,S3071926,reference,2.9,1,15675774
+medford,2026-05-20,S2999793,low-cost,4.505,2,10141014; 10141092
+medford,2026-05-20,S3071926,reference,2.82,1,15675774
+medford,2026-05-21,S2999793,low-cost,5.065,2,10141014; 10141092
+medford,2026-05-21,S3071926,reference,3.33,1,15675774
+medford,2026-05-22,S2999793,low-cost,6.505,2,10141014; 10141092
+medford,2026-05-22,S3071926,reference,4.46,1,15675774
+medford,2026-05-23,S3071926,reference,4.45,1,15675774
+medford,2026-05-24,S2999793,low-cost,4.97,2,10141014; 10141092
+medford,2026-05-24,S3071926,reference,3.21,1,15675774
+medford,2026-05-25,S2999793,low-cost,4.9,2,10141014; 10141092
+medford,2026-05-25,S3071926,reference,3.06,1,15675774
+medford,2026-05-26,S3071926,reference,2.74,1,15675774
+medford,2026-05-27,S3071926,reference,2.75,1,15675774
+medford,2026-05-28,S3071926,reference,5.85,1,15675774
+medford,2026-05-29,S2999793,low-cost,4.55,2,10141014; 10141092
+medford,2026-05-29,S3071926,reference,3.11,1,15675774
+medford,2026-05-30,S3071926,reference,3.15,1,15675774
+medford,2026-05-31,S2999793,low-cost,5.3,2,10141014; 10141092
+medford,2026-05-31,S3071926,reference,3.43,1,15675774
+medford,2026-06-01,S2999793,low-cost,4.885,2,10141014; 10141092
+medford,2026-06-01,S3071926,reference,3.28,1,15675774
+medford,2026-06-02,S3071926,reference,3.73,1,15675774
+medford,2026-06-03,S3071926,reference,3.22,1,15675774
+medford,2026-06-04,S2999793,low-cost,3.71,1,10141092
+medford,2026-06-04,S3071926,reference,2.13,1,15675774
+medford,2026-06-05,S3071926,reference,3.06,1,15675774
+medford,2026-06-06,S3071926,reference,1.84,1,15675774
+medford,2026-06-07,S3071926,reference,2.12,1,15675774
+medford,2026-06-08,S3071926,reference,2.3,1,15675774
+medford,2026-06-09,S2999793,low-cost,3.345,2,10141014; 10141092
+medford,2026-06-09,S3071926,reference,1.91,1,15675774
+medford,2026-06-10,S2999793,low-cost,4.47,2,10141014; 10141092
+medford,2026-06-10,S3071926,reference,2.6,1,15675774
+medford,2026-06-11,S3071926,reference,2.49,1,15675774
+medford,2026-06-12,S3071926,reference,2.98,1,15675774
+medford,2026-06-13,S3071926,reference,3.18,1,15675774
+medford,2026-06-14,S3071926,reference,3.62,1,15675774
+medford,2026-06-15,S3071926,reference,7.67,1,15675774
+medford,2026-06-16,S3071926,reference,8.18,1,15675774
+medford,2026-06-17,S3071926,reference,2.78,1,15675774
+medford,2026-06-18,S3071926,reference,3.32,1,15675774
+medford,2026-06-19,S3071926,reference,4.4,1,15675774
+medford,2026-06-20,S3071926,reference,3.55,1,15675774
+medford,2026-06-21,S3071926,reference,2.8,1,15675774
+medford,2026-06-22,S3071926,reference,3.36,1,15675774
+medford,2026-06-23,S2999793,low-cost,6.54,2,10141014; 10141092
+medford,2026-06-23,S3071926,reference,4.61,1,15675774
+medford,2026-06-24,S3071926,reference,4.78,1,15675774
+medford,2026-06-25,S3071926,reference,3.32,1,15675774
+medford,2026-06-26,S3071926,reference,2.31,1,15675774
+medford,2026-06-27,S2999793,low-cost,3.205,2,10141014; 10141092
+medford,2026-06-27,S3071926,reference,1.48,1,15675774
+medford,2026-06-28,S2999793,low-cost,3.135,2,10141014; 10141092
+medford,2026-06-28,S3071926,reference,1.48,1,15675774
+medford,2026-06-29,S2999793,low-cost,3.465,2,10141014; 10141092
+medford,2026-06-29,S3071926,reference,2.0,1,15675774
+medford,2026-06-30,S2999793,low-cost,4.395,2,10141014; 10141092
+medford,2026-06-30,S3071926,reference,2.54,1,15675774
+medford,2026-07-01,S2999793,low-cost,4.715,2,10141014; 10141092
+medford,2026-07-01,S3071926,reference,2.88,1,15675774
+medford,2026-07-02,S3071926,reference,3.21,1,15675774
+medford,2026-07-03,S3071926,reference,3.18,1,15675774
+medford,2026-07-04,S2999793,low-cost,9.09,2,10141014; 10141092
+medford,2026-07-04,S3071926,reference,6.21,1,15675774
+medford,2026-07-05,S3071926,reference,8.9,1,15675774
+medford,2026-07-06,S3071926,reference,4.3,1,15675774
+medford,2026-07-07,S3071926,reference,4.89,1,15675774
+medford,2026-07-08,S3071926,reference,3.86,1,15675774
+medford,2026-07-09,S3071926,reference,2.34,1,15675774
+medford,2026-07-10,S2999793,low-cost,4.69,2,10141014; 10141092
+medford,2026-07-10,S3071926,reference,3.02,1,15675774
+medford,2026-07-11,S2999793,low-cost,9.475,2,10141014; 10141092
+medford,2026-07-11,S3071926,reference,6.22,1,15675774
+medford,2026-07-12,S2999793,low-cost,21.5,2,10141014; 10141092
+medford,2026-07-12,S3071926,reference,14.6,1,15675774
+medford,2026-07-13,S2999793,low-cost,10.085,2,10141014; 10141092
+medford,2026-07-13,S3071926,reference,6.61,1,15675774
+medford,2026-07-14,S2999793,low-cost,5.725,2,10141014; 10141092
+medford,2026-07-14,S3071926,reference,3.82,1,15675774
+medford,2026-07-15,S2999793,low-cost,9.0,2,10141014; 10141092
+medford,2026-07-15,S3071926,reference,5.49,1,15675774
+medford,2026-07-16,S2999793,low-cost,12.95,2,10141014; 10141092
+medford,2026-07-16,S3071926,reference,8.86,1,15675774
+medford,2026-07-17,S3071926,reference,48.1,1,15675774
+medford,2026-07-18,S2999793,low-cost,58.4,2,10141014; 10141092
+medford,2026-07-18,S3071926,reference,39.4,1,15675774
+medford,2026-07-19,S3071926,reference,18.6,1,15675774
+medford,2026-07-20,S3071926,reference,14.1,1,15675774
+medford,2026-07-21,S3071926,reference,8.58,1,15675774
+medford,2026-07-22,S3071926,reference,6.35,1,15675774
+medford,2026-07-23,S3071926,reference,3.03,1,15675774
+medford,2026-07-24,S2999793,low-cost,4.45,2,10141014; 10141092
+medford,2026-07-24,S3071926,reference,2.97,1,15675774
+medford,2026-07-25,S3071926,reference,4.59,1,15675774
+medford,2026-07-25,S6458792,low-cost,2.88,1,17028041
+medford,2026-07-26,S3071926,reference,2.93,1,15675774
+medford,2026-07-26,S6458792,low-cost,0.0625,1,17028041
+medford,2026-07-27,S3071926,reference,3.05,1,15675774
+medford,2026-07-27,S6458792,low-cost,0.192,1,17028041
+medford,2026-07-28,S3071926,reference,2.93,1,15675774
+medford,2026-07-28,S6458792,low-cost,0.129,1,17028041
+medford,2026-07-29,S3071926,reference,3.13,1,15675774
+medford,2026-07-29,S6458792,low-cost,0.217,1,17028041
+medford,2026-07-30,S3071926,reference,4.33,1,15675774
+medford,2026-07-30,S6458792,low-cost,1.73,1,17028041
+medford,2026-07-31,S3071926,reference,5.79,1,15675774
+medford,2026-07-31,S6458792,low-cost,5.13,1,17028041
+medford,2026-08-01,S3071926,reference,3.64,1,15675774
+medford,2026-08-01,S6458792,low-cost,1.9,1,17028041
+medford,2026-08-02,S3071926,reference,3.43,1,15675774
+medford,2026-08-02,S6458792,low-cost,1.8,1,17028041
+medford,2026-08-03,S3071926,reference,6.32,1,15675774
+medford,2026-08-03,S6458792,low-cost,7.83,1,17028041
+medford,2026-08-04,S3071926,reference,13.9,1,15675774
+medford,2026-08-04,S6458792,low-cost,26.8,1,17028041
+medford,2026-08-05,S3071926,reference,22.7,1,15675774
+medford,2026-08-05,S6458792,low-cost,43.6,1,17028041
+medford,2026-08-06,S3071926,reference,26.7,1,15675774
+medford,2026-08-06,S6458792,low-cost,42.2,1,17028041
+medford,2026-08-07,S3071926,reference,30.4,1,15675774
+medford,2026-08-07,S6458792,low-cost,53.5,1,17028041
+medford,2026-08-08,S3071926,reference,16.2,1,15675774
+medford,2026-08-08,S6458792,low-cost,26.6,1,17028041
+medford,2026-08-09,S3071926,reference,5.21,1,15675774
+medford,2026-08-09,S6458792,low-cost,5.01,1,17028041
+medford,2026-08-10,S3071926,reference,3.03,1,15675774
+medford,2026-08-10,S6458792,low-cost,0.05,1,17028041
+medford,2026-08-11,S2999793,low-cost,5.38,2,10141014; 10141092
+medford,2026-08-11,S3071926,reference,3.39,1,15675774
+medford,2026-08-11,S6458792,low-cost,0.225,1,17028041
+medford,2026-08-12,S3071926,reference,2.8,1,15675774
+medford,2026-08-12,S6458792,low-cost,0.117,1,17028041
+medford,2026-08-13,S3071926,reference,5.4,1,15675774
+medford,2026-08-13,S6458792,low-cost,4.16,1,17028041
+medford,2026-08-14,S2999793,low-cost,13.65,2,10141014; 10141092
+medford,2026-08-14,S3071926,reference,9.67,1,15675774
+medford,2026-08-14,S6458792,low-cost,15.4,1,17028041
+medford,2026-08-15,S2999793,low-cost,12.5,2,10141014; 10141092
+medford,2026-08-15,S3071926,reference,8.91,1,15675774
+medford,2026-08-15,S6458792,low-cost,16.2,1,17028041
+medford,2026-08-16,S2999793,low-cost,12.0,2,10141014; 10141092
+medford,2026-08-16,S3071926,reference,8.35,1,15675774
+medford,2026-08-16,S6458792,low-cost,12.1,1,17028041
+medford,2026-08-17,S3071926,reference,9.13,1,15675774
+medford,2026-08-17,S6458792,low-cost,15.2,1,17028041
+medford,2026-08-18,S3071926,reference,7.6,1,15675774
+medford,2026-08-18,S6458792,low-cost,9.4,1,17028041
+medford,2026-08-19,S2999793,low-cost,9.915,2,10141014; 10141092
+medford,2026-08-19,S3071926,reference,6.31,1,15675774
+medford,2026-08-19,S6458792,low-cost,6.37,1,17028041
+medford,2026-08-20,S3071926,reference,7.85,1,15675774
+medford,2026-08-20,S6458792,low-cost,13.9,1,17028041
+medford,2026-08-21,S2999793,low-cost,10.18,2,10141014; 10141092
+medford,2026-08-21,S3071926,reference,5.68,1,15675774
+medford,2026-08-21,S6458792,low-cost,5.91,1,17028041
+medford,2026-08-22,S3071926,reference,2.03,1,15675774
+medford,2026-08-22,S6458792,low-cost,0.192,1,17028041
+medford,2026-08-23,S2999793,low-cost,4.395,2,10141014; 10141092
+medford,2026-08-23,S3071926,reference,1.5,1,15675774
+medford,2026-08-23,S6458792,low-cost,0.075,1,17028041
+medford,2026-08-24,S2999793,low-cost,5.805,2,10141014; 10141092
+medford,2026-08-24,S3071926,reference,3.48,1,15675774
+medford,2026-08-24,S6458792,low-cost,1.36,1,17028041
+medford,2026-08-25,S2999793,low-cost,5.135,2,10141014; 10141092
+medford,2026-08-25,S3071926,reference,3.24,1,15675774
+medford,2026-08-25,S6458792,low-cost,0.546,1,17028041
+medford,2026-08-26,S2999793,low-cost,4.605,2,10141014; 10141092
+medford,2026-08-26,S3071926,reference,2.46,1,15675774
+medford,2026-08-26,S6458792,low-cost,0.175,1,17028041
+medford,2026-08-27,S2999793,low-cost,3.505,2,10141014; 10141092
+medford,2026-08-27,S3071926,reference,2.08,1,15675774
+medford,2026-08-27,S6458792,low-cost,0.0,1,17028041
+medford,2026-08-28,S2999793,low-cost,4.73,2,10141014; 10141092
+medford,2026-08-28,S3071926,reference,2.98,1,15675774
+medford,2026-08-28,S6458792,low-cost,0.0708,1,17028041
+medford,2026-08-29,S3071926,reference,2.71,1,15675774
+medford,2026-08-29,S6458792,low-cost,0.0833,1,17028041
+medford,2026-08-30,S2999793,low-cost,6.075,2,10141014; 10141092
+medford,2026-08-30,S3071926,reference,3.55,1,15675774
+medford,2026-08-30,S6458792,low-cost,0.667,1,17028041
+medford,2026-08-31,S2999793,low-cost,5.805,2,10141014; 10141092
+medford,2026-08-31,S3071926,reference,3.7,1,15675774
+medford,2026-08-31,S6458792,low-cost,0.825,1,17028041
+medford,2026-09-01,S2999793,low-cost,5.375,2,10141014; 10141092
+medford,2026-09-01,S3071926,reference,3.11,1,15675774
+medford,2026-09-01,S6458792,low-cost,0.388,1,17028041
+medford,2026-09-02,S2999793,low-cost,4.995,2,10141014; 10141092
+medford,2026-09-02,S3071926,reference,3.85,1,15675774
+medford,2026-09-02,S6458792,low-cost,1.53,1,17028041
+medford,2026-09-03,S2999793,low-cost,5.13,2,10141014; 10141092
+medford,2026-09-03,S3071926,reference,3.72,1,15675774
+medford,2026-09-03,S6458792,low-cost,1.06,1,17028041
+medford,2026-09-04,S2999793,low-cost,4.695,2,10141014; 10141092
+medford,2026-09-04,S3071926,reference,3.15,1,15675774
+medford,2026-09-04,S6458792,low-cost,0.663,1,17028041
+medford,2026-09-05,S2999793,low-cost,4.505,2,10141014; 10141092
+medford,2026-09-05,S3071926,reference,3.0,1,15675774
+medford,2026-09-05,S6458792,low-cost,0.167,1,17028041
+medford,2026-09-06,S2999793,low-cost,3.625,2,10141014; 10141092
+medford,2026-09-06,S3071926,reference,2.41,1,15675774
+medford,2026-09-06,S6458792,low-cost,0.0917,1,17028041
+medford,2026-09-07,S2999793,low-cost,4.185,2,10141014; 10141092
+medford,2026-09-07,S3071926,reference,2.62,1,15675774
+medford,2026-09-07,S6458792,low-cost,0.0375,1,17028041
+medford,2026-09-08,S2999793,low-cost,4.625,2,10141014; 10141092
+medford,2026-09-08,S3071926,reference,3.04,1,15675774
+medford,2026-09-08,S6458792,low-cost,0.208,1,17028041
+medford,2026-09-09,S2999793,low-cost,5.56,2,10141014; 10141092
+medford,2026-09-09,S3071926,reference,3.83,1,15675774
+medford,2026-09-09,S6458792,low-cost,1.4,1,17028041
+medford,2026-09-10,S3071926,reference,4.65,1,15675774
+medford,2026-09-10,S6458792,low-cost,2.44,1,17028041
+medford,2026-09-11,S3071926,reference,5.11,1,15675774
+medford,2026-09-11,S6458792,low-cost,3.2,1,17028041
+medford,2026-09-12,S2999793,low-cost,5.985,2,10141014; 10141092
+medford,2026-09-12,S3071926,reference,3.5,1,15675774
+medford,2026-09-12,S6458792,low-cost,0.792,1,17028041
+medford,2026-09-13,S2999793,low-cost,4.195,2,10141014; 10141092
+medford,2026-09-13,S3071926,reference,2.52,1,15675774
+medford,2026-09-13,S6458792,low-cost,0.117,1,17028041
+medford,2026-09-14,S2999793,low-cost,6.52,2,10141014; 10141092
+medford,2026-09-14,S3071926,reference,4.3,1,15675774
+medford,2026-09-14,S6458792,low-cost,1.82,1,17028041
+medford,2026-09-15,S2999793,low-cost,7.315,2,10141014; 10141092
+medford,2026-09-15,S3071926,reference,4.85,1,15675774
+medford,2026-09-15,S6458792,low-cost,2.78,1,17028041
+medford,2026-09-16,S2999793,low-cost,5.98,2,10141014; 10141092
+medford,2026-09-16,S3071926,reference,3.91,1,15675774
+medford,2026-09-16,S6458792,low-cost,1.18,1,17028041
+medford,2026-09-17,S2999793,low-cost,5.24,2,10141014; 10141092
+medford,2026-09-17,S3071926,reference,3.7,1,15675774
+medford,2026-09-17,S6458792,low-cost,1.33,1,17028041
+medford,2026-09-18,S2999793,low-cost,6.33,2,10141014; 10141092
+medford,2026-09-18,S3071926,reference,4.7,1,15675774
+medford,2026-09-18,S6458792,low-cost,3.05,1,17028041
+medford,2026-09-19,S2999793,low-cost,7.28,2,10141014; 10141092
+medford,2026-09-19,S3071926,reference,4.83,1,15675774
+medford,2026-09-19,S6458792,low-cost,3.08,1,17028041
+medford,2026-09-20,S2999793,low-cost,7.94,2,10141014; 10141092
+medford,2026-09-20,S3071926,reference,5.045,2,10679406; 15675774
+medford,2026-09-20,S6458792,low-cost,3.4,1,17028041
+medford,2026-09-21,S2999793,low-cost,9.625,2,10141014; 10141092
+medford,2026-09-21,S3071926,reference,6.33,1,15675774
+medford,2026-09-21,S6458792,low-cost,6.82,1,17028041
+medford,2026-09-22,S2999793,low-cost,8.395,2,10141014; 10141092
+medford,2026-09-22,S3071926,reference,6.05,1,15675774
+medford,2026-09-22,S6458792,low-cost,6.23,1,17028041
+medford,2026-09-23,S2999793,low-cost,9.49,2,10141014; 10141092
+medford,2026-09-23,S3071926,reference,6.01,1,15675774
+medford,2026-09-23,S6458792,low-cost,8.36,1,17028041
+medford,2026-09-24,S2999793,low-cost,6.855,2,10141014; 10141092
+medford,2026-09-24,S3071926,reference,4.05,1,15675774
+medford,2026-09-24,S6458792,low-cost,2.19,1,17028041
+medford,2026-09-25,S2999793,low-cost,3.265,2,10141014; 10141092
+medford,2026-09-25,S3071926,reference,1.82,1,15675774
+medford,2026-09-25,S6458792,low-cost,0.0042,1,17028041

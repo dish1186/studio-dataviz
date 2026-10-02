@@ -1,0 +1,42 @@
+{
+ "result": {
+  "input": {
+   "address": {
+    "address": "710 NW Wall St, Bend, OR 97703"
+   },
+   "benchmark": {
+    "isDefault": true,
+    "benchmarkDescription": "Public Address Ranges - Current Benchmark",
+    "id": "4",
+    "benchmarkName": "Public_AR_Current"
+   }
+  },
+  "addressMatches": [
+   {
+    "tigerLine": {
+     "side": "R",
+     "tigerLineId": "152553943"
+    },
+    "coordinates": {
+     "x": -121.31582981681,
+     "y": 44.057353647803
+    },
+    "addressComponents": {
+     "zip": "97703",
+     "streetName": "WALL",
+     "preType": "",
+     "city": "BEND",
+     "preDirection": "NW",
+     "suffixDirection": "",
+     "fromAddress": "700",
+     "state": "OR",
+     "suffixType": "ST",
+     "toAddress": "798",
+     "suffixQualifier": "",
+     "preQualifier": ""
+    },
+    "matchedAddress": "710 NW WALL ST, BEND, OR, 97703"
+   }
+  ]
+ }
+}

@@ -1,0 +1,18 @@
+city_slug,GEOID,NAMELSAD,state,land_km2,farthest_limit_from_center_km,extra_bbox_search,extra_locations_found,extra_pm25_sensors_found
+yakima,5380010,Yakima city,WA,72.7,11.8,False,0,0
+indianapolis,1836003,Indianapolis city (balance),IN,935.0,25.7,True,0,0
+sanjose,0668000,San Jose city,CA,460.9,31.4,True,1,1
+mcallen,4845384,McAllen city,TX,161.5,30.0,True,0,0
+boise,1608830,Boise City city,ID,220.6,14.2,False,0,0
+seattle,5363000,Seattle city,WA,217.6,15.1,False,0,0
+pittsburgh,4261000,Pittsburgh city,PA,143.4,11.6,False,0,0
+bismarck,3807200,Bismarck city,ND,89.8,8.5,False,0,0
+elcentro,0621782,El Centro city,CA,31.4,5.3,False,0,0
+helena,3035600,Helena city,MT,44.5,8.2,False,0,0
+saltlakecity,4967000,Salt Lake City city,UT,287.2,19.5,False,0,0
+lancaster,4241216,Lancaster city,PA,18.7,4.8,False,0,0
+visalia,0682954,Visalia city,CA,99.7,17.1,False,0,0
+logan,4945860,Logan city,UT,46.8,7.8,False,0,0
+medford,4147000,Medford city,OR,74.0,8.5,False,0,0
+minot,3853380,Minot city,ND,71.7,9.0,False,0,0
+bend,4105800,Bend city,OR,91.1,8.1,False,0,0

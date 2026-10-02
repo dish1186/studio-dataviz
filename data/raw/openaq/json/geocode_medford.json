@@ -1,0 +1,42 @@
+{
+ "result": {
+  "input": {
+   "address": {
+    "address": "411 W 8th St, Medford, OR 97501"
+   },
+   "benchmark": {
+    "isDefault": true,
+    "benchmarkDescription": "Public Address Ranges - Current Benchmark",
+    "id": "4",
+    "benchmarkName": "Public_AR_Current"
+   }
+  },
+  "addressMatches": [
+   {
+    "tigerLine": {
+     "side": "L",
+     "tigerLineId": "657673341"
+    },
+    "coordinates": {
+     "x": -122.876101498381,
+     "y": 42.323226548417
+    },
+    "addressComponents": {
+     "zip": "97501",
+     "streetName": "8TH",
+     "preType": "",
+     "city": "MEDFORD",
+     "preDirection": "W",
+     "suffixDirection": "",
+     "fromAddress": "401",
+     "state": "OR",
+     "suffixType": "ST",
+     "toAddress": "499",
+     "suffixQualifier": "",
+     "preQualifier": ""
+    },
+    "matchedAddress": "411 W 8TH ST, MEDFORD, OR, 97501"
+   }
+  ]
+ }
+}

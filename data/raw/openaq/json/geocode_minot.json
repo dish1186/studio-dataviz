@@ -1,0 +1,42 @@
+{
+ "result": {
+  "input": {
+   "address": {
+    "address": "10 3rd Ave SW, Minot, ND 58701"
+   },
+   "benchmark": {
+    "isDefault": true,
+    "benchmarkDescription": "Public Address Ranges - Current Benchmark",
+    "id": "4",
+    "benchmarkName": "Public_AR_Current"
+   }
+  },
+  "addressMatches": [
+   {
+    "tigerLine": {
+     "side": "R",
+     "tigerLineId": "200523107"
+    },
+    "coordinates": {
+     "x": -101.293165195252,
+     "y": 48.233492624541
+    },
+    "addressComponents": {
+     "zip": "58701",
+     "streetName": "3RD",
+     "preType": "",
+     "city": "MINOT",
+     "preDirection": "",
+     "suffixDirection": "SW",
+     "fromAddress": "2",
+     "state": "ND",
+     "suffixType": "AVE",
+     "toAddress": "98",
+     "suffixQualifier": "",
+     "preQualifier": ""
+    },
+    "matchedAddress": "10 3RD AVE SW, MINOT, ND, 58701"
+   }
+  ]
+ }
+}

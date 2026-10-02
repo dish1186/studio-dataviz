@@ -1,0 +1,983 @@
+[
+ {
+  "meta": {
+   "name": "openaq-api",
+   "website": "/",
+   "page": 1,
+   "limit": 1000,
+   "found": 9
+  },
+  "results": [
+   {
+    "id": 221,
+    "name": "Indpls-Washington Pa",
+    "locality": "Indianapolis",
+    "timezone": "America/Indiana/Indianapolis",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 4,
+     "name": "Unknown Governmental Organization"
+    },
+    "provider": {
+     "id": 119,
+     "name": "AirNow"
+    },
+    "isMobile": false,
+    "isMonitor": true,
+    "instruments": [
+     {
+      "id": 2,
+      "name": "Government Monitor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 5077870,
+      "name": "co ppm",
+      "parameter": {
+       "id": 8,
+       "name": "co",
+       "units": "ppm",
+       "displayName": "CO"
+      }
+     },
+     {
+      "id": 5077612,
+      "name": "no2 ppm",
+      "parameter": {
+       "id": 7,
+       "name": "no2",
+       "units": "ppm",
+       "displayName": "NO\u2082"
+      }
+     },
+     {
+      "id": 5077534,
+      "name": "o3 ppm",
+      "parameter": {
+       "id": 10,
+       "name": "o3",
+       "units": "ppm",
+       "displayName": "O\u2083"
+      }
+     },
+     {
+      "id": 5077715,
+      "name": "pm10 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 1,
+       "name": "pm10",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM10"
+      }
+     },
+     {
+      "id": 5077753,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     },
+     {
+      "id": 5077595,
+      "name": "so2 ppm",
+      "parameter": {
+       "id": 9,
+       "name": "so2",
+       "units": "ppm",
+       "displayName": "SO\u2082"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 39.810833,
+     "longitude": -86.114444
+    },
+    "licenses": [
+     {
+      "id": 33,
+      "name": "US Public Domain",
+      "attribution": {
+       "name": "Unknown Governmental Organization",
+       "url": null
+      },
+      "dateFrom": "2016-01-30",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -86.114444,
+     39.810833,
+     -86.114444,
+     39.810833
+    ],
+    "distance": 5944.79457657,
+    "datetimeFirst": {
+     "utc": "2023-05-07T01:00:00Z",
+     "local": "2023-05-06T21:00:00-04:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-10-02T21:00:00Z",
+     "local": "2026-10-02T17:00:00-04:00"
+    }
+   },
+   {
+    "id": 314,
+    "name": "Indpls - I-70 E",
+    "locality": "Indianapolis",
+    "timezone": "America/Indiana/Indianapolis",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 4,
+     "name": "Unknown Governmental Organization"
+    },
+    "provider": {
+     "id": 119,
+     "name": "AirNow"
+    },
+    "isMobile": false,
+    "isMonitor": true,
+    "instruments": [
+     {
+      "id": 2,
+      "name": "Government Monitor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 21563,
+      "name": "bc \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 11,
+       "name": "bc",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "BC"
+      }
+     },
+     {
+      "id": 538,
+      "name": "co ppm",
+      "parameter": {
+       "id": 8,
+       "name": "co",
+       "units": "ppm",
+       "displayName": "CO"
+      }
+     },
+     {
+      "id": 541,
+      "name": "no2 ppm",
+      "parameter": {
+       "id": 7,
+       "name": "no2",
+       "units": "ppm",
+       "displayName": "NO\u2082"
+      }
+     },
+     {
+      "id": 544,
+      "name": "o3 ppm",
+      "parameter": {
+       "id": 10,
+       "name": "o3",
+       "units": "ppm",
+       "displayName": "O\u2083"
+      }
+     },
+     {
+      "id": 527,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 39.787933,
+     "longitude": -86.13088
+    },
+    "licenses": [
+     {
+      "id": 33,
+      "name": "US Public Domain",
+      "attribution": {
+       "name": "Unknown Governmental Organization",
+       "url": null
+      },
+      "dateFrom": "2016-01-30",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -86.13088,
+     39.787933,
+     -86.13088,
+     39.787933
+    ],
+    "distance": 3070.43055671,
+    "datetimeFirst": {
+     "utc": "2016-03-06T20:00:00Z",
+     "local": "2016-03-06T15:00:00-05:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-10-02T21:00:00Z",
+     "local": "2026-10-02T17:00:00-04:00"
+    }
+   },
+   {
+    "id": 2258,
+    "name": "Indpls-W.18th St",
+    "locality": "Indianapolis",
+    "timezone": "America/Indiana/Indianapolis",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 4,
+     "name": "Unknown Governmental Organization"
+    },
+    "provider": {
+     "id": 119,
+     "name": "AirNow"
+    },
+    "isMobile": false,
+    "isMonitor": true,
+    "instruments": [
+     {
+      "id": 2,
+      "name": "Government Monitor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 4066,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 39.788889,
+     "longitude": -86.214722
+    },
+    "licenses": [
+     {
+      "id": 33,
+      "name": "US Public Domain",
+      "attribution": {
+       "name": "Unknown Governmental Organization",
+       "url": null
+      },
+      "dateFrom": "2016-01-30",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -86.214722,
+     39.788889,
+     -86.214722,
+     39.788889
+    ],
+    "distance": 5718.48615402,
+    "datetimeFirst": {
+     "utc": "2016-03-06T20:00:00Z",
+     "local": "2016-03-06T15:00:00-05:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-10-02T21:00:00Z",
+     "local": "2026-10-02T17:00:00-04:00"
+    }
+   },
+   {
+    "id": 921125,
+    "name": "Indpls-Washington Pa",
+    "locality": "Indianapolis",
+    "timezone": "America/Indiana/Indianapolis",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 4,
+     "name": "Unknown Governmental Organization"
+    },
+    "provider": {
+     "id": 119,
+     "name": "AirNow"
+    },
+    "isMobile": false,
+    "isMonitor": true,
+    "instruments": [
+     {
+      "id": 2,
+      "name": "Government Monitor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 5079689,
+      "name": "co ppm",
+      "parameter": {
+       "id": 8,
+       "name": "co",
+       "units": "ppm",
+       "displayName": "CO"
+      }
+     },
+     {
+      "id": 5079688,
+      "name": "no2 ppm",
+      "parameter": {
+       "id": 7,
+       "name": "no2",
+       "units": "ppm",
+       "displayName": "NO\u2082"
+      }
+     },
+     {
+      "id": 5079691,
+      "name": "o3 ppm",
+      "parameter": {
+       "id": 10,
+       "name": "o3",
+       "units": "ppm",
+       "displayName": "O\u2083"
+      }
+     },
+     {
+      "id": 5079686,
+      "name": "pm10 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 1,
+       "name": "pm10",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM10"
+      }
+     },
+     {
+      "id": 5079687,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     },
+     {
+      "id": 5079690,
+      "name": "so2 ppm",
+      "parameter": {
+       "id": 9,
+       "name": "so2",
+       "units": "ppm",
+       "displayName": "SO\u2082"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 39.8108,
+     "longitude": -86.11469999999998
+    },
+    "licenses": [
+     {
+      "id": 33,
+      "name": "US Public Domain",
+      "attribution": {
+       "name": "Unknown Governmental Organization",
+       "url": null
+      },
+      "dateFrom": "2016-01-30",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -86.11469999999998,
+     39.8108,
+     -86.11469999999998,
+     39.8108
+    ],
+    "distance": 5929.2240329,
+    "datetimeFirst": {
+     "utc": "2022-10-04T18:00:00Z",
+     "local": "2022-10-04T14:00:00-04:00"
+    },
+    "datetimeLast": {
+     "utc": "2022-10-04T19:00:00Z",
+     "local": "2022-10-04T15:00:00-04:00"
+    }
+   },
+   {
+    "id": 4010839,
+    "name": "Windsor Park",
+    "locality": null,
+    "timezone": "America/Indiana/Indianapolis",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 16756,
+     "name": "Just A Friendly Neighbor"
+    },
+    "provider": {
+     "id": 66,
+     "name": "AirGradient"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 24,
+      "name": "AirGradient Open Air Generation 1 (O-1PST)"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 12741273,
+      "name": "pm1 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 19,
+       "name": "pm1",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM1"
+      }
+     },
+     {
+      "id": 12741274,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     },
+     {
+      "id": 12741275,
+      "name": "relativehumidity %",
+      "parameter": {
+       "id": 98,
+       "name": "relativehumidity",
+       "units": "%",
+       "displayName": "RH"
+      }
+     },
+     {
+      "id": 12741276,
+      "name": "temperature c",
+      "parameter": {
+       "id": 100,
+       "name": "temperature",
+       "units": "c",
+       "displayName": "Temperature (C)"
+      }
+     },
+     {
+      "id": 12741277,
+      "name": "um003 particles/cm\u00b3",
+      "parameter": {
+       "id": 125,
+       "name": "um003",
+       "units": "particles/cm\u00b3",
+       "displayName": "PM0.3 count"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 39.7843528,
+     "longitude": -86.1321993
+    },
+    "licenses": [
+     {
+      "id": 41,
+      "name": "CC BY 4.0",
+      "attribution": {
+       "name": "Just A Friendly Neighbor",
+       "url": null
+      },
+      "dateFrom": "2023-07-15",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -86.1321993,
+     39.7843528,
+     -86.1321993,
+     39.7843528
+    ],
+    "distance": 2701.32959006,
+    "datetimeFirst": {
+     "utc": "2025-04-10T22:00:00Z",
+     "local": "2025-04-10T18:00:00-04:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-10-02T21:00:00Z",
+     "local": "2026-10-02T17:00:00-04:00"
+    }
+   },
+   {
+    "id": 5171608,
+    "name": "Speedway",
+    "locality": null,
+    "timezone": "America/Indiana/Indianapolis",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 16929,
+     "name": "Sprox"
+    },
+    "provider": {
+     "id": 66,
+     "name": "AirGradient"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 24,
+      "name": "AirGradient Open Air Generation 1 (O-1PST)"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 14153297,
+      "name": "pm1 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 19,
+       "name": "pm1",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM1"
+      }
+     },
+     {
+      "id": 14153298,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     },
+     {
+      "id": 14153299,
+      "name": "relativehumidity %",
+      "parameter": {
+       "id": 98,
+       "name": "relativehumidity",
+       "units": "%",
+       "displayName": "RH"
+      }
+     },
+     {
+      "id": 14153300,
+      "name": "temperature c",
+      "parameter": {
+       "id": 100,
+       "name": "temperature",
+       "units": "c",
+       "displayName": "Temperature (C)"
+      }
+     },
+     {
+      "id": 14153301,
+      "name": "um003 particles/cm\u00b3",
+      "parameter": {
+       "id": 125,
+       "name": "um003",
+       "units": "particles/cm\u00b3",
+       "displayName": "PM0.3 count"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 39.78771,
+     "longitude": -86.24791
+    },
+    "licenses": [
+     {
+      "id": 41,
+      "name": "CC BY 4.0",
+      "attribution": {
+       "name": "Sprox",
+       "url": null
+      },
+      "dateFrom": "2023-07-15",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -86.24791,
+     39.78771,
+     -86.24791,
+     39.78771
+    ],
+    "distance": 8342.76452619,
+    "datetimeFirst": {
+     "utc": "2025-09-19T00:00:00Z",
+     "local": "2025-09-18T20:00:00-04:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-03-14T18:00:00Z",
+     "local": "2026-03-14T14:00:00-04:00"
+    }
+   },
+   {
+    "id": 5412464,
+    "name": "Little Flower",
+    "locality": null,
+    "timezone": "America/Indiana/Indianapolis",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 12,
+     "name": "AirGradient"
+    },
+    "provider": {
+     "id": 66,
+     "name": "AirGradient"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 24,
+      "name": "AirGradient Open Air Generation 1 (O-1PST)"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 13846373,
+      "name": "pm1 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 19,
+       "name": "pm1",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM1"
+      }
+     },
+     {
+      "id": 13846374,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     },
+     {
+      "id": 13846375,
+      "name": "relativehumidity %",
+      "parameter": {
+       "id": 98,
+       "name": "relativehumidity",
+       "units": "%",
+       "displayName": "RH"
+      }
+     },
+     {
+      "id": 13846376,
+      "name": "temperature c",
+      "parameter": {
+       "id": 100,
+       "name": "temperature",
+       "units": "c",
+       "displayName": "Temperature (C)"
+      }
+     },
+     {
+      "id": 13846377,
+      "name": "um003 particles/cm\u00b3",
+      "parameter": {
+       "id": 125,
+       "name": "um003",
+       "units": "particles/cm\u00b3",
+       "displayName": "PM0.3 count"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 39.782483,
+     "longitude": -86.090561
+    },
+    "licenses": [
+     {
+      "id": 41,
+      "name": "CC BY 4.0",
+      "attribution": {
+       "name": "AirGradient",
+       "url": null
+      },
+      "dateFrom": "2023-07-15",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -86.090561,
+     39.782483,
+     -86.090561,
+     39.782483
+    ],
+    "distance": 5724.95949851,
+    "datetimeFirst": {
+     "utc": "2025-08-12T23:00:00Z",
+     "local": "2025-08-12T19:00:00-04:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-10-02T21:00:00Z",
+     "local": "2026-10-02T17:00:00-04:00"
+    }
+   },
+   {
+    "id": 6401557,
+    "name": "Bargersville",
+    "locality": null,
+    "timezone": "America/Indiana/Indianapolis",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 12,
+     "name": "AirGradient"
+    },
+    "provider": {
+     "id": 66,
+     "name": "AirGradient"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 7,
+      "name": "Unknown AirGradient Sensor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 16607683,
+      "name": "pm1 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 19,
+       "name": "pm1",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM1"
+      }
+     },
+     {
+      "id": 16607684,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     },
+     {
+      "id": 16607685,
+      "name": "relativehumidity %",
+      "parameter": {
+       "id": 98,
+       "name": "relativehumidity",
+       "units": "%",
+       "displayName": "RH"
+      }
+     },
+     {
+      "id": 16607686,
+      "name": "temperature c",
+      "parameter": {
+       "id": 100,
+       "name": "temperature",
+       "units": "c",
+       "displayName": "Temperature (C)"
+      }
+     },
+     {
+      "id": 16607687,
+      "name": "um003 particles/cm\u00b3",
+      "parameter": {
+       "id": 125,
+       "name": "um003",
+       "units": "particles/cm\u00b3",
+       "displayName": "PM0.3 count"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 39.55858992001165,
+     "longitude": -86.16423428822384
+    },
+    "licenses": [
+     {
+      "id": 41,
+      "name": "CC BY 4.0",
+      "attribution": {
+       "name": "AirGradient",
+       "url": null
+      },
+      "dateFrom": "2023-07-15",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -86.16423428822384,
+     39.55858992001165,
+     -86.16423428822384,
+     39.55858992001165
+    ],
+    "distance": 23155.08563121,
+    "datetimeFirst": {
+     "utc": "2026-06-13T20:00:00Z",
+     "local": "2026-06-13T16:00:00-04:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-08-02T21:00:00Z",
+     "local": "2026-08-02T17:00:00-04:00"
+    }
+   },
+   {
+    "id": 6462788,
+    "name": "Children\u2019s Museum",
+    "locality": null,
+    "timezone": "America/Indiana/Indianapolis",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 12,
+     "name": "AirGradient"
+    },
+    "provider": {
+     "id": 66,
+     "name": "AirGradient"
+    },
+    "isMobile": false,
+    "isMonitor": false,
+    "instruments": [
+     {
+      "id": 24,
+      "name": "AirGradient Open Air Generation 1 (O-1PST)"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 17056729,
+      "name": "pm1 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 19,
+       "name": "pm1",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM1"
+      }
+     },
+     {
+      "id": 17056730,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     },
+     {
+      "id": 17056731,
+      "name": "relativehumidity %",
+      "parameter": {
+       "id": 98,
+       "name": "relativehumidity",
+       "units": "%",
+       "displayName": "RH"
+      }
+     },
+     {
+      "id": 17056732,
+      "name": "temperature c",
+      "parameter": {
+       "id": 100,
+       "name": "temperature",
+       "units": "c",
+       "displayName": "Temperature (C)"
+      }
+     },
+     {
+      "id": 17056733,
+      "name": "um003 particles/cm\u00b3",
+      "parameter": {
+       "id": 125,
+       "name": "um003",
+       "units": "particles/cm\u00b3",
+       "displayName": "PM0.3 count"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 39.81364,
+     "longitude": -86.1592
+    },
+    "licenses": [
+     {
+      "id": 41,
+      "name": "CC BY 4.0",
+      "attribution": {
+       "name": "AirGradient",
+       "url": null
+      },
+      "dateFrom": "2023-07-15",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -86.1592,
+     39.81364,
+     -86.1592,
+     39.81364
+    ],
+    "distance": 5195.44791934,
+    "datetimeFirst": {
+     "utc": "2026-07-27T15:00:00Z",
+     "local": "2026-07-27T11:00:00-04:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-10-02T21:00:00Z",
+     "local": "2026-10-02T17:00:00-04:00"
+    }
+   }
+  ]
+ }
+]

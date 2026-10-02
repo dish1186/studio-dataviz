@@ -1,0 +1,293 @@
+[
+ {
+  "meta": {
+   "name": "openaq-api",
+   "website": "/",
+   "page": 1,
+   "limit": 1000,
+   "found": 4
+  },
+  "results": [
+   {
+    "id": 459,
+    "name": "Helena",
+    "locality": "Helena",
+    "timezone": "America/Denver",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 4,
+     "name": "Unknown Governmental Organization"
+    },
+    "provider": {
+     "id": 119,
+     "name": "AirNow"
+    },
+    "isMobile": false,
+    "isMonitor": true,
+    "instruments": [
+     {
+      "id": 2,
+      "name": "Government Monitor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 5077670,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 46.6588,
+     "longitude": -112.0131
+    },
+    "licenses": [
+     {
+      "id": 33,
+      "name": "US Public Domain",
+      "attribution": {
+       "name": "Unknown Governmental Organization",
+       "url": null
+      },
+      "dateFrom": "2016-01-30",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -112.0131,
+     46.6588,
+     -112.0131,
+     46.6588
+    ],
+    "distance": 7935.40162142,
+    "datetimeFirst": {
+     "utc": "2022-10-04T18:00:00Z",
+     "local": "2022-10-04T12:00:00-06:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-10-02T21:00:00Z",
+     "local": "2026-10-02T15:00:00-06:00"
+    }
+   },
+   {
+    "id": 270809,
+    "name": "Bear Gulch",
+    "locality": null,
+    "timezone": "America/Denver",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 4,
+     "name": "Unknown Governmental Organization"
+    },
+    "provider": {
+     "id": 119,
+     "name": "AirNow"
+    },
+    "isMobile": false,
+    "isMonitor": true,
+    "instruments": [
+     {
+      "id": 2,
+      "name": "Government Monitor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 1562376,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 46.578568,
+     "longitude": -112.079772
+    },
+    "licenses": [
+     {
+      "id": 33,
+      "name": "US Public Domain",
+      "attribution": {
+       "name": "Unknown Governmental Organization",
+       "url": null
+      },
+      "dateFrom": "2016-01-30",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -112.079772,
+     46.578568,
+     -112.079772,
+     46.578568
+    ],
+    "distance": 3284.15131386,
+    "datetimeFirst": {
+     "utc": "2022-01-05T00:00:00Z",
+     "local": "2022-01-04T17:00:00-07:00"
+    },
+    "datetimeLast": {
+     "utc": "2022-03-21T18:00:00Z",
+     "local": "2022-03-21T12:00:00-06:00"
+    }
+   },
+   {
+    "id": 270816,
+    "name": "LaGrande Cannon",
+    "locality": null,
+    "timezone": "America/Denver",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 4,
+     "name": "Unknown Governmental Organization"
+    },
+    "provider": {
+     "id": 119,
+     "name": "AirNow"
+    },
+    "isMobile": false,
+    "isMonitor": true,
+    "instruments": [
+     {
+      "id": 2,
+      "name": "Government Monitor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 1562385,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 46.597282,
+     "longitude": -112.065026
+    },
+    "licenses": [
+     {
+      "id": 33,
+      "name": "US Public Domain",
+      "attribution": {
+       "name": "Unknown Governmental Organization",
+       "url": null
+      },
+      "dateFrom": "2016-01-30",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -112.065026,
+     46.597282,
+     -112.065026,
+     46.597282
+    ],
+    "distance": 2071.87196,
+    "datetimeFirst": {
+     "utc": "2022-01-07T18:00:00Z",
+     "local": "2022-01-07T11:00:00-07:00"
+    },
+    "datetimeLast": {
+     "utc": "2022-03-22T18:00:00Z",
+     "local": "2022-03-22T12:00:00-06:00"
+    }
+   },
+   {
+    "id": 270817,
+    "name": "Pioneer Park",
+    "locality": null,
+    "timezone": "America/Denver",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 4,
+     "name": "Unknown Governmental Organization"
+    },
+    "provider": {
+     "id": 119,
+     "name": "AirNow"
+    },
+    "isMobile": false,
+    "isMonitor": true,
+    "instruments": [
+     {
+      "id": 2,
+      "name": "Government Monitor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 1562386,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 46.58432,
+     "longitude": -112.041621
+    },
+    "licenses": [
+     {
+      "id": 33,
+      "name": "US Public Domain",
+      "attribution": {
+       "name": "Unknown Governmental Organization",
+       "url": null
+      },
+      "dateFrom": "2016-01-30",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -112.041621,
+     46.58432,
+     -112.041621,
+     46.58432
+    ],
+    "distance": 629.77614155,
+    "datetimeFirst": {
+     "utc": "2022-01-07T18:00:00Z",
+     "local": "2022-01-07T11:00:00-07:00"
+    },
+    "datetimeLast": {
+     "utc": "2022-03-22T18:00:00Z",
+     "local": "2022-03-22T12:00:00-06:00"
+    }
+   }
+  ]
+ }
+]

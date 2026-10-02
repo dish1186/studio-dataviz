@@ -1,0 +1,42 @@
+{
+ "result": {
+  "input": {
+   "address": {
+    "address": "1275 W Main St, El Centro, CA 92243"
+   },
+   "benchmark": {
+    "isDefault": true,
+    "benchmarkDescription": "Public Address Ranges - Current Benchmark",
+    "id": "4",
+    "benchmarkName": "Public_AR_Current"
+   }
+  },
+  "addressMatches": [
+   {
+    "tigerLine": {
+     "side": "L",
+     "tigerLineId": "611779838"
+    },
+    "coordinates": {
+     "x": -115.567263191358,
+     "y": 32.792776699007
+    },
+    "addressComponents": {
+     "zip": "92243",
+     "streetName": "MAIN",
+     "preType": "",
+     "city": "EL CENTRO",
+     "preDirection": "W",
+     "suffixDirection": "",
+     "fromAddress": "1251",
+     "state": "CA",
+     "suffixType": "ST",
+     "toAddress": "1299",
+     "suffixQualifier": "",
+     "preQualifier": ""
+    },
+    "matchedAddress": "1275 W MAIN ST, EL CENTRO, CA, 92243"
+   }
+  ]
+ }
+}

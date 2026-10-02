@@ -1,0 +1,42 @@
+{
+ "result": {
+  "input": {
+   "address": {
+    "address": "1300 Houston Ave, McAllen, TX 78501"
+   },
+   "benchmark": {
+    "isDefault": true,
+    "benchmarkDescription": "Public Address Ranges - Current Benchmark",
+    "id": "4",
+    "benchmarkName": "Public_AR_Current"
+   }
+  },
+  "addressMatches": [
+   {
+    "tigerLine": {
+     "side": "R",
+     "tigerLineId": "71501798"
+    },
+    "coordinates": {
+     "x": -98.234625755494,
+     "y": 26.196594798278
+    },
+    "addressComponents": {
+     "zip": "78501",
+     "streetName": "HOUSTON",
+     "preType": "",
+     "city": "MCALLEN",
+     "preDirection": "W",
+     "suffixDirection": "",
+     "fromAddress": "1300",
+     "state": "TX",
+     "suffixType": "AVE",
+     "toAddress": "1398",
+     "suffixQualifier": "",
+     "preQualifier": ""
+    },
+    "matchedAddress": "1300 W HOUSTON AVE, MCALLEN, TX, 78501"
+   }
+  ]
+ }
+}

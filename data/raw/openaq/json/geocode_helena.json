@@ -1,0 +1,42 @@
+{
+ "result": {
+  "input": {
+   "address": {
+    "address": "316 N Park Ave, Helena, MT 59623"
+   },
+   "benchmark": {
+    "isDefault": true,
+    "benchmarkDescription": "Public Address Ranges - Current Benchmark",
+    "id": "4",
+    "benchmarkName": "Public_AR_Current"
+   }
+  },
+  "addressMatches": [
+   {
+    "tigerLine": {
+     "side": "L",
+     "tigerLineId": "202349691"
+    },
+    "coordinates": {
+     "x": -112.040258604979,
+     "y": 46.589956769931
+    },
+    "addressComponents": {
+     "zip": "59601",
+     "streetName": "PARK",
+     "preType": "",
+     "city": "HELENA",
+     "preDirection": "N",
+     "suffixDirection": "",
+     "fromAddress": "300",
+     "state": "MT",
+     "suffixType": "AVE",
+     "toAddress": "398",
+     "suffixQualifier": "",
+     "preQualifier": ""
+    },
+    "matchedAddress": "316 N PARK AVE, HELENA, MT, 59601"
+   }
+  ]
+ }
+}

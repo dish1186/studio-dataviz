@@ -1,0 +1,227 @@
+[
+ {
+  "meta": {
+   "name": "openaq-api",
+   "website": "/",
+   "page": 1,
+   "limit": 1000,
+   "found": 1
+  },
+  "results": [
+   {
+    "id": 270740,
+    "name": "Bismarck Residential",
+    "locality": "Bismarck",
+    "timezone": "America/Chicago",
+    "country": {
+     "id": 155,
+     "code": "US",
+     "name": "United States"
+    },
+    "owner": {
+     "id": 4,
+     "name": "Unknown Governmental Organization"
+    },
+    "provider": {
+     "id": 119,
+     "name": "AirNow"
+    },
+    "isMobile": false,
+    "isMonitor": true,
+    "instruments": [
+     {
+      "id": 2,
+      "name": "Government Monitor"
+     },
+     {
+      "id": 2,
+      "name": "Government Monitor"
+     }
+    ],
+    "sensors": [
+     {
+      "id": 1562103,
+      "name": "co ppm",
+      "parameter": {
+       "id": 8,
+       "name": "co",
+       "units": "ppm",
+       "displayName": "CO"
+      }
+     },
+     {
+      "id": 4272232,
+      "name": "no ppm",
+      "parameter": {
+       "id": 35,
+       "name": "no",
+       "units": "ppm",
+       "displayName": "NO"
+      }
+     },
+     {
+      "id": 16313324,
+      "name": "no ppb",
+      "parameter": {
+       "id": 24,
+       "name": "no",
+       "units": "ppb",
+       "displayName": "NO"
+      }
+     },
+     {
+      "id": 16313325,
+      "name": "no2 ppb",
+      "parameter": {
+       "id": 15,
+       "name": "no2",
+       "units": "ppb",
+       "displayName": "NO\u2082"
+      }
+     },
+     {
+      "id": 1562118,
+      "name": "no2 ppm",
+      "parameter": {
+       "id": 7,
+       "name": "no2",
+       "units": "ppm",
+       "displayName": "NO\u2082"
+      }
+     },
+     {
+      "id": 16313326,
+      "name": "nox ppb",
+      "parameter": {
+       "id": 23,
+       "name": "nox",
+       "units": "ppb",
+       "displayName": "NOX"
+      }
+     },
+     {
+      "id": 4272115,
+      "name": "nox ppm",
+      "parameter": {
+       "id": 19840,
+       "name": "nox",
+       "units": "ppm",
+       "displayName": "NOx"
+      }
+     },
+     {
+      "id": 1562114,
+      "name": "o3 ppm",
+      "parameter": {
+       "id": 10,
+       "name": "o3",
+       "units": "ppm",
+       "displayName": "O\u2083"
+      }
+     },
+     {
+      "id": 16313327,
+      "name": "o3 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 3,
+       "name": "o3",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "O\u2083 mass"
+      }
+     },
+     {
+      "id": 16313328,
+      "name": "pm10 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 1,
+       "name": "pm10",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM10"
+      }
+     },
+     {
+      "id": 1562130,
+      "name": "pm10 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 1,
+       "name": "pm10",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM10"
+      }
+     },
+     {
+      "id": 16313329,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     },
+     {
+      "id": 1562104,
+      "name": "pm25 \u00b5g/m\u00b3",
+      "parameter": {
+       "id": 2,
+       "name": "pm25",
+       "units": "\u00b5g/m\u00b3",
+       "displayName": "PM2.5"
+      }
+     },
+     {
+      "id": 16313330,
+      "name": "so2 ppb",
+      "parameter": {
+       "id": 101,
+       "name": "so2",
+       "units": "ppb",
+       "displayName": "SO\u2082"
+      }
+     },
+     {
+      "id": 1562135,
+      "name": "so2 ppm",
+      "parameter": {
+       "id": 9,
+       "name": "so2",
+       "units": "ppm",
+       "displayName": "SO\u2082"
+      }
+     }
+    ],
+    "coordinates": {
+     "latitude": 46.8253,
+     "longitude": -100.7681
+    },
+    "licenses": [
+     {
+      "id": 33,
+      "name": "US Public Domain",
+      "attribution": {
+       "name": "Unknown Governmental Organization",
+       "url": null
+      },
+      "dateFrom": "2016-01-30",
+      "dateTo": null
+     }
+    ],
+    "bounds": [
+     -100.7681,
+     46.8253,
+     -100.7681,
+     46.8253
+    ],
+    "distance": 2426.52312909,
+    "datetimeFirst": {
+     "utc": "2021-12-02T15:00:00Z",
+     "local": "2021-12-02T09:00:00-06:00"
+    },
+    "datetimeLast": {
+     "utc": "2026-10-02T21:00:00Z",
+     "local": "2026-10-02T16:00:00-05:00"
+    }
+   }
+  ]
+ }
+]

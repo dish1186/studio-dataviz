@@ -1,0 +1,42 @@
+{
+ "result": {
+  "input": {
+   "address": {
+    "address": "451 S State St, Salt Lake City, UT 84111"
+   },
+   "benchmark": {
+    "isDefault": true,
+    "benchmarkDescription": "Public Address Ranges - Current Benchmark",
+    "id": "4",
+    "benchmarkName": "Public_AR_Current"
+   }
+  },
+  "addressMatches": [
+   {
+    "tigerLine": {
+     "side": "L",
+     "tigerLineId": "176067423"
+    },
+    "coordinates": {
+     "x": -111.888147804451,
+     "y": 40.759545544294
+    },
+    "addressComponents": {
+     "zip": "84111",
+     "streetName": "STATE",
+     "preType": "",
+     "city": "SALT LAKE CITY",
+     "preDirection": "S",
+     "suffixDirection": "",
+     "fromAddress": "401",
+     "state": "UT",
+     "suffixType": "ST",
+     "toAddress": "499",
+     "suffixQualifier": "",
+     "preQualifier": ""
+    },
+    "matchedAddress": "451 S STATE ST, SALT LAKE CITY, UT, 84111"
+   }
+  ]
+ }
+}

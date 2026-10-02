@@ -1,0 +1,42 @@
+{
+ "result": {
+  "input": {
+   "address": {
+    "address": "414 Grant St, Pittsburgh, PA 15219"
+   },
+   "benchmark": {
+    "isDefault": true,
+    "benchmarkDescription": "Public Address Ranges - Current Benchmark",
+    "id": "4",
+    "benchmarkName": "Public_AR_Current"
+   }
+  },
+  "addressMatches": [
+   {
+    "tigerLine": {
+     "side": "L",
+     "tigerLineId": "607638187"
+    },
+    "coordinates": {
+     "x": -79.997306709087,
+     "y": 40.43839301601
+    },
+    "addressComponents": {
+     "zip": "15219",
+     "streetName": "GRANT",
+     "preType": "",
+     "city": "PITTSBURGH",
+     "preDirection": "",
+     "suffixDirection": "",
+     "fromAddress": "422",
+     "state": "PA",
+     "suffixType": "ST",
+     "toAddress": "400",
+     "suffixQualifier": "",
+     "preQualifier": ""
+    },
+    "matchedAddress": "414 GRANT ST, PITTSBURGH, PA, 15219"
+   }
+  ]
+ }
+}

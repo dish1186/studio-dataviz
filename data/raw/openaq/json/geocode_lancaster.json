@@ -1,0 +1,42 @@
+{
+ "result": {
+  "input": {
+   "address": {
+    "address": "120 N Duke St, Lancaster, PA 17602"
+   },
+   "benchmark": {
+    "isDefault": true,
+    "benchmarkDescription": "Public Address Ranges - Current Benchmark",
+    "id": "4",
+    "benchmarkName": "Public_AR_Current"
+   }
+  },
+  "addressMatches": [
+   {
+    "tigerLine": {
+     "side": "L",
+     "tigerLineId": "179662762"
+    },
+    "coordinates": {
+     "x": -76.30413326116,
+     "y": 40.040333777997
+    },
+    "addressComponents": {
+     "zip": "17602",
+     "streetName": "DUKE",
+     "preType": "",
+     "city": "LANCASTER",
+     "preDirection": "N",
+     "suffixDirection": "",
+     "fromAddress": "100",
+     "state": "PA",
+     "suffixType": "ST",
+     "toAddress": "124",
+     "suffixQualifier": "",
+     "preQualifier": ""
+    },
+    "matchedAddress": "120 N DUKE ST, LANCASTER, PA, 17602"
+   }
+  ]
+ }
+}

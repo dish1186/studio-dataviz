@@ -32,6 +32,47 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### OpenAQ · Batch 2, Steps 1-6: PM2.5 for 17 more ALA top-25 cities · 2026-10-02 18:22 EDT · Gina + Claude
+- **What (Gina: "lets pull the data for the 17 missing cities from the openAQ database. same structure and segmentation as our previous pulls" and "i need to make sure its the exact same timeline"; plan approved "its a go"):**
+  - The first-listed city of each ALA *State of the Air 2026* top-25 metro we lacked: Visalia, Seattle, Bismarck, McAllen, Minot, Pittsburgh, El Centro, Indianapolis, Medford, Boise City, Lancaster, Bend, San Jose, Salt Lake City, Helena, Logan, Yakima.
+  - **Same pipeline, dates and decisions (OA-D1 to OA-D7).** Run through copies of the original scripts (`scripts/openaq/b2_01`-`b2_06`) that change only the city list, input/output folders and summary file names.
+  - Study period 2016-03-06 to 2026-09-25, identical to the original 16 (Step 1 inventory overlap window 2016-01-01 to 2026-09-25, as in the original). The key was passed as an environment variable only.
+  - Step 5a (flags audit) was not rerun: it is read-only and changes no values.
+- **Step 1, inventory:**
+  - City halls geocoded with the US Census Geocoder from addresses supplied by Claude (Gina's go). All 17 matched; McAllen matched "1300 W Houston Ave", Helena ZIP 59601.
+  - 461 PM2.5 sensors within 25 km; 416 with data in the study period.
+  - **Deviation:** OpenAQ's `/locations/{id}/sensors` returned HTTP 500 six times for 14 locations (first: 288307 "Visalia - W Ashland"; mostly Pittsburgh).
+    - The original script stops in that case. The batch-2 copy instead uses the location record's own first/last dates for those sensors and marks them `dates_source = location record`: 101 sensors (Pittsburgh 95, Visalia 2, Bismarck 2, Salt Lake City 2).
+    - This affects only the study-period check; daily values come from the `/days` endpoint (Step 4), which returned data for every kept sensor.
+- **Step 2, assignment:**
+  - Census 2024 cartographic place boundaries (`data/raw/census/cb_2024_us_place_500k.zip`), LSAD 25 "city". **Exception:** Indianapolis uses "Indianapolis city (balance)" (LSAD 00, the consolidated city-county without its separate towns).
+  - All 33 study cities' limits loaded for inside and distance checks; fallback only for the new 17. Sensors inside an original city's limits are marked `inside_original_study_city` and not used.
+  - Extra bounding-box searches: Indianapolis, McAllen, San Jose (+1 sensor).
+  - Result: 462 sensors; 177 inside new cities' limits; 9 fallback candidates.
+- **Step 3, final sensors:**
+  - 10 km fallback cap, US only, 50 m sites, closer-to-own-city rule against all 33 cities.
+  - **158 sensors kept at 141 sites.**
+  - Minot: low-cost only (2 fallback sensors 0.2 km outside). El Centro's low-cost fallback was 16.8 km away, beyond the cap.
+  - Pittsburgh: 1 reference site and 21 low-cost.
+- **Step 4, daily download:** 158 sensors (about 511 yearly requests), **0 failed**, 0 rate-limit errors. 114,714 sensor-days; 99,736 valid (≥ 18 h).
+- **Steps 5-6, city averages and unhealthy days:** same rules. Overall coverage (share of 3,856 days):
+  - Seattle 83%; Pittsburgh 84%; Indianapolis 83%; Salt Lake City 80%; Yakima 80%
+  - San Jose 77%; Visalia 74%; Medford 73%; Lancaster 71%; Logan 64%
+  - Bend 51% (from 2020-06-27); El Centro 45% (from 2018-07-06); McAllen 44%
+  - Bismarck 35% (from 2022-10-25); Boise 19% (from 2024-08-10)
+  - **Minot 4% (from 2025-10-17); Helena 2% (only 2022-01-08 to 2022-03-21)**
+  - Days with a reference site ≥ 35.5 (strict): Visalia 113, Medford 100, Bend 73, Yakima 55, Salt Lake City 35, Bismarck 34, McAllen 30, Indianapolis 30, Logan 25, Seattle 24, Lancaster 22, San Jose 18, Boise 14, Pittsburgh 12, El Centro 2, Minot 0, Helena 0.
+- **Checks:**
+  - Every new city file has the same 3,856 dates as the originals.
+  - All 786 pre-existing OpenAQ files are byte-identical before and after (SHA-256); 313 new files.
+  - Batch-2 summaries are kept in separate `_b2` files rather than appended to the original summary, so original files stay unchanged (a change from the plan; can be merged later).
+  - Key scan clean.
+- **Caveats:**
+  - Batch 2 was downloaded on 2026-10-02, about a week after the original 16 (2026-09-27). OpenAQ can revise past values.
+  - Helena and Minot have too little data for analysis.
+
+---
+
 ### Analysis A45 · ALA top-25 metros vs our OpenAQ PM2.5 coverage (read only) · 2026-10-02 17:27 EDT · Gina + Claude
 - **What (Gina pasted a 25-metro list, Fairbanks-College to Yakima, ranked as in ALA *State of the Air 2026* short-term particle pollution, and asked to cross it with our OpenAQ PM2.5 data):**
   - Source: `data/processed/openaq/step05_averages/pm25_city_coverage_summary.csv` (overall rows; study period 2016-03-06 to 2026-09-25, 3,856 days). Nothing saved.

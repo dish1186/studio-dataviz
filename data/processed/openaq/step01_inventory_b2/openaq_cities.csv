@@ -1,0 +1,18 @@
+city_slug,city,state,center_address,center_lat,center_lon,center_source,search_radius_km,n_locations_found,n_pm25_sensors_found,n_reference,n_lowcost,n_overlapping_study_period
+visalia,Visalia,CA,"220 N Santa Fe St, Visalia, CA 93292",36.331590772617,-119.287768499664,"US Census Geocoder: 220 N SANTA FE ST, VISALIA, CA, 93292",25.0,17,18,5,13,18
+seattle,Seattle,WA,"600 4th Ave, Seattle, WA 98104",47.603309859934,-122.330271265167,"US Census Geocoder: 600 4TH AVE, SEATTLE, WA, 98104",25.0,88,89,17,72,88
+bismarck,Bismarck,ND,"221 N 5th St, Bismarck, ND 58501",46.806692611535,-100.784527920283,"US Census Geocoder: 221 N 5TH ST, BISMARCK, ND, 58501",25.0,1,2,2,0,2
+mcallen,McAllen,TX,"1300 Houston Ave, McAllen, TX 78501",26.196594798278,-98.234625755494,"US Census Geocoder: 1300 W HOUSTON AVE, MCALLEN, TX, 78501",25.0,3,3,2,1,3
+minot,Minot,ND,"10 3rd Ave SW, Minot, ND 58701",48.233492624541,-101.293165195252,"US Census Geocoder: 10 3RD AVE SW, MINOT, ND, 58701",25.0,2,2,0,2,2
+pittsburgh,Pittsburgh,PA,"414 Grant St, Pittsburgh, PA 15219",40.43839301601,-79.997306709087,"US Census Geocoder: 414 GRANT ST, PITTSBURGH, PA, 15219",25.0,102,187,11,176,144
+elcentro,El Centro,CA,"1275 W Main St, El Centro, CA 92243",32.792776699007,-115.567263191358,"US Census Geocoder: 1275 W MAIN ST, EL CENTRO, CA, 92243",25.0,15,15,14,1,15
+indianapolis,Indianapolis,IN,"200 E Washington St, Indianapolis, IN 46204",39.767051713719,-86.154391458992,"US Census Geocoder: 200 E WASHINGTON ST, INDIANAPOLIS, IN, 46204",25.0,9,9,4,5,9
+medford,Medford,OR,"411 W 8th St, Medford, OR 97501",42.323226548417,-122.876101498381,"US Census Geocoder: 411 W 8TH ST, MEDFORD, OR, 97501",25.0,13,13,7,6,13
+boise,Boise City,ID,"150 N Capitol Blvd, Boise, ID 83702",43.615387122768,-116.201864471479,"US Census Geocoder: 150 N CAPITOL BLVD, BOISE, ID, 83702",25.0,15,15,4,11,15
+lancaster,Lancaster,PA,"120 N Duke St, Lancaster, PA 17602",40.040333777997,-76.30413326116,"US Census Geocoder: 120 N DUKE ST, LANCASTER, PA, 17602",25.0,4,4,2,2,4
+bend,Bend,OR,"710 NW Wall St, Bend, OR 97703",44.057353647803,-121.31582981681,"US Census Geocoder: 710 NW WALL ST, BEND, OR, 97703",25.0,18,19,7,12,18
+sanjose,San Jose,CA,"200 E Santa Clara St, San Jose, CA 95113",37.338163163635,-121.886224209159,"US Census Geocoder: 200 E SANTA CLARA ST, SAN JOSE, CA, 95113",25.0,38,38,3,35,38
+saltlakecity,Salt Lake City,UT,"451 S State St, Salt Lake City, UT 84111",40.759545544294,-111.888147804451,"US Census Geocoder: 451 S STATE ST, SALT LAKE CITY, UT, 84111",25.0,26,27,11,16,27
+helena,Helena,MT,"316 N Park Ave, Helena, MT 59623",46.589956769931,-112.040258604979,"US Census Geocoder: 316 N PARK AVE, HELENA, MT, 59601",25.0,4,4,4,0,4
+logan,Logan,UT,"290 N 100 W, Logan, UT 84321",41.736970190833,-111.837357474719,"US Census Geocoder: 290 N 100 W, LOGAN, UT, 84321",25.0,4,4,1,3,4
+yakima,Yakima,WA,"129 N 2nd St, Yakima, WA 98901",46.604250587789,-120.505312756749,"US Census Geocoder: 129 N 2ND ST, YAKIMA, WA, 98901",25.0,12,12,11,1,12

@@ -1,0 +1,42 @@
+{
+ "result": {
+  "input": {
+   "address": {
+    "address": "220 N Santa Fe St, Visalia, CA 93292"
+   },
+   "benchmark": {
+    "isDefault": true,
+    "benchmarkDescription": "Public Address Ranges - Current Benchmark",
+    "id": "4",
+    "benchmarkName": "Public_AR_Current"
+   }
+  },
+  "addressMatches": [
+   {
+    "tigerLine": {
+     "side": "R",
+     "tigerLineId": "607598976"
+    },
+    "coordinates": {
+     "x": -119.287768499664,
+     "y": 36.331590772617
+    },
+    "addressComponents": {
+     "zip": "93292",
+     "streetName": "SANTA FE",
+     "preType": "",
+     "city": "VISALIA",
+     "preDirection": "N",
+     "suffixDirection": "",
+     "fromAddress": "220",
+     "state": "CA",
+     "suffixType": "ST",
+     "toAddress": "298",
+     "suffixQualifier": "",
+     "preQualifier": ""
+    },
+    "matchedAddress": "220 N SANTA FE ST, VISALIA, CA, 93292"
+   }
+  ]
+ }
+}

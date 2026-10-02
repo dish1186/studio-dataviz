@@ -1,0 +1,42 @@
+{
+ "result": {
+  "input": {
+   "address": {
+    "address": "200 E Washington St, Indianapolis, IN 46204"
+   },
+   "benchmark": {
+    "isDefault": true,
+    "benchmarkDescription": "Public Address Ranges - Current Benchmark",
+    "id": "4",
+    "benchmarkName": "Public_AR_Current"
+   }
+  },
+  "addressMatches": [
+   {
+    "tigerLine": {
+     "side": "L",
+     "tigerLineId": "107992070"
+    },
+    "coordinates": {
+     "x": -86.154391458992,
+     "y": 39.767051713719
+    },
+    "addressComponents": {
+     "zip": "46204",
+     "streetName": "WASHINGTON",
+     "preType": "",
+     "city": "INDIANAPOLIS",
+     "preDirection": "E",
+     "suffixDirection": "",
+     "fromAddress": "200",
+     "state": "IN",
+     "suffixType": "ST",
+     "toAddress": "298",
+     "suffixQualifier": "",
+     "preQualifier": ""
+    },
+    "matchedAddress": "200 E WASHINGTON ST, INDIANAPOLIS, IN, 46204"
+   }
+  ]
+ }
+}
