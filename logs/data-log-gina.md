@@ -32,6 +32,26 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Analysis A36 · how Dish's Reddit cities and weeks were chosen, and how they rank (read only) · 2026-10-02 08:54 EDT · Gina + Claude
+- **What (Gina: "how did she choose those dates and those cities?"):** searched the repo for the selection record, then ranked the two event weeks among all Monday-Sunday weeks since 2016. Nothing saved.
+- **What the repo says:**
+  - `logs/findings-reddit-case-study.md`: "one bad-air week each, each compared with the same calendar week in two adjacent years (method after Moore et al. 2019)".
+    - Eugene: "less dangerous, very unusual" (mean 41.9 µg/m³, 3 of 7 days > 35.5, 7.3× a typical week that month).
+    - Bakersfield: "worst week since 2016, but familiar" (55.5 µg/m³, 7 of 7 days, 2.9×).
+  - It lists decisions R1-R5 ("windows, paging, week selection") for a step 01 download, but no step-01 script or R1-R5 text is in the repo. Dish's log has no Reddit entries.
+  - The findings' open item 1: "Re-run the week selection on the repo's processed PM2.5 files (weeks were chosen from data embedded in the PM2.5 City Explorer)".
+  - The city choice itself is not documented.
+- **Ranks** (`pm25_<city>_daily.csv`, `all_mean`, weeks with ≥ 5 days). "× typical" = week mean ÷ median weekly mean for that calendar month; Claude's version, which gives 6.8× for Eugene vs Dish's 7.3×.
+  - **Eugene, Aug 3-9, 2026:** 4th-worst week since 2016 by mean and by × typical. Worse weeks:
+    - Sep 7-13, 2020: 280.4 µg/m³, 47×
+    - Sep 14-20, 2020: 146.5 µg/m³, 25×
+    - Aug 28-Sep 3, 2017: 50.5 µg/m³, 8.2×
+    - It is the worst week since Jul 2023.
+  - **Bakersfield, Dec 2-8, 2024:** worst week since 2016 by mean (55.5). 9th by × typical; the most unusual was Aug 17-23, 2020 (52.8 µg/m³, 4.3×, smoke).
+- **Open:** ask Dish for R1-R5, the week-selection rule. Possible reasons for the 2026 Eugene week over Sep 2020 (Claude's guesses, not confirmed): recency, two adjacent-year baselines, and the methodology's note to avoid 2023 around Reddit's API change.
+
+---
+
 ### Analysis A35 · fires near Eugene and Bakersfield, and during Dish's study weeks (read only) · 2026-10-02 08:50 EDT · Gina + Claude
 - **What (Gina: "what fires have impacted both eugene and bakersfield? look at the fire start point data" and "look at the dates dish chose for worst pollution"):**
   - Source: NIFC WFIGS perimeters raw table (NIFC Step 1). Wildfires only (`attr_IncidentTypeCategory` = WF), deduplicated by incident name + discovery date: 35,153 fires.
