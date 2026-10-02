@@ -32,6 +32,41 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Visualization V10 · Heat Field (abnormal vs dangerous) · version 1 draft · 2026-10-01 23:10 EDT · Gina + Claude
+- **What (Gina: "x axis is abnormal / normal heat and the y axis is dangerous (high heat stress) and non-dangerous and the dots will be frequency of different events that fit into that dynamic"; one visual to answer: relationship over time, abnormality or danger, thresholds for action):**
+  - Each May-Sep 2022-2026 day is a grey dot.
+    - **x** = abnormality = (daily high − 1991-2020 normal) ÷ (90th percentile − normal) for the date. 0 = normal; 1 = Dish's "abnormally high" line (hotter than 9 in 10 past years on that date). Axis ticks are shown in °F using the city's median spread.
+    - **y** = felt heat, daily max UTCI °F. The axes cross at the abnormal line and at the UTCI "strong heat stress" line (89.6 °F felt).
+  - Soft blobs show days with a strong reaction (top 50 / 25 / 10% selector): heat ER visits (blue), AC searches (cyan), ice cream searches (pink). Each reaction has an outer cloud (all strong days) and a denser core (the strongest half).
+  - **Question 1:** summer and month filters, a "Play months" animation, and a per-summer table (dangerous days, abnormal days, share of strong-reaction days).
+  - **Question 2:** a quadrant table of the share of days with a strong reaction in each corner, plus a written verdict.
+    - Where a corner is empty, the verdict compares within danger instead (Phoenix, Bakersfield) or within safe heat (San Francisco).
+  - **Question 3:** reaction thresholds, also marked on the field's right and top edges.
+  - Cities: Detroit (default), Boston, Eugene, Bakersfield, Phoenix, San Diego, San Francisco.
+- **Detroit, top 25%, share of days with a strong reaction (ER / AC / ice cream):**
+  - Safe-normal 11 / 40 / 50%
+  - Safe-abnormal 40 / 80 / 65%
+  - Dangerous-normal 73 / 80 / 73%
+  - Dangerous-abnormal 92 / 87 / 79%
+  - ER reacts more to danger than to abnormality. Searches react about equally to both.
+  - Thresholds: ER felt ≥ 90 °F and ≥ 10 °F above normal; AC felt ≥ 84 °F and ≥ 2 °F above normal.
+- **Phoenix, top 25%, ER on dangerous days:** abnormal 69% vs normal 18%.
+- **Inputs:** gridMET and UTCI final daily files; `data/processed/cdc-tracking/daily_hri_ed_rate_by_hhs_region.csv`; Google Trends weekly AC and ice cream raw files.
+- **Script:** `viz/heat-field/build.py` → `viz/heat-field/data.json` (655 days per city; days without felt heat are dropped, so 2026 ends 2026-06-12). Page: `viz/heat-field/template.html` → `heat-field.html`. Published at https://claude.ai/artifact/RyJ4E3jnfxmh5JDvEeWFWY (version 1).
+- **Claude's choices, not yet approved:**
+  - Scaling abnormality by the p90 spread, so that 1 = Dish's abnormal line.
+  - Each day takes its Google Trends week's value; weeks start on Sunday.
+  - "Strong reaction" = top share among the city's May-Sep 2022-2026 days.
+  - Threshold rule: the lowest 3 °F felt bin, or quarter-step abnormality bin, with at least 5 days where over half are strong-reaction days, and the next bin agrees.
+  - Verdict margin: 10 points.
+  - Blob sizes, blur and opacity; colours follow the summer rings.
+- **Caveats:**
+  - Region 9 ER is shared by 4 of the cities.
+  - Weekly searches smear over each week's days.
+  - These are associations, not causes.
+
+---
+
 ### Analysis A25 · heat-action relationships across 7 cities (read only) · 2026-10-01 23:00 EDT · Gina + Claude
 - **What (Gina: "what about for the rest of the cities? are there clear trends one way or another in the context of these heat action relationships"):**
   - Repeated the A23/A24 checks for Boston, Detroit, Eugene, Bakersfield, Phoenix, San Diego and San Francisco, May-Sep 2022-2026. These are the 7 cities that have weekly AC and ice cream Trends files. Nothing saved.
