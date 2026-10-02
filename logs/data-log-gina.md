@@ -32,6 +32,40 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Analysis A37 · proposal 5: do reactions use a shifting (recent) baseline, as in Moore et al. 2019? (read only) · 2026-10-02 09:46 EDT · Gina + Claude
+- **What (Gina: "lets see what proposal 5 looks like"):** each May-Sep daily high split into three parts (Claude's design, not yet approved):
+  - **normal:** the 1991-2020 mean high for the date (±7 days)
+  - **shift:** mean high for that date window in years y−8 to y−2 (Moore's 2-8 years) minus normal
+  - **anomaly:** the high minus normal + shift
+  - The highs come from raw gridMET `data/raw/gridmet/climateengine/gridmet_tmax_<city>_1991-2020.csv` and `_2016-2026.csv` (the 2016-2026 file used from 2016).
+  - Reading: if reactions judge heat against the recent past, a warmer recent past (shift) should cut the reaction, so b_shift ≈ 0 and "recent-baseline weight" w = 1 − b_shift/b_anom ≈ 1. If they react to absolute heat or the long-term normal, b_shift ≈ b_anom and w ≈ 0.
+- **Outcomes:**
+  - log(1 + ER rate), daily 2018-2026: Boston, Detroit, Eugene, Phoenix (independent regions), plus Eugene and Bakersfield alone
+  - log(1 + Media Cloud heat stories), weekly 2016-2026, 11 cities (`data/processed/heat-media/`)
+  - log(1 + AC search index), weekly 2021-2026, 7 cities
+  - CIs: cluster bootstrap over city-years (1000 reps for A, 500 for B and C; seed 1).
+- **Specs:**
+  - A: city-by-year FE.
+  - B: A plus month dummies and a squared high.
+  - C (closest to Moore): city-by-week-of-year FE plus year dummies, so the shift effect comes only from year-to-year differences in the same calendar week.
+- **Results** (% change per °F; w with 95% CI):
+  - A: w was negative for all outcomes (ER −0.45, news −0.28, AC −1.14): a warmer recent past went with *more* reaction. Eugene-only and Bakersfield-only ER w were −1.66 and −1.53.
+    - This flips in B and C, so it reflects seasonal timing or a curved heat response, not adaptation.
+  - B: ER w −0.24 (−0.56, +0.08); news −0.20 (−0.71, +0.30); AC −0.77 (−1.66, +0.01).
+  - **C (main):**
+    - ER: b_shift +10.4% (+5.3, +14.8), b_anom +10.0% (+9.4, +10.4), **w −0.04 (−0.51, +0.47)**
+    - News: +9.2% vs +9.0%, **w −0.02 (−0.72, +0.46)**
+    - AC: +5.6% vs +6.6%, **w +0.16 (−0.60, +0.87)**
+  - Spec A long-term-normal coefficient vs anomaly: ER 13.0% vs 10.5% (reacts to absolute heat); news 6.3% vs 9.3%; AC 2.5% vs 8.3%. Attention and behaviour react more to heat that is unusual for the date than to the seasonal level.
+- **Reading:**
+  - No evidence that ER, heat news or AC searches judge heat against the past 2-8 years.
+  - ER and news behave as if they respond to absolute heat or the long-term normal (w ≈ 0).
+  - For AC the CI runs from strong adjustment to none: inconclusive.
+- **Power:** the recent shift varies little (mean +0.48 °F, sd 1.22 across city-days). Eugene's recent past was about 1.1-1.7 °F warmer than 1991-2020 from 2020 on; Bakersfield's 0.6-1.4 °F. With 9-11 summers and 4-11 cities, only a large adjustment would be detectable.
+- **Scripts:** Claude's scratchpad (`a37_shifting_baseline.py`, `a37b_robust.py`); nothing saved.
+
+---
+
 ### Mockup M4 · "Goldilocks ladder": one combined view for Gina's three questions (chat widget) · 2026-10-02 09:34 EDT · Gina + Claude
 - **What (Gina: "i basically need a combination of views that look at these three questions"):** one inline widget, Eugene vs Bakersfield, with a heat/air toggle. All views share one hazard scale (felt heat °F, or PM2.5 µg/m³). Not published or saved.
 - **On that scale:**
