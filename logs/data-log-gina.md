@@ -32,6 +32,47 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Analysis A29 · air: actions vs abnormal and dangerous air, 7 cities (read only so far) · 2026-10-01 23:46 EDT · Gina + Claude
+- **What (Gina: "can you include air data in this analysis"):** the A28 method applied to air, 2021-09-26 to 2026-09-25, all year (bad air also comes in winter).
+  - **Danger** = PM2.5 µg/m³ (OpenAQ `all_mean`, `data/processed/openaq/step05_averages/pm25_<city>_daily.csv`).
+  - **Abnormality** = PM2.5 ÷ the city's median PM2.5 for the same calendar month, 2016-03-12 to 2025-12-31. This mirrors the Reddit study's "vs a typical week that month".
+  - **Actions:**
+    - weekly Google Trends "eye drops" (`data/raw/google-trends/eyedrops-search/`), n ≈ 250 weeks
+    - weekly Media Cloud air-quality stories (sum of daily `stories`), n ≈ 250
+    - monthly Trends air purifier + air filter + N95 (`total_interest_index`, `data/processed/google-trends/air-search/`), n ≈ 58 months
+  - Weeks need ≥ 4 days of PM2.5 and months ≥ 15 days. No air ER data exists.
+  - Spearman and partial Spearman; 95% moving-block bootstrap CIs (3-week or 3-month blocks; 2000 reps; seed 1).
+  - Script and output in Claude's scratchpad (`a29_air_correlations.py`, `a29_air_action_correlations.csv`); not yet saved to the repo.
+- **Simple ρ, mostly weak (|ρ| ≤ 0.2).** Exceptions:
+  - Phoenix purifier searches vs PM2.5 −0.53 (negative: high-PM months are winter)
+  - Phoenix eye drops −0.43
+  - Boston purifier 0.39
+  - Boston and San Francisco purifier vs abnormality 0.32 and 0.30
+- **Partial ρ (abnormality | danger), where a CI excludes 0:**
+  - Eye drops:
+    - Eugene 0.33 (0.20, 0.44) | −0.36 (−0.47, −0.21)
+    - San Diego 0.25 (0.10, 0.38) | −0.26
+    - San Francisco 0.26 (0.11, 0.40) | −0.30
+    - Phoenix −0.06 | −0.30
+    - Bakersfield 0.06 | −0.19
+  - Purifier/filter/N95:
+    - Bakersfield 0.33 (0.06, 0.60) | −0.37 (−0.62, −0.05)
+    - Phoenix 0.18 | −0.52 (−0.72, −0.25)
+    - San Diego 0.24 (0.01, 0.46) | −0.15
+  - News: Phoenix 0.23 (0.13, 0.33) | −0.24. All other cities have both CIs including 0.
+  - Danger never has a positive partial ρ whose CI excludes 0.
+- **Caution:**
+  - Abnormality is month-adjusted; danger is not. Danger therefore carries season: PM2.5 peaks in winter, while eye-drop and purifier searches peak in spring and summer. The negative danger partials largely reflect season, not avoidance.
+  - Abnormality and danger correlate 0.55-0.94, so the partials are unstable.
+  - Eye drops is a weak air proxy (allergies).
+  - Media Cloud uses the city as a search term within state collections.
+- **Event check, the two Reddit weeks:**
+  - **Eugene smoke week (Aug 2-8, 2026):** news stories 19, the highest week in 5 years; air purifier/filter/N95 month at the 97th percentile; eye drops at the 84th percentile.
+  - **Bakersfield worst week (Dec 1-7, 2024):** 0 news stories; air purifier/filter/N95 month at the 35th percentile; eye drops at the 61st percentile.
+  - This is consistent with the Reddit result: the unusual event got attention, the more dangerous familiar one did not.
+
+---
+
 ### Analysis A28 · correlations of actions with abnormal and dangerous heat, 7 cities (read only so far) · 2026-10-01 23:33 EDT · Gina + Claude
 - **What (Gina: "give me the final and precise statistical correllations between the actions (ice cream, ac, and ER) and the different types of heat (abnormal and dangerous)"):**
   - Spearman ρ, May-Sep 2022 to 2026-06-12 (felt heat ends then).
