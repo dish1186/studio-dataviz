@@ -108,7 +108,7 @@ ALA rank = *State of the Air 2026*, short-term particle pollution (ties as given
 5. **Result.** 24 of the 25 cities pass. **El Centro is not available:** there is no r/ElCentro, only the regional r/imperialvalley, so it was removed.
 
 **Notes**
-- **Subreddits that also cover the surrounding area:** several city subreddits describe themselves as covering the county or valley too: r/lancaster (Lancaster County), r/medford (Rogue Valley), r/Boise (Treasure Valley), r/Detroit (Southeast Michigan). They still meet the rule because they are named for the city.
+- **Regional alternatives not used:** where a regional subreddit also exists (r/imperialvalley, r/RogueValley with 688 subscribers), it was not used; only the city-named subreddit counts. r/lancaster covers both the city and Lancaster County, but it is named for the city, so it meets the rule.
 - **Thin subreddits:** McAllen, Minot, Bismarck, Brownsville and Helena have few posts (McAllen: 152 archived posts in total), too few for a weekly analysis. None of them is in the final 75% list.
 
 ---
