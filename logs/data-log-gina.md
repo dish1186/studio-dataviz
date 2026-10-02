@@ -32,6 +32,22 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Visualization V9 · version 1: "Detroit Summer Rings" · 2026-10-01 22:02 EDT · Gina + Claude
+- **What:** A published page, https://claude.ai/artifact/PSmL12W3Tn7JwYQ8SVJwkP (private until shared), in the palette of Gina's reference (white, peach → orange → vermilion → oxblood → near-black). Detroit only, as Gina asked first.
+  - **Rings** = summers (2022 inner → 2026 outer). **Angle** = date, from May 1 at the top, clockwise, to Sep 30.
+  - **Background** = each day's high (gridMET), one wedge per day, in a light ramp that steps at the exploratory zone edges (56 / 74 / 78 / 83 / 92 °F).
+  - **Dots = events,** in three lanes per ring: ice cream (weekly, outlined), AC (weekly), heat ER (daily, CDC Region 5).
+  - An **event** is a value above the 80th / 90th / 95th percentile of Detroit's May-Sep values, 2022-2026. Cut-offs: ER [180.0, 298.0, 509.0] per 100k ED visits; ice cream [85, 90, 93]; AC [26, 38, 53] (index). Colour = tier; size = number of events of that type in the same month.
+  - Selectable layers: temperature background, each event type, threshold arcs (runs of days ≥ 78 °F), labels. Hover shows the day or week.
+- **Data:** `viz/summer-rings/detroit.json`, built from gridMET daily, CDC Tracking Step 2 daily, and Google Trends Steps 10 and 16 weekly files (read only). Page source is in `viz/summer-rings/`.
+- **Judgment calls (Claude's choice, not yet approved):**
+  - percentile tiers based on summer values (not the whole year)
+  - the zone edges, which come from the exploratory threshold mockups (not yet a logged analysis step)
+  - lane order
+  - size scaling
+
+---
+
 ### Visualization V8 · version 2: "May-Sep only" view · 2026-10-01 21:37 EDT · Gina + Claude
 - **What:** Added an "All year / May-Sep only" toggle to Heat Signals Over Time (https://claude.ai/artifact/PS8GB7HzJx21oWKpMzFCYf).
   - May-Sep only shows the weeks starting May-September, 2022-2026, each warm season placed side by side with a small gap (the single September 2021 week is left out).
