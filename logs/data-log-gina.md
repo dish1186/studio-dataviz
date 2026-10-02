@@ -32,6 +32,11 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Visualization V9 · version 8: zoomed out · 2026-10-01 22:28 EDT · Gina + Claude
+- **What:** A margin is added around the radial view (viewBox widened from 760 to 900, centred) and its width is capped at 640 px, so the whole circle and the outer bubbles fit with room around them. Layout only.
+
+---
+
 ### Visualization V9 · version 7: "Top 10% only" view · 2026-10-01 22:26 EDT · Gina + Claude
 - **What:** Added two view buttons, "Top 25%" (default) and "Top 10% only". Each sets both cut-offs (searches and ER) at once; the two selectors still allow mixed settings. In the top-10% view, 101 bubbles remain across the five summers (tested locally).
 - No data changes.

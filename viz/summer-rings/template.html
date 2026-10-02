@@ -22,7 +22,7 @@ h1{font-family:var(--serif);font-weight:600;font-size:clamp(30px,4.5vw,46px);mar
 .tg:focus-visible,input:focus-visible{outline:2px solid var(--ac);outline-offset:2px}
 .grid{display:grid;grid-template-columns:minmax(0,1fr) 250px;gap:20px;align-items:start}
 @media (max-width:820px){.grid{grid-template-columns:minmax(0,1fr)}}
-.stage{position:relative}
+.stage{position:relative;max-width:640px;margin-inline:auto;width:100%}
 svg{display:block;width:100%;height:auto}svg text{font-family:var(--sans)}
 .key{display:flex;flex-direction:column;gap:8px;font-size:13px;color:var(--ink-2)}
 .mono{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3)}
@@ -45,7 +45,7 @@ svg{display:block;width:100%;height:auto}svg text{font-family:var(--sans)}
     <label for="thre" style="font-size:13px;color:var(--ink-2)">ER days shown</label><select id="thre" class="sel"><option value="0.5">top 50%</option><option value="0.75" selected>top 25%</option><option value="0.9">top 10%</option></select>
   </div>
   <div class="grid">
-    <div class="stage" id="stage"><svg id="v" viewBox="0 0 760 760" role="img" aria-label="Radial view of Detroit's summers with heat and reactions"></svg><div class="tip" id="tip" hidden></div></div>
+    <div class="stage" id="stage"><svg id="v" viewBox="-70 -70 900 900" role="img" aria-label="Radial view of Detroit's summers with heat and reactions"></svg><div class="tip" id="tip" hidden></div></div>
     <aside class="key">
       <div class="mono">Heat (the glow)</div>
       <div class="ramp"></div>
