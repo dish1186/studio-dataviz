@@ -32,6 +32,15 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Doc D1 · version 3: subreddit rule, El Centro removed · 2026-10-02 18:56 EDT · Gina
+- **What (Gina: "if the city doesnt have a /[city] reddit page, mark it as not available. we will remove it from consideration"):**
+  - Applied the rule to the 25 first cities, using the Arctic Shift lookup from D1. **Only El Centro fails**: no r/ElCentro, only the regional r/imperialvalley.
+  - Marked "Not available: removed from consideration" in `docs/city-selection-process.md`. **24 cities remain.**
+  - Coverage groups updated: partial now 3 cities.
+- **Claude's reading, not yet approved:** Boise City passes via r/Boise ("Boise City" is the Census name). r/lancaster, r/medford, r/Logan, r/helena and r/Brownsville count as city subreddits even though some also cover the surrounding county or valley.
+
+---
+
 ### Doc D1 · version 2: Phase 3 only · 2026-10-02 18:55 EDT · Gina + Claude
 - **What (Gina: "just include phase 3 and onwards, prior isn't relevant anymore"):** removed the Phase 1 (first city list, Media Cloud coverage) and Phase 2 (Eugene/Bakersfield case study) sections from `docs/city-selection-process.md`, and the open items tied to them. The 25-city table, subreddit notes and Reddit rules are unchanged. Copy in the session folder updated.
 - The removed history stays in this log (city-selection Steps 1-9, Analysis A36).

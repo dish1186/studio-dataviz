@@ -17,13 +17,15 @@ How the study's cities were chosen, as of 2 October 2026: the American Lung Asso
    - too thin: under 15%
    
    The group boundaries are Claude's choice, not yet approved.
+6. **Subreddit check (Gina's rule).** A city stays in consideration only if it has its own city subreddit (r/[city name]). **El Centro has none** (no r/ElCentro; only the regional r/imperialvalley), so it is marked *not available* and **removed from consideration**. **24 cities remain.**
 
 | Coverage group | Count | Cities (ALA rank) |
 |---|---|---|
 | Strong: 70% or more | 16 | Pittsburgh (13), Eugene (2), Seattle (8), Indianapolis (15), Phoenix (18), Salt Lake City (22), Yakima (25), Los Angeles (7), Detroit (11), Fresno (6), Bakersfield (3), San Jose (21), Fairbanks (1), Visalia (5), Medford (16), Lancaster (19) |
-| Partial: 40–69% | 4 | Logan (24), Bend (20), El Centro (14), McAllen (10) |
+| Partial: 40–69% | 3 | Logan (24), Bend (20), McAllen (10) |
 | Limited: 15–39% | 3 | Bismarck (9), Brownsville (4), Boise City (17) |
 | Too thin: under 15% | 2 | Minot (12), Helena (23) |
+| **Total in consideration** | **24** | (El Centro, 45% coverage, removed: no city subreddit) |
 
 **13 cities have 75% coverage or more:** Pittsburgh, Eugene, Seattle, Indianapolis, Phoenix, Salt Lake City, Yakima, Los Angeles, Detroit, Fresno, Bakersfield, San Jose, Fairbanks.
 
@@ -56,7 +58,7 @@ ALA rank = *State of the Air 2026*, short-term particle pollution (ties as given
 | 11 (tie) | Detroit-Warren-Ann Arbor, MI | Detroit | 79% | Mar 2016 – Sep 2026 | Strong | [r/Detroit](https://www.reddit.com/r/Detroit/) | 214,048 | 120,884 | 2008 |
 | 12 (tie) | Minot, ND | Minot | 4% | Oct 2025 – Sep 2026 | Too thin | [r/minot](https://www.reddit.com/r/minot/) | 3,163 | 1,684 | 2011 |
 | 13 (tie) | Pittsburgh-Weirton-Steubenville, PA-OH-WV | Pittsburgh | 84% | Mar 2016 – Sep 2026 | Strong | [r/pittsburgh](https://www.reddit.com/r/pittsburgh/) | 244,225 | 227,634 | 2008 |
-| 14 (tie) | El Centro, CA | El Centro | 45% | Jul 2018 – Sep 2026 | Partial | [r/imperialvalley](https://www.reddit.com/r/imperialvalley/) (regional) | 4,901 | 1,313 | 2013 |
+| 14 (tie) | El Centro, CA | ~~El Centro~~ | 45% | Jul 2018 – Sep 2026 | Partial | **Not available: removed from consideration** (no r/ElCentro; only the regional r/imperialvalley) | – | – | – |
 | 15 (tie) | Indianapolis-Carmel-Muncie, IN | Indianapolis | 83% | Mar 2016 – Sep 2026 | Strong | [r/indianapolis](https://www.reddit.com/r/indianapolis/) | 147,506 | 109,100 | 2010 |
 | 16 | Medford-Grants Pass, OR | Medford | 73% | Mar 2016 – Sep 2026 | Strong | [r/medford](https://www.reddit.com/r/medford/) | 25,618 | 11,649 | 2011 |
 | 17 (tie) | Boise City-Mountain Home-Ontario, ID-OR | Boise City | 19% | Aug 2024 – Sep 2026 | Limited | [r/Boise](https://www.reddit.com/r/Boise/) | 61,890 | 52,497 | 2008 |
@@ -71,17 +73,17 @@ ALA rank = *State of the Air 2026*, short-term particle pollution (ties as given
 
 ### How the subreddits were chosen
 
-**Rule:** the city's own, most active subreddit. Claude's choice, not yet approved.
+**Rule (Gina):** the city must have its own subreddit, r/[city name]; if it doesn't, it is marked *not available* and removed from consideration. Where several exist, the most active one is used (Claude's choice, not yet approved). Boise City counts via r/Boise, since "Boise City" is the Census name for Boise.
 
 **Exceptions:**
-- **El Centro** has no city subreddit (r/ElCentro was not found), so the regional r/imperialvalley is used.
+- **El Centro: not available.** No r/ElCentro was found; the regional r/imperialvalley doesn't meet the rule. Removed from consideration.
 - **Lancaster:** r/lancaster covers Lancaster City and County. r/LancasterPA is closed and points there.
 - **Medford:** r/medford covers Medford and the Rogue Valley. r/RogueValley is much smaller (688 subscribers).
 - **McAllen:** r/Mcallen is very small (1,446 subscribers, 152 archived posts). A Rio Grande Valley subreddit (r/RGV) was not found in the archive.
 - **Logan and Helena:** r/LoganUtah and r/HelenaMT exist but are nearly empty (fewer than 5 subscribers); the older r/Logan and r/helena are used.
 - **Brownsville:** r/BrownsvilleTX is nearly empty, so r/Brownsville is used. It describes itself as Brownsville, TX.
 
-**Thin subreddits.** Several have too few posts for a weekly analysis like Dish's: McAllen, Minot, Bismarck, Brownsville, Imperial Valley, Helena. They suit only single big events, if any.
+**Thin subreddits.** Several have too few posts for a weekly analysis like Dish's: McAllen, Minot, Bismarck, Brownsville, Helena. They suit only single big events, if any.
 
 ---
 
