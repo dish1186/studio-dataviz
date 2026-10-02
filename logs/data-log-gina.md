@@ -32,6 +32,30 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Analysis A30 · Eugene vs Bakersfield through the "Goldilocks zone" lens (read only) · 2026-10-01 23:56 EDT · Gina + Claude
+- **What (Gina: "what does this conversation look like in the context of bakersfield and eugene (the two case studies)?"):** pulled together A25-A29, V10 and Dish's Reddit findings for the two cities, and added two counts. Nothing saved.
+- **New count 1: share of days with a top-25% heat-ER rate, by 5 °F felt-heat band** (`viz/heat-field/data.json`, May-Sep 2022 to 2026-06-12):
+  - Eugene:
+    - 75-80 °F 5%
+    - 80-85 °F 17%
+    - 85-90 °F 41%
+    - 90-95 °F 69%
+    - 95-100 °F 77%
+    - 100-105 °F 100% (14 days)
+  - Bakersfield:
+    - 90-95 °F 3%
+    - 95-100 °F 8%
+    - 100-105 °F 34%
+    - 105-110 °F 49%
+    - 110-115 °F 93%
+  - Median felt heat: Eugene 81.4 °F, Bakersfield 99.3 °F.
+  - "Strong" is ranked within each city's own ER region (Eugene R10, Bakersfield R9 shared), so the bands show each place's relative threshold.
+- **New count 2: days with any PM2.5 site above 35.4 µg/m³** (`data/processed/openaq/unhealthy_days/`), 2016-03-12 to 2026-09-25:
+  - Eugene 47 days, mostly Aug-Nov (fire smoke). By year: 2017 10, 2020 10, 2022 8, 2023 7, 2026 4.
+  - Bakersfield 182 days, mostly Nov-Jan (125 of them). Most years 9-31.
+
+---
+
 ### Analysis A29 · air: actions vs abnormal and dangerous air, 7 cities (read only so far) · 2026-10-01 23:46 EDT · Gina + Claude
 - **What (Gina: "can you include air data in this analysis"):** the A28 method applied to air, 2021-09-26 to 2026-09-25, all year (bad air also comes in winter).
   - **Danger** = PM2.5 µg/m³ (OpenAQ `all_mean`, `data/processed/openaq/step05_averages/pm25_<city>_daily.csv`).
