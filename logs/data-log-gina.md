@@ -32,6 +32,22 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Mockup M5 · thermometer view; Analysis A38 · "normal" range per year (read only) · 2026-10-02 10:03 EDT · Gina + Claude
+- **M5 (chat widget, Gina: "that visual structure is not intuitive ... we could consider the vertical thermometer thing"):**
+  - Two thermometers (Eugene, Bakersfield) on one shared scale, with a heat/air toggle and a year slider.
+  - V12 thresholds shown as ticks; a bracket shows how far the ER threshold sits from the danger line.
+  - The "normal" band was **fixed** (pooled felt heat May-Sep 2022-2026; PM2.5 2016-2026), not per year. Gina asked why it does not change.
+- **A38 (Gina: "why is the normal range not changing?"):** per-year felt heat (UTCI, May-Sep) and daily PM2.5 percentiles, from `utci_<city>_daily.csv` and `pm25_<city>_daily.csv`. Nothing saved.
+  - **Eugene:**
+    - Felt median 79.8-83.3 °F (2016-2025); p90 88.8-96.1; dangerous days 14-38 a year.
+    - PM2.5 median 3.6-5.8 µg/m³; days ≥ 35.5 µg/m³: 0-10 a year (10 in 2020, 7 in 2017 and 2022).
+  - **Bakersfield:**
+    - Felt median 97.7-103.9 °F; p90 106.5-111.1; dangerous days 122-140 of 153.
+    - PM2.5 median 9.6-16.6 µg/m³; days ≥ 35.5 µg/m³: 2-28 a year (28 in 2020, 25 in 2022, 24 in 2021).
+  - 2026 is partial (felt heat to Jun 12).
+
+---
+
 ### Visualization V12 · Thresholds by Year (Eugene and Bakersfield, heat and air, per-year thresholds with a slider) · 2026-10-02 09:59 EDT · Gina + Claude
 - **What (Gina: "start with visualizing both eugene and bakersfield's thresholds (both for temperature and pm2.5) and their associated actions/impacts ... make one for temp and one for air, per city. leave out fire data ... explain your statistical calculation for those ranges, and calculate it per year - i want to see with a slider"):**
   - Four panels (Eugene heat, Bakersfield heat, Eugene air, Bakersfield air) and a year slider for 2016-2026, with play.
