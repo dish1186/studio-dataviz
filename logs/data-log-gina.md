@@ -32,6 +32,27 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Analysis A43 · search behaviour in Dish's two event weeks and their baselines (read only) · 2026-10-02 13:57 EDT · Gina + Claude
+- **What (Gina: "what did search behavior look like during the two selected weeks in eugene and bakersfield"):**
+  - Weekly Google Trends values for the Sunday weeks covering Dish's windows: Eugene event Aug 2, 2026 (baselines Aug 4, 2024 and Aug 3, 2025); Bakersfield event Dec 1, 2024 (baselines Dec 3, 2023 and Nov 30, 2025).
+  - Percentile = share of the city's weeks (Sep 2021-Sep 2026) below that value; for purifier, spring-2026 surge weeks left out.
+  - Monthly purifier / filter / N95 from `data/processed/google-trends/air-search/`; percentile among all months 2016-2026. Earlier entries (A29-A31) used months since Oct 2021, hence 35% there vs 56% here for Bakersfield Dec 2024.
+- **Eugene (event / 2024 / 2025):**
+  - Purifier 88 (99th pct) / 0 / 0
+  - Eye drops 39 (84th) / 0 / 0
+  - AC 47 (95th) / 18 / 15
+  - Ice cream 88 (96th) / 59 / 76
+  - Monthly total: Aug 2026 95th pct (purifier 19, filter 43, N95 6) vs 69th and 79th.
+- **Bakersfield (event / 2023 / 2025):**
+  - Purifier 0 / 0 / 0
+  - Eye drops 54 (61st pct) / 39 / 44
+  - AC 0 / 0 / 0
+  - Ice cream 30 (2nd pct) / 43 / 42
+  - Monthly total: Dec 2024 56th pct (purifier 10, filter 32, N95 0) vs 34th and 46th.
+- **Note:** Eugene's smoke week was also hot (AC 95th percentile, ice cream 96th), so its heat and smoke reactions overlap that week.
+
+---
+
 ### Analysis A42 · can purifier searches get an AC-style "surge point" on PM2.5? (read only) · 2026-10-02 13:51 EDT · Gina + Claude
 - **What (Gina: "make air purifier searches in city heat thresholds follow the same logic as the heat/ac searches ... the tall length is pm2.5 and you're plotting when air purifier searches surge"):**
   - Tested the Step 12 halfway rule on weekly purifier searches against each week's worst PM2.5 day, 2022-2026, without the spring-2026 surge.
