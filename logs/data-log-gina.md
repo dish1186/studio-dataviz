@@ -32,6 +32,17 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Visualization V11 · version 2: all black lines, no text · 2026-10-02 00:14 EDT · Gina + Claude
+- **What (Gina: "make it just all black lines" and "take out all text"):**
+  - All seven lines are now black (near-white in dark mode), 1.1 px.
+  - Removed all visible text: title, subtitle, axis labels, city labels, smoke labels, the toggle, the tooltip and the source note.
+  - Also removed (Claude's choice, not yet approved): the spring 2026 surge band, which is unexplained without its label, and the gridlines. A faint baseline stays.
+  - Data unchanged from version 1: 4-week centred average; the last partial week is left out.
+  - Sources and caveats now live only in this log and the page's code comment. The page keeps a `<title>` and an SVG description for screen readers.
+- **Page:** `viz/purifier-lines/template.html` → `purifier-lines.html`; republished as version 2 at https://claude.ai/artifact/5FcA8wTGAqHtqjqiuzkcZ4.
+
+---
+
 ### Visualization V11 · Purifier Searches (7 metros, one line chart) · 2026-10-02 00:10 EDT · Gina + Claude
 - **What (Gina: "a line graph overlapping all trends searches for air purifiers for all cities in one neat minimalist graph with labels"):**
   - One line per metro: Bakersfield, Eugene, Detroit, Boston, Phoenix, San Diego, San Francisco.
