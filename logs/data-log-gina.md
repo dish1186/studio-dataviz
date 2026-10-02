@@ -32,6 +32,27 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Analysis A42 · can purifier searches get an AC-style "surge point" on PM2.5? (read only) · 2026-10-02 13:51 EDT · Gina + Claude
+- **What (Gina: "make air purifier searches in city heat thresholds follow the same logic as the heat/ac searches ... the tall length is pm2.5 and you're plotting when air purifier searches surge"):**
+  - Tested the Step 12 halfway rule on weekly purifier searches against each week's worst PM2.5 day, 2022-2026, without the spring-2026 surge.
+  - Floor = median searches in weeks with worst day < 12 µg/m³.
+  - Hot level tested three ways: worst 10% of weeks, worst 5%, or weeks ≥ 35.5.
+  - Running-median window: 10% of weeks or 7.
+- **Halfway rule results:**
+  - Hot level ≈ floor almost everywhere: Boston 18.5 vs 17; Detroit 14-15 vs 12; Phoenix 15-16 vs 15; San Diego 17 vs 13; San Francisco 15.5-16 vs 13.
+  - Eugene and Bakersfield floor 0; Eugene hot 0-34, Bakersfield hot 0.
+  - Crossings fall at 4.2-26.4 µg/m³, i.e. in ordinary air, or none. This is noise, not a surge: **rejected**.
+- **Also tested:** a logistic 50% point (the V12 method, log PM2.5), spike = above the 75th percentile:
+  - Detroit 48.0 (33.3-115.3)
+  - San Francisco 29.6 (19.9-43.6)
+  - San Diego 31.6 (pre-2026, 23.6-39.3)
+  - Eugene 97.8 with no stable range (26% of its clean weeks also spike, which pulls the curve flat)
+  - Phoenix unstable; Bakersfield and Boston none
+  - **Not robust:** not adopted.
+- **Conclusion:** with weekly purifier data, a defensible "surge point" exists only as the event-band reaction point already on the page (Eugene 35.5; Detroit 55.5).
+
+---
+
 ### Visualization V13 · version 4: ice cream layer · 2026-10-02 13:25 EDT · Gina + Claude
 - **What (Gina: "put ice cream searches in the city heat thresholds"):**
   - New layer "Heat · ice cream" for all seven cities, using Step 12's method exactly (ice cream has non-zero winter values everywhere):
