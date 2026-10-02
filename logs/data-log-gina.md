@@ -32,6 +32,22 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Analysis A44 · when Bakersfield's purifier searches peak (read only) · 2026-10-02 14:04 EDT · Gina + Claude
+- **What (Gina: "when do bakersfield air purifier searches peak during the period?"):** ranked the weekly "air purifier" file (`bakersfield_purifier_5yr.csv`, Sep 2021-Sep 2026) and the monthly file (2016-2026), with each week's PM2.5 (OpenAQ). Nothing saved.
+- **Weekly:**
+  - Only 60 of 262 weeks have any searches.
+  - The top 9 weeks are all in the national spring 2026 surge (Mar 22-Jun 21; peak Mar 29 = 100), with ordinary air (worst day 9-28 µg/m³).
+  - Outside the surge, the highest weeks are 36-44:
+    - Jul 27, 2025 (44) and Aug 11, 2024 (43): worst day 12
+    - Mar 1, 2026 (43)
+    - Aug 31, 2025 (41; worst 31) and Feb 22, 2026 (41)
+    - **Oct 3, 2021 (40; worst day 73, the only top week with smoke)**
+    - Oct 26, 2025 (39) and Nov 16, 2025 (38)
+  - Weeks with searches (outside the surge) are spread across all months, 1-6 per month.
+- **Monthly:** top months are Apr-Jun 2026 (the surge), then Sep 2020 (17), Sep 2021 (17) and Aug 2021 (16), the 2020-21 smoke seasons.
+
+---
+
 ### Analysis A43 · search behaviour in Dish's two event weeks and their baselines (read only) · 2026-10-02 13:57 EDT · Gina + Claude
 - **What (Gina: "what did search behavior look like during the two selected weeks in eugene and bakersfield"):**
   - Weekly Google Trends values for the Sunday weeks covering Dish's windows: Eugene event Aug 2, 2026 (baselines Aug 4, 2024 and Aug 3, 2025); Bakersfield event Dec 1, 2024 (baselines Dec 3, 2023 and Nov 30, 2025).
