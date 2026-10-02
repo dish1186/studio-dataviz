@@ -1,0 +1,122 @@
+<title>Thresholds by Year</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono&display=swap">
+<style>
+:root{--bg:#fbfaf7;--panel:#ffffff;--ink:#1c1b19;--ink-2:#5c5852;--ink-3:#938e86;--line:#e7e3dc;--grid:#efece6;--danger:#8a857d;
+ --er:#3f4fb4;--ac:#118a9c;--ice:#d6337f;--hnews:#b26d12;--pur:#2f7d4f;--drops:#7b5ea7;--anews:#b26d12;
+ --serif:"Source Serif 4",Georgia,serif;--sans:"IBM Plex Sans","Helvetica Neue",Arial,sans-serif;--mono:"IBM Plex Mono",ui-monospace,Menlo,monospace}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#141412;--panel:#1b1b19;--ink:#efede8;--ink-2:#b7b2a9;--ink-3:#7f7a72;--line:#2e2d2a;--grid:#262522;--danger:#9d978e;--er:#8b96ff;--ac:#3fc4d6;--ice:#ff6aae;--hnews:#e2a04a;--pur:#5fc28a;--drops:#b59af0;--anews:#e2a04a;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#141412;--panel:#1b1b19;--ink:#efede8;--ink-2:#b7b2a9;--ink-3:#7f7a72;--line:#2e2d2a;--grid:#262522;--danger:#9d978e;--er:#8b96ff;--ac:#3fc4d6;--ice:#ff6aae;--hnews:#e2a04a;--pur:#5fc28a;--drops:#b59af0;--anews:#e2a04a;color-scheme:dark}
+*{box-sizing:border-box}[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:14.5px;line-height:1.55}
+.wrap{max-width:1180px;margin:0 auto;padding-inline:20px;padding-block:28px 48px;display:flex;flex-direction:column;gap:18px}
+.kick{font-family:var(--mono);font-size:11px;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-3)}
+h1{font-family:var(--serif);font-weight:600;font-size:clamp(28px,4vw,42px);line-height:1.05;margin:4px 0 0;text-wrap:balance}
+h2{font-family:var(--serif);font-weight:600;font-size:20px;margin:0;line-height:1.2}
+h3{font-size:12px;font-weight:500;color:var(--ink-2);margin:0;letter-spacing:.02em}
+.lede{color:var(--ink-2);max-width:74ch;margin:8px 0 0}
+.ctrl{position:sticky;top:env(safe-area-inset-top,0px);z-index:3;background:var(--bg);padding-block:10px;border-bottom:1px solid var(--line);display:flex;flex-wrap:wrap;gap:10px 22px;align-items:center}
+.ctrl label{font-size:13px;color:var(--ink-2)}
+.yr{font-family:var(--serif);font-size:28px;font-weight:600;min-width:3ch;font-variant-numeric:tabular-nums}
+input[type=range]{width:min(360px,60vw);accent-color:var(--ink)}
+.tg{font:inherit;font-size:12.5px;border:1px solid var(--line);background:transparent;color:var(--ink-3);border-radius:999px;padding:4px 11px;cursor:pointer}
+.tg[aria-pressed=true]{border-color:var(--ink-2);color:var(--ink);background:var(--panel)}
+.tg:focus-visible,input:focus-visible{outline:2px solid var(--er);outline-offset:2px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+@media (max-width:900px){.grid{grid-template-columns:minmax(0,1fr)}}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:16px 16px 12px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.ph{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap}
+.ph .tag{font-family:var(--mono);font-size:11px;color:var(--ink-3)}
+svg{display:block;width:100%;height:auto;overflow:visible}svg text{font-family:var(--sans)}
+.lg{display:flex;flex-wrap:wrap;gap:4px 14px;font-size:12px;color:var(--ink-2)}
+.lg span{display:inline-flex;align-items:center;gap:6px}.lg i{width:14px;height:3px;border-radius:2px;display:inline-block}
+table{width:100%;border-collapse:collapse;font-size:12.5px;font-variant-numeric:tabular-nums}
+th{font-weight:500;color:var(--ink-3);text-align:right;padding:3px 4px;font-size:11.5px}th:first-child,td:first-child{text-align:left}
+td{text-align:right;padding:4px;border-top:1px solid var(--line)}td .dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px}
+.muted{color:var(--ink-3)}
+.tip{position:absolute;pointer-events:none;background:var(--ink);color:var(--bg);font-size:12px;line-height:1.4;padding:6px 9px;border-radius:6px;transform:translate(-50%,calc(-100% - 10px));width:max-content;max-width:240px;z-index:5}
+.method{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
+.method div{font-size:13.5px;color:var(--ink-2)}
+.method b{color:var(--ink);font-weight:500}
+.foot{font-size:12px;color:var(--ink-3);max-width:110ch;margin:0}
+code{font-family:var(--mono);font-size:12px}
+</style>
+<div class="wrap">
+  <header>
+    <div class="kick">Eugene · Bakersfield · heat and air · 2016–2026</div>
+    <h1>At what point do people act?</h1>
+    <p class="lede">For each city and each year: the heat or PM2.5 level at which a strong reaction becomes more likely than not (the threshold), and how often dangerous days brought one. Drag the year to see how behaviour changes.</p>
+  </header>
+  <div class="ctrl">
+    <span class="yr" id="yr">2022</span>
+    <input type="range" id="slider" min="2016" max="2026" step="1" value="2022" aria-label="Year">
+    <button class="tg" id="play" type="button" aria-pressed="false">▶ Play</button>
+    <span style="display:inline-flex;gap:4px;align-items:center"><label>Heat measured as</label><button class="tg" id="hf" aria-pressed="true" type="button">Felt heat</button><button class="tg" id="hh" aria-pressed="false" type="button">Daily high</button></span>
+  </div>
+  <div class="grid" id="grid"></div>
+  <section class="method">
+    <div><h2 style="margin-bottom:6px">How the threshold is calculated</h2>
+      <p><b>1. Strong reaction.</b> A day (ER) or week (searches, news) counts as a strong reaction when its value is above that city's 75th percentile for that measure across all years. If the 75th percentile is zero, any value above zero counts. The bar is fixed, so years are comparable.</p>
+      <p><b>2. A curve per year.</b> Within each year we fit a logistic curve: the chance of a strong reaction as heat or PM2.5 rises. Heat is in °F; PM2.5 enters as its logarithm, because reactions scale with <i>multiples</i> of PM2.5. The slope is lightly penalised so small years still give a stable answer.</p>
+      <p><b>3. Threshold</b> = the level where that chance reaches 50%: the point at which a strong reaction becomes more likely than not. It is shown only when the curve rises, the year has at least 10 days or weeks with at least 3 reactions and 3 non-reactions, and the threshold falls within 10% of the worst level actually seen that year. Otherwise: “not reached”.</p></div>
+    <div><h2 style="margin-bottom:6px">Ranges and the second measure</h2>
+      <p><b>4. 95% range.</b> Each year is resampled 300 times in blocks (7 days for daily data, 3 weeks for weekly) to keep runs of similar days together, and the threshold refitted each time. The range is shown when at least 70% of resamples give a threshold.</p>
+      <p><b>5. Dangerous days with a strong reaction.</b> A simpler, every-year measure: of the days or weeks above the danger line, what share brought a strong reaction, compared with safe ones. Danger lines: felt heat 89.6°F (UTCI strong heat stress) and PM2.5 35.5 µg/m³ (EPA unhealthy for sensitive groups). A week counts by its worst day.</p>
+      <p><b>Weeks.</b> Search and news weeks run Sunday to Saturday. A week's heat or PM2.5 is its worst day, since people react to the bad days.</p></div>
+  </section>
+  <p class="foot" id="foot"></p>
+</div>
+<script>
+const D=__DATA__;
+const ACT={heat:[["er","Heat ER visits","--er","daily, HHS region","ER","per 100k ER visits"],["ac","AC searches","--ac","weekly","AC","index"],["ice","Ice cream searches","--ice","weekly","Ice cream","index"],["news","Heat news","--hnews","weekly, Media Cloud","News","stories a week"]],
+           air:[["pur","Purifier searches","--pur","weekly","Purifier","index"],["drops","Eye-drop searches","--drops","weekly","Eye drops","index"],["news","Air-quality news","--anews","weekly, Media Cloud","News","stories a week"]]};
+let YEAR=2022,HK="felt",timer=null;
+const R=Math.round,$=id=>document.getElementById(id);
+const AX={felt:{lo:60,hi:125,ticks:[60,70,80,89.6,100,110,120],unit:"°F felt",danger:89.6,dl:"89.6°F felt"},
+          high:{lo:55,hi:120,ticks:[60,70,80,90,100,110,120],unit:"°F daily high",danger:null},
+          pm:{lo:2,hi:500,ticks:[2,5,10,20,35.5,100,250,500],unit:"µg/m³ PM2.5 (log scale)",danger:35.5,dl:"35.5 µg/m³",log:true}};
+function scale(ax,L,Rr){return ax.log?(v=>L+(Math.log(Math.max(ax.lo,Math.min(ax.hi,v)))-Math.log(ax.lo))/(Math.log(ax.hi)-Math.log(ax.lo))*(Rr-L)):(v=>L+(Math.max(ax.lo,Math.min(ax.hi,v))-ax.lo)/(ax.hi-ax.lo)*(Rr-L))}
+const P=(a,b,h,log)=>1/(1+Math.exp(-(a+b*(log?Math.log1p(h):h))));
+const pct=v=>v==null?"–":R(v*100)+"%";
+function panel(c,hz){
+  const C=D[c],acts=ACT[hz],src=hz=="heat"?C.heat[HK]:C.air.pm,ax=hz=="heat"?AX[HK]:AX.pm,log=hz=="air";
+  const W=540,L=40,Rr=W-14,T=10,B=200,x=scale(ax,L,Rr),y=v=>B-v*(B-T);
+  let s=`<g>`;[0,.25,.5,.75,1].forEach(v=>s+=`<line x1="${L}" x2="${Rr}" y1="${y(v)}" y2="${y(v)}" stroke="var(--grid)"/><text x="${L-6}" y="${y(v)+4}" text-anchor="end" font-size="10.5" fill="var(--ink-3)">${R(v*100)}%</text>`);
+  ax.ticks.forEach(v=>s+=`<text x="${x(v)}" y="${B+15}" text-anchor="middle" font-size="10.5" fill="var(--ink-3)">${v}</text>`);
+  s+=`<text x="${Rr}" y="${B+30}" text-anchor="end" font-size="10.5" fill="var(--ink-3)">${ax.unit} →</text><text x="${L}" y="${T-2}" font-size="10.5" fill="var(--ink-3)">chance of a strong reaction</text>`;
+  if(ax.danger)s+=`<line x1="${x(ax.danger)}" x2="${x(ax.danger)}" y1="${T}" y2="${B}" stroke="var(--danger)" stroke-dasharray="4 3"/><text x="${x(ax.danger)+4}" y="${T+10}" font-size="10.5" fill="var(--ink-3)">danger · ${ax.dl}</text>`;
+  s+=`<line x1="${L}" x2="${Rr}" y1="${y(.5)}" y2="${y(.5)}" stroke="var(--ink-3)" stroke-width=".8" stroke-dasharray="1 3"/>`;
+  const rows=[];
+  acts.forEach(([k,n,col,,sh],ai)=>{const S=src[k],Y=S.years[YEAR];
+    if(S.all.a!=null&&S.all.b>0){let d="";for(let i=0;i<=80;i++){const h=ax.log?Math.exp(Math.log(ax.lo)+i/80*(Math.log(ax.hi)-Math.log(ax.lo))):ax.lo+i/80*(ax.hi-ax.lo);d+=(i?"L":"M")+x(h).toFixed(1)+" "+y(P(S.all.a,S.all.b,h,log)).toFixed(1)}s+=`<path d="${d}" fill="none" stroke="var(${col})" stroke-width="1" opacity=".3" stroke-dasharray="3 3"/>`}
+    if(Y&&Y.a!=null&&Y.b>0){let d="";const top=Math.min(ax.hi,Y.max*1.05);for(let i=0;i<=80;i++){const h=ax.log?Math.exp(Math.log(ax.lo)+i/80*(Math.log(top)-Math.log(ax.lo))):ax.lo+i/80*(top-ax.lo);d+=(i?"L":"M")+x(h).toFixed(1)+" "+y(P(Y.a,Y.b,h,log)).toFixed(1)}s+=`<path d="${d}" fill="none" stroke="var(${col})" stroke-width="2.2"/>`}
+    if(Y)Y.bins.forEach(([lo,hi,nn,sh])=>{const mid=ax.log?Math.sqrt(Math.max(lo,ax.lo)*Math.min(hi,ax.hi)):(lo+hi)/2;s+=`<circle cx="${x(mid)}" cy="${y(sh)}" r="${Math.min(6,1.6+Math.sqrt(nn)/2)}" fill="var(${col})" opacity=".35"/>`});
+    if(Y&&Y.h50!=null){const ty=B+40+ai*13;if(Y.ci)s+=`<line x1="${x(Y.ci[0])}" x2="${x(Y.ci[1])}" y1="${ty}" y2="${ty}" stroke="var(${col})" stroke-width="3" opacity=".35" stroke-linecap="round"/>`;
+      s+=`<circle cx="${x(Y.h50)}" cy="${ty}" r="4" fill="var(${col})"/><line x1="${x(Y.h50)}" x2="${x(Y.h50)}" y1="${y(.5)}" y2="${B}" stroke="var(${col})" stroke-width=".8" opacity=".6"/><text x="${x(Y.h50)+7}" y="${ty+4}" font-size="10.5" fill="var(--ink-2)">${sh} ${Y.h50}${hz=="heat"?"°":""}</text>`}
+    rows.push([k,n,col,S,Y]);});
+  const BH=B+40+acts.length*13+8;s+=`</g>`;
+  // threshold through the years
+  const yrs=Object.keys(src[acts[0][0]].years).concat(...acts.map(a=>Object.keys(src[a[0]].years))).filter((v,i,a)=>a.indexOf(v)===i).map(Number).sort();
+  const t0=BH+26,rowH=22;let s2=`<text x="${L}" y="${t0-10}" font-size="10.5" fill="var(--ink-3)">threshold in every year (dot = one year; ring = ${YEAR}; line = 95% range)</text>`;
+  acts.forEach(([k,n,col,,sh],ai)=>{const S=src[k],yy=t0+ai*rowH+6;s2+=`<line x1="${L}" x2="${Rr}" y1="${yy}" y2="${yy}" stroke="var(--grid)"/>`;
+    const pts=Object.entries(S.years).filter(([,v])=>v.h50!=null).map(([yr,v])=>[+yr,v]);
+    if(pts.length>1)s2+=`<path d="${pts.map(([yr,v],i)=>(i?"L":"M")+x(v.h50).toFixed(1)+" "+(yy-((yr-2016)/10-0.5)*8).toFixed(1)).join("")}" fill="none" stroke="var(${col})" stroke-width=".8" opacity=".5"/>`;
+    pts.forEach(([yr,v])=>{const cy=yy-((yr-2016)/10-0.5)*8;s2+=`<circle class="pt" cx="${x(v.h50)}" cy="${cy}" r="${yr==YEAR?5.5:3}" fill="${yr==YEAR?"var(--panel)":"var("+col+")"}" stroke="var(${col})" stroke-width="${yr==YEAR?2:0}" opacity="${yr==YEAR?1:.6}" data-t="${C.label} · ${n} · ${yr}: threshold ${v.h50}${v.ci?` (95% ${v.ci[0]}–${v.ci[1]})`:" (range not stable)"} · ${v.n} ${k=="er"?"days":"weeks"}, ${v.ns} strong"/>`});
+    const cur=S.years[YEAR];if(cur&&cur.h50!=null&&cur.ci)s2+=`<line x1="${x(cur.ci[0])}" x2="${x(cur.ci[1])}" y1="${yy+8}" y2="${yy+8}" stroke="var(${col})" stroke-width="2" opacity=".5"/>`;
+    s2+=`<text x="${L-6}" y="${yy+4}" text-anchor="end" font-size="10.5" fill="var(${col})">${sh}</text>`;});
+  if(ax.danger)s2+=`<line x1="${x(ax.danger)}" x2="${x(ax.danger)}" y1="${t0-4}" y2="${t0+acts.length*rowH}" stroke="var(--danger)" stroke-dasharray="4 3"/>`;
+  const H=t0+acts.length*rowH+4;
+  const tbl=`<table><tr><th>${YEAR}</th><th>threshold</th><th>dangerous ${hz=="heat"?"days/weeks":"weeks"} → strong</th><th>safe → strong</th></tr>${rows.map(([k,n,col,S,Y])=>`<tr><td><span class="dot" style="background:var(${col})"></span>${n}</td><td>${!Y?'<span class="muted">no data</span>':Y.h50!=null?`${Y.h50}${hz=="heat"?"°F":" µg/m³"}${Y.ci?` <span class="muted">(${Y.ci[0]}–${Y.ci[1]})</span>`:""}`:'<span class="muted">not reached</span>'}</td><td>${Y&&Y.dang[0]?`${pct(Y.dang[1])} <span class="muted">of ${Y.dang[0]}</span>`:'<span class="muted">none</span>'}</td><td>${Y&&Y.safe[0]?`${pct(Y.safe[1])} <span class="muted">of ${Y.safe[0]}</span>`:'<span class="muted">none</span>'}</td></tr>`).join("")}</table>`;
+  const leg=`<div class="lg">${acts.map(([k,n,col,sub,sh,u])=>`<span><i style="background:var(${col})"></i>${n} <span class="muted">(${sub}; strong = above ${R(src[k].strong_above)} ${u})</span></span>`).join("")}<span><i style="background:var(--ink-3);height:1px"></i>dashed = all years together</span></div>`;
+  return `<section class="panel"><div class="ph"><h2>${C.label} · ${hz=="heat"?"heat":"air"}</h2><span class="tag">${hz=="heat"?(HK=="felt"?"felt heat (UTCI daily max), May–Sep":"daily high (gridMET), May–Sep"):"daily PM2.5 (OpenAQ), all year"}</span></div>${leg}<div style="position:relative"><svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${C.label} ${hz}: chance of strong reactions by level in ${YEAR}, and thresholds by year">${s}${s2}</svg></div>${tbl}</section>`;
+}
+function draw(){$("yr").textContent=YEAR;$("slider").value=YEAR;$("hf").setAttribute("aria-pressed",HK=="felt");$("hh").setAttribute("aria-pressed",HK=="high");
+  $("grid").innerHTML=panel("eugene","heat")+panel("bakersfield","heat")+panel("eugene","air")+panel("bakersfield","air");
+  document.querySelectorAll(".pt").forEach(el=>{el.onmouseenter=e=>{let t=document.getElementById("tip");if(!t){t=document.createElement("div");t.id="tip";t.className="tip";document.body.appendChild(t)}t.textContent=el.dataset.t;const r=el.getBoundingClientRect();t.style.position="fixed";t.style.left=(r.left+r.width/2)+"px";t.style.top=r.top+"px";t.hidden=false};el.onmouseleave=()=>{const t=document.getElementById("tip");if(t)t.hidden=true}});}
+$("slider").oninput=e=>{YEAR=+e.target.value;draw()};
+$("hf").onclick=()=>{HK="felt";draw()};$("hh").onclick=()=>{HK="high";draw()};
+$("play").onclick=()=>{if(timer){clearInterval(timer);timer=null;$("play").textContent="▶ Play";$("play").setAttribute("aria-pressed","false");return}
+  $("play").textContent="❚❚ Pause";$("play").setAttribute("aria-pressed","true");timer=setInterval(()=>{YEAR=YEAR>=2026?2016:YEAR+1;draw()},1400)};
+$("foot").innerHTML=`<b>Sources.</b> Heat-related ER visits per 100,000 ER visits, CDC Environmental Public Health Tracking, daily, 2018–2026, by HHS region: Eugene = Region 10, Bakersfield = Region 9 (shared with Phoenix, San Diego and San Francisco). Felt heat = daily maximum UTCI (ERA5-HEAT), to 12 Jun 2026; daily high = gridMET. PM2.5 = OpenAQ daily city mean. Google Trends weekly “air conditioner”, “ice cream”, “air purifier”, “eye drops” for each metro, Sep 2021–Sep 2026; purifier weeks 22 Mar–28 Jun 2026 left out (a national surge with no local air cause). Media Cloud daily stories, weekly sums: (“heat wave” OR “heat advisory”) or (“air pollution” OR “air quality”) AND the city name, in the state's local collection, 2016–2026.<br><b>Read with care.</b> At the same felt heat (100–105°F), Region 9's ER rate roughly doubled from 2018–20 to 2023–24 while winter rates stayed flat, so part of Bakersfield's lower ER threshold in recent years may come from reporting changes or Phoenix's record 2023 heat rather than from Bakersfield. Eugene's and Bakersfield's weekly searches are often too low to register (zero). Eye-drop searches follow allergy season more than air. 2021 has only one summer week of search data; 2026 is partial (felt heat to 12 Jun, searches and PM2.5 to late Sep). All thresholds are associations, not causes. Method and all choices: <code>viz/thresholds-by-year/build.py</code>; Claude's choices, not yet approved.`;
+draw();
+</script>

@@ -32,6 +32,39 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Visualization V12 · Thresholds by Year (Eugene and Bakersfield, heat and air, per-year thresholds with a slider) · 2026-10-02 09:59 EDT · Gina + Claude
+- **What (Gina: "start with visualizing both eugene and bakersfield's thresholds (both for temperature and pm2.5) and their associated actions/impacts ... make one for temp and one for air, per city. leave out fire data ... explain your statistical calculation for those ranges, and calculate it per year - i want to see with a slider"):**
+  - Four panels (Eugene heat, Bakersfield heat, Eugene air, Bakersfield air) and a year slider for 2016-2026, with play.
+  - Heat can be measured as felt heat (UTCI) or the daily high.
+  - No fire data used.
+- **Actions:**
+  - Heat: heat ER visits (daily, HHS region), AC searches, ice cream searches (weekly Trends), heat news (weekly Media Cloud).
+  - Air: purifier searches (weekly; purifier weeks 2026-03-22 to 06-28 left out because of the national surge), eye-drop searches, air-quality news (weekly Media Cloud).
+- **Statistic** (written out on the page and in `viz/thresholds-by-year/build.py`; all Claude's choices, not yet approved):
+  1. **Strong reaction** = above the city's 75th percentile for that measure across all years (if that is 0, any value above 0). Fixed across years.
+  2. **Unit hazard:** for weeks, the worst day's hazard. Heat weeks need ≥ 5 May-Sep days; air weeks ≥ 4 days.
+  3. **Per-year logistic curve** of P(strong) on hazard (heat in °F; air on log(1 + PM2.5)), with a ridge penalty λ = 1 on the standardised slope.
+  4. **Threshold** = hazard where P = 50%. Reported only if the slope is > 0, the year has ≥ 10 units with ≥ 3 strong and ≥ 3 not strong, and the threshold is ≤ 110% of the year's worst unit.
+  5. **95% range:** block bootstrap within the year (7-day or 3-week blocks), 300 reps; shown if ≥ 70% of reps are valid.
+  6. **Second measure, every year:** share of dangerous units with a strong reaction (felt ≥ 89.6 °F; PM2.5 ≥ 35.5) vs safe units.
+- **Results, felt heat, ER threshold by year** (°F felt, 95% range):
+  - Eugene: 2018 91.1 (87.9-95.4), 2019 91.1, 2020 92.4, 2021 88.9, 2022 87.0 (83.5-90.3), 2023 88.6, 2024 87.7 (84.6-90.8), 2025 89.6 (87.2-92.2). Dangerous days → strong ER: 52-85% each year.
+  - Bakersfield: 2018 111.2 (108.5-118.5), 2019 113.9, 2020 107.1, 2021 111.5, 2022 108.5, 2023 102.0 (99.4-105.1), 2024 102.0 (98.6-104.5), 2025 103.8. Dangerous days → strong ER: 12-50%.
+- **Results, AC and ice cream thresholds:**
+  - AC: Eugene 97.8-105.5 °F; Bakersfield 110.3-116.7.
+  - Ice cream: often not reached.
+- **Results, air:** thresholds are mostly "not reached".
+  - Eugene: purifier 43.9 µg/m³ (2022), 57.5 (2023), 36.2 (2026). Air-quality news: 52.6 (2020), 23.1 (2021), 13.6 (2022), 46.5 (2023).
+  - Bakersfield: purifier never reached. News: 79.0 (2018), 79.7 (2020), 49.8 (2021), 49.7 (2023).
+  - **Bad-air weeks → strong purifier searches:** Eugene 3 of 3 (2022), 2 of 2 (2023), 1 of 1 (2026). Bakersfield 0-33% (2021-2026, 2-10 weeks a year).
+- **Check run (read only):** median Region 9 ER rate at felt heat 100-105 °F in Bakersfield rose from 205-243 (2018-20) to 449-458 (2023-24), with winter medians flat (5-10).
+  - So part of Bakersfield's lower recent ER threshold may reflect reporting changes or Phoenix's 2023 heat (shared Region 9), not Bakersfield. Eugene's Region 10 rose too (78-116 → 131-152 at 85-90 °F). This caveat is on the page.
+- **Files:**
+  - `viz/thresholds-by-year/build.py` → `data.json`; `template.html` → `thresholds-by-year.html`.
+  - Published at https://claude.ai/artifact/2eb7jQmu678aafbyJfdMgT (version 1). Default year 2022.
+
+---
+
 ### Analysis A37 · proposal 5: do reactions use a shifting (recent) baseline, as in Moore et al. 2019? (read only) · 2026-10-02 09:46 EDT · Gina + Claude
 - **What (Gina: "lets see what proposal 5 looks like"):** each May-Sep daily high split into three parts (Claude's design, not yet approved):
   - **normal:** the 1991-2020 mean high for the date (±7 days)
