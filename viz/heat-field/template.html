@@ -1,0 +1,201 @@
+<title>Heat Field</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono&display=swap">
+<style>
+/* One field: x = how abnormal the day's high was for the date, y = how dangerous the felt heat was.
+   Grey dots = every summer day; soft blobs = days with strong reactions, one hue per kind. */
+:root{--bg:#e8e5e1;--panel:#f1efec;--ink:#1f1d24;--ink-2:#5d5964;--ink-3:#8f8a93;--line:#cfcac5;--dot:#b9b3ad;--axis:#6f6a72;
+ --er:#3f4fb4;--ac:#3fb3d4;--ice:#d4448c;
+ --serif:"Source Serif 4",Georgia,serif;--sans:"IBM Plex Sans","Helvetica Neue",Arial,sans-serif;--mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;--blend:multiply}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#141318;--panel:#1c1b21;--ink:#efedf2;--ink-2:#b4b0ba;--ink-3:#7d7884;--line:#34323b;--dot:#3e3b45;--axis:#9a95a1;--er:#7f8cff;--ac:#4fd0ec;--ice:#ff69ad;--blend:screen;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#141318;--panel:#1c1b21;--ink:#efedf2;--ink-2:#b4b0ba;--ink-3:#7d7884;--line:#34323b;--dot:#3e3b45;--axis:#9a95a1;--er:#7f8cff;--ac:#4fd0ec;--ice:#ff69ad;--blend:screen;color-scheme:dark}
+*{box-sizing:border-box}[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.5}
+.wrap{max-width:1120px;margin:0 auto;padding-inline:20px;padding-block:28px 40px;display:flex;flex-direction:column;gap:14px}
+h1{font-family:var(--serif);font-weight:600;font-size:clamp(30px,4.5vw,46px);margin:0;line-height:1;text-wrap:balance}
+.lede{color:var(--ink-2);margin:8px 0 0;max-width:72ch}
+.qs{display:flex;flex-wrap:wrap;gap:6px 18px;margin:10px 0 0;padding:0;list-style:none;font-size:13.5px;color:var(--ink)}
+.qs b{font-family:var(--mono);font-weight:400;color:var(--ink-3);margin-right:4px}
+.bar{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center}
+.grp{display:inline-flex;flex-wrap:wrap;gap:4px;align-items:center}
+.lab{font-size:12.5px;color:var(--ink-2);margin-right:4px}
+.tg{font:inherit;font-size:13px;border:1px solid var(--line);background:transparent;color:var(--ink-3);border-radius:999px;padding:4px 11px;cursor:pointer;display:inline-flex;gap:6px;align-items:center}
+.tg[aria-pressed=true]{border-color:var(--ink);color:var(--ink);background:var(--panel)}
+.tg i{width:10px;height:10px;border-radius:50%;display:inline-block}
+.tg:focus-visible,select:focus-visible{outline:2px solid var(--er);outline-offset:2px}
+.sel{font:inherit;font-size:13.5px;color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:4px 8px}
+.grid{display:grid;grid-template-columns:minmax(0,1fr) 330px;gap:22px;align-items:start}
+@media (max-width:900px){.grid{grid-template-columns:minmax(0,1fr)}}
+.stage{position:relative;width:100%;max-width:720px;margin-inline:auto}
+svg{display:block;width:100%;height:auto}svg text{font-family:var(--sans)}
+.side{display:flex;flex-direction:column;gap:18px}
+.card{display:flex;flex-direction:column;gap:6px}
+.mono{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3)}
+.h{font-family:var(--serif);font-size:18px;font-weight:600;margin:0;line-height:1.2}
+.small{font-size:12.5px;color:var(--ink-2);margin:0}
+table{border-collapse:collapse;width:100%;font-size:12.5px;font-variant-numeric:tabular-nums}
+th{font-weight:500;color:var(--ink-3);text-align:right;padding:3px 4px;font-size:11.5px}
+th:first-child,td:first-child{text-align:left}
+td{text-align:right;padding:4px;border-top:1px solid var(--line)}
+td.q{color:var(--ink-2)}
+tr.cur td{font-weight:500;color:var(--ink)}
+.verd{font-size:13px;margin:0;display:flex;gap:6px;align-items:baseline}
+.verd i{width:9px;height:9px;border-radius:50%;flex:none;display:inline-block;transform:translateY(-1px)}
+.tip{position:absolute;pointer-events:none;background:var(--ink);color:var(--bg);font-size:12.5px;line-height:1.4;padding:6px 9px;border-radius:6px;transform:translate(-50%,calc(-100% - 12px));width:max-content;max-width:260px;z-index:2}
+.foot{font-size:12px;color:var(--ink-3);max-width:110ch;margin:0}
+.tblwrap{overflow-x:auto}
+</style>
+<div class="wrap">
+  <header>
+    <div class="mono">Heat and human reactions · May–September 2022–2026</div>
+    <h1>Heat field</h1>
+    <p class="lede">Every summer day sits in this field twice over: left to right by how <b>unusual</b> its high was for the date, bottom to top by how <b>dangerous</b> the heat felt to a human body. The soft blobs gather where people reacted strongly: heat-related ER visits, air-conditioner searches and ice cream searches.</p>
+    <ul class="qs"><li><b>1</b>How do reactions shift across summers and months?</li><li><b>2</b>Do people respond to abnormal heat or to dangerous heat?</li><li><b>3</b>Where are the thresholds for action?</li></ul>
+  </header>
+  <div class="bar">
+    <span class="grp"><label class="lab" for="city">City</label><select id="city" class="sel"></select></span>
+    <span class="grp" id="layers" role="group" aria-label="Reactions"></span>
+    <span class="grp"><label class="lab" for="th">Strong reaction =</label><select id="th" class="sel"><option value="0.5">top 50%</option><option value="0.75" selected>top 25%</option><option value="0.9">top 10%</option></select></span>
+  </div>
+  <div class="bar">
+    <span class="grp" id="years" role="group" aria-label="Summer"><span class="lab">Summer</span></span>
+    <span class="grp" id="months" role="group" aria-label="Month"><span class="lab">Month</span></span>
+    <button type="button" class="tg" id="play" aria-pressed="false">▶ Play months</button>
+  </div>
+  <div class="grid">
+    <div class="stage" id="stage"><svg id="v" viewBox="0 0 760 660" role="img" aria-label="Scatter field of summer days by abnormality and felt heat, with blobs where reactions were strong"></svg><div class="tip" id="tip" hidden></div></div>
+    <aside class="side">
+      <section class="card">
+        <div class="mono">Question 2</div>
+        <h2 class="h">Abnormal or dangerous?</h2>
+        <p class="small">Share of days in each corner of the field that had a strong reaction.</p>
+        <div class="tblwrap"><table id="quad"></table></div>
+        <div id="verdict" style="display:flex;flex-direction:column;gap:4px"></div>
+      </section>
+      <section class="card">
+        <div class="mono">Question 3</div>
+        <h2 class="h">Thresholds for action</h2>
+        <p class="small">The point where <i>most</i> days (over half) bring a strong reaction, read from the field in 3°F felt-heat steps and quarter steps of abnormality. Marked on the field’s right and top edges.</p>
+        <div id="thr" style="display:flex;flex-direction:column;gap:4px"></div>
+      </section>
+      <section class="card">
+        <div class="mono">Question 1</div>
+        <h2 class="h">Summer by summer</h2>
+        <p class="small" id="ytxt"></p>
+        <div class="tblwrap"><table id="yrs"></table></div>
+      </section>
+    </aside>
+  </div>
+  <p class="foot" id="foot"></p>
+</div>
+<script>
+const ALL=__DATA__;
+// day row: [0 date,1 high,2 normal,3 p90,4 abnormality,5 felt,6 category,7 ER,8 ER pct,9 AC,10 AC pct,11 ice,12 ice pct]
+const EV=[{k:"er",i:8,v:7,name:"Heat ER visits",short:"ER",col:"--er",unit:"daily, per 100,000 ER visits"},
+          {k:"ac",i:10,v:9,name:"AC searches",short:"AC",col:"--ac",unit:"weekly Google Trends"},
+          {k:"ice",i:12,v:11,name:"Ice cream searches",short:"Ice cream",col:"--ice",unit:"weekly Google Trends"}];
+const DANGER=89.6,ABN=1,YEARS=[2022,2023,2024,2025,2026],MON=["May","Jun","Jul","Aug","Sep"];
+const S={city:"detroit",on:{er:true,ac:true,ice:true},th:0.75,year:0,month:0};
+const PL=78,PR=640,PT=52,PB=588,X0=-2.5,X1=3;
+const $=id=>document.getElementById(id),R=Math.round;
+const xs=v=>PL+(Math.max(X0,Math.min(X1,v))-X0)/(X1-X0)*(PR-PL);
+let Y0=0,Y1=1;const ys=v=>PB-(Math.max(Y0,Math.min(Y1,v))-Y0)/(Y1-Y0)*(PB-PT);
+const fmt=d=>new Date(d+"T12:00").toLocaleDateString("en-US",{month:"short",day:"numeric",year:"numeric"});
+const quad=d=>(d[5]>=DANGER?"D":"S")+(d[4]>ABN?"A":"N");
+const QN={SN:"Safe · normal",SA:"Safe · abnormal",DN:"Dangerous · normal",DA:"Dangerous · abnormal"};
+const median=a=>{const s=[...a].sort((x,y)=>x-y),n=s.length;return n?(n%2?s[(n-1)/2]:(s[n/2-1]+s[n/2])/2):null};
+
+// controls
+Object.entries(ALL).forEach(([k,v])=>$("city").insertAdjacentHTML("beforeend",`<option value="${k}">${v.label}</option>`));
+EV.forEach(e=>{const b=document.createElement("button");b.type="button";b.className="tg";b.setAttribute("aria-pressed","true");b.innerHTML=`<i style="background:var(${e.col})"></i>${e.name}`;b.onclick=()=>{S.on[e.k]=!S.on[e.k];b.setAttribute("aria-pressed",S.on[e.k]);draw()};$("layers").append(b)});
+function chips(el,items,key){items.forEach(([v,l])=>{const b=document.createElement("button");b.type="button";b.className="tg";b.dataset.v=v;b.textContent=l;b.onclick=()=>{stop();S[key]=v;draw()};el.append(b)})}
+chips($("years"),[[0,"All"],...YEARS.map(y=>[y,String(y)])],"year");
+chips($("months"),[[0,"All"],...MON.map((m,i)=>[i+5,m])],"month");
+$("city").onchange=e=>{S.city=e.target.value;draw()};$("th").onchange=e=>{S.th=+e.target.value;draw()};
+let timer=null;function stop(){if(timer){clearInterval(timer);timer=null;$("play").setAttribute("aria-pressed","false");$("play").textContent="▶ Play months"}}
+$("play").onclick=()=>{if(timer)return stop();$("play").setAttribute("aria-pressed","true");$("play").textContent="❚❚ Pause";S.month=S.month>=5&&S.month<9?S.month+1:5;draw();timer=setInterval(()=>{S.month=S.month>=9?5:S.month+1;draw()},1600)};
+
+function threshold(rows,e,TH,val,step,start){
+  // lowest bin where over half of the days (n>=5) are strong-reaction days, and the next bin agrees if it has data
+  const bins={};rows.forEach(d=>{if(d[e.i]==null)return;const b=Math.floor((val(d)-start)/step);(bins[b]=bins[b]||[0,0]);bins[b][0]++;if(d[e.i]>=TH)bins[b][1]++});
+  const ks=Object.keys(bins).map(Number).sort((a,b)=>a-b);
+  for(const b of ks){const[n,s]=bins[b];if(n<5||s/n<=0.5)continue;const nx=bins[b+1];if(nx&&nx[0]>=5&&nx[1]/nx[0]<=0.5)continue;return start+b*step}
+  return null}
+
+function draw(){
+  const C=ALL[S.city],TH=S.th;
+  const base=C.days.filter(d=>!S.month||+d[0].slice(5,7)===S.month);
+  const rows=base.filter(d=>!S.year||+d[0].slice(0,4)===S.year);
+  const fe=C.days.map(d=>d[5]).sort((a,b)=>a-b);
+  Y0=Math.floor((Math.max(fe[0],fe[Math.floor(fe.length*0.02)]-4))/5)*5;Y1=Math.max(Math.ceil((fe[fe.length-1]+2)/5)*5,95);
+  const spread=median(C.days.map(d=>d[3]-d[2]));
+  document.querySelectorAll("#years .tg").forEach(b=>b.setAttribute("aria-pressed",+b.dataset.v===S.year));
+  document.querySelectorAll("#months .tg").forEach(b=>b.setAttribute("aria-pressed",+b.dataset.v===S.month));
+  const act=EV.filter(e=>S.on[e.k]);
+  let s=`<defs><pattern id="dots" width="16" height="16" patternUnits="userSpaceOnUse"><circle cx="8" cy="8" r="1" fill="var(--dot)"/></pattern><filter id="blur" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="15"/></filter></defs>`;
+  s+=`<rect x="${PL}" y="${PT}" width="${PR-PL}" height="${PB-PT}" fill="url(#dots)"/>`;
+  // UTCI bands (left labels)
+  [[78.8,"moderate"],[DANGER,"strong"],[100.4,"very strong"],[114.8,"extreme"]].forEach(([v,l])=>{if(v<=Y0||v>=Y1)return;s+=`<line x1="${PL-6}" x2="${PL}" y1="${ys(v)}" y2="${ys(v)}" stroke="var(--axis)"/><text x="${PL-9}" y="${ys(v)-2}" text-anchor="end" font-size="11" fill="var(--ink-2)">${R(v)}°F</text><text x="${PL-9}" y="${ys(v)+10}" text-anchor="end" font-size="9.5" fill="var(--ink-3)">${l}</text>`});
+  [Y0,Y1].forEach(v=>s+=`<text x="${PL-9}" y="${ys(v)+4}" text-anchor="end" font-size="10.5" fill="var(--ink-3)">${R(v)}°</text>`);
+  // abnormality ticks (bottom)
+  [[-2,`−${R(2*spread)}°`],[-1,`−${R(spread)}°`],[0,"normal"],[1,`+${R(spread)}°`],[2,`+${R(2*spread)}°`],[3,`+${R(3*spread)}°`]].forEach(([v,l])=>{s+=`<line x1="${xs(v)}" x2="${xs(v)}" y1="${PB}" y2="${PB+6}" stroke="var(--axis)"/><text x="${xs(v)}" y="${PB+19}" text-anchor="middle" font-size="11" fill="var(--ink-2)">${l}</text>`});
+  s+=`<text x="${(PL+PR)/2}" y="${PB+40}" text-anchor="middle" font-size="11.5" fill="var(--ink-3)">daily high vs the 1991–2020 normal for the date (° ≈ typical ${C.label} spread)</text>`;
+  s+=`<text x="16" y="${(PT+PB)/2}" transform="rotate(-90 16 ${(PT+PB)/2})" text-anchor="middle" font-size="11.5" fill="var(--ink-3)">felt heat, daily max UTCI · heat-stress band</text>`;
+  // all days
+  s+=`<g>`;rows.forEach(d=>s+=`<circle cx="${xs(d[4]).toFixed(1)}" cy="${ys(d[5]).toFixed(1)}" r="2.1" fill="var(--axis)" opacity=".42"/>`);s+=`</g>`;
+  // blobs
+  // each reaction = two merged soft shapes: the cloud of all strong-reaction days, and a denser core of the strongest half
+  act.forEach(e=>{[[0,22,.24],[.5,15,.36]].forEach(([wmin,r,op])=>{s+=`<g style="mix-blend-mode:var(--blend)" opacity="${op}"><g filter="url(#blur)">`;
+    rows.forEach(d=>{const p=d[e.i];if(p==null||p<TH||(p-TH)/(1-TH)<wmin)return;s+=`<circle cx="${xs(d[4]).toFixed(1)}" cy="${ys(d[5]).toFixed(1)}" r="${r}" fill="var(${e.col})"/>`});s+=`</g></g>`})});
+  // axes crossing at the abnormal line and the danger line
+  const ax=xs(ABN),ay=ys(DANGER);
+  s+=`<line x1="${PL-14}" x2="${PR+6}" y1="${ay}" y2="${ay}" stroke="var(--axis)" stroke-width="1.2"/><line x1="${ax}" x2="${ax}" y1="${PT-24}" y2="${PB+2}" stroke="var(--axis)" stroke-width="1.2"/>`;
+  s+=`<text x="${ax}" y="${PT-30}" text-anchor="middle" font-size="13" font-weight="500" fill="var(--ink)">Dangerous</text>`;
+  s+=`<text x="${ax+8}" y="${PB-8}" font-size="11.5" fill="var(--ink-2)">not dangerous ↓</text>`;
+  s+=`<text x="${PL+6}" y="${ay-8}" font-size="13" font-weight="500" fill="var(--ink)">Normal</text><text x="${PR-6}" y="${ay-8}" text-anchor="end" font-size="13" font-weight="500" fill="var(--ink)">Abnormal</text>`;
+  s+=`<text x="${ax+6}" y="${PT+4}" font-size="10.5" fill="var(--ink-3)">hotter than 9 in 10</text><text x="${ax+6}" y="${PT+17}" font-size="10.5" fill="var(--ink-3)">past years on this date</text>`;
+  s+=`<text x="${PR-6}" y="${ay+15}" text-anchor="end" font-size="10.5" fill="var(--ink-3)">strong heat stress, ${DANGER}°F felt</text>`;
+  // thresholds on right/top edges
+  const T=act.map(e=>({e,y:threshold(rows,e,TH,d=>d[5],3,Math.floor(Y0/3)*3),x:threshold(rows,e,TH,d=>d[4],0.25,-3)}));
+  T.forEach((t,j)=>{const c=`var(${t.e.col})`;
+    if(t.y!=null&&t.y<Y1){const y=ys(t.y);s+=`<path d="M${PR+4+j*30} ${y}l8 -5v10z" fill="${c}"/><line x1="${PR}" x2="${PR+4+j*30}" y1="${y}" y2="${y}" stroke="${c}" stroke-dasharray="2 2"/><text x="${PR+14+j*30}" y="${y+4}" font-size="10.5" fill="var(--ink-2)">${R(t.y)}°</text>`}
+    if(t.x!=null){const x=xs(t.x)+(j-1)*4;s+=`<path d="M${x} ${PT-2}l-5 -9h10z" fill="${c}" stroke="var(--bg)" stroke-width="1"/>`}});
+  // hover targets
+  rows.forEach(d=>s+=`<circle class="hit" cx="${xs(d[4]).toFixed(1)}" cy="${ys(d[5]).toFixed(1)}" r="6" fill="transparent" data-i="${C.days.indexOf(d)}"/>`);
+  $("v").innerHTML=s;
+
+  // Q2 quadrants
+  const Q={};["DN","DA","SN","SA"].forEach(q=>Q[q]=rows.filter(d=>quad(d)===q));
+  const share=(L,e)=>{const v=L.filter(d=>d[e.i]!=null);return v.length?{n:v.length,p:v.filter(d=>d[e.i]>=TH).length/v.length}:null};
+  let h=`<tr><th>corner</th><th>days</th>${act.map(e=>`<th><span style="color:var(${e.col})">●</span> ${e.short}</th>`).join("")}</tr>`;
+  ["DN","DA","SN","SA"].forEach(q=>{h+=`<tr><td class="q">${QN[q]}</td><td>${Q[q].length}</td>${act.map(e=>{const r=share(Q[q],e);return r?`<td style="background:color-mix(in srgb,var(${e.col}) ${R(r.p*55)}%,transparent)">${R(r.p*100)}%</td>`:`<td style="color:var(--ink-3)">–</td>`}).join("")}</tr>`});
+  $("quad").innerHTML=h;
+  $("verdict").innerHTML=act.map(e=>{const a=share(Q.DN,e),b=share(Q.SA,e),z=share(Q.SN,e);let t;
+    const da=share(Q.DA,e);
+    if(!a||!b||a.n<5||b.n<5){
+      if((!b||b.n<5)&&a&&a.n>=5&&da&&da.n>=5)t=`: almost every day here is dangerous, so compare within danger. Abnormal days draw ${R(da.p*100)}% vs ${R(a.p*100)}% on normal ones${da.p-a.p>0.1?": <b>abnormality</b> matters on top of danger":""}.`;
+      else if((!a||a.n<5)&&b&&b.n>=5&&z&&z.n>=5)t=`: no dangerous days here, so compare within safe heat. Abnormal days draw ${R(b.p*100)}% vs ${R(z.p*100)}% on normal ones.`;
+      else t=`: too few days in one corner to compare.`}
+    else if(a.p-b.p>0.1)t=`: react more to <b>danger</b> (${R(a.p*100)}% vs ${R(b.p*100)}% on abnormal-but-safe days).`;
+    else if(b.p-a.p>0.1)t=`: react more to <b>abnormality</b> (${R(b.p*100)}% vs ${R(a.p*100)}% on dangerous-but-normal days).`;
+    else t=`: react about equally to both (${R(a.p*100)}% vs ${R(b.p*100)}%).`;
+    return `<p class="verd"><i style="background:var(${e.col})"></i><span>${e.name}${t}${z?` Baseline on safe, normal days: ${R(z.p*100)}%.`:""}</span></p>`}).join("")||`<p class="small">Turn on a reaction to compare.</p>`;
+  // Q3 thresholds
+  $("thr").innerHTML=T.map(t=>`<p class="verd"><i style="background:var(${t.e.col})"></i><span><b>${t.e.name}:</b> ${t.y!=null?`felt heat ≥ ${R(t.y)}°F`:"no felt-heat point where most days react"}; ${t.x!=null?(t.x<=0?`no need to be unusual (already from ${t.x<0?R(-t.x*spread)+"°F below normal":"normal"})`:`≥ ${R(t.x*spread)}°F above normal`):"no abnormality point where most days react"}.</span></p>`).join("")||`<p class="small">Turn on a reaction to see its thresholds.</p>`;
+  // Q1 per summer (respects the month filter)
+  $("ytxt").textContent=`Each summer${S.month?` (${MON[S.month-5]} only)`:""}: days in the dangerous and abnormal halves, and the share of days with a strong reaction.`;
+  let y=`<tr><th>summer</th><th>dang.</th><th>abn.</th>${act.map(e=>`<th><span style="color:var(${e.col})">●</span> ${e.short}</th>`).join("")}</tr>`;
+  YEARS.forEach(yr=>{const L=base.filter(d=>+d[0].slice(0,4)===yr);if(!L.length)return;
+    y+=`<tr class="${S.year===yr?"cur":""}"><td>${yr}${yr===2026?"*":""}</td><td>${L.filter(d=>d[5]>=DANGER).length}</td><td>${L.filter(d=>d[4]>ABN).length}</td>${act.map(e=>{const r=share(L,e);return `<td>${r?R(r.p*100)+"%":"–"}</td>`}).join("")}</tr>`});
+  $("yrs").innerHTML=y;
+  const reg=C.region,shared=Object.values(ALL).filter(c=>c.region===reg).length;
+  $("foot").innerHTML=`Sources: daily high and its 1991–2020 normal and 90th percentile for the date (±7-day window), gridMET via Climate Engine. Felt heat = daily maximum UTCI from ERA5-HEAT with its heat-stress band; “dangerous” = strong heat stress or worse (≥ 32°C / 89.6°F felt). Felt heat ends ${fmt(C.last)}, so later 2026 days are not shown. Heat-related ER visits per 100,000 ER visits, CDC Environmental Public Health Tracking, HHS ${reg}${shared>1?` (shared by ${shared} cities on this page, so their ER patterns are not independent)`:""}, not the city alone. Searches: Google Trends weekly “air conditioner” and “ice cream” for the ${C.label} area; each day takes its week’s value. “Strong reaction” = in the top share of the city’s May–September 2022–2026 days. * 2026 to ${fmt(C.last)}. Associations, not causes. Draft: the abnormal line (90th percentile for the date), the week-to-day assignment and the threshold rule are Claude’s choices, not yet approved.`;
+}
+const tip=$("tip");
+$("v").addEventListener("mousemove",ev=>{const t=ev.target.closest(".hit");if(!t){tip.hidden=true;return}
+  const d=ALL[S.city].days[+t.dataset.i],a=d[1]-d[2];
+  tip.innerHTML=`<b>${fmt(d[0])}</b><br>high ${R(d[1])}°F · normal ${R(d[2])}°F (${a>=0?"+":""}${a.toFixed(1)}°)${d[4]>ABN?" · abnormal":""}<br>felt ${R(d[5])}°F · ${d[6].toLowerCase()}<br>${d[7]!=null?`ER ${R(d[7])} (top ${Math.max(1,R((1-d[8])*100))}%)`:"ER not reported"}<br>week: AC ${d[9]??"–"} · ice cream ${d[11]??"–"}`;
+  const r=$("stage").getBoundingClientRect(),b=t.getBoundingClientRect();tip.style.left=(b.left+b.width/2-r.left)+"px";tip.style.top=(b.top-r.top)+"px";tip.hidden=false});
+$("v").addEventListener("mouseleave",()=>tip.hidden=true);
+draw();
+</script>
