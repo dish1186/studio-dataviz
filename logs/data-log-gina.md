@@ -32,6 +32,23 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Visualization V11 · Purifier Searches (7 metros, one line chart) · 2026-10-02 00:10 EDT · Gina + Claude
+- **What (Gina: "a line graph overlapping all trends searches for air purifiers for all cities in one neat minimalist graph with labels"):**
+  - One line per metro: Bakersfield, Eugene, Detroit, Boston, Phoenix, San Diego, San Francisco.
+  - Data: weekly Google Trends "air purifier" (Steps 18-19), 2021-09-26 to 2026-09-20, plotted as given.
+  - Direct labels at each line's end. Hovering a label highlights that line; a crosshair tooltip lists all seven values for the week.
+  - Toggle: 4-week average or weekly.
+  - A shaded band marks the spring 2026 surge (2026-03-22 to 2026-06-28). Four smoke labels: Detroit Jun 25, 2023 and Jul 12, 2026; Eugene Aug 13, 2023 and Aug 2, 2026 (weeks from A31/A32).
+- **Script:** `viz/purifier-lines/build.py` → `data.json`; page `template.html` → `purifier-lines.html`. Published at https://claude.ai/artifact/AqxTKLSlx3sdj0AgFAvxuo.
+- **Claude's choices, not yet approved:**
+  - 4-week centred average (the week, one before, two after) is the default view.
+  - The last, partial week (2026-09-27) is left out.
+  - Okabe-Ito colours (colour-blind safe), with grey for San Francisco.
+  - Surge band dates; which smoke events get labels.
+- **Caveat:** each line is scaled to its own peak, so the chart compares timing, not levels.
+
+---
+
 ### Google Trends · Step 19: weekly "air purifier" raw files for Detroit, Phoenix, San Diego, San Francisco; Analysis A32 · purifier searches vs PM2.5 · 2026-10-02 00:03 EDT · Gina + Claude
 - **What:** Gina downloaded the remaining four metros.
   - Claude copied each file unchanged to `data/raw/google-trends/air-search-weekly/` and checked it is byte-identical:

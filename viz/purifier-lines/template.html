@@ -1,0 +1,77 @@
+<title>Purifier Searches</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,600&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono&display=swap">
+<style>
+:root{--bg:#fbfaf8;--ink:#1d1c1a;--ink-2:#5f5b55;--ink-3:#9a958d;--grid:#ebe8e3;--band:#f1eee9;
+ --bak:#d55e00;--eug:#0072b2;--det:#009e73;--bos:#cc79a7;--phx:#e69f00;--sd:#56b4e9;--sf:#6e6a64;
+ --serif:"Source Serif 4",Georgia,serif;--sans:"IBM Plex Sans","Helvetica Neue",Arial,sans-serif;--mono:"IBM Plex Mono",ui-monospace,Menlo,monospace}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#151514;--ink:#efede9;--ink-2:#b5b0a8;--ink-3:#7c776f;--grid:#2a2926;--band:#211f1c;--eug:#4aa3e0;--sf:#a29d95;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#151514;--ink:#efede9;--ink-2:#b5b0a8;--ink-3:#7c776f;--grid:#2a2926;--band:#211f1c;--eug:#4aa3e0;--sf:#a29d95;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:14px;line-height:1.5}
+.wrap{max-width:1040px;margin:0 auto;padding-inline:20px;padding-block:32px 36px;display:flex;flex-direction:column;gap:12px}
+h1{font-family:var(--serif);font-weight:600;font-size:clamp(24px,3.4vw,34px);margin:0;line-height:1.1;text-wrap:balance}
+.sub{color:var(--ink-2);margin:0;max-width:72ch}
+.bar{display:flex;gap:4px;align-items:center;flex-wrap:wrap}
+.tg{font:inherit;font-size:12.5px;border:1px solid var(--grid);background:transparent;color:var(--ink-3);border-radius:999px;padding:3px 11px;cursor:pointer}
+.tg[aria-pressed=true]{border-color:var(--ink-2);color:var(--ink)}
+.tg:focus-visible{outline:2px solid var(--eug);outline-offset:2px}
+.stage{position:relative}
+svg{display:block;width:100%;height:auto;overflow:visible}svg text{font-family:var(--sans)}
+.line{fill:none;stroke-width:1.6;stroke-linejoin:round;stroke-linecap:round;transition:opacity .15s}
+.dim .line,.dim .lab{opacity:.12}.dim .on{opacity:1}.dim .line.on{stroke-width:2.4}
+.lab{font-size:12px;cursor:default;transition:opacity .15s}
+.tip{position:absolute;pointer-events:none;background:var(--ink);color:var(--bg);font-size:12px;line-height:1.45;padding:7px 10px;border-radius:6px;width:max-content;z-index:2;font-variant-numeric:tabular-nums}
+.tip i{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px}
+.foot{font-size:12px;color:var(--ink-3);margin:0;max-width:100ch}
+</style>
+<div class="wrap">
+  <h1>Searches for “air purifier”, seven metros</h1>
+  <p class="sub">Weekly Google Trends interest, Sep 2021 – Sep 2026. Each line is scaled to its own peak (100), so compare <i>when</i> cities spike, not how high.</p>
+  <div class="bar" role="group" aria-label="Smoothing"><button class="tg" id="sm" aria-pressed="true" type="button">4-week average</button><button class="tg" id="raw" aria-pressed="false" type="button">Weekly</button></div>
+  <div class="stage" id="stage"><svg id="v" viewBox="0 0 1000 470" role="img" aria-label="Line chart of weekly air purifier search interest for seven metros"></svg><div class="tip" id="tip" hidden></div></div>
+  <p class="foot">Source: Google Trends, search term “air purifier”, All categories, past 5 years, weekly, downloaded by Gina 2026-10-01/02 (<code>data/raw/google-trends/air-search-weekly/</code>). Weeks with too little search volume are reported as 0 (most weeks in Eugene and Bakersfield). The shaded band marks a surge in all seven metros in spring 2026 with no local air-quality cause. 4-week average = centred mean of the week, the one before and the two after (Claude’s choice). The last, partial week (2026-09-27) is left out.</p>
+</div>
+<script>
+const D0=__DATA__;
+// drop the last, partial week (it starts 2 days before the download)
+const D={weeks:D0.weeks.slice(0,-1),series:D0.series.map(s=>({...s,v:s.v.slice(0,-1)}))};
+const NOTE=[["2023-06-25","detroit","Detroit smoke"],["2023-08-13","eugene","Eugene smoke"],["2026-07-12","detroit","Detroit smoke",62],["2026-08-02","eugene","Eugene smoke",52]];
+const COL={bakersfield:"--bak",eugene:"--eug",detroit:"--det",boston:"--bos",phoenix:"--phx",sandiego:"--sd",sanfrancisco:"--sf"};
+const W=1000,H=470,L=34,Rr=880,T=14,B=430,n=D.weeks.length;
+const x=i=>L+i/(n-1)*(Rr-L),y=v=>B-v/100*(B-T);
+let smooth=true,hi=null;
+const sm=v=>v.map((_,i)=>{const s=v.slice(Math.max(0,i-1),Math.min(n,i+3));return s.reduce((a,b)=>a+b,0)/s.length});
+const mon=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+function draw(){
+  const S=D.series.map(s=>({...s,y:smooth?sm(s.v):s.v}));
+  let g=`<g>`;
+  // surge band
+  const a=D.weeks.indexOf("2026-03-22"),b=D.weeks.indexOf("2026-06-28");
+  g+=`<rect x="${x(a)}" y="${T}" width="${x(b)-x(a)}" height="${B-T}" fill="var(--band)"/><text x="${(x(a)+x(b))/2}" y="${T+12}" text-anchor="middle" font-size="10.5" fill="var(--ink-3)">spring 2026 surge</text>`;
+  [0,25,50,75,100].forEach(v=>g+=`<line x1="${L}" x2="${Rr}" y1="${y(v)}" y2="${y(v)}" stroke="var(--grid)"/><text x="${L-8}" y="${y(v)+4}" text-anchor="end" font-size="11" fill="var(--ink-3)">${v}</text>`);
+  D.weeks.forEach((w,i)=>{if(w.slice(5,7)==="01"&&+w.slice(8)<=7)g+=`<line x1="${x(i)}" x2="${x(i)}" y1="${B}" y2="${B+5}" stroke="var(--ink-3)"/><text x="${x(i)}" y="${B+20}" text-anchor="middle" font-size="11.5" fill="var(--ink-2)">${w.slice(0,4)}</text>`});
+  g+=`</g><g id="lines" class="${hi?"dim":""}">`;
+  S.forEach(s=>{g+=`<path class="line ${hi===s.slug?"on":""}" data-s="${s.slug}" stroke="var(${COL[s.slug]})" d="${s.y.map((v,i)=>(i?"L":"M")+x(i).toFixed(1)+" "+y(v).toFixed(1)).join("")}"/>`});
+  // end labels with simple collision avoidance
+  const ends=S.map(s=>({s,yy:y(s.y[n-1])})).sort((p,q)=>p.yy-q.yy);
+  for(let i=1;i<ends.length;i++)if(ends[i].yy-ends[i-1].yy<14)ends[i].yy=ends[i-1].yy+14;
+  const over=ends[ends.length-1].yy-(B+4);if(over>0)ends.forEach(e=>e.yy-=over);
+  ends.forEach(({s,yy})=>{const y0=y(s.y[n-1]);g+=`<g class="lab ${hi===s.slug?"on":""}" data-s="${s.slug}"><path d="M${Rr+3} ${y0}L${Rr+10} ${yy}" stroke="var(${COL[s.slug]})" fill="none"/><circle cx="${Rr}" cy="${y0}" r="2.5" fill="var(${COL[s.slug]})"/><text x="${Rr+14}" y="${yy+4}" fill="var(--ink)">${s.label}</text></g>`});
+  NOTE.forEach(([w,sl,t,ly])=>{const i=D.weeks.indexOf(w),s=S.find(z=>z.slug===sl),py=y(s.y[i]),ty=ly==null?py-20:y(ly);g+=`<g class="lab ${hi&&hi!==sl?"":"on"}" data-s="${sl}"><line x1="${x(i)}" x2="${x(i)}" y1="${py-4}" y2="${ty+4}" stroke="var(--ink-3)"/><text x="${ly==null?x(i):x(i)+4}" y="${ty}" text-anchor="${ly==null?"middle":"start"}" font-size="10.5" fill="var(--ink-2)">${t}</text></g>`});
+  g+=`</g><line id="cross" x1="0" x2="0" y1="${T}" y2="${B}" stroke="var(--ink-3)" stroke-dasharray="2 3" visibility="hidden"/><rect id="hit" x="${L}" y="${T}" width="${Rr-L}" height="${B-T}" fill="transparent"/>`;
+  document.getElementById("v").innerHTML=g;
+  const svg=document.getElementById("v"),tip=document.getElementById("tip"),cross=document.getElementById("cross");
+  svg.querySelectorAll(".lab").forEach(el=>{el.onmouseenter=()=>{hi=el.dataset.s;draw()};el.onmouseleave=()=>{hi=null;draw()}});
+  const hit=document.getElementById("hit");
+  hit.onmousemove=ev=>{const r=svg.getBoundingClientRect(),px=(ev.clientX-r.left)/r.width*W,i=Math.max(0,Math.min(n-1,Math.round((px-L)/(Rr-L)*(n-1))));
+    cross.setAttribute("x1",x(i));cross.setAttribute("x2",x(i));cross.setAttribute("visibility","visible");
+    const d=new Date(D.weeks[i]+"T12:00");const rows=[...S].sort((p,q)=>q.y[i]-p.y[i]);
+    tip.innerHTML=`<b>Week of ${mon[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}</b>${smooth?" · 4-wk avg":""}<br>`+rows.map(s=>`<i style="background:var(${COL[s.slug]})"></i>${s.label} ${Math.round(s.y[i])}`).join("<br>");
+    const sx=x(i)/W*r.width;tip.hidden=false;const tw=tip.offsetWidth;tip.style.left=(sx+14+tw>r.width?sx-14-tw:sx+14)+"px";tip.style.top="10px"};
+  hit.onmouseleave=()=>{tip.hidden=true;cross.setAttribute("visibility","hidden")};
+}
+const setS=v=>{smooth=v;document.getElementById("sm").setAttribute("aria-pressed",v);document.getElementById("raw").setAttribute("aria-pressed",!v);draw()};
+document.getElementById("sm").onclick=()=>setS(true);document.getElementById("raw").onclick=()=>setS(false);
+draw();
+</script>
