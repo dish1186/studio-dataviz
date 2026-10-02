@@ -5,10 +5,10 @@
 /* Layout: one large radial field (rings = summers, angle = date) with layer toggles above and the threshold key beside it.
    Palette follows Gina's reference: white ground, peach -> orange -> vermilion -> oxblood -> near-black. */
 :root{--bg:#ffffff;--ink:#1d1512;--ink-2:#6b5d57;--ink-3:#a8988f;--line:#efe6e1;
- --b0:#fff6ef;--b1:#fde3cf;--b2:#fbc8a2;--b3:#f7a571;--b4:#f07f45;--b5:#e35a28;--c0:#fde7d6;--c1:#f9b98c;--c2:#ef6b2c;--c3:#c9300f;--c4:#7a1306;--c5:#260402;
+ --i1:#f2a7c3;--i2:#d4537e;--i3:#8c1c4a;--a1:#8fcfd6;--a2:#2b8f9c;--a3:#0d4d58;--e1:#b08a86;--e2:#6b1d16;--e3:#1f0705;--b0:#fff6ef;--b1:#fde3cf;--b2:#fbc8a2;--b3:#f7a571;--b4:#f07f45;--b5:#e35a28;--c0:#fde7d6;--c1:#f9b98c;--c2:#ef6b2c;--c3:#c9300f;--c4:#7a1306;--c5:#260402;
  --serif:"Source Serif 4",Georgia,serif;--sans:"IBM Plex Sans","Helvetica Neue",Arial,sans-serif;--mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;--blend:multiply}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#120d0b;--ink:#f4ece8;--ink-2:#bfb0a8;--ink-3:#7d6e66;--line:#2a201c;--b0:#1d1410;--b1:#2c1b13;--b2:#432317;--b3:#5d2a17;--b4:#7a3016;--b5:#983514;--c0:#3a2218;--c1:#7a3a1c;--c2:#c4521f;--c3:#f0703a;--c4:#ffa070;--c5:#ffe3cf;--blend:screen;color-scheme:dark}}
-:root[data-theme="dark"]{--bg:#120d0b;--ink:#f4ece8;--ink-2:#bfb0a8;--ink-3:#7d6e66;--line:#2a201c;--b0:#1d1410;--b1:#2c1b13;--b2:#432317;--b3:#5d2a17;--b4:#7a3016;--b5:#983514;--c0:#3a2218;--c1:#7a3a1c;--c2:#c4521f;--c3:#f0703a;--c4:#ffa070;--c5:#ffe3cf;--blend:screen;color-scheme:dark}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#120d0b;--ink:#f4ece8;--ink-2:#bfb0a8;--ink-3:#7d6e66;--line:#2a201c;--i1:#6e2a44;--i2:#e06a97;--i3:#ffc2d8;--a1:#1f4f56;--a2:#46b5c2;--a3:#b8eef4;--e1:#5a3a36;--e2:#e2765f;--e3:#ffd9cc;--b0:#1d1410;--b1:#2c1b13;--b2:#432317;--b3:#5d2a17;--b4:#7a3016;--b5:#983514;--c0:#3a2218;--c1:#7a3a1c;--c2:#c4521f;--c3:#f0703a;--c4:#ffa070;--c5:#ffe3cf;--blend:screen;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#120d0b;--ink:#f4ece8;--ink-2:#bfb0a8;--ink-3:#7d6e66;--line:#2a201c;--i1:#6e2a44;--i2:#e06a97;--i3:#ffc2d8;--a1:#1f4f56;--a2:#46b5c2;--a3:#b8eef4;--e1:#5a3a36;--e2:#e2765f;--e3:#ffd9cc;--b0:#1d1410;--b1:#2c1b13;--b2:#432317;--b3:#5d2a17;--b4:#7a3016;--b5:#983514;--c0:#3a2218;--c1:#7a3a1c;--c2:#c4521f;--c3:#f0703a;--c4:#ffa070;--c5:#ffe3cf;--blend:screen;color-scheme:dark}
 *{box-sizing:border-box}[hidden]{display:none!important}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.5}
 .wrap{max-width:1080px;margin:0 auto;padding-inline:20px;padding-block:28px 40px;display:flex;flex-direction:column;gap:16px}
@@ -34,9 +34,14 @@ svg{display:block;width:100%;height:auto}svg text{font-family:var(--sans)}
   <header>
     <div class="mono">Detroit · summers 2022–2026 · temperature</div>
     <h1>Detroit summer rings</h1>
-    <p class="lede">Each ring is one summer, May 1 at the top running clockwise to September 30; the oldest summer sits at the centre. The coloured background is each day's high, stepping darker at the temperatures where Detroit starts to act. The dots are events: weeks of unusually high ice cream or AC searching, and days of unusually high heat ER visits. Darker dots are stronger events; bigger dots mean that kind of event happened more often that month.</p>
+    <p class="lede">Each ring is one summer, May 1 at the top running clockwise to September 30; the oldest summer sits at the centre. The coloured background is each day's high, stepping darker at the temperatures where Detroit starts to act. The dots are events, one colour each: pink for weeks of unusually high ice cream searching, teal for AC searching, oxblood for days of unusually high heat ER visits. Darker = stronger; bigger = more of that kind of event close together in time. Use the size controls to play with it.</p>
   </header>
   <div class="bar" id="layers" role="group" aria-label="Layers"></div>
+  <div class="bar" style="gap:14px">
+    <label for="sz" style="font-size:13px;color:var(--ink-2)">Bubble size</label><input type="range" id="sz" min="0.4" max="3" step="0.1" value="1" style="width:160px;accent-color:var(--c3)"><output id="szo" style="font-family:var(--mono);font-size:12px;min-width:3ch">1.0×</output>
+    <label for="win" style="font-size:13px;color:var(--ink-2)">Bigger = more events within</label>
+    <select id="win" style="font:inherit;font-size:13px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:4px 8px"><option value="month">the same month</option><option value="2w" selected>±2 weeks</option><option value="1w">±1 week</option><option value="none">(no size: all equal)</option></select>
+  </div>
   <div class="grid">
     <div class="stage" id="stage"><svg id="v" viewBox="0 0 760 760" role="img" aria-label="Radial view of Detroit's daily highs, one ring per summer"></svg><div class="tip" id="tip" hidden></div></div>
     <aside class="key">
@@ -53,9 +58,11 @@ const D=__DATA__;
 const Z=[{t:-99,n:"Comfortable",d:"nothing stirs",c:"--b0"},{t:56,n:"Goldilocks",d:"ice cream searches rise",c:"--b1"},{t:74,n:"Coping",d:"AC searches climb",c:"--b2"},{t:78,n:"Strain",d:"heat ER visits climb",c:"--b3"},{t:83,n:"Danger",d:"ER near its peak",c:"--b4"},{t:92,n:"Extreme",d:"rarest, hottest days",c:"--b5"}];
 const zoneOf=T=>{let k=0;Z.forEach((z,i)=>{if(T>=z.t)k=i});return k};
 const EV=[["ice","Ice cream searches",0.24],["ac","AC searches",0.5],["er","Heat ER visits",0.76]];
-const TIER=["","--c3","--c4","--c5"];
+const COL={ice:["","--i1","--i2","--i3"],ac:["","--a1","--a2","--a3"],er:["","--e1","--e2","--e3"]};let SZ=1,WIN="2w";
 const on={bg:true,ice:true,ac:true,er:true,arcs:false,labels:true};
 const LAY=[["bg","Temperature background"],["ice","Ice cream events"],["ac","AC events"],["er","ER events"],["arcs","Threshold arcs"],["labels","Years and months"]];
+document.getElementById("sz").addEventListener("input",e=>{SZ=+e.target.value;document.getElementById("szo").textContent=SZ.toFixed(1)+"×";draw()});
+document.getElementById("win").addEventListener("change",e=>{WIN=e.target.value;draw()});
 const CX=380,CY=380,R0=95,BW=54,YEARS=[2022,2023,2024,2025,2026],R=Math.round;
 const doy=d=>{const X=new Date(d+"T12:00:00");return (X-new Date(X.getFullYear(),4,1,12))/864e5};
 const ang=d=>-Math.PI/2+(0.03+Math.max(0,Math.min(152.9,doy(d)))/153*(2*Math.PI-0.06));
@@ -65,6 +72,10 @@ const P=(r,a)=>`${(CX+r*Math.cos(a)).toFixed(1)} ${(CY+r*Math.sin(a)).toFixed(1)
 const events=[];D.days.forEach(d=>{if(d[2]>0)events.push({k:"er",d:d[0],tier:d[2],v:d[3]})});
 ["ice","ac"].forEach(k=>D[k].forEach(w=>{if(w[2]>0){const m=addDays(w[0],3);if(m>="2022-05-01"&&m<="2026-09-30"&&+m.slice(5,7)>=5&&+m.slice(5,7)<=9)events.push({k,d:m,tier:w[2],v:w[1],w:w[0]})}}));
 const perMonth={};events.forEach(e=>{const key=e.k+e.d.slice(0,7);perMonth[key]=(perMonth[key]||0)+1});
+const tms=d=>new Date(d+"T12:00:00").getTime();events.forEach(e=>e.ts=tms(e.d));
+function nearby(e){if(WIN==="none")return 1;if(WIN==="month")return perMonth[e.k+e.d.slice(0,7)];const W=(WIN==="2w"?14:7)*864e5;return events.filter(o=>o.k===e.k&&Math.abs(o.ts-e.ts)<=W).length}
+// one event-day for ER counts as 1; one event-week for searches counts as 7 days so the two scales compare
+const weight=e=>e.k==="er"?1:7;
 function draw(){
  const lb=document.getElementById("layers");lb.innerHTML="";LAY.forEach(([k,l])=>{const b=document.createElement("button");b.className="tg";b.type="button";b.textContent=l;b.setAttribute("aria-pressed",on[k]);b.onclick=()=>{on[k]=!on[k];draw()};lb.appendChild(b)});
  let s="";
@@ -77,15 +88,15 @@ function draw(){
   ["May","Jun","Jul","Aug","Sep"].forEach((m,i)=>{const r2=R0+5*BW+18;const a=ang(`2022-0${5+i}-15`);s+=`<text x="${CX+r2*Math.cos(a)}" y="${CY+r2*Math.sin(a)+4}" text-anchor="middle" font-size="12" fill="var(--ink-2)" style="font-family:var(--serif);font-style:italic">${m}</text>`;const a1=ang(`2022-0${5+i}-01`);s+=`<line x1="${P(R0-8,a1).split(" ")[0]}" y1="${P(R0-8,a1).split(" ")[1]}" x2="${P(R0+5*BW+4,a1).split(" ")[0]}" y2="${P(R0+5*BW+4,a1).split(" ")[1]}" stroke="var(--bg)" stroke-width="1.2"/>`})}
  // event dots: lane by type, colour by tier, size by how many events of that type that month
  s+=`<g style="mix-blend-mode:var(--blend)">`;
- events.filter(e=>on[e.k]).sort((p,q)=>p.tier-q.tier).forEach(e=>{const j=YEARS.indexOf(+e.d.slice(0,4));if(j<0)return;const lane=EV.find(x=>x[0]===e.k)[2],rr=R0+j*BW+lane*(BW-3),a=ang(e.d),n=perMonth[e.k+e.d.slice(0,7)],rad=e.k==="er"?1.6+0.55*Math.min(n,20):2.4+1.5*Math.min(n,5);
-  s+=`<circle class="ev" data-k="${e.k}" data-d="${e.d}" data-t="${e.tier}" data-v="${e.v}" data-n="${n}" cx="${P(rr,a).split(" ")[0]}" cy="${P(rr,a).split(" ")[1]}" r="${rad.toFixed(1)}" fill="var(${TIER[e.tier]})" fill-opacity="${(0.45+0.15*e.tier).toFixed(2)}" ${e.k==="ice"?'stroke="var(--c5)" stroke-width=".6" stroke-opacity=".5"':""}/>`});
+ events.filter(e=>on[e.k]).map(e=>{e.n=nearby(e);return e}).sort((p,q)=>q.n*weight(q)-p.n*weight(p)||p.tier-q.tier).forEach(e=>{const j=YEARS.indexOf(+e.d.slice(0,4));if(j<0)return;const lane=EV.find(x=>x[0]===e.k)[2],rr=R0+j*BW+lane*(BW-3),a=ang(e.d),n=e.n,rad=SZ*(WIN==="none"?3.2:1.6+2.2*Math.sqrt(n*weight(e)/(e.k==="er"?1:4)));
+  s+=`<circle class="ev" data-k="${e.k}" data-d="${e.d}" data-t="${e.tier}" data-v="${e.v}" data-n="${n}" cx="${P(rr,a).split(" ")[0]}" cy="${P(rr,a).split(" ")[1]}" r="${rad.toFixed(1)}" fill="var(${COL[e.k][e.tier]})" fill-opacity="${(0.5+0.12*e.tier).toFixed(2)}" stroke="var(${COL[e.k][3]})" stroke-width=".5" stroke-opacity=".5"/>`});
  s+=`</g>`;
  s+=`<text x="${CX}" y="${CY-6}" text-anchor="middle" font-size="22" fill="var(--ink)" style="font-family:var(--serif)">Detroit</text><text x="${CX}" y="${CY+14}" text-anchor="middle" font-size="11.5" fill="var(--ink-3)">May → Sep</text>`;
  document.getElementById("v").innerHTML=s;
  document.getElementById("zones").innerHTML=Z.map((z,i)=>`<div class="zone"><i style="background:var(${z.c});border:1px solid var(--line)"></i><div><b>${z.n}</b> ${i===0?"below "+Z[1].t+"°F":i===Z.length-1?z.t+"°F and up":z.t+"–"+Z[i+1].t+"°F"}<br>${z.d}</div></div>`).join("");
- document.getElementById("evkey").innerHTML=`<div>Within each ring, three lanes from inside out: <b style="color:var(--ink);font-weight:500">ice cream</b> (outlined), <b style="color:var(--ink);font-weight:500">AC</b>, <b style="color:var(--ink);font-weight:500">heat ER</b>.</div>
- <div style="display:flex;gap:12px;margin-top:6px;align-items:center">${[1,2,3].map(t=>`<span style="display:inline-flex;align-items:center;gap:5px"><svg width="14" height="14"><circle cx="7" cy="7" r="6" fill="var(${TIER[t]})" fill-opacity="${0.45+0.15*t}"/></svg>${["","top 20%","top 10%","top 5%"][t]}</span>`).join("")}</div>
- <div style="margin-top:6px">Bigger = more events of that kind in the same month.</div>`;
+ document.getElementById("evkey").innerHTML=`<div>Three lanes in each ring, inside to outside:</div>${EV.map(([k,l])=>`<div style="display:flex;align-items:center;gap:6px;margin-top:4px"><svg width="54" height="14">${[1,2,3].map(t=>`<circle cx="${8+t*13-13}" cy="7" r="5.5" fill="var(${COL[k][t]})"/>`).join("")}</svg><b style="color:var(--ink);font-weight:500;text-align:left;flex:1">${l}</b></div>`).join("")}
+ <div style="margin-top:6px">Light → dark = top 20% → 10% → 5% of Detroit's summer ${"values"}.</div>
+ <div style="margin-top:4px">Bigger = more events of that kind nearby in time (choose the window above). A search event counts as a week of days, so ER days and search weeks share one size scale.</div>`;
  const cnt=y=>{const ds=D.days.filter(d=>+d[0].slice(0,4)===y);return [ds.filter(d=>d[1]>=74).length,ds.filter(d=>d[1]>=78).length,events.filter(e=>e.k==="er"&&+e.d.slice(0,4)===y).length]};
  document.getElementById("stats").innerHTML=`<div class="mono">Per summer</div><table style="font-size:12.5px;border-collapse:collapse;margin-top:4px;width:100%"><tr style="color:var(--ink-3)"><td></td><td style="text-align:right">days 74°+</td><td style="text-align:right">days 78°+</td><td style="text-align:right">ER event days</td></tr>`+YEARS.map(y=>{const c=cnt(y);return `<tr><td>${y}${y===2026?"*":""}</td>${c.map(v=>`<td style="text-align:right;font-family:var(--mono)">${v}</td>`).join("")}</tr>`}).join("")+`</table><div style="font-size:11.5px;color:var(--ink-3);margin-top:4px">*to Sep 24</div>`;
 }
@@ -93,7 +104,7 @@ const tip=document.getElementById("tip"),fmt=d=>new Date(d+"T12:00:00").toLocale
 document.getElementById("v").addEventListener("mousemove",ev=>{const t=ev.target.closest(".ev,.day");if(!t){tip.hidden=true;return}const b=document.getElementById("stage").getBoundingClientRect();
  if(t.classList.contains("day")){const z=Z[zoneOf(+t.dataset.t)];tip.innerHTML=`${fmt(t.dataset.d)}<br>high ${R(+t.dataset.t)}°F · ${z.n.toLowerCase()}`}
  else{const k=t.dataset.k,lab={ice:"ice cream searches",ac:"AC searches",er:"heat ER visits"}[k];const tierL=["","top 20%","top 10%","top 5%"][+t.dataset.t];
-  tip.innerHTML=`${k==="er"?fmt(t.dataset.d):"week of "+fmt(t.dataset.d)}<br>${lab}: ${tierL} of summer ${k==="er"?"days":"weeks"} (${k==="er"?R(+t.dataset.v)+" per 100k ED visits":"index "+t.dataset.v})<br>${t.dataset.n} such ${k==="er"?"days":"weeks"} that month`}
+  tip.innerHTML=`${k==="er"?fmt(t.dataset.d):"week of "+fmt(t.dataset.d)}<br>${lab}: ${tierL} of summer ${k==="er"?"days":"weeks"} (${k==="er"?R(+t.dataset.v)+" per 100k ED visits":"index "+t.dataset.v})<br>${t.dataset.n} such ${k==="er"?"days":"weeks"} ${WIN==="month"?"that month":WIN==="none"?"":"within "+(WIN==="2w"?"±2":"±1")+" weeks"}`}
  tip.style.left=(ev.clientX-b.left)+"px";tip.style.top=(ev.clientY-b.top)+"px";tip.hidden=false});
 document.getElementById("v").addEventListener("mouseleave",()=>tip.hidden=true);
 draw();

@@ -32,6 +32,16 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Visualization V9 · version 2: event colours and bubble-size controls · 2026-10-01 22:05 EDT · Gina + Claude
+- **What (Gina: "larger bubbles = more events. different events also need different colors"):**
+  - Each event type has its own hue, in three shades for the tiers (top 20% / 10% / 5%): ice cream = pink, AC = teal, heat ER = oxblood to near-black.
+  - A **bubble size** slider (0.4-3×).
+  - A **"bigger = more events within"** selector: same month / ±2 weeks (default) / ±1 week / no size.
+  - Size grows with the square root of the number of same-type events in that window. A search event-week counts as 7 days, so weekly search events and daily ER events share one scale (Claude's choice, not yet approved).
+- No data changes.
+
+---
+
 ### Visualization V9 · version 1: "Detroit Summer Rings" · 2026-10-01 22:02 EDT · Gina + Claude
 - **What:** A published page, https://claude.ai/artifact/PSmL12W3Tn7JwYQ8SVJwkP (private until shared), in the palette of Gina's reference (white, peach → orange → vermilion → oxblood → near-black). Detroit only, as Gina asked first.
   - **Rings** = summers (2022 inner → 2026 outer). **Angle** = date, from May 1 at the top, clockwise, to Sep 30.
