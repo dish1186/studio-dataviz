@@ -32,6 +32,22 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Analysis A40 · typical PM2.5 by calendar month, Eugene and Bakersfield (read only) · 2026-10-02 13:13 EDT · Gina + Claude
+- **What (Gina: "do we have typical air quality values for each city to measure the unusual / difference?"):**
+  - Median and 90th percentile of daily PM2.5 (`pm25_<city>_daily.csv`, `all_mean`) by calendar month, 2016-03-12 to 2025-12-31. Nothing saved.
+  - This is the same baseline A29 used for "× usual for the month". The Reddit study's "× a typical week that month" is Dish's version and differs slightly (7.3× vs Claude's 6.8-7.7× for Eugene's smoke week).
+- **Eugene** (µg/m³, median / 90th percentile):
+  - Mar-Jul: 3.3-4.5 / 5.5-8.2
+  - Aug 5.5 / 11.1; Sep 5.6 / 19.0; Oct 6.8 / 17.0; Nov 7.9 / 20.3
+  - Dec 5.8 / 15.2; Jan 5.6 / 18.4; Feb 5.0 / 13.0
+- **Bakersfield** (median / 90th percentile):
+  - Mar-May: 6.6-7.8 / 12.7-14.0
+  - Jun-Oct: 9.5-13.3 / 14.2-24.4
+  - **Nov 20.6 / 38.3; Dec 19.5 / 45.5; Jan 15.7 / 32.9**: in Nov-Dec, 1 day in 10 is above the EPA 35.5 line.
+- 8-10 years per month; there is no long-term normal like the 1991-2020 temperature normals.
+
+---
+
 ### Visualization V13 · version 3: "start looking" fixed for Eugene and Bakersfield · 2026-10-02 12:58 EDT · Gina + Claude
 - **What (Gina: "why does bakersfield start looking at 30 degrees"):**
   - In v2, the hockey-stick bend for the two added cities was searched over a fixed 30-100 °F range. Step 11 uses the city's 10th-90th percentile of weekly highs.
