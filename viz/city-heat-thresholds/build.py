@@ -23,6 +23,12 @@ Layer 3 "Air · purifier searches": weekly Google Trends "air purifier", 2022-20
   good < 12, moderate 12-35.4, unhealthy for sensitive groups 35.5-55.4, unhealthy 55.5+. Reaction point = the lower edge of
   the first band (>= 2 weeks) where more than half of weeks spike. Weeks 2026-03-22 to 2026-06-28 left out (national surge).
   All years together only: per-period counts of bad-air weeks are too small.
+  Gauge point (v5, Gina: same structure as the AC gauge, PM2.5 on the scale, all months of the year): weeks Sep 2021-Sep 2026,
+  each placed by its worst PM2.5 day. Clean-air rate = share of weeks with worst day < 12 that spike. Surge point = the lowest
+  worst-day level (>= 12) at and above which at least half of weeks, and at least twice the clean-air rate, spike (>= 3 weeks
+  above). 90% range: 1,000 recomputations on 4-week blocks; shown when >= 70% of recomputations find a point, otherwise the
+  point is marked uncertain. (A 7-week running window was tried first and rejected: chance clusters of moderate weeks
+  triggered it, e.g. Bakersfield at 12 ug/m3.)
 All layers: periods all = 2022-2026, before2026 = 2022-2025, 2026 = Jan-Sep 2026; 1,000 recomputations on 4-week (weekly)
 or 28-day (daily) blocks; 5th-95th percentile, as in Step 12. Typical summer high = mean Jun-Aug daily high 1991-2020.
 Run from the repo root: python3 viz/city-heat-thresholds/build.py"""
@@ -95,6 +101,15 @@ def ratio_hockey(rows, city):
     if not best or best[0] in (GRID[city][0], GRID[city][-1]): return None
     return best[0]
 GRID = {}  # per city: Step 11's candidate range, 10th to 90th percentile of all 2022-2026 weekly highs
+def air_gauge(R, minn=3):
+    R = sorted(R); clean = [sv for m, sv in R if m < 12]
+    if not clean: return None, None
+    base = sum(clean) / len(clean); tg = max(0.5, 2 * base)
+    for i, (m, _) in enumerate(R):
+        above = R[i:]
+        if len(above) < minn: break
+        if m >= 12 and sum(sv for _, sv in above) / len(above) >= tg: return m, base
+    return None, base
 def hockey(rows, city=None):
     pts = [(x, math.log2(1 + y)) for d, x, y in rows]; best = None
     for t0 in GRID[city]:
@@ -157,7 +172,7 @@ for c, (name, ab, acf, reg) in CITIES.items():
     for w, v in trends(f"data/raw/google-trends/air-search-weekly/{c}_purifier_5yr.csv"):
         if "2026-03-22" <= w <= "2026-06-28": continue
         s0 = dt.date.fromisoformat(w); ds = [pm[k] for k in ((s0 + dt.timedelta(i)).isoformat() for i in range(7)) if k in pm]
-        if len(ds) >= 4 and 2022 <= s0.year <= 2026: aw.append((w, max(ds), v))
+        if len(ds) >= 4 and w <= "2026-09-20": aw.append((w, max(ds), v))
     vals = sorted(v for *_, v in aw); p75 = vals[int(.75 * (len(vals) - 1))]
     spike = (lambda v: v > 0) if p75 == 0 else (lambda v: v > p75)
     bands, react = [], None
@@ -165,7 +180,17 @@ for c, (name, ab, acf, reg) in CITIES.items():
         L = [v for _, m, v in aw if lo <= m < hi]; k = sum(spike(v) for v in L)
         bands.append({"lo": lo, "hi": hi, "n": len(L), "k": k})
         if react is None and len(L) >= 2 and k / len(L) > 0.5: react = lo
-    o["air"] = {"bands": bands, "react": react, "spike_above": p75, "n": len(aw)}
+    R = [(m, 1 if spike(v) else 0) for _, m, v in aw]
+    g, base = air_gauge(R)
+    blocks = [R[i:i + 4] for i in range(0, len(R), 4)]; bs = []
+    for _ in range(N_BOOT):
+        t, _ = air_gauge([q for _ in blocks for q in rng.choice(blocks)])
+        if t is not None: bs.append(t)
+    bs.sort(); valid = len(bs) / N_BOOT
+    ab = [sv for m, sv in R if g is not None and m >= g]
+    o["air"] = {"bands": bands, "react": react, "spike_above": p75, "n": len(aw),
+                "gauge": {"s": None if g is None else round(g, 1), "ci": [round(bs[int(.05 * len(bs))], 1), round(bs[int(.95 * len(bs)) - 1], 1)] if g is not None and valid >= 0.7 else None,
+                          "valid": round(valid, 2), "above": [sum(ab), len(ab)], "base": round(base, 3)}}
     o["typ_pm"] = round(st.median(st.median([pm[k] for k in pm if "2022" <= k[:4] <= "2026"]) for _ in [0]), 1)
     o["worst_pm_week"] = round(max(m for _, m, _ in aw), 1)
     OUT[c] = o

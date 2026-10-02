@@ -32,6 +32,30 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Visualization V13 · version 5: air layer as a PM2.5 gauge like the AC layer · 2026-10-02 14:21 EDT · Gina + Claude
+- **What (Gina: "i need this structure but have the vertical temp gauge be pm2.5 and have searching for air purifiers be pointed. you dont have to follow the same calculation as heat, just do what makes sense so that the data is legible. this will need to include all annual data"):**
+  - The air layer now mirrors the AC gauge: PM2.5 log scale (2-150 µg/m³, worst day of the week).
+  - The selected city has a big dot and a 90% range bar; other cities are grey dots on the scale ("?" = unstable); cities with no surge are listed.
+  - Reference lines: a typical day (median daily PM2.5, 2022-2026), the worst week, and the EPA 35.5 line.
+- **Rule** (`viz/city-heat-thresholds/build.py`, `air_gauge`; Claude's choice, not yet approved):
+  - Weeks Sep 26, 2021 to Sep 20, 2026, all seasons (spring-2026 surge weeks left out), each placed by its worst PM2.5 day.
+  - Spike = above the city's 75th percentile (or > 0 where that is 0).
+  - Clean-air rate = spike share in weeks with worst day < 12.
+  - Surge point = the lowest worst-day level ≥ 12 at and above which at least half of weeks and at least twice the clean-air rate spike (≥ 3 weeks above).
+  - 90% range: 1,000 resamples of 4-week blocks, shown if ≥ 70% find a point.
+  - Rejected first: a 7-week running window, which fired on chance clusters (e.g. Bakersfield 12.2).
+- **Results:**
+  - Eugene 27.8 (17.1-33.7; 6 of 11 weeks above; clean 26%; unhealthy weeks 6 of 6)
+  - Bakersfield: no surge (unhealthy weeks 5 of 32, clean 15%)
+  - Detroit 35.5 (19.2-47.3)
+  - San Diego 20.3 (16.7-25.0)
+  - San Francisco 16.0 (13.1-23.3)
+  - Boston 26.6 and Phoenix 62.7, both unstable ("?")
+- **Change:** the event bands now include Sep-Dec 2021 too (Bakersfield 32 unhealthy weeks, was 23; Eugene unchanged).
+- Republished as version 5 at https://claude.ai/artifact/RP7JSJJTvQpuH8p9LVFDKQ.
+
+---
+
 ### Analysis A44 · when Bakersfield's purifier searches peak (read only) · 2026-10-02 14:04 EDT · Gina + Claude
 - **What (Gina: "when do bakersfield air purifier searches peak during the period?"):** ranked the weekly "air purifier" file (`bakersfield_purifier_5yr.csv`, Sep 2021-Sep 2026) and the monthly file (2016-2026), with each week's PM2.5 (OpenAQ). Nothing saved.
 - **Weekly:**
