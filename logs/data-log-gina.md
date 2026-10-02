@@ -32,6 +32,12 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Visualization V9 · version 7: "Top 10% only" view · 2026-10-01 22:26 EDT · Gina + Claude
+- **What:** Added two view buttons, "Top 25%" (default) and "Top 10% only". Each sets both cut-offs (searches and ER) at once; the two selectors still allow mixed settings. In the top-10% view, 101 bubbles remain across the five summers (tested locally).
+- No data changes.
+
+---
+
 ### Visualization V9 · version 6: more dramatic, top 25% only · 2026-10-01 22:24 EDT · Gina + Claude
 - **What (Gina: "make it more dramatic - maybe only top 75% of searches?"):** Read as **only the strongest quarter** (above the 75th percentile). There are now separate cut-off selectors for searches and ER days, both defaulting to **top 25%** (options 50 / 25 / 10%).
   - Bubbles are bigger: radius = 2 + (17 ER, 24 searches) × x^1.3, where x = position above the cut-off (0-1).

@@ -40,6 +40,7 @@ svg{display:block;width:100%;height:auto}svg text{font-family:var(--sans)}
   <div class="bar" id="layers" role="group" aria-label="Layers"></div>
   <div class="bar" style="gap:12px">
     <label for="sz" style="font-size:13px;color:var(--ink-2)">Bubble size</label><input type="range" id="sz" min="0.4" max="2.5" step="0.1" value="1" style="width:150px;accent-color:var(--ac)"><output id="szo" style="font-family:var(--mono);font-size:12px;min-width:3ch">1.0&#215;</output>
+    <span role="group" aria-label="View" style="display:inline-flex;gap:4px"><button type="button" class="tg" id="p25" aria-pressed="true">Top 25%</button><button type="button" class="tg" id="p10" aria-pressed="false">Top 10% only</button></span>
     <label for="thrs" style="font-size:13px;color:var(--ink-2)">Searches shown</label><select id="thrs" class="sel"><option value="0.5">top 50%</option><option value="0.75" selected>top 25%</option><option value="0.9">top 10%</option></select>
     <label for="thre" style="font-size:13px;color:var(--ink-2)">ER days shown</label><select id="thre" class="sel"><option value="0.5">top 50%</option><option value="0.75" selected>top 25%</option><option value="0.9">top 10%</option></select>
   </div>
@@ -95,7 +96,10 @@ function draw(){
  document.getElementById("stats").innerHTML=`<div class="mono">Per summer</div><table style="font-size:12.5px;border-collapse:collapse;margin-top:4px;width:100%"><tr style="color:var(--ink-3)"><td></td><td style="text-align:right">days 74\u00b0+</td><td style="text-align:right">78\u00b0+</td><td style="text-align:right">top-10% ER days</td></tr>`+YEARS.map(y=>{const c=cnt(y);return `<tr><td>${y}${y===2026?"*":""}</td>${c.map(v=>`<td style="text-align:right;font-family:var(--mono)">${v}</td>`).join("")}</tr>`}).join("")+`</table><div style="font-size:11.5px;color:var(--ink-3);margin-top:4px">*to Sep 24</div>`;
 }
 document.getElementById("sz").addEventListener("input",e=>{SZ=+e.target.value;document.getElementById("szo").textContent=SZ.toFixed(1)+"\u00d7";draw()});
-document.getElementById("thrs").addEventListener("change",e=>{TS=+e.target.value;draw()});document.getElementById("thre").addEventListener("change",e=>{TE=+e.target.value;draw()});
+const syncP=()=>{document.getElementById("p25").setAttribute("aria-pressed",TS===0.75&&TE===0.75);document.getElementById("p10").setAttribute("aria-pressed",TS===0.9&&TE===0.9)};
+const preset=v=>{TS=TE=v;document.getElementById("thrs").value=String(v);document.getElementById("thre").value=String(v);syncP();draw()};
+document.getElementById("p25").onclick=()=>preset(0.75);document.getElementById("p10").onclick=()=>preset(0.9);
+document.getElementById("thrs").addEventListener("change",e=>{TS=+e.target.value;syncP();draw()});document.getElementById("thre").addEventListener("change",e=>{TE=+e.target.value;syncP();draw()});
 const tip=document.getElementById("tip"),fmt=d=>new Date(d+"T12:00:00").toLocaleDateString("en-US",{month:"short",day:"numeric",year:"numeric"});
 document.getElementById("v").addEventListener("mousemove",ev=>{const t=ev.target.closest(".ev,.day");if(!t){tip.hidden=true;return}const b=document.getElementById("stage").getBoundingClientRect();
  if(t.classList.contains("day"))tip.innerHTML=`${fmt(t.dataset.d)}<br>high ${R(+t.dataset.t)}\u00b0F \u00b7 ${Z[zoneOf(+t.dataset.t)].n.toLowerCase()}`;
