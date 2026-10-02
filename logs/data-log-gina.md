@@ -32,6 +32,18 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Visualization V9 · version 5: heat as a blurred glow; bubbles sized by intensity · 2026-10-01 22:21 EDT · Gina + Claude
+- **What (Gina: "not bigger by frequency, but bigger by intensity ... temperature as a blurry gradient behind ... different colors ... lower the threshold to top 50% if it looks better"):**
+  - **Heat glow:** the daily wedges (warm ramp, stepping at the exploratory zone edges) are drawn under a Gaussian blur (σ = 11 px), so they read as a soft gradient field (after Gina's second reference image). Hovering still gives the day's high.
+  - **Bubbles = intensity, not frequency:** each day (ER) or week (searches) has its **percentile among Detroit's May-Sep 2022-2026 values**. Bubbles appear above a chosen threshold (default **50th percentile**; selector: 50/70/80/90). Radius = 1.2 + (13 for ER, 16 for searches) × ((p − threshold) / (1 − threshold))^1.5 px; opacity also rises with p.
+  - **Colours:** ice cream = magenta-pink, AC = teal, heat ER = deep indigo, chosen to stand apart from the warm glow.
+  - The frequency-window control is removed; the size slider stays.
+  - The side table now counts top-10% ER days per summer.
+- **Data:** `viz/summer-rings/detroit.json` (continuous percentiles; same sources as v1).
+- **Judgment calls (Claude's choice, not yet approved):** blur strength, size curve, colours, 50th-percentile default.
+
+---
+
 ### Visualization V9 · version 4: bubble size grows more with frequency · 2026-10-01 22:16 EDT · Gina + Claude
 - **What (Gina: "they need to be larger for higher frequency"):** bubble radius = 1.5 + 1.1 × n^0.85 px (× the size slider). n = same-type events in the chosen window; a search event-week = 7 days, divided by 3.
   - Before: 1.6 + 2.2 × √n.
