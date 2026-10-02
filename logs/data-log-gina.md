@@ -32,6 +32,28 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Analysis A27 · robustness of two A26 findings (read only) · 2026-10-01 23:29 EDT · Gina + Claude
+- **What (Gina: "tell me about this", on the Detroit AC and Phoenix/Bakersfield findings):** checked both findings against season and against how hot the felt heat was. Source: `viz/heat-field/data.json`; top-25% reactions. Nothing saved.
+- **Detroit, "AC follows unusual heat, not danger" → better read as "AC follows early-season heat":**
+  - The 20 abnormal-but-safe days fall in 13 weeks: 16 days in May, 2 in June, 2 in September.
+  - The 65% figure rests on 6 strong-AC weeks out of 13.
+  - Dangerous-but-normal days fall mostly in July and August.
+  - Within dangerous-but-normal days, the share of strong AC days falls through the summer: Jun 86%, Jul 53%, Aug 25%, Sep 0%. ER falls much less: 86 / 80 / 67%.
+  - So searches fade as summer goes on, while ER stays high on dangerous days. "Bodies and behaviour react to different triggers" holds, but the AC trigger is the first heat of the year rather than abnormality as such.
+- **Phoenix and Bakersfield, "only unusual heat moves people" → does not hold once felt heat is controlled:**
+  - Abnormal days are simply the most extreme days.
+    - Phoenix median felt heat: abnormal 116 °F vs normal 106 °F.
+    - Bakersfield: 110 °F vs 100 °F.
+  - Within the same felt-heat band, abnormal and normal days have about the same strong-ER share.
+    - Phoenix: 110-115 °F 44% vs 46%; ≥ 115 °F 87% vs 78%.
+    - Bakersfield: 105-110 °F 48% vs 49%; 110-115 °F 94% vs 90%.
+  - Below a band the reaction is almost absent: Phoenix ER 0-8% below 110 °F felt; Bakersfield 7% below 100 °F.
+  - Corrected reading: the UTCI "strong heat stress" line (89.6 °F) is far below where reactions begin in these cities. Their action threshold sits near 110-115 °F felt in Phoenix and 100-105 °F in Bakersfield.
+  - Region 9 ER is shared, and 34 of Phoenix's 105 abnormal days were also abnormal in Bakersfield.
+- **The Phoenix/Bakersfield claim in chat on 2026-10-01 (A26) is corrected by this entry.**
+
+---
+
 ### Visualization V10 · version 2: fix to search percentiles; Analysis A26 · strongest and strangest correlations · 2026-10-01 23:15 EDT · Gina + Claude
 - **Fix (found by Claude):** in version 1, AC and ice cream percentiles were ranked against all weeks of 2022-2026, including winter. Summer weeks therefore looked "top 25%" far too often.
   - `build.py` now ranks only the weeks that overlap May-Sep, including weeks starting Apr 25-30.
