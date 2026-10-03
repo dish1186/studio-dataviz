@@ -1,0 +1,5 @@
+city,role,normal,candidate_weeks,usable_weeks,dropped_pm_over,dropped_no_pm,dropped_fireworks,dropped_low_volume,usable_pm_partial,B1_enough_weeks,B2_iqr_pp,B3_drift_pp,B3_definition,B3_n_weeks,report_median_share_pct,report_volume_min,report_volume_median,report_smoky_weeks_ge15
+eugene,decides,neighbor,10,10,0,0,0,0,2,1,0.488,0.542,before vs after,5 vs 5,0.342,2287,3295.5,1
+eugene,decides,month,29,28,1,0,0,0,1,1,0.701,0.087,2019-2021 vs 2023-2025,11 vs 12,0.492,1257,4312.0,1
+bakersfield,check only,neighbor,10,9,0,0,1,0,0,1,0.509,0.425,before vs after,5 vs 4,0.321,719,1559,4
+bakersfield,check only,month,30,22,3,2,4,0,3,1,0.648,0.441,2019-2021 vs 2023-2025,10 vs 9,0.34,291,692.0,15

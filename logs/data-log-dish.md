@@ -1307,6 +1307,35 @@ Step · dataset · date · who ran it | What (plain language) | Why | Input file
   - Posts distinguished as moderator also count as bots. `02_clean` only did this for comments, but it could check post authors by name. **Claude's choice, flagged.**
   - `02_clean`'s `author == [deleted]` check can't fire on stripped files. **Caveat.**
 
+### Normals Step 2 run · Reddit normal chosen: month · 2026-10-03 · run by Claude in chat at Dish's request ("run it here")
+- **Script unchanged** from the commit above (235ff7b, which was committed before the run). No errors.
+- **Cleaning:**
+  - **Eugene:** 205,773 rows read, of which 20,973 were duplicates (the neighbor and Month-2020 pulls overlap). 10,124 event-week rows were dropped unread, 14,467 removed/deleted, 247 bots, 997 empty. **158,965 kept.**
+  - **Bakersfield:** 48,188 read, 5,290 duplicates, 1,693 event-week rows dropped, 3,424 removed/deleted, 82 bots, 154 empty. **37,545 kept.**
+- **Tests** (weekly air-talk share; pp = percentage points):
+
+  | City | Normal | Usable weeks | Test 2 spread | Test 3 drift |
+  |---|---|---|---|---|
+  | Eugene | neighbor | 10/10 | **0.488** | 0.542 |
+  | Eugene | month | 28/29 | 0.701 | **0.087** |
+  | Bakersfield | neighbor | 9/10 | **0.509** | **0.425** |
+  | Bakersfield | month | 22/30 | 0.648 | 0.441 |
+
+- **Decision, by the pre-set rule: month normal.**
+  - Eugene splits: neighbor is steadier, month has far less drift. A split goes to the month normal.
+  - **The Bakersfield check disagrees** (it favors neighbor on both tests). Reported, not acted on.
+  - Bakersfield's test 3 is nearly tied (0.425 vs 0.441).
+- **Reported only:**
+  - Median baseline share: Eugene neighbor 0.342%, month 0.492%; Bakersfield neighbor 0.321%, month 0.340%.
+  - Smoky usable weeks (PM2.5 ≥ 15): Bakersfield month 15 of 22 (December inversions), neighbor 4 of 9; Eugene 1 in each.
+  - Lowest weekly volume: 291 kept items (Bakersfield month).
+- **SHA-256:**
+  - normals_02_compare.py `f7026042771302c8cfab848b5a166afe44bb658a61754f019d7240da860ebf40`
+  - weekly.csv `befd6a7837a7a580ddea161f2a096da3eef4aa1c6a3ce211bf389a7663e5a746`
+  - tests.csv `f2d20d033707558b8d72c53d128dffd82e814ef2c57144c3b92ec5cead3fa7a0`
+  - cleaning.csv `300534aa84684c56262e31eeb3e7946c90186e107fa7c391dab83e751e5a91ea`
+  - decision.md `f2dfd4719bab7fe94c0056a8c48ef526ae167bd19da4836966b7d875bfe7d87e`
+
 ---
 **Actual-temperature status (2026-09-27): done for all 12 cities.** gridMET Steps 1–5b for the 11 continental viz cities (D10; 16 pulled); **Fairbanks from ERA5-Land** (D15, ERA5-Land Steps 1–3). Final files for all 12 in `data/processed/gridmet/final/` (`temp_<city>_daily.csv`, 3,920 rows 2016-01-01 → 2026-09-24, join row for row with UTCI; `_normals.csv`; `_monthly.csv`); the folder name is gridMET but Fairbanks' source is ERA5-Land (blank 2026-09-22 → 09-24). End date settled (D9). Open: N1 (boundary file vs OpenAQ, appendix note); optional PAFA station cross-check for Fairbanks; March 2026 station check.
 
