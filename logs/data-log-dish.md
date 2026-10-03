@@ -1336,6 +1336,30 @@ Step · dataset · date · who ran it | What (plain language) | Why | Input file
   - cleaning.csv `300534aa84684c56262e31eeb3e7946c90186e107fa7c391dab83e751e5a91ea`
   - decision.md `f2dfd4719bab7fe94c0056a8c48ef526ae167bd19da4836966b7d875bfe7d87e`
 
+### Step 8 · OpenAQ · PM2.5 normal, ratios and city pairs; Eugene–Bakersfield dropped as a test pair · 2026-10-03 · Dish + Claude
+- **Context:** Dish asked to make sure Eugene and Bakersfield "still shows results that support our hypothesis." Claude said results are reported whatever they show. Claude also pointed out a problem from PM2.5 alone: with Eugene's new event week (Sep 2020), **Eugene leads on both absolute PM2.5 (280.4 vs 55.5) and ratio (41.9× vs 2.9×)**, so Pos and Neg predict the same thing for this pair and it can't tell them apart. Claude proposed fixing new pairs from PM2.5 only, before any event-week Reddit file is opened. **Approved by Dish.**
+- **Script:** `scripts/openaq/08_pm_normals_and_pairs.py`, run by Claude.
+  - **PM2.5 normal** = median weekly average for the event's month (by Thursday), 2019–2025, excluding the event week.
+  - **Ratio** = event week ÷ normal.
+  - **Pairs** = crossed (worse air, smaller ratio) or matched (within 5%).
+- **Bug fixed before logging:** the first run named the wrong city in `pos_predicts` for matched pairs where the worse-air city has the higher ratio. Fixed and rerun; nothing else changed.
+- **Output:** `data/processed/openaq/step08_pm_normals/pm_normals.csv`, `pairs.csv`.
+- **Ratios:** Eugene 41.9 · Fairbanks 17.4 · Detroit 7.4 · Seattle 7.2 · Yakima 6.0 · Fresno 6.0 · Pittsburgh 5.3 · San Jose 5.0 · Indianapolis 4.4 · Bakersfield 2.9.
+- **Pairs:** 14 qualify. **Headline (approved by Dish):**
+  - **Bakersfield vs Indianapolis**, matched: 55.5 vs 55.1, ratios 2.9× vs 4.4×.
+  - **Bakersfield vs Seattle**, crossed: 55.5 vs 51.5, ratios 2.9× vs 7.2×.
+  - Eugene–Bakersfield is kept as an illustration only.
+- **Judgment calls:**
+  - Matched = within 5%. **Claude's choice, approved with the plan.**
+  - The PM2.5 normal uses valid weeks only, and keeps fireworks and > 35.5 weeks (it's what residents are used to). **Claude's choice, flagged.**
+  - Headline pairs were chosen by Claude after seeing the PM2.5 pairs (no Reddit). **Approved by Dish.**
+- **Also:** the design doc was updated (Reddit normal decided as month; Pairs section; open/settled decisions). Pull plan for the other 8 cities' month normals: `docs/reddit-pull-month-normals-8-cities.md` (56 pulls, 112 files). It asks Gina not to open the event-week files until all normals are in.
+- **SHA-256:**
+  - 08_pm_normals_and_pairs.py `8463d070ffda1024c91b62bb2808a7b2a1e7da01057812a5d5043be1c1e0fff4`
+  - pm_normals.csv `9915db87fa1cac7e1cddca19643eff9c114e379017d211105bc40620b90624b6`
+  - pairs.csv `c7e085ab8d500bcb88d863d17f12c79e3b9d5ef3d904c5cffd4dc5d3613fd584`
+  - pull plan `77015491413b94ef6abdc97ea1998d579d5c122951456c8ea3e4aea5d3d1de45`
+
 ---
 **Actual-temperature status (2026-09-27): done for all 12 cities.** gridMET Steps 1–5b for the 11 continental viz cities (D10; 16 pulled); **Fairbanks from ERA5-Land** (D15, ERA5-Land Steps 1–3). Final files for all 12 in `data/processed/gridmet/final/` (`temp_<city>_daily.csv`, 3,920 rows 2016-01-01 → 2026-09-24, join row for row with UTCI; `_normals.csv`; `_monthly.csv`); the folder name is gridMET but Fairbanks' source is ERA5-Land (blank 2026-09-22 → 09-24). End date settled (D9). Open: N1 (boundary file vs OpenAQ, appendix note); optional PAFA station cross-check for Fairbanks; March 2026 station check.
 

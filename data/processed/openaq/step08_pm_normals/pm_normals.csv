@@ -1,0 +1,11 @@
+city,city_name,event_week_start,event_week_end,event_month,event_week_pm25,pm25_normal,normal_weeks,normal_weeks_above_35_5,ratio_to_normal,median_days_ge_35_5_2019_2025
+eugene,Eugene OR,2020-09-07,2020-09-13,9,280.4,6.695,28,1,41.88,0
+fairbanks,Fairbanks AK,2022-06-27,2022-07-03,6,91.8,5.28,20,1,17.39,8
+detroit,Detroit MI,2026-07-13,2026-07-19,7,91.78,12.33,25,0,7.44,2
+seattle,Seattle WA,2020-09-07,2020-09-13,9,51.46,7.14,27,0,7.21,1
+yakima,Yakima WA,2021-09-06,2021-09-12,9,53.77,8.99,25,1,5.98,3
+fresno,Fresno CA,2020-08-17,2020-08-23,8,61.16,10.275,26,1,5.95,8
+pittsburgh,Pittsburgh PA,2026-07-13,2026-07-19,7,59.21,11.23,19,0,5.27,0
+sanjose,San Jose CA,2020-08-17,2020-08-23,8,36.34,7.25,26,0,5.01,0
+indianapolis,Indianapolis IN,2023-06-26,2023-07-02,6,55.09,12.45,23,0,4.42,1
+bakersfield,Bakersfield CA,2024-12-02,2024-12-08,12,55.47,18.85,24,3,2.94,12

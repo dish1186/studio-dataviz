@@ -98,7 +98,11 @@ Invalid weeks (fewer than 5 of 7 days) can't be event weeks either. Any that ave
 
 ## Reddit control protocol
 
-*Status: **undecided** (corrected 2026-10-02, Dish: "we didnt decide on using neighboring data"). The steps below describe the neighboring-weeks option. The alternative is same-month weeks from 2019–2025, like the PM2.5 normal. Claude's recommendation is to pull both and choose the headline before looking at Reddit numbers. To discuss with Gina.*
+*Status: **decided 2026-10-03: month normal.** The Reddit normal is the median weekly air-talk share for the same calendar month, 2019–2025, excluding the event week, like the PM2.5 normal.*
+- *It was chosen by the pre-set rules below ("Choosing the normal") on Eugene, which is blind. Eugene split (neighbor steadier, month far less drift), and a split goes to the month normal. Results: `data/processed/reddit/normals_02_compare/decision.md`.*
+- *The Bakersfield check (not blind) favored neighbor. That's reported, not acted on.*
+- *Steps 2, 3, 11 and 12 below describe the neighbor design. They're kept for the record. The before/after sensitivity check is replaced by the neighbor normal itself, which can be reported as the alternative.*
+- *Pull plan for the other 8 cities: `docs/reddit-pull-month-normals-8-cities.md`.*
 
 1. **Order:** PM2.5 event weeks are found first. Reddit is pulled only after, except for the check 2 screening pull.
 2. **What we pull:** for each city, one continuous range from 6 weeks before to 6 weeks after the event week, padded by 1 day on each end for the time zone conversion. Example: event week Mon Sep 7 – Sun Sep 13, 2020 → pull Jul 26 – Oct 26, 2020.
@@ -153,8 +157,40 @@ A table with one row per city: city, group, event week dates, event type, event-
 
 Built after the event weeks are found. Two kinds count:
 
-- **Matched:** similar absolute PM2.5, different ratio. The tolerance for "similar" is [TBD].
-- **Crossed:** the chronic city had worse air but a smaller ratio. Bakersfield vs. Eugene is the template.
+- **Matched:** similar absolute PM2.5, different ratio. "Similar" = event-week PM2.5 within 5% of each other *(Claude's choice)*.
+- **Crossed:** one city had worse air but a smaller ratio.
+
+**Pairs fixed 2026-10-03, before any event-week Reddit file was opened** (PM2.5 only; `scripts/openaq/08_pm_normals_and_pairs.py` → `data/processed/openaq/step08_pm_normals/`).
+
+PM2.5 ratio to normal:
+
+| City | Ratio |
+|---|---|
+| Eugene | 41.9× |
+| Fairbanks | 17.4× |
+| Detroit | 7.4× |
+| Seattle | 7.2× |
+| Yakima | 6.0× |
+| Fresno | 6.0× |
+| Pittsburgh | 5.3× |
+| San Jose | 5.0× |
+| Indianapolis | 4.4× |
+| Bakersfield | 2.9× |
+
+*The PM2.5 normal uses only valid weeks (≥ 5 of 7 days), and keeps fireworks and > 35.5 weeks. Claude's choices.*
+
+**Headline pairs (approved by Dish):**
+
+| Pair | Type | Event-week PM2.5 | Ratio | Pos predicts | Neg predicts |
+|---|---|---|---|---|---|
+| Bakersfield vs Indianapolis | matched | 55.5 vs 55.1 | 2.9× vs 4.4× | Indianapolis reacts more | about the same |
+| Bakersfield vs Seattle | crossed | 55.5 vs 51.5 | 2.9× vs 7.2× | Seattle reacts more | Bakersfield reacts more |
+
+**Eugene vs Bakersfield is no longer a test pair.** With the Sep 2020 event week, Eugene has both the worse air (280 vs 55) and the bigger ratio (41.9× vs 2.9×), so Pos and Neg predict the same thing. It's kept as an illustration only. (The old August 2026 Eugene event made a crossed pair.)
+
+**All 14 qualifying pairs** are in `pairs.csv` and are reported, not only the headline ones.
+- **Fairbanks vs Detroit** is a strong matched pair: 91.8 vs 91.8, with ratios of 17.4× vs 7.4×. But Detroit's week was national news.
+- **Fresno vs Yakima** is crossed only on a trivial ratio gap (5.95× vs 5.98×).
 
 ## How we decide
 
@@ -187,9 +223,17 @@ Built after the event weeks are found. Two kinds count:
 
 ## Open decisions
 
-[N_avg], [N_min], chronic and acute cutoffs [X] and [Y], keyword check sample size, pair tolerance, event type rule (news check done for the 10 event weeks; a formal rule is still open), headline Reddit rise measure (ratio or percentage points), screening pull month, spot-check years.
+[N_avg], [N_min], chronic and acute cutoffs [X] and [Y], event type rule (news check done for the 10 event weeks; a formal rule is still open), headline Reddit rise measure (ratio or percentage points), screening pull month, spot-check years.
 
-Settled 2026-10-02: valid-week rule (5 of 7), hourly completeness (18 of 24), ≥ 35.5 for counting days, reference/low-cost filter (`sensor_class`), station combining (mean of sites), fireworks rule. The low-cost agreement rule is not needed: no city uses low-cost. Each one gets settled in the data log, then copied here.
+Settled 2026-10-02: valid-week rule (5 of 7), hourly completeness (18 of 24), ≥ 35.5 for counting days, reference/low-cost filter (`sensor_class`), station combining (mean of sites), fireworks rule. The low-cost agreement rule is not needed: no city uses low-cost.
+
+Settled 2026-10-03:
+- **Keyword list:** v1 frozen, with no new hand-check.
+- **Reddit normal:** month.
+- **Pair tolerance:** within 5%.
+- **Headline pairs:** Bakersfield–Indianapolis and Bakersfield–Seattle.
+
+Each one gets settled in the data log, then copied here.
 
 ## Changelog
 
