@@ -29,6 +29,7 @@ Run from the repo root:
   python3 scripts/reddit/normals_00_api_download.py --dry-run          (list what would be downloaded)
   python3 scripts/reddit/normals_00_api_download.py                    (download everything to ~/Downloads/<city>/)
   python3 scripts/reddit/normals_00_api_download.py --only detroit     (only file names containing "detroit")
+  python3 scripts/reddit/normals_00_api_download.py --skip detroit_event   (everything except that pull)
   python3 scripts/reddit/normals_00_api_download.py --plan docs/reddit-pull-eugene-bakersfield.md \
       --only bakersfield_month_2019-12-02 --out <folder>                (validation test)
 """
@@ -124,10 +125,12 @@ def main():
     ap.add_argument("--plan", default="docs/reddit-pull-month-normals-8-cities.md")
     ap.add_argument("--out", default=os.path.expanduser("~/Downloads"))
     ap.add_argument("--only", help="only pulls whose file name contains this text")
+    ap.add_argument("--skip", help="leave out pulls whose file name contains this text")
     ap.add_argument("--dry-run", action="store_true")
     args = ap.parse_args()
 
-    pulls = [p for p in read_plan(args.plan) if not args.only or args.only in p["name"]]
+    pulls = [p for p in read_plan(args.plan) if (not args.only or args.only in p["name"])
+             and not (args.skip and args.skip in p["name"])]
     print(f"{len(pulls)} pulls ({2 * len(pulls)} files) from {args.plan} -> {args.out}/<city>/", flush=True)
     failed, t0 = [], time.time()
     for i, p in enumerate(pulls, 1):
