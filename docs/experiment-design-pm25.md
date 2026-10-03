@@ -106,7 +106,12 @@ Invalid weeks (fewer than 5 of 7 days) can't be event weeks either. Any that ave
 4. **Time zone:** all Reddit timestamps are converted from UTC to the city's local time before assigning posts to weeks, so Reddit weeks match PM2.5 weeks.
 5. **Subreddit:** one main city subreddit per city, listed in this doc, chosen before looking at the event week.
 6. **Data:** posts and comments from Arctic Shift (arctic-shift.photon-reddit.com). Remove bot accounts, deleted or removed text, and duplicates.
-7. **Air keyword list:** written once, frozen, and used for every city. Before freezing, hand-check [50] random matches for false hits, such as "smoke" meaning cigarettes or weed, and allergy or pollen talk.
+7. **Air keyword list:** written once, frozen, and used for every city. **Frozen 2026-10-03: `data/lexicons/lexicon_air_v1.csv`.**
+   - **What counts:** `include` terms count as air talk. `candidate` terms count only in a wider secondary measure. `fire` terms are a separate fire measure. `exclude` patterns are blanked first.
+   - **Hand-check:** no new one. The earlier hand-check of 216 items from the Eugene/Bakersfield study is used instead *(changed by Dish)*.
+   - **Caveats** (see `logs/data-log-dish.md`):
+     - Only Eugene and Bakersfield were tested, and v1 itself was not re-checked.
+     - The list was partly tuned on Bakersfield's event week, which likely inflates Bakersfield's rise (a conservative bias for Pos).
 8. **Control:** the median weekly air-talk share across the baseline weeks.
 9. **Why share, not counts:** subreddit activity changes week to week. A share keeps a busier week from looking like more air talk.
 10. **Minimum volume:** a week counts only if the subreddit had at least [N_min] total posts and comments that week. Weeks below this are listed for review, not silently dropped.
@@ -141,7 +146,7 @@ Built after the event weeks are found. Two kinds count:
     - None are PurpleAir (they are Clarity, AirGradient and CMU), so the Barkjohn correction doesn't apply.
     - Low-cost coverage since 2019 is 0–56% in every city.
 - **Reddit:** Arctic Shift, with the subreddit listed for each city.
-- **Air-talk keywords:** frozen list in [file path].
+- **Air-talk keywords:** frozen list in `data/lexicons/lexicon_air_v1.csv` (frozen 2026-10-03).
 
 ## Known confounds
 

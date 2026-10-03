@@ -1264,6 +1264,32 @@ Step · dataset · date · who ran it | What (plain language) | Why | Input file
   - iqair.com/blog/wildfires/washington-oregon-fires-choke-northwest
   - ipm.org/2023-06-28/canadian-wildfires-are-polluting-the-air-in-indiana
 
+### Decision · Reddit normal undecided; pull plan for Eugene and Bakersfield · 2026-10-02 · Dish + Claude
+- **Reddit baseline: undecided.** The design doc's "neighboring-weeks design adopted" was corrected; Dish: "we didnt decide on using neighboring data". There are two options:
+  - **Neighbor:** ±6 weeks around the event.
+  - **Month:** the same month in 2019–2025, like the PM2.5 normal.
+  - Claude's recommendation: pull both, and choose the headline before looking at any Reddit numbers.
+- **Pull plan:** `docs/reddit-pull-eugene-bakersfield.md`.
+  - 8 date ranges per city (1 neighbor + 7 month), posts and comments each.
+  - Weeks are assigned to a month by their Thursday.
+  - Download dates are padded like `00_download_plan.py`.
+  - Gina pulled them and checked them with `scripts/reddit/normals_01_check_and_strip_usernames.py`. See Gina's log.
+- **Comparison rule (Claude's recommendation):** judge each normal only on its own weeks: number of usable weeks, week-to-week steadiness of air-talk share and of volume, and drift. Never use the event week, never read `event_weeks_no_usernames/`, and calculate no Reddit rise until the normal is chosen. The exact criteria and tie-breaker are still to be written down.
+
+### Decision · air keyword list frozen: lexicon_air_v1 · 2026-10-03 · Dish
+- **`data/lexicons/lexicon_air_v1.csv` frozen**, unchanged, as the experiment's air keyword list. SHA-256 `a7bbf8c4a434bef00800a70d43c08c17e46e002db231fc35b434a09a401a4977`.
+  - **Counts as air talk:** `include` terms.
+  - **Wider secondary measure only:** `candidate` terms.
+  - **Separate fire measure:** `fire` terms.
+  - **Blanked first:** `exclude` patterns.
+- **No new 50-item hand-check (protocol step 7). Changed by Dish:** "i already hand test 250 for v1".
+- **Caveats for the appendix:**
+  - **Validated on 216 hand-coded items** (`data/processed/reddit/step03b_validation/answer_key.csv`) from the earlier Eugene/Bakersfield study. Dish recalls about 250; if the other ~34 exist elsewhere, add their location here.
+  - **v1 itself was never re-checked.** That coding was done on v0 and produced v1 (fire words moved to a separate measure; Bakersfield phrases added). `step03b_validation_v1/` is empty.
+  - **Only Eugene and Bakersfield were tested.** The other 8 cities weren't. The core terms (smoke, haze, AQI, air quality) are generic.
+  - **Partly tuned on Bakersfield's event week.** 75 of the 216 items came from `bakersfield_event_2024-12-02`, now Bakersfield's event week in this study, and phrases were added from Bakersfield items. This likely raises Bakersfield's event-week air talk. A bigger rise for a chronic city works against the Pos hypothesis, so the bias is conservative, but it must be disclosed.
+  - **Bakersfield's result has already been seen.** Its event-week rise against Dec 2023/Dec 2025 (close to a month normal) was computed in the earlier study and used in Gina's mockups (her log, M3). Choosing the normal is therefore not blind for Bakersfield. Eugene's event week (Sep 7–13, 2020) has not been looked at.
+
 ---
 **Actual-temperature status (2026-09-27): done for all 12 cities.** gridMET Steps 1–5b for the 11 continental viz cities (D10; 16 pulled); **Fairbanks from ERA5-Land** (D15, ERA5-Land Steps 1–3). Final files for all 12 in `data/processed/gridmet/final/` (`temp_<city>_daily.csv`, 3,920 rows 2016-01-01 → 2026-09-24, join row for row with UTCI; `_normals.csv`; `_monthly.csv`); the folder name is gridMET but Fairbanks' source is ERA5-Land (blank 2026-09-22 → 09-24). End date settled (D9). Open: N1 (boundary file vs OpenAQ, appendix note); optional PAFA station cross-check for Fairbanks; March 2026 station check.
 
