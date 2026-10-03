@@ -32,6 +32,36 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Reddit · event weeks, Step 1: copies of Gina's event-week pulls with usernames removed, plus a coverage doc · 2026-10-03 11:51 EDT · Gina + Claude
+- **What (Gina: "push a cleaned copy plus the document, remove the username field from copies but leave my originals untouched"):** Gina downloaded r/[city] posts and comments for the 10 PM2.5 event weeks from the Arctic Shift download tool (Monday to following Monday, UTC). Claude checked every file, then copied them with all username fields removed.
+- **Why:** to put the event-week Reddit data in the repo without usernames (project rule; methodology doc, Ethics section).
+- **Input:** `Downloads/event week/r_<subreddit>_{posts,comments}.jsonl` on Gina's computer: 20 files.
+  - Not in the repo.
+  - Unchanged: MD5 checksums were identical before and after the script ran.
+- **Script:** `scripts/reddit/event_weeks_01_strip_usernames.py`
+- **Rows in → out:** 64,964 records (3,241 posts and 61,723 comments) → 64,964. No records removed.
+- **Fields removed (764,010 values in total):** every field starting with `author` and `link_author`, **at every level of nesting**. That covers:
+  - the username, user ID, account date, flair, premium/Patreon status, cakeday and is_blocked
+  - the original poster inside crossposts (`crosspost_parent_list`)
+  - `author_name` and `author_url` of embedded YouTube or Twitter media
+- **Check:** the script then confirms that no author field is left at any level of any output.
+- **Error caught before pushing:** the first run removed only top-level fields. A check found 1,581 author fields still nested in crossposts and media embeds, so the script was made recursive and re-run.
+- **Output:**
+  - `data/processed/reddit/event_weeks_no_usernames/` (20 `.jsonl` files and `coverage.csv`)
+  - `docs/reddit-event-weeks-pull-status.md`: a table of city, subreddit, event week, pull dates, covered dates, gaps and tries.
+- **Coverage:**
+  - **8 cities complete** for their seven UTC days.
+  - **Detroit comments** end Jul 19 21:11 UTC (2.8 h short).
+  - **Pittsburgh comments** end Jul 19 19:52 UTC (4.1 h short).
+  - **Fairbanks and Yakima:** the archive confirmed the empty hours and days are genuinely empty.
+- **Judgment calls (Claude's choice, not yet approved):**
+  - **Where the copies go:** under `data/processed/`, not `data/raw/`, because they are changed copies (log rule 2).
+  - **What to remove:** all `author*` fields, not just `author`, because flair and user ID can also identify people.
+  - **Usernames inside text:** usernames typed inside post or comment text are not removed.
+  - **Time zone:** the files stay in UTC weeks, not local.
+
+---
+
 ### Doc D1 · version 4: subreddit method rewritten; final list of 13 cities · 2026-10-02 19:02 EDT · Gina + Claude
 - **What (Gina: "update the how subreddits were chosen, and add the final list of cities with 75% or more of coverage during the period"):**
   - Rewrote "How the subreddits were chosen" in `docs/city-selection-process.md` as numbered steps: source (Arctic Shift lookup), Gina's r/[city name] rule, name matching, choosing among variants, and the result (24 of 25 pass; El Centro not available).

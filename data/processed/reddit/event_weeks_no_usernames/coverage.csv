@@ -1,0 +1,21 @@
+file,subreddit,kind,records,unique_ids,first_utc,last_utc,field_names_removed,values_removed
+r_Detroit_comments.jsonl,Detroit,comments,5822,5822,2026-07-13 00:06,2026-07-19 21:11,14,73459
+r_Detroit_posts.jsonl,Detroit,posts,284,284,2026-07-13 00:09,2026-07-19 23:43,15,3422
+r_Eugene_comments.jsonl,Eugene,comments,9444,9444,2020-09-07 00:00,2020-09-13 23:54,13,107792
+r_Eugene_posts.jsonl,Eugene,posts,620,620,2020-09-07 02:13,2020-09-13 23:56,15,6967
+r_Fairbanks_comments.jsonl,Fairbanks,comments,184,184,2022-06-27 00:09,2022-07-03 08:29,12,2183
+r_Fairbanks_posts.jsonl,Fairbanks,posts,15,15,2022-06-27 07:07,2022-07-03 08:28,12,165
+r_SanJose_comments.jsonl,SanJose,comments,3926,3926,2020-08-17 00:06,2020-08-23 23:59,13,45523
+r_SanJose_posts.jsonl,SanJose,posts,346,346,2020-08-17 00:00,2020-08-23 23:58,15,3927
+r_Seattle_comments.jsonl,Seattle,comments,11663,11663,2020-09-07 00:00,2020-09-13 23:59,13,130521
+r_Seattle_posts.jsonl,Seattle,posts,678,678,2020-09-07 00:18,2020-09-13 23:43,15,7522
+r_Yakima_comments.jsonl,Yakima,comments,47,47,2021-09-06 04:45,2021-09-11 17:38,12,539
+r_Yakima_posts.jsonl,Yakima,posts,3,3,2021-09-07 02:41,2021-09-10 20:29,12,31
+r_bakersfield_comments.jsonl,Bakersfield,comments,1625,1625,2024-12-02 00:02,2024-12-08 23:57,13,19225
+r_bakersfield_posts.jsonl,Bakersfield,posts,123,123,2024-12-02 02:09,2024-12-08 23:18,14,1480
+r_fresno_comments.jsonl,fresno,comments,1100,1100,2020-08-17 00:02,2020-08-23 23:55,13,12337
+r_fresno_posts.jsonl,fresno,posts,80,80,2020-08-17 00:22,2020-08-23 23:25,14,869
+r_indianapolis_comments.jsonl,indianapolis,comments,5325,5325,2023-06-26 00:07,2023-07-02 23:59,13,63449
+r_indianapolis_posts.jsonl,indianapolis,posts,284,284,2023-06-26 00:49,2023-07-02 23:58,15,3172
+r_pittsburgh_comments.jsonl,pittsburgh,comments,22587,22587,2026-07-13 00:00,2026-07-19 19:52,14,271282
+r_pittsburgh_posts.jsonl,pittsburgh,posts,808,808,2026-07-13 00:08,2026-07-19 23:49,15,10145
