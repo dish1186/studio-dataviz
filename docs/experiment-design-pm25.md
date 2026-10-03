@@ -113,6 +113,32 @@ Invalid weeks (fewer than 5 of 7 days) can't be event weeks either. Any that ave
      - Only Eugene and Bakersfield were tested, and v1 itself was not re-checked.
      - The list was partly tuned on Bakersfield's event week, which likely inflates Bakersfield's rise (a conservative bias for Pos).
 8. **Control:** the median weekly air-talk share across the baseline weeks.
+
+### Choosing the normal: neighbor vs month (rules fixed 2026-10-03, before any share was computed; approved by Dish)
+
+Script: `scripts/reddit/normals_02_compare.py`. It reads only the normal pulls, drops the event week on reading, and never computes a Reddit rise.
+
+- **Usable weeks** (both normals):
+  - Weeks are Monday–Sunday, local time.
+  - **Neighbor:** ±6 weeks, minus the week directly before and after.
+  - **Month:** every week of the event's month (by Thursday), 2019–2025, minus the event week.
+  - **Drop** a week if:
+    - PM2.5 is > 35.5
+    - it has no PM2.5 data
+    - it's a fireworks week
+    - it has fewer than **100** kept posts + comments *(Claude's choice, approved)*
+  - **Keep, but flag:** weeks with 1–4 PM2.5 days, if their average is ≤ 35.5.
+- **Air talk:** `include` terms of `lexicon_air_v1`. Removed/deleted items and bots are dropped. Bots are `distinguished = moderator` or "I am a bot" text, because usernames were stripped *(Claude's choice)*.
+- **Test 1, enough weeks:** ≥ **6** usable weeks *(Claude's choice, approved)*.
+- **Test 2, steady:** interquartile range of the weekly share (percentage points). Smaller wins.
+- **Test 3, no drift:** neighbor = before vs after; month = 2019–2021 vs 2023–2025. Measured as the gap between median shares (pp). Smaller wins.
+- **Reported only:** volume, PM2.5 per week, smoky weeks (≥ 15).
+- **Decision:**
+  - **Eugene decides**, because it's the blind city.
+  - A normal that fails test 1 loses.
+  - Otherwise, the normal smaller on both tests 2 and 3 wins.
+  - A split, a tie, or a test 3 that can't be computed goes to the **month normal**, which matches the PM2.5 normal.
+  - **Bakersfield is a check only** (not blind). If it disagrees, that's reported, not acted on.
 9. **Why share, not counts:** subreddit activity changes week to week. A share keeps a busier week from looking like more air talk.
 10. **Minimum volume:** a week counts only if the subreddit had at least [N_min] total posts and comments that week. Weeks below this are listed for review, not silently dropped.
 11. **Sensitivity check:** Reddit rise is also computed with before-weeks only, after-weeks only, and a ± 4-week window. These use the same pull. If the before and after medians differ a lot, the city has seasonal drift and is flagged. If city rankings hold across all versions, the result doesn't depend on the window choice.

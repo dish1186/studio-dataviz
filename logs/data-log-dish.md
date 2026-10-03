@@ -1290,6 +1290,23 @@ Step · dataset · date · who ran it | What (plain language) | Why | Input file
   - **Partly tuned on Bakersfield's event week.** 75 of the 216 items came from `bakersfield_event_2024-12-02`, now Bakersfield's event week in this study, and phrases were added from Bakersfield items. This likely raises Bakersfield's event-week air talk. A bigger rise for a chronic city works against the Pos hypothesis, so the bias is conservative, but it must be disclosed.
   - **Bakersfield's result has already been seen.** Its event-week rise against Dec 2023/Dec 2025 (close to a month normal) was computed in the earlier study and used in Gina's mockups (her log, M3). Choosing the normal is therefore not blind for Bakersfield. Eugene's event week (Sep 7–13, 2020) has not been looked at.
 
+### Decision · rules for choosing the Reddit normal · 2026-10-03 · Dish + Claude · **script written, not yet run**
+- **What:** fixed the rules for choosing between the neighbor and month normals, **before any air-talk share was computed**. They were copied into the design doc ("Choosing the normal").
+- **Script:** `scripts/reddit/normals_02_compare.py`.
+  - **Input (read only):** `normals_no_usernames/`, `lexicon_air_v1`, `step07_screening/weekly_all.csv`.
+  - **Output:** `data/processed/reddit/normals_02_compare/`
+  - **Safeguards:** it never reads `event_weeks_no_usernames/`, drops event-week rows on reading, and computes no rise.
+  - It reuses `02_clean.py` (`is_removed`, `clean`) and `study.py` (`flag_topic`), so cleaning and matching are the same as the earlier pipeline.
+- **Judgment calls:**
+  - Minimum 100 kept posts + comments per week. **Claude's choice, approved by Dish.**
+  - Minimum 6 usable weeks (test 1). **Claude's choice, approved by Dish.**
+  - Eugene decides; Bakersfield is a check only. **Claude's recommendation, approved by Dish.**
+  - The month normal wins a split or a tie. **Claude's recommendation, approved by Dish.**
+  - Test 2 = interquartile range of the weekly share. Test 3 = gap between median shares (neighbor: before vs after; month: 2019–21 vs 2023–25). **Claude's choice, approved by Dish (as part of the draft).**
+  - Bots = `distinguished = moderator` or "I am a bot" text, because usernames were stripped. **Claude's choice, flagged; not separately approved.**
+  - Posts distinguished as moderator also count as bots. `02_clean` only did this for comments, but it could check post authors by name. **Claude's choice, flagged.**
+  - `02_clean`'s `author == [deleted]` check can't fire on stripped files. **Caveat.**
+
 ---
 **Actual-temperature status (2026-09-27): done for all 12 cities.** gridMET Steps 1–5b for the 11 continental viz cities (D10; 16 pulled); **Fairbanks from ERA5-Land** (D15, ERA5-Land Steps 1–3). Final files for all 12 in `data/processed/gridmet/final/` (`temp_<city>_daily.csv`, 3,920 rows 2016-01-01 → 2026-09-24, join row for row with UTCI; `_normals.csv`; `_monthly.csv`); the folder name is gridMET but Fairbanks' source is ERA5-Land (blank 2026-09-22 → 09-24). End date settled (D9). Open: N1 (boundary file vs OpenAQ, appendix note); optional PAFA station cross-check for Fairbanks; March 2026 station check.
 
