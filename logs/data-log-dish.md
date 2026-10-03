@@ -1393,6 +1393,36 @@ Step · dataset · date · who ran it | What (plain language) | Why | Input file
   - pm_normals.csv `89351c491319b9ea5cfe7f6e646ae2838165175a9afa95db636a8640690f3438`
   - pull plan `d880ebfae2a91488ca9276fc357df33b88ea2027c8a6cb364e4a167181ff369b`
 
+### Step 8 addition · OpenAQ · shifting-normal check · 2026-10-03 · run by Claude at Dish's request ("run it")
+- **What:** the design doc's "shifting normal" confound. Is a city's PM2.5 normal partly made of polluted weeks? Added to `08_pm_normals_and_pairs.py` as new columns in `pm_normals.csv`. PM2.5 only; Dish's Reddit pulls were not touched.
+- **Definitions (Claude's choices, flagged; not yet approved):**
+  - Polluted normal week = at least one day ≥ 35.5 (from `weekly_all.csv` `max_day`).
+  - Flag = more than half of the normal weeks are polluted.
+  - Also reported: weeks averaging ≥ 15 (WHO 2021 24-hour guideline), and as a sensitivity, the normal and ratio without the polluted weeks.
+- **Result: no city flagged.**
+
+  | City | Polluted / normal weeks | Weeks avg ≥ 15 | Ratio → without polluted weeks |
+  |---|---|---|---|
+  | Bakersfield | 10/24 | 17 | 2.9× → 3.6× |
+  | Fairbanks | 7/20 | 5 | 17.4× → 29.4× |
+  | Detroit | 5/25 | 5 | 7.4× → 8.3× |
+  | Fresno | 2/26 | – | 6.0× → 6.1× |
+  | Indianapolis | 2/23 | 9 | 4.4× → 4.6× |
+  | San Jose | 1/26 | – | 5.0× → 5.6× |
+  | Eugene | 1/28 | – | 41.9× → 42.9× |
+  | Pittsburgh | 1/19 | – | 5.3× → 5.4× |
+  | Seattle | 0/27 | – | unchanged |
+
+  (Yakima, dropped: 3/25.)
+- **Effect on the design:** none.
+  - Under the sensitivity, Pittsburgh and San Jose swap places in the ratio ranking.
+  - All 9 pairs keep their type and their predicted direction.
+  - `pairs.csv` is byte-identical.
+  - **Bakersfield would be flagged under the looser ≥ 15 definition** (17 of 24 weeks). This is noted, not acted on.
+- **SHA-256:**
+  - 08_pm_normals_and_pairs.py `cb43f428360978636614617c8c86c5b9d462463a8ecfb9d17f72966ff14846f6`
+  - pm_normals.csv `593ee98b2bfda21dc2152f8029373bcf16829156b7c05a161a53f8aa76209e78`
+
 ---
 **Actual-temperature status (2026-09-27): done for all 12 cities.** gridMET Steps 1–5b for the 11 continental viz cities (D10; 16 pulled); **Fairbanks from ERA5-Land** (D15, ERA5-Land Steps 1–3). Final files for all 12 in `data/processed/gridmet/final/` (`temp_<city>_daily.csv`, 3,920 rows 2016-01-01 → 2026-09-24, join row for row with UTCI; `_normals.csv`; `_monthly.csv`); the folder name is gridMET but Fairbanks' source is ERA5-Land (blank 2026-09-22 → 09-24). End date settled (D9). Open: N1 (boundary file vs OpenAQ, appendix note); optional PAFA station cross-check for Fairbanks; March 2026 station check.
 

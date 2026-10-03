@@ -9,6 +9,10 @@
 #                    weeks and weeks above 35.5 are kept, since the normal describes what residents are used to
 #                    (Claude's choices, flagged).
 #   Ratio          = event-week average / PM2.5 normal.
+#   Shifting-normal check (design doc confounds; definitions Claude's choices, flagged):
+#     polluted normal week = a normal week with at least one day >= 35.5 (the "harmful day" line);
+#     flag = more than half of the normal weeks are polluted. Also reported: weeks averaging >= 15 (WHO 2021 24-hour
+#     guideline) and, as a sensitivity only, the normal and ratio without the polluted weeks.
 #   Dropped cities (Dish, 2026-10-03) stay in pm_normals.csv with the reason, but are left out of the pairs:
 #     Yakima: event week has fewer than 100 kept Reddit posts + comments (check 2, Reddit activity).
 # Pairs (every pair of the 10 cities, A = the city with the higher event-week PM2.5):
@@ -40,10 +44,18 @@ for c in CITIES:
             and int(r["month"][:4]) in YEARS and int(r["n_days"]) >= MIN_DAYS]
     vals = [float(r["week_avg"]) for r in base]
     a, n = float(s["worst_week_avg"]), statistics.median(vals)
+    polluted = [float(r["max_day"]) >= 35.5 for r in base]
+    clean = [v for v, bad in zip(vals, polluted) if not bad]
+    n_clean = statistics.median(clean) if clean else None
     norms.append(dict(city=c, city_name=s["city_name"], event_week_start=ev, event_week_end=s["worst_week_end"], event_month=m,
                       event_week_pm25=a, pm25_normal=round(n, 3), normal_weeks=len(vals),
                       normal_weeks_above_35_5=sum(v > 35.5 for v in vals), ratio_to_normal=round(a / n, 2),
-                      median_days_ge_35_5_2019_2025=s["median_days_ge_35_5_2019_2025"], dropped=DROPPED.get(c, "")))
+                      median_days_ge_35_5_2019_2025=s["median_days_ge_35_5_2019_2025"],
+                      normal_weeks_with_day_ge_35_5=sum(polluted), normal_weeks_avg_ge_15=sum(v >= 15 for v in vals),
+                      shifting_normal_flag=int(sum(polluted) > len(vals) / 2),
+                      sens_normal_without_polluted_weeks=round(n_clean, 3) if n_clean else "",
+                      sens_ratio_without_polluted_weeks=round(a / n_clean, 2) if n_clean else "",
+                      dropped=DROPPED.get(c, "")))
 by = {r["city"]: r for r in norms}
 
 pairs = []
@@ -71,7 +83,9 @@ for fn, rows in (("pm_normals.csv", sorted(norms, key=lambda r: -r["ratio_to_nor
         w = csv.DictWriter(f, fieldnames=list(rows[0])); w.writeheader(); w.writerows(rows)
 
 for r in sorted(norms, key=lambda r: -r["ratio_to_normal"]):
-    print(f"{r['city']:13s} event {r['event_week_pm25']:7.2f}  normal {r['pm25_normal']:6.2f} ({r['normal_weeks']} wks)  ratio {r['ratio_to_normal']:5.1f}x")
+    print(f"{r['city']:13s} event {r['event_week_pm25']:7.2f}  normal {r['pm25_normal']:6.2f} ({r['normal_weeks']} wks)  ratio {r['ratio_to_normal']:5.1f}x"
+          f"  | polluted wks {r['normal_weeks_with_day_ge_35_5']}/{r['normal_weeks']}, avg>=15 {r['normal_weeks_avg_ge_15']}"
+          f"{'  FLAG' if r['shifting_normal_flag'] else ''}  | without polluted: normal {r['sens_normal_without_polluted_weeks']} ratio {r['sens_ratio_without_polluted_weeks']}x")
 for p in pairs:
     print(f"{'*' if p['featured_by_rule'] else ' '} {p['type']:8s} {p['worse_air_city']} ({p['pm25_worse']}, {p['ratio_worse']}x) vs "
           f"{p['other_city']} ({p['pm25_other']}, {p['ratio_other']}x)")

@@ -239,6 +239,10 @@ Any other pair mentioned is labeled as noticed after seeing results.
 - **Seasonal drift:** air talk may rise or fall across the 13-week window. A centered window cancels steady trends. A seasonal peak at the event could make the rise look larger. Checked by comparing before-week and after-week medians and plotting all 13 weeks per city.
 - **Low-cost correction:** the EPA correction underestimates at very high smoke levels, so any city using corrected low-cost data is flagged.
 - **Shifting normal:** if smoke shows up in more than half of a city's baseline weeks for a month, the PM2.5 median starts treating smoke as normal. Flag it if it happens; it ties to the rolling-baseline question.
+  - **Checked 2026-10-03 (OpenAQ Step 8): no city is flagged.**
+    - A polluted normal week = one with at least one day ≥ 35.5. The flag = more than half the normal weeks are polluted. *(Claude's choices.)*
+    - Closest: **Bakersfield**, 10 of 24 December weeks polluted (17 of 24 average ≥ 15), and **Fairbanks**, 7 of 20 June weeks.
+  - **Sensitivity:** if polluted weeks are left out of the normal, the ratios rise: Fairbanks 17.4× → 29.4×, Bakersfield 2.9× → 3.6×. Pittsburgh and San Jose swap places in the ratio ranking. **No pair changes type or direction.** The main normal is unchanged.
 
 ## Open decisions
 
