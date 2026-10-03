@@ -13,7 +13,7 @@ People react to abnormal rather than harm.
 ## Date ranges
 
 - **2019–2026:** the range searched for event weeks and checked for PM2.5 coverage.
-- **2019–2025:** the range used for the PM2.5 baseline and the chronic/acute grouping. 2026 is excluded from these because it is a partial year, but 2026 weeks can still be event weeks.
+- **2019–2025:** the range used for the PM2.5 baseline and the bad-days-per-year measure. 2026 is excluded from these because it is a partial year, but 2026 weeks can still be event weeks.
 - **Reddit baseline:** the 6 weeks before and after each city's event week, in the same year.
 
 ## How do we pick the cities?
@@ -55,14 +55,30 @@ Event causes checked against news coverage, 2026-10-02; sources are in `logs/dat
 
 GINA ADD MORE INFO HERE
 
-## How do we group the cities?
+## How do we describe the cities? (no chronic/acute grouping)
 
-**Measure:** median number of days per year with daily PM2.5 above 35.5, 2019–2025.
+**The chronic/acute grouping was dropped on 2026-10-03 (Dish), before any event-week Reddit data was opened.** There are no cutoffs and no cities left out.
 
-- Using the number of days, not average PM2.5, matches what "used to it" means: how often people live through bad air.
-- Using the median across years keeps one bad smoke year from making an acute city look chronic. This is the same reason we use the median for the baseline.
+**Why:**
+- **The ratio already measures "used to it."** A city used to bad air has a high monthly normal, so even a bad week gives it a small ratio.
+- **The grouping can contradict the ratio.** Fairbanks has 8 bad days a year, mostly winter inversions, so it would be "chronic." But its event is a June smoke week, and its Junes are clean, so its ratio is 17×.
+- **Only 3 cities would have been chronic,** too few to compare groups.
 
-**Chronic** = above [X] days per year. **Acute** = below [Y] days per year. Cities between X and Y are left out, so the two groups are clearly different. The cutoffs are set by looking at the spread of all candidate cities, before looking at any Reddit data.
+**Bad days per year** is kept as a descriptive measure, to characterize the cities (including in the presentation): the median number of days per year with daily PM2.5 ≥ 35.5, 2019–2025.
+
+| Bad days/yr | Cities |
+|---|---|
+| 12 | Bakersfield |
+| 8 | Fairbanks, Fresno |
+| 3 | Yakima |
+| 2 | Detroit |
+| 1 | Seattle, Indianapolis |
+| 0 | Eugene, Pittsburgh, San Jose |
+
+- **Days, not average PM2.5,** match what "used to it" means: how often people live through bad air.
+- **The median across years** keeps one bad smoke year from dominating.
+
+*Optional robustness check:* also rank Reddit rise against bad days per year. If familiarity matters, cities with more bad days should react less.
 
 ## How do we pick the weeks?
 
@@ -85,7 +101,7 @@ Invalid weeks (fewer than 5 of 7 days) can't be event weeks either. Any that ave
 ## Definitions
 
 - **City daily PM2.5:** the mean of all reporting reference sites in the city for that day, with at least one required (a site = same-type sensors within 50 m, already averaged). A sensor-day counts only with at least 18 of 24 hours (EPA's rule, Gina's OA-D3). Input: OpenAQ Step 5 (`pm25_<city>_daily.csv`). *(Approved by Dish, 2026-10-02.)*
-- **Harmful day:** daily PM2.5 ≥ 35.5 µg/m³, on the unrounded value. *(Approved by Dish.)* In 2020–21, coverage is below 75% in most cities, so those years' counts are likely undercounts. The median is kept over all 7 years anyway: dropping those years would drop the biggest smoke years and understate chronic cities.
+- **Harmful day:** daily PM2.5 ≥ 35.5 µg/m³, on the unrounded value. *(Approved by Dish.)* In 2020–21, coverage is below 75% in most cities, so those years' counts are likely undercounts. The median is kept over all 7 years anyway: dropping those years would drop the biggest smoke years and understate cities with frequent bad air.
 - **Day:** the city's local calendar day.
 - **Week:** Monday–Sunday, in the city's local time. If a week spans two months, it belongs to the month holding most of its days.
 - **Valid week:** at least 5 of 7 days have PM2.5 data. Weeks that fail are listed in the output, not silently dropped. Days outside 2019-01-01 → 2026-09-25 count as missing. *(Approved by Dish, 2026-10-02.)*
@@ -179,16 +195,19 @@ PM2.5 ratio to normal:
 
 *The PM2.5 normal uses only valid weeks (≥ 5 of 7 days), and keeps fireworks and > 35.5 weeks. Claude's choices.*
 
-**Headline pairs (approved by Dish):**
+**No headline pairs (changed by Dish, 2026-10-03; this replaces the earlier Bakersfield–Indianapolis / Bakersfield–Seattle headlines).** All qualifying pairs are reported, with one pre-set summary:
+- in how many pairs the higher-ratio city reacted more
+- in how many crossed pairs the worse-air city reacted more
 
-| Pair | Type | Event-week PM2.5 | Ratio | Pos predicts | Neg predicts |
-|---|---|---|---|---|---|
-| Bakersfield vs Indianapolis | matched | 55.5 vs 55.1 | 2.9× vs 4.4× | Indianapolis reacts more | about the same |
-| Bakersfield vs Seattle | crossed | 55.5 vs 51.5 | 2.9× vs 7.2× | Seattle reacts more | Bakersfield reacts more |
+**Featured by rule** (only if the presentation needs one example of each kind):
+- the matched pair with the biggest ratio gap: currently **Fairbanks vs Detroit**
+- the crossed pair with the biggest air gap: currently **Bakersfield vs San Jose**
+
+Any other pair mentioned is labeled as noticed after seeing results.
 
 **Eugene vs Bakersfield is no longer a test pair.** With the Sep 2020 event week, Eugene has both the worse air (280 vs 55) and the bigger ratio (41.9× vs 2.9×), so Pos and Neg predict the same thing. It's kept as an illustration only. (The old August 2026 Eugene event made a crossed pair.)
 
-**All 14 qualifying pairs** are in `pairs.csv` and are reported, not only the headline ones.
+**All 14 qualifying pairs** are in `pairs.csv`.
 - **Fairbanks vs Detroit** is a strong matched pair: 91.8 vs 91.8, with ratios of 17.4× vs 7.4×. But Detroit's week was national news.
 - **Fresno vs Yakima** is crossed only on a trivial ratio gap (5.95× vs 5.98×).
 
@@ -212,8 +231,8 @@ PM2.5 ratio to normal:
 
 ## Known confounds
 
-- **Candidate pool:** all candidates come from a most-polluted list, so cities that aren't used to bad air are under-represented. The acute group may be small.
-- **Event type:** acute cities' worst weeks are usually visible wildfire smoke; chronic cities' may be winter inversions people can't see or smell as much.
+- **Candidate pool:** all candidates come from a most-polluted list, so cities that aren't used to bad air are under-represented.
+- **Event type:** most event weeks are visible wildfire smoke. Bakersfield's is a winter inversion, which people may not see or smell as much.
 - **Subreddit size:** small subreddits make the share jumpy. Yakima and Fairbanks are most at risk of failing check 2.
 - **News coverage:** a national story, like the 2023 Canadian smoke, can drive talk regardless of local air. Media Cloud can check this.
 - **Other local events:** a big local story during the Reddit window could shift what the subreddit talks about. The median protects against one odd week, though not a whole odd season.
@@ -223,7 +242,7 @@ PM2.5 ratio to normal:
 
 ## Open decisions
 
-[N_avg], [N_min], chronic and acute cutoffs [X] and [Y], event type rule (news check done for the 10 event weeks; a formal rule is still open), headline Reddit rise measure (ratio or percentage points), screening pull month, spot-check years.
+[N_avg] (proposed: an event week needs ≥ 100 kept posts + comments, the same as the weekly minimum; pending Dish), event type rule (news check done for the 10 event weeks; a formal rule is still open), headline Reddit rise measure (ratio or percentage points), screening pull month, spot-check years.
 
 Settled 2026-10-02: valid-week rule (5 of 7), hourly completeness (18 of 24), ≥ 35.5 for counting days, reference/low-cost filter (`sensor_class`), station combining (mean of sites), fireworks rule. The low-cost agreement rule is not needed: no city uses low-cost.
 
@@ -231,7 +250,9 @@ Settled 2026-10-03:
 - **Keyword list:** v1 frozen, with no new hand-check.
 - **Reddit normal:** month.
 - **Pair tolerance:** within 5%.
-- **Headline pairs:** Bakersfield–Indianapolis and Bakersfield–Seattle.
+- **Headline pairs:** none. All pairs are reported, with a pre-set summary and featured-by-rule examples. This replaced the earlier Bakersfield–Indianapolis / Bakersfield–Seattle choice.
+- **Chronic/acute grouping:** dropped. Bad days per year is kept as a descriptive measure.
+- **[N_min]:** 100 kept posts + comments per week (from the normals rules).
 
 Each one gets settled in the data log, then copied here.
 
@@ -248,3 +269,10 @@ Each one gets settled in the data log, then copied here.
   - Event weeks set and their causes checked against news.
   - No second grouping median without low-coverage years.
   - Low-cost fallback found unusable (no RH, no PurpleAir, low coverage), and not needed.
+- **2026-10-03 (before any event-week Reddit data was opened):**
+  - Keyword list frozen (v1).
+  - Reddit normal chosen: month.
+  - PM2.5 normals, ratios and pairs computed (OpenAQ Step 8). Eugene–Bakersfield dropped as a test pair.
+  - Headline pairs set, then replaced by "all pairs + pre-set summary + featured by rule".
+  - **Chronic/acute grouping dropped.** Bad days per year kept as a descriptive measure.
+  - Event weeks for Detroit and Pittsburgh to be re-pulled in local time; the other 8 come from the month pulls.

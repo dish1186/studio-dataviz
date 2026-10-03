@@ -1360,6 +1360,28 @@ Step · dataset · date · who ran it | What (plain language) | Why | Input file
   - pairs.csv `c7e085ab8d500bcb88d863d17f12c79e3b9d5ef3d904c5cffd4dc5d3613fd584`
   - pull plan `77015491413b94ef6abdc97ea1998d579d5c122951456c8ea3e4aea5d3d1de45`
 
+### Decision · no chronic/acute grouping; no headline pairs; event-week re-pull for Detroit and Pittsburgh · 2026-10-03 · Dish + Claude
+- **Timing:** all of this was decided **before any event-week Reddit content was opened**. Only Gina's coverage counts for the event-week files were read.
+- **Chronic/acute grouping dropped. Changed by Dish** (Claude's recommendation). There are no cutoffs [X]/[Y] and no cities left out.
+  - **Why:** the ratio already measures familiarity. The grouping contradicts it for Fairbanks: 8 bad days a year, mostly winter inversions, but its event is a June smoke week with a clean June normal, so its ratio is 17×. Only 3 cities would have been chronic.
+  - **Kept:** bad days per year (median, 2019–2025) as a descriptive measure, to characterize cities in the presentation (Dish). Optional robustness check: rank Reddit rise against it.
+  - Before deciding, Claude showed three cutoff options without choosing one (8 → 3 is the only clear gap; the open question was Yakima at 3 and Detroit at 2).
+- **No headline pairs. Changed by Dish**; this replaces the earlier Bakersfield–Indianapolis / Bakersfield–Seattle headline approval.
+  - **Why:** Dish worried the headline pairs' air was too similar. Claude agreed for the crossed pair: Bakersfield–Seattle differs by only 8%, so Neg barely predicts a difference.
+  - **Now:** all 14 pairs are reported, with a pre-set summary (how many pairs the higher-ratio city "won"; how many crossed pairs the worse-air city won).
+  - **Featured by rule**, for presentation examples only: the biggest ratio gap among matched pairs (Fairbanks–Detroit) and the biggest air gap among crossed pairs (Bakersfield–San Jose).
+  - `08_pm_normals_and_pairs.py`: the `headline` column was replaced by `featured_by_rule` and `ratio_gap`, and pairs were re-sorted. Rerun by Claude; pairs and numbers unchanged.
+- **Event-week pull problem found and fixed in the plan:** Gina's `event_weeks_no_usernames/` files were downloaded as UTC days (Mon 00:00 → Sun 23:59 UTC; seen in `coverage.csv`), but our weeks are local time.
+  - 8 cities' event weeks sit inside their month pulls with the right padding.
+  - **Detroit and Pittsburgh** (2026 events) need a re-pull: download 2026-07-12 → 2026-07-21. This was added to `docs/reddit-pull-month-normals-8-cities.md` (now 58 pulls, 116 files).
+  - The old event-week folder won't be used.
+- **Proposed, pending Dish:** an event week needs ≥ 100 kept posts + comments (check 2). Yakima's event week has about 50 in Gina's coverage counts (UTC days), so Yakima would drop.
+- **SHA-256:**
+  - 08_pm_normals_and_pairs.py `f273acebe23bdc56722cadc8cf290e2ba574e38ba0253700441a27aeb9eef3fc`
+  - pairs.csv `e49b9e07f9b3c90b1e5be187ccc313c694ffce7a08db0f33ed6fcf8e40ba4049`
+  - pm_normals.csv unchanged
+  - pull plan `90b757a69d05370b7b4953f6387820063956fb222f3c762577f4086f80fe63ed`
+
 ---
 **Actual-temperature status (2026-09-27): done for all 12 cities.** gridMET Steps 1–5b for the 11 continental viz cities (D10; 16 pulled); **Fairbanks from ERA5-Land** (D15, ERA5-Land Steps 1–3). Final files for all 12 in `data/processed/gridmet/final/` (`temp_<city>_daily.csv`, 3,920 rows 2016-01-01 → 2026-09-24, join row for row with UTCI; `_normals.csv`; `_monthly.csv`); the folder name is gridMET but Fairbanks' source is ERA5-Land (blank 2026-09-22 → 09-24). End date settled (D9). Open: N1 (boundary file vs OpenAQ, appendix note); optional PAFA station cross-check for Fairbanks; March 2026 station check.
 

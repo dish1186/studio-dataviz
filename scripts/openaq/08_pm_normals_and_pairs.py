@@ -13,7 +13,9 @@
 #   crossed = A had worse air but a smaller ratio.
 #   matched = event-week PM2.5 within 5% of each other (relative to the higher one) and different ratios
 #             (Claude's choice for the "pair tolerance" open decision, flagged).
-#   Headline pairs (Dish, 2026-10-03): Bakersfield-Indianapolis (matched) and Bakersfield-Seattle (crossed).
+#   No headline pairs (Dish, 2026-10-03; replaces Bakersfield-Indianapolis / Bakersfield-Seattle). All pairs are reported.
+#   featured_by_rule (only for presentation examples): the matched pair with the biggest ratio gap and the crossed pair
+#   with the biggest air gap.
 # Output: data/processed/openaq/step08_pm_normals/pm_normals.csv, pairs.csv
 # Run from the repo root: python3 scripts/openaq/08_pm_normals_and_pairs.py   (local files only)
 import csv, itertools, os, statistics
@@ -22,7 +24,6 @@ IN = "data/processed/openaq/step07_screening"
 OUT = "data/processed/openaq/step08_pm_normals"
 CITIES = ["bakersfield", "fairbanks", "fresno", "yakima", "detroit", "seattle", "indianapolis", "eugene", "pittsburgh", "sanjose"]
 YEARS, MIN_DAYS, MATCH_TOL = range(2019, 2026), 5, 0.05
-HEADLINE = {("bakersfield", "indianapolis"), ("bakersfield", "seattle")}
 os.makedirs(OUT, exist_ok=True)
 
 S = {r["city"]: r for r in csv.DictReader(open(f"{IN}/city_screening.csv", encoding="utf-8")) if r["source"] == "reference"}
@@ -50,14 +51,17 @@ for x, y in itertools.combinations(CITIES, 2):
     matched = gap <= MATCH_TOL and A["ratio_to_normal"] != B["ratio_to_normal"]
     if not (crossed or matched):
         continue
-    pairs.append(dict(type="matched" if matched else "crossed", headline=int(tuple(sorted((x, y))) in HEADLINE),
+    pairs.append(dict(type="matched" if matched else "crossed", featured_by_rule=0,
                       worse_air_city=A["city"], other_city=B["city"],
                       pm25_worse=A["event_week_pm25"], pm25_other=B["event_week_pm25"], pm25_gap_pct=round(100 * gap, 1),
                       ratio_worse=A["ratio_to_normal"], ratio_other=B["ratio_to_normal"],
+                      ratio_gap=round(max(A["ratio_to_normal"], B["ratio_to_normal"]) / min(A["ratio_to_normal"], B["ratio_to_normal"]), 2),
                       median_days_worse=A["median_days_ge_35_5_2019_2025"], median_days_other=B["median_days_ge_35_5_2019_2025"],
                       pos_predicts=f"{(B if B['ratio_to_normal'] > A['ratio_to_normal'] else A)['city']} reacts more",
                       neg_predicts=f"{A['city']} reacts more" if gap > MATCH_TOL else "about the same"))
-pairs.sort(key=lambda p: (-p["headline"], p["type"] != "matched", p["worse_air_city"], p["other_city"]))
+for t, k in (("matched", "ratio_gap"), ("crossed", "pm25_gap_pct")):
+    max((p for p in pairs if p["type"] == t), key=lambda p: p[k])["featured_by_rule"] = 1
+pairs.sort(key=lambda p: (p["type"] != "matched", -(p["ratio_gap"] if p["type"] == "matched" else p["pm25_gap_pct"])))
 
 for fn, rows in (("pm_normals.csv", sorted(norms, key=lambda r: -r["ratio_to_normal"])), ("pairs.csv", pairs)):
     with open(f"{OUT}/{fn}", "w", newline="", encoding="utf-8") as f:
@@ -66,6 +70,6 @@ for fn, rows in (("pm_normals.csv", sorted(norms, key=lambda r: -r["ratio_to_nor
 for r in sorted(norms, key=lambda r: -r["ratio_to_normal"]):
     print(f"{r['city']:13s} event {r['event_week_pm25']:7.2f}  normal {r['pm25_normal']:6.2f} ({r['normal_weeks']} wks)  ratio {r['ratio_to_normal']:5.1f}x")
 for p in pairs:
-    print(f"{'*' if p['headline'] else ' '} {p['type']:8s} {p['worse_air_city']} ({p['pm25_worse']}, {p['ratio_worse']}x) vs "
+    print(f"{'*' if p['featured_by_rule'] else ' '} {p['type']:8s} {p['worse_air_city']} ({p['pm25_worse']}, {p['ratio_worse']}x) vs "
           f"{p['other_city']} ({p['pm25_other']}, {p['ratio_other']}x)")
 print("DONE")

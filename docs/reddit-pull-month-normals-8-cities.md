@@ -6,7 +6,7 @@
 
 - **We chose the month normal** (Normals Step 2, Eugene decides; see `data/processed/reddit/normals_02_compare/decision.md`).
   - Each city's normal is the same calendar month as its event, in every year from 2019 to 2025.
-- **Eugene and Bakersfield are already done.** This covers the other 8 cities: 7 pulls each, posts and comments, so **112 files**.
+- **Eugene and Bakersfield are already done.** This covers the other 8 cities: 7 pulls each, plus 2 event-week re-pulls (Detroit, Pittsburgh). That is 58 pulls, posts and comments each, so **116 files**.
 - **The event weeks are already pulled** (`event_weeks_no_usernames/`). **Please don't open or analyze those files yet.** They stay closed until every normal is in, so nothing we see can shape the rules.
 
 ## How (same as last time)
@@ -20,6 +20,20 @@
   - fireworks weeks (most July pulls, plus some late-June and early-July weeks)
   - bad-air weeks
 - **Tell Dish** if any download looks empty or tiny compared with the others.
+
+## Two extra pulls: Detroit and Pittsburgh event weeks (added 2026-10-03)
+
+**Why:** the event-week files in `event_weeks_no_usernames/` were downloaded as UTC days (Monday 00:00 → Sunday 23:59 UTC). Our weeks run in each city's **local** time, so those files cut off Sunday evening and include part of the Sunday before.
+
+- **8 cities don't need a re-pull.** Their event week is already inside one of the month pulls below, with the right padding.
+- **Detroit and Pittsburgh need a re-pull,** because their events are in 2026, outside the 2019–2025 month pulls.
+
+| City | Subreddit | Event week (Mon → Sun, local) | Download from | Download to | Save as |
+|---|---|---|---|---|---|
+| Detroit | r/Detroit | 2026-07-13 → 2026-07-19 | 2026-07-12 | 2026-07-21 | `detroit_event_2026-07-13_posts.jsonl` / `_comments.jsonl` |
+| Pittsburgh | r/pittsburgh | 2026-07-13 → 2026-07-19 | 2026-07-12 | 2026-07-21 | `pittsburgh_event_2026-07-13_posts.jsonl` / `_comments.jsonl` |
+
+Save these with the month pulls (same folders). The old `event_weeks_no_usernames/` files won't be used.
 
 ## What to pull
 
