@@ -13,11 +13,13 @@ Checks. Any of these and nothing is written for that city:
   - every line is valid JSON; no duplicate ids; only the city's subreddit (case-insensitive: the API returns
     the subreddit's own spelling, e.g. "SanJose")
   - every record falls inside the planned window [download from 00:00 UTC, download to 00:00 UTC)
-  - the first and last day of the window each have records (a truncated download fails this)
+  - comments: the first and last day of the window each have records (a truncated download fails this)
 Warnings (reported in coverage.csv, not fatal; Claude's choice, because small subreddits such as r/Fairbanks
 can have a genuinely empty day or a quiet last evening):
   - empty days inside the window
   - comments ending more than 2 hours before the window ends
+  - posts: an empty first or last day (r/Fairbanks June 2019 had ~1.4 posts a day and none on the padding day
+    Jun 2, while its comments covered both edges; added 2026-10-03)
 Username removal: every field whose name starts with "author", and "link_author", at every level of nesting
 (same rule as normals_01). Usernames typed inside the text are not removed.
 
@@ -102,10 +104,12 @@ for p in pulls:
         if len(ids) != len(ts): bad_list.append(f"{len(ts) - len(ids)} duplicate ids")
         if subs != {sub.lower()}: bad_list.append(f"subreddits {subs}")
         if outside: bad_list.append(f"{outside} records outside the window")
-        if days[all_days[0]] == 0 or days[all_days[-1]] == 0: bad_list.append("first or last day of the window is empty")
+        edge_empty = days[all_days[0]] == 0 or days[all_days[-1]] == 0
+        if edge_empty and kind == "comments": bad_list.append("first or last day of the window is empty")
         problems += [f"{f}: {x}" for x in bad_list]
         warn = []
         if empty: warn.append(f"empty days {empty}")
+        if edge_empty and kind == "posts": warn.append("first or last day of the window has no posts")
         if kind == "comments" and last < B - dt.timedelta(hours=2): warn.append(f"comments end at {last:%Y-%m-%d %H:%M} UTC")
         rows.append({"city": city, "file": f, "pull": p["name"].split("_")[1], "kind": kind,
                      "download_from": p["from"], "download_to": p["to"], "records": len(ts),

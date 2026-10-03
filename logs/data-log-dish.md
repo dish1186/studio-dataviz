@@ -1461,6 +1461,12 @@ Step · dataset · date · who ran it | What (plain language) | Why | Input file
     - **Fatal:** missing or unplanned files, unreadable lines, duplicates, wrong subreddit, records outside the window, or an empty first or last day.
     - **Warnings only (recorded):** empty days inside the window, and comments ending more than 2 h early. Small subreddits like r/Fairbanks can have genuinely empty days, and the API downloader pages to the end, so truncation shows up as an empty last day.
 - **Fairbanks downloaded:** 14 files in 4.7 min (about 75 posts + comments a week in June 2019, 130–370 in other years).
+- **Fairbanks check-and-strip, run by Claude at Dish's request:**
+  - **First run stopped:** the June 2019 posts file had no posts on Jun 2 (the padding day). That was a quiet day, not truncation: about 1.4 posts a day, posts resume Jun 3, and the comments file covers both edge days.
+  - **Rule changed (Claude's choice, flagged):** an empty first/last day is fatal for comments only, and a warning for posts.
+  - **Rerun: passed.** 14 files, 6,338 records, written to `normals_no_usernames/fairbanks/`. `coverage.csv` was updated; the 32 Eugene/Bakersfield rows were kept.
+  - **Warnings:** scattered empty post days, the longest being Jun 15–18, 2020. Comments continued every day of that stretch (2–10 a day), so it's a quiet subreddit, not an archive gap. There's also one empty comment day (2019-06-10, 2022-06-11), and comments end 2–7 h before the window end on padding days.
+- **6-usable-normal-weeks rule: not set.** Dish: "i dont want to get rid of fairbanks just yet." It is still open, and should be decided before the analysis script is committed.
 
 ---
 **Actual-temperature status (2026-09-27): done for all 12 cities.** gridMET Steps 1–5b for the 11 continental viz cities (D10; 16 pulled); **Fairbanks from ERA5-Land** (D15, ERA5-Land Steps 1–3). Final files for all 12 in `data/processed/gridmet/final/` (`temp_<city>_daily.csv`, 3,920 rows 2016-01-01 → 2026-09-24, join row for row with UTCI; `_normals.csv`; `_monthly.csv`); the folder name is gridMET but Fairbanks' source is ERA5-Land (blank 2026-09-22 → 09-24). End date settled (D9). Open: N1 (boundary file vs OpenAQ, appendix note); optional PAFA station cross-check for Fairbanks; March 2026 station check.

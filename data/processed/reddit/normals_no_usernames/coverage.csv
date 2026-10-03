@@ -1,33 +1,47 @@
-city,file,pull,kind,download_from,download_to,records,first_utc,last_utc,days_in_window,empty_days,values_removed
-eugene,eugene_neighbor_2020-07-27_posts.jsonl,neighbor,posts,2020-07-26,2020-10-27,2769,2020-07-26 00:28,2020-10-26 23:27,93,0,30593
-eugene,eugene_neighbor_2020-07-27_comments.jsonl,neighbor,comments,2020-07-26,2020-10-27,51199,2020-07-26 00:00,2020-10-26 23:58,93,0,586208
-eugene,eugene_month_2019-09-02_posts.jsonl,month,posts,2019-09-01,2019-10-01,376,2019-09-01 00:05,2019-09-30 23:29,30,0,4011
-eugene,eugene_month_2019-09-02_comments.jsonl,month,comments,2019-09-01,2019-10-01,5926,2019-09-01 00:01,2019-09-30 23:58,30,0,68541
-eugene,eugene_month_2020-08-31_posts.jsonl,month,posts,2020-08-30,2020-09-29,1272,2020-08-30 02:27,2020-09-28 23:52,30,0,14157
-eugene,eugene_month_2020-08-31_comments.jsonl,month,comments,2020-08-30,2020-09-29,19701,2020-08-30 00:19,2020-09-28 23:59,30,0,225005
-eugene,eugene_month_2021-08-30_posts.jsonl,month,posts,2021-08-29,2021-10-05,1027,2021-08-29 01:07,2021-10-04 23:54,37,0,11271
-eugene,eugene_month_2021-08-30_comments.jsonl,month,comments,2021-08-29,2021-10-05,19925,2021-08-29 00:00,2021-10-04 23:59,37,0,225642
-eugene,eugene_month_2022-08-29_posts.jsonl,month,posts,2022-08-28,2022-10-04,1082,2022-08-28 00:53,2022-10-03 23:29,37,0,12215
-eugene,eugene_month_2022-08-29_comments.jsonl,month,comments,2022-08-28,2022-10-04,23490,2022-08-28 00:01,2022-10-03 23:58,37,0,273073
-eugene,eugene_month_2023-09-04_posts.jsonl,month,posts,2023-09-03,2023-10-03,886,2023-09-03 00:13,2023-10-02 23:31,30,0,10736
-eugene,eugene_month_2023-09-04_comments.jsonl,month,comments,2023-09-03,2023-10-03,20908,2023-09-03 00:00,2023-10-02 23:58,30,0,248686
-eugene,eugene_month_2024-09-02_posts.jsonl,month,posts,2024-09-01,2024-10-01,1106,2024-09-01 00:03,2024-09-30 23:57,30,0,13520
-eugene,eugene_month_2024-09-02_comments.jsonl,month,comments,2024-09-01,2024-10-01,27282,2024-09-01 00:01,2024-09-30 23:58,30,0,323089
-eugene,eugene_month_2025-09-01_posts.jsonl,month,posts,2025-08-31,2025-09-30,1329,2025-08-31 01:08,2025-09-29 23:27,30,0,16651
-eugene,eugene_month_2025-09-01_comments.jsonl,month,comments,2025-08-31,2025-09-30,27495,2025-08-31 00:02,2025-09-29 23:55,30,0,322119
-bakersfield,bakersfield_neighbor_2024-10-21_posts.jsonl,neighbor,posts,2024-10-20,2025-01-21,1443,2024-10-20 00:57,2025-01-20 23:58,93,0,17291
-bakersfield,bakersfield_neighbor_2024-10-21_comments.jsonl,neighbor,comments,2024-10-20,2025-01-21,19881,2024-10-20 00:07,2025-01-20 23:57,93,0,236173
-bakersfield,bakersfield_month_2019-12-02_posts.jsonl,month,posts,2019-12-01,2019-12-31,178,2019-12-01 01:04,2019-12-30 23:18,30,0,1999
-bakersfield,bakersfield_month_2019-12-02_comments.jsonl,month,comments,2019-12-01,2019-12-31,1563,2019-12-01 00:13,2019-12-30 23:54,30,0,17978
-bakersfield,bakersfield_month_2020-11-30_posts.jsonl,month,posts,2020-11-29,2021-01-05,286,2020-11-29 15:37,2021-01-04 22:39,37,0,3203
-bakersfield,bakersfield_month_2020-11-30_comments.jsonl,month,comments,2020-11-29,2021-01-05,4033,2020-11-29 00:00,2021-01-04 23:28,37,0,45734
-bakersfield,bakersfield_month_2021-11-29_posts.jsonl,month,posts,2021-11-28,2022-01-04,260,2021-11-28 00:06,2022-01-03 18:02,37,0,2786
-bakersfield,bakersfield_month_2021-11-29_comments.jsonl,month,comments,2021-11-28,2022-01-04,3367,2021-11-28 00:14,2022-01-03 23:07,37,0,37852
-bakersfield,bakersfield_month_2022-11-28_posts.jsonl,month,posts,2022-11-27,2023-01-03,334,2022-11-27 02:13,2023-01-02 22:23,37,0,3661
-bakersfield,bakersfield_month_2022-11-28_comments.jsonl,month,comments,2022-11-27,2023-01-03,3523,2022-11-27 00:09,2023-01-02 23:47,37,0,41584
-bakersfield,bakersfield_month_2023-12-04_posts.jsonl,month,posts,2023-12-03,2024-01-02,321,2023-12-03 02:14,2024-01-01 23:58,30,0,3872
-bakersfield,bakersfield_month_2023-12-04_comments.jsonl,month,comments,2023-12-03,2024-01-02,3884,2023-12-03 00:04,2024-01-01 23:29,30,0,46491
-bakersfield,bakersfield_month_2024-12-02_posts.jsonl,month,posts,2024-12-01,2024-12-31,414,2024-12-01 01:06,2024-12-30 21:41,30,0,4980
-bakersfield,bakersfield_month_2024-12-02_comments.jsonl,month,comments,2024-12-01,2024-12-31,4876,2024-12-01 00:00,2024-12-30 23:56,30,0,57934
-bakersfield,bakersfield_month_2025-12-01_posts.jsonl,month,posts,2025-11-30,2025-12-30,332,2025-11-30 01:18,2025-12-29 22:56,30,0,3993
-bakersfield,bakersfield_month_2025-12-01_comments.jsonl,month,comments,2025-11-30,2025-12-30,3493,2025-11-30 00:15,2025-12-29 23:54,30,0,41583
+city,file,pull,kind,download_from,download_to,records,first_utc,last_utc,days_in_window,empty_days,warnings,values_removed
+eugene,eugene_neighbor_2020-07-27_posts.jsonl,neighbor,posts,2020-07-26,2020-10-27,2769,2020-07-26 00:28,2020-10-26 23:27,93,0,,30593
+eugene,eugene_neighbor_2020-07-27_comments.jsonl,neighbor,comments,2020-07-26,2020-10-27,51199,2020-07-26 00:00,2020-10-26 23:58,93,0,,586208
+eugene,eugene_month_2019-09-02_posts.jsonl,month,posts,2019-09-01,2019-10-01,376,2019-09-01 00:05,2019-09-30 23:29,30,0,,4011
+eugene,eugene_month_2019-09-02_comments.jsonl,month,comments,2019-09-01,2019-10-01,5926,2019-09-01 00:01,2019-09-30 23:58,30,0,,68541
+eugene,eugene_month_2020-08-31_posts.jsonl,month,posts,2020-08-30,2020-09-29,1272,2020-08-30 02:27,2020-09-28 23:52,30,0,,14157
+eugene,eugene_month_2020-08-31_comments.jsonl,month,comments,2020-08-30,2020-09-29,19701,2020-08-30 00:19,2020-09-28 23:59,30,0,,225005
+eugene,eugene_month_2021-08-30_posts.jsonl,month,posts,2021-08-29,2021-10-05,1027,2021-08-29 01:07,2021-10-04 23:54,37,0,,11271
+eugene,eugene_month_2021-08-30_comments.jsonl,month,comments,2021-08-29,2021-10-05,19925,2021-08-29 00:00,2021-10-04 23:59,37,0,,225642
+eugene,eugene_month_2022-08-29_posts.jsonl,month,posts,2022-08-28,2022-10-04,1082,2022-08-28 00:53,2022-10-03 23:29,37,0,,12215
+eugene,eugene_month_2022-08-29_comments.jsonl,month,comments,2022-08-28,2022-10-04,23490,2022-08-28 00:01,2022-10-03 23:58,37,0,,273073
+eugene,eugene_month_2023-09-04_posts.jsonl,month,posts,2023-09-03,2023-10-03,886,2023-09-03 00:13,2023-10-02 23:31,30,0,,10736
+eugene,eugene_month_2023-09-04_comments.jsonl,month,comments,2023-09-03,2023-10-03,20908,2023-09-03 00:00,2023-10-02 23:58,30,0,,248686
+eugene,eugene_month_2024-09-02_posts.jsonl,month,posts,2024-09-01,2024-10-01,1106,2024-09-01 00:03,2024-09-30 23:57,30,0,,13520
+eugene,eugene_month_2024-09-02_comments.jsonl,month,comments,2024-09-01,2024-10-01,27282,2024-09-01 00:01,2024-09-30 23:58,30,0,,323089
+eugene,eugene_month_2025-09-01_posts.jsonl,month,posts,2025-08-31,2025-09-30,1329,2025-08-31 01:08,2025-09-29 23:27,30,0,,16651
+eugene,eugene_month_2025-09-01_comments.jsonl,month,comments,2025-08-31,2025-09-30,27495,2025-08-31 00:02,2025-09-29 23:55,30,0,,322119
+bakersfield,bakersfield_neighbor_2024-10-21_posts.jsonl,neighbor,posts,2024-10-20,2025-01-21,1443,2024-10-20 00:57,2025-01-20 23:58,93,0,,17291
+bakersfield,bakersfield_neighbor_2024-10-21_comments.jsonl,neighbor,comments,2024-10-20,2025-01-21,19881,2024-10-20 00:07,2025-01-20 23:57,93,0,,236173
+bakersfield,bakersfield_month_2019-12-02_posts.jsonl,month,posts,2019-12-01,2019-12-31,178,2019-12-01 01:04,2019-12-30 23:18,30,0,,1999
+bakersfield,bakersfield_month_2019-12-02_comments.jsonl,month,comments,2019-12-01,2019-12-31,1563,2019-12-01 00:13,2019-12-30 23:54,30,0,,17978
+bakersfield,bakersfield_month_2020-11-30_posts.jsonl,month,posts,2020-11-29,2021-01-05,286,2020-11-29 15:37,2021-01-04 22:39,37,0,,3203
+bakersfield,bakersfield_month_2020-11-30_comments.jsonl,month,comments,2020-11-29,2021-01-05,4033,2020-11-29 00:00,2021-01-04 23:28,37,0,,45734
+bakersfield,bakersfield_month_2021-11-29_posts.jsonl,month,posts,2021-11-28,2022-01-04,260,2021-11-28 00:06,2022-01-03 18:02,37,0,,2786
+bakersfield,bakersfield_month_2021-11-29_comments.jsonl,month,comments,2021-11-28,2022-01-04,3367,2021-11-28 00:14,2022-01-03 23:07,37,0,,37852
+bakersfield,bakersfield_month_2022-11-28_posts.jsonl,month,posts,2022-11-27,2023-01-03,334,2022-11-27 02:13,2023-01-02 22:23,37,0,,3661
+bakersfield,bakersfield_month_2022-11-28_comments.jsonl,month,comments,2022-11-27,2023-01-03,3523,2022-11-27 00:09,2023-01-02 23:47,37,0,,41584
+bakersfield,bakersfield_month_2023-12-04_posts.jsonl,month,posts,2023-12-03,2024-01-02,321,2023-12-03 02:14,2024-01-01 23:58,30,0,,3872
+bakersfield,bakersfield_month_2023-12-04_comments.jsonl,month,comments,2023-12-03,2024-01-02,3884,2023-12-03 00:04,2024-01-01 23:29,30,0,,46491
+bakersfield,bakersfield_month_2024-12-02_posts.jsonl,month,posts,2024-12-01,2024-12-31,414,2024-12-01 01:06,2024-12-30 21:41,30,0,,4980
+bakersfield,bakersfield_month_2024-12-02_comments.jsonl,month,comments,2024-12-01,2024-12-31,4876,2024-12-01 00:00,2024-12-30 23:56,30,0,,57934
+bakersfield,bakersfield_month_2025-12-01_posts.jsonl,month,posts,2025-11-30,2025-12-30,332,2025-11-30 01:18,2025-12-29 22:56,30,0,,3993
+bakersfield,bakersfield_month_2025-12-01_comments.jsonl,month,comments,2025-11-30,2025-12-30,3493,2025-11-30 00:15,2025-12-29 23:54,30,0,,41583
+fairbanks,fairbanks_month_2019-06-03_posts.jsonl,month,posts,2019-06-02,2019-07-02,43,2019-06-03 09:13,2019-07-01 00:35,30,6,"empty days ['2019-06-02', '2019-06-06', '2019-06-09', '2019-06-11', '2019-06-15', '2019-06-16']; first or last day of the window has no posts",457
+fairbanks,fairbanks_month_2019-06-03_comments.jsonl,month,comments,2019-06-02,2019-07-02,283,2019-06-02 05:23,2019-07-01 17:46,30,1,empty days ['2019-06-10']; comments end at 2019-07-01 17:46 UTC,3019
+fairbanks,fairbanks_month_2020-06-01_posts.jsonl,month,posts,2020-05-31,2020-06-30,55,2020-05-31 05:30,2020-06-29 21:33,30,5,"empty days ['2020-06-04', '2020-06-15', '2020-06-16', '2020-06-17', '2020-06-18']",650
+fairbanks,fairbanks_month_2020-06-01_comments.jsonl,month,comments,2020-05-31,2020-06-30,523,2020-05-31 03:29,2020-06-29 17:30,30,0,comments end at 2020-06-29 17:30 UTC,6098
+fairbanks,fairbanks_month_2021-05-31_posts.jsonl,month,posts,2021-05-30,2021-06-29,89,2021-05-30 10:51,2021-06-28 20:41,30,2,"empty days ['2021-06-02', '2021-06-26']",1024
+fairbanks,fairbanks_month_2021-05-31_comments.jsonl,month,comments,2021-05-30,2021-06-29,953,2021-05-30 00:03,2021-06-28 23:43,30,0,,12164
+fairbanks,fairbanks_month_2022-05-30_posts.jsonl,month,posts,2022-05-29,2022-07-05,104,2022-05-29 00:33,2022-07-04 16:51,37,1,empty days ['2022-06-10'],1193
+fairbanks,fairbanks_month_2022-05-30_comments.jsonl,month,comments,2022-05-29,2022-07-05,589,2022-05-29 02:14,2022-07-04 22:35,37,1,empty days ['2022-06-11'],6929
+fairbanks,fairbanks_month_2023-05-29_posts.jsonl,month,posts,2023-05-28,2023-07-04,110,2023-05-28 02:23,2023-07-03 06:10,37,3,"empty days ['2023-06-23', '2023-07-01', '2023-07-02']",1275
+fairbanks,fairbanks_month_2023-05-29_comments.jsonl,month,comments,2023-05-28,2023-07-04,1061,2023-05-28 02:55,2023-07-03 21:32,37,0,comments end at 2023-07-03 21:32 UTC,12671
+fairbanks,fairbanks_month_2024-06-03_posts.jsonl,month,posts,2024-06-02,2024-07-02,128,2024-06-02 08:46,2024-07-01 20:08,30,0,,1589
+fairbanks,fairbanks_month_2024-06-03_comments.jsonl,month,comments,2024-06-02,2024-07-02,797,2024-06-02 00:33,2024-07-01 22:03,30,0,,9524
+fairbanks,fairbanks_month_2025-06-02_posts.jsonl,month,posts,2025-06-01,2025-07-01,139,2025-06-01 04:14,2025-06-30 17:52,30,0,,1724
+fairbanks,fairbanks_month_2025-06-02_comments.jsonl,month,comments,2025-06-01,2025-07-01,1464,2025-06-01 00:12,2025-06-30 23:18,30,0,,17471
