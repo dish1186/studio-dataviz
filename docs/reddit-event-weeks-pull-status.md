@@ -30,7 +30,7 @@ Covered dates are the first and last post or comment in the file, in UTC. "Tries
 | Fairbanks | r/Fairbanks | Jun 27 – Jul 3, 2022 | Jun 27 – Jul 4, 2022 | Jun 27 07:07 – Jul 3 08:28 | Jun 27 00:09 – Jul 3 08:29 | 15 | 184 | None: nothing after Jul 3 08:29. Checked against the Arctic Shift archive: 0 posts and 0 comments for the rest of Jul 3. Small, quiet subreddit. | 2 |
 | Fresno | r/fresno | Aug 17–23, 2020 | Aug 17–24, 2020 | Aug 17 00:22 – Aug 23 23:25 | Aug 17 00:02 – Aug 23 23:55 | 80 | 1,100 | None | 2 |
 | Yakima | r/Yakima | Sep 6–12, 2021 | Sep 6–13, 2021 | Sep 7 02:41 – Sep 10 20:29 | Sep 6 04:45 – Sep 11 17:38 | 3 | 47 | None: the archive has 0 posts and 0 comments on Sep 12 and 0 comments on Sep 10. **Very thin week:** 3 posts, 47 comments. | 2 |
-| Detroit | r/Detroit | Jul 13–19, 2026 | Jul 13–20, 2026 | Jul 13 00:09 – Jul 19 23:43 | Jul 13 00:06 – **Jul 19 21:11** | 284 | 5,822 | **Comments: last 2.8 h missing** (Jul 19 21:11–24:00 UTC = 5:11–8 pm Detroit time). Posts complete. | 4 (see below) |
+| Detroit | r/Detroit | Jul 13–19, 2026 | Jul 13–20, 2026 | Jul 13 00:09 – Jul 19 23:43 | Jul 13 00:06 – Jul 19 23:59 | 284 | 5,908 | None. Fixed by the 4th download ("Detroit3"); the earlier file stopped at Jul 19 21:11 UTC. | 4 (see below) |
 | Seattle | r/Seattle | Sep 7–13, 2020 | Sep 7–14, 2020 | Sep 7 00:18 – Sep 13 23:43 | Sep 7 00:00 – Sep 13 23:59 | 678 | 11,663 | None. Last 3 h checked against the archive. | 2 |
 | Indianapolis | r/indianapolis | Jun 26 – Jul 2, 2023 | Jun 26 – Jul 3, 2023 | Jun 26 00:49 – Jul 2 23:58 | Jun 26 00:07 – Jul 2 23:59 | 284 | 5,325 | None. Last 3 h checked against the archive. | 2 |
 | Eugene | r/Eugene | Sep 7–13, 2020 | Sep 7–14, 2020 | Sep 7 02:13 – Sep 13 23:56 | Sep 7 00:00 – Sep 13 23:54 | 620 | 9,444 | None. Last 3 h checked against the archive. | 2 |
@@ -42,9 +42,9 @@ Covered dates are the first and last post or comment in the file, in UTC. "Tries
 ### Detroit tries (comments)
 
 1. **Event-week dates (Jul 13–19):** came back one day short, ending Jul 18 23:59 UTC.
-2. **Jul 13–20:** saved 10:26. Ends Jul 19 21:11 UTC. Chrome left an unfinished-download file (`.crswap`) behind, so the download stopped early. **This is the file in the repo.**
+2. **Jul 13–20:** saved 10:26. Ends Jul 19 21:11 UTC. Chrome left an unfinished-download file (`.crswap`) behind, so the download stopped early. Was in the repo until Step 2.
 3. **"Detroit2":** pulled Aug 13–20 by mistake (wrong month). Deleted.
-4. **"Detroit3" (Jul 13–20):** was still downloading at 11:43, when it had reached Jul 19 20:41 UTC with nothing new compared with try 2. It is no longer in the folder.
+4. **"Detroit3" (Jul 13–20):** saved 11:44. Complete: runs to Jul 19 23:59 UTC, with all 5,822 comments of try 2 plus 86 more (the missing evening). **Since Step 2, this is the file in the repo**, saved under the usual name `r_Detroit_comments.jsonl`. Posts: identical to try 2.
 
 ### Pittsburgh tries (comments)
 
@@ -54,9 +54,7 @@ Covered dates are the first and last post or comment in the file, in UTC. "Tries
 
 **Likely cause:** the Arctic Shift server was overloaded during these downloads ("Timeout. Maybe slow down a bit"). Long comment downloads seem to stop quietly when they hit a timeout.
 
-**Suggested fix (not yet done):** pull only the missing hours, combine them with the existing file, and remove duplicates:
-- Detroit comments: Jul 19 21:00 – Jul 20 00:00 UTC
-- Pittsburgh comments: Jul 19 19:00 – Jul 20 00:00 UTC
+**Suggested fix for Pittsburgh (not yet done):** pull only the missing hours (Jul 19 19:00 – Jul 20 00:00 UTC), combine them with the existing file, and remove duplicates. Or re-pull the whole week, as worked for Detroit.
 
 ## What was removed from the copies
 
@@ -67,7 +65,7 @@ The script `scripts/reddit/event_weeks_01_strip_usernames.py` copies each file a
   - the author name and URL of embedded YouTube or Twitter media
 - `link_author`: the username of the post a comment replies to
 
-In total, 764,010 values were removed from 64,964 posts and comments.
+In total, 764,010 values were removed from 64,964 posts and comments in Step 1. After Step 2 (Detroit comments replaced), the folder holds 65,050 posts and comments.
 
 Everything else is kept exactly as downloaded, including the post and comment IDs, the text and the timestamps.
 

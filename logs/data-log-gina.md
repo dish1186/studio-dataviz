@@ -32,6 +32,24 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Reddit · event weeks, Step 2: Detroit comments replaced with the complete download · 2026-10-03 11:56 EDT · Gina + Claude
+- **What (Gina: "yes, do that"):** replaced the cleaned Detroit comments copy with one made from Gina's 4th Detroit download (`r_Detroit3_comments.jsonl`). Usernames were removed the same way as in Step 1.
+- **Why:** the Step 1 file stopped at Jul 19 21:11 UTC. Detroit3 runs to 23:59 UTC.
+- **Input:** `Downloads/r_Detroit3_comments.jsonl` on Gina's computer. Not in the repo; unchanged (MD5 identical before and after).
+- **Script:** `scripts/reddit/event_weeks_02_detroit3_comments.py`. It checks that every comment ID of the old file is in the new one before replacing it.
+- **Rows in → out:**
+  - 5,822 → 5,908 comments (+86, all on Jul 19 21:11–23:59 UTC); none lost.
+  - 74,571 username values removed.
+  - Detroit posts unchanged: the Detroit3 posts file is identical to the one in Step 1.
+- **Output:**
+  - `data/processed/reddit/event_weeks_no_usernames/r_Detroit_comments.jsonl` (replaced)
+  - the Detroit row of `coverage.csv`
+  - `docs/reddit-event-weeks-pull-status.md`: Detroit gap now "None"
+- **Judgment call (Claude's choice, not yet approved):** the file keeps the name `r_Detroit_comments.jsonl` (not "Detroit3") so all cities follow one naming pattern. Where it came from is recorded here and in the doc.
+- **Status:** 9 of 10 cities complete. Only Pittsburgh comments still miss the end of Jul 19 (19:52–24:00 UTC).
+
+---
+
 ### Reddit · event weeks, Step 1: copies of Gina's event-week pulls with usernames removed, plus a coverage doc · 2026-10-03 11:51 EDT · Gina + Claude
 - **What (Gina: "push a cleaned copy plus the document, remove the username field from copies but leave my originals untouched"):** Gina downloaded r/[city] posts and comments for the 10 PM2.5 event weeks from the Arctic Shift download tool (Monday to following Monday, UTC). Claude checked every file, then copied them with all username fields removed.
 - **Why:** to put the event-week Reddit data in the repo without usernames (project rule; methodology doc, Ethics section).

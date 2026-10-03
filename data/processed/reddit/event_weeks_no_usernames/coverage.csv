@@ -1,5 +1,5 @@
 file,subreddit,kind,records,unique_ids,first_utc,last_utc,field_names_removed,values_removed
-r_Detroit_comments.jsonl,Detroit,comments,5822,5822,2026-07-13 00:06,2026-07-19 21:11,14,73459
+r_Detroit_comments.jsonl,Detroit,comments,5908,5908,2026-07-13 00:06,2026-07-19 23:59,14,74571
 r_Detroit_posts.jsonl,Detroit,posts,284,284,2026-07-13 00:09,2026-07-19 23:43,15,3422
 r_Eugene_comments.jsonl,Eugene,comments,9444,9444,2020-09-07 00:00,2020-09-13 23:54,13,107792
 r_Eugene_posts.jsonl,Eugene,posts,620,620,2020-09-07 02:13,2020-09-13 23:56,15,6967
