@@ -1466,6 +1466,12 @@ Step · dataset · date · who ran it | What (plain language) | Why | Input file
   - **Rule changed (Claude's choice, flagged):** an empty first/last day is fatal for comments only, and a warning for posts.
   - **Rerun: passed.** 14 files, 6,338 records, written to `normals_no_usernames/fairbanks/`. `coverage.csv` was updated; the 32 Eugene/Bakersfield rows were kept.
   - **Warnings:** scattered empty post days, the longest being Jun 15–18, 2020. Comments continued every day of that stretch (2–10 a day), so it's a quiet subreddit, not an archive gap. There's also one empty comment day (2019-06-10, 2022-06-11), and comments end 2–7 h before the window end on padding days.
+- **Fresno check-and-strip, run by Claude:** passed, no warnings. 14 files, 60,838 records.
+  - **August 2024 audit** (about 3× the comments of other years; not Fresno's event month): it looks organic, not spam.
+    - The comments are spread over 1,046 threads, and the biggest thread is only 2.1% of them.
+    - Only 1.5% are text repeated 5+ times (2023: 1.8%).
+    - The daily median is 521 comments (2023: 157; 2025: 414), so r/fresno stepped up in activity from 2024 on.
+    - **Caveat:** the month normal mixes quieter (2019–2023) and busier (2024–2025) years. The share adjusts for volume; a change in the subreddit's culture is the drift risk already noted.
 - **6-usable-normal-weeks rule: not set.** Dish: "i dont want to get rid of fairbanks just yet." It is still open, and should be decided before the analysis script is committed.
 
 ---
