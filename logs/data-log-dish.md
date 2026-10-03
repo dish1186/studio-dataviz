@@ -1451,6 +1451,16 @@ Step · dataset · date · who ran it | What (plain language) | Why | Input file
   - Records are de-duplicated by id. `normals_01` then strips usernames from the new pieces and checks the whole file like any other.
   - **Caveat:** the middle piece comes from Gina's earlier download, not this run. It is the same source (Arctic Shift), but downloaded on a different date.
 - **Retry page size corrected:** a test on the failing request (r/Detroit comments, Jul 12) found limit 5/25/50/auto → HTTP 200, but limit=100 → 422 in 0.4 s. So the earlier fallback to 100 made retries worse. Retries now use 50, then 25. **Claude's error, fixed.** Dish also asked to download the smaller subreddits first (`--only <city>`, one city at a time).
+- **Check-and-strip for the other cities:** `scripts/reddit/normals_01b_check_and_strip_more_cities.py <city>`. Gina's `normals_01` has her two cities hard-coded and rewrites `coverage.csv`, so it can't be reused as is. This version:
+  - reads the plan from the doc
+  - runs one city at a time
+  - replaces only that city's rows in `coverage.csv`
+  - applies the same username rule
+  - **Changed checks (Claude's choice, flagged):**
+    - Subreddit match is case-insensitive.
+    - **Fatal:** missing or unplanned files, unreadable lines, duplicates, wrong subreddit, records outside the window, or an empty first or last day.
+    - **Warnings only (recorded):** empty days inside the window, and comments ending more than 2 h early. Small subreddits like r/Fairbanks can have genuinely empty days, and the API downloader pages to the end, so truncation shows up as an empty last day.
+- **Fairbanks downloaded:** 14 files in 4.7 min (about 75 posts + comments a week in June 2019, 130–370 in other years).
 
 ---
 **Actual-temperature status (2026-09-27): done for all 12 cities.** gridMET Steps 1–5b for the 11 continental viz cities (D10; 16 pulled); **Fairbanks from ERA5-Land** (D15, ERA5-Land Steps 1–3). Final files for all 12 in `data/processed/gridmet/final/` (`temp_<city>_daily.csv`, 3,920 rows 2016-01-01 → 2026-09-24, join row for row with UTCI; `_normals.csv`; `_monthly.csv`); the folder name is gridMET but Fairbanks' source is ERA5-Land (blank 2026-09-22 → 09-24). End date settled (D9). Open: N1 (boundary file vs OpenAQ, appendix note); optional PAFA station cross-check for Fairbanks; March 2026 station check.
