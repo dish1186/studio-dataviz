@@ -1438,6 +1438,10 @@ Step · dataset · date · who ran it | What (plain language) | Why | Input file
   - It took 39 s for about 1,700 records (about 95 per request).
 - **Judgment calls (Claude's choices, flagged):** the 0.5 s pause and the retry/backoff settings. Downloads are sequential (one at a time), to be polite to a free service.
 - **SHA-256:** normals_00_api_download.py `095d9a2c32ad7636abad1e105200f04dc06a3a5cad77288a30abfac4876ff81a`
+- **Fix after Dish's first full run (2026-10-03):** `r/Detroit` comments failed after 8 tries with HTTP 422.
+  - Claude reproduced it. The server says "Timeout. Maybe slow down a bit", at 2026-07-16 ~09:47 UTC: the record smoke day, r/Detroit's busiest. The same request succeeded on a later retry, so the server was busy; the request itself was fine. Claude's own test requests ran alongside Dish's run and may have added load.
+  - **Changes:** pause 0.5 → 1.5 s; 10 tries; on 422 or 429, wait 60 s × try number and ask for pages of 100 instead of `auto`; the error message is printed. **Claude's choices, flagged.**
+  - Re-tested on Bakersfield December 2019: still 178 posts and 1,563 comments.
 
 ---
 **Actual-temperature status (2026-09-27): done for all 12 cities.** gridMET Steps 1–5b for the 11 continental viz cities (D10; 16 pulled); **Fairbanks from ERA5-Land** (D15, ERA5-Land Steps 1–3). Final files for all 12 in `data/processed/gridmet/final/` (`temp_<city>_daily.csv`, 3,920 rows 2016-01-01 → 2026-09-24, join row for row with UTCI; `_normals.csv`; `_monthly.csv`); the folder name is gridMET but Fairbanks' source is ERA5-Land (blank 2026-09-22 → 09-24). End date settled (D9). Open: N1 (boundary file vs OpenAQ, appendix note); optional PAFA station cross-check for Fairbanks; March 2026 station check.

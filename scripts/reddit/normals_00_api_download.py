@@ -17,8 +17,9 @@ API: https://arctic-shift.photon-reddit.com/api/{posts,comments}/search
      (docs: github.com/ArthurHeitmann/arctic_shift/blob/master/api/README.md; limit=auto returns
      100-1000 items per request.) Paging: the next request starts at the last item's created_utc;
      items are de-duplicated by id, and only items inside the window are kept.
-Politeness: 0.5 s between requests; on HTTP 429 waits 60 s x try number; other errors
-retry with growing waits, 8 tries, then the pull is reported as failed (not fatal for the others).
+Politeness: 1.5 s between requests. On HTTP 429 (rate limit) or 422 ("Timeout. Maybe slow down a bit",
+seen on the busiest days, e.g. r/Detroit 2026-07-16) waits 60 s x try number and asks for pages of 100 instead
+of "auto"; other errors retry with growing waits, 10 tries, then the pull is reported as failed (not fatal for the others).
 Resumable: a finished file is never downloaded again. Files are written to <name>.part and renamed
 only when the pull is complete, so a half-finished file never looks finished.
 Records are saved exactly as the API returns them (usernames included, like the tool's files);
@@ -48,7 +49,7 @@ SUBREDDITS = {"eugene": "Eugene", "bakersfield": "bakersfield", "fairbanks": "Fa
               "pittsburgh": "pittsburgh", "sanjose": "SanJose"}
 ROW = re.compile(r"`(([a-z]+)_(?:month|event|neighbor)_\d{4}-\d{2}-\d{2})_posts\.jsonl`")
 DATE = re.compile(r"\b\d{4}-\d{2}-\d{2}\b")
-PAUSE, TRIES = 0.5, 8
+PAUSE, TRIES = 1.5, 10
 
 
 def read_plan(path):
@@ -67,10 +68,12 @@ def epoch(d):
     return int(datetime.fromisoformat(d).replace(tzinfo=timezone.utc).timestamp())
 
 
-def get(url):
+def get(base, params):
     # curl rather than urllib: this Mac's Python can't verify the site's SSL certificate (same approach as
     # scripts/openaq/04_download_daily.py)
     for attempt in range(1, TRIES + 1):
+        # after a failure, ask for smaller pages (100) - cheaper for the server on busy days
+        url = base + "?" + urllib.parse.urlencode({**params, "limit": "auto" if attempt == 1 else 100})
         r = subprocess.run(["curl", "-s", "-m", "180", "-A", "studio-dataviz research (MDE studio project)",
                             "-w", "\n%{http_code}", url], capture_output=True, text=True)
         body, _, code = r.stdout.rpartition("\n")
@@ -84,8 +87,9 @@ def get(url):
                 msg = "unreadable JSON"
             wait = 10 * attempt
         else:
-            msg = f"HTTP {code or 'timeout'}"
-            wait = 60 * attempt if code == "429" else 10 * attempt
+            msg = f"HTTP {code or 'timeout'} {body.strip()[:120]}"
+            # 429 = rate limit; 422 = "Timeout. Maybe slow down a bit" (server busy) -> long waits
+            wait = 60 * attempt if code in ("429", "422") else 10 * attempt
         print(f"      {msg}, waiting {wait} s (try {attempt}/{TRIES})", flush=True)
         time.sleep(wait)
     raise RuntimeError(f"failed after {TRIES} tries")
@@ -95,8 +99,7 @@ def download(sub, kind, a, b, path):
     seen, n, after, req = set(), 0, a, 0
     with open(path + ".part", "w", encoding="utf-8") as out:
         while True:
-            q = urllib.parse.urlencode({"subreddit": sub, "after": after, "before": b, "sort": "asc", "limit": "auto"})
-            items = get(API.format(kind=kind) + "?" + q)
+            items = get(API.format(kind=kind), {"subreddit": sub, "after": after, "before": b, "sort": "asc"})
             req += 1
             time.sleep(PAUSE)
             new = [x for x in items if x["id"] not in seen]
