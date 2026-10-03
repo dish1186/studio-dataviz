@@ -1450,6 +1450,7 @@ Step · dataset · date · who ran it | What (plain language) | Why | Input file
     - API [Jul 20, Jul 21) UTC (Sunday evening local time, which her UTC-day file missed)
   - Records are de-duplicated by id. `normals_01` then strips usernames from the new pieces and checks the whole file like any other.
   - **Caveat:** the middle piece comes from Gina's earlier download, not this run. It is the same source (Arctic Shift), but downloaded on a different date.
+- **Retry page size corrected:** a test on the failing request (r/Detroit comments, Jul 12) found limit 5/25/50/auto → HTTP 200, but limit=100 → 422 in 0.4 s. So the earlier fallback to 100 made retries worse. Retries now use 50, then 25. **Claude's error, fixed.** Dish also asked to download the smaller subreddits first (`--only <city>`, one city at a time).
 
 ---
 **Actual-temperature status (2026-09-27): done for all 12 cities.** gridMET Steps 1–5b for the 11 continental viz cities (D10; 16 pulled); **Fairbanks from ERA5-Land** (D15, ERA5-Land Steps 1–3). Final files for all 12 in `data/processed/gridmet/final/` (`temp_<city>_daily.csv`, 3,920 rows 2016-01-01 → 2026-09-24, join row for row with UTCI; `_normals.csv`; `_monthly.csv`); the folder name is gridMET but Fairbanks' source is ERA5-Land (blank 2026-09-22 → 09-24). End date settled (D9). Open: N1 (boundary file vs OpenAQ, appendix note); optional PAFA station cross-check for Fairbanks; March 2026 station check.

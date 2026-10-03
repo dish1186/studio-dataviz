@@ -18,8 +18,8 @@ API: https://arctic-shift.photon-reddit.com/api/{posts,comments}/search
      100-1000 items per request.) Paging: the next request starts at the last item's created_utc;
      items are de-duplicated by id, and only items inside the window are kept.
 Politeness: 1.5 s between requests. On HTTP 429 (rate limit) or 422 ("Timeout. Maybe slow down a bit",
-seen on the busiest days, e.g. r/Detroit 2026-07-16) waits 60 s x try number and asks for pages of 100 instead
-of "auto"; other errors retry with growing waits, 10 tries, then the pull is reported as failed (not fatal for the others).
+seen on the busiest days, e.g. r/Detroit 2026-07-16) waits 60 s x try number and asks for pages of 50, then 25,
+instead of "auto"; other errors retry with growing waits, 10 tries, then the pull is reported as failed (not fatal for the others).
 Resumable: a finished file is never downloaded again. Files are written to <name>.part and renamed
 only when the pull is complete, so a half-finished file never looks finished.
 Records are saved exactly as the API returns them (usernames included, like the tool's files);
@@ -73,8 +73,9 @@ def get(base, params):
     # curl rather than urllib: this Mac's Python can't verify the site's SSL certificate (same approach as
     # scripts/openaq/04_download_daily.py)
     for attempt in range(1, TRIES + 1):
-        # after a failure, ask for smaller pages (100) - cheaper for the server on busy days
-        url = base + "?" + urllib.parse.urlencode({**params, "limit": "auto" if attempt == 1 else 100})
+        # after a failure, ask for smaller pages (50, then 25). Pages of exactly 100 were refused instantly with
+        # 422 while 5/25/50/auto worked (tested 2026-10-03 on r/Detroit comments).
+        url = base + "?" + urllib.parse.urlencode({**params, "limit": "auto" if attempt == 1 else 50 if attempt == 2 else 25})
         r = subprocess.run(["curl", "-s", "-m", "180", "-A", "studio-dataviz research (MDE studio project)",
                             "-w", "\n%{http_code}", url], capture_output=True, text=True)
         body, _, code = r.stdout.rpartition("\n")
