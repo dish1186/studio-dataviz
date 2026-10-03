@@ -32,6 +32,43 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Reddit · normals, Step 1: Eugene and Bakersfield normal pulls checked against the plan, usernames removed · 2026-10-03 13:27 EDT · Gina + Claude
+- **What (Gina: "recheck all files in the folder - if they are all complete and match with the document, perform the same name cleaning script and upload to the github"):** Gina downloaded the 32 files in `docs/reddit-pull-eugene-bakersfield.md` from the Arctic Shift download tool:
+  - per city: 1 neighbor pull and 7 month pulls, posts and comments each
+  - for r/Eugene and r/bakersfield
+
+  Claude checked every file against the plan, then copied them with the username fields removed. "Name cleaning" was taken to mean the same username removal as event weeks Step 1.
+- **Fixes before the check (Gina's files, Downloads only):**
+  1. Gina re-downloaded the Bakersfield neighbor pull. The first download ran to 2025-09-29 instead of the planned 2025-01-21. The new one ends correctly and has exactly the same 1,443 posts and 19,881 comments for the planned dates.
+  2. Claude removed a leading space from 8 file names at Gina's request.
+- **Checks (all passed; the script writes nothing if any fails):**
+  - all 32 planned files present, nothing extra
+  - every line valid JSON; no duplicate IDs; only the city's subreddit
+  - every record inside the planned window (download-from 00:00 to download-to 00:00 UTC)
+  - no empty day in any window
+  - comments run to within 2 h of the end of the window (no stopped downloads)
+- **Input:** `Downloads/eugene/` and `Downloads/bakersfield/` on Gina's computer. Not in the repo; unchanged (MD5 identical before and after).
+- **Script:** `scripts/reddit/normals_01_check_and_strip_usernames.py`. The plan's dates are copied into it.
+- **Rows in → out:** 253,961 → 253,961; none removed.
+  - Eugene: 9,847 posts, 195,926 comments.
+  - Bakersfield: 3,568 posts, 44,620 comments.
+- **Fields removed:** every `author*` field and `link_author`, at all levels, same as event weeks Step 1.
+- **Output:**
+  - `data/processed/reddit/normals_no_usernames/eugene/` and `.../bakersfield/` (16 files each, same names as in the plan)
+  - `data/processed/reddit/normals_no_usernames/coverage.csv`
+- **Notes:**
+  - **Short padding days:** two Bakersfield posts files have no posts for some hours on padding days, which are outside the actual weeks:
+    - 2020 month posts start Nov 29 15:37 UTC
+    - 2021 month posts end Jan 3 18:02 UTC
+
+    r/bakersfield gets about 7 posts a day, so this is consistent with quiet hours.
+  - **Largest file:** `eugene_neighbor_2020-07-27_comments.jsonl`, 57 MB. That is over GitHub's 50 MB warning but under its 100 MB limit.
+- **Judgment calls (Claude's choice, not yet approved):**
+  - **Where the files go:** cleaned copies go in `data/processed/reddit/normals_no_usernames/`, not in `data/raw/reddit/arctic-shift/` as the plan said. The plan's folder is for raw downloads, and these are changed copies. The raw files (with usernames) stay on Gina's computer.
+  - **Pass/fail rules:** the 2-hour end-of-window rule for comments.
+
+---
+
 ### Reddit · event weeks, Step 2: Detroit comments replaced with the complete download · 2026-10-03 11:56 EDT · Gina + Claude
 - **What (Gina: "yes, do that"):** replaced the cleaned Detroit comments copy with one made from Gina's 4th Detroit download (`r_Detroit3_comments.jsonl`). Usernames were removed the same way as in Step 1.
 - **Why:** the Step 1 file stopped at Jul 19 21:11 UTC. Detroit3 runs to 23:59 UTC.
