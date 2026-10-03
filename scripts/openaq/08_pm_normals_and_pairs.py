@@ -9,6 +9,8 @@
 #                    weeks and weeks above 35.5 are kept, since the normal describes what residents are used to
 #                    (Claude's choices, flagged).
 #   Ratio          = event-week average / PM2.5 normal.
+#   Dropped cities (Dish, 2026-10-03) stay in pm_normals.csv with the reason, but are left out of the pairs:
+#     Yakima: event week has fewer than 100 kept Reddit posts + comments (check 2, Reddit activity).
 # Pairs (every pair of the 10 cities, A = the city with the higher event-week PM2.5):
 #   crossed = A had worse air but a smaller ratio.
 #   matched = event-week PM2.5 within 5% of each other (relative to the higher one) and different ratios
@@ -24,6 +26,7 @@ IN = "data/processed/openaq/step07_screening"
 OUT = "data/processed/openaq/step08_pm_normals"
 CITIES = ["bakersfield", "fairbanks", "fresno", "yakima", "detroit", "seattle", "indianapolis", "eugene", "pittsburgh", "sanjose"]
 YEARS, MIN_DAYS, MATCH_TOL = range(2019, 2026), 5, 0.05
+DROPPED = {"yakima": "check 2: event week under 100 Reddit posts + comments"}
 os.makedirs(OUT, exist_ok=True)
 
 S = {r["city"]: r for r in csv.DictReader(open(f"{IN}/city_screening.csv", encoding="utf-8")) if r["source"] == "reference"}
@@ -40,11 +43,11 @@ for c in CITIES:
     norms.append(dict(city=c, city_name=s["city_name"], event_week_start=ev, event_week_end=s["worst_week_end"], event_month=m,
                       event_week_pm25=a, pm25_normal=round(n, 3), normal_weeks=len(vals),
                       normal_weeks_above_35_5=sum(v > 35.5 for v in vals), ratio_to_normal=round(a / n, 2),
-                      median_days_ge_35_5_2019_2025=s["median_days_ge_35_5_2019_2025"]))
+                      median_days_ge_35_5_2019_2025=s["median_days_ge_35_5_2019_2025"], dropped=DROPPED.get(c, "")))
 by = {r["city"]: r for r in norms}
 
 pairs = []
-for x, y in itertools.combinations(CITIES, 2):
+for x, y in itertools.combinations([c for c in CITIES if c not in DROPPED], 2):
     A, B = sorted((by[x], by[y]), key=lambda r: -r["event_week_pm25"])
     gap = (A["event_week_pm25"] - B["event_week_pm25"]) / A["event_week_pm25"]
     crossed = A["ratio_to_normal"] < B["ratio_to_normal"]

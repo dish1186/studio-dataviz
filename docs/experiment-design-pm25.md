@@ -25,7 +25,8 @@ Candidates (ALA rank): Fairbanks AK (1), Eugene OR (2), Bakersfield CA (3), Fres
 A city is included only if it passes all three checks:
 
 1. **PM2.5 coverage:** daily PM2.5 data for at least 75% of days, 2019–2026.
-2. **Reddit activity:** a city subreddit with at least [N_avg] posts and comments per week on average. This is checked with one small screening pull per candidate city ([one recent month]) before the full Reddit pull.
+2. **Reddit activity:** the city's event week must have at least **100 kept posts + comments**, the same minimum as for a normal week. *(Settled 2026-10-03 by Dish. This replaces the [N_avg] average and the separate screening pull.)*
+   - **Yakima fails** (about 50 posts + comments in its event week, from the pull's coverage counts) **and is dropped, leaving 9 cities.**
 3. **Real harm:** the city's worst week has an average PM2.5 above the EPA line, 35.5 µg/m³. This makes sure every city in the study actually faced harmful air. Without that, a city that didn't react might just have had nothing worth reacting to. (35.5 is EPA's 24-hour standard. Applying it to a whole week's average is a stricter bar.)
 
 **Screening results (OpenAQ Step 7, reference monitors, 2019-01-01 → 2026-09-25):** `scripts/openaq/07_city_screening.py` → `data/processed/openaq/step07_screening/`.
@@ -36,14 +37,14 @@ A city is included only if it passes all three checks:
   - **Salt Lake City:** worst valid week 26.24. A higher week (Aug 2–8, 2021, 45.04) has only 2 of 7 days, so it's invalid.
   - **Phoenix:** its two highest weeks are New Year's weeks, excluded by the fireworks rule. Its best remaining week is 34.99.
 
-**Cities in the study (10), with their event weeks:**
+**Cities that passed checks 1 and 3 (10), with their event weeks.** Yakima later failed check 2, so **9 are in the study**:
 
 | City | Event week (Mon–Sun) | Week avg PM2.5 (µg/m³) | Days with data | Median days ≥ 35.5 / yr | Event |
 |---|---|---|---|---|---|
 | Bakersfield | Dec 2–8, 2024 | 55.5 | 7/7 | 12 | Winter inversion: stagnant air trapping local pollution (wood burning, traffic). Not smoke. |
 | Fairbanks | Jun 27 – Jul 3, 2022 | 91.8 | 7/7 | 8 | Interior Alaska wildfires (lightning-started complexes, plus a nearby tundra fire) |
 | Fresno | Aug 17–23, 2020 | 61.2 | 5/7 | 8 | August 2020 Lightning Siege fires (SCU, LNU, August Complex) |
-| Yakima | Sep 6–12, 2021 | 53.8 | 7/7 | 3 | Schneider Springs Fire, NW of Naches |
+| ~~Yakima~~ (dropped, check 2) | Sep 6–12, 2021 | 53.8 | 7/7 | 3 | Schneider Springs Fire, NW of Naches |
 | Detroit | Jul 13–19, 2026 | 91.8 | 7/7 | 2 | Canadian (mostly Ontario) wildfire smoke; record AQI 650 on Jul 16 |
 | Seattle | Sep 7–13, 2020 | 51.5 | 5/7 | 1 | 2020 Labor Day fires (Oregon/Washington) |
 | Indianapolis | Jun 26 – Jul 2, 2023 | 55.1 | 7/7 | 1 | Canadian (Quebec) wildfire smoke |
@@ -70,7 +71,7 @@ GINA ADD MORE INFO HERE
 |---|---|
 | 12 | Bakersfield |
 | 8 | Fairbanks, Fresno |
-| 3 | Yakima |
+| 3 | Yakima (dropped, check 2) |
 | 2 | Detroit |
 | 1 | Seattle, Indianapolis |
 | 0 | Eugene, Pittsburgh, San Jose |
@@ -186,7 +187,7 @@ PM2.5 ratio to normal:
 | Fairbanks | 17.4× |
 | Detroit | 7.4× |
 | Seattle | 7.2× |
-| Yakima | 6.0× |
+| Yakima (dropped) | 6.0× |
 | Fresno | 6.0× |
 | Pittsburgh | 5.3× |
 | San Jose | 5.0× |
@@ -207,9 +208,8 @@ Any other pair mentioned is labeled as noticed after seeing results.
 
 **Eugene vs Bakersfield is no longer a test pair.** With the Sep 2020 event week, Eugene has both the worse air (280 vs 55) and the bigger ratio (41.9× vs 2.9×), so Pos and Neg predict the same thing. It's kept as an illustration only. (The old August 2026 Eugene event made a crossed pair.)
 
-**All 14 qualifying pairs** are in `pairs.csv`.
+**All 9 qualifying pairs** (3 matched, 6 crossed) are in `pairs.csv`. Pairs with Yakima were removed when it was dropped; there were 14 before.
 - **Fairbanks vs Detroit** is a strong matched pair: 91.8 vs 91.8, with ratios of 17.4× vs 7.4×. But Detroit's week was national news.
-- **Fresno vs Yakima** is crossed only on a trivial ratio gap (5.95× vs 5.98×).
 
 ## How we decide
 
@@ -242,7 +242,7 @@ Any other pair mentioned is labeled as noticed after seeing results.
 
 ## Open decisions
 
-[N_avg] (proposed: an event week needs ≥ 100 kept posts + comments, the same as the weekly minimum; pending Dish), event type rule (news check done for the 10 event weeks; a formal rule is still open), headline Reddit rise measure (ratio or percentage points), screening pull month, spot-check years.
+event type rule (news check done for the 10 event weeks; a formal rule is still open), headline Reddit rise measure (ratio or percentage points), screening pull month, spot-check years.
 
 Settled 2026-10-02: valid-week rule (5 of 7), hourly completeness (18 of 24), ≥ 35.5 for counting days, reference/low-cost filter (`sensor_class`), station combining (mean of sites), fireworks rule. The low-cost agreement rule is not needed: no city uses low-cost.
 
@@ -253,6 +253,7 @@ Settled 2026-10-03:
 - **Headline pairs:** none. All pairs are reported, with a pre-set summary and featured-by-rule examples. This replaced the earlier Bakersfield–Indianapolis / Bakersfield–Seattle choice.
 - **Chronic/acute grouping:** dropped. Bad days per year is kept as a descriptive measure.
 - **[N_min]:** 100 kept posts + comments per week (from the normals rules).
+- **Check 2 (Reddit activity):** the event week needs ≥ 100 kept posts + comments. Yakima dropped.
 
 Each one gets settled in the data log, then copied here.
 
@@ -275,4 +276,5 @@ Each one gets settled in the data log, then copied here.
   - PM2.5 normals, ratios and pairs computed (OpenAQ Step 8). Eugene–Bakersfield dropped as a test pair.
   - Headline pairs set, then replaced by "all pairs + pre-set summary + featured by rule".
   - **Chronic/acute grouping dropped.** Bad days per year kept as a descriptive measure.
-  - Event weeks for Detroit and Pittsburgh to be re-pulled in local time; the other 8 come from the month pulls.
+  - Event weeks for Detroit and Pittsburgh to be re-pulled in local time; the others come from the month pulls.
+  - **Check 2 set** (event week ≥ 100 posts + comments). **Yakima dropped, leaving 9 cities and 9 pairs.**

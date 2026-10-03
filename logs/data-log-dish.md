@@ -1382,6 +1382,17 @@ Step · dataset · date · who ran it | What (plain language) | Why | Input file
   - pm_normals.csv unchanged
   - pull plan `90b757a69d05370b7b4953f6387820063956fb222f3c762577f4086f80fe63ed`
 
+### Decision · check 2 set; Yakima dropped; Dish does the pulls · 2026-10-03 · Dish
+- **Check 2 (Reddit activity):** a city's event week needs ≥ 100 kept posts + comments, the same minimum as a normal week. **Claude's recommendation, approved by Dish** ("yes drop"). This replaces the design doc's [N_avg] weekly average and its separate screening pull.
+- **Yakima dropped.** Its event week has about 50 posts + comments, from `event_weeks_no_usernames/coverage.csv` (47 comments + 3 posts, counted in UTC days). Its local-time week won't differ by anywhere near 50. **9 cities remain.** Only counts were read, no content.
+- **Pairs:** Yakima's 5 pairs were removed, **leaving 9 (3 matched, 6 crossed)**. The featured-by-rule pairs are unchanged (Fairbanks–Detroit, Bakersfield–San Jose). In `08_pm_normals_and_pairs.py`, Yakima stays in `pm_normals.csv` with a `dropped` reason and is left out of the pairs. Rerun by Claude.
+- **Pull plan:** Yakima removed, so it's now 51 pulls (102 files). **Dish will do the pulls** (not Gina). The plan's wording was updated, and it notes that `normals_01_check_and_strip_usernames.py` needs these cities added to its `PLAN`.
+- **SHA-256:**
+  - 08_pm_normals_and_pairs.py `912108035f3797727780d7f3326f0b5b25613aa546d158208076838df8945d4c`
+  - pairs.csv `893e1884663c78980812005ca067bd87444157fe2d151f6ddaf812fd01292d6a`
+  - pm_normals.csv `89351c491319b9ea5cfe7f6e646ae2838165175a9afa95db636a8640690f3438`
+  - pull plan `d880ebfae2a91488ca9276fc357df33b88ea2027c8a6cb364e4a167181ff369b`
+
 ---
 **Actual-temperature status (2026-09-27): done for all 12 cities.** gridMET Steps 1–5b for the 11 continental viz cities (D10; 16 pulled); **Fairbanks from ERA5-Land** (D15, ERA5-Land Steps 1–3). Final files for all 12 in `data/processed/gridmet/final/` (`temp_<city>_daily.csv`, 3,920 rows 2016-01-01 → 2026-09-24, join row for row with UTCI; `_normals.csv`; `_monthly.csv`); the folder name is gridMET but Fairbanks' source is ERA5-Land (blank 2026-09-22 → 09-24). End date settled (D9). Open: N1 (boundary file vs OpenAQ, appendix note); optional PAFA station cross-check for Fairbanks; March 2026 station check.
 
