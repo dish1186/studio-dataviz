@@ -1423,6 +1423,22 @@ Step · dataset · date · who ran it | What (plain language) | Why | Input file
   - 08_pm_normals_and_pairs.py `cb43f428360978636614617c8c86c5b9d462463a8ecfb9d17f72966ff14846f6`
   - pm_normals.csv `593ee98b2bfda21dc2152f8029373bcf16829156b7c05a161a53f8aa76209e78`
 
+### Normals Step 0 · Reddit · API downloader replaces manual pulls · 2026-10-03 · Dish + Claude
+- **What:** Dish asked for a faster way than clicking through the Arctic Shift download tool. `scripts/reddit/normals_00_api_download.py` does the same pulls through the Arctic Shift API (`/api/posts/search`, `/api/comments/search`, `sort=asc`, `limit=auto`), which the download tool itself runs on.
+  - **Same plan:** it reads the file names and from/to dates straight from the pull-plan doc tables.
+  - **Same output:** the same window ([from 00:00 UTC, to 00:00 UTC)), file names and `~/Downloads/<city>/` folders, so `normals_01_check_and_strip_usernames.py` checks the files the same way.
+  - **Safe to restart:** it can be resumed, and it writes `.part` files that are renamed only when complete.
+  - **Polite:** it pauses 0.5 s between requests and backs off on HTTP 429.
+- **Fixes during testing:**
+  1. Python's `urllib` failed with SSL certificate errors on this Mac. Switched to `curl`, like `scripts/openaq/04_download_daily.py`.
+  2. The first dry run created 7 empty city folders in `~/Downloads`. They were removed (`rmdir`, empty only), and dry runs no longer create folders.
+- **Validation:** Bakersfield December 2019 (`bakersfield_month_2019-12-02`) was re-downloaded through the API into Claude's scratch folder and compared with Gina's manual download (`normals_no_usernames/`).
+  - Posts: 178 vs 178. Comments: 1,563 vs 1,563.
+  - **The same ids, the same text and the same timestamps**, and no field differences apart from the author fields Gina's step strips.
+  - It took 39 s for about 1,700 records (about 95 per request).
+- **Judgment calls (Claude's choices, flagged):** the 0.5 s pause and the retry/backoff settings. Downloads are sequential (one at a time), to be polite to a free service.
+- **SHA-256:** normals_00_api_download.py `095d9a2c32ad7636abad1e105200f04dc06a3a5cad77288a30abfac4876ff81a`
+
 ---
 **Actual-temperature status (2026-09-27): done for all 12 cities.** gridMET Steps 1–5b for the 11 continental viz cities (D10; 16 pulled); **Fairbanks from ERA5-Land** (D15, ERA5-Land Steps 1–3). Final files for all 12 in `data/processed/gridmet/final/` (`temp_<city>_daily.csv`, 3,920 rows 2016-01-01 → 2026-09-24, join row for row with UTCI; `_normals.csv`; `_monthly.csv`); the folder name is gridMET but Fairbanks' source is ERA5-Land (blank 2026-09-22 → 09-24). End date settled (D9). Open: N1 (boundary file vs OpenAQ, appendix note); optional PAFA station cross-check for Fairbanks; March 2026 station check.
 
