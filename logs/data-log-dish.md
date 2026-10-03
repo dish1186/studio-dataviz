@@ -1148,6 +1148,122 @@ Step · dataset · date · who ran it | What (plain language) | Why | Input file
 - **Viz:** Mockup F and H wording updated in https://claude.ai/artifact/H2u3sRjmisXjLHiFtFMpXQ (version 7): "cause not yet known" → record-warm March, early pollen and product launches.
 - **Sources:** washingtonpost.com/weather/interactive/2026/spring-flowers-blooming-leaves-out-record-warmth/ · accuweather.com (2026 US Allergy Forecast) · climatecentral.org/climate-matters/2026-allergy-season · digit.in (Dyson Find+Follow announcement) · vacuumwars.com/dyson-hushjet-purifier-compact/ · epa.gov/indoor-air-quality-iaq/guide-air-cleaners-home · the-gadgeteer.com/2026/05/15/ (weak source)
 
+
+### Step 7 · OpenAQ · PM2.5 experiment Step 1: screen and group cities · 2026-10-02 · Dish + Claude · **script written, not yet run**
+- **What:** For the 13 ALA State of the Air 2026 candidates (docs/experiment-design-pm25.md), report per city and per source (reference and low-cost kept separate): check 1 coverage, 2019-01-01 → end of data (pass ≥ 75%); days per year with daily PM2.5 ≥ 35.5, 2019–2025, with each year's coverage and the 7-year median (grouping measure); check 3, the worst valid Monday–Sunday week (pass > 35.5), with its month, a fireworks flag, and any invalid weeks that average higher; for low-cost, agreement with reference. **No baselines, ratios, Reddit, cutoffs or source choice.**
+- **Why:** Gives the numbers for checks 1 and 3 and for setting the chronic/acute cutoffs [X]/[Y].
+- **Inspection before writing (read only):**
+  - Step 5 data is daily, on local calendar days (OpenAQ /days), with ≥ 18 of 24 hours already required (OA-D3). `sensor_class` = `reference` / `low-cost`. Data runs 2016-03-06 → 2026-09-25 for all 13 cities.
+  - **No relative humidity** in the OpenAQ pull, and **no PurpleAir sensors** (low-cost = Clarity 276, AirGradient 121, CMU 20), so the EPA/Barkjohn correction can't be applied. Most low-cost sensors start 2022–2025.
+  - The coverage numbers in the city table (Fairbanks 75%, …) are Step 5's "overall" share over 2016-03-06 → 2026-09-25, not 2019 on. Fairbanks has reference only (75.39%); Pittsburgh reference-only is 79.2% vs 83.9% overall.
+- **Input (read only):** `data/processed/openaq/step05_averages/pm25_<city>_daily.csv`
+- **Script:** `scripts/openaq/07_city_screening.py` (local files only)
+- **Output:** `data/processed/openaq/step07_screening/` · `city_screening.csv` · `grouping_by_year.csv` · `weekly_all.csv` (every week, for auditing; added by Claude) · `screening_summary.md`
+- **Judgment calls:**
+  - Start from Step 5, not raw (Step 5's rules OA-D3/D5/D6/D7 carry over). **Claude's choice, approved by Dish.**
+  - "Monitor" = Step 3 site (same-type sensors within 50 m, already averaged). **Claude's choice, approved by Dish.**
+  - Harmful day = daily PM2.5 ≥ 35.5 on the unrounded value (Gina's Step 6 truncates to 1 decimal first). **Claude's choice, approved by Dish.**
+  - Low-cost reported uncorrected. **Claude's choice, approved by Dish.**
+  - ≥ 18 of 24 hours and city daily = mean of ≥ 1 reporting site: already Gina's OA-D3, not new.
+  - One end date for all cities and sources (last day with any value in any candidate file). **Claude's choice, pending Dish.**
+  - Weeks overlapping the window edges count days outside 2019-01-01 → end as missing. **Claude's choice, pending Dish.**
+  - Years below 75% coverage flagged but kept in the median; missing days count as not harmful. **Claude's choice, pending Dish.**
+  - Fireworks flag by calendar date, with or without data that day. **Claude's choice, pending Dish.**
+  - Agreement = Pearson r and median (low-cost − reference) over overlapping days in the window. Caveat: OA-D6 already compares low-cost values > 100 with reference. **Claude's choice, pending Dish.**
+
+### Step 7 run · OpenAQ · 2026-10-02 · run by Claude in chat at Dish's request ("you can run it here")
+- **Script unchanged** from the entry above. Window 2019-01-01 → 2026-09-25 (2,825 days). No errors.
+- **Reference results:**
+  - **Check 1:** all 13 pass (81.56% Fairbanks → 88.74% Eugene).
+  - **Check 3:** 11 of 13 pass. **LA fails** (32.95, Sep 2020). **Salt Lake City fails** (26.24, Dec 2024).
+  - **Median days ≥ 35.5 (2019–2025):** Bakersfield 12 · Fairbanks 8 · Fresno 8 · LA 3 · Yakima 3 · Detroit 2 · Phoenix 2 · Seattle 1 · Indianapolis 1 · Salt Lake City 1 · Eugene 0 · Pittsburgh 0 · San Jose 0.
+- **Low-cost (uncorrected):** fails check 1 in all 13 cities (0–56%). It can't serve as a fallback.
+- **Flags for Dish:**
+  - **Phoenix passes check 3 only on fireworks weeks.** The top two weeks contain New Year's (42.75 in 2020-12-28, 40.61 in 2024-12-30). The best non-fireworks week is 34.99, which would fail.
+  - **Detroit and Pittsburgh's worst week is 2026-07-13.** Daily peaks were 294 (Detroit, Jul 16) and 175 (Pittsburgh, Jul 17). All 7 Detroit sites and the low-cost sensors agree. The cause has not been verified; check the news.
+  - **Invalid weeks (< 5/7 days) higher than the worst valid week:**
+    - Bakersfield 2020-09-14 (55.50, 4/7)
+    - Seattle 2020-09-14 (55.18, 4/7)
+    - San Jose 2020-09-07 (72.85, 4/7) and 2020-09-28 (52.10, 4/7)
+    - Salt Lake City 2021-08-02 (45.04, 2/7); this would pass check 3
+    - Yakima 2020-09-14 (265.0, 1/7)
+  - **2020 and 2021 coverage is below 75% in most cities** (2021 in all 13). These are big smoke years.
+- **SHA-256:**
+  - 07_city_screening.py `e80f569f63393350f8123678ee92c3294e0f8fe86f2dcc109bc4fa44a95ab4ef`
+  - city_screening.csv `17973e56597352f190e75a9b4b74eeb5fcccec6efd7aa6b65e0e96661920fcd3`
+  - grouping_by_year.csv `843c39faa4af5bc29d88876e4cba2c747aa957e29b66f29a75e0286a180847ca`
+  - screening_summary.md `8dbcaa08f8d558baae6ac2ec57863a92e4a40d66c87647428a401a3875f35eb2`
+  - weekly_all.csv `3cc37ddb5092c349f93b873ae6dd24e0791ac5e2c6e604fedb25657532c1b564`
+
+### Note N3 · Detroit and Pittsburgh event week, July 13–19, 2026 · 2026-10-02 · Dish + Claude
+- **What:** A web check of the shared worst week from Step 7. **No files changed.**
+- **Result: real event, confirmed.**
+  - Smoke from Canadian wildfires, mostly in Ontario, was trapped near the ground by high pressure.
+  - **Detroit:** the AQI hit 650 on July 16, the highest since monitoring began in 1999 (Planet Detroit). This matches our daily peak of 294 µg/m³ on July 16.
+  - **Pittsburgh:** a statewide Code Purple alert, AQI 247 on the morning of July 17, and outdoor city programs closed (Post-Gazette, WESA). This matches our 175 µg/m³ on July 17.
+- **Flag for the "news coverage" confound:** this was a national story ("most smoke in 25+ years in the Midwest and East", weather.com), like June 2023. Reddit talk that week may partly follow national coverage. A Media Cloud check is worth doing for both cities.
+- **Sources:**
+  - planetdetroit.org/2026/07/detroit-air-quality-worst-in-city-history-wildfires/
+  - wdet.org/2026/07/16/hazardous-wildfire-smoke-pollutes-michigans-air/
+  - weather.com/2026/07/16/health/airquality/wildfire-smoke-brings-dangerous-air-quality-to-minneapolis-detroit-nyc
+  - post-gazette.com/news/weather-news/2026/07/17/pittsburgh-wildfire-smoke/stories/202607170041
+  - wesanews.org/environment-energy/2026-07-17/stagnant-air-wildfire-smoke
+  - yaleclimateconnections.org/2026/07/dangerous-and-historic-wildfire-smoke-pollution-event-engulfs-the-u-s-and-canada/
+
+### Decision · Step 7 pending choices · 2026-10-02 · Dish
+- **Approved by Dish:** the five Step 7 choices that were pending:
+  - one end date for all cities and sources (2026-09-25)
+  - edge weeks count days outside the window as missing
+  - low-coverage years flagged but kept in the median, and missing days count as not harmful
+  - fireworks flag by calendar date
+  - agreement = Pearson r and median difference
+- **Los Angeles and Salt Lake City drop out** on check 3, under the rule as written. LA's reasoning was given to Dish to share with Gina.
+- Still open: the fireworks rule (Phoenix), and the optional second median.
+
+### Decision · fireworks rule and no second median · Step 7 rerun · 2026-10-02 · Dish
+- **Fireworks rule (Claude's recommendation, approved by Dish):** a Monday–Sunday week containing Jul 4–5 or Dec 31–Jan 1 can't be a city's event week. This applies to every city.
+  - **Why:** fireworks smoke is short and man-made, and Reddit talk that week is about fireworks, not air.
+  - Skipped fireworks weeks are still listed in the outputs, not dropped silently.
+  - **Effect:** only Phoenix changes. Its worst eligible week is 2022-12-19 at 34.99, which fails check 3, so **Phoenix drops out.**
+  - Skipped Phoenix weeks: 2020-12-28 (42.75) and 2024-12-30 (40.61).
+- **No second median without low-coverage years (Claude's recommendation, approved by Dish).**
+  - **Why:** the low-coverage years are the big smoke years (2020–21), so dropping them would understate chronic cities. Checked read-only on Step 7 output: Bakersfield's median would fall from 12 to 6, Fairbanks 8 → 9, Fresno 8 → 7, and the others by 1.5 or less.
+  - **Limitation for the appendix:** 2020–21 counts are likely undercounts.
+- **Script change:** `07_city_screening.py` now skips fireworks weeks when choosing the worst week. New columns: `n_fireworks_weeks_higher` and `fireworks_weeks_higher` (these replace `worst_week_fireworks`). The summary has a new fireworks section, and its choices list was updated. Rerun by Claude in chat. No other results changed.
+- **Cities passing checks 1 and 3 (reference): 10.**
+  - Bakersfield, Fairbanks, Fresno, Yakima, Detroit, Seattle, Indianapolis, Eugene, Pittsburgh, San Jose
+  - **Out:** Los Angeles, Salt Lake City, Phoenix
+- **SHA-256 (rerun):**
+  - 07_city_screening.py `8b51c429635ad37b0ffb67779689199317569a0c2b3f1fec865e22b02707c682`
+  - city_screening.csv `decfdba3d7578e9a111f2be874ce53394870af67fae2e7537829d371cf6fc6ba`
+  - screening_summary.md `bc00ecae70465f772fc0be78579710b2fb717874edf62a401c2dc581531d67ff`
+  - grouping_by_year.csv and weekly_all.csv unchanged
+
+### Note N4 · what caused each event week (10 cities) · 2026-10-02 · Dish + Claude
+- **What:** A web check of what caused each city's event week. Then the settled decisions, the 10-city table and the events were copied into `docs/experiment-design-pm25.md`, as the doc asks. **No data files changed.**
+- **Events:**
+  - **Bakersfield, Dec 2–8, 2024:** winter inversion (stagnant air, wood burning, traffic). Not smoke.
+    - **Weak source:** an IQAir general California report for Dec 5, 2024. aqi.in lists a December 2024 max AQI of 71, which conflicts with our 55 µg/m³ week (AQI about 150); not trusted. Our data: all 7 days are high but the peak is only 61, which fits an inversion.
+  - **Fairbanks, Jun 27 – Jul 3, 2022:** interior Alaska lightning-fire complexes plus a nearby tundra fire. PM2.5 was 177 on Jun 27 (IQAir).
+  - **Fresno, Aug 17–23, 2020:** the August 2020 Lightning Siege fires (Wikipedia; KVPR).
+  - **San Jose, Aug 17–23, 2020:** SCU Lightning Complex (NASA Earth Observatory).
+  - **Yakima, Sep 6–12, 2021:** Schneider Springs Fire (Yakima Herald; WA smoke blog).
+  - **Eugene and Seattle, Sep 7–13, 2020:** the Labor Day fires (LRAPA; KLCC; IQAir).
+  - **Indianapolis, Jun 26 – Jul 2, 2023:** Canadian wildfire smoke (IPM/WFIU).
+  - **Detroit and Pittsburgh, Jul 13–19, 2026:** Canadian wildfire smoke (Note N3).
+  - **Caveat:** smoke sources are named from news coverage. No formal event-type rule yet (still open in the design doc).
+- **Sources:**
+  - iqair.com/newsroom/2022-Alaska-wildfires
+  - shop-ca.iqair.com/blogs/news/california-air-quality-alert-winter-temperature-inversions
+  - en.wikipedia.org/wiki/August_2020_California_lightning_wildfires
+  - kvpr.org/health/2021-07-16/why-air-quality-was-so-oppressive-during-last-years-wildfire-season
+  - earthobservatory.nasa.gov/images/147182/august-fires-leave-vast-burn-scars-in-california
+  - wasmoke.blogspot.com/2021/09/the-schneider-springs-fire-closer-look.html
+  - lrapa-or.gov (09-15-2020 record poor air quality release)
+  - klcc.org/disasters-accidents/2020-09-14/heavy-smog-endangers-locals-but-conditions-to-improve-soon
+  - iqair.com/blog/wildfires/washington-oregon-fires-choke-northwest
+  - ipm.org/2023-06-28/canadian-wildfires-are-polluting-the-air-in-indiana
+
 ---
 **Actual-temperature status (2026-09-27): done for all 12 cities.** gridMET Steps 1–5b for the 11 continental viz cities (D10; 16 pulled); **Fairbanks from ERA5-Land** (D15, ERA5-Land Steps 1–3). Final files for all 12 in `data/processed/gridmet/final/` (`temp_<city>_daily.csv`, 3,920 rows 2016-01-01 → 2026-09-24, join row for row with UTCI; `_normals.csv`; `_monthly.csv`); the folder name is gridMET but Fairbanks' source is ERA5-Land (blank 2026-09-22 → 09-24). End date settled (D9). Open: N1 (boundary file vs OpenAQ, appendix note); optional PAFA station cross-check for Fairbanks; March 2026 station check.
 

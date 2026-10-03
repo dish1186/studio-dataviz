@@ -1,0 +1,183 @@
+city,city_name,source,year,days_in_year,days_with_data,coverage_pct,coverage_below_75,days_ge_35_5
+fairbanks,Fairbanks AK,reference,2019,365,256,70.14,1,8
+fairbanks,Fairbanks AK,reference,2020,366,254,69.4,1,3
+fairbanks,Fairbanks AK,reference,2021,365,189,51.78,1,3
+fairbanks,Fairbanks AK,reference,2022,365,328,89.86,0,27
+fairbanks,Fairbanks AK,reference,2023,365,297,81.37,0,6
+fairbanks,Fairbanks AK,reference,2024,366,356,97.27,0,9
+fairbanks,Fairbanks AK,reference,2025,365,356,97.53,0,9
+fairbanks,Fairbanks AK,low-cost,2019,365,0,0.0,1,0
+fairbanks,Fairbanks AK,low-cost,2020,366,0,0.0,1,0
+fairbanks,Fairbanks AK,low-cost,2021,365,0,0.0,1,0
+fairbanks,Fairbanks AK,low-cost,2022,365,0,0.0,1,0
+fairbanks,Fairbanks AK,low-cost,2023,365,0,0.0,1,0
+fairbanks,Fairbanks AK,low-cost,2024,366,0,0.0,1,0
+fairbanks,Fairbanks AK,low-cost,2025,365,0,0.0,1,0
+eugene,Eugene OR,reference,2019,365,333,91.23,0,0
+eugene,Eugene OR,reference,2020,366,295,80.6,0,10
+eugene,Eugene OR,reference,2021,365,242,66.3,1,0
+eugene,Eugene OR,reference,2022,365,335,91.78,0,7
+eugene,Eugene OR,reference,2023,365,307,84.11,0,3
+eugene,Eugene OR,reference,2024,366,362,98.91,0,0
+eugene,Eugene OR,reference,2025,365,365,100.0,0,0
+eugene,Eugene OR,low-cost,2019,365,0,0.0,1,0
+eugene,Eugene OR,low-cost,2020,366,0,0.0,1,0
+eugene,Eugene OR,low-cost,2021,365,0,0.0,1,0
+eugene,Eugene OR,low-cost,2022,365,0,0.0,1,0
+eugene,Eugene OR,low-cost,2023,365,0,0.0,1,0
+eugene,Eugene OR,low-cost,2024,366,0,0.0,1,0
+eugene,Eugene OR,low-cost,2025,365,0,0.0,1,0
+bakersfield,Bakersfield CA,reference,2019,365,325,89.04,0,6
+bakersfield,Bakersfield CA,reference,2020,366,237,64.75,1,28
+bakersfield,Bakersfield CA,reference,2021,365,184,50.41,1,24
+bakersfield,Bakersfield CA,reference,2022,365,315,86.3,0,25
+bakersfield,Bakersfield CA,reference,2023,365,306,83.84,0,6
+bakersfield,Bakersfield CA,reference,2024,366,362,98.91,0,12
+bakersfield,Bakersfield CA,reference,2025,365,354,96.99,0,2
+bakersfield,Bakersfield CA,low-cost,2019,365,0,0.0,1,0
+bakersfield,Bakersfield CA,low-cost,2020,366,0,0.0,1,0
+bakersfield,Bakersfield CA,low-cost,2021,365,0,0.0,1,0
+bakersfield,Bakersfield CA,low-cost,2022,365,0,0.0,1,0
+bakersfield,Bakersfield CA,low-cost,2023,365,0,0.0,1,0
+bakersfield,Bakersfield CA,low-cost,2024,366,0,0.0,1,0
+bakersfield,Bakersfield CA,low-cost,2025,365,56,15.34,1,3
+fresno,Fresno CA,reference,2019,365,329,90.14,0,2
+fresno,Fresno CA,reference,2020,366,247,67.49,1,24
+fresno,Fresno CA,reference,2021,365,192,52.6,1,27
+fresno,Fresno CA,reference,2022,365,336,92.05,0,14
+fresno,Fresno CA,reference,2023,365,307,84.11,0,7
+fresno,Fresno CA,reference,2024,366,363,99.18,0,8
+fresno,Fresno CA,reference,2025,365,358,98.08,0,1
+fresno,Fresno CA,low-cost,2019,365,0,0.0,1,0
+fresno,Fresno CA,low-cost,2020,366,0,0.0,1,0
+fresno,Fresno CA,low-cost,2021,365,0,0.0,1,0
+fresno,Fresno CA,low-cost,2022,365,0,0.0,1,0
+fresno,Fresno CA,low-cost,2023,365,0,0.0,1,0
+fresno,Fresno CA,low-cost,2024,366,229,62.57,1,33
+fresno,Fresno CA,low-cost,2025,365,330,90.41,0,46
+losangeles,Los Angeles CA,reference,2019,365,329,90.14,0,1
+losangeles,Los Angeles CA,reference,2020,366,287,78.42,0,5
+losangeles,Los Angeles CA,reference,2021,365,235,64.38,1,5
+losangeles,Los Angeles CA,reference,2022,365,337,92.33,0,0
+losangeles,Los Angeles CA,reference,2023,365,307,84.11,0,0
+losangeles,Los Angeles CA,reference,2024,366,363,99.18,0,3
+losangeles,Los Angeles CA,reference,2025,365,359,98.36,0,4
+losangeles,Los Angeles CA,low-cost,2019,365,0,0.0,1,0
+losangeles,Los Angeles CA,low-cost,2020,366,0,0.0,1,0
+losangeles,Los Angeles CA,low-cost,2021,365,0,0.0,1,0
+losangeles,Los Angeles CA,low-cost,2022,365,318,87.12,0,0
+losangeles,Los Angeles CA,low-cost,2023,365,285,78.08,0,0
+losangeles,Los Angeles CA,low-cost,2024,366,359,98.09,0,0
+losangeles,Los Angeles CA,low-cost,2025,365,356,97.53,0,4
+seattle,Seattle WA,reference,2019,365,339,92.88,0,0
+seattle,Seattle WA,reference,2020,366,282,77.05,0,4
+seattle,Seattle WA,reference,2021,365,226,61.92,1,1
+seattle,Seattle WA,reference,2022,365,338,92.6,0,3
+seattle,Seattle WA,reference,2023,365,307,84.11,0,1
+seattle,Seattle WA,reference,2024,366,363,99.18,0,0
+seattle,Seattle WA,reference,2025,365,359,98.36,0,0
+seattle,Seattle WA,low-cost,2019,365,0,0.0,1,0
+seattle,Seattle WA,low-cost,2020,366,0,0.0,1,0
+seattle,Seattle WA,low-cost,2021,365,0,0.0,1,0
+seattle,Seattle WA,low-cost,2022,365,0,0.0,1,0
+seattle,Seattle WA,low-cost,2023,365,165,45.21,1,6
+seattle,Seattle WA,low-cost,2024,366,328,89.62,0,0
+seattle,Seattle WA,low-cost,2025,365,330,90.41,0,0
+detroit,Detroit MI,reference,2019,365,319,87.4,0,0
+detroit,Detroit MI,reference,2020,366,295,80.6,0,2
+detroit,Detroit MI,reference,2021,365,230,63.01,1,0
+detroit,Detroit MI,reference,2022,365,322,88.22,0,2
+detroit,Detroit MI,reference,2023,365,308,84.38,0,9
+detroit,Detroit MI,reference,2024,366,358,97.81,0,1
+detroit,Detroit MI,reference,2025,365,364,99.73,0,6
+detroit,Detroit MI,low-cost,2019,365,0,0.0,1,0
+detroit,Detroit MI,low-cost,2020,366,0,0.0,1,0
+detroit,Detroit MI,low-cost,2021,365,0,0.0,1,0
+detroit,Detroit MI,low-cost,2022,365,0,0.0,1,0
+detroit,Detroit MI,low-cost,2023,365,0,0.0,1,0
+detroit,Detroit MI,low-cost,2024,366,0,0.0,1,0
+detroit,Detroit MI,low-cost,2025,365,172,47.12,1,3
+pittsburgh,Pittsburgh PA,reference,2019,365,333,91.23,0,0
+pittsburgh,Pittsburgh PA,reference,2020,366,234,63.93,1,0
+pittsburgh,Pittsburgh PA,reference,2021,365,241,66.03,1,2
+pittsburgh,Pittsburgh PA,reference,2022,365,321,87.95,0,0
+pittsburgh,Pittsburgh PA,reference,2023,365,302,82.74,0,5
+pittsburgh,Pittsburgh PA,reference,2024,366,351,95.9,0,0
+pittsburgh,Pittsburgh PA,reference,2025,365,351,96.16,0,0
+pittsburgh,Pittsburgh PA,low-cost,2019,365,248,67.95,1,1
+pittsburgh,Pittsburgh PA,low-cost,2020,366,193,52.73,1,0
+pittsburgh,Pittsburgh PA,low-cost,2021,365,274,75.07,0,2
+pittsburgh,Pittsburgh PA,low-cost,2022,365,10,2.74,1,0
+pittsburgh,Pittsburgh PA,low-cost,2023,365,0,0.0,1,0
+pittsburgh,Pittsburgh PA,low-cost,2024,366,0,0.0,1,0
+pittsburgh,Pittsburgh PA,low-cost,2025,365,103,28.22,1,0
+indianapolis,Indianapolis IN,reference,2019,365,329,90.14,0,0
+indianapolis,Indianapolis IN,reference,2020,366,295,80.6,0,0
+indianapolis,Indianapolis IN,reference,2021,365,243,66.58,1,3
+indianapolis,Indianapolis IN,reference,2022,365,329,90.14,0,0
+indianapolis,Indianapolis IN,reference,2023,365,310,84.93,0,11
+indianapolis,Indianapolis IN,reference,2024,366,363,99.18,0,1
+indianapolis,Indianapolis IN,reference,2025,365,358,98.08,0,1
+indianapolis,Indianapolis IN,low-cost,2019,365,0,0.0,1,0
+indianapolis,Indianapolis IN,low-cost,2020,366,0,0.0,1,0
+indianapolis,Indianapolis IN,low-cost,2021,365,0,0.0,1,0
+indianapolis,Indianapolis IN,low-cost,2022,365,0,0.0,1,0
+indianapolis,Indianapolis IN,low-cost,2023,365,0,0.0,1,0
+indianapolis,Indianapolis IN,low-cost,2024,366,0,0.0,1,0
+indianapolis,Indianapolis IN,low-cost,2025,365,261,71.51,1,6
+phoenix,Phoenix AZ,reference,2019,365,343,93.97,0,0
+phoenix,Phoenix AZ,reference,2020,366,281,76.78,0,3
+phoenix,Phoenix AZ,reference,2021,365,238,65.21,1,1
+phoenix,Phoenix AZ,reference,2022,365,340,93.15,0,3
+phoenix,Phoenix AZ,reference,2023,365,309,84.66,0,3
+phoenix,Phoenix AZ,reference,2024,366,363,99.18,0,2
+phoenix,Phoenix AZ,reference,2025,365,359,98.36,0,1
+phoenix,Phoenix AZ,low-cost,2019,365,0,0.0,1,0
+phoenix,Phoenix AZ,low-cost,2020,366,0,0.0,1,0
+phoenix,Phoenix AZ,low-cost,2021,365,0,0.0,1,0
+phoenix,Phoenix AZ,low-cost,2022,365,0,0.0,1,0
+phoenix,Phoenix AZ,low-cost,2023,365,0,0.0,1,0
+phoenix,Phoenix AZ,low-cost,2024,366,290,79.23,0,1
+phoenix,Phoenix AZ,low-cost,2025,365,353,96.71,0,1
+sanjose,San Jose CA,reference,2019,365,313,85.75,0,0
+sanjose,San Jose CA,reference,2020,366,253,69.13,1,9
+sanjose,San Jose CA,reference,2021,365,200,54.79,1,1
+sanjose,San Jose CA,reference,2022,365,311,85.21,0,0
+sanjose,San Jose CA,reference,2023,365,303,83.01,0,1
+sanjose,San Jose CA,reference,2024,366,351,95.9,0,0
+sanjose,San Jose CA,reference,2025,365,350,95.89,0,0
+sanjose,San Jose CA,low-cost,2019,365,0,0.0,1,0
+sanjose,San Jose CA,low-cost,2020,366,0,0.0,1,0
+sanjose,San Jose CA,low-cost,2021,365,0,0.0,1,0
+sanjose,San Jose CA,low-cost,2022,365,0,0.0,1,0
+sanjose,San Jose CA,low-cost,2023,365,87,23.84,1,9
+sanjose,San Jose CA,low-cost,2024,366,320,87.43,0,9
+sanjose,San Jose CA,low-cost,2025,365,347,95.07,0,0
+saltlakecity,Salt Lake City UT,reference,2019,365,339,92.88,0,2
+saltlakecity,Salt Lake City UT,reference,2020,366,285,77.87,0,0
+saltlakecity,Salt Lake City UT,reference,2021,365,232,63.56,1,8
+saltlakecity,Salt Lake City UT,reference,2022,365,340,93.15,0,2
+saltlakecity,Salt Lake City UT,reference,2023,365,309,84.66,0,0
+saltlakecity,Salt Lake City UT,reference,2024,366,363,99.18,0,1
+saltlakecity,Salt Lake City UT,reference,2025,365,358,98.08,0,0
+saltlakecity,Salt Lake City UT,low-cost,2019,365,0,0.0,1,0
+saltlakecity,Salt Lake City UT,low-cost,2020,366,0,0.0,1,0
+saltlakecity,Salt Lake City UT,low-cost,2021,365,0,0.0,1,0
+saltlakecity,Salt Lake City UT,low-cost,2022,365,0,0.0,1,0
+saltlakecity,Salt Lake City UT,low-cost,2023,365,132,36.16,1,6
+saltlakecity,Salt Lake City UT,low-cost,2024,366,126,34.43,1,2
+saltlakecity,Salt Lake City UT,low-cost,2025,365,328,89.86,0,0
+yakima,Yakima WA,reference,2019,365,323,88.49,0,3
+yakima,Yakima WA,reference,2020,366,233,63.66,1,1
+yakima,Yakima WA,reference,2021,365,217,59.45,1,14
+yakima,Yakima WA,reference,2022,365,333,91.23,0,3
+yakima,Yakima WA,reference,2023,365,298,81.64,0,3
+yakima,Yakima WA,reference,2024,366,361,98.63,0,3
+yakima,Yakima WA,reference,2025,365,354,96.99,0,3
+yakima,Yakima WA,low-cost,2019,365,0,0.0,1,0
+yakima,Yakima WA,low-cost,2020,366,0,0.0,1,0
+yakima,Yakima WA,low-cost,2021,365,0,0.0,1,0
+yakima,Yakima WA,low-cost,2022,365,0,0.0,1,0
+yakima,Yakima WA,low-cost,2023,365,0,0.0,1,0
+yakima,Yakima WA,low-cost,2024,366,0,0.0,1,0
+yakima,Yakima WA,low-cost,2025,365,0,0.0,1,0
