@@ -15,10 +15,10 @@ date and a "download to" date. Window = [from 00:00 UTC, to 00:00 UTC), as in th
 API: https://arctic-shift.photon-reddit.com/api/{posts,comments}/search
      ?subreddit=..&after=<epoch>&before=<epoch>&sort=asc&limit=auto
      (docs: github.com/ArthurHeitmann/arctic_shift/blob/master/api/README.md; limit=auto returns
-     100-1000 items per request.) Paging: the next request starts at the last item's created_utc;
+     100-1000 items per request.) Paging: one UTC day at a time; within a day, the next request starts at the last item's created_utc;
      items are de-duplicated by id, and only items inside the window are kept.
 Politeness: 1.5 s between requests. On HTTP 429 (rate limit) or 422 ("Timeout. Maybe slow down a bit",
-seen on the busiest days, e.g. r/Detroit 2026-07-16) waits 60 s x try number and asks for pages of 50, then 25,
+seen on the busiest days, e.g. r/Detroit 2026-07-16) waits 20 s x try number (long waits did not help) and asks for pages of 50, then 25,
 instead of "auto"; other errors retry with growing waits, 10 tries, then the pull is reported as failed (not fatal for the others).
 Resumable: a finished file is never downloaded again. Files are written to <name>.part and renamed
 only when the pull is complete, so a half-finished file never looks finished.
@@ -50,7 +50,7 @@ SUBREDDITS = {"eugene": "Eugene", "bakersfield": "bakersfield", "fairbanks": "Fa
               "pittsburgh": "pittsburgh", "sanjose": "SanJose"}
 ROW = re.compile(r"`(([a-z]+)_(?:month|event|neighbor)_\d{4}-\d{2}-\d{2})_posts\.jsonl`")
 DATE = re.compile(r"\b\d{4}-\d{2}-\d{2}\b")
-PAUSE, TRIES = 1.5, 10
+PAUSE, TRIES, DAY = 1.5, 10, 86400
 
 
 def read_plan(path):
@@ -91,32 +91,36 @@ def get(base, params):
         else:
             msg = f"HTTP {code or 'timeout'} {body.strip()[:120]}"
             # 429 = rate limit; 422 = "Timeout. Maybe slow down a bit" (server busy) -> long waits
-            wait = 60 * attempt if code in ("429", "422") else 10 * attempt
+            wait = 20 * attempt if code in ("429", "422") else 10 * attempt
         print(f"      {msg}, waiting {wait} s (try {attempt}/{TRIES})", flush=True)
         time.sleep(wait)
     raise RuntimeError(f"failed after {TRIES} tries")
 
 
 def download(sub, kind, a, b, path):
-    seen, n, after, req = set(), 0, a, 0
+    # One UTC day at a time (2026-10-03): each request then covers a small slice of the archive, which the server
+    # handles far more reliably than a month-long query (r/Detroit 2026 comments kept timing out otherwise).
+    seen, n, req = set(), 0, 0
     with open(path + ".part", "w", encoding="utf-8") as out:
-        while True:
-            items = get(API.format(kind=kind), {"subreddit": sub, "after": after, "before": b, "sort": "asc"})
-            req += 1
-            time.sleep(PAUSE)
-            new = [x for x in items if x["id"] not in seen]
-            for x in new:
-                seen.add(x["id"])
-                if a <= float(x["created_utc"]) < b:
-                    out.write(json.dumps(x, ensure_ascii=False) + "\n"); n += 1
-            if not items:
-                break
-            last = int(float(items[-1]["created_utc"]))
-            # next page starts at the last timestamp (duplicates are skipped by id); if a whole page was
-            # already seen, step one second forward so the loop can't stall
-            after = last if new else last + 1
-            if after >= b:
-                break
+        for d0 in range(a, b, DAY):
+            d1, after = min(d0 + DAY, b), d0
+            while True:
+                items = get(API.format(kind=kind), {"subreddit": sub, "after": after, "before": d1, "sort": "asc"})
+                req += 1
+                time.sleep(PAUSE)
+                new = [x for x in items if x["id"] not in seen]
+                for x in new:
+                    seen.add(x["id"])
+                    if a <= float(x["created_utc"]) < b:
+                        out.write(json.dumps(x, ensure_ascii=False) + "\n"); n += 1
+                if not items:
+                    break
+                last = int(float(items[-1]["created_utc"]))
+                # next page starts at the last timestamp (duplicates are skipped by id); if a whole page was
+                # already seen, step one second forward so the loop can't stall
+                after = last if new else last + 1
+                if after >= d1:
+                    break
     os.replace(path + ".part", path)
     return n, req
 

@@ -1451,6 +1451,10 @@ Step · dataset · date · who ran it | What (plain language) | Why | Input file
   - Records are de-duplicated by id. `normals_01` then strips usernames from the new pieces and checks the whole file like any other.
   - **Caveat:** the middle piece comes from Gina's earlier download, not this run. It is the same source (Arctic Shift), but downloaded on a different date.
 - **Retry page size corrected:** a test on the failing request (r/Detroit comments, Jul 12) found limit 5/25/50/auto → HTTP 200, but limit=100 → 422 in 0.4 s. So the earlier fallback to 100 made retries worse. Retries now use 50, then 25. **Claude's error, fixed.** Dish also asked to download the smaller subreddits first (`--only <city>`, one city at a time).
+- **Day-by-day download (after the plan B run kept failing on r/Detroit 2026-07-12 comments, a quiet day):** Claude's single test requests on the same query mostly succeeded (3 of 4), so the failures were random server timeouts that long waits didn't fix.
+  - **Change:** the downloader now asks for one UTC day at a time, and the 422/429 wait is shortened to 20 s × try. **Claude's choice, flagged.**
+  - Re-tested on Bakersfield December 2019: still 178 posts and 1,563 comments, identical (60 requests instead of 20).
+  - Plan B uses the same download function, so it picks up the change.
 - **Check-and-strip for the other cities:** `scripts/reddit/normals_01b_check_and_strip_more_cities.py <city>`. Gina's `normals_01` has her two cities hard-coded and rewrites `coverage.csv`, so it can't be reused as is. This version:
   - reads the plan from the doc
   - runs one city at a time
