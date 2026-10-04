@@ -1482,6 +1482,20 @@ Step · dataset · date · who ran it | What (plain language) | Why | Input file
 - **6-usable-normal-weeks rule: not set.** Dish: "i dont want to get rid of fairbanks just yet." It is still open, and should be decided before the analysis script is committed.
   - **Set, 2026-10-03, approved by Dish** ("6 usable week rule is fine"): a city needs ≥ 6 usable normal weeks or it drops. This was decided before analysis. From download volumes alone, Fairbanks is expected to pass.
 
+### Decision · analysis rules approved; analysis script written and committed BEFORE running · 2026-10-03 · Dish + Claude
+- **What:** Claude drafted the full rule list (A–G) and **Dish approved it as is** ("approved"). It was copied into the design doc ("Analysis rules"). **No event-week Reddit data had been opened.**
+- **Decided by this approval** (the items Dish was asked to call):
+  - The headline Reddit rise is a **ratio**, with percentage points alongside. A normal share < 0.1% is flagged.
+  - Main test = **Spearman** ρ(rise, PM2.5 ratio) vs ρ(rise, absolute PM2.5). **Pos/Neg need a margin ≥ 0.2**; otherwise Mixed.
+  - Bots = moderator flag or "I am a bot" text.
+  - The PM2.5 normal uses valid weeks only and keeps fireworks and > 35.5 weeks.
+  - Shifting-normal definitions: a polluted week = any day ≥ 35.5; flag if it covers more than half the weeks.
+- **Script:** `scripts/reddit/analysis_01_event_rise.py` → `data/processed/reddit/analysis_01/`.
+  - **Safeguard:** it refuses to run unless every city's files are checked and stripped (it currently stops at Seattle, Detroit and Pittsburgh). `--check-inputs` only checks the files and computes nothing.
+- **Interpretation note (Claude, flagged):** for rule C8 in the rank test, a low-normal city keeps its ratio. Ranks limit the effect to the top rank, and the percentage-point check (D11) covers it.
+- **The computing part has not been executed** (it needs all 9 cities). If it crashes on the first run, the fix is logged as a code fix made before any result was seen.
+- **SHA-256 (committed before running):** analysis_01_event_rise.py `b0ae7e03d4c56ca95465586a51ec011e0441fedea095589aceb026fe3fa56596`
+
 ---
 **Actual-temperature status (2026-09-27): done for all 12 cities.** gridMET Steps 1–5b for the 11 continental viz cities (D10; 16 pulled); **Fairbanks from ERA5-Land** (D15, ERA5-Land Steps 1–3). Final files for all 12 in `data/processed/gridmet/final/` (`temp_<city>_daily.csv`, 3,920 rows 2016-01-01 → 2026-09-24, join row for row with UTCI; `_normals.csv`; `_monthly.csv`); the folder name is gridMET but Fairbanks' source is ERA5-Land (blank 2026-09-22 → 09-24). End date settled (D9). Open: N1 (boundary file vs OpenAQ, appendix note); optional PAFA station cross-check for Fairbanks; March 2026 station check.
 

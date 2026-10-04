@@ -221,6 +221,67 @@ Any other pair mentioned is labeled as noticed after seeing results.
 4. Check whether the rankings hold in the sensitivity check.
 5. Write down which hypothesis the evidence supports (Pos, Neg, or Mixed), including the cities that don't fit.
 
+### Analysis rules (approved by Dish 2026-10-03, before any event-week Reddit data was opened)
+
+Script: `scripts/reddit/analysis_01_event_rise.py`. It is committed before it runs and runs once, on all cities together.
+
+**A. Data**
+1. **Reddit:** the stripped month pulls (`normals_no_usernames/<city>/`). The event week sits inside them; Detroit and Pittsburgh have separate event-week files.
+2. **Cleaning** as in the normal comparison:
+   - removed/deleted items out
+   - duplicates counted once
+   - bots = `distinguished = moderator` or "I am a bot" text
+   - air talk = `include` terms of `lexicon_air_v1`
+3. **Local time:**
+   - Pacific: Eugene, Bakersfield, Fresno, San Jose, Seattle
+   - Alaska: Fairbanks
+   - Eastern: Detroit, Pittsburgh
+   - Indiana: Indianapolis
+4. **PM2.5:** OpenAQ Steps 7–8. The normal uses valid weeks (≥ 5 of 7 days) and keeps fireworks and > 35.5 weeks.
+
+**B. Weeks**
+
+5. **Normal weeks:** every week of the event's month (by Thursday), 2019–2025, minus the event week. A week is dropped if any of these apply:
+   - PM2.5 > 35.5, or no PM2.5 data
+   - a fireworks week
+   - < 100 kept posts + comments
+   - comments on < 5 of its 7 days
+6. **A city drops** if its event week has < 100 kept items (check 2) or it has < 6 usable normal weeks.
+
+**C. Measures**
+
+7. **Normal share** = median air-talk share of the usable normal weeks. **Event share** = the event week's share.
+8. **Headline Reddit rise = ratio** (event ÷ normal). Percentage points are reported alongside. If a city's normal share is < 0.1%, its ratio is flagged and its percentage points are the number to quote.
+   - *Implementation note:* the main test ranks cities, so a flagged ratio can at most move that city to the top rank. The percentage-point version of the test (rule 11) covers it.
+9. **Percentile:** the event week's rank among the city's usable normal weeks ("higher than k of N").
+
+**D. Main test**
+
+10. **Spearman rank correlation across cities:** ρ(Reddit rise, PM2.5 ratio) vs ρ(Reddit rise, absolute PM2.5).
+    - **Pos** if the ratio correlation is higher by ≥ 0.2.
+    - **Neg** if absolute is higher by ≥ 0.2.
+    - **Mixed** otherwise.
+11. **Repeated** with percentage points and with the percentile, as checks.
+12. **Reported as a pattern, not a significance test.** ρ(PM2.5 ratio, absolute PM2.5) across the cities is reported too: if it is high, the test can't separate the two.
+
+**E. Pairs**
+
+13. All qualifying pairs, with the pre-set tally:
+    - pairs where the higher-ratio city had the bigger rise
+    - crossed pairs where the worse-air city had the bigger rise
+
+**F. Checks** (reported, never used to decide)
+
+14. ρ(Reddit rise, bad days per year).
+15. The PM2.5 ratio without polluted normal weeks.
+16. The wider word list (`candidate` terms) and the fire measure.
+17. Eugene and Bakersfield against the neighbor normal.
+18. **Shifting-normal definitions:** a polluted week = any day ≥ 35.5; flag if it covers more than half the weeks.
+
+**G. Safeguards**
+
+19. **Any change made after seeing results** is labeled as such in the log and the presentation.
+
 ## Data sources
 
 - **PM2.5:** OpenAQ. Reference-grade monitors are the default. Low-cost sensors are used only for a city whose reference coverage is below 75%, and only after EPA correction (Barkjohn model, which requires relative humidity). A low-cost city is kept only if, on overlapping days, it agrees closely with reference monitors ([agreement rule TBD]). Otherwise it drops out. The source choice is made before any Reddit data is examined, using only coverage and agreement. Reference vs. low-cost filter: OpenAQ `sensor_class` (`reference` / `low-cost`). Site IDs per city are in `step07_screening/city_screening.csv`.
