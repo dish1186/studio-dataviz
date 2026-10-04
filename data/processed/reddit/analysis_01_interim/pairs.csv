@@ -1,5 +1,5 @@
 type,featured_by_rule,worse_air_city,other_city,pm25_worse,pm25_other,pm25_gap_pct,ratio_worse,ratio_other,ratio_gap,median_days_worse,median_days_other,pos_predicts,neg_predicts,rise_worse,rise_other,bigger_rise,outcome
-matched,1,fairbanks,detroit,91.8,91.78,0.0,17.39,7.44,2.34,8,2,fairbanks reacts more,about the same,,,,pair left out (a city is out or has no rise)
+matched,1,fairbanks,detroit,91.8,91.78,0.0,17.39,7.44,2.34,8,2,fairbanks reacts more,about the same,27.065,26.432,fairbanks,as Pos predicts
 matched,0,bakersfield,indianapolis,55.47,55.09,0.7,2.94,4.42,1.5,12,1,indianapolis reacts more,about the same,4.809,9.529,indianapolis,as Pos predicts
 matched,0,fresno,pittsburgh,61.16,59.21,3.2,5.95,5.27,1.13,8,0,fresno reacts more,about the same,,,,pair left out (a city is out or has no rise)
 crossed,1,bakersfield,sanjose,55.47,36.34,34.5,2.94,5.01,1.7,12,0,sanjose reacts more,bakersfield reacts more,4.809,27.326,sanjose,as Pos predicts

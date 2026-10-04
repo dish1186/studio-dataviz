@@ -1651,6 +1651,45 @@ Step · dataset · date · who ran it | What (plain language) | Why | Input file
 - **Tadpole tail (2026-10-04, Dish):** the tail fade is removed. `img/tadpole.webp` is now Dish's cutout cropped only, so the full tail shows, ending at the PNG's own straight cut. This reverses the earlier Claude's-choice fade.
 - **Tadpole redrawn (2026-10-04, Dish):** Dish supplied a new tadpole with the full tapered tail, now in `img/tadpole.webp`. Its aspect ratio is now 819/176. Body lengths went up about 1.36× so the heads stay the same size.
 
+
+### Design · chart forms for "harmful vs. unusual": sketches and handoff · 2026-10-04 · Dish + Claude
+- **What:** explored chart forms for the key plate. Sketches only; nothing built into `viz/pm25-scrolly/`. No change to the analysis, rules or data.
+- **Dish's reactions:**
+  - The existing pair card (Plate VII) "makes the most sense". Dish asked for the pairs to become a **tournament bracket** (9 pre-set pairs as matchups, 6 pending as dashed slots).
+  - Likes the deck's danger-vs-unusual scatter. Redrawn with experiment numbers: log axes, dot size = reaction, Seattle/Detroit/Pittsburgh as dashed rings (air data only).
+  - Sort toggle (reaction bars re-sorted by harmful vs. unusual): Dish asked for the sort value (PM2.5 / ratio) above each bar. Done in the sketch.
+  - Rank ladder: Dish found it unclear. Dropped. Sorted dot strips also dropped.
+  - Must be interactive.
+- **Proposed, not confirmed:** map → sort toggle → bracket as the plate sequence.
+- **Honesty note:** Eugene and Fairbanks rank 1–2 on both measures. The 0.60 vs. 0.03 gap rests mostly on San Jose (fire-talk caveat) and Bakersfield. San Jose is in 2 of the 3 finished pairs, so they aren't independent wins.
+- **Claude's choices (flagged, pending Dish):** log axes and "city normal" diagonals on the map; neutral corner label in place of "danger, no action"; linear scales on the sort toggle; bracket layout and scoreboard; indigo shading for winners instead of magenta.
+- **Open:** magenta on the pair card marks the higher bar, not only the worst-air week; medium at the jury (live click-through vs. browsing); keep twin scatters as a values check or cut; crossing counts (7 vs. 4) are display-only.
+- **Handoff for Gina:** `docs/handoff-gina-chart-forms.html`, private artifact https://claude.ai/artifact/AFp75Su7Dqaq3KY3nNFpRh. Not committed.
+
+
+### Design · chart-forms handoff updated for the 7-city interim run (Seattle) · 2026-10-04 · Claude at Dish's request
+- **What:** `docs/handoff-gina-chart-forms.html` (artifact AFp75Su7Dqaq3KY3nNFpRh, version 2) now uses `analysis_01_interim` with Seattle (7 of 9). Numbers are from `results.md`; no analysis change.
+- **Changes:** Seattle is a filled dot on the map (29.1×) and a bar on the sort toggle. The bracket has 6 finished pairs (all went the "unusual" way) and 3 waiting on Detroit/Pittsburgh. Labels read "7 of 9". The "read first" section is rewritten: ρ 0.57 with ratio vs. −0.32 with absolute; the two measures 0.57; Seattle and San Jose (the two biggest reactions) rank 6th–7th for harm; Eugene is top on both air measures but 4th in reaction; Seattle or San Jose is in 5 of 6 finished pairs; Seattle fire talk ~5% (distant fires).
+- **Removed:** the 6-city crossing counts (7 vs. 4) and the 0.60 / 0.03 / 0.77 figures.
+- **Claude's choices (flagged):** Seattle starred in the bracket (in 3 finished pairs); on the map, Pittsburgh's label shows only on tap, and Indianapolis's label sits up-left with a leader line, both to avoid collisions.
+
+
+### Normals · Detroit complete (two months downloaded by hand) · Interim run on 8 of 9 cities · 2026-10-04 · Dish + Claude
+- **Overnight downloads:**
+  - Pittsburgh's 7 Julys were complete.
+  - **Pittsburgh's event-week comments were skipped:** stuck since 03:00, the same July 2026 dead stretch as Detroit. The run was restarted with `--skip _event`.
+  - Detroit: 5 of 7 Julys complete. **July 2022 and July 2025 comments FAILED** on repeated 422s, late in a UTC day (2022-07-09 23:34; 2025-06-29 22:45).
+- **Dish downloaded both by hand** with the Arctic Shift web tool (same dates and names as the plan; the tool saved to `~/Documents`). Claude checked them and moved them to `~/Downloads/detroit/`:
+  - **July 2022:** 15,642 comments, Jul 3 00:02 → Aug 1 23:58 UTC, no empty days, no duplicates, only r/Detroit. It includes the hours the script couldn't get (29 comments in the 23:00 hour of Jul 9).
+  - **July 2025:** 35,756 comments, Jun 29 00:00 → Aug 4 23:59 UTC, no empty days, no duplicates.
+- **Detroit check-and-strip (`normals_01b`, run by Claude): passed.** 16 files, 169,999 records, local only (git-ignored). The event-week comments are checked against [Jul 13, Jul 20) UTC (`WINDOW_OVERRIDE`).
+- **Interim run, 8 of 9 cities** (Detroit added; Pittsburgh not ready). The script is unchanged; `analysis_01_interim/` was overwritten (the 7-city version is in git at 02480a5).
+  - **Detroit:** event share 4.31% vs normal 0.16%, so the **rise is 26.4×**, higher than all 22 normal weeks. Event-week items: 5,479. Fire talk 2.6% (normal 0.4%). PM2.5 91.8, 7.4× normal.
+  - **Main test: Pos.** ρ(rise, ratio) = 0.476 vs ρ(rise, absolute) = −0.238.
+  - **Checks:** percentage points Pos (0.86 vs 0.38); percentile Pos (0.55 vs 0.02); without polluted weeks Pos; wider list Pos (0.67 vs 0.07).
+  - **Context:** ρ(ratio, absolute) = 0.71. ρ(rise, bad days/yr) = −0.46.
+  - **Pairs:** the higher-ratio city won 7 of 7; the worse-air city won 0 of 5 crossed pairs. **Fairbanks–Detroit (matched) is a near-tie:** 27.1× vs 26.4×. The page labels a pair "barely" when the two reactions are within 5% (Claude's choice, display only).
+- **Page updated:** https://claude.ai/artifact/3WCcfsm4j2pPy6zuVWaWFL (version 4), "Early results: 8 of 9 cities". A footnote on Detroit covers the national news and the Sunday-evening gap.
 ---
 **Actual-temperature status (2026-09-27): done for all 12 cities.** gridMET Steps 1–5b for the 11 continental viz cities (D10; 16 pulled); **Fairbanks from ERA5-Land** (D15, ERA5-Land Steps 1–3). Final files for all 12 in `data/processed/gridmet/final/` (`temp_<city>_daily.csv`, 3,920 rows 2016-01-01 → 2026-09-24, join row for row with UTCI; `_normals.csv`; `_monthly.csv`); the folder name is gridMET but Fairbanks' source is ERA5-Land (blank 2026-09-22 → 09-24). End date settled (D9). Open: N1 (boundary file vs OpenAQ, appendix note); optional PAFA station cross-check for Fairbanks; March 2026 station check.
 
