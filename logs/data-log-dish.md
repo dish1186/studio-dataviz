@@ -1538,7 +1538,100 @@ Step · dataset · date · who ran it | What (plain language) | Why | Input file
   - Fairbanks's event week has only 188 items (each item is about 0.5 pp of share).
   - **Fire-talk confound:** San Jose (14.7% fire talk vs 0.9% normal) and Eugene (16.0% vs 1.1%) had large nearby fires with evacuations. Their air talk may partly be fire news. San Jose's top rise comes with a modest PM2.5 ratio (5.0×).
 
+### Design · PM2.5 jury visual: "graphical textbook" direction chosen · 2026-10-03 · Dish + Claude
+- **What:** Dish chose a graphical-textbook / atlas-plate look for the jury presentation (references: Container Corp *World Geo-Graphic Atlas*, a risograph textbook spread on sand mining, an anatomical plate with figure callouts, a riso panel grid). It replaces the report-style draft (artifact 3WCcfsm4j2pPy6zuVWaWFL) as the direction to develop.
+- **Visual only:** no change to the analysis, rules or data. Interim numbers stay labeled "early results, 6 of 9 cities"; city groups stay descriptive labels.
+- **Claude's choices (flagged, pending Dish):**
+  - two spot inks: cobalt for normal/structure, vermilion only for the event week
+  - grain/stipple is texture only and never carries data
+  - the 3×3 city plate is the centerpiece
+  - Seattle, Detroit and Pittsburgh are shown with their air data only, reaction marked pending
+- **Open:** medium (projected / scrolling page / print).
+
+### Design · scrollytelling page: structure, lead pair, look · 2026-10-03 · Dish + Claude
+- **Medium:** a scrollytelling HTML page. Its story order follows Dish's concept deck `final_concept.pdf` ("boiling frog": threshold → two cities → harm → talk → relative to normal → so what).
+- **Lead pair: Bakersfield vs Indianapolis** (pre-set matched pair, the same 55 µg/m³). It replaces the deck's Eugene–Bakersfield.
+  - The deck's Eugene numbers (Aug 2026 week, 41.9 µg/m³, 7.3×, 0.6% → 4.8%) come from the earlier case study, not the experiment of record.
+  - Step 8 keeps Eugene–Bakersfield as an illustration only.
+- **Look:** graphical-textbook plates (layout, figure callouts, grain) in the deck's palette: chartreuse ground, indigo linework, magenta for the event week. Exact hex values are Claude's choice, pending.
+- **Extra material:**
+  - City descriptions are kept for 1–2 case studies, as context only, not evidence.
+  - Air-purifier searches are cut: `data/processed/google-trends/air-search/` has Bakersfield but no Indianapolis file, and no new pulls are made in this work.
+  - The sentiment typology is left out; sentiment analysis comes later.
+- **Skills added to the project** (`.claude/skills/`): d3-viz, plus 7 chart-discipline skills from a PowerPoint-oriented pack (chart-type-selection, small-multiples, scatter-and-bubble-charts, color-encoding-for-data, chart-to-message-titling, axis-and-gridline-discipline, data-labeling-and-number-formatting). Their PowerPoint build steps don't apply here.
+
+### Viz · scrollytelling page built: `viz/pm25-scrolly/` · 2026-10-03 · Claude at Dish's request
+- **Files:**
+  - `build.py` reads the analysis outputs (read-only) and writes `data.js`. `--full` switches to `analysis_01` for the result of record.
+  - `index.html` is the page (d3 7.9.0 from cdnjs).
+  - Local preview: `.claude/launch.json` serves the folder on port 8765.
+  - Private artifact: https://claude.ai/artifact/J3fSoj9QZQjDP9RPoJHmiV
+  - Not committed.
+- **Cross-check:** `build.py` recomputes Spearman ρ from `cities.csv` and asserts it matches `results.md` (0.60 / 0.029). Every number on the page comes from the CSVs. Labels like "6 of 9" and "early results" switch automatically on the full run.
+- **Plates:**
+  - I title
+  - II threshold definition
+  - III Bakersfield and Indianapolis city cards
+  - IV scrolly: harm → unusual → talk
+  - V nine-city grid
+  - VI scatters + Fairbanks sidebar
+  - VII pairs
+  - VIII conclusion
+  - IX so what (WHO 15 vs EPA 35)
+  - X notes and table
+- **Dropped:** "find your threshold" (Dish: skip, may cut).
+- **Claude's choices (flagged):**
+  - Fonts: Libre Caslon Text (body and headlines), Jost (labels; Futura-like, after the Container Corp atlas), IBM Plex Mono (numbers).
+  - Hex values for the deck palette.
+  - The dark theme is the same book printed in reverse on indigo.
+  - Indianapolis city description drafted from Wikipedia and the 2020 Census. Bakersfield's ALA ranking is from State of the Air 2025.
+  - The deck's "US CDC 35" is corrected to the EPA standard.
+  - The Fig. 2 rings show every normal week with PM2.5 data, but air talk shows usable weeks only (footnoted).
+  - "Chronic/acute patient" labels are not used (per the earlier "no chronic/acute grouping" decision).
+- **Finding to review (Dish):** the Fairbanks "winter-haze city" framing is not supported by the reference-monitor daily means.
+  - Days ≥ 35.5 by year (Oct–Apr / May–Sep): 2019 2/6 · 2020 3/0 · 2021 2/1 · 2022 8/19 · 2023 0/6 · 2024 2/7 · 2025 3/6. Most bad days are summer smoke.
+  - June's typical day (median) is 4.1 µg/m³, so the 17× ratio still holds.
+  - The page says "most of them in summer wildfire seasons." The design doc line "mostly winter inversions" and the earlier draft artifact still say winter.
+  - This is display-only; no analysis is changed.
+
+
+### Viz · Plate I hero: frogs in a boiling pot · 2026-10-04 · Claude at Dish's request
+- **What:** Plate I's title block is now a full-bleed illustration looking down into a pot of water. Dish's frog and tadpole cutouts swim laps; the water heats as the reader scrolls (plus a slow simmer over ~45 s). Bubbles boil over the rim and steam rises. **Decoration only:** the hero reads nothing from `data.js`, and every chart and number is unchanged.
+- **Chosen by Dish:** the top-down pot (out of three mockups); full-colour artwork; frogs circle the pot; bubbles boil over the rim; Pinyon Script for the title; Dish's paper texture over the whole page.
+- **Animation:** the frog kicks, steam and boiling bubbles are FLORA image-to-video loops (Kling 2.5 Turbo, same first and last frame), generated from Dish's cutouts and from frames Claude drew on a magenta screen. They were keyed to transparent frames in `img/swim-green`, `img/swim-brown`, `img/steam` and `img/boil`. FLORA project: "Project 3". Cost: $1.23 of the Pro plan's included usage, with no extra charges.
+- **Files:** `img/` (paper.jpg, tadpole.webp, 4 frame folders, ~6 MB). The mockups are in `mockups/` and are not published.
+- **Claude's choices (flagged):**
+  - Old Standard TT for the hero subtitle and caption. Pinyon Script and Old Standard TT are used in the hero only; the rest of the page keeps Caslon, Jost and Plex.
+  - Frogs swim counter-clockwise. Bodies bend 15% more than the true curve of the lane.
+  - The pot rattles at full boil.
+  - The water warms toward ochre. Magenta stays reserved for the worst-air week; the magenta title predates this.
+  - The paper texture replaces the generated grain on every plate.
+  - The brown frog is flipped to face right, and the tadpole's cropped tail end is faded.
+  - On reduced motion, the hero shows a single still frame.
+- **Open:**
+  - Confirm the source and licence of the paper texture (it looks like stock).
+  - The green-frog clip has faint pink swish marks.
+  - The pot is small on phones.
+
+
+### Normals · Seattle checked and stripped; big Reddit files kept local · 2026-10-04 · Claude, at Dish's request
+- **Seattle check-and-strip:** passed, no warnings. 14 files, 566,343 records (`normals_01b`, run by Claude).
+  - Download: about 3.5 h, with 422s recovered on retry.
+- **Five Seattle comment files are 104–154 MB.** GitHub refuses files over 100 MB.
+- **Decision (Dish: "keep local only"):** new Reddit `.jsonl` files under `normals_no_usernames/` are git-ignored (rule added to `.gitignore`).
+  - The 88 already-tracked files (Eugene, Bakersfield, Fairbanks, Fresno, San Jose, Indianapolis) stay tracked, and `coverage.csv` stays tracked.
+  - Seattle, Pittsburgh and Detroit text stays on Dish's machine. Anyone can rebuild it with `normals_00_api_download.py` + `normals_01b` (committed).
+  - Options shown: (A) local only [chosen]; (B) Git LFS; (C) compress, which would change committed scripts.
+- **Not committed by Claude:** `.gitignore` and this log also hold uncommitted edits from Dish's other chats (visual direction, air-spectrum). They are left for Dish to commit together.
 ---
 **Actual-temperature status (2026-09-27): done for all 12 cities.** gridMET Steps 1–5b for the 11 continental viz cities (D10; 16 pulled); **Fairbanks from ERA5-Land** (D15, ERA5-Land Steps 1–3). Final files for all 12 in `data/processed/gridmet/final/` (`temp_<city>_daily.csv`, 3,920 rows 2016-01-01 → 2026-09-24, join row for row with UTCI; `_normals.csv`; `_monthly.csv`); the folder name is gridMET but Fairbanks' source is ERA5-Land (blank 2026-09-22 → 09-24). End date settled (D9). Open: N1 (boundary file vs OpenAQ, appendix note); optional PAFA station cross-check for Fairbanks; March 2026 station check.
 
 **METAR pipeline status (2026-09-27, final):** **Closed (D8).** 17 cities, Steps 0–9b complete, ending 2026-09-24 (D4); final files frozen. Step 8b distances cover all 18 stations. Not done, by choice: in-city check for the new stations (D7), review of 7 low days, ASOS algorithm citation (appendix), Phoenix story decision; city-hall spot-check pending with Dish. New caveat: Ann Arbor outage from ~2026-06-17 (last valid day 2026-08-05).
+
+### Reddit · air-spectrum labels (Alarm → Normalizing), all 9 event weeks · 2026-10-04 · Claude at Dish's request
+- **What:** comment-level labels (A/J/E/N/X) for the 9 PM2.5 event weeks, plus Eugene 2026-08-03 and Bakersfield 2024-12-02 re-run as whole comments for the passage comparison (Forensics). **Claude drafts until Dish fills `dish_review`.**
+- **Scripts:** `scripts/reddit/spectrum_01_air_items.py` (air talk per item), `spectrum_02_sample.py` (sample + 10% re-label set), `spectrum_03_outputs.py` (drafts, summary, skew, sensitivity, check-first, comparison). Codebook: `data/processed/reddit/spectrum_02_labels/codebook.md`. Results: `data/processed/reddit/spectrum_03_outputs/results.md`.
+- **Decided by Dish:** Eugene event week = 2020-09-07 (worst PM2.5 week); label all 9 now; source = Gina's username-stripped UTC files (option a); bot and hover rules OK; sample of 400 stratified by thread for weeks > 500 air items (Eugene, Seattle, Pittsburgh); item-level files gitignored.
+- **Claude's choices (flagged):** keep include + candidate terms (X absorbs noise), with an include-only sensitivity check; small threads (< 5 air items) pooled into one stratum; codebook working notes (COVID masks = X, how-to questions = J, fire news = X); each week labeled by one Claude subagent and the 10% re-label by a separate blind subagent.
+- **Findings to review:** Bakersfield's E-heavy profile rests on one "how did the air affect you growing up" thread (47% of air items): without it, A 68 / J 12 / E 16 / N 4. Passage → comment moved Bakersfield A +19 and E −14 (Forensics). A vs J is close (≤ 3 pts) in Eugene, Seattle and San Jose. Labelers split forecast or inversion explanations between A and J.
+- **Caveats:** shares are within-city; Pittsburgh comments miss the last 4.1 h; weeks are UTC.

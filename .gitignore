@@ -2,3 +2,14 @@
 .DS_Store
 # Python caches (Claude's addition)
 __pycache__/
+# Air-spectrum labeling: item files hold people's words, so they stay local (Dish 2026-10-04); summaries are tracked
+data/processed/reddit/spectrum_*/**
+!data/processed/reddit/spectrum_*/
+!data/processed/reddit/spectrum_*/summary*.csv
+!data/processed/reddit/spectrum_*/*.md
+!data/processed/reddit/spectrum_*/skew.csv
+!data/processed/reddit/spectrum_*/sensitivity.csv
+!data/processed/reddit/spectrum_*/passage_comparison.csv
+# Reddit normal pulls: new city files stay local (Dish 2026-10-04: GitHub's 100 MB file limit, and they hold people's words).
+# Files already tracked (Eugene, Bakersfield, Fairbanks, Fresno, San Jose, Indianapolis) stay tracked; coverage.csv stays tracked.
+data/processed/reddit/normals_no_usernames/**/*.jsonl
