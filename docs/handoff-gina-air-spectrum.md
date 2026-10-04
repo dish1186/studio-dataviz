@@ -47,7 +47,7 @@ Please write down which grouping you'd use and why, plus any counter-reading. Th
 
 ## Rules that stay fixed
 - **Don't change any band.** If a label looks wrong, note its `item_id` in `dish_review` in the draft CSV. Dish decides what changes.
-- **The data contains people's words.** Item-level files are gitignored and must stay local: never commit them, and never paste them into a public tool. On slides, use short paraphrased quotes only, with no usernames.
+- **The data contains people's words.** They're in our private repo only. Don't paste them into public tools, and keep the repo private. On slides, use short paraphrased quotes only, with no usernames.
 - **Negative results go to the Forensics Appendix.** If a grouping kills the pattern, that is a result.
 - Keep the caveats on everything: Claude drafts, shares within-city, Pittsburgh comments miss the last 4.1 hours, weeks are UTC.
 
@@ -57,23 +57,21 @@ Please write down which grouping you'd use and why, plus any counter-reading. Th
 |---|---|---|
 | Codebook (bands + rules) | `data/processed/reddit/spectrum_02_labels/codebook.md` | yes |
 | Shares per city, skew check, sensitivity, passage comparison | `data/processed/reddit/spectrum_03_outputs/results.md`, `summary.csv`, `skew.csv`, `sensitivity.csv`, `passage_comparison.csv` | yes |
-| Draft labels with text (one per week) | `spectrum_03_outputs/spectrum_labels_<city>_<week>_claude_draft.csv` | **no**: local only |
-| Items worth checking first | `spectrum_03_outputs/check_first.csv` | no |
-| Dot map | https://claude.ai/artifact/YT1pzr2NqFzWgaDusAWxTV (built from `viz/air-spectrum/`) | page yes, `data.js` no |
+| Draft labels with text (one per week) | `spectrum_03_outputs/spectrum_labels_<city>_<week>_claude_draft.csv` | yes |
+| Items worth checking first | `spectrum_03_outputs/check_first.csv` | yes |
+| Dot map | https://claude.ai/artifact/YT1pzr2NqFzWgaDusAWxTV (built from `viz/air-spectrum/`) | yes |
 | Scripts | `scripts/reddit/spectrum_01` … `spectrum_05` | yes |
 | Decisions log | `logs/data-log-dish.md`, entries dated 2026-10-04 | yes |
 
-### Getting the local files
-The label files aren't in git, because their `reason` column can contain a few quoted words. Dish will send you `data/processed/reddit/spectrum_02_labels/` privately. Put it in the same path, then rebuild everything else:
+### Getting the files
+Everything is in git (Dish, 2026-10-04: the repo is private), so `git pull` is enough: labels, rule 8 decisions, draft CSVs and the map data. To rebuild after a change:
 
 ```
-python3 scripts/reddit/spectrum_01_air_items.py      # air talk per item, from the username-stripped event weeks in the repo
-python3 scripts/reddit/spectrum_02_sample.py         # same fixed seed, so the same sample
 python3 scripts/reddit/spectrum_03_outputs.py        # draft CSVs + results.md (applies Rule 8)
 python3 scripts/reddit/spectrum_04_dotmap_data.py    # only if you change the dot map
 ```
 
-`spectrum_03` stops with an error if the label files don't match the rebuilt items, so you'll know right away if something is off.
+`spectrum_01` and `spectrum_02` only need re-running if the source data or lexicon changes. `spectrum_02` uses a fixed seed, so it redraws the same sample. If the items no longer match the labels, `spectrum_03` stops with an error.
 
 ## Things you may hit
 - **Eugene's event week is Sep 7–13, 2020** (its worst PM2.5 week), not the Aug 2026 case study. The Aug 2026 week appears only as a `_comparison` week for the Forensics Appendix.
