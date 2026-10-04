@@ -1,0 +1,10 @@
+city,city_name,included,status,event_week_start,event_kept_items,event_air_items,usable_normal_weeks,event_share_pct,normal_share_pct,rise_ratio,rise_pp,low_normal_flag,percentile_higher_than,percentile,pm25_event,pm25_normal,pm25_ratio,pm25_ratio_without_polluted_weeks,bad_days_per_year,wide_rise_ratio,fire_event_share_pct,fire_normal_share_pct
+eugene,Eugene OR,1,in,2020-09-07,9209,916,28,9.947,0.492,20.222,9.455,0,28 of 28,1.0,280.4,6.695,41.88,42.87,0.0,11.619,16.006,1.094
+bakersfield,Bakersfield CA,1,in,2024-12-02,1529,25,22,1.635,0.34,4.809,1.295,0,20 of 22,0.909,55.47,18.85,2.94,3.64,12.0,3.054,0.392,0.336
+fresno,Fresno CA,1,in,2020-08-17,954,35,28,3.669,0.297,12.365,3.372,0,27 of 28,0.964,61.16,10.275,5.95,6.13,8.0,6.799,2.096,0.56
+sanjose,San Jose CA,1,in,2020-08-17,3947,282,30,7.145,0.261,27.326,6.883,0,30 of 30,1.0,36.34,7.25,5.01,5.61,0.0,12.19,14.669,0.873
+seattle,Seattle WA,1,in,2020-09-07,10739,895,28,8.334,0.286,29.128,8.048,0,28 of 28,1.0,51.46,7.14,7.21,7.21,1.0,13.135,5.336,0.678
+fairbanks,Fairbanks AK,1,in,2022-06-27,188,33,20,17.553,0.649,27.065,16.905,0,20 of 20,1.0,91.8,5.28,17.39,29.42,8.0,15.473,7.979,1.64
+detroit,Detroit MI,1,in,2026-07-13,5479,236,22,4.307,0.163,26.432,4.144,0,22 of 22,1.0,91.78,12.33,7.44,8.33,2.0,9.977,2.573,0.428
+pittsburgh,Pittsburgh PA,1,in,2026-07-13,22334,892,20,3.994,0.27,14.806,3.724,0,20 of 20,1.0,59.21,11.23,5.27,5.38,0.0,6.045,1.352,0.469
+indianapolis,Indianapolis IN,1,in,2023-06-26,5297,92,29,1.737,0.182,9.529,1.555,0,29 of 29,1.0,55.09,12.45,4.42,4.63,1.0,4.024,1.152,0.626

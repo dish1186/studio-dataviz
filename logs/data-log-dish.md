@@ -1690,6 +1690,39 @@ Step · dataset · date · who ran it | What (plain language) | Why | Input file
   - **Context:** ρ(ratio, absolute) = 0.71. ρ(rise, bad days/yr) = −0.46.
   - **Pairs:** the higher-ratio city won 7 of 7; the worse-air city won 0 of 5 crossed pairs. **Fairbanks–Detroit (matched) is a near-tie:** 27.1× vs 26.4×. The page labels a pair "barely" when the two reactions are within 5% (Claude's choice, display only).
 - **Page updated:** https://claude.ai/artifact/3WCcfsm4j2pPy6zuVWaWFL (version 4), "Early results: 8 of 9 cities". A footnote on Detroit covers the national news and the Sunday-evening gap.
+
+### Analysis · RESULT OF RECORD: full run on all 9 cities · 2026-10-04 · run by Claude at Dish's request ("yes run")
+- **Pittsburgh event-week comments:** Dish's browser download (Arctic Shift tool, saved to `~/Documents`) stalled at Jul 20 19:59 UTC. Claude copied the partial file to `~/Downloads/pittsburgh/`.
+  - 28,285 comments, Jul 12 00:00 → Jul 20 19:59 UTC, no broken lines.
+  - **The whole local event week is covered** (it ends Jul 20 04:00 UTC); only padding hours after it are missing.
+  - **Pittsburgh check-and-strip: passed.** 16 files, 385,749 records, local only. One warning: comments end at Jul 20 19:59 UTC (padding).
+- **Run:** `python3 scripts/reddit/analysis_01_event_rise.py` (no `--interim`). The script is unchanged since 57a8095, which was committed before any run. `--check-inputs` confirmed all 9 cities first. Output: `data/processed/reddit/analysis_01/`.
+- **Cities (rise = event share ÷ normal share):**
+
+  | City | Rise | Normal share → event share | Higher than |
+  |---|---|---|---|
+  | Seattle | 29.1× | 0.29% → 8.33% | 28/28 |
+  | San Jose | 27.3× | 0.26% → 7.15% | 30/30 |
+  | Fairbanks | 27.1× | 0.65% → 17.55% | 20/20 |
+  | Detroit | 26.4× | 0.16% → 4.31% | 22/22 |
+  | Eugene | 20.2× | 0.49% → 9.95% | 28/28 |
+  | Pittsburgh | 14.8× | 0.27% → 3.99% | 20/20; 22,334 event-week items; fire talk 1.4% |
+  | Fresno | 12.4× | 0.30% → 3.67% | 27/28 |
+  | Indianapolis | 9.5× | 0.18% → 1.74% | 29/29 |
+  | Bakersfield | 4.8× | 0.34% → 1.64% | 20/22 |
+
+  No city has a low-normal flag.
+- **MAIN TEST (D10): Pos.** ρ(rise, PM2.5 ratio) = 0.533 vs ρ(rise, absolute PM2.5) = −0.133, a difference of 0.67 (≥ 0.2).
+  - **Checks (D11, F15, F16), all Pos:** percentage points 0.83 vs 0.37; percentile 0.46 vs 0.02; ratio without polluted weeks 0.60 vs −0.13; wider word list 0.70 vs 0.13.
+  - **Context (D12):** ρ(ratio, absolute) = 0.73, so the two measures are only partly separable with 9 cities.
+  - **F14:** ρ(rise, bad days/yr) = −0.37.
+  - **F17 (neighbor normal):** Eugene 29.1× (month 20.2×); Bakersfield 5.1× (month 4.8×). The same order.
+- **Pairs (E13):** the higher-ratio city had the bigger rise in **8 of 9**. The worse-air city had the bigger rise in **0 of 6** crossed pairs.
+  - **Against:** Fresno–Pittsburgh (matched). The ratios were close (5.95× vs 5.27×) and Pittsburgh reacted more (14.8× vs 12.4×). This is the weakest pair by ratio gap.
+  - **Near-tie:** Fairbanks–Detroit, 27.1× vs 26.4×.
+- **Reading:** a descriptive pattern across 9 cities, not a significance test. Caveats are in the design doc: the measures are correlated, fire news (San Jose, Eugene), Fairbanks's small subreddit, Detroit's national news and its Sunday-evening gap.
+- **Page:** https://claude.ai/artifact/3WCcfsm4j2pPy6zuVWaWFL (version 5), now "Final results: all 9 cities". The pair cards show the "against" result.
+- **SHA-256:** cities.csv `3e3565e698e224b79dc1015fab343f2a870abe7a9b5d80af7ca6dab9061aba58` · tests.csv `450ab8fa559f9ff08c090aa539c8179cc06944f58f68fea5b4c844a843d18e57` · pairs.csv `046849402daa6023da4f3809f38851eefd61a69e33728cfee66d53d9e24407aa`
 ---
 **Actual-temperature status (2026-09-27): done for all 12 cities.** gridMET Steps 1–5b for the 11 continental viz cities (D10; 16 pulled); **Fairbanks from ERA5-Land** (D15, ERA5-Land Steps 1–3). Final files for all 12 in `data/processed/gridmet/final/` (`temp_<city>_daily.csv`, 3,920 rows 2016-01-01 → 2026-09-24, join row for row with UTCI; `_normals.csv`; `_monthly.csv`); the folder name is gridMET but Fairbanks' source is ERA5-Land (blank 2026-09-22 → 09-24). End date settled (D9). Open: N1 (boundary file vs OpenAQ, appendix note); optional PAFA station cross-check for Fairbanks; March 2026 station check.
 

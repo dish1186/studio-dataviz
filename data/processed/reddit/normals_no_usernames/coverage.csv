@@ -117,3 +117,19 @@ detroit,detroit_month_2024-07-01_posts.jsonl,month,posts,2024-06-30,2024-07-30,1
 detroit,detroit_month_2024-07-01_comments.jsonl,month,comments,2024-06-30,2024-07-30,34538,2024-06-30 00:00,2024-07-29 23:59,30,0,,409170
 detroit,detroit_month_2025-06-30_posts.jsonl,month,posts,2025-06-29,2025-08-05,1452,2025-06-29 02:21,2025-08-04 23:24,37,0,,17516
 detroit,detroit_month_2025-06-30_comments.jsonl,month,comments,2025-06-29,2025-08-05,35756,2025-06-29 00:00,2025-08-04 23:59,37,0,,424162
+pittsburgh,pittsburgh_event_2026-07-13_posts.jsonl,event,posts,2026-07-12,2026-07-21,1011,2026-07-12 00:00,2026-07-20 23:43,9,0,,12695
+pittsburgh,pittsburgh_event_2026-07-13_comments.jsonl,event,comments,2026-07-12,2026-07-21,28285,2026-07-12 00:00,2026-07-20 19:59,9,0,comments end at 2026-07-20 19:59 UTC,339812
+pittsburgh,pittsburgh_month_2019-07-01_posts.jsonl,month,posts,2019-06-30,2019-07-30,1151,2019-06-30 00:14,2019-07-29 23:54,30,0,,12245
+pittsburgh,pittsburgh_month_2019-07-01_comments.jsonl,month,comments,2019-06-30,2019-07-30,16930,2019-06-30 00:00,2019-07-29 23:57,30,0,,177037
+pittsburgh,pittsburgh_month_2020-06-29_posts.jsonl,month,posts,2020-06-28,2020-08-04,1790,2020-06-28 00:25,2020-08-03 23:14,37,0,,19724
+pittsburgh,pittsburgh_month_2020-06-29_comments.jsonl,month,comments,2020-06-28,2020-08-04,40451,2020-06-28 00:00,2020-08-03 23:59,37,0,,453852
+pittsburgh,pittsburgh_month_2021-06-28_posts.jsonl,month,posts,2021-06-27,2021-08-03,1608,2021-06-27 00:03,2021-08-02 23:52,37,0,,17610
+pittsburgh,pittsburgh_month_2021-06-28_comments.jsonl,month,comments,2021-06-27,2021-08-03,32748,2021-06-27 00:21,2021-08-02 23:58,37,0,,372196
+pittsburgh,pittsburgh_month_2022-07-04_posts.jsonl,month,posts,2022-07-03,2022-08-02,2015,2022-07-03 00:38,2022-08-01 23:56,30,0,,23126
+pittsburgh,pittsburgh_month_2022-07-04_comments.jsonl,month,comments,2022-07-03,2022-08-02,43707,2022-07-03 00:01,2022-08-01 23:58,30,0,,506002
+pittsburgh,pittsburgh_month_2023-07-03_posts.jsonl,month,posts,2023-07-02,2023-08-01,2189,2023-07-02 00:13,2023-07-31 23:33,30,0,,26673
+pittsburgh,pittsburgh_month_2023-07-03_comments.jsonl,month,comments,2023-07-02,2023-08-01,51395,2023-07-02 00:00,2023-07-31 23:59,30,0,,610873
+pittsburgh,pittsburgh_month_2024-07-01_posts.jsonl,month,posts,2024-06-30,2024-07-30,2457,2024-06-30 00:02,2024-07-29 23:59,30,0,,30037
+pittsburgh,pittsburgh_month_2024-07-01_comments.jsonl,month,comments,2024-06-30,2024-07-30,64767,2024-06-30 00:00,2024-07-29 23:59,30,0,,767833
+pittsburgh,pittsburgh_month_2025-06-30_posts.jsonl,month,posts,2025-06-29,2025-08-05,3796,2025-06-29 00:20,2025-08-04 23:54,37,0,,47029
+pittsburgh,pittsburgh_month_2025-06-30_comments.jsonl,month,comments,2025-06-29,2025-08-05,91449,2025-06-29 00:00,2025-08-04 23:59,37,0,,1082327
