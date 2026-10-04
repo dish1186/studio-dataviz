@@ -1472,6 +1472,7 @@ Step · dataset · date · who ran it | What (plain language) | Why | Input file
     - Only 1.5% are text repeated 5+ times (2023: 1.8%).
     - The daily median is 521 comments (2023: 157; 2025: 414), so r/fresno stepped up in activity from 2024 on.
     - **Caveat:** the month normal mixes quieter (2019–2023) and busier (2024–2025) years. The share adjusts for volume; a change in the subreddit's culture is the drift risk already noted.
+- **San Jose check-and-strip, run by Claude:** passed, no warnings. 14 files, 134,406 records. Download notes: 422 and one 525 (a Cloudflare-to-server connection error), both recovered on retry.
 - **6-usable-normal-weeks rule: not set.** Dish: "i dont want to get rid of fairbanks just yet." It is still open, and should be decided before the analysis script is committed.
 
 ---
