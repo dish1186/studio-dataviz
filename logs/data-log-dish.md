@@ -1473,6 +1473,11 @@ Step · dataset · date · who ran it | What (plain language) | Why | Input file
     - The daily median is 521 comments (2023: 157; 2025: 414), so r/fresno stepped up in activity from 2024 on.
     - **Caveat:** the month normal mixes quieter (2019–2023) and busier (2024–2025) years. The share adjusts for volume; a change in the subreddit's culture is the drift risk already noted.
 - **San Jose check-and-strip, run by Claude:** passed, no warnings. 14 files, 134,406 records. Download notes: 422 and one 525 (a Cloudflare-to-server connection error), both recovered on retry.
+- **Indianapolis check-and-strip, run by Claude:** passed. 14 files, 134,110 records. Download notes: one HTTP 000 (a curl timeout), recovered; 2022 comments took about 32 min.
+  - **Warning:** 2023-06-13 to 06-15 have no posts and no comments. That's the **June 2023 Reddit blackout** (subreddits went private to protest the API pricing), not an archive gap. r/Fairbanks June 2023 has no empty comment days.
+  - This affects the normal week Jun 12–18, 2023 (only 4 active days, probably full of protest talk). Indianapolis's event week (Jun 26 – Jul 2, 2023) is not affected.
+  - **Proposed (Claude's choice, pending Dish):** a normal week is usable only if the subreddit has comments on ≥ 5 of its 7 local days, mirroring the PM2.5 5-of-7 rule.
+- **Cross-city pattern:** r/fresno and r/SanJose comment volume about doubled from 2024 on (San Jose: about 13–15k per month before, 25–30k after). This looks like general Reddit growth; the share adjusts for volume.
 - **6-usable-normal-weeks rule: not set.** Dish: "i dont want to get rid of fairbanks just yet." It is still open, and should be decided before the analysis script is committed.
 
 ---
