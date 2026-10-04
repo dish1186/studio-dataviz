@@ -1496,6 +1496,32 @@ Step · dataset · date · who ran it | What (plain language) | Why | Input file
 - **The computing part has not been executed** (it needs all 9 cities). If it crashes on the first run, the fix is logged as a code fix made before any result was seen.
 - **SHA-256 (committed before running):** analysis_01_event_rise.py `b0ae7e03d4c56ca95465586a51ec011e0441fedea095589aceb026fe3fa56596`
 
+### Analysis · INTERIM run on 6 of 9 cities · 2026-10-03 · run by Claude at Dish's request ("run the analysis now, using what we have")
+- **Deviation from rule G19** ("runs once, on all cities together"), requested by Dish after the rules were fixed.
+  - **Handling:** an `--interim` switch (commit 57a8095, committed before this run) keeps only the ready cities and writes to `data/processed/reddit/analysis_01_interim/`. The computation is unchanged.
+  - **The result of record is the full 9-city run** with the same computation. Nothing may be changed because of these numbers; any change would be labeled post-hoc.
+- **Cities:** Eugene, Bakersfield, Fresno, San Jose, Fairbanks, Indianapolis. Not ready: Seattle, Detroit, Pittsburgh. All 6 passed check 2 and the 6-week rule. This is the first time event-week Reddit content was counted.
+- **Results (air-talk share, event vs normal):**
+
+  | City | Event share | Normal share | Rise | Higher than | Event-week kept items |
+  |---|---|---|---|---|---|
+  | San Jose | 7.15% | 0.26% | **27.3×** | 30/30 | 3,947 |
+  | Fairbanks | 17.6% | 0.65% | **27.1×** | 20/20 | **188 (small)** |
+  | Eugene | 9.95% | 0.49% | **20.2×** | 28/28 | 9,209 |
+  | Fresno | 3.67% | 0.30% | **12.4×** | 27/28 | 954 |
+  | Indianapolis | 1.74% | 0.18% | **9.5×** | 29/29 | 5,297 |
+  | Bakersfield | 1.64% | 0.34% | **4.8×** | 20/22 | 1,529 |
+
+- **Main test (6 cities): Pos.** ρ(rise, PM2.5 ratio) = 0.60 vs ρ(rise, absolute) = 0.03, a difference of 0.57 (≥ 0.2).
+  - **Checks:** percentage points Pos (0.89 vs 0.54); percentile Pos (0.51 vs 0.03); ratio without polluted weeks Pos (0.60 vs 0.03); wider word list Pos (0.71 vs 0.26).
+  - **Context:** ρ(PM2.5 ratio, absolute) = 0.77 across these 6. ρ(rise, bad days/yr) = −0.62.
+  - **Pairs:** the higher-ratio city had the bigger rise in 3 of 3 (Bakersfield–Indianapolis, Bakersfield–San Jose, Indianapolis–San Jose). The worse-air city won 0 of 2 crossed pairs.
+- **Caveats (Claude):**
+  - n = 6, a pattern only. A rank correlation of 0.6 across 6 cities is weak evidence.
+  - The two PM2.5 measures move together (0.77).
+  - Fairbanks's event week has only 188 items (each item is about 0.5 pp of share).
+  - **Fire-talk confound:** San Jose (14.7% fire talk vs 0.9% normal) and Eugene (16.0% vs 1.1%) had large nearby fires with evacuations. Their air talk may partly be fire news. San Jose's top rise comes with a modest PM2.5 ratio (5.0×).
+
 ---
 **Actual-temperature status (2026-09-27): done for all 12 cities.** gridMET Steps 1–5b for the 11 continental viz cities (D10; 16 pulled); **Fairbanks from ERA5-Land** (D15, ERA5-Land Steps 1–3). Final files for all 12 in `data/processed/gridmet/final/` (`temp_<city>_daily.csv`, 3,920 rows 2016-01-01 → 2026-09-24, join row for row with UTCI; `_normals.csv`; `_monthly.csv`); the folder name is gridMET but Fairbanks' source is ERA5-Land (blank 2026-09-22 → 09-24). End date settled (D9). Open: N1 (boundary file vs OpenAQ, appendix note); optional PAFA station cross-check for Fairbanks; March 2026 station check.
 
