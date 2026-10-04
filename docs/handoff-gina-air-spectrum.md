@@ -80,3 +80,101 @@ python3 scripts/reddit/spectrum_04_dotmap_data.py    # only if you change the do
 - **Eugene, Seattle and Pittsburgh had too many comments to read them all**, so Claude read a random 400 from each. Each one has a `weight` column that scales it back up to the full week. The regroup script handles this; simply counting rows won't.
 - **"mask" picks up lots of COVID talk** in the 2020 weeks. Those comments are all marked "not about the air" and left out.
 - **How consistent the sorting is:** Claude re-sorted 1 in 10 comments a second time without looking at the first answer. The two matched 84% of the time (183 of 219). The August 2026 Eugene comparison week was the least consistent (16 of 24).
+
+---
+
+## gina-response 10/4/2026
+
+*Gina → Dish, Oct 4, 2026 (written with Claude). All numbers come from `scripts/reddit/spectrum_05_regroup.py` on Claude's draft labels (9 cities, not yet checked by a person).*
+
+**Interactive chart:** https://claude.ai/artifact/Q9dn7YgTCE4WxQZJ8Da542
+- It shows each city's air comments by group, and where each group's comments come from.
+- You can switch between two groups, three groups, four groups, and Adjusting as living.
+- You can switch between comments read and estimated full week.
+- You can show Bakersfield with or without its biggest thread.
+
+### My proposal: start simple, then add a layer
+
+**Start with your two groups: reacting (Alarm + Adjusting) vs living with it (Enduring + Normalizing).** It's the cleanest story, and it's safe from the hardest judgment call in the sorting.
+
+**Then, as the visualization develops, add a toggle between "two levels" and "three levels"** to see which ends up most relevant. Three levels means Alarm / Adjusting / Living with it.
+
+The three-level layer depends on one thing: **we manually check the comments and confirm that the line between Alarm and Adjusting is solid.** If we can do that in a reasonable amount of time, I think it's worth adding. If we can't, we stay with the two groups and call it a day.
+
+### Why start with two groups
+
+- **It's a cleaner story.** One number per city, with an easy headline.
+- **It's safe from the Alarm–Adjusting call.** Your Rule 8 (forecasts and explanations count as Adjusting) moved Adjusting by up to 8 points in some cities; for example, Fresno went from 11% to 19%, and Indianapolis from 17% to 24%. The two-group totals didn't change at all.
+- **It depends heavily on Bakersfield, but we can make that work.**
+  - Across the 8 other cities, reacting barely varies (81–94%). The contrast is Bakersfield (39% reacting).
+  - Much of Bakersfield's "living with it" comes from one thread: 26 of its 31 living-with-it comments come from the "how did the air affect you growing up" thread.
+  - We can make Bakersfield the story, as long as we always show it with and without that thread.
+- **It can still answer a "how" question** by highlighting Bakersfield as the city where people live with it.
+
+### Why add three groups as the next layer
+
+- **Two groups lose a lot of the nuance in the sentiment analysis.** Across the 8 cities other than Bakersfield:
+  - Adjusting rises with how unusual the week was (+0.56).
+  - Alarm falls (−0.55).
+  - Merged into "reacting", the two cancel out (+0.14). The two-group view hides that pattern.
+- **Three groups give a lot more to see without being too complex.**
+  - Four groups is a lot, and Enduring alone is too small (67 comments) to compare cities fairly.
+  - Three groups keep Enduring and Normalizing together and separate only Alarm and Adjusting.
+- **It shows the change from one response to another more clearly:**
+  - where smoke is rare, people act: Eugene, Seattle and Fairbanks are about 50% Adjusting
+  - in the Midwest's Canadian-smoke weeks, people sound alarmed: Indianapolis 66%, Detroit 57%
+  - where smoke is routine, people endure: Bakersfield is 61% living with it
+- **It answers Kate's crit.** Kate said she likes "how" research questions and wants us to avoid questions that can be answered with a simple yes or no. The three groups focus on *how* people respond.
+- **It opens a question for future analysis:** how have these three groups changed over time in each city? Is a city's mix shifting from alarm toward action or endurance as smoke becomes more common? *(Caveat: normal weeks have very little air talk, so this would need several smoke weeks per city, not normal weeks.)*
+
+### The condition: the Alarm–Adjusting line has to hold
+
+The more interesting pattern sits exactly on the least reliable line in the sorting.
+
+If the hand check agrees with Claude on most of them, the three-group pattern is worth telling. If not, fall back to the two groups and say plainly that the result rests on Bakersfield.
+
+**Proposed check:**
+- Read `check_first.csv`, plus a random sample of comments sorted as Alarm or Adjusting from each city.
+- Mark only where we disagree, in the `dish_review` column. You decide any changes, per your ground rules.
+- **Bar for "solid": [we need to agree on this.** Suggestion: we agree with Claude on at least 8 in 10.**]**
+
+**If we can't validate it in a reasonable amount of time, or the check fails:** we use reacting vs living with it and call it a day. No more regrouping after that.
+
+### The key narrative questions each level asks
+
+#### Two groups (the starting point)
+
+**Main question:** *When smoke fills the air, how do people respond — by reacting to it or by living with it — and how does that depend on whether the smoke is unusual for their city or dangerous?*
+
+1. How does the share of reacting (alarm plus action) change with how unusual the week was, and with how bad the air was?
+2. How does Bakersfield, where bad air is routine, talk about smoke differently from cities where it's rare? How much of that rests on a single thread?
+
+**Possible headline:** *"People react to smoke that's unusual for them, not smoke that's dangerous. Bakersfield, where bad air is normal, mostly lives with it."*
+
+#### Three groups (the added layer, if the check holds)
+
+**Main question:** *When smoke fills the air, how do people respond — with alarm, with action, or by living with it — and what shapes which response they choose?*
+
+1. How does the mix of alarm, action and living with it change with how unusual the smoke week was for each city, and with how bad the air actually was?
+2. How do people facing rare smoke respond, compared with people for whom smoke is routine? Do they talk more about what to do, while routine-smoke cities talk more about enduring it?
+3. *(Exploratory)* How does familiarity with smoke as a kind of event (western fire seasons vs Canadian smoke in the Midwest) shape whether people sound alarmed or practical? The Alarm-heavy cities are mostly the Canadian-smoke cities (Indianapolis, Detroit, Pittsburgh: 48–66% Alarm), not the western fire-season cities (Eugene, Seattle, Fairbanks, San Jose: 37–45%). Fresno is the exception (61%).
+4. *(Future)* How have these three responses changed over time in each city?
+
+**Possible headline:** *"Where smoke is rare, people act. Where it's routine, they endure."*
+
+### How the two levels compare
+
+| | Two groups | Three groups |
+|---|---|---|
+| Safe from the Alarm–Adjusting judgment call | **Yes** | No: Rule 8 shifted results by up to 8 points |
+| Shows a pattern among the 8 non-Bakersfield cities | No (+0.14) | **Yes:** Adjusting rises and Alarm falls |
+| Depends on Bakersfield's one thread | **Heavily** | Less: Adjusting holds without it (+0.60) |
+| Easy to present | **Yes** | Harder |
+
+### Caveats
+
+- The sorting is Claude's and hasn't been checked by a person.
+- There are only 9 cities, so the scores are rough.
+- Percentages compare each city with itself.
+- Fairbanks (35 comments), Fresno (36) and Bakersfield (51) are small.
+- Pittsburgh is missing the last 4 hours of comments on Jul 19.

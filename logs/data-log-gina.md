@@ -32,6 +32,22 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Doc · Gina's response added to Dish's air-spectrum handoff · 2026-10-04 09:49 EDT · Gina + Claude
+- **What:** added a section "gina-response 10/4/2026" at the bottom of `docs/handoff-gina-air-spectrum.md`. Dish's text above it is unchanged.
+- **Proposal in the response:**
+  - Start with two groups: reacting (Alarm + Adjusting) vs living with it (Enduring + Normalizing).
+  - Add a toggle between two and three levels (Alarm / Adjusting / Living with it) as the visualization develops.
+  - The three-level layer is only used if a manual check confirms the line between Alarm and Adjusting. Otherwise: two groups, and call it a day.
+- **Also in the response:**
+  - the narrative questions for each level
+  - a two vs three comparison table
+  - caveats
+  - a link to the interactive chart: https://claude.ai/artifact/Q9dn7YgTCE4WxQZJ8Da542 (private until Gina shares it)
+- **Numbers:** from `scripts/reddit/spectrum_05_regroup.py` on Claude's draft labels (9 cities), plus Spearman scores Claude computed on the 8 cities other than Bakersfield. No data files changed.
+- **Open:** the agreement bar for "solid" is left for Gina and Dish (suggestion: at least 8 in 10).
+
+---
+
 ### Reddit · normals, Step 1: Eugene and Bakersfield normal pulls checked against the plan, usernames removed · 2026-10-03 13:27 EDT · Gina + Claude
 - **What (Gina: "recheck all files in the folder - if they are all complete and match with the document, perform the same name cleaning script and upload to the github"):** Gina downloaded the 32 files in `docs/reddit-pull-eugene-bakersfield.md` from the Arctic Shift download tool:
   - per city: 1 neighbor pull and 7 month pulls, posts and comments each
