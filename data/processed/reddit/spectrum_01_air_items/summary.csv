@@ -1,0 +1,12 @@
+city,week,set,source,rows_read,removed_deleted,bots,empty,total_items,air_items,air_items_include_only,air_share_pct,threads_with_air,biggest_thread,biggest_thread_air_items,biggest_thread_share_pct,over_500,skew_over_30pct
+bakersfield,2024-12-02,event_9,data/processed/reddit/event_weeks_no_usernames/r_bakersfield_*.jsonl (UTC week),1748,152,3,3,1590,55,25,3.46,10,1h60r2q,26,47.3,0,1
+detroit,2026-07-13,event_9,data/processed/reddit/event_weeks_no_usernames/r_Detroit_*.jsonl (UTC week),6192,511,78,50,5553,319,236,5.74,48,1uxqs0n,86,27.0,0,0
+eugene,2020-09-07,event_9,data/processed/reddit/event_weeks_no_usernames/r_Eugene_*.jsonl (UTC week),10064,824,3,75,9162,1171,885,12.78,283,iol2yq,50,4.3,1,0
+fairbanks,2022-06-27,event_9,data/processed/reddit/event_weeks_no_usernames/r_Fairbanks_*.jsonl (UTC week),199,9,0,1,189,36,33,19.05,5,vnsunv,13,36.1,0,1
+fresno,2020-08-17,event_9,data/processed/reddit/event_weeks_no_usernames/r_fresno_*.jsonl (UTC week),1180,178,7,5,990,82,35,8.28,25,ibkb4g,22,26.8,0,0
+indianapolis,2023-06-26,event_9,data/processed/reddit/event_weeks_no_usernames/r_indianapolis_*.jsonl (UTC week),5609,420,17,11,5161,127,90,2.46,40,14ksuog,25,19.7,0,0
+pittsburgh,2026-07-13,event_9,data/processed/reddit/event_weeks_no_usernames/r_pittsburgh_*.jsonl (UTC week),23395,1651,115,147,21482,1143,871,5.32,189,1uz248v,49,4.3,1,0
+sanjose,2020-08-17,event_9,data/processed/reddit/event_weeks_no_usernames/r_SanJose_*.jsonl (UTC week),4272,366,14,29,3863,342,252,8.85,114,icnn4l,20,5.8,0,0
+seattle,2020-09-07,event_9,data/processed/reddit/event_weeks_no_usernames/r_Seattle_*.jsonl (UTC week),12341,1706,32,69,10534,1213,861,11.52,252,ip7p05,53,4.4,1,0
+bakersfield,2024-12-02,comparison,"data/processed/reddit/step02_clean/bakersfield_event_2024-12-02.csv (local week, already cleaned)",1529,0,0,0,1529,55,25,3.6,10,1h60r2q,26,47.3,0,1
+eugene,2026-08-03,comparison,"data/processed/reddit/step02_clean/eugene_event_2026-08-03.csv (local week, already cleaned)",4239,0,0,0,4239,240,204,5.66,38,1vgs4do,41,17.1,0,0

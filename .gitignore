@@ -13,3 +13,5 @@ data/processed/reddit/spectrum_*/**
 # Reddit normal pulls: new city files stay local (Dish 2026-10-04: GitHub's 100 MB file limit, and they hold people's words).
 # Files already tracked (Eugene, Bakersfield, Fairbanks, Fresno, San Jose, Indianapolis) stay tracked; coverage.csv stays tracked.
 data/processed/reddit/normals_no_usernames/**/*.jsonl
+# Dot map data holds short quotes; local only (Dish 2026-10-04)
+viz/air-spectrum/data.js

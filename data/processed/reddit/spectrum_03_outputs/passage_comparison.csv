@@ -1,0 +1,9 @@
+name,band,old_passage_pct,new_comment_pct,move_pts,over_10
+bakersfield_2024-12-02_comparison,A,14,29.4,15.4,1
+bakersfield_2024-12-02_comparison,J,8,9.8,1.8,0
+bakersfield_2024-12-02_comparison,E,57,43.1,-13.9,1
+bakersfield_2024-12-02_comparison,N,21,17.6,-3.4,0
+eugene_2026-08-03_comparison,A,32,37.1,5.1,0
+eugene_2026-08-03_comparison,J,54,51.9,-2.1,0
+eugene_2026-08-03_comparison,E,6,3.3,-2.7,0
+eugene_2026-08-03_comparison,N,9,7.6,-1.4,0

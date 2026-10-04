@@ -1,0 +1,330 @@
+<meta charset="utf-8">
+<title>From alarm to acceptance</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+/* Layout: one spectrum line, Alarm → Normalizing, split by a red "reacting | living with it" rule.
+   Overview = nine city rows diverging from that rule (1 dot = 1% of a city's air talk);
+   detail = one city's comments as dots under the four bands. */
+:root{
+  --paper:#f2eadb; --ink:#2b2118; --ink-2:#6b5a48; --rule:#cdbb9c; --lamp:#e9b949;
+  --a:#2b2118; --j:#7d6852; --e:#b8862b; --n:#dcc08a; --off:#c9b89a; --signal:#c4321f; --tip:#fffaf0;
+  --display:"Archivo","Helvetica Neue",Arial,sans-serif; --mono:"Courier Prime","Courier New",monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){--paper:#1d1812;--ink:#efe4cf;--ink-2:#b3a28a;--rule:#4a3d2e;--a:#efe4cf;--j:#a8957c;--e:#d9a548;--n:#7a6440;--off:#55473a;--signal:#e0553f;--tip:#2a221a;color-scheme:dark}
+}
+:root[data-theme="dark"]{--paper:#1d1812;--ink:#efe4cf;--ink-2:#b3a28a;--rule:#4a3d2e;--a:#efe4cf;--j:#a8957c;--e:#d9a548;--n:#7a6440;--off:#55473a;--signal:#e0553f;--tip:#2a221a;color-scheme:dark}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--display);font-size:16px;line-height:1.5}
+.wrap{max-width:1180px;margin:0 auto;padding-inline:24px;padding-block:40px 56px}
+h1{font-weight:900;font-variation-settings:"wdth" 62;font-size:clamp(40px,7vw,88px);line-height:.92;margin:0 0 18px;letter-spacing:-.01em;max-width:14ch;text-wrap:balance}
+h2{font-weight:900;font-variation-settings:"wdth" 70;font-size:clamp(26px,3.4vw,36px);line-height:1;margin:56px 0 8px;text-wrap:balance}
+.lede{max-width:64ch;font-size:18px;margin:0 0 8px}
+.lede-small{max-width:68ch;color:var(--ink-2);margin:0}
+.draftflag{display:inline-block;margin:14px 0 0;font-family:var(--mono);font-size:13px;color:var(--signal);border:1.5px solid var(--signal);padding:3px 8px}
+.controls{display:flex;flex-wrap:wrap;gap:18px 34px;align-items:flex-end;margin:24px 0 0}
+.ctl{min-width:0}
+.ctl span.lab{display:block;font-size:13px;color:var(--ink-2);margin:0 0 6px}
+.seg{display:inline-flex;flex-wrap:wrap;border:2px solid var(--ink)}
+.seg button{font:inherit;font-size:14px;font-weight:700;background:none;color:var(--ink);border:0;padding:6px 12px;cursor:pointer;box-shadow:-2px 0 0 var(--ink)}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.seg button:focus-visible,.row:focus-visible{outline:3px solid var(--lamp);outline-offset:2px}
+.key{display:flex;flex-wrap:wrap;gap:8px 18px;font-family:var(--mono);font-size:14px;color:var(--ink-2)}
+.key span{display:inline-flex;align-items:center;gap:7px}
+.dot{display:inline-block;width:11px;height:11px;border-radius:50%}
+svg{display:block;width:100%;height:auto;overflow:visible}
+.field{position:relative;margin:26px 0 0}
+.colname{font-weight:900;font-variation-settings:"wdth" 72;font-size:26px;fill:var(--ink)}
+.colname.sm{font-size:17px}
+.coldef{font-size:13.5px;fill:var(--ink-2)}
+.share{font-family:var(--mono);font-size:14px;fill:var(--ink-2)}
+.share .big{font-size:26px;font-weight:700;fill:var(--ink)}
+.axis{font-size:13px;fill:var(--ink-2)}
+.thr-lab{font-size:13px;font-weight:700;fill:var(--signal)}
+.cname{font-weight:800;font-variation-settings:"wdth" 80;font-size:16px;fill:var(--ink)}
+.cmeta{font-family:var(--mono);font-size:12.5px;fill:var(--ink-2);font-variant-numeric:tabular-nums}
+.pct{font-family:var(--mono);font-size:12.5px;fill:var(--ink-2);font-variant-numeric:tabular-nums}
+.row{cursor:pointer}
+.row .hit{fill:transparent}
+.row:hover .hit,.row.sel .hit{fill:var(--rule);opacity:.35}
+.row.sub .cname{font-weight:500;font-size:14px;fill:var(--ink-2)}
+circle.d{cursor:pointer}
+circle.d.dim{opacity:.13}
+circle.d.on{stroke:var(--signal);stroke-width:2.5}
+.tip{position:absolute;z-index:5;max-width:340px;background:var(--tip);border:2px solid var(--ink);padding:12px 14px;pointer-events:none;opacity:0;transition:opacity .08s}
+.tip.show{opacity:1}
+.tip .q{font-family:var(--mono);font-size:14.5px;line-height:1.5;margin:0 0 10px}
+.tip mark{background:none;color:inherit;font-weight:700;text-decoration:underline;text-decoration-color:var(--lamp);text-decoration-thickness:4px;text-underline-offset:3px}
+.tip .meta{font-size:13px;color:var(--ink-2);margin:0}
+.tip .meta b{color:var(--ink)}
+.tip .draft{font-size:12px;color:var(--ink-2);margin:6px 0 0;border-top:1px solid var(--rule);padding-top:6px}
+.tip .draft.unsure{color:var(--signal)}
+.cityhead{display:flex;flex-wrap:wrap;gap:4px 18px;align-items:baseline;margin:26px 0 0}
+.cityhead h3{margin:0;font-weight:900;font-variation-settings:"wdth" 72;font-size:28px}
+.cityhead p{margin:0;font-family:var(--mono);font-size:14px;color:var(--ink-2);min-width:0}
+.tray h3{font-weight:900;font-variation-settings:"wdth" 72;font-size:20px;margin:36px 0 4px}
+.tray p{margin:0 0 10px;font-size:14px;color:var(--ink-2);max-width:70ch}
+.traywrap{position:relative}
+.note{margin:48px 0 0;max-width:78ch;font-size:14px;color:var(--ink-2)}
+.note h4{margin:0 0 6px;font-weight:800;font-variation-settings:"wdth" 75;font-size:18px;color:var(--ink)}
+.note p{margin:0 0 10px}
+.note code{font-family:var(--mono);font-size:13px}
+@media (max-width:700px){.wrap{padding-inline:16px;padding-block:28px 44px}.lede{font-size:16.5px}}
+@media (prefers-reduced-motion:reduce){.tip{transition:none}}
+</style>
+
+<div class="wrap">
+  <h1>From alarm to acceptance</h1>
+  <p class="lede">Every comment that mentioned the air during nine cities' worst PM2.5 weeks, placed on one line: from "this is bad right now" to "this is fine, it's always been like this."</p>
+  <p class="lede-small">Each city is shown against its own air talk, so a small subreddit and a big one can sit side by side. Cities are ordered by how unusual their bad week was for them.</p>
+  <span class="draftflag">Claude's draft labels, not yet reviewed</span>
+
+  <h2>Nine cities, one line</h2>
+  <div class="controls">
+    <div class="ctl"><span class="lab">Order cities by</span>
+      <div class="seg" id="sortseg"><button aria-pressed="true" data-v="ratio">How unusual (× normal)</button><button aria-pressed="false" data-v="pm25">How bad (µg/m³)</button></div></div>
+    <div class="key" aria-hidden="true">
+      <span><i class="dot" style="background:var(--a)"></i>Alarm</span>
+      <span><i class="dot" style="background:var(--j)"></i>Adjusting</span>
+      <span><i class="dot" style="background:var(--e)"></i>Enduring</span>
+      <span><i class="dot" style="background:var(--n)"></i>Normalizing</span>
+      <span>1 dot = 1% of a city's air talk</span>
+    </div>
+  </div>
+  <div class="field" id="ovfield"><svg id="overview" role="img" aria-label=""></svg><div class="tip" id="ovtip" role="status" aria-live="polite"></div></div>
+
+  <h2 id="read">Read one city's comments</h2>
+  <div class="controls">
+    <div class="ctl"><span class="lab">City</span><div class="seg" id="cityseg"></div></div>
+    <div class="ctl"><span class="lab">Labels</span>
+      <div class="seg" id="sureseg"><button aria-pressed="true" data-v="all">All</button><button aria-pressed="false" data-v="unsure">Only ones Claude was unsure about</button></div></div>
+    <div class="ctl" id="bigctl" hidden><span class="lab">Biggest thread</span>
+      <div class="seg" id="bigseg"><button aria-pressed="true" data-v="with">Include it</button><button aria-pressed="false" data-v="without">Leave it out</button></div></div>
+  </div>
+  <div class="cityhead"><h3 id="cname"></h3><p id="cmeta"></p></div>
+  <div class="field" id="field"><svg id="map" role="img" aria-label=""></svg><div class="tip" id="tip" role="status" aria-live="polite"></div></div>
+
+  <div class="tray">
+    <h3>Not about the air</h3>
+    <p id="traytext"></p>
+    <div class="traywrap" id="traywrap"><svg id="trayMap" role="img" aria-label=""></svg><div class="tip" id="tip2" role="status" aria-live="polite"></div></div>
+  </div>
+
+  <div class="note">
+    <h4>How this was made</h4>
+    <p>Each city's week is its worst PM2.5 week in the study, pulled from the city's own subreddit (Monday to Sunday, in UTC). A comment or post counts as air talk only if its own words match the project's air word list; sitting in a smoke thread is not enough. One dot is one whole comment or post.</p>
+    <p>Every band is Claude's draft reading, not a checked code. Claude read each comment and chose one band; hollow dots are the ones Claude was unsure about. Comparisons with the past were sorted by direction: "it never used to be like this" counts as alarm, "it used to be worse" counts as normalizing. Forecasts, smoke maps and explanations of why the air is bad count as adjusting.</p>
+    <p>Eugene, Seattle and Pittsburgh each had more than 1,100 air comments, so a random 400 were read, spread across threads in proportion to their size; there, one dot stands for about three comments, and the percentages are weighted back to the full week. A second, blind reading of a random 10% of each week agreed with the first on <span id="agree"></span>. Pittsburgh's comments are missing the last four hours of the week.</p>
+    <p>Bakersfield's air talk is small (55 comments), and almost half sits in one thread that asked long-time residents how the air had affected them growing up. It pulls Bakersfield toward enduring; the second Bakersfield row shows the city without it. Percentages are each city's share of its own air talk, with "not about the air" left out.</p>
+    <p>An earlier version of this map counted short keyword passages instead of whole comments, and covered Eugene's milder August 2026 week. Re-reading those weeks as whole comments moved Bakersfield's alarm share up by 15 points and its enduring share down by 14; Eugene moved less than 10 points on every band.</p>
+  </div>
+</div>
+
+<script src="data.js"></script>
+<script>
+const D = window.SPECTRUM.cities;
+const BANDS=[
+  {k:"A",name:"Alarm",def:["It's bad or strange","right now."]},
+  {k:"J",name:"Adjusting",def:["Changing what they do:","purifiers, apps, forecasts."]},
+  {k:"E",name:"Enduring",def:["Harm told as routine:","every day, all my life."]},
+  {k:"N",name:"Normalizing",def:["It's fine, it's always","been this way."]}
+];
+const NAME={A:"Alarm",J:"Adjusting",E:"Enduring",N:"Normalizing",X:"Not about the air"};
+const COL={A:"var(--a)",J:"var(--j)",E:"var(--e)",N:"var(--n)"};
+const NS="http://www.w3.org/2000/svg";
+const $=id=>document.getElementById(id);
+const state={sort:"ratio",city:D[0].key,unsure:false,big:"with",pinned:null};
+function el(tag,attrs,parent,text){const e=document.createElementNS(NS,tag);for(const k in attrs)e.setAttribute(k,attrs[k]);if(text!=null)e.textContent=text;parent&&parent.appendChild(e);return e}
+function esc(s){return s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]))}
+const short=n=>n.replace(/ [A-Z]{2}$/,"");
+const fmtWeek=c=>{const o={month:"short",day:"numeric"},a=new Date(c.week_start+"T12:00"),b=new Date(c.week_end+"T12:00");return `${a.toLocaleDateString("en-US",o)}–${b.toLocaleDateString("en-US",o)}, ${b.getFullYear()}`};
+
+/* ---------- overview: diverging unit chart ---------- */
+function hundred(sh){ // largest remainder to 100 dots
+  const raw=BANDS.map(b=>sh[b.k]||0), fl=raw.map(Math.floor); let left=100-fl.reduce((a,b)=>a+b,0);
+  raw.map((v,i)=>[v-fl[i],i]).sort((a,b)=>b[0]-a[0]).slice(0,left).forEach(([,i])=>fl[i]++);
+  return Object.fromEntries(BANDS.map((b,i)=>[b.k,fl[i]]));
+}
+function overviewRows(){
+  const rows=[];
+  const order=D.slice().sort((a,b)=>state.sort==="ratio"?b.ratio-a.ratio:b.pm25-a.pm25);
+  order.forEach(c=>{
+    rows.push({c,sh:c.shares,sub:false});
+    if(c.without_big&&c.key==="bakersfield") rows.push({c,sh:c.without_big,sub:true});
+  });
+  return rows;
+}
+function renderOverview(){
+  const svg=$("overview"); svg.innerHTML="";
+  const W=$("ovfield").clientWidth, narrow=W<700, ROWS_PER_COL=4;
+  const rows=overviewRows();
+  const L=Math.max(...rows.map(r=>hundred(r.sh).A+hundred(r.sh).J)), Rr=Math.max(...rows.map(r=>hundred(r.sh).E+hundred(r.sh).N));
+  const lc=Math.ceil(L/ROWS_PER_COL)+1, rc=Math.ceil(Rr/ROWS_PER_COL)+1;
+  const labW=narrow?0:270, plotW=W-labW-(narrow?0:96);
+  const P=Math.min(12,plotW/(lc+rc+1)), R=P*0.4;
+  const cx=labW+(narrow?0:44)+lc*P+P/2;
+  const top=58, rowGap=narrow?22:16, rowH=ROWS_PER_COL*P, labH=narrow?34:0;
+  el("text",{x:labW,y:14,class:"axis"},svg,"it's bad right now");
+  el("text",{x:W,y:14,class:"axis","text-anchor":"end"},svg,"it's fine, it always has been");
+  el("line",{x1:labW,x2:W,y1:24,y2:24,stroke:"var(--ink)","stroke-width":2},svg);
+  el("path",{d:`M${W-8},19 L${W},24 L${W-8},29`,fill:"none",stroke:"var(--ink)","stroke-width":2},svg);
+  el("text",{x:cx-10,y:48,class:"thr-lab","text-anchor":"end"},svg,"reacting");
+  el("text",{x:cx+10,y:48,class:"thr-lab"},svg,"living with it");
+  let y=top;
+  rows.forEach(r=>{
+    const c=r.c, n=hundred(r.sh);
+    const g=el("g",{class:"row"+(r.sub?" sub":"")+(c.key===state.city&&!r.sub?" sel":""),tabindex:0,role:"button",
+      "aria-label":`${r.sub?c.name+" without its biggest thread":c.name}: Alarm ${r.sh.A}%, Adjusting ${r.sh.J}%, Enduring ${r.sh.E}%, Normalizing ${r.sh.N}%. Open its comments.`},svg);
+    const ry=y+labH;
+    el("rect",{class:"hit",x:0,y:y-6,width:W,height:labH+rowH+12},g);
+    const tx=narrow?0:0, ty=narrow?y+14:ry+rowH/2-2;
+    el("text",{x:tx,y:ty,class:"cname"},g,r.sub?`${short(c.name)}, without one thread`:short(c.name));
+    if(!r.sub) el("text",{x:tx,y:ty+17,class:"cmeta"},g,`${c.ratio.toFixed(1)}× normal · ${Math.round(c.pm25)} µg/m³`);
+    else if(!narrow) el("text",{x:tx,y:ty+17,class:"cmeta"},g,`the "growing up" thread, ${Math.round(c.big_share)}% of its talk`);
+    // left side: J next to the rule, then A; right: E next to the rule, then N
+    const put=(k,count,start,dir)=>{for(let i=0;i<count;i++){const j=start+i,col=Math.floor(j/ROWS_PER_COL),rr=j%ROWS_PER_COL;
+      el("circle",{cx:cx+dir*(col*P+P/2+P*0.3),cy:ry+rr*P+P/2,r:R,fill:COL[k]},g)}};
+    put("J",n.J,0,-1); put("A",n.A,n.J,-1); put("E",n.E,0,1); put("N",n.N,n.E,1);
+    if(!narrow){
+      const lw=Math.ceil((n.A+n.J)/ROWS_PER_COL)*P, rw=Math.ceil((n.E+n.N)/ROWS_PER_COL)*P;
+      el("text",{x:cx-lw-P*0.3-8,y:ry+rowH/2+4,class:"pct","text-anchor":"end"},g,`${Math.round(r.sh.A+r.sh.J)}%`);
+      el("text",{x:cx+rw+P*0.3+8,y:ry+rowH/2+4,class:"pct"},g,`${Math.round(r.sh.E+r.sh.N)}%`);
+    }
+    g.__r=r;
+    y+=labH+rowH+rowGap+(r.sub?6:0);
+  });
+  el("line",{x1:cx,x2:cx,y1:30,y2:y-rowGap+6,stroke:"var(--signal)","stroke-width":2,"stroke-dasharray":"6 4"},svg);
+  svg.setAttribute("viewBox",`0 0 ${W} ${y}`);
+  svg.setAttribute("aria-label","Share of each city's air talk that reacts (alarm, adjusting) versus lives with it (enduring, normalizing).");
+}
+function ovTip(g){
+  const r=g.__r, c=r.c, t=$("ovtip");
+  t.innerHTML=`<p class="meta"><b>${r.sub?c.name+", without its biggest thread":c.name}</b> · ${fmtWeek(c)}</p>
+    <p class="q">${BANDS.map(b=>`${b.name} ${r.sh[b.k].toFixed(0)}%`).join("<br>")}</p>
+    <p class="meta">${c.air_items.toLocaleString()} air comments${c.sampled?`, ${c.labeled} read`:""}. PM2.5 ${c.pm25} µg/m³ against a normal of ${c.pm25_normal}.</p>
+    <p class="draft">Claude's draft labels. Click to read the comments.</p>`;
+  const fr=$("ovfield").getBoundingClientRect(), gr=g.getBoundingClientRect(), tw=Math.min(300,fr.width-16);
+  t.style.width=tw+"px";
+  let x=Math.min(fr.width-tw, Math.max(0,gr.left-fr.left+fr.width*0.55-tw/2)); t.style.left=x+"px";
+  t.classList.add("show"); let yy=gr.top-fr.top-t.offsetHeight-6; if(yy<0) yy=gr.bottom-fr.top+6; t.style.top=yy+"px";
+}
+$("overview").addEventListener("mouseover",e=>{const g=e.target.closest(".row"); if(g) ovTip(g)});
+$("overview").addEventListener("mouseleave",()=>$("ovtip").classList.remove("show"));
+function openRow(g){ const r=g.__r; state.city=r.c.key; state.big=r.sub?"without":"with"; state.pinned=null; syncButtons(); renderAll(); $("read").scrollIntoView({behavior:matchMedia("(prefers-reduced-motion:reduce)").matches?"auto":"smooth"}) }
+$("overview").addEventListener("click",e=>{const g=e.target.closest(".row"); if(g) openRow(g)});
+$("overview").addEventListener("keydown",e=>{const g=e.target.closest(".row"); if(g&&(e.key==="Enter"||e.key===" ")){e.preventDefault();openRow(g)}});
+
+/* ---------- detail: one city's comments ---------- */
+const city=()=>D.find(c=>c.key===state.city);
+function items(){ const c=city(); return c.items.filter(r=>!(state.big==="without"&&c.key==="bakersfield"&&r.big)) }
+function sharesNow(){ const c=city(); return state.big==="without"&&c.without_big&&c.key==="bakersfield"?c.without_big:c.shares }
+function order(a,b){ if(a.u!==b.u) return a.u-b.u; return 0 }
+function drawDots(parent,list,x0,yBase,width,R,G,upward){
+  const per=Math.max(1,Math.floor((width+G)/(2*R+G)));
+  list.forEach((r,i)=>{
+    const col=i%per,row=Math.floor(i/per);
+    const cx=x0+R+col*(2*R+G), cy=upward? yBase-R-row*(2*R+G) : yBase+R+row*(2*R+G);
+    const fill=r.b==="X"?"var(--off)":"var(--ink)";
+    const c=el("circle",{class:"d",cx,cy,r:r.u?R-1.1:R,fill:r.u?"var(--paper)":fill,stroke:r.u?fill:"none","stroke-width":r.u?2.2:0},parent);
+    c.__r=r;
+  });
+  return Math.ceil(list.length/per)*(2*R+G);
+}
+function renderDetail(){
+  const svg=$("map"), tray=$("trayMap"); svg.innerHTML=""; tray.innerHTML="";
+  const c=city(), list=items(), air=list.filter(r=>r.b!=="X"), off=list.filter(r=>r.b==="X"), sh=sharesNow();
+  $("cname").textContent=c.name;
+  $("cmeta").textContent=`${fmtWeek(c)} · PM2.5 ${c.pm25} µg/m³, ${c.ratio.toFixed(1)}× its normal · ${c.air_items.toLocaleString()} air comments`+(c.sampled?` · ${c.labeled} read, 1 dot ≈ ${(c.air_items/c.labeled).toFixed(1)} comments`:"")+(state.big==="without"?` · biggest thread left out`:"");
+  $("bigctl").hidden=!(c.without_big&&c.key==="bakersfield");
+  const W=$("field").clientWidth, narrow=W<700;
+  const R=narrow?4.2:5, G=narrow?2:2.4;
+  if(!narrow){
+    const gap=34, colW=(W-gap*3)/4, head=150, per=Math.floor((colW+G)/(2*R+G));
+    let maxH=0; BANDS.forEach(b=>{maxH=Math.max(maxH,Math.ceil(air.filter(r=>r.b===b.k).length/per)*(2*R+G))});
+    const base=40+head+maxH, H=base+40;
+    svg.setAttribute("viewBox",`0 0 ${W} ${H}`);
+    el("text",{x:0,y:14,class:"axis"},svg,"it's bad right now");
+    el("text",{x:W,y:14,class:"axis","text-anchor":"end"},svg,"it's fine, it always has been");
+    el("line",{x1:0,x2:W,y1:24,y2:24,stroke:"var(--ink)","stroke-width":2},svg);
+    el("path",{d:`M${W-8},19 L${W},24 L${W-8},29`,fill:"none",stroke:"var(--ink)","stroke-width":2},svg);
+    BANDS.forEach((b,i)=>{
+      const x=i*(colW+gap);
+      el("text",{x,y:64,class:"colname"},svg,b.name);
+      b.def.forEach((d,j)=>el("text",{x,y:86+j*17,class:"coldef"},svg,d));
+      const s=el("text",{x,y:150,class:"share"},svg); s.innerHTML=`<tspan class="big">${sh[b.k].toFixed(0)}%</tspan><tspan> of ${esc(short(c.name))}</tspan>`;
+      el("line",{x1:x,x2:x+colW,y1:base+1.5,y2:base+1.5,stroke:"var(--ink)","stroke-width":2},svg);
+      drawDots(el("g",{},svg),air.filter(r=>r.b===b.k).sort(order),x,base-3,colW,R,G,true);
+    });
+    const tx=2*colW+1.5*gap;
+    el("line",{x1:tx,x2:tx,y1:36,y2:base+24,stroke:"var(--signal)","stroke-width":2,"stroke-dasharray":"6 4"},svg);
+    el("text",{x:tx-8,y:base+22,class:"thr-lab","text-anchor":"end"},svg,"reacting");
+    el("text",{x:tx+8,y:base+22,class:"thr-lab"},svg,"living with it");
+  } else {
+    let y=0; const head=78, g0=el("g",{},svg);
+    BANDS.forEach((b,i)=>{
+      if(i===2){ el("line",{x1:0,x2:W,y1:y+8,y2:y+8,stroke:"var(--signal)","stroke-width":2,"stroke-dasharray":"6 4"},g0);
+        el("text",{x:0,y:y+28,class:"thr-lab"},g0,"above: reacting. below: living with it"); y+=44; }
+      el("text",{x:0,y:y+24,class:"colname"},g0,b.name);
+      el("text",{x:W,y:y+24,class:"share","text-anchor":"end"},g0).innerHTML=`<tspan class="big" style="font-size:20px">${sh[b.k].toFixed(0)}%</tspan>`;
+      el("text",{x:0,y:y+44,class:"coldef"},g0,b.def.join(" "));
+      const h=drawDots(g0,air.filter(r=>r.b===b.k).sort(order),0,y+head-14,W,R,G,false);
+      y+=head-14+h+22;
+    });
+    svg.setAttribute("viewBox",`0 0 ${W} ${y}`);
+  }
+  svg.setAttribute("aria-label",`${c.name}: `+BANDS.map(b=>`${b.name} ${sh[b.k].toFixed(0)}%`).join(", "));
+  $("traytext").textContent=`${off.length} of ${short(c.name)}'s ${list.length} comments matched an air word but were about something else (COVID masks, smoked meat, jokes, politics). Left out of the percentages, kept here so they can be checked.`;
+  const th=drawDots(tray,off.slice().sort(order),0,0,W,R,G,false);
+  tray.setAttribute("viewBox",`0 0 ${W} ${Math.max(th,1)}`);
+  tray.setAttribute("aria-label",`${off.length} comments not about the air`);
+  applyFilter();
+}
+function applyFilter(){
+  document.querySelectorAll("circle.d").forEach(c=>{ const r=c.__r; c.classList.toggle("dim",state.unsure&&!r.u); c.classList.toggle("on",state.pinned===r) });
+}
+function hl(r){
+  let out="", at=0; r.m.forEach(([a,b])=>{ out+=esc(r.t.slice(at,a))+"<mark>"+esc(r.t.slice(a,b))+"</mark>"; at=b }); out+=esc(r.t.slice(at));
+  return (r.pre?"…":"")+out+(r.post?"…":"");
+}
+function showTip(c,tip,wrap){
+  const r=c.__r;
+  tip.innerHTML=`<p class="q">${hl(r)}</p><p class="meta"><b>${esc(short(city().name))}</b>, ${NAME[r.b]}</p><p class="meta">${esc(r.r)}</p>
+    <p class="draft${r.u?" unsure":""}">${r.u?"Claude's draft label. Unsure: check this one.":"Claude's draft label, not yet reviewed."}</p>`;
+  const fr=wrap.getBoundingClientRect(), cr=c.getBoundingClientRect(), tw=Math.min(340,fr.width-16);
+  let x=cr.left-fr.left+cr.width/2-tw/2; x=Math.max(0,Math.min(fr.width-tw,x));
+  tip.style.width=tw+"px"; tip.style.left=x+"px"; tip.classList.add("show");
+  let y=cr.top-fr.top-tip.offsetHeight-12; if(y<0) y=cr.bottom-fr.top+12; tip.style.top=y+"px";
+}
+function bind(svgId,tipId,wrapId){
+  const s=$(svgId), t=$(tipId), w=$(wrapId);
+  s.addEventListener("mouseover",e=>{ if(e.target.matches("circle.d")&&!state.pinned) showTip(e.target,t,w) });
+  s.addEventListener("mouseout",e=>{ if(e.target.matches("circle.d")&&!state.pinned) t.classList.remove("show") });
+  s.addEventListener("click",e=>{ if(!e.target.matches("circle.d")) return; e.stopPropagation(); hideAll();
+    state.pinned= state.pinned===e.target.__r?null:e.target.__r; if(state.pinned) showTip(e.target,t,w); applyFilter() });
+}
+function hideAll(){ ["tip","tip2"].forEach(i=>$(i).classList.remove("show")) }
+bind("map","tip","field"); bind("trayMap","tip2","traywrap");
+document.addEventListener("click",()=>{ if(state.pinned){state.pinned=null;hideAll();applyFilter()} });
+document.addEventListener("keydown",e=>{ if(e.key==="Escape"&&state.pinned){state.pinned=null;hideAll();applyFilter()} });
+
+/* ---------- controls ---------- */
+$("cityseg").innerHTML=D.map(c=>`<button aria-pressed="false" data-v="${c.key}">${esc(short(c.name))}</button>`).join("");
+function syncButtons(){
+  const set=(id,v)=>$(id).querySelectorAll("button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.v===v?"true":"false"));
+  set("cityseg",state.city); set("sortseg",state.sort); set("sureseg",state.unsure?"unsure":"all"); set("bigseg",state.big);
+}
+function seg(id,fn){ $(id).addEventListener("click",e=>{const b=e.target.closest("button"); if(!b) return; fn(b.dataset.v); state.pinned=null; hideAll(); syncButtons(); renderAll()}) }
+seg("sortseg",v=>state.sort=v);
+seg("cityseg",v=>{state.city=v; state.big="with"});
+seg("sureseg",v=>state.unsure=v==="unsure");
+seg("bigseg",v=>state.big=v);
+(()=>{ // blind re-read agreement across the nine weeks
+  const a=D.reduce((s,c)=>s+c.relabel[0],0), n=D.reduce((s,c)=>s+c.relabel[1],0);
+  $("agree").textContent=`${a} of ${n} comments (${Math.round(100*a/n)}%)`;
+})();
+function renderAll(){ renderOverview(); renderDetail() }
+syncButtons(); renderAll();
+let rw; window.addEventListener("resize",()=>{clearTimeout(rw);rw=setTimeout(renderAll,120)});
+</script>

@@ -1,0 +1,12 @@
+name,air_items,labeled,sampled,strata,relabel_n
+bakersfield_2024-12-02,55,55,0,1,6
+bakersfield_2024-12-02_comparison,55,55,0,1,6
+detroit_2026-07-13,319,319,0,1,32
+eugene_2020-09-07,1171,400,1,73,40
+eugene_2026-08-03_comparison,240,240,0,1,24
+fairbanks_2022-06-27,36,36,0,1,4
+fresno_2020-08-17,82,82,0,1,9
+indianapolis_2023-06-26,127,127,0,1,13
+pittsburgh_2026-07-13,1143,400,1,61,40
+sanjose_2020-08-17,342,342,0,1,35
+seattle_2020-09-07,1213,400,1,62,40

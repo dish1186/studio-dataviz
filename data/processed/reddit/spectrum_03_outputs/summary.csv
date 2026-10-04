@@ -1,0 +1,12 @@
+city,week,set,air_items,labeled,sampled,share_A,share_J,share_E,share_N,headline_band,x_labeled,x_weighted,unsure,relabel_n,relabel_agree,relabel_agree_pct,biggest_thread,biggest_thread_share_pct
+bakersfield,2024-12-02,event_9,55,55,0,29.4,9.8,43.1,17.6,E,4,4,18,6,5,83.3,1h60r2q,47.3
+bakersfield,2024-12-02,comparison,55,55,0,29.4,9.8,43.1,17.6,E,4,4,18,6,6,100.0,1h60r2q,47.3
+detroit,2026-07-13,event_9,319,319,0,56.6,35.7,2.0,5.7,A,75,75,93,32,30,93.8,1uxqs0n,27.0
+eugene,2020-09-07,event_9,1171,400,1,44.7,49.7,1.5,4.1,J,78,225,113,40,37,92.5,iol2yq,4.3
+eugene,2026-08-03,comparison,240,240,0,37.1,51.9,3.3,7.6,J,30,30,77,24,16,66.7,1vgs4do,17.1
+fairbanks,2022-06-27,event_9,36,36,0,37.1,48.6,0.0,14.3,J,1,1,11,4,3,75.0,vnsunv,36.1
+fresno,2020-08-17,event_9,82,82,0,61.1,19.4,13.9,5.6,A,46,46,16,9,8,88.9,ibkb4g,26.8
+indianapolis,2023-06-26,event_9,127,127,0,65.6,23.7,1.1,9.7,A,34,34,49,13,10,76.9,14ksuog,19.7
+pittsburgh,2026-07-13,event_9,1143,400,1,48.0,37.6,3.3,11.1,A,101,291,142,40,32,80.0,1uz248v,4.3
+sanjose,2020-08-17,event_9,342,342,0,44.8,48.3,2.1,4.9,J,56,56,64,35,26,74.3,icnn4l,5.8
+seattle,2020-09-07,event_9,1213,400,1,37.7,50.3,4.8,7.2,J,124,373,150,40,31,77.5,ip7p05,4.4
