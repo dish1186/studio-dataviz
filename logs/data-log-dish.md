@@ -1455,6 +1455,10 @@ Step · dataset · date · who ran it | What (plain language) | Why | Input file
   - **Change:** the downloader now asks for one UTC day at a time, and the 422/429 wait is shortened to 20 s × try. **Claude's choice, flagged.**
   - Re-tested on Bakersfield December 2019: still 178 posts and 1,563 comments, identical (60 requests instead of 20).
   - Plan B uses the same download function, so it picks up the change.
+- **Plan B still stuck: two dead stretches found.** Claude replayed plan B's requests.
+  - Every query form (oldest-first, newest-first, limits auto/100/50/25) times out on r/Detroit comments **after Jul 12 21:04 UTC** and **after Jul 20 19:01 UTC**. Earlier pages of both days download fine.
+  - **Both stretches lie outside the local event week** (Mon Jul 13 04:00 → Mon Jul 20 04:00 UTC); they are padding hours only.
+  - **Change:** plan B's API pieces now stop at Jul 12 21:00 and Jul 20 19:00 UTC. The analysis week is complete. `normals_01b` will warn that comments end early. **Claude's choice, flagged.**
 - **Check-and-strip for the other cities:** `scripts/reddit/normals_01b_check_and_strip_more_cities.py <city>`. Gina's `normals_01` has her two cities hard-coded and rewrites `coverage.csv`, so it can't be reused as is. This version:
   - reads the plan from the doc
   - runs one city at a time

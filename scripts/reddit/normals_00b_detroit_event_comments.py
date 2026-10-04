@@ -13,6 +13,8 @@ It is assembled from three pieces of the same Arctic Shift archive:
                          data/processed/reddit/event_weeks_no_usernames/r_Detroit_comments.jsonl
                          (5,908 comments, Jul 13 00:06 -> Jul 19 23:59 UTC; see scripts/reddit/event_weeks_02_detroit3_comments.py)
   [Jul 20, Jul 21) UTC   new API download (covers Sunday evening local time, which Gina's UTC-day file missed)
+  The two API pieces stop at Jul 12 21:00 and Jul 20 19:00 UTC: the hours after those always time out on the API,
+  and they are padding outside the local event week (normals_01b reports the early end as a warning).
 Records are de-duplicated by id and sorted by time. Gina's records already have no username fields; the new
 ones still do, and normals_01_check_and_strip_usernames.py removes them, so the end result is the same.
 normals_01 then checks the combined file like any other (window, no empty day, comments to the last day).
@@ -46,7 +48,10 @@ for r in inside:
     recs[r["id"]] = r
 
 with tempfile.TemporaryDirectory() as tmp:
-    for a, b, label in ((A, MID1, "Jul 12"), (MID2, B, "Jul 20")):
+    # Edge windows stop short of two stretches that time out on every request (tested 2026-10-03, all query forms:
+    # Jul 12 after 21:04 UTC and Jul 20 after 19:01 UTC). Both lie outside the local event week (Mon Jul 13 04:00 ->
+    # Mon Jul 20 04:00 UTC, America/Detroit), so the analysis week is complete; only padding hours are missing.
+    for a, b, label in ((A, A + 21 * 3600, "Jul 12 00:00-21:00"), (MID2, MID2 + 19 * 3600, "Jul 20 00:00-19:00")):
         path = os.path.join(tmp, f"{label.replace(' ', '_')}.jsonl")
         n, req = dl.download("Detroit", "comments", a, b, path)
         print(f"API {label}: {n} comments, {req} requests")
