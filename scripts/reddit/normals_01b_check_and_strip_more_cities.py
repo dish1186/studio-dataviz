@@ -39,6 +39,10 @@ UTC = dt.timezone.utc
 city = sys.argv[1]
 sub = dl.SUBREDDITS[city]
 pulls = [p for p in dl.read_plan(PLAN_DOC) if p["city"] == city]
+# Per-file window overrides (logged): Detroit's event-week comments are Gina's UTC-day copy only (plan B, 2026-10-03),
+# because r/Detroit comment search for Jul 12 and Jul 20, 2026 timed out on every request. Checked against
+# [Jul 13, Jul 20) UTC instead of the plan's [Jul 12, Jul 21).
+WINDOW_OVERRIDE = {"detroit_event_2026-07-13_comments.jsonl": ("2026-07-13", "2026-07-20")}
 if not pulls:
     sys.exit(f"no pulls for {city} in {PLAN_DOC}")
 
@@ -79,9 +83,10 @@ present = {f for f in os.listdir(folder) if f.endswith(".jsonl")} if os.path.isd
 problems += [f"missing {f}" for f in sorted(planned - present)]
 problems += [f"unplanned file {f}" for f in sorted(present - planned)]
 for p in pulls:
-    A, B = day(p["from"]), day(p["to"])
     for kind in ("posts", "comments"):
         f = f"{p['name']}_{kind}.jsonl"
+        fa, fb = WINDOW_OVERRIDE.get(f, (p["from"], p["to"]))
+        A, B = day(fa), day(fb)
         if f not in present:
             continue
         ts, ids, subs, bad = [], set(), set(), 0
@@ -112,7 +117,7 @@ for p in pulls:
         if edge_empty and kind == "posts": warn.append("first or last day of the window has no posts")
         if kind == "comments" and last < B - dt.timedelta(hours=2): warn.append(f"comments end at {last:%Y-%m-%d %H:%M} UTC")
         rows.append({"city": city, "file": f, "pull": p["name"].split("_")[1], "kind": kind,
-                     "download_from": p["from"], "download_to": p["to"], "records": len(ts),
+                     "download_from": fa, "download_to": fb, "records": len(ts),
                      "first_utc": f"{min(when):%Y-%m-%d %H:%M}", "last_utc": f"{last:%Y-%m-%d %H:%M}",
                      "days_in_window": (B - A).days, "empty_days": len(empty), "warnings": "; ".join(warn)})
 

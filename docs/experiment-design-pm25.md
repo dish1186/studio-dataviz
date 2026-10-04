@@ -294,6 +294,7 @@ Script: `scripts/reddit/analysis_01_event_rise.py`. It is committed before it ru
 
 ## Known confounds
 
+- **Detroit's event week is missing Sunday 8 pm–midnight (comments only).** Arctic Shift's comment search for r/Detroit timed out on every request for Jul 20, 2026 00:00–04:00 UTC. An evening slot like that holds about 3.4% of a week's comments. The gap was accepted by Dish, 2026-10-03, before Detroit's results were seen.
 - **Candidate pool:** all candidates come from a most-polluted list, so cities that aren't used to bad air are under-represented.
 - **Event type:** most event weeks are visible wildfire smoke. Bakersfield's is a winter inversion, which people may not see or smell as much.
 - **Subreddit size:** small subreddits make the share jumpy. Yakima and Fairbanks are most at risk of failing check 2.

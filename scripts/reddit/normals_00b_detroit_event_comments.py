@@ -7,7 +7,7 @@ without asking the Arctic Shift API for r/Detroit's busiest stretch (Jul 16, 202
 where every request kept failing with HTTP 422 "Timeout. Maybe slow down a bit".
 
 The planned window is [2026-07-12 00:00, 2026-07-21 00:00) UTC (docs/reddit-pull-month-normals-8-cities.md).
-It is assembled from three pieces of the same Arctic Shift archive:
+Final version (2026-10-03): ONLY the middle piece below is used; see the note in the code. Originally planned as three pieces:
   [Jul 12, Jul 13) UTC   new API download (quiet day before the week)
   [Jul 13, Jul 20) UTC   Gina's complete download of the event week, already checked and username-stripped:
                          data/processed/reddit/event_weeks_no_usernames/r_Detroit_comments.jsonl
@@ -25,7 +25,6 @@ Run from the repo root: python3 scripts/reddit/normals_00b_detroit_event_comment
 import importlib.util
 import json
 import os
-import tempfile
 from pathlib import Path
 
 HERE = Path(__file__).parent
@@ -47,18 +46,11 @@ print(f"Gina's file: {len(gina)} comments, {len(inside)} inside [Jul 13, Jul 20)
 for r in inside:
     recs[r["id"]] = r
 
-with tempfile.TemporaryDirectory() as tmp:
-    # Edge windows stop short of two stretches that time out on every request (tested 2026-10-03, all query forms:
-    # Jul 12 after 21:04 UTC and Jul 20 after 19:01 UTC). Both lie outside the local event week (Mon Jul 13 04:00 ->
-    # Mon Jul 20 04:00 UTC, America/Detroit), so the analysis week is complete; only padding hours are missing.
-    for a, b, label in ((A, A + 21 * 3600, "Jul 12 00:00-21:00"), (MID2, MID2 + 19 * 3600, "Jul 20 00:00-19:00")):
-        path = os.path.join(tmp, f"{label.replace(' ', '_')}.jsonl")
-        n, req = dl.download("Detroit", "comments", a, b, path)
-        print(f"API {label}: {n} comments, {req} requests")
-        for l in open(path, encoding="utf-8"):
-            r = json.loads(l)
-            recs.setdefault(r["id"], r)
-
+# 2026-10-03 (Dish: "accept the gap and log it"): no API pieces. r/Detroit comment search for Jul 12 and Jul 20, 2026
+# timed out on every request (even one hour at a time), while posts for the same hours downloaded fine. The file is
+# Gina's copy only, [Jul 13 00:00, Jul 20 00:00) UTC. The local event week (Mon Jul 13 04:00 -> Mon Jul 20 04:00 UTC)
+# is therefore missing Sunday Jul 19, 8 pm-midnight EDT (a typical evening slot holds about 3.4% of the week's comments).
+# normals_01b checks this file against [Jul 13, Jul 20) UTC instead of the plan's download window.
 rows = sorted(recs.values(), key=lambda r: float(r["created_utc"]))
 with open(str(OUT) + ".part", "w", encoding="utf-8") as f:
     for r in rows:

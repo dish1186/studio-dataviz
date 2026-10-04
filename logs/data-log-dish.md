@@ -1459,6 +1459,14 @@ Step · dataset · date · who ran it | What (plain language) | Why | Input file
   - Every query form (oldest-first, newest-first, limits auto/100/50/25) times out on r/Detroit comments **after Jul 12 21:04 UTC** and **after Jul 20 19:01 UTC**. Earlier pages of both days download fine.
   - **Both stretches lie outside the local event week** (Mon Jul 13 04:00 → Mon Jul 20 04:00 UTC); they are padding hours only.
   - **Change:** plan B's API pieces now stop at Jul 12 21:00 and Jul 20 19:00 UTC. The analysis week is complete. `normals_01b` will warn that comments end early. **Claude's choice, flagged.**
+- **Plan B failed again; gap accepted (decided by Dish: "accept the gap and log it").**
+  - On the next run, r/Detroit comment search failed on every request for Jul 20 00:00–04:00 UTC, even one hour at a time. Detroit posts for the same hours downloaded fine, and comments fetched one thread at a time also worked.
+  - **Gap size:** in Gina's copy, an 8 pm–midnight local slot holds about **3.4%** of the week's comments (76–379 per evening).
+  - **Options shown to Dish:** (A) accept the gap; (B) fill it thread by thread, which misses comments on older threads and mixes methods. **Dish chose A.**
+  - **Final Detroit event-week comments** = Gina's copy only, [Jul 13 00:00, Jul 20 00:00) UTC: 5,908 comments. Plan B now makes no API calls; Claude ran it.
+  - **Detroit's local event week (Mon Jul 13 – Sun Jul 19, EDT) is missing Sunday 8 pm–midnight.** Posts are complete.
+  - `normals_01b` checks this one file against [Jul 13, Jul 20) UTC (a `WINDOW_OVERRIDE`) instead of the plan's [Jul 12, Jul 21).
+  - **Report as a limitation.** It affects Detroit's event share only, and only slightly.
 - **Check-and-strip for the other cities:** `scripts/reddit/normals_01b_check_and_strip_more_cities.py <city>`. Gina's `normals_01` has her two cities hard-coded and rewrites `coverage.csv`, so it can't be reused as is. This version:
   - reads the plan from the doc
   - runs one city at a time
