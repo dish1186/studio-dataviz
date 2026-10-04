@@ -149,6 +149,7 @@ Script: `scripts/reddit/normals_02_compare.py`. It reads only the normal pulls, 
     - it's a fireworks week
     - it has fewer than **100** kept posts + comments *(Claude's choice, approved)*
   - **Keep, but flag:** weeks with 1–4 PM2.5 days, if their average is ≤ 35.5.
+  - **Added 2026-10-03 (approved by Dish, before analysis):** also drop a week unless the subreddit has comments on **≥ 5 of its 7 local days**. This mirrors the PM2.5 5-of-7 rule and removes weeks hit by the June 2023 Reddit blackout (r/indianapolis was dark Jun 13–15). It applies to normal weeks in the main analysis.
 - **Air talk:** `include` terms of `lexicon_air_v1`. Removed/deleted items and bots are dropped. Bots are `distinguished = moderator` or "I am a bot" text, because usernames were stripped *(Claude's choice)*.
 - **Test 1, enough weeks:** ≥ **6** usable weeks *(Claude's choice, approved)*.
 - **Test 2, steady:** interquartile range of the weekly share (percentage points). Smaller wins.

@@ -1477,6 +1477,7 @@ Step · dataset · date · who ran it | What (plain language) | Why | Input file
   - **Warning:** 2023-06-13 to 06-15 have no posts and no comments. That's the **June 2023 Reddit blackout** (subreddits went private to protest the API pricing), not an archive gap. r/Fairbanks June 2023 has no empty comment days.
   - This affects the normal week Jun 12–18, 2023 (only 4 active days, probably full of protest talk). Indianapolis's event week (Jun 26 – Jul 2, 2023) is not affected.
   - **Proposed (Claude's choice, pending Dish):** a normal week is usable only if the subreddit has comments on ≥ 5 of its 7 local days, mirroring the PM2.5 5-of-7 rule.
+  - **Approved by Dish** ("ok."), 2026-10-03, before any analysis. Added to the design doc.
 - **Cross-city pattern:** r/fresno and r/SanJose comment volume about doubled from 2024 on (San Jose: about 13–15k per month before, 25–30k after). This looks like general Reddit growth; the share adjusts for volume.
 - **6-usable-normal-weeks rule: not set.** Dish: "i dont want to get rid of fairbanks just yet." It is still open, and should be decided before the analysis script is committed.
 
