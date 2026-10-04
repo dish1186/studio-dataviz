@@ -1,80 +1,82 @@
-# Handoff to Gina: air-spectrum labels (Alarm → Normalizing)
+# Handoff to Gina: how people talked about the air
 
-*Dish + Claude, 4 Oct 2026, for the morning of 5 Oct. Jury is 7 Oct.*
+*From Dish (with Claude), Oct 4, 2026. For tomorrow morning, Oct 5. Jury is Oct 7.*
 
-## What this is
+## What we did
 
-For each city's worst PM2.5 week, every Reddit comment or post that mentions the air has one band:
+We took each city's worst smoke week (9 cities) and pulled every Reddit comment or post that talks about the air. Then each one was sorted into one of four groups:
 
-| Band | Meaning | Side of the line |
+| Group | What it sounds like | Big-picture side |
 |---|---|---|
-| **A**, Alarm | It's bad or strange right now | reacting |
-| **J**, Adjusting | Changing what they do; purifiers, apps, forecasts, staying in | reacting |
-| **E**, Enduring | Harm told as routine, without alarm | living with it |
-| **N**, Normalizing | It's fine, always has been, others overreact | living with it |
-| **X** | Matched an air word but isn't about the air | left out of all shares |
+| **Alarm** (A) | "This is bad right now." "I can't breathe." | reacting |
+| **Adjusting** (J) | Doing something about it: buying a purifier, checking an app or forecast, staying inside | reacting |
+| **Enduring** (E) | Harm said in a flat, everyday way: "my allergies are always bad here" | living with it |
+| **Normalizing** (N) | "It's fine." "It's always been like this." "People are overreacting." | living with it |
+| **Not about the air** (X) | The word matched, but the comment is about something else (COVID masks, smoked meat, jokes) | not counted |
 
-The full rules are in `data/processed/reddit/spectrum_02_labels/codebook.md`, including Rule 8: forecasts, maps and explanations count as J.
+The full sorting rules are in `data/processed/reddit/spectrum_02_labels/codebook.md`. One rule we added at the end: smoke forecasts, maps and explanations ("the wind is trapping it") count as **Adjusting**.
 
-**Status:** all 9 event weeks are labeled. **Every label is a Claude draft.** The `dish_review` column is empty, and Dish decided not to hand-audit for now. Shares are **within-city** (each city against its own air talk).
+**Important:** Claude did all the sorting, and none of it has been checked by a person yet. Every percentage compares a city with itself: "45% Alarm in Eugene" means 45% of Eugene's own air comments.
 
-## Your task: play with the buckets
+## Your job tomorrow: try different ways of grouping
 
-Dish likes the two-bucket reading, **reacting (A + J) vs living with it (E + N)**. Your job is to test how much that framing holds up. Regroup the bands; don't relabel anything.
+I like splitting everything into two sides: **reacting** (Alarm + Adjusting) vs. **living with it** (Enduring + Normalizing). Please test whether that split holds up. **Only change how the groups are combined. Don't re-sort any comments.**
+
+Run this to see every city under a few different groupings:
 
 ```
-python3 scripts/reddit/spectrum_05_regroup.py                          # all four presets
-python3 scripts/reddit/spectrum_05_regroup.py --preset react_live
-python3 scripts/reddit/spectrum_05_regroup.py --groups "reacting=A;adjusting=J;living=E,N"
-python3 scripts/reddit/spectrum_05_regroup.py --preset react_live --without-big bakersfield
-python3 scripts/reddit/spectrum_05_regroup.py --band-col band_before_rule8   # before the forecast rule
+python3 scripts/reddit/spectrum_05_regroup.py
 ```
 
-The script prints each city's bucket shares, ordered by how unusual its week was (× normal PM2.5). It also prints exploratory Spearman ρ against "how unusual" and "how bad". The presets are:
-- `four`
-- `react_live`: Dish's split
-- `j_as_living`: Adjusting counted as living with it
-- `three`: Alarm / Adjusting / Living
+Other ways to run it:
 
-### What we already see (draft labels, exploratory)
+```
+python3 scripts/reddit/spectrum_05_regroup.py --preset react_live                                 # just my two-side split
+python3 scripts/reddit/spectrum_05_regroup.py --groups "reacting=A;adjusting=J;living=E,N"         # make up your own
+python3 scripts/reddit/spectrum_05_regroup.py --preset react_live --without-big bakersfield       # Bakersfield without its big thread
+python3 scripts/reddit/spectrum_05_regroup.py --band-col band_before_rule8                        # before the forecast rule
+```
 
-1. **Reacting vs living is close to a ceiling.** Eight cities are 81–94% reacting. Bakersfield is 39%, or 80% without its "how did the air affect you growing up" thread. So, for now, this split mostly separates Bakersfield from everyone else.
-2. **Everything depends on where Adjusting goes.** With J on the reacting side, reacting tracks how unusual the week was (ρ +0.43) much more than how bad it was (+0.07). With J on the living side, the pattern disappears (ρ −0.13). Is buying a purifier a reaction, or a sign of living with it? That's the question to think through.
-3. **Band by band (`--preset four`), Adjusting is the one that tracks "how unusual"** (ρ +0.67; +0.08 with "how bad"). Alarm doesn't (−0.13), even though it varies more, from 29% in Bakersfield to 66% in Indianapolis. Enduring and Normalizing lean the other way (−0.47, −0.40). One possible reading: rare smoke makes people change what they do, more than it makes them sound alarmed. Treat that as a lead to check, not a finding.
-4. **Bakersfield rests on one thread** that holds 47% of its air talk. Always show it both ways (Dish's decision).
+For each city, the script shows what percentage falls in each side, with cities listed from most unusual smoke week to least. Underneath is a score from −1 to +1 showing how closely each side follows two things: **how unusual** the week was for that city, and **how bad** the air actually was. Near +1 means the two rise together; near 0 means no pattern.
 
-Please write down which grouping you'd use and why, plus any counter-reading. The ρ values are not the analysis of record: there are 9 cities, the labels are drafts, and three weeks are sampled.
+### What we've noticed so far (rough, not checked)
 
-## Rules that stay fixed
-- **Don't change any band.** If a label looks wrong, note its `item_id` in `dish_review` in the draft CSV. Dish decides what changes.
-- **The data contains people's words.** They're in our private repo only. Don't paste them into public tools, and keep the repo private. On slides, use short paraphrased quotes only, with no usernames.
-- **Negative results go to the Forensics Appendix.** If a grouping kills the pattern, that is a result.
-- Keep the caveats on everything: Claude drafts, shares within-city, Pittsburgh comments miss the last 4.1 hours, weeks are UTC.
+1. **"Reacting vs. living with it" mostly just singles out Bakersfield.** Eight cities are 81–94% reacting. Bakersfield is 39%, or 80% if you leave out its one big thread.
+2. **It depends on where Adjusting goes.** With Adjusting on the reacting side, reacting follows how *unusual* the week was (+0.43) more than how *bad* it was (+0.07). Move Adjusting to the "living with it" side and the pattern goes away (−0.13). So the real question is: is buying a purifier a reaction, or a sign that people have learned to live with smoke?
+3. **Adjusting, by itself, follows how unusual the week was** (+0.67). Alarm by itself doesn't (−0.13). One possible reading: when smoke is rare, people change what they do more than they sound alarmed. That's a hunch to check, not a result.
+4. **Bakersfield depends on one thread.** Almost half its air comments are in a single thread that asked locals how the air affected them growing up. Always show Bakersfield both with and without that thread.
+
+**Please write down** which grouping you'd use and why, and anything that argues against it. Treat the scores as rough. There are only 9 cities, the sorting hasn't been checked, and for 3 big cities we only read a sample.
+
+## Ground rules
+- **Don't change any comment's group.** If one looks wrong, write a note in the `dish_review` column of that city's file, and I'll decide.
+- **These are real people's words.** They're in our private repo only. Don't paste them into public websites or tools, and keep the repo private. On slides, use short quotes in our own words, never usernames.
+- **Results that don't work out still count.** If a grouping makes the pattern disappear, write it down. It goes in the Forensics Appendix.
+- **Always mention:** the sorting is Claude's and unchecked; percentages compare each city with itself; Pittsburgh is missing its last 4 hours of comments.
 
 ## Where things are
 
-| What | Where | In git? |
-|---|---|---|
-| Codebook (bands + rules) | `data/processed/reddit/spectrum_02_labels/codebook.md` | yes |
-| Shares per city, skew check, sensitivity, passage comparison | `data/processed/reddit/spectrum_03_outputs/results.md`, `summary.csv`, `skew.csv`, `sensitivity.csv`, `passage_comparison.csv` | yes |
-| Draft labels with text (one per week) | `spectrum_03_outputs/spectrum_labels_<city>_<week>_claude_draft.csv` | yes |
-| Items worth checking first | `spectrum_03_outputs/check_first.csv` | yes |
-| Dot map | https://claude.ai/artifact/YT1pzr2NqFzWgaDusAWxTV (built from `viz/air-spectrum/`) | yes |
-| Scripts | `scripts/reddit/spectrum_01` … `spectrum_05` | yes |
-| Decisions log | `logs/data-log-dish.md`, entries dated 2026-10-04 | yes |
+Everything is in git, so `git pull` gets you all of it.
 
-### Getting the files
-Everything is in git (Dish, 2026-10-04: the repo is private), so `git pull` is enough: labels, rule 8 decisions, draft CSVs and the map data. To rebuild after a change:
+| What | Where |
+|---|---|
+| Sorting rules | `data/processed/reddit/spectrum_02_labels/codebook.md` |
+| Percentages for every city (easy to read) | `data/processed/reddit/spectrum_03_outputs/results.md` |
+| Every comment with its group (one file per city) | `data/processed/reddit/spectrum_03_outputs/spectrum_labels_<city>_<week>_claude_draft.csv` |
+| Comments Claude was least sure about | `data/processed/reddit/spectrum_03_outputs/check_first.csv` |
+| Interactive dot map | https://claude.ai/artifact/YT1pzr2NqFzWgaDusAWxTV |
+| Scripts | `scripts/reddit/spectrum_01` to `spectrum_05` |
+| Notes on every decision | `logs/data-log-dish.md` (entries from Oct 4) |
+
+If you change anything and need to rebuild the files:
 
 ```
-python3 scripts/reddit/spectrum_03_outputs.py        # draft CSVs + results.md (applies Rule 8)
+python3 scripts/reddit/spectrum_03_outputs.py        # rebuilds the city files and results.md
 python3 scripts/reddit/spectrum_04_dotmap_data.py    # only if you change the dot map
 ```
 
-`spectrum_01` and `spectrum_02` only need re-running if the source data or lexicon changes. `spectrum_02` uses a fixed seed, so it redraws the same sample. If the items no longer match the labels, `spectrum_03` stops with an error.
-
-## Things you may hit
-- **Eugene's event week is Sep 7–13, 2020** (its worst PM2.5 week), not the Aug 2026 case study. The Aug 2026 week appears only as a `_comparison` week for the Forensics Appendix.
-- **Eugene, Seattle and Pittsburgh are samples** of 400 items. Always use the `weight` column. The regroup script does this for you; a plain count of rows doesn't.
-- **"mask"** pulls in a lot of COVID talk in the 2020 weeks. It's all labeled X and left out of the shares.
-- **Re-label agreement** (a blind second reading of 10%) is 183 of 219 (84%). Eugene Aug 2026 is the weakest at 16 of 24.
+## Things that might trip you up
+- **Eugene's week is Sep 7–13, 2020**, its worst smoke week, not the August 2026 week from our earlier case study. The 2026 week only shows up as a "comparison" file for the Forensics Appendix.
+- **Eugene, Seattle and Pittsburgh had too many comments to read them all**, so Claude read a random 400 from each. Each one has a `weight` column that scales it back up to the full week. The regroup script handles this; simply counting rows won't.
+- **"mask" picks up lots of COVID talk** in the 2020 weeks. Those comments are all marked "not about the air" and left out.
+- **How consistent the sorting is:** Claude re-sorted 1 in 10 comments a second time without looking at the first answer. The two matched 84% of the time (183 of 219). The August 2026 Eugene comparison week was the least consistent (16 of 24).
