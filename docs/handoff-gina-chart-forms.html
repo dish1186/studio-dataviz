@@ -1,0 +1,305 @@
+<title>PM2.5 Chart Forms</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Jost:wght@400;500;600;700&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap">
+<style>
+/* Layout: one reading column of numbered "plates", same tokens as viz/pm25-scrolly so it reads as the same book */
+:root {
+  --ground: #e2e05c; --ground-2: #d8d652; --ink: #1a0f6b; --ink-2: #463d88; --rule: #a3a146;
+  --soft: #8f88c4; --event-ink: #9e1745;
+  --display: "Libre Caslon Text", "Iowan Old Style", Georgia, serif;
+  --label: "Jost", "Futura", "Century Gothic", "Avenir Next", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --ground: #160d4c; --ground-2: #1e1460; --ink: #e6e47a; --ink-2: #c3c172; --rule: #3e3580; --soft: #6e66b0; --event-ink: #ff8aad; color-scheme: dark; } }
+:root[data-theme="dark"] { --ground: #160d4c; --ground-2: #1e1460; --ink: #e6e47a; --ink-2: #c3c172; --rule: #3e3580; --soft: #6e66b0; --event-ink: #ff8aad; color-scheme: dark; }
+body { background: var(--ground); color: var(--ink); font-family: var(--display); font-size: 17px; line-height: 1.6; }
+.wrap { max-width: 780px; margin: 0 auto; padding-inline: 20px; padding-block: 40px 80px; }
+.runhead { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; font-family: var(--label); font-size: 12px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; border-bottom: 1.5px solid var(--ink); padding-bottom: 8px; }
+.runhead .red { color: var(--event-ink); }
+h1 { font-size: clamp(30px, 6vw, 46px); line-height: 1.1; margin: 28px 0 10px; text-wrap: balance; }
+h2 { font-size: 26px; line-height: 1.2; margin: 0; text-wrap: balance; }
+h3 { font-family: var(--label); font-size: 13px; letter-spacing: .12em; text-transform: uppercase; font-weight: 600; margin: 8px 0 0; color: var(--ink-2); }
+p, li { max-width: 66ch; }
+p { margin: 0; }
+ul, ol { margin: 0; padding-left: 1.2em; display: grid; gap: 6px; }
+.lede { font-size: 19px; color: var(--ink-2); }
+.plate { padding-block: 44px; border-bottom: 1px solid var(--rule); display: grid; gap: 16px; }
+.plate-head { display: flex; gap: 12px; align-items: baseline; font-family: var(--label); font-size: 12px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-2); flex-wrap: wrap; }
+.plate-head .no { border: 1.5px solid var(--ink); padding: 1px 8px; color: var(--ink); }
+.status { font-family: var(--label); font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; padding: 2px 8px; border: 1.5px solid var(--ink); }
+.status.like { background: var(--ink); color: var(--ground); }
+.status.set { border-style: dashed; color: var(--ink-2); border-color: var(--ink-2); }
+.fig { background: var(--ground-2); border: 1.5px solid var(--ink); padding: 14px 14px 10px; display: grid; gap: 8px; min-width: 0; }
+.fig .scroll { overflow-x: auto; }
+.fig svg { display: block; width: 100%; min-width: 560px; height: auto; }
+.cap { font-family: var(--label); font-size: 13px; color: var(--ink-2); }
+.read { font-family: var(--label); font-size: 14px; min-height: 2.6em; color: var(--ink); }
+.ctrl { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; font-family: var(--label); font-size: 13px; }
+.ctrl button { font: 500 13px var(--label); color: var(--ink); background: transparent; border: 1.5px solid var(--ink); padding: 4px 12px; cursor: pointer; }
+.ctrl button[aria-pressed="true"] { background: var(--ink); color: var(--ground); }
+.ctrl button:focus-visible { outline: 2px solid var(--event-ink); outline-offset: 2px; }
+.ctrl .tag { margin-left: auto; color: var(--ink-2); letter-spacing: .08em; text-transform: uppercase; font-size: 11.5px; font-weight: 600; }
+.flag { font-family: var(--label); font-size: 14px; border-left: 3px solid var(--ink); padding-left: 12px; display: grid; gap: 4px; }
+.flag b { letter-spacing: .06em; text-transform: uppercase; font-size: 12px; }
+.grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; }
+.card { border: 1.5px dashed var(--ink-2); padding: 12px 14px; display: grid; gap: 6px; font-size: 15px; min-width: 0; }
+.card h4 { margin: 0; font-family: var(--label); font-size: 15px; font-weight: 600; }
+table { border-collapse: collapse; font-family: var(--label); font-size: 14px; width: 100%; }
+td, th { text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+th { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2); font-weight: 600; }
+.mono { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+code { font-family: var(--mono); font-size: .88em; }
+svg text { font-family: var(--label); }
+svg .lab { font-size: 12px; fill: var(--ink-2); }
+svg .nm { font-size: 13px; fill: var(--ink); }
+svg .val { font-family: var(--mono); font-size: 12.5px; fill: var(--ink); }
+svg .hd { font-size: 12px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; fill: var(--ink-2); }
+svg .big { font-family: var(--display); font-size: 28px; font-weight: 700; fill: var(--ink); }
+svg .hit { cursor: pointer; }
+svg .hit:focus { outline: none; }
+svg .hit:focus-visible circle, svg .hit:focus-visible rect.box { stroke: var(--event-ink); stroke-width: 2.5; }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+
+<div class="wrap">
+  <div class="runhead"><span>MDE studio · Project 2 · handoff</span><span class="red">Early results · 7 of 9 cities</span></div>
+  <h1>How to show "harmful vs. unusual": chart forms for the jury</h1>
+  <p class="lede">For Gina, from Dish's session with Claude on 4 Oct. These are sketches, not built plates. Nothing in <code>viz/pm25-scrolly/</code>, the analysis or the data has changed. The sketches use the real interim numbers and are interactive: tap a city or a matchup. <b>Updated for the 7-city interim run</b> (Seattle added 4 Oct; Detroit and Pittsburgh still pending).</p>
+
+  <section class="plate">
+    <div class="plate-head"><span class="no">Summary</span><span>Where Dish landed</span></div>
+    <ol>
+      <li><b>A three-plate sequence</b> (proposed, not yet confirmed by Dish): the <b>map</b> introduces the two air measures, the <b>sort toggle</b> is the main test, and the <b>bracket</b> shows the pre-set pairs.</li>
+      <li>Dish said the existing <b>pair card</b> (Plate VII, Bakersfield vs. Indianapolis bars) "makes the most sense", and asked for the pairs to become a <b>tournament bracket</b>.</li>
+      <li>Dish likes the deck's <b>danger vs. unusual scatter</b>. Sketched below with the experiment's numbers instead of the deck's.</li>
+      <li>Everything must be <b>interactive</b>. Open question: will we click through it live at the jury, or will people browse on their own?</li>
+    </ol>
+  </section>
+
+  <section class="plate">
+    <div class="plate-head"><span class="no">Read first</span><span>What seven cities can and can't show</span></div>
+    <p>With Seattle in, reaction ranks with unusual air at <span class="mono">0.57</span> and with harmful air at <span class="mono">−0.32</span>. All six finished pairs went the unusual way. Seven cities is still a pattern, not proof. What the charts must let a juror see:</p>
+    <ul>
+      <li><b>The two biggest reactions came with the least harmful air.</b> Seattle (29×, 51 µg/m³) and San Jose (27×, 36 µg/m³) rank 6th and 7th of 7 for harm. Much of the result rests on them.</li>
+      <li><b>Eugene had the most harmful and the most unusual air</b> but only the 4th-biggest reaction. Unusual air doesn't line up cleanly either.</li>
+      <li><b>The pair wins aren't independent.</b> Seattle or San Jose is in 5 of the 6 finished pairs.</li>
+      <li><b>Fire news:</b> about 15% of San Jose's and 16% of Eugene's worst-week talk mentions fire (nearby fires). Seattle's smoke came from distant fires; about 5% mention fire.</li>
+    </ul>
+    <p>The two air measures move together (0.57 across these 7), so no chart will show them as fully separate.</p>
+  </section>
+
+  <section class="plate" id="map">
+    <div class="plate-head"><span class="no">1</span><span>The map</span><span class="status like">Dish likes it</span></div>
+    <h2>Every city on one page: up is more harmful, right is more unusual for that city</h2>
+    <p>Built from the deck's danger-vs-unusual scatter. Dot size is how much air talk rose. Detroit and Pittsburgh already have air data, so they appear now as dashed rings and fill in after the full run. Seattle is now a filled dot. The faint diagonals mark each city's normal air: Bakersfield sits near "normal 20", which is why its 55 µg/m³ counts as only ~3× for it.</p>
+    <div class="fig">
+      <div class="scroll"><svg id="mapSvg" viewBox="0 0 680 420" role="img" aria-label="Scatter of nine cities: x is how unusual the worst week was, y is PM2.5, dot size is the rise in air talk."></svg></div>
+      <div class="read" id="mapRead" aria-live="polite">Tap a city for its numbers.</div>
+      <div class="cap">Log scales on both axes. Faint diagonals: the city's normal PM2.5 for that month (µg/m³). Dashed lines: WHO 24-hour guideline 15, EPA 24-hour standard 35.</div>
+    </div>
+    <div class="flag"><b>Changed from the deck version</b>
+      <span>The deck's Eugene point (~41 µg/m³, ~7×) is from the earlier case study. In the experiment Eugene is 280 µg/m³ and 42×, so the axes are now log. Reaction is drawn as dot size instead of written in labels. The corner labels "danger, no action" and "coping and comfort talk" came from the sentiment typology, which is out of this round, so they're replaced with a neutral description of position.</span></div>
+  </section>
+
+  <section class="plate" id="sort">
+    <div class="plate-head"><span class="no">2</span><span>The sort toggle</span><span class="status like">Dish asked for changes, done</span></div>
+    <h2>Same reaction bars, two orders: which one makes a staircase?</h2>
+    <p>If people react to air that's unusual for their city, sorting by "how unusual" should also roughly sort the reaction. Sorting by "how harmful" shouldn't. Dish asked for the value being sorted on (PM2.5, or the ratio to normal) to sit above each bar. The thin bar always steps down, and the thick reaction bar either follows it or doesn't.</p>
+    <div class="fig">
+      <div class="ctrl"><span>Sort by</span><button id="bH" aria-pressed="true">Most harmful</button><button id="bU" aria-pressed="false">Most unusual</button><span class="tag">7 of 9 cities</span></div>
+      <div class="scroll"><svg id="sortSvg" viewBox="0 0 680 414" role="img" aria-label="Reaction bars for seven cities, re-sortable by PM2.5 or by ratio to normal."></svg></div>
+      <div class="read" id="sortRead" aria-live="polite">Sorted by harmful air, the two biggest reactions (Seattle, San Jose) sit at the bottom. Switch to unusual: the big reactions move up, but it isn't a clean staircase. Eugene and Fresno dip, San Jose bumps.</div>
+    </div>
+  </section>
+
+  <section class="plate" id="bracket">
+    <div class="plate-head"><span class="no">3</span><span>The bracket</span><span class="status like">Dish chose this shape</span></div>
+    <h2>The nine pre-set pairs as matchups</h2>
+    <p>Each box is one pair chosen from air data before any posts were read. The city whose air talk rose more is shaded, and its line runs into the scoreboard. Dashed boxes are waiting on Reddit data. With Seattle in, six are finished and three wait on Detroit and Pittsburgh.</p>
+    <div class="fig">
+      <div class="scroll"><svg id="brSvg" viewBox="0 0 680 610" role="img" aria-label="Bracket of nine pre-set pairs. Six finished, all went the unusual way; three wait on data."></svg></div>
+      <div class="read" id="brRead" aria-live="polite">Tap a finished matchup. In the built version it opens the pair card from Plate VII.</div>
+    </div>
+    <div class="flag"><b>Don't let it overstate</b>
+      <span>A bracket looks like independent wins, and these aren't independent: Seattle is in three of the six finished ones and San Jose in two (both starred). Winners also don't advance, so the right side is a tally, not a champion.</span></div>
+  </section>
+
+  <section class="plate">
+    <div class="plate-head"><span class="no">Set aside</span><span>Explored in the session, not chosen</span></div>
+    <div class="grid2">
+      <div class="card"><h4>Twin scatters (current Fig 4)</h4><p>Reaction vs. unusual next to reaction vs. harmful. Accurate, but a juror has to judge which cloud is "more diagonal", and the ρ label does all the work. Could survive as a small "show the values" check.</p></div>
+      <div class="card"><h4>Rank ladder</h4><p>Reaction rank in the middle, lines out to harm rank and unusual rank. It matches the rank test exactly, but Dish found it hard to read. Dropped.</p></div>
+      <div class="card"><h4>Sorted rows with two dot strips</h4><p>Keeps real values, but neither strip looks orderly. The most cautious form and the least readable at a glance. Dropped.</p></div>
+    </div>
+  </section>
+
+  <section class="plate">
+    <div class="plate-head"><span class="no">Open</span><span>Decisions for Dish and Gina</span></div>
+    <table>
+      <tr><th>Question</th><th>Options</th></tr>
+      <tr><td>Magenta</td><td>The rule says magenta is only for the worst-air week. The current pair card uses it for the higher bar. Every bar there is worst-week data, so it's a judgment call. The sketches here use indigo shading until this is decided.</td></tr>
+      <tr><td>Medium at the jury</td><td>Clicked through live (then tap and scroll steps are primary, hover is a bonus) or browsed by jurors.</td></tr>
+      <tr><td>Map corner labels</td><td>Neutral position labels (as sketched), or none.</td></tr>
+      <tr><td>Twin scatters</td><td>Keep a small version as a values check, or cut.</td></tr>
+    </table>
+  </section>
+
+  <section class="plate">
+    <div class="plate-head"><span class="no">Flagged</span><span>Claude's choices, pending Dish</span></div>
+    <ul>
+      <li>Log axes on the map (PM2.5 10–400, ratio 2–60). Dot area = reaction.</li>
+      <li>The "city normal" diagonals on the map (5, 10, 20 µg/m³).</li>
+      <li>Dashed rings for the three pending cities.</li>
+      <li>Linear scales on the sort toggle, so Eugene's bars run long.</li>
+      <li>Bracket: matched pairs above crossed, light shading for the winner, scoreboard boxes, stars for Seattle and San Jose.</li>
+      <li>Tap/hover readouts with each city's caveat (fire talk for San Jose, Eugene and Seattle; Fairbanks's 188-item subreddit).</li>
+    </ul>
+  </section>
+
+  <section class="plate">
+    <div class="plate-head"><span class="no">Rules</span><span>Unchanged, for reference</span></div>
+    <ul>
+      <li>Interim numbers stay labeled "Early results · 7 of 9 cities". The result of record is the full 9-city run (<code>build.py --full</code>) with the same method.</li>
+      <li>"Lives with / rarely has bad air" are descriptive labels only, never evidence. No chronic/acute groupings, no political descriptors.</li>
+      <li>Caveats stay as footnotes: small n; the two measures move together (0.57 at 7 cities); fire news may inflate San Jose and Eugene (Seattle ~5%, distant fires); Fairbanks's subreddit is tiny; Detroit is missing Sunday 8pm to midnight (comments).</li>
+      <li>Fairbanks's unhealthy days are mostly summer smoke, not winter haze.</li>
+    </ul>
+    <p class="cap">Data: <code>data/processed/reddit/analysis_01_interim/</code> (cities.csv, pairs.csv) and <code>data/processed/openaq/step08_pm_normals/pm_normals.csv</code>. Read-only.</p>
+  </section>
+
+  <section class="plate" style="border-bottom:0">
+    <div class="plate-head"><span class="no">Next</span><span>Suggested steps</span></div>
+    <ol>
+      <li>Dish confirms the map → sort → bracket order, and decides magenta.</li>
+      <li>Sketch all three together in the atlas inks, with the bracket opening the pair card.</li>
+      <li>Then build them into <code>viz/pm25-scrolly/</code>, replacing Fig 3/Fig 4 and the pairs grid as agreed.</li>
+    </ol>
+  </section>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+<script>
+const C = [
+  {c:'San Jose', r:27.326, h:36.34, u:5.01, n:'About 15% of its event-week talk was fire news, which may inflate the reaction.'},
+  {c:'Fairbanks', r:27.065, h:91.8, u:17.39, n:'Tiny subreddit: 188 items in the event week.'},
+  {c:'Eugene', r:20.222, h:280.4, u:41.88, n:'About 16% of its event-week talk was fire news.'},
+  {c:'Fresno', r:12.365, h:61.16, u:5.95, n:''},
+  {c:'Indianapolis', r:9.529, h:55.09, u:4.42, n:''},
+  {c:'Bakersfield', r:4.809, h:55.47, u:2.94, n:''},
+  {c:'Seattle', r:29.128, h:51.46, u:7.21, n:'Smoke from distant fires; about 5% of its worst-week talk mentions fire.'}, {c:'Detroit', h:91.78, u:7.44}, {c:'Pittsburgh', h:59.21, u:5.27}
+];
+const f = v => v >= 10 ? Math.round(v) : v.toFixed(1);
+const say = (el, t) => document.getElementById(el).textContent = t;
+function tap(sel, fn) { sel.attr('tabindex', 0).attr('class', 'hit').on('click mouseenter focus', fn).on('keydown', (e, d) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); fn(e, d); } }); }
+
+/* 1 · map */
+(function () {
+  const X0 = 70, X1 = 650, Y0 = 370, Y1 = 30, s = d3.select('#mapSvg');
+  const x = d3.scaleLog([2, 60], [X0, X1]), y = d3.scaleLog([10, 400], [Y0, Y1]), rs = r => Math.sqrt(r) * 3;
+  s.append('rect').attr('x', X0).attr('y', Y1).attr('width', X1 - X0).attr('height', Y0 - Y1).style('fill', 'none').style('stroke', 'var(--ink)').style('stroke-width', 1.5);
+  [[15, 'WHO 24-hour guideline, 15'], [35, 'EPA 24-hour standard, 35']].forEach(([v, t]) => {
+    s.append('line').attr('x1', X0).attr('x2', X1).attr('y1', y(v)).attr('y2', y(v)).style('stroke', 'var(--ink-2)').style('stroke-dasharray', '5 4');
+    s.append('text').attr('class', 'lab').attr('x', X0 + 6).attr('y', y(v) - 5).text(t);
+  });
+  [5, 10, 20].forEach(n => {
+    const a = Math.max(2, 10 / n), b = Math.min(60, 400 / n);
+    s.append('line').attr('x1', x(a)).attr('y1', y(a * n)).attr('x2', x(b)).attr('y2', y(b * n)).style('stroke', 'var(--soft)').style('stroke-width', .8);
+    const lx = n === 5 ? 25 : 330 / n;
+    s.append('text').attr('class', 'lab').attr('x', x(lx) + (n === 5 ? 8 : -6)).attr('y', y(lx * n) + (n === 5 ? 14 : 4)).attr('text-anchor', n === 5 ? 'start' : 'end').style('fill', 'var(--soft)').text('normal ' + n);
+  });
+  [2, 5, 10, 20, 50].forEach(v => s.append('text').attr('class', 'val').attr('x', x(v)).attr('y', Y0 + 17).attr('text-anchor', 'middle').text(v + '×'));
+  [10, 15, 35, 100, 300].forEach(v => s.append('text').attr('class', 'val').attr('x', X0 - 6).attr('y', y(v) + 4).attr('text-anchor', 'end').text(v));
+  s.append('text').attr('class', 'lab').attr('x', (X0 + X1) / 2).attr('y', Y0 + 38).attr('text-anchor', 'middle').text('more unusual for that city → (worst week ÷ its normal for the month)');
+  s.append('text').attr('class', 'lab').attr('transform', `translate(18,${(Y0 + Y1) / 2}) rotate(-90)`).attr('text-anchor', 'middle').text('more harmful → (PM2.5, µg/m³)');
+  s.append('text').attr('class', 'lab').attr('x', X0 + 8).attr('y', Y1 + 17).text('harmful, but ordinary-ish for the city');
+  s.append('text').attr('class', 'lab').attr('x', X1 - 8).attr('y', Y0 - 10).attr('text-anchor', 'end').text('dot size = rise in air talk · dashed rings = Detroit, Pittsburgh (pending)');
+  const off = {'San Jose': [0, 26, 'middle'], 'Bakersfield': [0, 22, 'middle'], 'Seattle': [20, 4], 'Detroit': [12, 4], 'Fresno': [6, -16, 'end']};
+  const indy = C.find(d => d.c === 'Indianapolis');
+  s.append('line').attr('x1', X0 + 116).attr('y1', y(125) - 4).attr('x2', x(indy.u) - 5).attr('y2', y(indy.h) - 8).style('stroke', 'var(--ink-2)').style('stroke-width', .8);
+  const g = s.selectAll('.c').data(C).join('g');
+  g.append('circle').attr('cx', d => x(d.u)).attr('cy', d => y(d.h)).attr('r', d => d.r ? rs(d.r) : 6)
+    .style('fill', d => d.r ? 'var(--ink)' : 'none').style('fill-opacity', .88).style('stroke', d => d.r ? 'var(--ground-2)' : 'var(--ink)').style('stroke-width', 1.5).style('stroke-dasharray', d => d.r ? null : '2 2');
+  g.append('text').attr('class', d => d.r ? 'nm' : 'lab').attr('text-anchor', d => (off[d.c] || [])[2] || 'start')
+    .attr('x', d => d.c === 'Indianapolis' ? X0 + 8 : x(d.u) + (off[d.c] ? off[d.c][0] : rs(d.r || 1) + 6)).attr('y', d => d.c === 'Indianapolis' ? y(125) : y(d.h) + (off[d.c] ? off[d.c][1] : 4))
+    .text(d => d.c === 'Pittsburgh' ? '' : d.r ? `${d.c} ${f(d.r)}×` : d.c);
+  tap(g, (e, d) => { g.style('opacity', z => z === d ? 1 : .35);
+    say('mapRead', d.r ? `${d.c}: PM2.5 ${f(d.h)} µg/m³ in its worst week, ${f(d.u)}× its normal for the month. Air talk rose ${f(d.r)}×. ${d.n}` : `${d.c}: PM2.5 ${f(d.h)} µg/m³, ${f(d.u)}× its normal. Reaction pending: Reddit data still downloading.`); });
+  g.on('mouseleave blur', () => g.style('opacity', 1));
+})();
+
+/* 2 · sort toggle */
+(function () {
+  const D = C.filter(d => d.r), X = 130, W = 440, RH = 54, s = d3.select('#sortSvg');
+  const xr = d3.scaleLinear([0, 30], [0, W]), xk = {h: d3.scaleLinear([0, 281], [0, W]), u: d3.scaleLinear([0, 42], [0, W])};
+  let k = 'h';
+  const g = s.selectAll('.row').data(D).join('g');
+  g.append('rect').attr('width', 680).attr('height', RH).style('fill', 'transparent');
+  g.append('text').attr('class', 'nm').attr('x', X - 10).attr('y', 39).attr('text-anchor', 'end').text(d => d.c);
+  g.append('rect').attr('class', 'kb').attr('x', X).attr('y', 13).attr('height', 4).style('fill', 'var(--soft)');
+  g.append('text').attr('class', 'lab kt').attr('y', 19);
+  g.append('rect').attr('x', X).attr('y', 25).attr('height', 20).attr('width', d => xr(d.r)).style('fill', 'var(--ink)');
+  g.append('text').attr('class', 'val').attr('x', d => X + xr(d.r) + 8).attr('y', 40).text(d => f(d.r) + '×');
+  s.append('text').attr('class', 'lab').attr('x', X).attr('y', RH * 7 + 26).text('thin bar = the sort value · thick bar = how much air talk rose in the worst week');
+  const bH = document.getElementById('bH'), bU = document.getElementById('bU');
+  function draw() {
+    const o = [...D].sort((a, b) => b[k] - a[k]);
+    g.transition().duration(800).attr('transform', d => `translate(0,${o.indexOf(d) * RH + 4})`);
+    g.select('.kb').transition().duration(800).attr('width', d => xk[k](d[k]));
+    g.select('.kt').text(d => k === 'h' ? f(d.h) + ' µg/m³' : f(d.u) + '× its normal').transition().duration(800).attr('x', d => X + xk[k](d[k]) + 8);
+    bH.setAttribute('aria-pressed', k === 'h'); bU.setAttribute('aria-pressed', k === 'u');
+  }
+  tap(g, (e, d) => { g.style('opacity', z => z === d ? 1 : .4);
+    say('sortRead', `${d.c}: worst week PM2.5 ${f(d.h)} µg/m³, ${f(d.u)}× its normal for the month. Air talk rose ${f(d.r)}×. ${d.n}`); });
+  g.on('mouseleave blur', () => g.style('opacity', 1));
+  bH.onclick = () => { k = 'h'; draw(); }; bU.onclick = () => { k = 'u'; draw(); };
+  draw();
+})();
+
+/* 3 · bracket (from pairs.csv) */
+(function () {
+  const M = [
+    {grp: 'Matched pairs · same harmful air, different unusual', a: ['Fairbanks', 'more unusual'], b: ['Detroit', ''], wait: 'Detroit'},
+    {a: ['Bakersfield', ''], b: ['Indianapolis', 'more unusual'], ra: 4.809, rb: 9.529, w: 'b'},
+    {a: ['Fresno', 'more unusual'], b: ['Pittsburgh', ''], wait: 'Pittsburgh'},
+    {grp: 'Crossed pairs · one more harmful, the other more unusual', a: ['Bakersfield', 'more harmful'], b: ['San Jose', 'more unusual'], ra: 4.809, rb: 27.326, w: 'b', star: 1},
+    {a: ['Indianapolis', 'more harmful'], b: ['San Jose', 'more unusual'], ra: 9.529, rb: 27.326, w: 'b', star: 1},
+    {a: ['Fresno', 'more harmful'], b: ['Seattle', 'more unusual'], ra: 12.365, rb: 29.128, w: 'b', star: 1},
+    {a: ['Pittsburgh', 'more harmful'], b: ['Seattle', 'more unusual'], wait: 'Pittsburgh'},
+    {a: ['Bakersfield', 'more harmful'], b: ['Seattle', 'more unusual'], ra: 4.809, rb: 29.128, w: 'b', star: 1},
+    {a: ['Indianapolis', 'more harmful'], b: ['Seattle', 'more unusual'], ra: 9.529, rb: 29.128, w: 'b', star: 1}];
+  const s = d3.select('#brSvg'); let y = 8; const outs = [];
+  const line = (d, on, dash) => s.append('path').attr('d', d).style('fill', 'none').style('stroke', on ? 'var(--ink)' : 'var(--soft)').style('stroke-width', on ? 2.5 : 1.2).style('stroke-dasharray', dash ? '3 3' : null);
+  M.forEach(m => {
+    if (m.grp) { s.append('text').attr('class', 'hd').attr('x', 20).attr('y', y + 16).text(m.grp); y += 28; }
+    const done = !!m.w, gm = s.append('g').datum(m);
+    [['a', 0], ['b', 22]].forEach(([k, dy]) => {
+      const win = m.w === k, yy = y + dy;
+      gm.append('rect').attr('class', 'box').attr('x', 20).attr('y', yy).attr('width', 240).attr('height', 21)
+        .style('fill', win ? 'var(--ground)' : 'none').style('stroke', done ? 'var(--ink)' : 'var(--ink-2)').style('stroke-width', win ? 1.8 : .8).style('stroke-dasharray', done ? null : '3 3');
+      gm.append('text').attr('class', 'nm').attr('x', 30).attr('y', yy + 15).style('font-weight', win ? 600 : 400).text(m[k][0] + (win && m.star ? ' *' : ''));
+      gm.append('text').attr('class', 'lab').attr('x', 128).attr('y', yy + 15).text(m[k][1]);
+      if (m['r' + k]) gm.append('text').attr('class', 'val').attr('x', 252).attr('y', yy + 15).attr('text-anchor', 'end').text(f(m['r' + k]) + '×');
+      line(`M260 ${yy + 10.5}H285`, win);
+    });
+    line(`M285 ${y + 10.5}V${y + 32.5}`, false);
+    const my = y + 21.5;
+    line(`M285 ${my}H${done ? 430 : 310}`, done, !done);
+    if (done) { s.append('text').attr('class', 'lab').attr('x', 296).attr('y', my - 6).text('went the unusual way'); outs.push(my); }
+    else s.append('text').attr('class', 'lab').attr('x', 316).attr('y', my + 4).text('waiting on ' + m.wait);
+    if (done) tap(gm, (e, d) => say('brRead', `${d.a[0]} ${f(d.ra)}× vs. ${d.b[0]} ${f(d.rb)}×. ${d.b[0]} was ${d.b[1]} and reacted more, as "unusual" predicts.${d.star ? (d.b[0] === 'San Jose' ? ' San Jose’s reaction may be inflated by fire news.' : ' Seattle is in three finished pairs, so they aren’t independent.') : ''}`));
+    y += 54;
+  });
+  const ty = (outs[0] + outs[outs.length - 1]) / 2;
+  line(`M430 ${outs[0]}V${outs[outs.length - 1]}M430 ${ty}H470`, true);
+  function box(y0, title, num, on) {
+    s.append('rect').attr('x', 470).attr('y', y0).attr('width', 190).attr('height', 72).style('fill', on ? 'var(--ground)' : 'none').style('stroke', on ? 'var(--ink)' : 'var(--ink-2)').style('stroke-width', on ? 1.8 : 1).style('stroke-dasharray', on ? null : '3 3');
+    s.append('text').attr('class', 'lab').attr('x', 482).attr('y', y0 + 20).text(title);
+    s.append('text').attr('class', 'big').attr('x', 482).attr('y', y0 + 56).text(num);
+  }
+  box(ty - 36, 'went the unusual way', '6', true);
+  box(ty + 60, 'went the harmful way', '0', false);
+  box(ty + 156, 'waiting on Reddit data', '3 of 9', false);
+  s.append('text').attr('class', 'lab').attr('x', 20).attr('y', y + 12).text('* Seattle is in three finished pairs, San Jose in two. About 15% of San Jose’s event-week talk was fire news.');
+})();
+</script>
