@@ -1723,6 +1723,17 @@ Step · dataset · date · who ran it | What (plain language) | Why | Input file
 - **Reading:** a descriptive pattern across 9 cities, not a significance test. Caveats are in the design doc: the measures are correlated, fire news (San Jose, Eugene), Fairbanks's small subreddit, Detroit's national news and its Sunday-evening gap.
 - **Page:** https://claude.ai/artifact/3WCcfsm4j2pPy6zuVWaWFL (version 5), now "Final results: all 9 cities". The pair cards show the "against" result.
 - **SHA-256:** cities.csv `3e3565e698e224b79dc1015fab343f2a870abe7a9b5d80af7ca6dab9061aba58` · tests.csv `450ab8fa559f9ff08c090aa539c8179cc06944f58f68fea5b4c844a843d18e57` · pairs.csv `046849402daa6023da4f3809f38851eefd61a69e33728cfee66d53d9e24407aa`
+
+### Viz · "Harm or Abnormal?" page: conclusions added; copy saved to the repo · 2026-10-04 · Dish + Claude
+- **What:** at Dish's request ("add a conclusions section"), a **Conclusions** section was added to https://claude.ai/artifact/3WCcfsm4j2pPy6zuVWaWFL (version 6), written by Claude. Six points:
+  1. People react to unusual air more than harmful air (ρ 0.53 vs −0.13).
+  2. Worse air alone never won (0 of 6 crossed pairs; 8 of 9 pairs overall).
+  3. Getting used to bad air dulls the reaction (Bakersfield 5× vs Indianapolis 10× at the same PM2.5; ρ −0.37 with bad days/yr).
+  4. "Normal" depends on the season (Fairbanks).
+  5. A quiet reaction is not a safe week: attention can be a poor signal of risk as smoke becomes routine.
+  6. What this does not show (n = 9, correlated measures, Reddit ≠ everyone, fire news). Closing line: "When the air turns bad, people notice the change more than the danger."
+- **Judgment call (Claude's choice, flagged):** point 5 is an **interpretation**, not a tested result. It is worded as "may" and "can be".
+- **Repo copy:** `viz/harm-or-abnormal/index.html`, a static copy of the published page (all data inline), following the `viz/<name>/index.html` convention. It was built from the result of record (`data/processed/reddit/analysis_01/`) and OpenAQ Step 8.
 ---
 **Actual-temperature status (2026-09-27): done for all 12 cities.** gridMET Steps 1–5b for the 11 continental viz cities (D10; 16 pulled); **Fairbanks from ERA5-Land** (D15, ERA5-Land Steps 1–3). Final files for all 12 in `data/processed/gridmet/final/` (`temp_<city>_daily.csv`, 3,920 rows 2016-01-01 → 2026-09-24, join row for row with UTCI; `_normals.csv`; `_monthly.csv`); the folder name is gridMET but Fairbanks' source is ERA5-Land (blank 2026-09-22 → 09-24). End date settled (D9). Open: N1 (boundary file vs OpenAQ, appendix note); optional PAFA station cross-check for Fairbanks; March 2026 station check.
 

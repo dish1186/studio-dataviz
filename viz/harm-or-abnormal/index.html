@@ -1,0 +1,449 @@
+<title>Harm or Abnormal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=Public+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one reading column that walks a newcomer from the question, to three plain definitions, to one worked
+   example, to all nine cities, to the pairs. Charts take the full column; pair cards wrap in a grid. */
+:root {
+  --bg: #f5f6f7;            /* smoke-pale neutral, slight cool bias */
+  --surface: #fcfcfb;
+  --ink: #15181b;
+  --ink-2: #4e555c;
+  --ink-3: #737a82;
+  --rule: #dfe2e5;
+  --grid: #eceef0;
+  --accent: #2a78d6;        /* event week, Reddit reaction */
+  --accent-soft: #9ec5f4;   /* the smaller value in a pair */
+  --normal: #8a9097;        /* normal week marker */
+  --line: #c0392b;          /* EPA "unhealthy" reference line */
+  --tag-same: #e9ecef;
+  --tag-diff: #dcebfb;
+  --tag-diff-ink: #184f95;
+  --pos: #1a7f4b; --pos-bg: #e3f3ea;
+  --wait-bg: #eef0f2;
+  --banner-bg: #fff4d6; --banner-ink: #5c4300;
+  --display: "Newsreader", Georgia, "Times New Roman", serif;
+  --body: "Public Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #121416; --surface: #1a1c1f; --ink: #f2f3f4; --ink-2: #c0c5ca; --ink-3: #959ca3;
+    --rule: #2e3236; --grid: #24272b; --accent: #3987e5; --accent-soft: #1c5cab; --normal: #9aa1a8; --line: #e66767;
+    --tag-same: #2a2e32; --tag-diff: #16314f; --tag-diff-ink: #9ec5f4;
+    --pos: #6fd39b; --pos-bg: #173525; --wait-bg: #22262a; --banner-bg: #3a2f10; --banner-ink: #f3d98c;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #121416; --surface: #1a1c1f; --ink: #f2f3f4; --ink-2: #c0c5ca; --ink-3: #959ca3;
+  --rule: #2e3236; --grid: #24272b; --accent: #3987e5; --accent-soft: #1c5cab; --normal: #9aa1a8; --line: #e66767;
+  --tag-same: #2a2e32; --tag-diff: #16314f; --tag-diff-ink: #9ec5f4;
+  --pos: #6fd39b; --pos-bg: #173525; --wait-bg: #22262a; --banner-bg: #3a2f10; --banner-ink: #f3d98c;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 15px; line-height: 1.55; }
+.wrap { max-width: 980px; margin: 0 auto; padding-inline: 20px; padding-block: 36px 56px; display: grid; gap: 48px; }
+header { display: grid; gap: 14px; }
+.eyebrow { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); font-weight: 600; }
+h1 { font-family: var(--display); font-weight: 600; font-size: clamp(32px, 5.6vw, 50px); line-height: 1.08; margin: 0; text-wrap: balance; max-width: 22ch; }
+h2 { font-family: var(--display); font-weight: 600; font-size: clamp(24px, 3.6vw, 30px); line-height: 1.15; margin: 0; text-wrap: balance; }
+h3 { font-size: 15px; font-weight: 600; margin: 0; }
+p { margin: 0; max-width: 66ch; color: var(--ink-2); }
+.lede { font-size: 18px; color: var(--ink); }
+.banner { font-size: 13px; color: var(--banner-ink); background: var(--banner-bg); border-radius: 6px; padding: 8px 12px; justify-self: start; }
+section { display: grid; gap: 18px; }
+.sec-head { display: grid; gap: 6px; }
+.panel { background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; padding: 18px; display: grid; gap: 12px; min-width: 0; }
+.panel-head { display: flex; flex-wrap: wrap; gap: 6px 16px; align-items: baseline; justify-content: space-between; }
+.legend { display: flex; flex-wrap: wrap; gap: 8px 16px; font-size: 13px; color: var(--ink-2); }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.chart { width: 100%; min-width: 0; position: relative; }
+.chart svg { display: block; width: 100%; height: auto; overflow: visible; }
+.caption { font-size: 13px; color: var(--ink-3); }
+
+/* three definitions */
+.defs { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 14px; }
+.def { display: grid; gap: 6px; align-content: start; padding-top: 12px; border-top: 2px solid var(--ink); }
+.def h3 { font-family: var(--display); font-size: 21px; font-weight: 600; }
+.def p { font-size: 14px; }
+.def .unit { font-family: var(--mono); font-size: 12px; color: var(--ink-3); }
+
+/* worked example */
+.example { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; }
+.ex-city { background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; padding: 16px; display: grid; gap: 12px; min-width: 0; }
+.ex-step { display: grid; gap: 2px; }
+.ex-step .k { font-size: 12px; color: var(--ink-3); }
+.ex-step .v { font-family: var(--mono); font-size: 15px; color: var(--ink); font-variant-numeric: tabular-nums; }
+.ex-step .v b { font-family: var(--display); font-size: 26px; font-weight: 600; color: var(--accent); }
+.takeaway { font-size: 16px; color: var(--ink); max-width: 66ch; }
+
+/* group chips (shape, not color, carries the group) */
+.grp { display: inline-flex; align-items: center; gap: 5px; font-size: 11.5px; font-weight: 600; border-radius: 999px; padding: 2px 8px; white-space: nowrap; }
+.grp.lives { background: var(--ink); color: var(--bg); }
+.grp.rarely { border: 1px solid var(--ink-3); color: var(--ink-2); }
+
+.scatters { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+.rho { font-family: var(--mono); font-size: 12.5px; color: var(--ink-3); }
+.result { display: grid; gap: 6px; }
+.result .big { font-family: var(--display); font-size: clamp(28px, 4.6vw, 38px); line-height: 1.1; color: var(--ink); text-wrap: balance; max-width: 26ch; }
+.result .big em { font-style: normal; color: var(--accent); }
+
+/* pairs */
+.tally { display: flex; flex-wrap: wrap; gap: 8px 18px; align-items: baseline; }
+.tally .n { font-family: var(--display); font-size: 36px; color: var(--accent); line-height: 1; }
+.pairs { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 14px; }
+.card { background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; padding: 16px; display: grid; gap: 12px; align-content: start; min-width: 0; }
+.card.wait { background: var(--wait-bg); border-style: dashed; }
+.card-top { display: flex; justify-content: space-between; align-items: center; gap: 8px; flex-wrap: wrap; }
+.kind { font-size: 11px; letter-spacing: .06em; text-transform: uppercase; font-weight: 600; color: var(--ink-3); }
+.outcome { font-size: 12px; font-weight: 600; border-radius: 999px; padding: 3px 9px; white-space: nowrap; }
+.outcome.pos { color: var(--pos); background: var(--pos-bg); }
+.outcome.wait { color: var(--ink-3); border: 1px dashed var(--ink-3); }
+.outcome.against { color: var(--ink); border: 1px solid var(--ink-2); }
+.why { font-size: 14px; color: var(--ink); }
+.who-row { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 13px; color: var(--ink-2); }
+.who-row span { display: inline-flex; gap: 6px; align-items: center; }
+.metric { display: grid; gap: 5px; }
+.metric-head { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.metric-name { font-size: 12px; color: var(--ink-3); }
+.tag { font-size: 11px; font-weight: 600; border-radius: 4px; padding: 1px 7px; white-space: nowrap; }
+.tag.same { background: var(--tag-same); color: var(--ink-2); }
+.tag.diff { background: var(--tag-diff); color: var(--tag-diff-ink); }
+.bar-row { display: grid; grid-template-columns: 96px 1fr 58px; align-items: center; gap: 8px; font-size: 13px; }
+.bar-row .who { color: var(--ink-2); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.bar-track { height: 10px; position: relative; }
+.bar { position: absolute; left: 0; top: 0; bottom: 0; border-radius: 0 4px 4px 0; background: var(--accent-soft); }
+.bar.lead { background: var(--accent); }
+.bar-row .val { font-family: var(--mono); font-variant-numeric: tabular-nums; text-align: right; color: var(--ink); }
+.pending { font-size: 13px; color: var(--ink-3); font-style: italic; }
+.result-line { font-size: 13px; color: var(--ink-2); border-top: 1px solid var(--rule); padding-top: 10px; }
+.result-line b { color: var(--ink); }
+
+/* conclusions */
+.concl { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 14px; }
+.concl-item { display: grid; gap: 6px; align-content: start; padding-top: 12px; border-top: 2px solid var(--accent); }
+.concl-item h3 { font-family: var(--display); font-size: 20px; font-weight: 600; line-height: 1.2; text-wrap: balance; }
+.concl-item p { font-size: 14.5px; }
+.concl-item.limit { border-top-color: var(--ink-3); }
+.closing { font-family: var(--display); font-size: clamp(22px, 3.4vw, 28px); line-height: 1.3; color: var(--ink); max-width: 34ch; text-wrap: balance; }
+details { font-size: 14px; }
+summary { cursor: pointer; color: var(--ink-2); }
+summary:focus-visible, [tabindex]:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.tbl-wrap { overflow-x: auto; margin-top: 10px; }
+table { border-collapse: collapse; font-size: 13px; min-width: 720px; }
+th, td { text-align: right; padding: 6px 10px; border-bottom: 1px solid var(--rule); font-variant-numeric: tabular-nums; }
+th:first-child, td:first-child, td:nth-child(2) { text-align: left; }
+th { color: var(--ink-3); font-weight: 600; font-size: 12px; }
+.tip { position: absolute; pointer-events: none; background: var(--ink); color: var(--bg); font-size: 12px; line-height: 1.45; padding: 8px 10px; border-radius: 6px; max-width: 250px; z-index: 5; }
+.footnotes { display: grid; gap: 8px; border-top: 1px solid var(--rule); padding-top: 18px; }
+.footnotes ol { margin: 0; padding-left: 18px; display: grid; gap: 4px; font-size: 12.5px; color: var(--ink-3); max-width: 80ch; }
+.footnotes p { font-size: 12.5px; color: var(--ink-3); max-width: 80ch; }
+sup { font-size: 10px; color: var(--ink-3); }
+svg text { font-family: var(--body); }
+</style>
+
+<div class="wrap">
+  <header>
+    <div class="eyebrow">MDE Studio · Project 2 · Air and attention</div>
+    <h1>When the air turns bad, what makes people talk about it?</h1>
+    <p class="lede">Maybe people react to air that is <b>harmful</b>. Or maybe they react to air that is <b>unusual for where they live</b>. We looked at the worst smoke or haze week of nine U.S. cities, and at what each city's Reddit community said that week.</p>
+    <div class="banner">Final results: all 9 cities, using the method fixed before any posts were read.<sup>1</sup></div>
+  </header>
+
+  <section>
+    <div class="sec-head">
+      <div class="eyebrow">Three things to know</div>
+    </div>
+    <div class="defs">
+      <div class="def">
+        <h3>How harmful the air was</h3>
+        <p>Fine particles in the air (PM2.5), averaged over the city's worst week. Above 35.5 counts as unhealthy by the EPA's standard. Every city here went above it.</p>
+        <span class="unit">micrograms per cubic meter · µg/m³</span>
+      </div>
+      <div class="def">
+        <h3>How unusual it was</h3>
+        <p>That same week compared with the city's normal air for that month of the year. "3×" means three times dirtier than a typical week there.</p>
+        <span class="unit">ratio to normal · ×</span>
+      </div>
+      <div class="def">
+        <h3>How much people talked</h3>
+        <p>The share of posts and comments in the city's subreddit that mention smoke, haze, air quality and similar words, compared with a normal week.</p>
+        <span class="unit">rise in air talk · ×</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <div class="eyebrow">One example</div>
+      <h2>Same smoke, different reaction</h2>
+    </div>
+    <p>Bakersfield and Indianapolis each had a week that averaged 55 µg/m³, the same level of harm. But Bakersfield breathes dirty winter air often; Indianapolis rarely sees air like that in June.</p>
+    <div class="example" id="example"></div>
+    <p class="takeaway">The air was equally harmful in both cities. It was more unusual in Indianapolis, and Indianapolis talked about it about twice as much.</p>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <div class="eyebrow">All nine cities</div>
+      <h2>Every city talked more about the air in its worst week</h2>
+    </div>
+    <p>Each row starts at the city's normal level of air talk and ends at its worst week. In every city, the worst week beat nearly all of its normal weeks from 2019–2025.</p>
+    <div class="panel">
+      <div class="panel-head">
+        <h3>Air talk, share of the city's Reddit conversation</h3>
+        <div class="legend">
+          <span><svg width="12" height="12" aria-hidden="true"><circle cx="6" cy="6" r="4.5" fill="var(--surface)" stroke="var(--normal)" stroke-width="2"/></svg>Normal week</span>
+          <span><svg width="12" height="12" aria-hidden="true"><circle cx="6" cy="6" r="5" fill="var(--accent)"/></svg>Worst air week</span>
+          <span><span class="grp lives">Lives with bad air</span> 8–12 bad days a year</span>
+          <span><span class="grp rarely">Rarely has bad air</span> 0–2 a year</span>
+        </div>
+      </div>
+      <div class="chart" id="dumbbell"></div>
+      <p class="caption">Hover or tab to a city for details. Bad days = days above the EPA line, typical year 2019–2025.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <div class="eyebrow">What drives the reaction?</div>
+      <div class="result"><div class="big">People reacted more where the air was <em>unusual</em>, not where it was most harmful.</div></div>
+    </div>
+    <p>On the left, cities line up: the more unusual the week, the bigger the jump in air talk. On the right, there is no pattern: Eugene had by far the worst air but not the biggest reaction, and Seattle reacted most with some of the mildest air.<sup>2</sup></p>
+    <div class="scatters">
+      <div class="panel">
+        <div class="panel-head"><h3>Reaction vs how unusual the air was</h3><span class="rho">rank correlation 0.53</span></div>
+        <div class="chart" id="sc-ratio"></div>
+      </div>
+      <div class="panel">
+        <div class="panel-head"><h3>Reaction vs how harmful the air was</h3><span class="rho">rank correlation −0.13</span></div>
+        <div class="chart" id="sc-abs"></div>
+      </div>
+    </div>
+    <p class="caption">Filled dot = lives with bad air · ring = rarely has bad air. Hover or tab to a dot for details.</p>
+    <p>Cities that live with bad air reacted less overall (rank correlation −0.37 with bad days a year). Fairbanks shows why the comparison has to be to the right month: its bad days are winter haze, but its event was June smoke, and its Junes are usually clean. What matters is whether this air was normal for that place at that time of year.<sup>3</sup></p>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <div class="eyebrow">Head-to-head pairs</div>
+      <h2>Pairs that pull harm and unusualness apart</h2>
+    </div>
+    <p>We paired cities using air data only, before reading any Reddit posts. In a <b>matched</b> pair, the air was about as harmful in both cities but more unusual in one. In a <b>crossed</b> pair, one city had worse air while the other had more unusual air. If unusualness drives the reaction, the city with the more unusual week should react more.</p>
+    <div class="tally"><span class="n">8 of 9</span><p>pairs went the way "unusual" predicts, and in none of the six crossed pairs did the city with worse air react more. Fairbanks vs Detroit was nearly a tie. Fresno vs Pittsburgh went the other way, but it is the weakest pair: their weeks were almost equally unusual (6.0× vs 5.3×).</p></div>
+    <div class="pairs" id="pairs"></div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <div class="eyebrow">Conclusions</div>
+      <h2>What nine cities tell us</h2>
+    </div>
+    <div class="concl">
+      <div class="concl-item">
+        <h3>People react to unusual air more than to harmful air</h3>
+        <p>Across nine cities, the jump in Reddit air talk followed how unusual a city's worst week was for that time of year (rank correlation 0.53), not how much fine-particle pollution was in the air (−0.13). Every check we set in advance pointed the same way.</p>
+      </div>
+      <div class="concl-item">
+        <h3>Worse air alone never won</h3>
+        <p>In all six crossed pairs, where one city had worse air and the other had more unusual air, the city with the more unusual week talked more. Overall, 8 of 9 pairs went the way "unusual" predicts; the one exception had two nearly equally unusual weeks.</p>
+      </div>
+      <div class="concl-item">
+        <h3>Getting used to bad air dulls the reaction</h3>
+        <p>Bakersfield, which lives with bad air most often, reacted least: 5× more air talk during a week as harmful as Indianapolis's, which drew 10×. Cities with more bad-air days a year reacted less overall (−0.37).</p>
+      </div>
+      <div class="concl-item">
+        <h3>"Normal" depends on the season, not just the place</h3>
+        <p>Fairbanks has many bad-air days, but in winter. Its June smoke was 17× its normal June air, and its subreddit reacted as strongly as cities that rarely see smoke. What counts is whether this air was normal for that place at that time of year.</p>
+      </div>
+      <div class="concl-item">
+        <h3>A quiet reaction is not a safe week</h3>
+        <p>If people respond to what is unusual, a city where smoke becomes routine may stop talking about it even as the harm stays the same or grows. Public attention can be a poor signal of public health risk, which matters as smoke seasons lengthen.</p>
+      </div>
+      <div class="concl-item limit">
+        <h3>What this does not show</h3>
+        <p>Nine cities give a pattern, not proof. Harm and unusualness rise together across these cities (0.73), Reddit users are not everyone, and some talk in San Jose and Eugene was likely about nearby fires rather than the air. More cities, other platforms, and how people felt (not just how much they talked) would test this further.</p>
+      </div>
+    </div>
+    <p class="closing">When the air turns bad, people notice the change more than the danger.</p>
+  </section>
+
+  <details>
+    <summary>See all the numbers</summary>
+    <div class="tbl-wrap"><table id="tbl"></table></div>
+  </details>
+
+  <footer class="footnotes">
+    <div class="eyebrow">Notes</div>
+    <ol>
+      <li>All nine cities, run once with the method that was fixed before any event-week posts were read. Earlier versions of this page showed early results from 6, 7 and 8 cities; the pattern held at each step.</li>
+      <li>"Rank correlation" (Spearman) compares the order of cities, from 1 to −1. With nine cities this is a pattern, not proof. The two air measures also move together across these cities (0.73), so they are only partly separated.</li>
+      <li>San Jose and Eugene had large nearby fires with evacuations; about 15% of their worst-week posts mention fire, so some of their air talk may be fire news. Seattle's smoke came from distant Oregon fires (about 5% of its worst-week posts mention fire). Fairbanks's subreddit is small (188 posts and comments in its worst week), so its numbers move a lot with each post.</li>
+      <li>Detroit's smoke week (July 2026) was national news, which may have added to local talk. Its archive is missing comments from Sunday 8 pm to midnight of that week (about 3% of a week's comments).</li>
+      <li>Groups ("lives with" / "rarely has" bad air) are labels to describe the cities, added after the first results; the evidence is the rank correlations and the pre-set pairs.</li>
+    </ol>
+    <p>Data: OpenAQ reference monitors (PM2.5); Arctic Shift archive of Reddit (posts and comments). Worst week = the Monday–Sunday week with the highest average PM2.5, 2019–2026, excluding July 4th and New Year's weeks. Normal = the median of the same calendar month, 2019–2025. MDE Studio, October 2026.</p>
+  </footer>
+</div>
+
+<script>
+const LIVES = new Set(["bakersfield", "fairbanks", "fresno"]);
+const CITY = {
+  sanjose:      { name: "San Jose",     airN: 0.261, airE: 7.145,  rise: 27.326, beat: "30 of 30", pm: 36.34, pmN: 7.25,  ratio: 5.01,  bad: 0,  items: 3947, ev: "SCU Lightning Complex fire, Aug 2020" },
+  fairbanks:    { name: "Fairbanks",    airN: 0.649, airE: 17.553, rise: 27.065, beat: "20 of 20", pm: 91.8,  pmN: 5.28,  ratio: 17.39, bad: 8,  items: 188,  ev: "Interior Alaska wildfires, Jun 2022" },
+  eugene:       { name: "Eugene",       airN: 0.492, airE: 9.947,  rise: 20.222, beat: "28 of 28", pm: 280.4, pmN: 6.70,  ratio: 41.9,  bad: 0,  items: 9209, ev: "Labor Day fires, Sep 2020" },
+  fresno:       { name: "Fresno",       airN: 0.297, airE: 3.669,  rise: 12.365, beat: "27 of 28", pm: 61.16, pmN: 10.28, ratio: 5.95,  bad: 8,  items: 954,  ev: "California lightning fires, Aug 2020" },
+  indianapolis: { name: "Indianapolis", airN: 0.182, airE: 1.737,  rise: 9.529,  beat: "29 of 29", pm: 55.09, pmN: 12.45, ratio: 4.42,  bad: 1,  items: 5297, ev: "Canadian wildfire smoke, Jun 2023" },
+  bakersfield:  { name: "Bakersfield",  airN: 0.34,  airE: 1.635,  rise: 4.809,  beat: "20 of 22", pm: 55.47, pmN: 18.85, ratio: 2.94,  bad: 12, items: 1529, ev: "Winter inversion haze, Dec 2024" },
+  detroit:      { name: "Detroit",      airN: 0.163, airE: 4.307,  rise: 26.432, beat: "22 of 22", pm: 91.78, pmN: 12.33, ratio: 7.44,  bad: 2,  items: 5479, ev: "Canadian wildfire smoke, Jul 2026" },
+  pittsburgh:   { name: "Pittsburgh",   airN: 0.27,  airE: 3.994,  rise: 14.806, beat: "20 of 20", pm: 59.21, pmN: 11.23, ratio: 5.27,  bad: 0,  items: 22334, ev: "Canadian wildfire smoke, Jul 2026" },
+  seattle:      { name: "Seattle",      airN: 0.286, airE: 8.334,  rise: 29.128, beat: "28 of 28", pm: 51.46, pmN: 7.14,  ratio: 7.21,  bad: 1,  items: 10739, ev: "Smoke from the Oregon Labor Day fires, Sep 2020" },
+};
+const SIX = ["seattle", "sanjose", "fairbanks", "detroit", "eugene", "pittsburgh", "fresno", "indianapolis", "bakersfield"];
+const PAIRS = [
+  ["matched", "bakersfield", "indianapolis"], ["crossed", "bakersfield", "sanjose"], ["crossed", "bakersfield", "seattle"],
+  ["crossed", "indianapolis", "sanjose"], ["crossed", "indianapolis", "seattle"], ["crossed", "fresno", "seattle"],
+  ["matched", "fairbanks", "detroit"], ["matched", "fresno", "pittsburgh"], ["crossed", "pittsburgh", "seattle"],
+];
+const NS = "http://www.w3.org/2000/svg";
+const el = (tag, attrs = {}, parent) => { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); if (parent) parent.appendChild(e); return e; };
+const fmt = (v, d = 1) => Number(v).toFixed(d);
+const grpChip = id => LIVES.has(id) ? `<span class="grp lives">Lives with bad air</span>` : `<span class="grp rarely">Rarely has bad air</span>`;
+
+function tipFor(container) {
+  const t = document.createElement("div"); t.className = "tip"; t.hidden = true; container.appendChild(t);
+  return {
+    show(html, x, y) { t.innerHTML = html; t.hidden = false; const w = container.clientWidth, tw = t.offsetWidth;
+      t.style.left = Math.max(0, Math.min(w - tw, x + 12)) + "px"; t.style.top = (y + 12) + "px"; },
+    hide() { t.hidden = true; }
+  };
+}
+const tipHtml = id => { const c = CITY[id]; return `<b>${c.name}</b> · ${LIVES.has(id) ? "lives with bad air" : "rarely has bad air"}<br>${c.ev}<br>Air: ${fmt(c.pm, 0)} µg/m³, ${fmt(c.ratio, 1)}× its normal<br>Air talk: ${fmt(c.airN, 2)}% → ${fmt(c.airE, 1)}% (${fmt(c.rise, 0)}×)<br>Higher than ${c.beat} normal weeks`; };
+function hover(target, box, tip, id, fx, fy) {
+  const show = ev => { const r = box.getBoundingClientRect(); tip.show(tipHtml(id), ev.clientX ? ev.clientX - r.left : fx, ev.clientY ? ev.clientY - r.top : fy); };
+  target.addEventListener("mousemove", show); target.addEventListener("focus", show);
+  target.addEventListener("mouseleave", () => tip.hide()); target.addEventListener("blur", () => tip.hide());
+}
+
+function drawExample() {
+  document.getElementById("example").innerHTML = ["bakersfield", "indianapolis"].map(id => {
+    const c = CITY[id];
+    return `<div class="ex-city">
+      <div class="panel-head"><h3>${c.name}</h3>${grpChip(id)}</div>
+      <div class="ex-step"><span class="k">Worst week's air</span><span class="v">${fmt(c.pm, 0)} µg/m³ · ${c.ev}</span></div>
+      <div class="ex-step"><span class="k">Normal air for that month</span><span class="v">${fmt(c.pmN, 0)} µg/m³</span></div>
+      <div class="ex-step"><span class="k">How unusual</span><span class="v"><b>${fmt(c.ratio, 1)}×</b> normal</span></div>
+      <div class="ex-step"><span class="k">Air talk on Reddit</span><span class="v">${fmt(c.airN, 2)}% → ${fmt(c.airE, 1)}% of posts</span></div>
+      <div class="ex-step"><span class="k">Reaction</span><span class="v"><b>${fmt(c.rise, 0)}×</b> more air talk</span></div>
+    </div>`;
+  }).join("");
+}
+
+function drawDumbbell() {
+  const box = document.getElementById("dumbbell"); box.innerHTML = "";
+  const W = box.clientWidth, narrow = W < 560, rowH = narrow ? 58 : 50, top = 6, bottom = 30, labelW = narrow ? 118 : 176, right = 58;
+  const H = top + rowH * SIX.length + bottom;
+  const svg = el("svg", { viewBox: `0 0 ${W} ${H}`, role: "img", "aria-label": "Air talk in a normal week and the worst air week, by city" }, box);
+  const x0 = labelW, x1 = W - right, max = 18, sx = v => x0 + (v / max) * (x1 - x0);
+  for (const t of [0, 5, 10, 15]) {
+    el("line", { x1: sx(t), x2: sx(t), y1: top, y2: H - bottom + 4, stroke: "var(--grid)" }, svg);
+    el("text", { x: sx(t), y: H - 10, "text-anchor": "middle", "font-size": 12, fill: "var(--ink-3)" }, svg).textContent = t + "% of posts";
+  }
+  const tip = tipFor(box);
+  SIX.forEach((id, i) => {
+    const c = CITY[id], y = top + rowH * i + rowH / 2, lives = LIVES.has(id);
+    el("text", { x: 0, y: y - 4, "font-size": 14, "font-weight": 600, fill: "var(--ink)" }, svg).textContent = c.name;
+    // group chip drawn in SVG: filled = lives with bad air, outline = rarely
+    const chipW = narrow ? 64 : 112, chip = el("g", {}, svg);
+    el("rect", { x: 0, y: y + 3, width: chipW, height: 16, rx: 8, fill: lives ? "var(--ink)" : "none", stroke: lives ? "none" : "var(--ink-3)" }, chip);
+    el("text", { x: chipW / 2, y: y + 14.5, "text-anchor": "middle", "font-size": 10.5, "font-weight": 600, fill: lives ? "var(--bg)" : "var(--ink-2)" }, chip).textContent = narrow ? (lives ? "Lives with" : "Rarely") : (lives ? "Lives with bad air" : "Rarely has bad air");
+    el("line", { x1: sx(c.airN), x2: sx(c.airE), y1: y, y2: y, stroke: "var(--accent)", "stroke-width": 2, "stroke-opacity": 0.45 }, svg);
+    el("circle", { cx: sx(c.airN), cy: y, r: 4.5, fill: "var(--surface)", stroke: "var(--normal)", "stroke-width": 2 }, svg);
+    el("circle", { cx: sx(c.airE), cy: y, r: 6, fill: "var(--accent)", stroke: "var(--surface)", "stroke-width": 2 }, svg);
+    el("text", { x: sx(c.airE) + 11, y: y + 4.5, "font-size": 13, "font-family": "var(--mono)", fill: "var(--ink)" }, svg).textContent = fmt(c.rise, 0) + "×";
+    const hit = el("rect", { x: 0, y: y - rowH / 2, width: W, height: rowH, fill: "transparent", tabindex: 0, "aria-label": `${c.name}: ${fmt(c.rise, 0)} times more air talk` }, svg);
+    hover(hit, box, tip, id, sx(c.airE), y);
+  });
+}
+
+function drawScatter(boxId, key, ticks, label, domain, epa) {
+  const box = document.getElementById(boxId); box.innerHTML = "";
+  const W = box.clientWidth, H = Math.round(Math.min(320, Math.max(250, W * 0.72)));
+  const m = { l: 44, r: 18, t: 12, b: 44 };
+  const svg = el("svg", { viewBox: `0 0 ${W} ${H}`, role: "img", "aria-label": `Rise in air talk against ${label}` }, box);
+  const lx = Math.log, sx = v => m.l + (lx(v) - lx(domain[0])) / (lx(domain[1]) - lx(domain[0])) * (W - m.l - m.r);
+  const sy = v => H - m.b - (v / 30) * (H - m.t - m.b);
+  for (const t of [0, 10, 20, 30]) {
+    el("line", { x1: m.l, x2: W - m.r, y1: sy(t), y2: sy(t), stroke: "var(--grid)" }, svg);
+    el("text", { x: m.l - 8, y: sy(t) + 4, "text-anchor": "end", "font-size": 11.5, fill: "var(--ink-3)" }, svg).textContent = t + "×";
+  }
+  el("text", { x: m.l - 8, y: m.t - 2, "text-anchor": "end", "font-size": 11, fill: "var(--ink-3)" }, svg).textContent = "reaction";
+  for (const t of ticks) {
+    el("line", { x1: sx(t), x2: sx(t), y1: H - m.b, y2: H - m.b + 4, stroke: "var(--ink-3)" }, svg);
+    el("text", { x: sx(t), y: H - m.b + 17, "text-anchor": "middle", "font-size": 11.5, fill: "var(--ink-3)" }, svg).textContent = t + (key === "ratio" ? "×" : "");
+  }
+  el("line", { x1: m.l, x2: W - m.r, y1: H - m.b, y2: H - m.b, stroke: "var(--ink-3)" }, svg);
+  el("text", { x: (m.l + W - m.r) / 2, y: H - 6, "text-anchor": "middle", "font-size": 12, fill: "var(--ink-2)" }, svg).textContent = label;
+  const tip = tipFor(box), placed = [];
+  SIX.forEach(id => {
+    const c = CITY[id], cx = sx(c[key]), cy = sy(c.rise), lives = LIVES.has(id);
+    // filled dot = lives with bad air, ring = rarely has bad air (same shape code as the chips)
+    const dot = el("circle", { cx, cy, r: 6, fill: lives ? "var(--accent)" : "var(--surface)", stroke: "var(--accent)", "stroke-width": 2.5, tabindex: 0, "aria-label": c.name }, svg);
+    let anchor = cx > W - 120 ? "end" : "start", tx = anchor === "end" ? cx - 11 : cx + 11, ty = cy + 4;
+    for (const p of placed) if (Math.abs(p.y - ty) < 14 && Math.abs(p.x - tx) < 95) ty = p.y + (ty <= p.y ? -14 : 14);
+    placed.push({ x: tx, y: ty });
+    el("text", { x: tx, y: ty, "text-anchor": anchor, "font-size": 12, fill: "var(--ink-2)" }, svg).textContent = c.name;
+    const hit = el("circle", { cx, cy, r: 14, fill: "transparent" }, svg);
+    hover(hit, box, tip, id, cx, cy); hover(dot, box, tip, id, cx, cy);
+  });
+}
+
+function drawTable() {
+  document.getElementById("tbl").innerHTML = `<thead><tr><th>City</th><th>Group</th><th>Worst week's event</th><th>PM2.5</th><th>Normal PM2.5</th><th>How unusual</th><th>Air talk, normal</th><th>Air talk, worst week</th><th>Reaction</th><th>Bad days/yr</th></tr></thead><tbody>` +
+    SIX.map(id => { const c = CITY[id]; return `<tr><td>${c.name}</td><td>${LIVES.has(id) ? "Lives with bad air" : "Rarely has bad air"}</td><td style="text-align:left">${c.ev}</td><td>${fmt(c.pm, 0)}</td><td>${fmt(c.pmN, 0)}</td><td>${fmt(c.ratio, 1)}×</td><td>${fmt(c.airN, 2)}%</td><td>${fmt(c.airE, 1)}%</td><td>${fmt(c.rise, 1)}×</td><td>${c.bad}</td></tr>`; }).join("") + `</tbody>`;
+}
+
+function metric(name, tag, tagClass, a, b, va, vb, unit, digits) {
+  const max = Math.max(va, vb);
+  const row = (id, v) => `<div class="bar-row"><span class="who">${CITY[id].name}</span><span class="bar-track"><span class="bar${v === max ? " lead" : ""}" style="width:${(v / max * 100).toFixed(1)}%"></span></span><span class="val">${fmt(v, digits)}${unit}</span></div>`;
+  return `<div class="metric"><div class="metric-head"><span class="metric-name">${name}</span><span class="tag ${tagClass}">${tag}</span></div>${row(a, va)}${row(b, vb)}</div>`;
+}
+
+function drawPairs() {
+  document.getElementById("pairs").innerHTML = PAIRS.map(([type, a, b]) => {
+    const A = CITY[a], B = CITY[b], ready = A.rise != null && B.rise != null;
+    const unusual = A.ratio > B.ratio ? a : b, worse = a;            // a = the city with the worse air
+    const why = type === "matched"
+      ? `Almost the same air (${fmt(A.pm, 0)} vs ${fmt(B.pm, 0)} µg/m³), but much more unusual in ${CITY[unusual].name} (${fmt(CITY[unusual].ratio, 1)}× vs ${fmt(CITY[unusual === a ? b : a].ratio, 1)}×).`
+      : `${A.name} had worse air (${fmt(A.pm, 0)} vs ${fmt(B.pm, 0)} µg/m³), but the week was more unusual in ${B.name} (${fmt(B.ratio, 1)}× vs ${fmt(A.ratio, 1)}×).`;
+    const pmTag = type === "matched" ? ["About the same", "same"] : [`Worse in ${A.name}`, "diff"];
+    const ratioTag = [`More unusual in ${CITY[unusual].name}`, "diff"];
+    const missing = [a, b].filter(id => CITY[id].rise == null).map(id => CITY[id].name).join(" and ");
+    const winner = ready ? (A.rise > B.rise ? a : b) : null;
+    const near = ready && Math.abs(A.rise - B.rise) / Math.max(A.rise, B.rise) < 0.05;   // reactions within 5%: a near-tie
+    return `<article class="card${ready ? "" : " wait"}">
+      <div class="card-top"><span class="kind">${type} pair</span>${ready ? `${winner === unusual ? `<span class="outcome pos">${near ? 'Barely went the way "unusual" predicts' : 'Went the way "unusual" predicts'}</span>` : `<span class="outcome against">Went against "unusual"</span>`}` : `<span class="outcome wait">Waiting for data</span>`}</div>
+      <h3>${A.name} vs ${B.name}</h3>
+      <div class="who-row"><span>${A.name} ${grpChip(a)}</span><span>${B.name} ${grpChip(b)}</span></div>
+      <p class="why">${why}</p>
+      ${metric("How harmful (PM2.5, µg/m³)", pmTag[0], pmTag[1], a, b, A.pm, B.pm, "", 0)}
+      ${metric("How unusual (× normal)", ratioTag[0], ratioTag[1], a, b, A.ratio, B.ratio, "×", 1)}
+      ${ready ? metric("Reaction (× more air talk)", near ? `Slightly bigger in ${CITY[winner].name}` : `Bigger in ${CITY[winner].name}`, near ? "same" : "diff", a, b, A.rise, B.rise, "×", 1)
+              : `<div class="metric"><div class="metric-head"><span class="metric-name">Reaction (× more air talk)</span></div><div class="pending">Waiting for ${missing}'s Reddit data</div></div>`}
+      <div class="result-line">If harm drives it: <b>${type === "matched" ? "about the same reaction" : `${A.name} reacts more`}</b>. If unusualness drives it: <b>${CITY[unusual].name} reacts more</b>.</div>
+    </article>`;
+  }).join("");
+}
+
+function drawAll() {
+  drawDumbbell();
+  drawScatter("sc-ratio", "ratio", [3, 5, 10, 20, 40], "How unusual: times the city's normal (log scale)", [2.5, 50]);
+  drawScatter("sc-abs", "pm", [30, 50, 100, 200, 300], "How harmful: PM2.5, µg/m³ (log scale)", [30, 320]);
+}
+drawExample(); drawTable(); drawPairs(); drawAll();
+let rt, lastW = document.querySelector(".wrap").clientWidth;
+new ResizeObserver(() => { const w = document.querySelector(".wrap").clientWidth; if (w === lastW) return; lastW = w; clearTimeout(rt); rt = setTimeout(drawAll, 80); }).observe(document.querySelector(".wrap"));
+</script>
