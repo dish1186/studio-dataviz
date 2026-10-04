@@ -1,8 +1,8 @@
 test,rise_measure,n_cities,rho_with_ratio,rho_with_absolute,difference,verdict
-MAIN (D10): rise ratio,rise_ratio,6,0.6,0.029,0.571,Pos
-check (D11): rise in percentage points,rise_pp,6,0.886,0.543,0.343,Pos
-check (D11): percentile,percentile,6,0.507,0.034,0.473,Pos
-check (F15): PM2.5 ratio without polluted weeks,rise_ratio,6,0.6,0.029,0.571,Pos
-check (F16): wider word list,wide_rise_ratio,6,0.714,0.257,0.457,Pos
-context (D12): PM2.5 ratio vs absolute PM2.5,,6,,0.771,,(how strongly the two PM2.5 measures move together)
-check (F14): rise vs bad days per year,rise_ratio,6,,-0.618,,(negative = cities used to bad air reacted less)
+MAIN (D10): rise ratio,rise_ratio,7,0.571,-0.321,0.893,Pos
+check (D11): rise in percentage points,rise_pp,7,0.929,0.393,0.536,Pos
+check (D11): percentile,percentile,7,0.535,-0.134,0.668,Pos
+check (F15): PM2.5 ratio without polluted weeks,rise_ratio,7,0.571,-0.321,0.893,Pos
+check (F16): wider word list,wide_rise_ratio,7,0.714,0.0,0.714,Pos
+context (D12): PM2.5 ratio vs absolute PM2.5,,7,,0.571,,(how strongly the two PM2.5 measures move together)
+check (F14): rise vs bad days per year,rise_ratio,7,,-0.532,,(negative = cities used to bad air reacted less)

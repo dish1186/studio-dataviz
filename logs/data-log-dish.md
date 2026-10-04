@@ -1623,6 +1623,21 @@ Step · dataset · date · who ran it | What (plain language) | Why | Input file
   - Seattle, Pittsburgh and Detroit text stays on Dish's machine. Anyone can rebuild it with `normals_00_api_download.py` + `normals_01b` (committed).
   - Options shown: (A) local only [chosen]; (B) Git LFS; (C) compress, which would change committed scripts.
 - **Not committed by Claude:** `.gitignore` and this log also hold uncommitted edits from Dish's other chats (visual direction, air-spectrum). They are left for Dish to commit together.
+
+### Analysis · INTERIM run on 7 of 9 cities (Seattle added) · 2026-10-04 · run by Claude when Dish asked to update the "Harm or Abnormal" page
+- **Second interim look.** It uses the same `--interim` switch, and `analysis_01_event_rise.py` is unchanged since commit 57a8095.
+  - The run overwrote the 6-city interim outputs in `analysis_01_interim/`. Those stay in git at a3934f3.
+  - The result of record is still the full 9-city run. Not ready: Detroit, Pittsburgh.
+- **Seattle:**
+  - Event share 8.33% vs normal 0.29%, so the **rise is 29.1×**, the largest of the 7.
+  - Higher than all 28 of its normal weeks. Event-week kept items: 10,739.
+  - PM2.5 51.5 µg/m³, 7.2× its September normal.
+  - Fire talk is 5.3% (normal 0.7%), much lower than San Jose and Eugene (about 15%). Seattle's smoke came from distant Oregon fires.
+- **Main test (7 cities): Pos.** ρ(rise, PM2.5 ratio) = 0.571 vs ρ(rise, absolute) = −0.321, a difference of 0.89.
+  - **Checks:** percentage points Pos (0.93 vs 0.39); percentile Pos (0.54 vs −0.13); ratio without polluted weeks Pos (0.57 vs −0.32); wider word list Pos (0.71 vs 0.00).
+  - **Context:** ρ(PM2.5 ratio, absolute) = 0.57. ρ(rise, bad days/yr) = −0.53.
+- **Pairs:** the higher-ratio city had the bigger rise in **6 of 6** (new: Bakersfield–Seattle, Indianapolis–Seattle, Fresno–Seattle). The worse-air city won **0 of 5** crossed pairs.
+- **Page updated:** https://claude.ai/artifact/3WCcfsm4j2pPy6zuVWaWFL (version 3), labeled "Early results: 7 of 9 cities".
 ---
 **Actual-temperature status (2026-09-27): done for all 12 cities.** gridMET Steps 1–5b for the 11 continental viz cities (D10; 16 pulled); **Fairbanks from ERA5-Land** (D15, ERA5-Land Steps 1–3). Final files for all 12 in `data/processed/gridmet/final/` (`temp_<city>_daily.csv`, 3,920 rows 2016-01-01 → 2026-09-24, join row for row with UTCI; `_normals.csv`; `_monthly.csv`); the folder name is gridMET but Fairbanks' source is ERA5-Land (blank 2026-09-22 → 09-24). End date settled (D9). Open: N1 (boundary file vs OpenAQ, appendix note); optional PAFA station cross-check for Fairbanks; March 2026 station check.
 
