@@ -1638,6 +1638,19 @@ Step · dataset · date · who ran it | What (plain language) | Why | Input file
   - **Context:** ρ(PM2.5 ratio, absolute) = 0.57. ρ(rise, bad days/yr) = −0.53.
 - **Pairs:** the higher-ratio city had the bigger rise in **6 of 6** (new: Bakersfield–Seattle, Indianapolis–Seattle, Fresno–Seattle). The worse-air city won **0 of 5** crossed pairs.
 - **Page updated:** https://claude.ai/artifact/3WCcfsm4j2pPy6zuVWaWFL (version 3), labeled "Early results: 7 of 9 cities".
+
+### Viz · page updated to the 7-city interim run (Seattle added) · 2026-10-04 · Claude at Dish's request
+- **What:** reran `python3 viz/pm25-scrolly/build.py` against `analysis_01_interim/`, which has 7 of 9 cities since commit 02480a5. `data.js` now has Seattle as ready. The build's ρ cross-check against `results.md` passed (0.571 / −0.321).
+- **On the page:** the labels updated by themselves ("Early results · 7 of 9 cities"; verdict "In these seven cities…"; pairs 6 of 6). Seattle is the largest rise (29.1×). Detroit and Pittsburgh are still pending. The full 9-city run (`--full`) is still the result of record.
+- **Text edits:**
+  - The no-JS fallback labels changed from 6 to 7.
+  - Footnote 3 now adds Seattle's fire-talk share, bound to `data.js` (about 5%, vs about 15% for San Jose and Eugene). The design log's caveat list only named San Jose and Eugene.
+- **Fix:** the Plate I pot no longer breaks when the page loads hidden or at zero height. Heat is clamped to 0–1 and the frame step to ≥ 0. Display only.
+- **Note:** the 02480a5 log entry says the page update went to the old draft artifact (3WCcfsm4j2pPy6zuVWaWFL). This scrolly page is J3fSoj9QZQjDP9RPoJHmiV.
+
+- **Tadpole tail (2026-10-04, Dish):** the tail fade is removed. `img/tadpole.webp` is now Dish's cutout cropped only, so the full tail shows, ending at the PNG's own straight cut. This reverses the earlier Claude's-choice fade.
+- **Tadpole redrawn (2026-10-04, Dish):** Dish supplied a new tadpole with the full tapered tail, now in `img/tadpole.webp`. Its aspect ratio is now 819/176. Body lengths went up about 1.36× so the heads stay the same size.
+
 ---
 **Actual-temperature status (2026-09-27): done for all 12 cities.** gridMET Steps 1–5b for the 11 continental viz cities (D10; 16 pulled); **Fairbanks from ERA5-Land** (D15, ERA5-Land Steps 1–3). Final files for all 12 in `data/processed/gridmet/final/` (`temp_<city>_daily.csv`, 3,920 rows 2016-01-01 → 2026-09-24, join row for row with UTCI; `_normals.csv`; `_monthly.csv`); the folder name is gridMET but Fairbanks' source is ERA5-Land (blank 2026-09-22 → 09-24). End date settled (D9). Open: N1 (boundary file vs OpenAQ, appendix note); optional PAFA station cross-check for Fairbanks; March 2026 station check.
 

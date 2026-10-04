@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hero mockups</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&display=swap">
+<style>
+/* Three hero mockups for Plate I: frogs in a pot of slowly heating water.
+   Artwork stays full color; page inks (chartreuse / indigo / magenta title) frame it.
+   Bubbles speed up and the water warms as you scroll through each hero. Decoration only, no data. */
+:root {
+  --ground: #e2e05c; --ink: #1a0f6b; --ink-2: #463d88; --event: #c4285c;
+  --flame: #e08a2c;
+  --hero: "Old Standard TT", "Century Schoolbook", Georgia, serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) { --ground: #160d4c; --ink: #e6e47a; --ink-2: #c3c172; --event: #ff5e8e; color-scheme: dark; }
+}
+:root[data-theme="dark"] { --ground: #160d4c; --ink: #e6e47a; --ink-2: #c3c172; --event: #ff5e8e; color-scheme: dark; }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--ground); color: var(--ink); font-family: var(--hero); }
+.wrap { max-width: 1100px; margin: 0 auto; padding: 0 16px; }
+.mock-label { font-size: 13px; letter-spacing: .14em; text-transform: uppercase; font-weight: 700; border-bottom: 1.5px solid var(--ink); padding: 40px 0 8px; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.mock-label em { text-transform: none; letter-spacing: 0; font-weight: 400; }
+.hero { position: relative; margin: 20px 0 10px; }
+.hero svg { display: block; width: 100%; height: auto; overflow: visible; }
+.hero h1 { font-family: var(--hero); font-weight: 700; color: var(--event); line-height: .9; letter-spacing: -.02em; margin: 0; }
+.hero .sub { font-style: italic; font-size: clamp(16px, 2.2vw, 22px); }
+.fig-cap { font-size: 14px; color: var(--ink-2); max-width: 70ch; margin: 8px 0 0; }
+.fig-cap b { color: var(--ink); }
+.lbl { font-family: var(--hero); font-style: italic; fill: var(--ink); }
+.lead { stroke: var(--ink); stroke-width: 2; fill: none; }
+.figno { font-family: var(--hero); font-weight: 700; fill: var(--ink); }
+
+/* A: cutaway pot */
+#A .titleblock { text-align: center; margin-bottom: -10px; }
+#A h1 { font-size: clamp(54px, 11vw, 130px); }
+
+/* B: top-down pot, title floats on the water */
+#B .over { position: absolute; inset: 0; display: grid; place-content: center; text-align: center; pointer-events: none; }
+#B h1 { font-size: clamp(44px, 10vw, 120px); }
+#B .sub { color: #1a0f6b; }
+
+/* C: full bleed */
+#C { margin: 20px -16px 10px; }
+#C .bleed { position: relative; height: min(100svh, 760px); overflow: hidden; }
+#C .bleed svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+#C .over { position: absolute; left: 16px; right: 16px; top: 8%; pointer-events: none; }
+#C h1 { font-size: clamp(56px, 12vw, 150px); }
+#C .sub { color: #1a0f6b; }
+#C + .fig-cap { margin-top: 0; }
+
+.steam path { fill: none; stroke: var(--ink); stroke-width: 3; stroke-linecap: round; animation: rise 4.5s ease-in infinite; transform-box: fill-box; opacity: 0; }
+.steam path:nth-child(2) { animation-delay: 1.5s; } .steam path:nth-child(3) { animation-delay: 3s; }
+@keyframes rise { 0% { opacity: 0; transform: translateY(20px); } 30% { opacity: .9; } 100% { opacity: 0; transform: translateY(-50px); } }
+.wisp path { fill: none; stroke: #fff; stroke-width: 10; stroke-linecap: round; opacity: 0; animation: drift 9s linear infinite; }
+.wisp path:nth-child(2) { animation-delay: 3s; } .wisp path:nth-child(3) { animation-delay: 6s; }
+@keyframes drift { 0% { opacity: 0; transform: translateX(-60px); } 25% { opacity: .55; } 100% { opacity: 0; transform: translateX(160px); } }
+@media (prefers-reduced-motion: reduce) { .steam path, .wisp path { animation: none; opacity: .7; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <p class="mock-label" style="padding-top:24px">Plate I · hero mockups <em>scroll through each one; the water heats up</em></p>
+
+  <!-- A. Textbook cutaway pot -->
+  <p class="mock-label">Mockup A <em>textbook pot diagram</em></p>
+  <section class="hero" id="A">
+    <div class="titleblock"><h1>boiling frog</h1><div class="sub">an investigation of human thresholds</div></div>
+    <svg viewBox="0 0 1000 860" role="img" aria-label="Diagram of a cooking pot cut away to show frogs and tadpoles swimming in water, with a flame underneath and steam rising from the top.">
+      <defs><clipPath id="A-clip"><path d="M130,250 L870,250 L870,640 Q870,700 810,700 L190,700 Q130,700 130,640 Z"/></clipPath></defs>
+      <g class="steam" transform="translate(0,0)">
+        <path d="M380,190 q-24,-30 0,-60 q24,-30 0,-60"/>
+        <path d="M500,190 q-24,-30 0,-60 q24,-30 0,-60"/>
+        <path d="M620,190 q-24,-30 0,-60 q24,-30 0,-60"/>
+      </g>
+      <g clip-path="url(#A-clip)"><svg class="water" x="130" y="250" width="740" height="450" viewBox="0 0 2000 1125" preserveAspectRatio="xMidYMid slice"></svg></g>
+      <!-- pot walls, rim, handles -->
+      <path d="M130,236 L130,640 Q130,700 190,700 L810,700 Q870,700 870,640 L870,236" fill="none" stroke="var(--ink)" stroke-width="9" stroke-linejoin="round"/>
+      <rect x="110" y="222" width="780" height="16" rx="8" fill="var(--ink)"/>
+      <path d="M126,270 h-40 q-26,0 -26,26 v6 q0,26 26,26 h40" fill="none" stroke="var(--ink)" stroke-width="9"/>
+      <path d="M874,270 h40 q26,0 26,26 v6 q0,26 -26,26 h-40" fill="none" stroke="var(--ink)" stroke-width="9"/>
+      <!-- burner + flames -->
+      <g stroke="var(--ink)" stroke-width="3" fill="var(--flame)">
+        <path d="M300,790 q-28,-40 0,-72 q8,26 22,30 q10,-24 4,-44 q34,30 20,86 Z"/>
+        <path d="M440,790 q-28,-40 0,-72 q8,26 22,30 q10,-24 4,-44 q34,30 20,86 Z"/>
+        <path d="M580,790 q-28,-40 0,-72 q8,26 22,30 q10,-24 4,-44 q34,30 20,86 Z"/>
+        <path d="M720,790 q-28,-40 0,-72 q8,26 22,30 q10,-24 4,-44 q34,30 20,86 Z"/>
+      </g>
+      <rect x="240" y="790" width="560" height="12" fill="var(--ink)"/>
+      <!-- labels -->
+      <path class="lead" d="M640,110 L760,70 H850"/><text class="lbl" x="858" y="78" font-size="30">steam</text>
+      <path class="lead" d="M870,520 H950"/><text class="lbl" x="905" y="508" font-size="30">water</text>
+      <path class="lead" d="M300,740 L190,770 H120"/><text class="lbl" x="40" y="778" font-size="30">heat</text>
+      <text class="figno" x="0" y="850" font-size="26">Fig. I</text>
+    </svg>
+  </section>
+  <p class="fig-cap"><b>Fig. I.</b> Frogs in a pot of water warming slowly. The story goes that a frog won't jump out if the heat rises gradually enough.</p>
+
+  <!-- B. Looking down into the pot -->
+  <p class="mock-label">Mockup B <em>looking down into the pot</em></p>
+  <section class="hero" id="B">
+    <svg viewBox="0 0 1600 1000" role="img" aria-label="Looking down into a round pot of water with frogs and tadpoles swimming, steam drifting across the surface.">
+      <defs><clipPath id="B-clip"><ellipse cx="800" cy="500" rx="730" ry="436"/></clipPath></defs>
+      <rect x="10" y="455" width="70" height="90" rx="20" fill="var(--ink)"/><rect x="1520" y="455" width="70" height="90" rx="20" fill="var(--ink)"/>
+      <g clip-path="url(#B-clip)"><svg class="water" x="70" y="64" width="1460" height="872" viewBox="0 0 2000 1125" preserveAspectRatio="xMidYMid slice"></svg>
+        <g class="wisp"><path d="M300,300 q80,-40 160,0 t160,0"/><path d="M900,620 q80,-40 160,0 t160,0"/><path d="M500,800 q80,-40 160,0 t160,0"/></g>
+      </g>
+      <ellipse cx="800" cy="500" rx="745" ry="451" fill="none" stroke="var(--ink)" stroke-width="30"/>
+      <ellipse cx="800" cy="500" rx="728" ry="434" fill="none" stroke="#fff" stroke-opacity=".5" stroke-width="3"/>
+    </svg>
+    <div class="over"><h1>boiling frog</h1><div class="sub">an investigation of human thresholds</div></div>
+  </section>
+  <p class="fig-cap"><b>Fig. I.</b> Frogs in a pot of water warming slowly, seen from above.</p>
+
+  <!-- C. Just the water -->
+  <p class="mock-label">Mockup C <em>just the water, full bleed</em></p>
+  <section class="hero" id="C">
+    <div class="bleed">
+      <svg class="water" viewBox="0 0 2000 1125" preserveAspectRatio="xMaxYMid slice" role="img" aria-label="Frogs and tadpoles swimming in water that is slowly coming to a boil."></svg>
+      <div class="over"><h1>boiling frog</h1><div class="sub">an investigation of human thresholds</div></div>
+    </div>
+  </section>
+  <p class="fig-cap"><b>Fig. I.</b> Frogs in water warming slowly.</p>
+  <div style="height:60vh"></div>
+</div>
+
+<script>
+// Shared "water": the artwork, a warm gradient that deepens with scroll, rising bubbles, and Harper-style
+// breathing arrows around the big frog's head. All in the artwork's own 2000×1125 coordinates.
+const NS = "http://www.w3.org/2000/svg";
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const waters = [...document.querySelectorAll("svg.water")].map((svg, i) => {
+  svg.innerHTML = `
+    <defs>
+      <linearGradient id="heat${i}" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#e3a04a" stop-opacity="0"/>
+        <stop offset=".55" stop-color="#e3a04a" stop-opacity=".35"/>
+        <stop offset="1" stop-color="#d9772f" stop-opacity=".85"/>
+      </linearGradient>
+      <marker id="ah${i}" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+        <path d="M0,0 L10,5 L0,10 Z" fill="#1a0f6b"/></marker>
+    </defs>
+    <image href="../img/frogs-notext.webp" width="2000" height="1125"/>
+    <rect class="heat" width="2000" height="1125" fill="url(#heat${i})" style="mix-blend-mode:multiply" opacity=".2"/>
+    <g class="bubbles"></g>
+    <g fill="none" stroke="#1a0f6b" stroke-width="9" stroke-linecap="round">
+      <path d="M1560,760 A220,220 0 0 1 1915,800" marker-end="url(#ah${i})"/>
+      <path d="M1915,960 A220,220 0 0 1 1560,1000" marker-end="url(#ah${i})"/>
+    </g>
+    <g font-family="Old Standard TT, Georgia, serif" font-style="italic" font-size="58" fill="#1a0f6b">
+      <text x="1500" y="700">air in</text><text x="1390" y="1080">air out</text>
+    </g>`;
+  return { svg, heat: svg.querySelector(".heat"), g: svg.querySelector(".bubbles"), host: svg.closest(".hero"), list: [], p: 0 };
+});
+
+function spawn(w, y) {
+  const r = 10 + Math.random() ** 2 * 50;
+  const c = document.createElementNS(NS, "circle");
+  c.setAttribute("r", r); c.setAttribute("fill", "rgba(200,232,222,.55)");
+  c.setAttribute("stroke", "#fff"); c.setAttribute("stroke-width", 5);
+  w.g.appendChild(c);
+  w.list.push({ c, r, x: Math.random() * 2000, y: y ?? 1125 + r, v: 60 + Math.random() * 110, ph: Math.random() * 6 });
+}
+waters.forEach(w => { for (let k = 0; k < 14; k++) spawn(w, Math.random() * 1125); w.list.forEach(b => { b.c.setAttribute("cx", b.x); b.c.setAttribute("cy", b.y); }); });
+
+function progress(el) {
+  const r = el.getBoundingClientRect(), vh = innerHeight;
+  return Math.min(1, Math.max(0, (vh - r.top) / (vh + r.height)));
+}
+let last = performance.now();
+function tick(now) {
+  const dt = Math.min(.05, (now - last) / 1000); last = now;
+  for (const w of waters) {
+    w.p = progress(w.host);
+    const heat = Math.min(1, Math.max(0, (w.p - .2) / .6));           // 0 → 1 as the hero scrolls past
+    w.heat.setAttribute("opacity", .15 + .75 * heat);
+    const speed = .5 + 3.5 * heat * heat, want = 12 + Math.round(30 * heat);
+    if (w.list.length < want && Math.random() < .3 * speed) spawn(w);
+    w.list = w.list.filter(b => {
+      b.y -= b.v * speed * dt; b.ph += dt * 3;
+      if (b.y < -b.r) { b.c.remove(); return false; }
+      b.c.setAttribute("cx", b.x + Math.sin(b.ph) * 8 * speed); b.c.setAttribute("cy", b.y);
+      return true;
+    });
+  }
+  requestAnimationFrame(tick);
+}
+if (reduce) waters.forEach(w => w.heat.setAttribute("opacity", .4));
+else requestAnimationFrame(tick);
+</script>
+</body>
+</html>

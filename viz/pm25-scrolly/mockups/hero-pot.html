@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Boiling Pot Hero</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&display=swap">
+<style>
+/* Plate I hero: looking down into a pot of slowly heating water. Your cutout frogs swim laps around the pot
+   (stirred), bubbles grow and pop, and as the water heats some boil over the rim and float up the page.
+   Heat = how far you've scrolled, plus a slow simmer over time. Decoration only, no data.
+   Parchment texture is printed over everything, artwork included. */
+:root {
+  --ground: #e2e05c; --ink: #1a0f6b; --ink-2: #463d88; --event: #c4285c;
+  --water: #8fb8ae; --water-deep: #6f9d92;
+  --script: "Pinyon Script", "Snell Roundhand", cursive;
+  --hero: "Old Standard TT", "Century Schoolbook", Georgia, serif;
+  --paper-blend: multiply; --paper-filter: none; --paper-op: .9;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) { --ground: #160d4c; --ink: #e6e47a; --ink-2: #c3c172; --event: #ff5e8e;
+    --paper-blend: screen; --paper-filter: invert(1); --paper-op: .22; color-scheme: dark; }
+}
+:root[data-theme="dark"] { --ground: #160d4c; --ink: #e6e47a; --ink-2: #c3c172; --event: #ff5e8e;
+  --paper-blend: screen; --paper-filter: invert(1); --paper-op: .22; color-scheme: dark; }
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body { background: var(--ground); color: var(--ink); font-family: var(--hero); }
+
+/* parchment: Dish's paper texture (img/paper.jpg), tiled and printed over the whole sheet, artwork included */
+body::after {
+  content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 50;
+  mix-blend-mode: var(--paper-blend); filter: var(--paper-filter); opacity: var(--paper-op);
+  background: url("../img/paper.jpg") 0 0 / 720px auto repeat;
+}
+
+.hero { position: relative; height: 100svh; min-height: 560px; overflow: hidden; }
+.hero svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.over { position: absolute; inset: 0; display: grid; place-content: center; text-align: center; pointer-events: none; padding: 0 16px; }
+.over h1 {
+  font-family: var(--script); font-weight: 400; color: var(--event); margin: 0; line-height: 1;
+  font-size: clamp(64px, 14vw, 190px);
+  text-shadow: 0 0 6px var(--water), 0 0 14px var(--water), 0 0 28px var(--water);
+}
+.over .sub { font-style: italic; font-size: clamp(15px, 2vw, 22px); color: #1a0f6b; margin-top: .2em;
+  text-shadow: 0 0 6px var(--water), 0 0 12px var(--water); }
+.runhead { position: absolute; top: 16px; left: 16px; right: 16px; display: flex; justify-content: space-between; gap: 12px;
+  font-size: 12px; letter-spacing: .14em; text-transform: uppercase; font-weight: 700; border-bottom: 1.5px solid var(--ink); padding-bottom: 6px; z-index: 2; }
+.fig { position: absolute; left: 16px; bottom: 14px; right: 16px; font-size: 14px; color: var(--ink-2); z-index: 2; }
+.fig b { color: var(--ink); }
+.after { max-width: 760px; margin: 0 auto; padding: 60px 16px 70vh; font-size: 18px; line-height: 1.6; }
+</style>
+</head>
+<body>
+<header class="hero" id="hero">
+  <div class="runhead"><span>Plate I</span><span>Mockup · the pot</span></div>
+  <svg id="pot" role="img" aria-label="Looking down into a round pot of water. Two green frogs, a brown frog and three tadpoles swim laps around it while bubbles rise and the water slowly comes to a boil, spilling bubbles over the rim."></svg>
+  <div class="over"><h1>boiling frog</h1><div class="sub">an investigation of human thresholds</div></div>
+  <p class="fig"><b>Fig. I.</b> Frogs in a pot of water warming slowly, seen from above.</p>
+</header>
+<main class="after">
+  <p>(Scroll: the water heats up as the hero leaves the screen. The rest of the page would start here with Plate II.)</p>
+</main>
+
+<script>
+const NS = "http://www.w3.org/2000/svg";
+const svg = document.getElementById("pot"), hero = document.getElementById("hero");
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const el = (tag, attrs = {}, parent) => { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); parent && parent.appendChild(e); return e; };
+
+// Swimmers: your cutouts, all facing right (+x). len = body length as a share of the pot's rx.
+// Frogs kick with FLORA-animated frames (one stroke per clip); the tadpoles' tails sway in code.
+const frames = (dir, n) => Array.from({ length: n }, (_, i) => `../img/${dir}/${String(i).padStart(2, "0")}.webp`);
+const ART = {
+  green: { frames: frames("swim-green", 60), ar: 640 / 355, bend: 1.15, strips: 12 },
+  brown: { frames: frames("swim-brown", 60), ar: 640 / 262, bend: 1.15, strips: 12, kicks: 2 },
+  tad:   { frames: ["../img/tadpole.webp"], ar: 602 / 176, bend: 1, strips: 8, sway: true },
+};
+// FLORA-animated boiling bubbles and steam (60-frame loops, played at 12 fps)
+const BOIL = frames("boil", 60), BOIL_AR = 560 / 385, STEAM = frames("steam", 60);
+[...Object.values(ART).flatMap(a => a.frames), ...BOIL, ...STEAM].forEach(src => { const im = new Image(); im.src = src; });
+const SWIM = [
+  { a: "green", len: .62, k: .55, th: 0.2 },
+  { a: "brown", len: .52, k: .62, th: 2.4 },
+  { a: "green", len: .40, k: .32, th: 4.1 },
+  { a: "tad", len: .20, k: .80, th: 1.2 },
+  { a: "tad", len: .16, k: .74, th: 3.5 },
+  { a: "tad", len: .18, k: .22, th: 5.3 },
+];
+
+let W, H, cx, cy, rx, ry, layers, swimmers, bubbles = [], ripples = [], wisps = [], patches = [];
+function build() {
+  W = hero.clientWidth; H = hero.clientHeight;
+  svg.setAttribute("viewBox", `0 0 ${W} ${H}`);
+  cx = W / 2; cy = H * .53;
+  rx = Math.min(W / 2 - Math.max(40, W * .05), 780);
+  ry = Math.min(H * .38, rx * (W > H ? .64 : 1));
+  const rim = Math.max(12, rx * .035);
+  svg.innerHTML = "";
+  const defs = el("defs", {}, svg);
+  el("ellipse", { cx, cy, rx, ry }, el("clipPath", { id: "water" }, defs));
+  const rg = el("radialGradient", { id: "heat", cx: .5, cy: .5, r: .6 }, defs);
+  el("stop", { offset: 0, "stop-color": "#eb9a3e", "stop-opacity": .8 }, rg);
+  el("stop", { offset: .7, "stop-color": "#e8b05a", "stop-opacity": .4 }, rg);
+  el("stop", { offset: 1, "stop-color": "#e3a04a", "stop-opacity": 0 }, rg);
+  const depth = el("radialGradient", { id: "depth", cx: .5, cy: .45, r: .55 }, defs);
+  el("stop", { offset: .6, "stop-color": "#8fb8ae" }, depth); el("stop", { offset: 1, "stop-color": "#6f9d92" }, depth);
+  const ds = el("filter", { id: "lift", x: "-20%", y: "-20%", width: "140%", height: "140%" }, defs);
+  el("feDropShadow", { dx: rx * .012, dy: rx * .02, stdDeviation: rx * .012, "flood-color": "#1d4a44", "flood-opacity": .35 }, ds);
+
+  const root = el("g", {}, svg);
+  el("ellipse", { cx: cx + rim * .6, cy: cy + rim * 1.2, rx: rx + rim, ry: ry + rim, fill: "#000", opacity: .14 }, root);  // pot shadow on the page
+  for (const s of [-1, 1]) el("rect", { x: cx + s * (rx + rim * .4) - (s < 0 ? rim * 3.4 : 0), y: cy - rim * 2, width: rim * 3.4, height: rim * 4, rx: rim, fill: "var(--ink)" }, root);
+  el("ellipse", { cx, cy, rx, ry, fill: "url(#depth)" }, root);
+  const water = el("g", { "clip-path": "url(#water)" }, root);
+  const heat = el("ellipse", { cx, cy, rx, ry, fill: "url(#heat)", opacity: .05 }, water);
+  const rip = el("g", { fill: "none", stroke: "#fff" }, water);
+  const fr = el("g", { filter: "url(#lift)" }, water);
+  const boil = el("g", {}, water);
+  const rimG = el("g", {}, root);
+  el("ellipse", { cx, cy, rx: rx + rim / 2, ry: ry + rim / 2, fill: "none", stroke: "var(--ink)", "stroke-width": rim }, rimG);
+  el("ellipse", { cx, cy, rx: rx - rim * .15, ry: ry - rim * .15, fill: "none", stroke: "#fff", "stroke-opacity": .55, "stroke-width": Math.max(1.5, rim * .12) }, rimG);
+  const bub = el("g", {}, svg);      // on top of everything, so bubbles can boil over the rim
+  const steam = el("g", {}, svg);
+  layers = { root, rim: rimG, heat, rip, fr, boil, bub, steam };
+
+  swimmers = SWIM.map((s, i) => {
+    const art = ART[s.a], L = s.len * rx, h = L / art.ar, n = art.strips, sw = L / n;
+    const strips = [];
+    for (let j = 0; j < n; j++) {
+      const u = -L * .55 + (j + .5) * sw;                 // strip centre along the body (head at +x)
+      const cp = el("clipPath", { id: `sw${i}-${j}` }, defs);
+      el("rect", { x: -sw / 2 - 1.5, y: -h, width: sw + 3, height: h * 2 }, cp);
+      const g = el("g", {}, fr);
+      const img = el("image", { href: art.frames[0], x: -L * .55 - u, y: -h / 2, width: L, height: h, "clip-path": `url(#sw${i}-${j})` }, g);
+      strips.push({ g, img, u });
+    }
+    return { ...s, art, L, strips, o: i * 1.7, ph: Math.random(), fi: 0, wt: Math.random() * 6 };
+  });
+  bubbles = []; ripples = []; wisps = []; patches = [];
+}
+
+function inPot(kmax = .92) { const a = Math.random() * Math.PI * 2, k = Math.sqrt(Math.random()) * kmax; return [cx + Math.cos(a) * rx * k, cy + Math.sin(a) * ry * k]; }
+function addBubble(h) {
+  const [x, y] = inPot(), R = rx * (.012 + Math.random() ** 2 * .04) * (1 + h);
+  const c = el("circle", { cx: x, cy: y, r: 0, fill: "rgba(200,232,222,.55)", stroke: "#fff", "stroke-width": Math.max(.8, R * .055) }, layers.bub);
+  bubbles.push({ c, x, y, R, age: 0, life: .8 + Math.random() * 2.2, state: "grow", vx: 0, vy: 0, op: 1 });
+}
+function addRipple(x, y, R) {
+  const e = el("ellipse", { cx: x, cy: y, rx: R, ry: R * ry / rx, "stroke-width": 1 }, layers.rip);
+  ripples.push({ e, R, age: 0 });
+}
+function addWisp(h) {
+  const [x, y] = inPot(.7), S = rx * (.16 + Math.random() * .12);
+  const p = el("image", { href: STEAM[0], x: -S / 2, y: -S, width: S, height: S, opacity: 0 }, layers.steam);
+  wisps.push({ p, x, y, age: 0, life: 3 + Math.random() * 2.5, vx: (Math.random() - .5) * 16, vy: -(25 + 45 * h), f0: Math.random() * 60, fi: -1 });
+}
+// boil patch = FLORA bubble loop laid flat on the water (squashed to the pot's perspective)
+function addPatch(h) {
+  const [x, y] = inPot(.7), S = rx * (.28 + Math.random() * .22) * (1 + .4 * h);
+  const g = el("g", { transform: `translate(${x},${y}) scale(1,${(ry / rx).toFixed(3)}) rotate(${Math.random() * 360})`, opacity: 0 }, layers.boil);
+  const img = el("image", { href: BOIL[0], x: -S / 2, y: -S / BOIL_AR / 2, width: S, height: S / BOIL_AR }, g);
+  patches.push({ g, img, age: 0, life: 3 + Math.random() * 4, f0: Math.random() * 60, fi: -1 });
+}
+
+function pose(s, k, fi, h) {
+  const sp = Math.hypot(rx * k * Math.sin(s.th), ry * k * Math.cos(s.th)) || 1;   // lane speed per radian
+  const st = s.strips, n = st.length, sw = s.L / n;
+  // each slice takes the lane's direction a little ahead/behind (bend > 1 exaggerates the curve),
+  // then slices are chained edge to edge so the body never gaps
+  const ang = st.map(q => { const a = s.th + q.u * s.art.bend / sp; return Math.atan2(ry * Math.cos(a), -rx * Math.sin(a)); });
+  for (let m = 1; m < n; m++) { while (ang[m] - ang[m - 1] > Math.PI) ang[m] -= 2 * Math.PI; while (ang[m] - ang[m - 1] < -Math.PI) ang[m] += 2 * Math.PI; }
+  const pos = new Array(n), c = st.reduce((b, q, m) => Math.abs(q.u) < Math.abs(st[b].u) ? m : b, 0);
+  pos[c] = [cx + rx * k * Math.cos(s.th), cy + ry * k * Math.sin(s.th)];
+  for (let m = c + 1; m < n; m++) { const a = (ang[m] + ang[m - 1]) / 2; pos[m] = [pos[m - 1][0] + Math.cos(a) * sw, pos[m - 1][1] + Math.sin(a) * sw]; }
+  for (let m = c - 1; m >= 0; m--) { const a = (ang[m] + ang[m + 1]) / 2; pos[m] = [pos[m + 1][0] - Math.cos(a) * sw, pos[m + 1][1] - Math.sin(a) * sw]; }
+  for (let m = 0; m < n; m++) {
+    const q = st[m], tail = Math.max(0, (s.L * .45 - q.u) / s.L);      // 0 at the head, ~1 at the tail
+    const amp = s.art.sway ? s.L * (.05 + .05 * h) * tail ** 1.5 : s.L * (.008 + .012 * h) * tail;
+    const off = Math.sin(s.wt - tail * Math.PI * 1.6 + s.o) * amp;
+    const px = pos[m][0] - Math.sin(ang[m]) * off, py = pos[m][1] + Math.cos(ang[m]) * off;
+    q.g.setAttribute("transform", `translate(${px.toFixed(2)},${py.toFixed(2)}) rotate(${(ang[m] * 180 / Math.PI).toFixed(2)})`);
+    if (fi !== s.fi || !q.set) { q.img.setAttribute("href", s.art.frames[fi]); q.set = 1; }
+  }
+  s.fi = fi;
+}
+
+let H_ = 0, t0 = performance.now(), last = t0;
+function frame(now) {
+  const dt = Math.min(.05, (now - last) / 1000), t = (now - t0) / 1000; last = now;
+  const r = hero.getBoundingClientRect();
+  if (r.bottom > 0) {
+    const target = Math.max(Math.min(1, -r.top / (r.height * .75)), Math.min(.3, t / 45));   // scroll heat, or a slow simmer
+    H_ += (target - H_) * Math.min(1, dt * 2.5);
+    const h = H_;
+    layers.heat.setAttribute("opacity", .05 + .8 * h);
+    // a full boil rattles the pot
+    const j = Math.max(0, h - .7) * rx * .012;
+    layers.rim.setAttribute("transform", j ? `translate(${(Math.random() - .5) * j},${(Math.random() - .5) * j})` : "");
+
+    for (const s of swimmers) {
+      // one stroke every ~6 s when calm, ~2 s at a boil; the clip plays during the stroke, then the frog glides
+      s.ph = (s.ph + dt * (.16 + .4 * h)) % 1;
+      const kf = .5 - .15 * h, inKick = s.ph < kf;
+      const kick = inKick ? 1 + .9 * Math.sin(Math.PI * (s.art.kicks || 1) * s.ph / kf) ** 2 : 1;
+      const k = s.k + .03 * Math.sin(t * .25 + s.o);
+      const v = rx * (.04 + .2 * h) * kick;
+      s.th += v / (Math.hypot(rx * Math.sin(s.th), ry * Math.cos(s.th)) * k + 1) * dt;
+      s.wt += dt * (s.art.sway ? 5 + 6 * h : 1.2 + 2 * h);
+      const fr = s.art.frames, fi = inKick && fr.length > 1 ? Math.floor(s.ph / kf * fr.length) : 0;
+      pose(s, k, fi, h);
+    }
+
+    if (patches.length < 1 + Math.round(9 * h) && Math.random() < dt * (.6 + 3 * h)) addPatch(h);
+    patches = patches.filter(q => {
+      q.age += dt; const f = q.age / q.life, fi = Math.floor(q.f0 + q.age * 12) % 60;
+      if (fi !== q.fi) { q.fi = fi; q.img.setAttribute("href", BOIL[fi]); }
+      q.g.setAttribute("opacity", (Math.min(1, f * 4, (1 - f) * 4) * (.55 + .4 * h)).toFixed(3));
+      if (f >= 1) { q.g.remove(); return false; } return true;
+    });
+    if (Math.random() < dt * (1 + 14 * h)) addBubble(h);
+    bubbles = bubbles.filter(b => {
+      b.age += dt;
+      if (b.state === "grow") {
+        const f = Math.min(1, b.age / b.life);
+        b.c.setAttribute("r", b.R * Math.sqrt(f));
+        if (f >= 1) {
+          if (h > .25 && Math.random() < .08 + .4 * h) { b.state = "escape"; b.age = 0; b.vy = -(rx * .15 + Math.random() * rx * .25) * (1 + h); b.vx = (Math.random() - .5) * 30; }
+          else { b.state = "pop"; b.age = 0; addRipple(b.x, b.y, b.R); }
+        }
+      } else if (b.state === "pop") {
+        const f = b.age / .25;
+        b.c.setAttribute("r", b.R * (1 + .7 * f)); b.c.setAttribute("opacity", 1 - f);
+        if (f >= 1) { b.c.remove(); return false; }
+      } else {                                   // boiled over: float up the page
+        b.x += (b.vx + Math.sin(b.age * 4 + b.R) * 25) * dt; b.y += b.vy * dt;
+        b.c.setAttribute("cx", b.x); b.c.setAttribute("cy", b.y);
+        if (b.y < -b.R * 2) { b.c.remove(); return false; }
+      }
+      return true;
+    });
+    ripples = ripples.filter(p => {
+      p.age += dt; const f = p.age / 1.2;
+      p.e.setAttribute("rx", p.R * (1 + 3 * f)); p.e.setAttribute("ry", p.R * (1 + 3 * f) * ry / rx); p.e.setAttribute("opacity", .7 * (1 - f));
+      if (f >= 1) { p.e.remove(); return false; } return true;
+    });
+    if (Math.random() < dt * (.4 + 4 * h)) addWisp(h);
+    wisps = wisps.filter(w => {
+      w.age += dt; const f = w.age / w.life;
+      w.x += w.vx * dt; w.y += w.vy * dt;
+      const fi = Math.floor(w.f0 + w.age * 12) % 60;
+      if (fi !== w.fi) { w.fi = fi; w.p.setAttribute("href", STEAM[fi]); }
+      w.p.setAttribute("transform", `translate(${w.x.toFixed(1)},${w.y.toFixed(1)}) scale(${(1 + .6 * f).toFixed(3)})`);
+      w.p.setAttribute("opacity", (Math.sin(Math.PI * f) * (.45 + .45 * h)).toFixed(3));
+      if (f >= 1) { w.p.remove(); return false; } return true;
+    });
+  }
+  requestAnimationFrame(frame);
+}
+
+build();
+addEventListener("resize", () => { clearTimeout(build.t); build.t = setTimeout(build, 150); });
+if (reduce) {          // one still frame: frogs placed, a few bubbles, mild warmth
+  H_ = .3; for (let i = 0; i < 12; i++) addBubble(.3);
+  bubbles.forEach(b => b.c.setAttribute("r", b.R));
+  swimmers.forEach(s => pose(s, s.k, 0, .3));
+  layers.heat.setAttribute("opacity", .35);
+} else requestAnimationFrame(frame);
+</script>
+</body>
+</html>
