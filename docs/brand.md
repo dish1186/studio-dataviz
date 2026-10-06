@@ -16,7 +16,8 @@ Type roles and colour code set by Gina on 2026-10-06.
 |---|---|---|
 | **Display** | Jost · 74px · 500 · tight (letter-spacing −0.02em, line-height 1) | The one big question ("how do we react to what's harmful vs. what's abnormal?"). One per page. |
 | **Header 1** | Jost · 38px · 400, key words 700 | Plate titles: "Meet the cities…", "We followed nine U.S. cities…", the conclusion's verdict, the "threshold" headword, scroll-story captions ("some of these cities are **used to** air pollution."). |
-| **Header 2** | Jost · 28px · 400, key words 700, emphasis in italic (e.g. "*familiar*") | Scroll-story frame titles, the definition gloss, "Thresholds come from others," lines, "which makes us ask:", the pair tally, the talk-disk city names and "4.8× more air talk", the city card's tab titles ("**20×** more air talk"). |
+| **Header 2** | Jost · 28px · 400, key words 700, emphasis in italic (e.g. "*familiar*") | The definition gloss, "Thresholds come from others," lines, "which makes us ask:", the pair tally, the talk-disk city names and "4.8× more air talk", the city card's tab titles ("**20×** more air talk"). |
+| **Header 2 · story** | Jost · 32px · 400, key words 700, emphasis in italic | The scroll-story frame titles ("we hope to explore how environments drive our responses…", "in its worst week, bakersfield and indianapolis…"). Header 2 plus 15% (Gina, Oct 6). |
 | **Header 3** | Cormorant Garamond italic 34px + Jost 12px caps, letter-spacing 0.3em | **City cards only, for now:** the city name with its "worst week · dates" tag. |
 | **Text** | Jost · 14px · 400 | Paragraphs, subtitles, figure explanations, legends, table text, notes, the map hint, card chips and "about" lines, quote-panel lead lines. |
 | **Quotes** | Reddit Sans · 19px, author line 14px 500 | Every quote from Reddit: the thresholds plate and the city card's quote panel. |
@@ -33,6 +34,7 @@ The sizes above are desktop sizes. Display and headers scale down with the windo
 | Display | `clamp(40px, 6.4vw, 74px)` |
 | Header 1 | `clamp(26px, 3.6vw, 38px)` |
 | Header 2 | `clamp(20px, 2.7vw, 28px)` (city card: `clamp(22px, 3.2vw, 28px)`) |
+| Header 2 · story | `clamp(23px, 3.1vw, 32px)` |
 | Text, quotes, comments | fixed: 14, 19, 12px |
 
 Text inside drawings is set so it reads at these sizes on screen:
@@ -63,6 +65,7 @@ Fallback stacks: Jost → Futura, Century Gothic, Avenir Next, sans-serif · Cor
 --t-display: clamp(40px, 6.4vw, 74px);
 --t-h1: clamp(26px, 3.6vw, 38px);
 --t-h2: clamp(20px, 2.7vw, 28px);
+--t-h2-story: clamp(23px, 3.1vw, 32px);
 --t-text: 14px;
 --t-quote: 19px;  --t-quote-who: 14px;
 --t-comment: 12px;
