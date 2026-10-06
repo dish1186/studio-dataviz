@@ -18,10 +18,10 @@ Type roles and colour code set by Gina on 2026-10-06.
 | **Header 1** | Jost · 38px · 400, key words 700 | Plate titles: "Meet the cities…", "We followed nine U.S. cities…", the conclusion's verdict, the "threshold" headword, scroll-story captions ("some of these cities are **used to** air pollution."). |
 | **Header 2** | Jost · 28px · 400, key words 700, emphasis in italic (e.g. "*familiar*") | The definition gloss, "Thresholds come from others," lines, "which makes us ask:", the pair tally, the talk-disk city names and "4.8× more air talk", the city card's tab titles ("**20×** more air talk"). |
 | **Header 2 · story** | Jost · 32px · 400, key words 700, emphasis in italic | The scroll-story frame titles ("we hope to explore how environments drive our responses…", "in its worst week, bakersfield and indianapolis…"). Header 2 plus 15% (Gina, Oct 6). |
-| **Header 3** | Cormorant Garamond italic 34px + Jost 12px caps, letter-spacing 0.3em | **City cards only, for now:** the city name with its "worst week · dates" tag. |
-| **Text** | Jost · 14px · 400 | Paragraphs, subtitles, figure explanations, legends, table text, notes, the map hint, card chips and "about" lines, quote-panel lead lines. |
-| **Quotes** | Reddit Sans · 19px, author line 14px 500 | Every quote from Reddit: the thresholds plate and the city card's quote panel. |
-| **Comments** | Jost · 12px · 400 | Small print: "Fig. 1" tags, result tags ("As predicted"), pair "why" lines, source lines, control labels, footnotes, chart axis and group labels, tabs, buttons. Labels may be set in caps with letter-spacing (0.26–0.3em). |
+| **Header 3** | Cormorant Garamond italic 34px + Jost 14px caps, letter-spacing 0.3em | **City cards only, for now:** the city name with its "worst week · dates" tag. |
+| **Text** | Jost · 16px · 400 | Paragraphs, subtitles, figure explanations, legends, table text, notes, the map hint, card chips and "about" lines, quote-panel lead lines. |
+| **Quotes** | Reddit Sans · 22px, author line 16px 500 | Every quote from Reddit: the thresholds plate and the city card's quote panel. |
+| **Comments** | Jost · 14px · 400 | Small print: "Fig. 1" tags, result tags ("As predicted"), pair "why" lines, source lines, control labels, footnotes, chart axis and group labels, tabs, buttons. Labels may be set in caps with letter-spacing (0.16–0.3em; 0.16em inside charts). |
 
 Bold (600–700) is only for key words inside a role, and for names in lists (pair names, definition terms). Italic is for one emphasised word at a time.
 
@@ -35,11 +35,11 @@ The sizes above are desktop sizes. Display and headers scale down with the windo
 | Header 1 | `clamp(26px, 3.6vw, 38px)` |
 | Header 2 | `clamp(20px, 2.7vw, 28px)` (city card: `clamp(22px, 3.2vw, 28px)`) |
 | Header 2 · story | `clamp(23px, 3.1vw, 32px)` |
-| Text, quotes, comments | fixed: 14, 19, 12px |
+| Text, quotes, comments | fixed: 16, 22, 14px (raised 15% from 14, 19, 12 on Oct 6) |
 
 Text inside drawings is set so it reads at these sizes on screen:
 - In the scroll story (viewBox 1000 wide, about 1:1 on a laptop), the CSS sets the role sizes directly, and roughly doubles them on phones (≤700px), where the drawing is shown at about half size.
-- In the city card, text in the charts uses `px(n)`, which converts on-screen pixels into the drawing's own units, so labels stay at 12 / 14 / 28px whatever size the chart is drawn at.
+- In the city card, text in the charts uses `px(n)`, which converts on-screen pixels into the drawing's own units, so labels stay at 14 / 16 / 28px whatever size the chart is drawn at. Gaps between a label and its number are also set in screen px, so bigger type never collides.
 
 ### Exceptions (kept as they were)
 
@@ -66,9 +66,9 @@ Fallback stacks: Jost → Futura, Century Gothic, Avenir Next, sans-serif · Cor
 --t-h1: clamp(26px, 3.6vw, 38px);
 --t-h2: clamp(20px, 2.7vw, 28px);
 --t-h2-story: clamp(23px, 3.1vw, 32px);
---t-text: 14px;
---t-quote: 19px;  --t-quote-who: 14px;
---t-comment: 12px;
+--t-text: 16px;
+--t-quote: 22px;  --t-quote-who: 16px;
+--t-comment: 14px;
 ```
 
 On the main page these and the role rules sit in one block marked "type roles (Gina, Oct 6; see brand.md)", just before the first script. In the card they're at the end of its stylesheet.
