@@ -53,7 +53,7 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
   2. 95% ranges: bootstrap of the 436 checked items, 2,000 rounds, seed 7. They cover the hand check only, not the sampling of the three big weeks. **Claude's choice, approved by Gina.**
   3. "Used to it" = median days a year at or above 35.5 µg/m³ (2019–2025) of 8 or more, the default on Dish's Boiling Frog Pots page. **Claude's choice, approved by Gina.**
   4. User IDs left out of the raw export; notes kept (all empty). **Claude's choice, approved by Gina.**
-- **Open:** Dish to agree the method before the corrected shares replace the draft ones on the Boiling Frog page.
+- **Method agreed by Dish** (2026-10-05, relayed by Gina). Next: replace the draft shares on the Boiling Frog page with the corrected ones.
 
 ---
 
