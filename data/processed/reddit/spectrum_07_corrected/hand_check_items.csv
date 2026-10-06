@@ -1,0 +1,437 @@
+item_id,city,week,weight,claude_band,dish_band,gina_band,agreed_band,agreed_by
+1h60r2q,bakersfield,2024-12-02,1.0,E,E,J,E,reconciled
+1h8aob5,bakersfield,2024-12-02,1.0,A,A,E,A,reconciled
+1uwdhz7,detroit,2026-07-13,1.0,X,X,X,X,same label
+1uwkojp,detroit,2026-07-13,1.0,A,A,A,A,same label
+1uxm40x,detroit,2026-07-13,1.0,A,A,A,A,same label
+1uy93fb,pittsburgh,2026-07-13,2.8415,X,X,X,X,same label
+1uyb92f,pittsburgh,2026-07-13,2.6667,A,A,A,A,same label
+1uynozb,pittsburgh,2026-07-13,2.6667,A,A,A,A,same label
+g1t4j2x,sanjose,2020-08-17,1.0,X,X,X,X,same label
+g1vgrnu,fresno,2020-08-17,1.0,X,X,X,X,same label
+g1w8mv6,fresno,2020-08-17,1.0,X,X,X,X,same label
+g1w979t,fresno,2020-08-17,1.0,X,X,X,X,same label
+g1wisjs,fresno,2020-08-17,1.0,X,X,X,X,same label
+g1wnkh3,fresno,2020-08-17,1.0,X,X,X,X,same label
+g1wtbnj,fresno,2020-08-17,1.0,X,X,X,X,same label
+g1x9ybp,fresno,2020-08-17,1.0,X,X,X,X,same label
+g1xgzly,fresno,2020-08-17,1.0,X,X,X,X,same label
+g1xh5yq,fresno,2020-08-17,1.0,X,X,J,X,reconciled
+g1xj6k5,fresno,2020-08-17,1.0,X,X,X,X,same label
+g1xoxkm,fresno,2020-08-17,1.0,X,X,X,X,same label
+g1yc69z,fresno,2020-08-17,1.0,X,X,X,X,same label
+g1yfnrc,fresno,2020-08-17,1.0,X,X,X,X,same label
+g1yqhcz,fresno,2020-08-17,1.0,X,X,X,X,same label
+g1zbkld,sanjose,2020-08-17,1.0,A,N,A,N,reconciled
+g20b8e0,fresno,2020-08-17,1.0,X,E,X,X,reconciled
+g21qqi7,fresno,2020-08-17,1.0,X,X,X,X,same label
+g225whp,sanjose,2020-08-17,1.0,X,X,X,X,same label
+g228en1,sanjose,2020-08-17,1.0,N,J,E,J,reconciled
+g22do75,sanjose,2020-08-17,1.0,J,A,A,A,same label
+g23mcsj,fresno,2020-08-17,1.0,X,X,X,X,same label
+g23mmcd,fresno,2020-08-17,1.0,X,X,X,X,same label
+g23n88y,fresno,2020-08-17,1.0,X,X,X,X,same label
+g243tdy,sanjose,2020-08-17,1.0,A,A,A,A,same label
+g246zek,sanjose,2020-08-17,1.0,J,E,J,E,reconciled
+g24cv7o,sanjose,2020-08-17,1.0,J,J,J,J,same label
+g24s8p5,sanjose,2020-08-17,1.0,A,A,A,A,same label
+g24ves1,sanjose,2020-08-17,1.0,J,J,J,J,same label
+g24xccq,sanjose,2020-08-17,1.0,A,A,A,A,same label
+g24zegj,sanjose,2020-08-17,1.0,N,J,J,J,same label
+g2502lo,fresno,2020-08-17,1.0,A,A,A,A,same label
+g251274,sanjose,2020-08-17,1.0,J,X,N,X,reconciled
+g2546pz,sanjose,2020-08-17,1.0,J,X,J,X,reconciled
+g254fmi,fresno,2020-08-17,1.0,A,E,A,A,reconciled
+g256eq6,sanjose,2020-08-17,1.0,A,E,E,E,same label
+g259zxh,sanjose,2020-08-17,1.0,A,A,A,A,same label
+g25a992,sanjose,2020-08-17,1.0,J,E,J,J,reconciled
+g25f1cg,fresno,2020-08-17,1.0,J,A,A,A,same label
+g25fjqu,sanjose,2020-08-17,1.0,X,X,X,X,same label
+g25gp5w,fresno,2020-08-17,1.0,E,E,E,E,same label
+g25qr16,sanjose,2020-08-17,1.0,X,X,A,X,reconciled
+g25uqgu,fresno,2020-08-17,1.0,X,X,X,X,same label
+g25vx87,fresno,2020-08-17,1.0,X,X,X,X,same label
+g26150x,sanjose,2020-08-17,1.0,A,E,E,E,same label
+g26cn76,fresno,2020-08-17,1.0,A,A,A,A,same label
+g26d0kq,sanjose,2020-08-17,1.0,A,A,E,A,reconciled
+g26d1yx,fresno,2020-08-17,1.0,A,A,A,A,same label
+g26d3ud,fresno,2020-08-17,1.0,A,E,X,E,reconciled
+g26engn,fresno,2020-08-17,1.0,A,A,E,E,reconciled
+g26k1h2,fresno,2020-08-17,1.0,J,A,J,J,reconciled
+g26koww,fresno,2020-08-17,1.0,X,X,X,X,same label
+g26nwkf,sanjose,2020-08-17,1.0,X,X,X,X,same label
+g26orr8,fresno,2020-08-17,1.0,X,X,X,X,same label
+g26v5an,fresno,2020-08-17,1.0,X,X,X,X,same label
+g27ctny,sanjose,2020-08-17,1.0,J,N,E,N,reconciled
+g290jmj,sanjose,2020-08-17,1.0,A,J,A,A,reconciled
+g29eqpn,sanjose,2020-08-17,1.0,X,X,X,X,same label
+g29g3sn,sanjose,2020-08-17,1.0,J,J,J,J,same label
+g29lpso,fresno,2020-08-17,1.0,X,X,X,X,same label
+g29xtlb,sanjose,2020-08-17,1.0,A,J,J,J,same label
+g2afkli,sanjose,2020-08-17,1.0,J,E,J,J,reconciled
+g2apu19,sanjose,2020-08-17,1.0,J,J,J,J,same label
+g2azy49,sanjose,2020-08-17,1.0,X,E,X,E,reconciled
+g2c8djm,fresno,2020-08-17,1.0,E,E,J,E,reconciled
+g2cbfjd,sanjose,2020-08-17,1.0,X,A,A,A,same label
+g2cjnxi,fresno,2020-08-17,1.0,J,J,A,A,reconciled
+g2cti4v,fresno,2020-08-17,1.0,X,A,A,A,same label
+g2cx70x,sanjose,2020-08-17,1.0,A,E,E,E,same label
+g2devcg,fresno,2020-08-17,1.0,X,X,X,X,same label
+g2dgyic,fresno,2020-08-17,1.0,J,E,E,E,same label
+g2dgzfu,fresno,2020-08-17,1.0,X,X,X,X,same label
+g2e21di,sanjose,2020-08-17,1.0,J,E,A,A,reconciled
+g2e3ihi,sanjose,2020-08-17,1.0,J,J,J,J,same label
+g2eigm8,sanjose,2020-08-17,1.0,A,A,A,A,same label
+g2eqgtl,sanjose,2020-08-17,1.0,J,J,J,J,same label
+g2evc62,sanjose,2020-08-17,1.0,J,A,J,J,reconciled
+g2fje2u,sanjose,2020-08-17,1.0,J,A,J,A,reconciled
+g2fkp4n,sanjose,2020-08-17,1.0,J,J,A,A,reconciled
+g2hi81a,fresno,2020-08-17,1.0,X,X,X,X,same label
+g2hvabc,fresno,2020-08-17,1.0,A,J,X,J,reconciled
+g2i3f20,sanjose,2020-08-17,1.0,J,J,J,J,same label
+g2j5fuy,fresno,2020-08-17,1.0,X,X,X,X,same label
+g2jhhx9,fresno,2020-08-17,1.0,X,X,J,X,reconciled
+g2ji2ie,fresno,2020-08-17,1.0,J,J,J,J,same label
+g2jiq55,sanjose,2020-08-17,1.0,N,E,J,E,reconciled
+g2jj3a7,sanjose,2020-08-17,1.0,J,J,J,J,same label
+g2k02pl,fresno,2020-08-17,1.0,A,A,E,A,reconciled
+g2k6qbt,fresno,2020-08-17,1.0,A,A,A,A,same label
+g2kdrvn,fresno,2020-08-17,1.0,A,X,X,X,same label
+g2mtxm6,sanjose,2020-08-17,1.0,J,E,J,J,reconciled
+g4d55t3,seattle,2020-09-07,3.0261,X,X,X,X,same label
+g4ducch,seattle,2020-09-07,3.0,X,X,X,X,same label
+g4ejbfu,eugene,2020-09-07,2.9412,J,J,J,J,same label
+g4ekq31,eugene,2020-09-07,2.9412,J,J,J,J,same label
+g4emngp,eugene,2020-09-07,2.9412,J,J,J,J,same label
+g4enjtz,eugene,2020-09-07,2.9412,J,J,J,J,same label
+g4eudl3,eugene,2020-09-07,3.0,A,A,E,E,reconciled
+g4evalx,eugene,2020-09-07,2.8,J,E,J,J,reconciled
+g4ewuzx,seattle,2020-09-07,2.6667,A,A,A,A,same label
+g4f6d6h,seattle,2020-09-07,3.0261,A,A,A,A,same label
+g4f8gtk,seattle,2020-09-07,3.0,J,E,J,E,reconciled
+g4fmagv,eugene,2020-09-07,2.9412,J,J,J,J,same label
+g4g403f,seattle,2020-09-07,3.1,X,X,X,X,same label
+g4g4ytv,eugene,2020-09-07,3.3333,J,J,J,J,same label
+g4gc7wi,seattle,2020-09-07,3.0,N,N,E,N,reconciled
+g4gulg6,seattle,2020-09-07,3.0,X,X,X,X,same label
+g4gwve6,eugene,2020-09-07,2.9248,J,X,J,J,reconciled
+g4h2qm8,seattle,2020-09-07,3.0,A,N,J,E,reconciled
+g4hn1po,eugene,2020-09-07,2.9248,A,A,E,E,reconciled
+g4igchg,seattle,2020-09-07,3.1176,X,X,X,X,same label
+g4iorsv,eugene,2020-09-07,2.75,J,J,J,J,same label
+g4j7qx7,eugene,2020-09-07,3.0,X,E,A,A,reconciled
+g4jqsg0,seattle,2020-09-07,2.75,X,X,X,X,same label
+g4jymhr,eugene,2020-09-07,2.5,X,A,E,A,reconciled
+g4jzvjy,seattle,2020-09-07,3.0,N,N,N,N,same label
+g4k1hmy,seattle,2020-09-07,2.75,X,X,X,X,same label
+g4kcn71,eugene,2020-09-07,3.0,J,J,J,J,same label
+g4keacf,seattle,2020-09-07,3.0261,A,E,A,E,reconciled
+g4kjkp8,seattle,2020-09-07,3.0261,X,X,X,X,same label
+g4l19mq,eugene,2020-09-07,3.0,J,J,J,J,same label
+g4llaz6,eugene,2020-09-07,3.0,X,X,E,X,reconciled
+g4mrtxr,eugene,2020-09-07,3.0,J,E,J,E,reconciled
+g4mv3u0,eugene,2020-09-07,2.9248,A,E,X,X,reconciled
+g4p656b,eugene,2020-09-07,2.8333,J,J,J,J,same label
+g4pahhy,eugene,2020-09-07,3.0,J,J,J,J,same label
+g4pshzr,eugene,2020-09-07,2.75,A,E,A,A,reconciled
+g4qub8a,eugene,2020-09-07,3.3333,A,J,E,J,reconciled
+g4re5iy,seattle,2020-09-07,3.1429,A,A,A,A,same label
+g4s4ucq,eugene,2020-09-07,3.0,X,A,J,A,reconciled
+g4sgy0s,eugene,2020-09-07,2.6667,J,A,E,E,reconciled
+g4shbbm,eugene,2020-09-07,3.0,X,X,A,A,reconciled
+g4shnhr,seattle,2020-09-07,3.0,J,J,J,J,same label
+g4szoke,eugene,2020-09-07,3.0,A,A,A,A,same label
+g4u6o05,eugene,2020-09-07,3.5,A,X,X,X,same label
+g4v15o3,seattle,2020-09-07,3.0261,J,J,J,J,same label
+g4vld0w,seattle,2020-09-07,3.1111,X,E,X,X,reconciled
+g4vmg7a,seattle,2020-09-07,3.0261,X,X,E,X,reconciled
+g4vpm41,eugene,2020-09-07,2.8333,A,J,E,E,reconciled
+g4vpyxu,seattle,2020-09-07,3.0261,X,A,N,A,reconciled
+g4vq94v,seattle,2020-09-07,3.0261,J,X,A,A,reconciled
+g4w039v,seattle,2020-09-07,3.0261,X,X,X,X,same label
+g4w3u64,seattle,2020-09-07,3.25,J,X,J,J,reconciled
+g4w700m,seattle,2020-09-07,3.0261,X,E,E,E,same label
+g4wbksz,eugene,2020-09-07,2.9248,J,X,J,J,reconciled
+g4wj50q,seattle,2020-09-07,3.4,J,A,A,A,same label
+g4wm36b,seattle,2020-09-07,3.125,A,E,A,E,reconciled
+g4wom4q,eugene,2020-09-07,2.75,J,X,J,J,reconciled
+g4x238h,seattle,2020-09-07,3.125,A,A,A,A,same label
+g4xpxuj,eugene,2020-09-07,3.0,A,A,A,A,same label
+g4xzem2,seattle,2020-09-07,3.25,A,A,A,A,same label
+g4y30ra,seattle,2020-09-07,3.0,A,A,E,A,reconciled
+g4z595y,seattle,2020-09-07,3.0261,J,X,A,X,reconciled
+g4z6ukc,seattle,2020-09-07,3.0769,A,J,J,J,same label
+g4z84u6,seattle,2020-09-07,3.0,N,N,A,A,reconciled
+g4zcnue,seattle,2020-09-07,3.0769,E,N,J,J,reconciled
+g501sjr,eugene,2020-09-07,2.9248,J,E,J,E,reconciled
+g504v0w,seattle,2020-09-07,3.3333,X,E,A,E,reconciled
+g50c5ym,eugene,2020-09-07,2.6667,X,E,J,E,reconciled
+g50pukw,seattle,2020-09-07,3.0261,X,N,E,N,reconciled
+g517msw,eugene,2020-09-07,3.5,X,X,A,X,reconciled
+g517o9u,seattle,2020-09-07,3.0,A,A,A,A,same label
+g51imuy,eugene,2020-09-07,3.3333,J,X,E,X,reconciled
+g5458t5,seattle,2020-09-07,3.0,N,N,N,N,same label
+g547x7k,eugene,2020-09-07,2.8889,J,J,J,J,same label
+g54pzwo,seattle,2020-09-07,3.3333,J,X,J,X,reconciled
+g54wezc,eugene,2020-09-07,3.25,A,E,E,E,same label
+g54yihm,seattle,2020-09-07,2.5,N,N,N,N,same label
+g54znkc,seattle,2020-09-07,2.75,J,J,J,J,same label
+g54zy52,eugene,2020-09-07,3.0,X,E,E,E,same label
+g556qk6,seattle,2020-09-07,3.2,J,J,J,J,same label
+g55kqa2,eugene,2020-09-07,2.8,X,A,J,A,reconciled
+g5654oo,seattle,2020-09-07,3.3333,J,X,J,J,reconciled
+id03gn,sanjose,2020-08-17,1.0,A,A,A,A,same label
+idsry6,sanjose,2020-08-17,1.0,X,X,X,X,same label
+ie0j88,fresno,2020-08-17,1.0,J,A,A,A,same label
+ie3gkzw,fairbanks,2022-06-27,1.0,A,E,J,E,reconciled
+ie3qtw,sanjose,2020-08-17,1.0,X,J,J,J,same label
+ie3uq6o,fairbanks,2022-06-27,1.0,J,J,J,J,same label
+ie3vvgk,fairbanks,2022-06-27,1.0,J,J,J,J,same label
+ie3vyfh,fairbanks,2022-06-27,1.0,J,J,J,J,same label
+ie4j3im,fairbanks,2022-06-27,1.0,J,J,J,J,same label
+ie4z256,fairbanks,2022-06-27,1.0,J,J,J,J,same label
+ie5agpw,fairbanks,2022-06-27,1.0,A,A,A,A,same label
+ie5d6cd,fairbanks,2022-06-27,1.0,A,A,E,A,reconciled
+ie5jaop,fairbanks,2022-06-27,1.0,N,N,J,J,reconciled
+ie5jijf,fairbanks,2022-06-27,1.0,J,X,J,J,reconciled
+ie5jl2g,fairbanks,2022-06-27,1.0,A,E,A,A,reconciled
+ie5ki9v,fairbanks,2022-06-27,1.0,A,A,X,X,reconciled
+ie5ndv7,fairbanks,2022-06-27,1.0,A,A,A,A,same label
+ie5svq0,fairbanks,2022-06-27,1.0,A,E,A,E,reconciled
+ie5y52m,fairbanks,2022-06-27,1.0,J,J,A,A,reconciled
+ie6lncg,fairbanks,2022-06-27,1.0,J,J,J,J,same label
+ie6q58z,fairbanks,2022-06-27,1.0,N,X,X,X,same label
+ie70s2t,fairbanks,2022-06-27,1.0,J,X,X,X,same label
+ie8ucgt,fairbanks,2022-06-27,1.0,N,N,N,N,same label
+ie9a09b,fairbanks,2022-06-27,1.0,J,E,J,J,reconciled
+ie9cscv,fairbanks,2022-06-27,1.0,A,A,A,A,same label
+ie9csz9,fairbanks,2022-06-27,1.0,A,A,E,A,reconciled
+ie9f67w,fairbanks,2022-06-27,1.0,A,J,A,A,reconciled
+ie9hyd4,fairbanks,2022-06-27,1.0,X,X,N,X,reconciled
+ie9ssix,fairbanks,2022-06-27,1.0,J,E,J,J,reconciled
+ie9xb63,fairbanks,2022-06-27,1.0,A,A,A,A,same label
+ie9y9pz,fairbanks,2022-06-27,1.0,J,J,J,J,same label
+iea1csq,fairbanks,2022-06-27,1.0,N,N,E,J,reconciled
+iea1ok3,fairbanks,2022-06-27,1.0,J,E,J,E,reconciled
+ieaaosi,fairbanks,2022-06-27,1.0,J,J,J,J,same label
+ieaey2g,fairbanks,2022-06-27,1.0,J,E,J,J,reconciled
+ieatdd,sanjose,2020-08-17,1.0,A,J,A,J,reconciled
+iecqr6w,fairbanks,2022-06-27,1.0,J,E,J,J,reconciled
+iedpnj7,fairbanks,2022-06-27,1.0,N,E,J,E,reconciled
+ieedoy,sanjose,2020-08-17,1.0,J,J,J,J,same label
+ieqndc,fresno,2020-08-17,1.0,A,A,A,A,same label
+ievwfb,sanjose,2020-08-17,1.0,A,A,A,A,same label
+ieyho8,sanjose,2020-08-17,1.0,J,J,J,J,same label
+ioke9o,seattle,2020-09-07,3.0,J,E,J,E,reconciled
+iomjyy,eugene,2020-09-07,2.9248,A,A,J,A,reconciled
+iovpye,eugene,2020-09-07,2.9248,A,E,A,A,reconciled
+ip13m6,seattle,2020-09-07,3.0261,J,J,J,J,same label
+ip7w0o,seattle,2020-09-07,3.0261,A,A,A,A,same label
+ipj923,eugene,2020-09-07,2.9248,J,J,J,J,same label
+ipj968,seattle,2020-09-07,3.0261,A,E,A,E,reconciled
+ipkc0f,eugene,2020-09-07,2.9248,J,J,J,J,same label
+iqhev8,seattle,2020-09-07,3.0261,A,A,A,A,same label
+iqkefz,eugene,2020-09-07,2.9248,J,J,J,J,same label
+iqtblf,eugene,2020-09-07,2.9248,J,A,J,A,reconciled
+iqwlym,eugene,2020-09-07,2.5,J,J,E,J,reconciled
+irlmxm,eugene,2020-09-07,3.0,J,J,J,J,same label
+irv7fy,eugene,2020-09-07,3.5,J,J,A,J,reconciled
+is3zqo,eugene,2020-09-07,2.75,J,J,X,J,reconciled
+is4bpn,eugene,2020-09-07,2.9248,J,J,J,J,same label
+is5e03,seattle,2020-09-07,3.0261,X,X,X,X,same label
+is5fvp,seattle,2020-09-07,3.0261,A,A,E,A,reconciled
+jpj4wex,indianapolis,2023-06-26,1.0,X,X,X,X,same label
+jpn71lf,indianapolis,2023-06-26,1.0,X,X,X,X,same label
+jppuuq3,indianapolis,2023-06-26,1.0,J,A,J,J,reconciled
+jppw5x5,indianapolis,2023-06-26,1.0,E,E,A,E,reconciled
+jppzb88,indianapolis,2023-06-26,1.0,J,J,J,J,same label
+jpq1d7p,indianapolis,2023-06-26,1.0,J,A,J,A,reconciled
+jpqmy55,indianapolis,2023-06-26,1.0,J,E,E,E,same label
+jpqt0nq,indianapolis,2023-06-26,1.0,A,A,J,E,reconciled
+jpqtnu1,indianapolis,2023-06-26,1.0,J,A,J,A,reconciled
+jpr2638,indianapolis,2023-06-26,1.0,J,A,A,A,same label
+jprm8th,indianapolis,2023-06-26,1.0,X,E,E,E,same label
+jps9vkp,indianapolis,2023-06-26,1.0,A,E,J,E,reconciled
+jpsm80z,indianapolis,2023-06-26,1.0,A,A,A,A,same label
+jpsng34,indianapolis,2023-06-26,1.0,X,X,X,X,same label
+jpsq2o0,indianapolis,2023-06-26,1.0,A,A,A,A,same label
+jpswejj,indianapolis,2023-06-26,1.0,J,E,J,E,reconciled
+jpsx0i5,indianapolis,2023-06-26,1.0,J,A,J,J,reconciled
+jpt637i,indianapolis,2023-06-26,1.0,J,J,J,J,same label
+jptert7,indianapolis,2023-06-26,1.0,A,E,A,A,reconciled
+jpuiplu,indianapolis,2023-06-26,1.0,J,J,J,J,same label
+jpuj7z3,indianapolis,2023-06-26,1.0,A,A,A,A,same label
+jpv532p,indianapolis,2023-06-26,1.0,X,N,J,J,reconciled
+jpvfo8k,indianapolis,2023-06-26,1.0,A,A,A,A,same label
+jpvg77q,indianapolis,2023-06-26,1.0,A,J,E,E,reconciled
+jpvof48,indianapolis,2023-06-26,1.0,X,A,E,A,reconciled
+jpw03ky,indianapolis,2023-06-26,1.0,J,A,J,A,reconciled
+jpw335u,indianapolis,2023-06-26,1.0,A,A,E,A,reconciled
+jpwf6ku,indianapolis,2023-06-26,1.0,J,J,J,J,same label
+jpwscps,indianapolis,2023-06-26,1.0,A,A,E,A,reconciled
+jpxk8iv,indianapolis,2023-06-26,1.0,N,N,N,N,same label
+jpxw057,indianapolis,2023-06-26,1.0,A,A,E,E,reconciled
+jq046yz,indianapolis,2023-06-26,1.0,X,X,X,X,same label
+jq05yyp,indianapolis,2023-06-26,1.0,X,X,X,X,same label
+jq1gspy,indianapolis,2023-06-26,1.0,X,A,E,A,reconciled
+jq214yu,indianapolis,2023-06-26,1.0,A,E,J,E,reconciled
+jq2k7r3,indianapolis,2023-06-26,1.0,A,X,X,X,same label
+jq2m1od,indianapolis,2023-06-26,1.0,A,A,J,A,reconciled
+jq2wcr0,indianapolis,2023-06-26,1.0,X,X,J,X,reconciled
+jq2yn8f,indianapolis,2023-06-26,1.0,X,X,X,X,same label
+jq5gc21,indianapolis,2023-06-26,1.0,X,A,A,A,same label
+jqa1vfr,indianapolis,2023-06-26,1.0,X,X,X,X,same label
+jqcosjh,indianapolis,2023-06-26,1.0,X,X,X,X,same label
+jqdx0xk,indianapolis,2023-06-26,1.0,A,E,J,E,reconciled
+jqdydiy,indianapolis,2023-06-26,1.0,J,X,J,J,reconciled
+jqef7cd,indianapolis,2023-06-26,1.0,A,E,J,E,reconciled
+jqemz0y,indianapolis,2023-06-26,1.0,X,E,E,E,same label
+jqeq0lu,indianapolis,2023-06-26,1.0,J,A,J,J,reconciled
+jqetacc,indianapolis,2023-06-26,1.0,X,X,X,X,same label
+jqf2lzn,indianapolis,2023-06-26,1.0,A,J,J,J,same label
+jqg00wf,indianapolis,2023-06-26,1.0,X,X,X,X,same label
+m05oof6,bakersfield,2024-12-02,1.0,X,X,X,X,same label
+m09ezbn,bakersfield,2024-12-02,1.0,X,X,X,X,same label
+m09hyw1,bakersfield,2024-12-02,1.0,X,X,X,X,same label
+m0a3ptw,bakersfield,2024-12-02,1.0,E,E,J,E,reconciled
+m0a4sjz,bakersfield,2024-12-02,1.0,N,N,J,N,reconciled
+m0a64g9,bakersfield,2024-12-02,1.0,N,X,N,N,reconciled
+m0a8obg,bakersfield,2024-12-02,1.0,E,E,A,E,reconciled
+m0a8ykh,bakersfield,2024-12-02,1.0,N,E,N,N,reconciled
+m0a94ct,bakersfield,2024-12-02,1.0,E,E,E,E,same label
+m0a94uf,bakersfield,2024-12-02,1.0,E,A,E,E,reconciled
+m0abprd,bakersfield,2024-12-02,1.0,E,E,E,E,same label
+m0adtre,bakersfield,2024-12-02,1.0,E,E,E,E,same label
+m0am33e,bakersfield,2024-12-02,1.0,E,A,A,A,same label
+m0b93tn,bakersfield,2024-12-02,1.0,N,E,N,N,reconciled
+m0beetj,bakersfield,2024-12-02,1.0,N,E,N,N,reconciled
+m0beyv3,bakersfield,2024-12-02,1.0,E,E,E,E,same label
+m0bhgl5,bakersfield,2024-12-02,1.0,E,E,E,E,same label
+m0c1not,bakersfield,2024-12-02,1.0,N,N,N,N,same label
+m0c7kr3,bakersfield,2024-12-02,1.0,E,N,A,N,reconciled
+m0divmo,bakersfield,2024-12-02,1.0,E,A,A,A,same label
+m0e1744,bakersfield,2024-12-02,1.0,N,N,N,N,same label
+m0for1r,bakersfield,2024-12-02,1.0,E,E,E,E,same label
+m0g4w02,bakersfield,2024-12-02,1.0,A,A,A,A,same label
+m0mva3c,bakersfield,2024-12-02,1.0,E,A,E,E,reconciled
+m0ovui1,bakersfield,2024-12-02,1.0,E,A,A,A,same label
+m0rj02d,bakersfield,2024-12-02,1.0,J,J,J,J,same label
+m0rjbud,bakersfield,2024-12-02,1.0,E,A,E,E,reconciled
+m0rn7e5,bakersfield,2024-12-02,1.0,A,A,A,A,same label
+m0ro986,bakersfield,2024-12-02,1.0,A,A,A,A,same label
+m0rua2o,bakersfield,2024-12-02,1.0,A,E,E,E,same label
+m0rxuea,bakersfield,2024-12-02,1.0,A,N,E,E,reconciled
+m0s5all,bakersfield,2024-12-02,1.0,J,J,J,J,same label
+m0s8kj0,bakersfield,2024-12-02,1.0,A,A,A,A,same label
+m0saap8,bakersfield,2024-12-02,1.0,A,A,E,A,reconciled
+m0sbhoz,bakersfield,2024-12-02,1.0,N,N,A,N,reconciled
+m0sdh97,bakersfield,2024-12-02,1.0,J,E,J,J,reconciled
+m0sqgkd,bakersfield,2024-12-02,1.0,A,A,A,A,same label
+m0t5eyg,bakersfield,2024-12-02,1.0,E,E,X,E,reconciled
+m0tdo6v,bakersfield,2024-12-02,1.0,A,E,X,E,reconciled
+m0tp86v,bakersfield,2024-12-02,1.0,A,A,E,A,reconciled
+m0twmzn,bakersfield,2024-12-02,1.0,A,A,E,E,reconciled
+m0txzg3,bakersfield,2024-12-02,1.0,A,A,A,A,same label
+m0u3cvf,bakersfield,2024-12-02,1.0,A,E,E,E,same label
+m0vqwde,bakersfield,2024-12-02,1.0,A,E,E,E,same label
+m0xsz8t,bakersfield,2024-12-02,1.0,J,A,J,J,reconciled
+m0yib97,bakersfield,2024-12-02,1.0,X,X,X,X,same label
+m0z286k,bakersfield,2024-12-02,1.0,E,A,A,A,same label
+m0zaftw,bakersfield,2024-12-02,1.0,J,J,J,J,same label
+oxbyiho,detroit,2026-07-13,1.0,X,X,X,X,same label
+oxbyznc,detroit,2026-07-13,1.0,X,X,X,X,same label
+oxd0ujz,detroit,2026-07-13,1.0,X,X,X,X,same label
+oxdgx4l,pittsburgh,2026-07-13,2.6667,N,X,N,X,reconciled
+oxgqhf6,pittsburgh,2026-07-13,2.6667,N,N,N,N,same label
+oxk6ubu,pittsburgh,2026-07-13,2.8415,X,X,X,X,same label
+oxnrhdw,pittsburgh,2026-07-13,2.8415,X,X,X,X,same label
+oxogfe9,detroit,2026-07-13,1.0,X,N,A,E,reconciled
+oxpq49z,pittsburgh,2026-07-13,2.8571,X,X,E,E,reconciled
+oxs6bvc,detroit,2026-07-13,1.0,X,X,X,X,same label
+oxsbrz0,pittsburgh,2026-07-13,2.8182,N,N,E,N,reconciled
+oxsj4g4,detroit,2026-07-13,1.0,A,A,A,A,same label
+oxsopym,detroit,2026-07-13,1.0,A,A,A,A,same label
+oxstknr,detroit,2026-07-13,1.0,X,X,J,X,reconciled
+oxt18gq,detroit,2026-07-13,1.0,E,E,J,J,reconciled
+oxt1a0k,detroit,2026-07-13,1.0,A,A,A,A,same label
+oxt2car,detroit,2026-07-13,1.0,A,A,A,A,same label
+oxt3qsn,detroit,2026-07-13,1.0,J,J,J,J,same label
+oxt4vsm,pittsburgh,2026-07-13,2.8182,X,E,J,J,reconciled
+oxt5p11,detroit,2026-07-13,1.0,A,E,E,E,same label
+oxtchac,detroit,2026-07-13,1.0,A,A,A,A,same label
+oxtxnqq,detroit,2026-07-13,1.0,A,E,A,A,reconciled
+oxu2y8q,detroit,2026-07-13,1.0,A,A,A,A,same label
+oxup1cu,detroit,2026-07-13,1.0,A,X,N,N,reconciled
+oxv01dd,detroit,2026-07-13,1.0,J,A,J,J,reconciled
+oxv1z6a,detroit,2026-07-13,1.0,J,J,J,J,same label
+oxv6rol,detroit,2026-07-13,1.0,J,J,J,J,same label
+oxv9nw6,detroit,2026-07-13,1.0,J,A,E,A,reconciled
+oxvdgw4,detroit,2026-07-13,1.0,A,A,E,A,reconciled
+oxvexsi,detroit,2026-07-13,1.0,A,A,E,A,reconciled
+oxvpm6z,detroit,2026-07-13,1.0,A,A,E,E,reconciled
+oxvt5sk,detroit,2026-07-13,1.0,A,A,A,A,same label
+oxw2rj4,detroit,2026-07-13,1.0,N,N,N,N,same label
+oxwcpjt,detroit,2026-07-13,1.0,A,A,A,A,same label
+oxwhb8e,pittsburgh,2026-07-13,3.0,A,A,A,A,same label
+oxwil3b,detroit,2026-07-13,1.0,A,A,A,A,same label
+oxwimyo,detroit,2026-07-13,1.0,X,X,J,X,reconciled
+oxwnsnb,detroit,2026-07-13,1.0,J,A,J,A,reconciled
+oxwo9b7,detroit,2026-07-13,1.0,A,A,A,A,same label
+oxwr99r,pittsburgh,2026-07-13,3.0,J,A,J,A,reconciled
+oxwyv9v,pittsburgh,2026-07-13,2.8415,A,E,A,E,reconciled
+oxxe9x0,detroit,2026-07-13,1.0,A,A,E,E,reconciled
+oxxuqvy,detroit,2026-07-13,1.0,X,X,E,X,reconciled
+oxy4cx8,detroit,2026-07-13,1.0,J,J,J,J,same label
+oxyk029,pittsburgh,2026-07-13,2.8,A,N,N,N,same label
+oxyq7ut,pittsburgh,2026-07-13,3.0,A,A,A,A,same label
+oxyvuu2,pittsburgh,2026-07-13,3.0,X,X,X,X,same label
+oxyzgfd,pittsburgh,2026-07-13,2.8415,J,A,A,A,same label
+oxz4cv3,pittsburgh,2026-07-13,3.0,A,E,A,E,reconciled
+oxz5q5y,pittsburgh,2026-07-13,3.0,A,A,E,A,reconciled
+oxz9k2g,pittsburgh,2026-07-13,3.0,X,X,E,X,reconciled
+oxzh1hh,detroit,2026-07-13,1.0,A,A,A,A,same label
+oxzw6s7,pittsburgh,2026-07-13,2.7778,J,A,J,J,reconciled
+oxzz89n,pittsburgh,2026-07-13,2.7778,J,A,J,A,reconciled
+oy0doeb,pittsburgh,2026-07-13,2.7778,J,A,A,A,same label
+oy0iuig,pittsburgh,2026-07-13,3.0,N,N,N,N,same label
+oy0ms8l,pittsburgh,2026-07-13,2.8415,X,X,X,X,same label
+oy0ny2f,detroit,2026-07-13,1.0,J,A,E,E,reconciled
+oy1xe18,detroit,2026-07-13,1.0,J,E,A,A,reconciled
+oy2kb8c,pittsburgh,2026-07-13,3.0,J,J,J,J,same label
+oy3e43z,pittsburgh,2026-07-13,2.7778,A,A,E,A,reconciled
+oy3f3l6,pittsburgh,2026-07-13,2.875,A,E,E,E,same label
+oy3ouw0,pittsburgh,2026-07-13,2.7778,N,N,J,N,reconciled
+oy3r3sv,pittsburgh,2026-07-13,3.0,X,J,J,J,same label
+oy46mlz,detroit,2026-07-13,1.0,A,A,J,J,reconciled
+oy4dnl9,pittsburgh,2026-07-13,2.8889,E,E,J,E,reconciled
+oy4hag2,pittsburgh,2026-07-13,2.8824,A,E,A,E,reconciled
+oy4imsl,detroit,2026-07-13,1.0,X,X,J,J,reconciled
+oy4jdm8,pittsburgh,2026-07-13,2.8889,X,X,E,X,reconciled
+oy4kr60,pittsburgh,2026-07-13,2.8824,J,J,J,J,same label
+oy5a0rb,detroit,2026-07-13,1.0,A,A,A,A,same label
+oy5bwyi,detroit,2026-07-13,1.0,X,A,X,E,reconciled
+oy5ypj4,pittsburgh,2026-07-13,2.8824,J,J,J,J,same label
+oy6bbgb,pittsburgh,2026-07-13,2.8333,A,E,J,E,reconciled
+oy6d95b,pittsburgh,2026-07-13,2.8333,A,A,A,A,same label
+oy6f3i7,pittsburgh,2026-07-13,2.8333,J,A,E,A,reconciled
+oy6hfmg,pittsburgh,2026-07-13,2.8415,A,A,A,A,same label
+oy74qw8,detroit,2026-07-13,1.0,N,N,N,N,same label
+oy7kdkv,pittsburgh,2026-07-13,2.8667,N,X,X,X,same label
+oy7kmic,pittsburgh,2026-07-13,2.5,N,A,N,A,reconciled
+oy7l4x5,detroit,2026-07-13,1.0,A,X,E,E,reconciled
+oy7wez0,detroit,2026-07-13,1.0,J,J,J,J,same label
+oy7zokc,detroit,2026-07-13,1.0,N,N,E,E,reconciled
+oy82p5z,pittsburgh,2026-07-13,3.0,N,X,X,X,same label
+oy8kgqc,detroit,2026-07-13,1.0,X,X,X,X,same label
+oya29tm,pittsburgh,2026-07-13,2.5,J,X,J,J,reconciled
+oyb5k9v,pittsburgh,2026-07-13,2.8415,X,X,X,X,same label
+oydtbzv,pittsburgh,2026-07-13,3.0,J,J,J,J,same label
+oyfk5h1,detroit,2026-07-13,1.0,X,X,J,J,reconciled
+oygc4jo,pittsburgh,2026-07-13,2.8571,J,E,J,E,reconciled
+oygqmwa,pittsburgh,2026-07-13,2.8415,A,E,A,E,reconciled
+oyi6rwp,pittsburgh,2026-07-13,2.9167,J,E,J,J,reconciled
+oyiak44,pittsburgh,2026-07-13,2.9167,A,A,A,A,same label
+oyigyi5,pittsburgh,2026-07-13,2.8571,J,J,J,J,same label
+vmwtzl,fairbanks,2022-06-27,1.0,A,A,J,A,reconciled
+vmz13z,fairbanks,2022-06-27,1.0,A,J,A,A,reconciled
+vnsunv,fairbanks,2022-06-27,1.0,J,A,J,J,reconciled

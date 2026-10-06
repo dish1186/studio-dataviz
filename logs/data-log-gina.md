@@ -32,6 +32,31 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Reddit · tone, Step 1: Claude's draft tone labels corrected with Gina and Dish's hand check (spectrum_07) · 2026-10-05 20:07 EDT · Gina + Claude
+- **What:** every air post and comment in the nine worst weeks is counted with a corrected tone label:
+  - **checked items (436):** Gina and Dish's agreed label. That's the label they both chose (245), or the one they settled on in Reconcile (191).
+  - **unchecked items (1,725):** spread over the five groups by how often each Claude label turned out to be each agreed label in the hand check (a "correction table", pooled over all nine cities).
+  - Sampled weeks (Eugene, Seattle, Pittsburgh) are weighted back to the full week; "not about the air" is left out of shares (same rules as spectrum_03/05).
+- **Why:** in the Air Talk Check (Oct 4), Claude's label matched the agreed label on 67% of items (κ 0.57), below the bar set before the check. Using only the ~50 checked items per city would throw away most of the data. **Decided by Gina 2026-10-05:** keep the Oct 4 agreed labels as final (no relabelling) and use this correction.
+- **Input:**
+  - `data/raw/reddit/air_talk_check/air_talk_check_codes_2026-10-05.csv` (new): export of the Air Talk Check page's database (https://claude.ai/artifact/CTiUZAAjnXS2QfmYwor28i), taken 2026-10-05; identical to Claude's Oct 4 23:09 copy. One row per card: both coders' bands and "unsure" flags, notes (none were written), reconciled band. User IDs dropped.
+  - `data/processed/reddit/spectrum_03_outputs/*_claude_draft.csv` (Claude's bands), `spectrum_02_labels/*_to_label.csv` (weights), `analysis_01/cities.csv` and `pairs.csv`.
+- **Script:** `scripts/reddit/spectrum_07_corrected_shares.py`
+- **Rows in → out:** 2,161 air items (436 checked) → 9 cities × 2 methods; nothing removed. Every checked card matched an item and a weight; every disagreement had a reconciled label; no "Ambiguous".
+- **Results:**
+  - Gina vs Dish: 56% agreement, κ 0.44. Claude vs agreed: 67%, κ 0.57.
+  - Living with it, draft → corrected (95% range): Bakersfield 61% → 62% (61–64) · Indianapolis 11% → 34% (31–38) · San Jose 7% → 24% (21–28) · Pittsburgh 14% → 31% (27–35) · Fresno 19% → 35% (31–38) · Seattle 12% → 28% (24–32) · Detroit 8% → 27% (24–31) · Fairbanks 14% → 16% (fully checked) · Eugene 6% → 24% (21–28).
+  - **EXPLORATORY** (tone was not part of the pre-set pair test): the more unusual city lives with it less in 6 of 9 pairs (draft) → 8 of 9 (corrected). The used-to-it city lives with it more in 6 of 6 mixed pairs (draft) → 5 of 6 (corrected; Fairbanks vs Detroit flips).
+- **Output:** `data/processed/reddit/spectrum_07_corrected/`: `hand_check_items.csv`, `confusion_matrix.csv`, `agreement.csv`, `item_probabilities.csv`, `city_shares.csv`, `pairs_tone.csv`, `summary.md`. Codes only, no text.
+- **Judgment calls:**
+  1. One correction table pooled over all nine cities, not one per city (too few checked items per city). **Claude's choice, approved by Gina.** It assumes Claude makes the same kinds of mistakes in every city.
+  2. 95% ranges: bootstrap of the 436 checked items, 2,000 rounds, seed 7. They cover the hand check only, not the sampling of the three big weeks. **Claude's choice, approved by Gina.**
+  3. "Used to it" = median days a year at or above 35.5 µg/m³ (2019–2025) of 8 or more, the default on Dish's Boiling Frog Pots page. **Claude's choice, approved by Gina.**
+  4. User IDs left out of the raw export; notes kept (all empty). **Claude's choice, approved by Gina.**
+- **Open:** Dish to agree the method before the corrected shares replace the draft ones on the Boiling Frog page.
+
+---
+
 ### Doc · Gina's response added to Dish's air-spectrum handoff · 2026-10-04 09:49 EDT · Gina + Claude
 - **What:** added a section "gina-response 10/4/2026" at the bottom of `docs/handoff-gina-air-spectrum.md`. Dish's text above it is unchanged.
 - **Proposal in the response:**

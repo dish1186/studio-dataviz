@@ -1,0 +1,10 @@
+type,worse_air_city,other_city,more_unusual_city,used_to_it_cities,exploratory,living_worse_air_claude_draft,living_other_claude_draft,more_unusual_lives_with_it_less_claude_draft,used_to_it_lives_with_it_more_claude_draft,living_worse_air_corrected,living_other_corrected,more_unusual_lives_with_it_less_corrected,used_to_it_lives_with_it_more_corrected
+matched,fairbanks,detroit,fairbanks,fairbanks,1,0.1429,0.0779,0,1,0.1562,0.2746,1,0
+matched,bakersfield,indianapolis,indianapolis,bakersfield,1,0.6078,0.1075,1,1,0.623,0.3445,1,1
+matched,fresno,pittsburgh,fresno,fresno,1,0.1944,0.1441,0,1,0.3459,0.3077,0,1
+crossed,bakersfield,sanjose,sanjose,bakersfield,1,0.6078,0.0699,1,1,0.623,0.2437,1,1
+crossed,indianapolis,sanjose,sanjose,,1,0.1075,0.0699,1,,0.3445,0.2437,1,
+crossed,fresno,seattle,seattle,fresno,1,0.1944,0.1197,1,1,0.3459,0.2797,1,1
+crossed,pittsburgh,seattle,seattle,,1,0.1441,0.1197,1,,0.3077,0.2797,1,
+crossed,bakersfield,seattle,seattle,bakersfield,1,0.6078,0.1197,1,1,0.623,0.2797,1,1
+crossed,indianapolis,seattle,seattle,,1,0.1075,0.1197,0,,0.3445,0.2797,1,
