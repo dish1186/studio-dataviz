@@ -75,7 +75,7 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 - **Script:** `scripts/site/01_hand_coded_comments.py`
 - **Values in → out:** 436 → 337 (99 with agreed label X removed). 3 texts over 1,500 characters cut to 1,500 + "…" (iqtblf, g4kcn71, g2c8djm), as on the page. Order: city, group, id. **Identical to the published block.**
 - **Output:** `site/data/hand-coded-comments.js`
-- **Judgment calls / open:** 12 quotes carry `f = 1` (drawn larger as "interesting"). The flags came with Dish's data and are in no repo file, so they are **copied** from the snapshot and labelled COPIED. **To ask Dish** who flagged them and how.
+- **Judgment calls / open:** 12 quotes carry `f = 1` (drawn larger as "interesting"). **Gina and Dish flagged them** (Gina, 2026-10-07). The list is in no repo file yet, so it is **copied** from the snapshot and labelled COPIED; to do: save it as a raw file. Re-run 2026-10-07 to update that note in the file header; the data did not change.
 - **Page check (all five steps):** the page now reads these five files. Against the snapshot: pixel-identical at 45 positions with reduced motion, city card identical, no script errors; with full motion only animation timing differs.
 
 ---

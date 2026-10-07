@@ -2,13 +2,13 @@
 
 The freestanding version of the Boiling Frog page (Dish Chowdhury and Gina Hollenbach, MDE Studio, Oct 2026).
 
-## Status: step 3 of 6 done (2026-10-07)
+## Status: steps 1–5 of 6 done (2026-10-07)
 
 1. **Snapshot** (commit `d689e08`): an unchanged copy of the published artifact, version 94
    (claude.ai/artifact/J3fSoj9QZQjDP9RPoJHmiV, version id 1791318584-8639). `tools/snapshot-d689e08.sha256` holds the
    checksum of every file in that commit. To check the snapshot:
    `mkdir /tmp/snap && git archive d689e08 site | tar -x -C /tmp/snap && cd /tmp/snap/site && shasum -a 256 -c MANIFEST.sha256`
-2. **Split** (this commit): the page's style and script blocks moved into their own files by `tools/split_page.py`,
+2. **Split** (commits `b7a2f8a`, comments `dfa635f`): the page's style and script blocks moved into their own files by `tools/split_page.py`,
    which reads the snapshot straight from git, so the split can be re-run and checked. Behaviour is unchanged:
    - with reduced motion, screenshots of the old and new page at 45 positions from top to bottom are pixel-identical,
      and the city card is pixel-identical for Bakersfield, Indianapolis and Eugene;
@@ -102,11 +102,21 @@ To rebuild everything: `for s in 05_pm25 01_hand_coded_comments 02_tone_counts 0
 - `f = 1` on 12 of the hand-coded comments (drawn larger as "interesting"): the flags are in no repo file.
 Both are copied from the snapshot and labelled COPIED in their file headers.
 
+## Checking it
+
+- `python3 site/tools/check.py`: every data file's inputs are unchanged since it was built (SHA-256), and every value
+  matches the published snapshot, including the numbers that used to be typed into the code. Writes nothing.
+- `python3 site/tools/compare_pages.py`: screenshots the snapshot and the site from top to bottom with reduced motion and
+  compares them pixel by pixel (needs headless Chrome; see the script). Last run 2026-10-07: identical at 45 positions,
+  no errors.
+- `docs/site-methods.md`: one row per number on the page, with its meaning, formula, the code that draws it and the data
+  it comes from.
+
 ## Next steps
 
-4. `check.py`: compare every rebuilt number with the snapshot; explain any difference.
-5. `docs/site-methods.md`: one row per number on the page, with formula, script and source file.
+4. ~~`check.py`~~ done 2026-10-07 (`tools/check.py`, `tools/compare_pages.py`).
+5. ~~`docs/site-methods.md`~~ done 2026-10-07.
 6. Host on GitHub Pages.
 
-Until the switch-over, the artifact stays the place where edits happen. Any artifact edit after version 94 has to be
-carried over here by hand (or by re-running the snapshot and split).
+Open: `days_over_15` (ask Dish), the hand-check sampling script `spectrum_06_validation_sample.py` (probably on Dish's
+computer), the 12 interesting-quote flags as a raw file, and the source of `data/states.js`.

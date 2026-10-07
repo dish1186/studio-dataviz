@@ -6,8 +6,8 @@ X (not about the air). Group = agreed_band (A Alarm, J Adjusting, E Enduring, N 
 Text: full_text from data/processed/reddit/spectrum_01_air_items/<city>_<week>_air_items.csv, matched on item_id
 (usernames were removed upstream). Texts longer than 1,500 characters are cut to 1,500 plus "…" (as on the page).
 Order: city, then group letter, then item id (the order of the published page; the quote layout depends on it).
-f = 1 marks the 12 quotes drawn larger as "interesting". The flags are not in any repo file: they came with Dish's comment data on
-the published page, so they are COPIED below (from snapshot d689e08, site/index.html). Who flagged them and how: to be confirmed by Dish.
+f = 1 marks the 12 quotes Gina and Dish flagged as interesting (drawn larger). The list is not in a repo file yet, so it is COPIED
+below from the published page (snapshot d689e08, site/index.html). To do: save it as a raw file and read it from there.
 
 Output: site/data/hand-coded-comments.js, window.HAND_CODED = [{id, c, b, t}, ...]
 Replaces the inline <script id="qdata"> block in site/index.html. Run from the repo root:
@@ -48,5 +48,5 @@ assert sum("f" in x for x in rows) == len(FLAGGED), "a flagged quote is missing"
 cut = [x["id"] for x in rows if x["t"].endswith("…") and len(x["t"]) == MAX_CHARS + 1]
 write_js("site/data/hand-coded-comments.js", "HAND_CODED", rows, "scripts/site/01_hand_coded_comments.py", [HAND, *used],
          notes=[f"{len(rows)} comments: the hand-checked items minus agreed label X. Cut to {MAX_CHARS} characters: {', '.join(cut) or 'none'}.",
-                f"f = 1 (drawn larger as interesting) is COPIED from the published page for {len(FLAGGED)} quotes, not computed: to be confirmed by Dish."])
+                f"f = 1 marks the {len(FLAGGED)} quotes Gina and Dish flagged as interesting; the list is COPIED from the published page (not yet in a repo file)."])
 print(len(rows), "comments;", "cut:", cut)
