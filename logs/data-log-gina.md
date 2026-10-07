@@ -32,6 +32,54 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Site · Step 5: city facts and results for the site, rebuilt with the existing builder (pm25.js) · 2026-10-07 09:15 EDT · Gina + Claude
+- **What:** runs `viz/pm25-scrolly/build.py --full` (the result of record, `analysis_01`) and writes its output to `site/data/pm25.js` with a source header. `build.py` gained an `--out` option for this; without it, it behaves as before.
+- **Why:** the page's `data.js` was a copy downloaded from the artifact. Now it comes from the repo's own builder.
+- **Input:** `data/processed/openaq/step08_pm_normals/pm_normals.csv`, `data/processed/reddit/analysis_01/` (`cities.csv`, `pairs.csv`, `weekly.csv`, `results.md`), `data/processed/openaq/step05_averages/pm25_fairbanks_daily.csv`, `docs/experiment-design-pm25.md` (event dates and causes).
+- **Script:** `scripts/site/05_pm25.py` (runs `viz/pm25-scrolly/build.py --full --out …`)
+- **Values in → out:** 9 cities, 9 pairs, ρ and verdict. **Identical to the published file** except the "built" date (2026-10-04 → 2026-10-07).
+- **Output:** `site/data/pm25.js`
+- **Judgment calls / open:** `days_over_15` (the map tooltip's "about N bad days a year") was added to the published data by Dish outside the repo, and no repo file reproduces it (64 candidate definitions tried: days over 15 µg/m³ a year, median or mean, 2016–2025 or 2019–2025, city average or highest site, > or ≥). It is **copied** from the snapshot (`d689e08:site/data.js`) and labelled COPIED in the file header. **To ask Dish** how it was made.
+
+### Site · Step 4: city card quotes, saved as a script and rebuilt (quotes.js) · 2026-10-07 09:15 EDT · Gina + Claude
+- **What:** up to 3 quotes per city and tone group for the city cards. The code is the one that built them in chat on 2026-10-06, recovered from the session and saved as a script.
+- **Why:** the card quotes were built in chat with no script in the repo.
+- **Input:** `data/processed/reddit/spectrum_03_outputs/spectrum_labels_<city>_<week>_claude_draft.csv` (text and Claude's band), `data/processed/reddit/spectrum_07_corrected/hand_check_items.csv` (agreed bands).
+- **Script:** `scripts/site/04_card_quotes.py`
+- **Values in → out:** all worst-week labelled items → 102 quotes (86 hand-checked, 16 Claude draft). **Identical to the published file.**
+- **Output:** `site/data/quotes.js`
+- **Judgment calls:** links dropped and "u/name" replaced with "someone"; 50–230 characters; no swear words or insults (word list in the script); at most 40% capitals; hand-checked first, then closest to 140 characters, 3 per group. **Claude's choices, approved by Gina 2026-10-07.**
+
+### Site · Step 3: city card data, saved as a script and rebuilt (cards.js) · 2026-10-07 09:15 EDT · Gina + Claude
+- **What:** per city: facts copied from `pm25.js`, corrected tone counts and their 95% range, the 5 most-matched air keywords, and daily PM2.5 from 2019-01-01 to 2026-09-25. The code is the one that built it in chat on 2026-10-06, recovered and saved as a script; it now reads `site/data/pm25.js` instead of a downloaded copy.
+- **Why:** the card data was built in chat with no script in the repo.
+- **Input:** `site/data/pm25.js`, `data/processed/reddit/spectrum_07_corrected/city_shares.csv` (method = corrected), `data/processed/openaq/step05_averages/pm25_<city>_daily.csv` (`ref_mean`), `data/processed/reddit/spectrum_01_air_items/<city>_<week>_air_items.csv` (`matched_terms`).
+- **Script:** `scripts/site/03_city_cards.py`
+- **Values in → out:** 9 cities × 2,825 days. **Identical to the published file.**
+- **Output:** `site/data/cards.js`
+- **Judgment calls:** keywords leave out "the air" and "air quality" (every city has them). **Claude's choice, approved by Gina 2026-10-07.**
+
+### Site · Step 2: comment counts per tone group, out of the code into a data file (tone-counts.js) · 2026-10-07 09:15 EDT · Gina + Claude
+- **What:** one file with every tone count the page uses: corrected counts (`city_shares.csv`, corrected), Claude draft counts per labelled item and weighted to the full week, counts in each city's biggest thread, and worst-week air items per city. Replaces `CORR`, `SPEC`, `C` and the story's `DATA`, which were typed into the code.
+- **Why:** typed-in numbers can't be audited or re-run.
+- **Input:** `data/processed/reddit/spectrum_07_corrected/city_shares.csv`, `spectrum_03_outputs/*_claude_draft.csv`, `spectrum_02_labels/*_to_label.csv` (weights), `spectrum_01_air_items/*_air_items.csv`.
+- **Script:** `scripts/site/02_tone_counts.py`
+- **Values in → out:** 9 cities × 5 measures. **Every value identical to the typed-in ones.** (First run counted air items after sampling, 400 for Eugene, Seattle and Pittsburgh; corrected to the full-week count before sampling, 1,171 / 1,213 / 1,143, which is what the code had. Not shown on the page.)
+- **Output:** `site/data/tone-counts.js`
+- **Judgment calls:** biggest thread = the thread with the most labelled items, counted with the sampling weights. **Claude's choice, approved by Gina 2026-10-07.**
+
+### Site · Step 1: the 337 hand-coded comments, out of the page into a data file (hand-coded-comments.js) · 2026-10-07 09:15 EDT · Gina + Claude
+- **What:** the comments for the comment, word and word-cloud plates: every item in the hand check except agreed label X, with its agreed group and its text. Replaces the inline `<script id="qdata">` block.
+- **Why:** the 337 comments had no link to their source.
+- **Input:** `data/processed/reddit/spectrum_07_corrected/hand_check_items.csv` (436 items, `agreed_band`), `data/processed/reddit/spectrum_01_air_items/<city>_<week>_air_items.csv` (`full_text`).
+- **Script:** `scripts/site/01_hand_coded_comments.py`
+- **Values in → out:** 436 → 337 (99 with agreed label X removed). 3 texts over 1,500 characters cut to 1,500 + "…" (iqtblf, g4kcn71, g2c8djm), as on the page. Order: city, group, id. **Identical to the published block.**
+- **Output:** `site/data/hand-coded-comments.js`
+- **Judgment calls / open:** 12 quotes carry `f = 1` (drawn larger as "interesting"). The flags came with Dish's data and are in no repo file, so they are **copied** from the snapshot and labelled COPIED. **To ask Dish** who flagged them and how.
+- **Page check (all five steps):** the page now reads these five files. Against the snapshot: pixel-identical at 45 positions with reduced motion, city card identical, no script errors; with full motion only animation timing differs.
+
+---
+
 ### Reddit · tone, Step 1: Claude's draft tone labels corrected with Gina and Dish's hand check (spectrum_07) · 2026-10-05 20:07 EDT · Gina + Claude
 - **What:** every air post and comment in the nine worst weeks is counted with a corrected tone label:
   - **checked items (436):** Gina and Dish's agreed label. That's the label they both chose (245), or the one they settled on in Reconcile (191).

@@ -46,11 +46,12 @@
   /* ---------- talk disks, drawn like the city cards' sentiment disk (Dish's Air Talk Disks recipe: riso colours, grainy
      blended outline, dot screen, hairline spokes, red reacting | living-with-it split). Four groups, corrected counts. ---------- */
   const GROUPS=["alarm","adjusting","enduring","normalizing"], SPK=[-135,135,45,-45].map(d=>d*Math.PI/180);
-  // CALCULATION / DATA · DATA, typed in: ratio here is the "× more air talk" (data/pm25.js rise: Bakersfield 4.809 -> 4.8,
-  //   Indianapolis 9.529 -> 9.5); cnt = corrected tone counts A, J, E, N (= CORR in js/how-they-talked.js, spectrum_07_corrected/city_shares.csv).
-  //   Shown: share = count / total of the four; reacting % = round(100 × (A + J) / total); "~N air posts and comments" = round(total).
+  // DATA · the two story disks, from the data files: ratio here is the "× more air talk", rise in data/pm25.js rounded to 1 decimal
+  //   (Bakersfield 4.809 -> 4.8, Indianapolis 9.529 -> 9.5); cnt = corrected tone counts A, J, E, N (data/tone-counts.js, corrected).
+  //   CALCULATION · shown: share = count / total of the four; reacting % = round(100 × (A + J) / total); "~N air posts and comments" = round(total).
   //   Shape only: each lobe reaches R × min(1.08, 0.18 + 1.9 × share); wedge opacity = 0.4 + 0.6 × share / largest share.
-  const DATA={bakersfield:{name:"Bakersfield",sub:"dec 2–8, 2024",ratio:4.8,cnt:[13.73,5.45,21.92,9.77]},indianapolis:{name:"Indianapolis",sub:"jun 26–jul 2, 2023",ratio:9.5,cnt:[45.55,19.54,27.19,7.03]}};   // corrected tone counts (alarm, adjusting, enduring, normalizing): data/processed/reddit/spectrum_07_corrected/city_shares.csv
+  const RISE1=k=>+window.PM25.cities.find(c=>c.slug===k).rise.toFixed(1);
+  const DATA={bakersfield:{name:"Bakersfield",sub:"dec 2–8, 2024",ratio:RISE1("bakersfield"),cnt:window.TONE.corrected.bakersfield.slice()},indianapolis:{name:"Indianapolis",sub:"jun 26–jul 2, 2023",ratio:RISE1("indianapolis"),cnt:window.TONE.corrected.indianapolis.slice()}};
   const DC=220, DR=128, DS=MOBILE?1:.88;
   const RISO=[["#f2643c","#ec4f9a","#8a4fe0","#2a9d9a"],["#ff7a52","#ff6fb0","#a77bff","#3fc4c0"]];
   const hmix=(a,b,t)=>{const h=x=>[1,3,5].map(i=>parseInt(x.slice(i,i+2),16)),A=h(a),B=h(b);return"#"+A.map((x,i)=>Math.round(x+(B[i]-x)*t).toString(16).padStart(2,"0")).join("")};

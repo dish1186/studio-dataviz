@@ -7,8 +7,8 @@
   const NS = "http://www.w3.org/2000/svg", el = (t, a, p) => { const e = document.createElementNS(NS, t); for (const k in a) e.setAttribute(k, a[k]); p.appendChild(e); return e; };
   const NAME = { fairbanks: "Fairbanks", bakersfield: "Bakersfield", fresno: "Fresno", detroit: "Detroit", indianapolis: "Indianapolis",
     pittsburgh: "Pittsburgh", sanjose: "San Jose", seattle: "Seattle", eugene: "Eugene" };
-  // DATA · typed in: the cities with bad_days >= 8 (the "used to it" rule in js/map-dots.js). Check it if data/pm25.js changes.
-  const USED = new Set(["fairbanks", "bakersfield", "fresno"]);
+  // the "used to it" cities: bad_days >= 8, the rule in js/map-dots.js (Fairbanks, Bakersfield, Fresno)
+  const USED = new Set(window.PM25.cities.filter(c => window.BF_USED(c.slug)).map(c => c.slug));
   const ROW = ["fairbanks", "bakersfield", "fresno", "detroit", "indianapolis", "pittsburgh", "sanjose", "seattle", "eugene"];
   const PAIRS = [["fairbanks", "detroit"], ["bakersfield", "indianapolis"], ["fresno", "pittsburgh"],   // matched
     ["bakersfield", "sanjose"], ["indianapolis", "sanjose"], ["fresno", "seattle"], ["pittsburgh", "seattle"], ["bakersfield", "seattle"], ["indianapolis", "seattle"]];   // crossed

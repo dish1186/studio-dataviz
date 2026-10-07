@@ -131,23 +131,12 @@ function drawAll() { drawSafe(); }
 /* ---------- air-talk groupings under each pair (added by Gina + Claude) ---------- */
 // Comment counts per tone group (A Alarm, J Adjusting, E Enduring, N Normalizing; not-about-the-air left out).
 // Source: data/processed/reddit/spectrum_03_outputs (Claude draft labels) + spectrum_02_labels weights; big = the city's biggest thread.
-// CALCULATION / DATA · SPEC, typed in from these files (checked 2026-10-07):
-//   read = number of air items with each Claude draft label, A Alarm, J Adjusting, E Enduring, N Normalizing (X, not about
-//          the air, left out): data/processed/reddit/spectrum_03_outputs/spectrum_labels_<city>_<week>_claude_draft.csv, column band
-//   est  = the same counts weighted back to the full week for the three sampled weeks (Eugene, Seattle, Pittsburgh), using the
-//          weights in spectrum_02_labels/<city>_<week>_to_label.csv = spectrum_07_corrected/city_shares.csv, method claude_draft, count_A..N
-//   big  = the part of each count that comes from the city's single biggest thread
-const SPEC = {
-  eugene: { read: { A: 144, J: 160, E: 5, N: 13 }, est: { A: 423.3, J: 470.4, E: 13.8, N: 38.7 }, big: { A: 17.6, J: 29.4, E: 0, N: 0 } },
-  fairbanks: { read: { A: 13, J: 17, E: 0, N: 5 }, est: { A: 13, J: 17, E: 0, N: 5 }, big: { A: 4, J: 7, E: 0, N: 2 } },
-  detroit: { read: { A: 138, J: 87, E: 5, N: 14 }, est: { A: 138, J: 87, E: 5, N: 14 }, big: { A: 38, J: 40, E: 2, N: 4 } },
-  seattle: { read: { A: 104, J: 139, E: 13, N: 20 }, est: { A: 316.8, J: 422.9, E: 40.3, N: 60.3 }, big: { A: 0, J: 0, E: 0, N: 0 } },
-  fresno: { read: { A: 22, J: 7, E: 5, N: 2 }, est: { A: 22, J: 7, E: 5, N: 2 }, big: { A: 0, J: 0, E: 0, N: 0 } },
-  pittsburgh: { read: { A: 143, J: 113, E: 10, N: 33 }, est: { A: 408.8, J: 320.8, E: 28.3, N: 94.5 }, big: { A: 14.4, J: 25.9, E: 0, N: 2.9 } },
-  sanjose: { read: { A: 128, J: 138, E: 6, N: 14 }, est: { A: 128, J: 138, E: 6, N: 14 }, big: { A: 6, J: 13, E: 0, N: 0 } },
-  indianapolis: { read: { A: 61, J: 22, E: 1, N: 9 }, est: { A: 61, J: 22, E: 1, N: 9 }, big: { A: 19, J: 3, E: 0, N: 2 } },
-  bakersfield: { read: { A: 15, J: 5, E: 22, N: 9 }, est: { A: 15, J: 5, E: 22, N: 9 }, big: { A: 0, J: 0, E: 18, N: 8 } },
-};
+// DATA · SPEC: Claude draft label counts per city and group (A Alarm, J Adjusting, E Enduring, N Normalizing; X left out),
+//   from data/tone-counts.js (scripts/site/02_tone_counts.py):
+//   read = one per labelled item (spectrum_03_outputs/spectrum_labels_<city>_<week>_claude_draft.csv, band)
+//   est  = weighted back to the full week for the sampled weeks (Eugene, Seattle, Pittsburgh): city_shares.csv, method claude_draft
+//   big  = the part of each count from the city's biggest thread (the thread with the most labelled items, weighted)
+const SPEC = Object.fromEntries(Object.keys(window.TONE.draft_read).map(k => [k, { read: TONE.draft_read[k], est: TONE.draft_est[k], big: TONE.big_thread[k] }]));
 const TG = {
   two: [["Reacting", "AJ", "--t-alarm", "Alarm + Adjusting"], ["Living with it", "EN", "--t-endure", "Enduring + Normalizing"]],
   three: [["Alarm", "A", "--t-alarm"], ["Adjusting", "J", "--t-adjust"], ["Living with it", "EN", "--t-endure", "Enduring + Normalizing"]],

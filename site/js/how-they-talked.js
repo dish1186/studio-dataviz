@@ -2,22 +2,20 @@
 // How they talked (from the "How They Talked" artifact). Wrapped in its own function so its names stay out of the page's.
 (() => {
 const NS="http://www.w3.org/2000/svg",el=(t,a,p)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);p&&p.appendChild(e);return e},tx=(p,a,s)=>{const e=el("text",a,p);e.textContent=s;return e};
-/* Source: viz/pm25-scrolly/data.js (result of record, 9 cities) and the SPEC counts in the scrolly page
-   (data/processed/reddit/spectrum_03_outputs, Claude draft labels). read = labelled comments per tone group. */
-/* CALCULATION / DATA · C, typed in from data/pm25.js (pm, rise, bad_days -> bad, ratio; see js/plates-shared.js for how each is made)
-   plus read = Claude draft label counts per group (same as SPEC.read in js/plates-shared.js) and air = all air items Claude labelled,
-   X included (e.g. Bakersfield 15+5+22+9 + 4 X = 55). big = counts from the city's biggest thread. */
-const C={
- bakersfield:{pm:55.47,name:"Bakersfield",st:"CA",dates:"Dec 2–8, 2024",rise:4.809,bad:12,ratio:2.94,air:55,read:{A:15,J:5,E:22,N:9},big:{A:0,J:0,E:18,N:8},fn:"3"},
- fairbanks:{pm:91.8,name:"Fairbanks",st:"AK",dates:"Jun 27 – Jul 3, 2022",rise:27.065,bad:8,ratio:17.39,air:36,read:{A:13,J:17,E:0,N:5},fn:"2"},
- fresno:{pm:61.16,name:"Fresno",st:"CA",dates:"Aug 17–23, 2020",rise:12.365,bad:8,ratio:5.95,air:82,read:{A:22,J:7,E:5,N:2}},
- detroit:{pm:91.78,name:"Detroit",st:"MI",dates:"Jul 13–19, 2026",rise:26.432,bad:2,ratio:7.44,air:319,read:{A:138,J:87,E:5,N:14},fn:"4"},
- indianapolis:{pm:55.09,name:"Indianapolis",st:"IN",dates:"Jun 26 – Jul 2, 2023",rise:9.529,bad:1,ratio:4.42,air:127,read:{A:61,J:22,E:1,N:9}},
- seattle:{pm:51.46,name:"Seattle",st:"WA",dates:"Sep 7–13, 2020",rise:29.128,bad:1,ratio:7.21,air:1213,read:{A:104,J:139,E:13,N:20},fn:"1"},
- eugene:{pm:280.4,name:"Eugene",st:"OR",dates:"Sep 7–13, 2020",rise:20.222,bad:0,ratio:41.88,air:1171,read:{A:144,J:160,E:5,N:13},fn:"1,5"},
- sanjose:{pm:36.34,name:"San Jose",st:"CA",dates:"Aug 17–23, 2020",rise:27.326,bad:0,ratio:5.01,air:342,read:{A:128,J:138,E:6,N:14},fn:"5"},
- pittsburgh:{pm:59.21,name:"Pittsburgh",st:"PA",dates:"Jul 13–19, 2026",rise:14.806,bad:0,ratio:5.27,air:1143,read:{A:143,J:113,E:10,N:33},fn:"1,4"},
-};
+/* DATA · C: one entry per city, built from the data files (no numbers typed in):
+     pm, name, st (state), dates, rise, bad (= bad_days), ratio   from data/pm25.js (scripts/site/05_pm25.py; how each is made: js/plates-shared.js)
+     read  Claude draft label counts per group, air = worst-week air items before sampling, X included
+           (data/tone-counts.js, draft_read and air_items; scripts/site/02_tone_counts.py)
+     big   Bakersfield only: draft counts in its biggest thread (tone-counts.js big_thread), for "leave out the biggest thread"
+     fn    footnote numbers shown beside the city name (text, not data)
+   C_ORDER is the order the cities are listed in and ties are broken by; kept as published. */
+const C_ORDER=["bakersfield","fairbanks","fresno","detroit","indianapolis","seattle","eugene","sanjose","pittsburgh"];
+const C_FN={bakersfield:"3",fairbanks:"2",detroit:"4",seattle:"1",eugene:"1,5",sanjose:"5",pittsburgh:"1,4"};
+const C=Object.fromEntries(C_ORDER.map(k=>{const p=window.PM25.cities.find(c=>c.slug===k),T=window.TONE;
+ const o={pm:p.pm,name:p.name,st:p.state,dates:p.dates,rise:p.rise,bad:p.bad_days,ratio:p.ratio,air:T.air_items[k],read:T.draft_read[k]};
+ if(k==="bakersfield")o.big=T.big_thread[k];
+ if(C_FN[k])o.fn=C_FN[k];
+ return[k,o]}));
 /* sort orders. Shares and peaks follow the current data (they change with "leave out Bakersfield's big thread") */
 const PAIRS=["fairbanks","detroit","eugene","bakersfield","indianapolis","sanjose","fresno","pittsburgh","seattle"];   /* matched pairs, then the unpaired and crossed-pair cities */
 /* THE TONE AXIS used by every chart in this file: 0 to 4, one unit per group, Alarm [0,1), Adjusting [1,2), Enduring [2,3),
@@ -158,11 +156,12 @@ const BANDS=["A","J","E","N"];
    Dish and Gina coded by hand (agreed or reconciled). The big-thread option applies to Claude's labels only. */
 /* corrected counts (Gina + Claude, Oct 6): hand-checked comments keep the agreed label, the rest are spread by how often
    Claude's label matched it, scaled to the full week. data/processed/reddit/spectrum_07_corrected/city_shares.csv (count_A..N). */
-/* CORR = data/processed/reddit/spectrum_07_corrected/city_shares.csv, rows method = corrected, columns count_A, count_J, count_E, count_N
-   (checked 2026-10-07). Made by scripts/reddit/spectrum_07_corrected_shares.py: each of the 436 hand-checked items counts once
-   for its agreed group; each of the other 1,725 items is split across the groups by how often its Claude label turned out to be
-   each agreed group among the checked items (one table pooled over the nine cities); sampled weeks are weighted back to the full week. */
-const CORR={bakersfield:[13.73,5.45,21.92,9.77],fairbanks:[11,16,4,1],fresno:[20.02,5.53,11.79,1.72],eugene:[361.36,370.67,200.16,37.21],sanjose:[109.99,107.59,57.41,12.69],indianapolis:[45.55,19.54,27.19,7.03],seattle:[317.58,326.55,194.56,55.6],detroit:[111.56,72.99,56.37,13.5],pittsburgh:[348.77,262.06,200.19,71.32]};
+/* CORR = corrected counts A, J, E, N per city: data/tone-counts.js, corrected (scripts/site/02_tone_counts.py, from
+   data/processed/reddit/spectrum_07_corrected/city_shares.csv, method = corrected, count_A..count_N). Made by
+   scripts/reddit/spectrum_07_corrected_shares.py: each of the 436 hand-checked items counts once for its agreed group; each of the
+   other 1,725 items is split across the groups by how often its Claude label turned out to be each agreed group among the checked
+   items (one table pooled over the nine cities); sampled weeks are weighted back to the full week. */
+const CORR=window.TONE.corrected;
 let AUD=null;
 /* CALCULATION · which counts feed the charts (st.src; the page opens on "corr"):
      corr   CORR above: corrected counts
@@ -272,7 +271,7 @@ function drawQuad(){
    City positions are recomputed from these audited labels (not Claude's drafts): across = where the tone sits
    ("Dot sits at" setting), up = bad-air days a year (square root). Each quote is pulled sideways toward its own
    group, and quotes toward Alarm pack tighter and tremble more. No axes or numbers. */
-const QUOTES=JSON.parse(document.getElementById("qdata").textContent||"[]");
+const QUOTES=window.HAND_CODED||[];   /* the 337 hand-coded comments: data/hand-coded-comments.js (scripts/site/01_hand_coded_comments.py) */
 let qRaf=0;
 /* CALCULATION · where a city's dot sits on the 0-4 axis ("Dot sits at"):
      peak     peakOf(sh), the top of its hill (the page's setting)
