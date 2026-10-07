@@ -1,4 +1,5 @@
-// Moved unchanged from index.html (snapshot d689e08), line 1977.
+// Moved from index.html (snapshot d689e08), line 1977; comments on calculations and sources added 2026-10-07; code unchanged.
+// No data calculations in this file: layout and motion only.
 // Outro: fourteen frogs in Dish's pot, placed after her sketch. Each bobs on its own rhythm, blinks now and then,
 // and turns its eyes toward the cursor. Same vector frog as Plate I. Decoration only; nothing here reads data.js.
 (() => {

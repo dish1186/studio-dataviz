@@ -1,4 +1,5 @@
-// Moved unchanged from index.html (snapshot d689e08), line 1917.
+// Moved from index.html (snapshot d689e08), line 1917; comments on calculations and sources added 2026-10-07; code unchanged.
+// No data calculations in this file: layout and motion only.
 // Study details: every block rises word by word out of a blur as it scrolls in (same motion as the story headings);
 // the three result boxes come in one after another.
 (() => {

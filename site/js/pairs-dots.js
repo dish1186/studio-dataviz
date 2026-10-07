@@ -1,4 +1,4 @@
-// Moved unchanged from index.html (snapshot d689e08), line 1852.
+// Moved from index.html (snapshot d689e08), line 1852; comments on calculations and sources added 2026-10-07; code unchanged.
 // Pairs dots (Dish's mockup, Oct 6). Slide 1: the nine cities in a row (indigo = used to bad air, green = not). Slide 2: the
 // heading changes and the dots slide into the three matched and six crossed pairs; a city in several pairs splits into copies,
 // Eugene (in no pair) fades out, and the city names fade in. Pinned and scrubbed by scroll. Pairs as in data.js.
@@ -7,6 +7,7 @@
   const NS = "http://www.w3.org/2000/svg", el = (t, a, p) => { const e = document.createElementNS(NS, t); for (const k in a) e.setAttribute(k, a[k]); p.appendChild(e); return e; };
   const NAME = { fairbanks: "Fairbanks", bakersfield: "Bakersfield", fresno: "Fresno", detroit: "Detroit", indianapolis: "Indianapolis",
     pittsburgh: "Pittsburgh", sanjose: "San Jose", seattle: "Seattle", eugene: "Eugene" };
+  // DATA · typed in: the cities with bad_days >= 8 (the "used to it" rule in js/map-dots.js). Check it if data/pm25.js changes.
   const USED = new Set(["fairbanks", "bakersfield", "fresno"]);
   const ROW = ["fairbanks", "bakersfield", "fresno", "detroit", "indianapolis", "pittsburgh", "sanjose", "seattle", "eugene"];
   const PAIRS = [["fairbanks", "detroit"], ["bakersfield", "indianapolis"], ["fresno", "pittsburgh"],   // matched

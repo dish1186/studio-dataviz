@@ -1,4 +1,4 @@
-// Moved unchanged from index.html (snapshot d689e08), line 1374.
+// Moved from index.html (snapshot d689e08), line 1374; comments on calculations and sources added 2026-10-07; code unchanged.
 // Interactive pairs map (after the pairs plate). Adapted from the map plate artifact; cities, numbers and pair
 // results now come from data.js (lat/lon are the only additions: city-centre coordinates).
 (() => {
@@ -7,6 +7,7 @@ const D = window.PM25, LL = { bakersfield: [35.37, -119.02], fairbanks: [64.84, 
 const CITIES = D.cities.map(c => ({ ...c, lat: LL[c.slug][0], lon: LL[c.slug][1] }));
 const C = Object.fromEntries(CITIES.map(c => [c.slug, c]));
 const PAIRS = D.pairs.filter(p => p.rise_worse != null && p.rise_other != null).map((p, i) => ({ type: p.type, a: p.worse, b: p.other, ok: p.outcome === "as Pos predicts", i }));
+// CALCULATION · per pair: "more unusual" = the city with the higher ratio; "reacted more" = the city with the higher rise; ok = outcome "as Pos predicts"
 PAIRS.forEach(p => { p.unusual = C[p.a].ratio > C[p.b].ratio ? p.a : p.b; p.more = C[p.a].rise > C[p.b].rise ? p.a : p.b; });
 const COL = { matched: "var(--ink)", crossed: "var(--ink)" };   // pair type is told by solid vs dashed, not colour (brand.md)
 const st = { dots: "size", pairs: "all", arrow: "off",   // arrowheads off (Gina, Oct 6); still in map settings
@@ -32,6 +33,7 @@ const defs = svg.append("defs");
 const gPairs = svg.append("g"), gCities = svg.append("g");
 const LBL = { seattle: [10, -8, "start"], eugene: [-10, 4, "end"], sanjose: [-10, 4, "end"], fresno: [10, -4, "start"], bakersfield: [10, 12, "start"],
   fairbanks: [10, 4, "start"], indianapolis: [-10, 14, "end"], detroit: [8, -8, "start"], pittsburgh: [10, 12, "start"] };
+// CALCULATION · dot radius = 3 + 17 × √(PM2.5 / 300) px: the area grows with worst-week PM2.5 (pm, data/pm25.js), plus a 3 px minimum
 const rPM = v => 3 + 17 * Math.sqrt(v / 300);        // dot area ∝ PM2.5 (µg/m³)
 const BEND = [1, .9, 1.1, 1.25, .8, 1, .75, 1.2, .95];
 function arc(p) {
@@ -130,6 +132,7 @@ function drawList() {
 // the indigo dot sits above it by the air-talk jump, the magenta dot below it by how unusual the air was (log scale, 1× to 50×).
 function pairChart(el, p) {
   const svg = d3.select(el); svg.selectAll("*").remove();
+  // CALCULATION · pair chart: rise drawn upward and ratio downward from the middle line, both on a log scale from 1× to 50×
   const W = 320, half = 78, sp = 26 + 78, H = 26 + 78 * 2 + 64, d = d3.scaleLog([1, 50], [0, half]), r = 7.5, cs = [C[p.a], C[p.b]];
   svg.attr("viewBox", `0 0 ${W} ${H}`);
   svg.append("text").attr("x", 10).attr("y", 16).attr("font-size", 10.5).attr("font-weight", 700).attr("letter-spacing", ".08em").attr("fill", "var(--ink)").text("↑ TALK");

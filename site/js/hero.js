@@ -1,4 +1,5 @@
-// Moved unchanged from index.html (snapshot d689e08), line 1193.
+// Moved from index.html (snapshot d689e08), line 1193; comments on calculations and sources added 2026-10-07; code unchanged.
+// No data calculations in this file: layout and motion only.
 // Plate I hero: Dish's pot (img/side/) and Claude's frog. Bubbles, water and blinking are decoration only;
 // nothing here reads data.js.
 (() => {

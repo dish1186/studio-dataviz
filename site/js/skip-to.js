@@ -1,4 +1,5 @@
-// Moved unchanged from index.html (snapshot d689e08), line 1001.
+// Moved from index.html (snapshot d689e08), line 1001; comments on calculations and sources added 2026-10-07; code unchanged.
+// No data calculations in this file: layout and motion only.
 // Skip-to buttons. "case study" lands on the story frame "let's take a look at two cities" (both states are in by
 // about 7.6 on the story timeline, so the scroll position is computed from the live ScrollTrigger, on phones too).
 (() => {

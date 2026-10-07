@@ -1,9 +1,12 @@
-// Moved unchanged from index.html (snapshot d689e08), line 2321.
+// Moved from index.html (snapshot d689e08), line 2321; comments on calculations and sources added 2026-10-07; code unchanged.
 // How they talked (from the "How They Talked" artifact). Wrapped in its own function so its names stay out of the page's.
 (() => {
 const NS="http://www.w3.org/2000/svg",el=(t,a,p)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);p&&p.appendChild(e);return e},tx=(p,a,s)=>{const e=el("text",a,p);e.textContent=s;return e};
 /* Source: viz/pm25-scrolly/data.js (result of record, 9 cities) and the SPEC counts in the scrolly page
    (data/processed/reddit/spectrum_03_outputs, Claude draft labels). read = labelled comments per tone group. */
+/* CALCULATION / DATA · C, typed in from data/pm25.js (pm, rise, bad_days -> bad, ratio; see js/plates-shared.js for how each is made)
+   plus read = Claude draft label counts per group (same as SPEC.read in js/plates-shared.js) and air = all air items Claude labelled,
+   X included (e.g. Bakersfield 15+5+22+9 + 4 X = 55). big = counts from the city's biggest thread. */
 const C={
  bakersfield:{pm:55.47,name:"Bakersfield",st:"CA",dates:"Dec 2–8, 2024",rise:4.809,bad:12,ratio:2.94,air:55,read:{A:15,J:5,E:22,N:9},big:{A:0,J:0,E:18,N:8},fn:"3"},
  fairbanks:{pm:91.8,name:"Fairbanks",st:"AK",dates:"Jun 27 – Jul 3, 2022",rise:27.065,bad:8,ratio:17.39,air:36,read:{A:13,J:17,E:0,N:5},fn:"2"},
@@ -17,8 +20,13 @@ const C={
 };
 /* sort orders. Shares and peaks follow the current data (they change with "leave out Bakersfield's big thread") */
 const PAIRS=["fairbanks","detroit","eugene","bakersfield","indianapolis","sanjose","fresno","pittsburgh","seattle"];   /* matched pairs, then the unpaired and crossed-pair cities */
+/* THE TONE AXIS used by every chart in this file: 0 to 4, one unit per group, Alarm [0,1), Adjusting [1,2), Enduring [2,3),
+   Normalizing [3,4]. Group b (0..3) sits at the centre of its unit, b + 0.5. Reacting = Alarm + Adjusting, living with it = Enduring + Normalizing.
+   CALCULATION · shares(): share of group b = count_b / (count_A + count_J + count_E + count_N). "Not about the air" (X) is never counted. */
 function shares(slug){const n=bandCounts(slug),t=n.reduce((a,b)=>a+b,0);return{n,t,sh:n.map(x=>x/t)}}
+/* CALCULATION · peak = the point u on the 0-4 axis (checked every 0.025) where the smoothed curve kde(sh, u) is highest */
 function peakOf(sh){let b=0;for(let k=0;k<=160;k++){const u=k/40;if(kde(sh,u)>kde(sh,b))b=u}return b}
+/* CALCULATION · sort orders: by rise, PM2.5, ratio, alarm share, reacting share (A+J), living share (E+N), peak (leftmost first), comment count; ties go to more bad-air days */
 function order(){const K=Object.keys(C),S=Object.fromEntries(K.map(k=>[k,shares(k)])),by=f=>K.slice().sort((a,b)=>f(b)-f(a)||C[b].bad-C[a].bad);
  switch(st.ord){
   case"rise":return by(k=>C[k].rise);
@@ -67,6 +75,7 @@ function blob(c,rs,an,pinch){const P=[],n=rs.length;for(let i=0;i<n;i++){const j
 function hex(x){if(x.startsWith("#")&&x.length===4)x="#"+[...x.slice(1)].map(c=>c+c).join("");return x}
 function mix(a,b,f){a=hex(a);b=hex(b);const h=x=>[1,3,5].map(i=>parseInt(x.slice(i,i+2),16));const A=h(a),B=h(b);return"#"+A.map((x,i)=>Math.round(x+(B[i]-x)*f).toString(16).padStart(2,"0")).join("")}
 function counts(slug,G){const n=bandCounts(slug);return G.map(g=>[...g[1]].reduce((t,b)=>t+n["AJEN".indexOf(b)],0))}
+/* CALCULATION · lines drawn in a talk disk = round(rise × lines-per-× setting), or round(√rise × setting × 2.2) on the square-root scale; at least 1 */
 function nLines(rise){const per=v("s-n");return Math.max(1,Math.round(st.sc==="sqrt"?Math.sqrt(rise)*per*2.2:rise*per))}
 
 function disk(svg,slug){
@@ -149,8 +158,16 @@ const BANDS=["A","J","E","N"];
    Dish and Gina coded by hand (agreed or reconciled). The big-thread option applies to Claude's labels only. */
 /* corrected counts (Gina + Claude, Oct 6): hand-checked comments keep the agreed label, the rest are spread by how often
    Claude's label matched it, scaled to the full week. data/processed/reddit/spectrum_07_corrected/city_shares.csv (count_A..N). */
+/* CORR = data/processed/reddit/spectrum_07_corrected/city_shares.csv, rows method = corrected, columns count_A, count_J, count_E, count_N
+   (checked 2026-10-07). Made by scripts/reddit/spectrum_07_corrected_shares.py: each of the 436 hand-checked items counts once
+   for its agreed group; each of the other 1,725 items is split across the groups by how often its Claude label turned out to be
+   each agreed group among the checked items (one table pooled over the nine cities); sampled weeks are weighted back to the full week. */
 const CORR={bakersfield:[13.73,5.45,21.92,9.77],fairbanks:[11,16,4,1],fresno:[20.02,5.53,11.79,1.72],eugene:[361.36,370.67,200.16,37.21],sanjose:[109.99,107.59,57.41,12.69],indianapolis:[45.55,19.54,27.19,7.03],seattle:[317.58,326.55,194.56,55.6],detroit:[111.56,72.99,56.37,13.5],pittsburgh:[348.77,262.06,200.19,71.32]};
 let AUD=null;
+/* CALCULATION · which counts feed the charts (st.src; the page opens on "corr"):
+     corr   CORR above: corrected counts
+     claude C[slug].read: Claude's draft labels, minus Bakersfield's biggest thread when that option is on
+     audit  the 337 hand-coded comments (QUOTES), counted by their agreed group */
 function bandCounts(slug){if(st.src==="corr")return (CORR[slug]||[0,0,0,0]).slice(); if(st.src==="audit"){if(!AUD){AUD={};QUOTES.forEach(q=>{(AUD[q.c]=AUD[q.c]||[0,0,0,0])["AJEN".indexOf(q.b)]++})}return (AUD[slug]||[0,0,0,0]).slice()}
  const s=C[slug];return BANDS.map(b=>Math.max(0,s.read[b]-(st.big&&s.big?s.big[b]:0)))}
 function rng(seed){let x=0;for(const ch of seed)x=(x*31+ch.charCodeAt(0))>>>0;return()=>{x=(x*1664525+1013904223)>>>0;return x/4294967296}}
@@ -164,6 +181,10 @@ const PAL={mag:[null,null],
  print:[["#e3301f","#ea6e62","#5638b8","#2a7a3b"],["#ff5a48","#ff9a8a","#9a84ff","#62c477"]]};
 function hueAt(u,MAG){const dark=css("--ground").toLowerCase()==="#160d4c",P=PAL[st.pal][dark?1:0];if(!P)return MAG;
  const t=Math.min(1,Math.max(0,u/4))*(P.length-1),k=Math.min(P.length-2,Math.floor(t));return mix(P[k],P[k+1],t-k)}
+/* CALCULATION · the tone hills: a Gaussian smoothing of the four shares.
+     kde(sh, u) = Σ over groups b of  sh_b × exp( -(u - (b + 0.5))² / (2 × SIG²) ),  SIG = 0.42
+   Each group adds a bell curve centred on its section, as tall as its share. The curves are not rescaled per city:
+   every hill is divided by the tallest point across the cities drawn (kmax; all nine by default), so heights compare between cities. */
 function kde(sh,u){return sh.reduce((t,w,b)=>t+w*Math.exp(-((u-(b+.5))**2)/(2*SIG*SIG)),0)}
 /* soft edge = blur; grain = keep each pixel only where the shape is denser than a noise field, so thin parts dissolve into speckle */
 function makeFx(defs,id,x,y,w,h,blur){
@@ -180,6 +201,7 @@ function makeFx(defs,id,x,y,w,h,blur){
 /* Quadrant: x = where the city's tone sits (same 0–4 axis and "Dot sits at" setting as the curves),
    y = bad-air days a year (descriptive only; square-root scale so 0–2 days are not crushed).
    Dividers: the reacting / living-with-it split, and the nine cities' median bad-air days. */
+/* CALCULATION · quadrant: across = dotPos, up = √(bad-air days / 12); the dashed line = the median of the nine cities' bad-air days (5th of 9 sorted) */
 function drawQuad(){
  const svg=document.getElementById("rows");svg.innerHTML="";
  const W=1000,H=660,x0=170,x1=880,X=u=>x0+(x1-x0)*u/4,yt=96,yb=560,DMAX=12,Y=d=>yb-(yb-yt)*Math.sqrt(d/DMAX);
@@ -252,6 +274,11 @@ function drawQuad(){
    group, and quotes toward Alarm pack tighter and tremble more. No axes or numbers. */
 const QUOTES=JSON.parse(document.getElementById("qdata").textContent||"[]");
 let qRaf=0;
+/* CALCULATION · where a city's dot sits on the 0-4 axis ("Dot sits at"):
+     peak     peakOf(sh), the top of its hill (the page's setting)
+     median   walk Alarm -> Normalizing adding shares until the next group would pass 0.5; the point is placed inside that
+              group's section in proportion: b + (0.5 - shares before it) / sh_b
+     average  Σ sh_b × (b + 0.5), each comment counted at its section's centre */
 function dotPos(sh){if(st.dot==="peak")return peakOf(sh);
  if(st.dot==="med"){let cum=0,b=0;while(b<3&&cum+sh[b]<.5){cum+=sh[b];b++}return b+(sh[b]?(.5-cum)/sh[b]:.5)}
  return sh.reduce((t,w,b)=>t+w*(b+.5),0)}
@@ -259,6 +286,12 @@ function gauss(r){return Math.sqrt(-2*Math.log(1-r()))*Math.cos(2*Math.PI*r())}
 /* Words: from the same hand-audited comments. Each word counts once per comment.
    "Most used" ranks by how many comments in that city and tone group use it; "Most distinctive" ranks by how much
    more often that city and group use it than every other city and group (smoothed log ratio, at least 2 comments). */
+/* CALCULATION · words: lower-case the comment, turn ’ into ', drop [link] and [user], keep runs of letters (with ' or -) of 3 or more
+   letters, cut a final 's, and drop the stop words below. Plate "The words people chose" (cityWords) counts each word once per comment:
+     n   = comments in this city and tone group that use the word
+     "most used":        rank by n
+     "most distinctive": rank by  ln( ((n + 0.5) / (n_k + 1)) / ((o + 0.5) / (N - n_k + 1)) ) × √n,  only for n >= 2,
+         n_k = comments in this city and group, o = comments in every other city and group that use the word, N = 337 */
 const STOP=new Set(("a about above after again against all also am an and any are aren't as at be because been before being below between both but by "+
  "can can't cannot could couldn't did didn't do does doesn't doing don't down during each few for from further get got had hadn't has hasn't have haven't having "+
  "he he'd he'll he's her here here's hers herself him himself his how how's i i'd i'll i'm i've if in into is isn't it it's its itself just let's like "+
@@ -287,6 +320,8 @@ function cityWords(wcat,wn){const key=st.wmode+"|"+wn+"|"+wcat;if(WORDCACHE[key]
 /* Word cloud: one entry per word, sized by how many times it appears in the hand-audited comments
    (every occurrence counts). Packed on a spiral from the centre, biggest words first; colour = the tone group
    whose comments use it most. */
+/* CALCULATION · word cloud: every occurrence counts (a word used twice in one comment counts 2); docs = comments that use it.
+   by[] = occurrences per tone group; a word's colour is the group with the most occurrences (the earlier group on a tie). Font size = (10 + 70 × √(n / n of the top word)) px × Size. */
 function cloudCounts(ctx){const cnt={};
  QUOTES.forEach(q=>{if(ctx.city!=="all"&&q.c!==ctx.city)return;
   const ws=(q.t.toLowerCase().replace(/[’‘]/g,"'").replace(/\[(link|user)\]/g," ").match(/[a-z][a-z'\-]*[a-z]|[a-z]{3,}/g)||[]).map(w=>w.replace(/'s$/,"")).filter(w=>w.length>=3&&!STOP.has(w));
@@ -336,6 +371,11 @@ function wordsArrange(ctx){if(!ctx.warr)return;const to=ctx.wlay==="cat"?1:0,red
  ctx.warr.nodes.forEach(n=>{n.from=n.k;n.to=to;if(reduce){n.k=to;place(n,0,0)}});ctx.warr.t0=0;
  ctx.warr.catG.style.opacity=to;ctx.warr.glowG.style.opacity=ctx.warr.nameG.style.opacity=1-to;
  if(reduce)return;if(!ctx.raf)drawQuotes(ctx)}
+/* CALCULATION · quotes layout (a loose map, not a chart):
+     city centre: across = average position (dotPos, "average") from the city's hand-coded comments only; up = √(bad-air days / 12)
+     each quote:  u = m + (b + 0.5 - m) × 0.5 × min(Spread, 1.6) + gauss() × 0.14 × Spread   (m = city centre, b = the quote's group)
+                  tremble weight j = exp(-(u - 0.5)² / (2 × 0.9²)): 1 at Alarm, near 0 by Enduring
+     gauss() is a standard normal draw from a generator seeded per city, so the layout is the same on every load. */
 function drawQuotes(ctx){
  const svg=ctx.svg;svg.innerHTML="";
  const W=1000,H=820,x0=150,x1=850,X=u=>x0+(x1-x0)*u/4,yt=110,yb=720,Y=d=>yb-(yb-yt)*Math.sqrt(d/12);

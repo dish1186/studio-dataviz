@@ -2,7 +2,7 @@
 
 The freestanding version of the Boiling Frog page (Dish Chowdhury and Gina Hollenbach, MDE Studio, Oct 2026).
 
-## Status: step 2 of 6 done (2026-10-06)
+## Status: step 2 of 6 done (2026-10-07)
 
 1. **Snapshot** (commit `d689e08`): an unchanged copy of the published artifact, version 94
    (claude.ai/artifact/J3fSoj9QZQjDP9RPoJHmiV, version id 1791318584-8639). `tools/snapshot-d689e08.sha256` holds the
@@ -19,6 +19,17 @@ The only edits `split_page.py` makes, all needed because code moved into files:
 - `url("img/…")` in CSS now reads `url("../img/…")` (CSS paths resolve from the CSS file);
 - the libraries load from `js/lib/` (pinned copies of the same cdnjs versions) instead of cdnjs;
 - the data files load from `data/` (moved, contents unchanged).
+
+**Comments on calculations and sources** (separate commit, 2026-10-07). 145 comment lines were added on top of the split;
+no code changed (checked line by line against the `split_page.py` output, and again pixel-identical with the snapshot).
+Search the code for these markers:
+- `CALCULATION` — the formula behind a number on the page, with the upstream script and column it comes from;
+- `DATA` — numbers or text typed into the code or markup, with the file they were copied from;
+- `No data calculations in this file` — files that only do layout and motion.
+
+The source of the 337 hand-coded comments is written above `<script id="qdata">` in `index.html`: which items
+(`spectrum_07_corrected/hand_check_items.csv` minus the 99 marked X), which label (`agreed_band`) and where the text
+comes from (`spectrum_01_air_items/<city>_<week>_air_items.csv`, `full_text`), checked item by item.
 
 ## Run it locally
 
@@ -75,9 +86,12 @@ _unused/                 city-panel.js and city-panel-data.js: published with th
 | `data/cards.js` | built by Gina + Claude in chat from `openaq/step05_averages`, `reddit/spectrum_07_corrected`, `reddit/spectrum_01` | not yet: no script in the repo |
 | `data/quotes.js` | built by Gina + Claude in chat from `reddit/spectrum_03` | not yet |
 | `data/states.js` | US state outlines | source to be recorded |
-| 337 hand-coded comments | inline in `index.html` (`<script id="qdata">`) | not yet: no link to its source file |
-| `SPEC` in `js/plates-shared.js` | typed into the code; source named in its comment (`spectrum_03_outputs` + `spectrum_02_labels`) | not yet |
-| `CORR` in `js/how-they-talked.js` | typed into the code (corrected spectrum_07 counts) | not yet |
+| 337 hand-coded comments | inline in `index.html` (`<script id="qdata">`); source traced in the comment above it | traced and checked; no script yet |
+| `SPEC` in `js/plates-shared.js` | typed in; matches the Claude draft label counts in `spectrum_03_outputs` and `spectrum_07_corrected/city_shares.csv` (claude_draft) | traced and checked; no script yet |
+| `CORR` in `js/how-they-talked.js` | typed in; matches `spectrum_07_corrected/city_shares.csv` (corrected, `count_A..N`) | traced and checked; no script yet |
+| `C` in `js/how-they-talked.js`, `DATA` in `js/story-same-air.js`, `USED` in `js/pairs-dots.js` | typed-in copies of values above | traced; no script yet |
+| numbers in the story text and "see the numbers" | typed into `index.html` | each checked in a comment beside it |
+| the 3 rotating Reddit posts | typed into `index.html` | item ids in a comment beside them |
 
 ## Next steps
 

@@ -1,4 +1,5 @@
-// Moved unchanged from index.html (snapshot d689e08), line 2069.
+// Moved from index.html (snapshot d689e08), line 2069; comments on calculations and sources added 2026-10-07; code unchanged.
+// No data calculations in this file: layout and motion only.
 // The boiling-frog air layer. Specks start sparse and thicken with scroll progress, too slowly to notice from one
 // screen to the next; at the "So what?" plate everything snaps to clean air, then returns after it. Decoration only.
 (() => {

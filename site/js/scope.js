@@ -1,4 +1,5 @@
-// Moved unchanged from index.html (snapshot d689e08), line 1545.
+// Moved from index.html (snapshot d689e08), line 1545; comments on calculations and sources added 2026-10-07; code unchanged.
+// No data calculations in this file: layout and motion only.
 // Scope plate (Gina, Oct 6): the plate pins while you scroll. First the header ("We followed nine U.S. cities…") rises and
 // fills line by line, then "we looked at:", each item and each note in turn; only then does the page move on to the map.
 (() => {

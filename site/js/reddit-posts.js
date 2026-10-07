@@ -1,4 +1,5 @@
-// Moved unchanged from index.html (snapshot d689e08), line 2135.
+// Moved from index.html (snapshot d689e08), line 2135; comments on calculations and sources added 2026-10-07; code unchanged.
+// No data calculations in this file: layout and motion only.
 // Reddit posts under "or they come from ourselves.": one at a time, swapping every 4.5 s while the section is on screen.
 (() => {
 const box = document.getElementById("posts"), posts = [...box.querySelectorAll(".post")];

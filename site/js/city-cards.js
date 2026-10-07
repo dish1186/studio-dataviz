@@ -1,4 +1,5 @@
-// Moved unchanged from index.html (snapshot d689e08), line 1938.
+// Moved from index.html (snapshot d689e08), line 1938; comments on calculations and sources added 2026-10-07; code unchanged.
+// No data calculations in this file: layout and motion only.
 // City cards (Gina + Claude, Oct 6). Replaces the four-city panel: any of the nine cities on the pairs map opens its card
 // (card/index.html, the "Boiling Frog City Cards" mockup) in a panel to the right of the map. The card page reports its
 // height and follows this page's theme; the selected city gets a magenta ring on the map. Does not change the map code.

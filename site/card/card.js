@@ -1,4 +1,16 @@
-// Moved unchanged from card/index.html (snapshot d689e08), line 221.
+// Moved from card/index.html (snapshot d689e08), line 221; comments on calculations and sources added 2026-10-07; code unchanged.
+/* WHERE THE NUMBERS COME FROM: data/cards.js (built by Gina + Claude on 2026-10-05; see the header of that file).
+   pm, normal, ratio, rise, share_normal, share_event: the same values as data/pm25.js (see js/plates-shared.js for how each is made).
+   daily:  daily PM2.5 from OpenAQ reference monitors, data/processed/openaq/step05_averages, from 2019-01-01.
+   tone:   corrected counts A, J, E, N (spectrum_07_corrected/city_shares.csv, as CORR in js/how-they-talked.js).
+   living_lo, living_hi: the 95% range of the corrected "living with it" share (city_shares.csv two_living_lo, two_living_hi).
+   CALCULATIONS in this file:
+     × over EPA / WHO  = pm / 35.5 or pm / 15
+     response level    = Low under 5× rise, Medium 5× to under 15×, High 15× and up (level())
+     reacting %        = round(100 × (A + J) / (A + J + E + N)); living with it % = 100 - reacting %
+     biggest group     = the group with the largest corrected count
+     air spiral        = one dot per week, at that week's mean of its daily PM2.5 values (the worst week shows pm);
+                         colour by the line crossed (WHO 15, EPA 35.5); radius = 1.4 + 5 × √(min(PM2.5, 60) / 60) */
 const K = window.CARDS, QU = window.QUOTES || {};
 const ORDER = ["bakersfield", "indianapolis", "fresno", "pittsburgh", "eugene", "detroit", "fairbanks", "sanjose", "seattle"];
 const SUB = { bakersfield: "r/bakersfield", indianapolis: "r/indianapolis", fresno: "r/fresno", pittsburgh: "r/pittsburgh", eugene: "r/Eugene",
@@ -30,6 +42,7 @@ const NS = "http://www.w3.org/2000/svg", E = (t, a, p) => { const e = document.c
   T = (p, a, s) => { const e = E("text", a, p); e.textContent = s; return e; };
 const fx = v => (v >= 10 ? v.toFixed(0) : v.toFixed(1)) + "×";
 const D0 = Date.UTC(2019, 0, 1), dayIdx = iso => Math.round((Date.parse(iso + "T00:00:00Z") - D0) / 864e5);
+// CALCULATION · response level from rise (× more air talk): High at 15× and up, Medium at 5×, else Low
 const level = r => r >= 15 ? "High" : r >= 5 ? "Medium" : "Low";
 const esc = s => s.replace(/[&<>"]/g, ch => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[ch]));
 const FINE = "Cormorant Garamond,Didot,Georgia,serif", LAB = "Jost,Futura,sans-serif", MONO = "IBM Plex Mono,monospace";

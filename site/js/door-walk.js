@@ -1,4 +1,5 @@
-// Moved unchanged from index.html (snapshot d689e08), line 1283.
+// Moved from index.html (snapshot d689e08), line 1283; comments on calculations and sources added 2026-10-07; code unchanged.
+// No data calculations in this file: layout and motion only.
 // Plate II: the figure walks past the doors as you scroll and stops in the light of the last one.
 // Door geometry is traced from Dish's image (2000 px wide). Decoration only; nothing here reads data.js.
 (() => {

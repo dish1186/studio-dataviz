@@ -1,4 +1,5 @@
-// Moved unchanged from card/index.html (snapshot d689e08), line 490.
+// Moved from card/index.html (snapshot d689e08), line 490; comments on calculations and sources added 2026-10-07; code unchanged.
+// No data calculations in this file: layout and motion only.
 // Embedded mode: the parent page picks the city (hash or message), passes its theme, and sizes the frame to this page's height.
 (() => {
   if (window.parent === window) return;

@@ -1,4 +1,23 @@
-// Moved unchanged from index.html (snapshot d689e08), line 1035.
+// Moved from index.html (snapshot d689e08), line 1035; comments on calculations and sources added 2026-10-07; code unchanged.
+/* WHERE THE NUMBERS COME FROM (data/pm25.js, built by viz/pm25-scrolly/build.py; the method is fixed in docs/experiment-design-pm25.md)
+   pm          worst-week PM2.5: mean of the daily reference-monitor values in the city's worst week, µg/m³
+               (scripts/openaq/07_city_screening.py -> step08_pm_normals/pm_normals.csv, event_week_pm25)
+   pm_normal   the city's "normal": median of the weekly PM2.5 averages for the same calendar month, 2019-2025, leaving out the
+               worst week and any week with fewer than 5 of 7 days of data (scripts/openaq/08_pm_normals_and_pairs.py, pm25_normal)
+   ratio       "× normal" = pm / pm_normal, rounded to 2 decimals (08_pm_normals_and_pairs.py, ratio_to_normal)
+   bad_days    median number of days a year with daily PM2.5 >= 35.5 µg/m³, 2019-2025 (see js/map-dots.js)
+   share_normal, share_event   air-talk share = % of the week's kept posts + comments that match the air lexicon.
+               share_event = the worst week's share; share_normal = median share of the city's usable normal weeks
+               (same month, 2019-2025; a week is dropped for PM2.5 > 35.5 or no data, fireworks, < 100 kept items, or comments on
+               < 5 of 7 days). scripts/reddit/analysis_01_event_rise.py -> data/processed/reddit/analysis_01/cities.csv
+   rise        "× more air talk" = share_event / share_normal (analysis_01/cities.csv, rise_ratio)
+   beat        "k of N": the worst week's share is higher than k of the city's N usable normal weeks (percentile_higher_than)
+   rho         Spearman rank correlation across the 9 cities, computed in build.py spearman():
+               rho.ratio = rho(rise, ratio), rho.abs = rho(rise, pm), rho.measures = rho(ratio, pm), rho.bad_days = rho(rise, bad_days)
+   verdict     "Pos" if rho.ratio is higher than rho.abs by 0.2 or more, "Neg" if rho.abs is higher by 0.2 or more, else mixed
+   pairs[]     from analysis_01/pairs.csv (scripts/reddit/analysis_01_event_rise.py): outcome "as Pos predicts" = the city with the higher
+               ratio has the higher rise; "as Neg predicts" = in a crossed pair, the city with the higher PM2.5 has the higher rise;
+               otherwise "against Pos" (or "tie") */
 const D = window.PM25;
 const C = Object.fromEntries(D.cities.map(c => [c.slug, c]));
 const READY = D.cities.filter(c => c.ready);
@@ -11,6 +30,7 @@ function bindText() {
   const stampTxt = D.run === "interim" ? `Early results · ${D.n_ready} of ${D.n_total} cities` : `All ${D.n_total} cities`;
   document.querySelectorAll("[data-stamp]").forEach(e => { e.textContent = stampTxt; e.classList.toggle("full", D.run !== "interim"); });
   const short = document.querySelector("[data-stamp-short]"); if (short) short.textContent = D.run === "interim" ? `Early results · ${D.n_ready} of ${D.n_total} cities` : "Full results";
+  // CALCULATION · normal weeks with MORE air talk than the worst week = N - k, from beat "k of N"
   const higher = c => { const [a, b] = (c.beat || "0 of 0").split(" of ").map(Number); return b - a; };
   document.querySelectorAll("[data-v]").forEach(e => {
     const [path, dig] = e.dataset.v.split("|"); const [k, field] = path.split(".");
@@ -72,12 +92,14 @@ function drawSafe() {
 /* ---------- pairs ---------- */
 function drawPairs() {
   const done = D.pairs.filter(p => p.rise_worse != null && p.rise_other != null);
+  // CALCULATION · the tally: number of finished pairs whose outcome is "as Pos predicts", out of all finished pairs
   const wonU = done.filter(p => p.outcome === "as Pos predicts").length;
   document.querySelector("[data-tally]").textContent = `${wonU} of ${done.length}`;
   const waiting = D.pairs.length - done.length;
   const wWord = String(NUMW[waiting] ?? waiting);
   document.querySelector("[data-tally-text]").textContent = `finished pairs went the way "unusual" predicts.` + (waiting ? ` ${wWord[0].toUpperCase() + wWord.slice(1)} more are waiting on Reddit data.` : "");
   const bar = (label, a, b, va, vb, unit, dig) => {
+    // CALCULATION · bar length = value / larger value of the two cities × 100%; the larger one is marked "lead"
     const max = Math.max(va, vb);
     const row = (c, v) => `<div class="br"><span>${C[c].name}</span><span class="tr"><span class="b${v === max && va !== vb ? " lead" : ""}" style="width:${(v / max * 100).toFixed(1)}%"></span></span><span class="v">${f(v, dig)}${unit}</span></div>`;
     return `<div class="m"><span class="mh">${label}</span>${row(a, va)}${row(b, vb)}</div>`;
@@ -109,6 +131,12 @@ function drawAll() { drawSafe(); }
 /* ---------- air-talk groupings under each pair (added by Gina + Claude) ---------- */
 // Comment counts per tone group (A Alarm, J Adjusting, E Enduring, N Normalizing; not-about-the-air left out).
 // Source: data/processed/reddit/spectrum_03_outputs (Claude draft labels) + spectrum_02_labels weights; big = the city's biggest thread.
+// CALCULATION / DATA · SPEC, typed in from these files (checked 2026-10-07):
+//   read = number of air items with each Claude draft label, A Alarm, J Adjusting, E Enduring, N Normalizing (X, not about
+//          the air, left out): data/processed/reddit/spectrum_03_outputs/spectrum_labels_<city>_<week>_claude_draft.csv, column band
+//   est  = the same counts weighted back to the full week for the three sampled weeks (Eugene, Seattle, Pittsburgh), using the
+//          weights in spectrum_02_labels/<city>_<week>_to_label.csv = spectrum_07_corrected/city_shares.csv, method claude_draft, count_A..N
+//   big  = the part of each count that comes from the city's single biggest thread
 const SPEC = {
   eugene: { read: { A: 144, J: 160, E: 5, N: 13 }, est: { A: 423.3, J: 470.4, E: 13.8, N: 38.7 }, big: { A: 17.6, J: 29.4, E: 0, N: 0 } },
   fairbanks: { read: { A: 13, J: 17, E: 0, N: 5 }, est: { A: 13, J: 17, E: 0, N: 5 }, big: { A: 4, J: 7, E: 0, N: 2 } },
@@ -127,12 +155,14 @@ const TG = {
   jliving: [["Reacting", "A", "--t-alarm", "Alarm"], ["Living with it", "JEN", "--t-endure", "Adjusting + Enduring + Normalizing"]],
 };
 const talkSt = { g: "two", c: "read", big: false };
+// CALCULATION · a group's count = read (or est); with "leave out the big thread" on, Bakersfield's big-thread counts are subtracted
 function talkCount(slug, b) { const s = SPEC[slug]; let v = s[talkSt.c][b]; if (talkSt.big && slug === "bakersfield") v -= s.big[b]; return Math.max(0, v); }
 function drawTalk() {
   const G = TG[talkSt.g];
   document.getElementById("talk-key").innerHTML = G.map(g => `<span><i style="background:var(${g[2]})"></i>${g[0]}${g[3] ? ` <span class="v">(${g[3]})</span>` : ""}</span>`).join("");
   document.querySelectorAll("[data-talk]").forEach(box => {
     const rows = box.dataset.talk.split(",").map(slug => {
+      // CALCULATION · each group's share = its count / all four groups' count × 100 (rounded); "lead" = the largest group
       const v = G.map(g => [...g[1]].reduce((s, b) => s + talkCount(slug, b), 0)), t = v.reduce((a, b) => a + b, 0);
       const segs = v.map((x, i) => x > 0 ? `<span title="${G[i][0]}: ${Math.round(100 * x / t)}% (${Math.round(x)} comments)" style="width:${(100 * x / t).toFixed(1)}%;background:var(${G[i][2]})"></span>` : "").join("");
       const lead = v.map((x, i) => [x, i]).sort((a, b) => b[0] - a[0])[0];

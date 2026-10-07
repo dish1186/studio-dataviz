@@ -1,4 +1,4 @@
-// Moved unchanged from index.html (snapshot d689e08), line 1327.
+// Moved from index.html (snapshot d689e08), line 1327; comments on calculations and sources added 2026-10-07; code unchanged.
 // Plate V: the nine cities on a map, fixed view (dots sized by worst-week PM2.5; no pairs, no controls).
 // Adapted from the map plate artifact; numbers come from data.js (lat/lon are the only additions: city-centre coordinates).
 (() => {
@@ -19,6 +19,7 @@ svg.append("g").selectAll("path").data(US_STATES.features).join("path").attr("d"
 CITIES.forEach(c => { [c.x, c.y] = proj([c.lon, c.lat]); });
 const LBL = { seattle: [10, -8, "start"], eugene: [-10, 4, "end"], sanjose: [-10, 4, "end"], fresno: [10, -4, "start"], bakersfield: [10, 12, "start"],
   fairbanks: [10, 4, "start"], indianapolis: [-10, 14, "end"], detroit: [8, -8, "start"], pittsburgh: [10, 12, "start"] };
+// CALCULATION · dot radius = 3 + 17 × √(PM2.5 / 300) px: the area grows with worst-week PM2.5 (pm, data/pm25.js), plus a 3 px minimum
 const rPM = v => 3 + 17 * Math.sqrt(v / 300);        // dot area ∝ PM2.5 (µg/m³)
 const bad = c => `about ${c.days_over_15} "bad" days a year`;
 
