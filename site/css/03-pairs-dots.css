@@ -1,0 +1,9 @@
+/* Moved unchanged from index.html (snapshot d689e08), line 1842. */
+/* Pairs dots in "Study details": the frame pins for two slides; slide 1 is the row of nine dots, slide 2 the nine pairs */
+html body .sa-close .sd-pairs { --sdp-used: var(--react); --sdp-new: var(--used);   /* indigo = used to bad air, green = not (Dish's mockup) */
+  width: min(100%, 900px); height: 100vh; height: 100svh; display: grid; grid-template-rows: auto minmax(0, 1fr); gap: 3vh; padding: 9vh 0 4vh; }
+html body .sa-close .sdp-heads { position: relative; display: grid; justify-items: center; }
+html body .sa-close .sdp-h { grid-area: 1 / 1; }   /* both slides' lines share one spot */
+html body .sa-close #sdp-svg { display: block; width: 100%; height: 100%; overflow: visible; }
+html body #sdp-svg text { font: 400 21px var(--label); fill: var(--ink); }
+@media (max-width: 560px) { html body #sdp-svg text { font-size: 27px; } }

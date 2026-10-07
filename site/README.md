@@ -2,16 +2,23 @@
 
 The freestanding version of the Boiling Frog page (Dish Chowdhury and Gina Hollenbach, MDE Studio, Oct 2026).
 
-## Status: step 1 of 6, snapshot (2026-10-06)
+## Status: step 2 of 6 done (2026-10-06)
 
-This folder is an unchanged copy of the published artifact, version 94
-(claude.ai/artifact/J3fSoj9QZQjDP9RPoJHmiV, version id 1791318584-8639), downloaded on 2026-10-06.
-It is the baseline that every later step is checked against. Nothing here has been edited.
+1. **Snapshot** (commit `d689e08`): an unchanged copy of the published artifact, version 94
+   (claude.ai/artifact/J3fSoj9QZQjDP9RPoJHmiV, version id 1791318584-8639). `tools/snapshot-d689e08.sha256` holds the
+   checksum of every file in that commit. To check the snapshot:
+   `mkdir /tmp/snap && git archive d689e08 site | tar -x -C /tmp/snap && cd /tmp/snap/site && shasum -a 256 -c MANIFEST.sha256`
+2. **Split** (this commit): the page's style and script blocks moved into their own files by `tools/split_page.py`,
+   which reads the snapshot straight from git, so the split can be re-run and checked. Behaviour is unchanged:
+   - with reduced motion, screenshots of the old and new page at 45 positions from top to bottom are pixel-identical,
+     and the city card is pixel-identical for Bakersfield, Indianapolis and Eugene;
+   - with full motion, the only differences are the trembling and drifting words in the comment and word plates,
+     which move on the clock; page height, element count (±12 animated specks) and errors (none) match.
 
-- `MANIFEST.sha256` lists the checksum of every file as downloaded. To confirm nothing changed since:
-  `cd site && shasum -a 256 -c MANIFEST.sha256`
-- `index.html` line 1 is the wrapper the artifact host adds around the page (doctype, charset, viewport and a small
-  reset, including `[hidden]{display:none!important}`). It is kept so the page runs on its own exactly as viewers see it.
+The only edits `split_page.py` makes, all needed because code moved into files:
+- `url("img/…")` in CSS now reads `url("../img/…")` (CSS paths resolve from the CSS file);
+- the libraries load from `js/lib/` (pinned copies of the same cdnjs versions) instead of cdnjs;
+- the data files load from `data/` (moved, contents unchanged).
 
 ## Run it locally
 
@@ -19,30 +26,66 @@ It is the baseline that every later step is checked against. Nothing here has be
 cd site
 python3 -m http.server 8000
 ```
-then open http://localhost:8000. It needs internet for the fonts (Google Fonts) and two libraries (GSAP 3.12.5 and
-d3 7.9.0 from cdnjs); step 2 will keep pinned local copies instead.
+then open http://localhost:8000. Only the fonts still come from the internet (Google Fonts).
 
-## What is in it
+## Layout
 
-| File | What it holds | Where it came from |
+```
+index.html               markup; links each stylesheet and script at the place its block used to be
+css/                     00-host-reset (the wrapper the artifact host added), 01-layout, 02-type-roles,
+                         03-pairs-dots, 04-how-they-talked, 05-how-they-talked-brand
+js/                      one file per section of the page, in the order the page loads them (below)
+js/lib/                  d3 7.9.0, GSAP 3.12.5, ScrollTrigger 3.12.5 (unmodified copies from cdnjs)
+data/                    pm25.js, cards.js, quotes.js, states.js (see "Where the data comes from")
+card/                    the city card: index.html, card.css, card.js, embed.js
+img/                     Dish's artwork, paper texture, logos, animation frames
+tools/split_page.py      the step 2 split
+_unused/                 city-panel.js and city-panel-data.js: published with the artifact, loaded by neither page
+```
+
+### Scripts, in load order
+
+| File | What it does |
+|---|---|
+| `js/skip-to.js` | the sticky "skip to" buttons |
+| `js/map-dots.js` | map dot colours and legend. **Calculation:** a city is "used to it" if `bad_days >= 8` |
+| `data/pm25.js`, `data/states.js` | data (see below) |
+| `js/plates-shared.js` | text filled from the data, tooltips, the safe-level ruler, pair results, table, air-talk groupings. **Holds data inline:** `SPEC`, tone counts per city (Claude draft labels) |
+| `js/hero.js` | title plate: pot, frog, bubbles (decoration) |
+| `js/door-walk.js` | the figure walking past the doors |
+| `js/map-plate.js` | the fixed map of the nine cities |
+| `js/pairs-map.js` | the interactive city explorer map |
+| `js/scope.js` | "We followed nine U.S. cities" reveal |
+| `js/story-same-air.js` | the Bakersfield vs. Indianapolis scroll story |
+| `js/see-numbers-rule.js` | matches one rule's width to the plates |
+| `js/pairs-dots.js` | the nine dots moving into pairs |
+| `js/study-details.js` | study details reveal |
+| `js/city-cards.js` | opens a city card beside the map |
+| `js/outro.js` | the closing pot of frogs |
+| `js/air-layer.js` | the haze that thickens as you scroll (decoration) |
+| `js/reddit-posts.js` | rotating Reddit posts on the thresholds plate |
+| `js/how-they-talked.js` | the comment, word and word-cloud plates and the tone hills. **Holds data inline:** `CORR`, corrected tone counts. **Calculations:** the hills are a Gaussian smoothing (`kde`) of each city's tone counts; the dot marks its peak |
+| `card/card.js`, `card/embed.js` | the city card and how it sits inside the page |
+
+### Where the data comes from
+
+| Data | Where it came from | Auditable? |
 |---|---|---|
-| `index.html` | the whole page: markup, 5 style blocks, 23 scripts, and the 337 hand-coded comments inline (`<script id="qdata">`) | built in the artifact by Dish, Gina and Claude |
-| `data.js` | cities, worst weeks, PM2.5, ratio, air talk, pairs, ρ | generated by `viz/pm25-scrolly/build.py` from `data/processed/reddit/analysis_01` |
-| `city-panel-data.js` | daily PM2.5, typical-day stats, monthly normals | built by Gina + Claude in chat; script not yet in the repo |
-| `city-panel.js` | city panel drawing code | page code |
-| `card/index.html` | the city card shown beside the map | page code |
-| `card/cards-data.js` | card facts, corrected tone shares, keywords | built by Gina + Claude in chat from `openaq/step05_averages`, `reddit/spectrum_07_corrected`, `reddit/spectrum_01` |
-| `card/quotes-data.js` | up to 3 quotes per city and tone group | built by Gina + Claude in chat from `reddit/spectrum_03` |
-| `states.js` | US state outlines for the maps | basemap |
-| `img/` | illustrations, paper texture, logos, animation frames | Dish's artwork |
+| `data/pm25.js` | generated by `viz/pm25-scrolly/build.py` from `data/processed/reddit/analysis_01` | yes |
+| `data/cards.js` | built by Gina + Claude in chat from `openaq/step05_averages`, `reddit/spectrum_07_corrected`, `reddit/spectrum_01` | not yet: no script in the repo |
+| `data/quotes.js` | built by Gina + Claude in chat from `reddit/spectrum_03` | not yet |
+| `data/states.js` | US state outlines | source to be recorded |
+| 337 hand-coded comments | inline in `index.html` (`<script id="qdata">`) | not yet: no link to its source file |
+| `SPEC` in `js/plates-shared.js` | typed into the code; source named in its comment (`spectrum_03_outputs` + `spectrum_02_labels`) | not yet |
+| `CORR` in `js/how-they-talked.js` | typed into the code (corrected spectrum_07 counts) | not yet |
 
-## Plan
+## Next steps
 
-1. **Snapshot** (this). 
-2. Split `index.html` into `css/` and one `js/` file per section, behaviour unchanged; pin libraries locally.
-3. Rebuild every data file with a script in `scripts/site/`, each output stamped with its sources, script, date and commit.
-4. `check.py`: compare every rebuilt number with this snapshot; explain any difference.
+3. Rebuild every data file above with a script in `scripts/site/`, each output stamped with its sources, script,
+   date and commit; move `SPEC`, `CORR` and the 337 comments out of the code into `data/`.
+4. `check.py`: compare every rebuilt number with the snapshot; explain any difference.
 5. `docs/site-methods.md`: one row per number on the page, with formula, script and source file.
 6. Host on GitHub Pages.
 
-Until the switch-over, the artifact stays the place where edits happen; this snapshot is refreshed from it when step 2 starts.
+Until the switch-over, the artifact stays the place where edits happen. Any artifact edit after version 94 has to be
+carried over here by hand (or by re-running the snapshot and split).

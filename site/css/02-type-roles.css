@@ -1,0 +1,129 @@
+/* Moved unchanged from index.html (snapshot d689e08), line 871. */
+/* ---------- type roles (Gina, Oct 6; see brand.md) ----------
+   display  Jost 74 / 500, tight          header 1  Jost 38 / 400, key words 700
+   header 2 Jost 28 / 400, key words 700  text      Jost 14 / 400
+   quotes   Reddit Sans 19 / 14 500       comments  Jost 12 / 400
+   Header 3 (Cormorant italic 34 + Jost 12 caps) is used only in the city cards for now. Kept as they were: the title and
+   "thank you" (Pinyon Script), the title subtitle and credit (Old Standard TT), and numbers in IBM Plex Mono.
+   Sizes are desktop sizes; display and headers scale down on phones. */
+html:root { --display: "Jost", "Futura", "Century Gothic", "Avenir Next", sans-serif;
+  --t-display: clamp(40px, 6.4vw, 74px); --t-h1: clamp(26px, 3.6vw, 38px); --t-h2: clamp(20px, 2.7vw, 28px); --t-h2-story: clamp(23px, 3.1vw, 32px); --t-sub: clamp(19px, 2.2vw, 23px);
+  --t-text: 16px; --t-quote: 22px; --t-quote-who: 16px; --t-comment: 14px;   /* +15% (Gina, Oct 6) */ }
+/* display */
+html body .ask-box p.big { font-family: var(--label); font-weight: 500; font-size: var(--t-display); line-height: 1; letter-spacing: -.02em; }
+/* header 1 */
+html body h2.map-h, html body h2.map-h span, html body p.verdict, html body p.say.say-sans, html body p.say.say-sans span, html body .door-def .hw {
+  font-family: var(--label); font-weight: 400; font-size: var(--t-h1); line-height: 1.15; letter-spacing: 0; }
+html body p.verdict b, html body h2.map-h b, html body p.say b { font-weight: 700; }
+/* header 2 */
+html body .sa .hd .h, html body .door-def p.gl, html body .thr-plate p.line, html body .drift-plate p.line, html body .drift-plate p.q,
+html body .ask-plate p.ask-lead, html body #iplist .ptally, html body #iplist .ptally b {
+  font-family: var(--label); font-weight: 400; font-size: var(--t-h2); line-height: 1.25; letter-spacing: 0; }
+/* story headers: header 2 plus 15% (Gina, Oct 6) */
+html body .sa .hd .h { font-size: var(--t-h2-story); line-height: 1.22; }
+html body .sa .heads { min-height: 8.8rem; }
+html body .sa .pin { padding-top: calc(env(safe-area-inset-top, 0px) + 10vh); }   /* more room above each story frame (Gina, Oct 6; was 5vh) */
+/* subtitles: one size across the site, 23px (Gina, Oct 6): story frame subtitles and plate subtitles */
+html body .sa .heads .hd .s, html body .map-plate > p.sub, html body .map-plate:not(.imap-plate) > p:not(.cp-hint) { font-size: var(--t-sub); line-height: 1.35; max-width: 40rem; }
+html body .sa .hd .h b, html body .door-def p.gl b, html body .drift-plate p.line b, html body .drift-plate p.q, html body #iplist .ptally b { font-weight: 700; }
+/* text */
+html body .map-plate > p:not(.cp-hint), html body section[aria-label="Conclusion"] > p:not(.verdict), html body .legend span, html body .fig-cap,
+html body .fig-more summary, html body .fig-more dt, html body .fig-more dd, html body .sa .hd .s, html body .sa .after p, html body .sa table, html body .sa td,
+html body .sa summary, html body #cp-hint, html body details.pi .nm, html body details.notes-dd li, html body details.notes-dd p:not(.src), html body .map-plate .row button {
+  font-family: var(--label); font-weight: 400; font-size: var(--t-text); line-height: 1.5; letter-spacing: 0; }
+html body .fig-more dt, html body details.pi .nm { font-weight: 600; }
+html body .sa td.n, html body .sa th.n, html body .mono { font-family: var(--mono); font-size: inherit; }
+/* quotes */
+html body .post p { font-family: "Reddit Sans", var(--label); font-size: var(--t-quote); }
+html body .post .who { font-family: "Reddit Sans", var(--label); font-size: var(--t-quote-who); font-weight: 500; }
+/* comments */
+html body .fig-cap b, html body .sa .opener .cue, html body .sa th, html body .sa .after .foot, html body .map-tune > summary, html body .cg .lab,
+html body .pgrp h3, html body details.pi .res, html body details.pi .why, html body details.notes-dd > summary, html body details.notes-dd p.src,
+html body .cc-bar, html body .cc-bar button, html body #air-pane .t, html body #air-pane button {
+  font-family: var(--label); font-weight: 400; font-size: var(--t-comment); }
+/* scroll-story drawing (viewBox 1000 wide, about 1:1 on a laptop) */
+html body .sa .cap { font-size: 38px; }
+html body .sa .city, html body .sa .dname, html body .sa .dfoot { font: 400 28px var(--label); letter-spacing: 0; text-transform: none; }
+html body .sa .dfoot { fill: var(--event-ink); }
+html body .sa .cap-s, html body .sa .unit, html body .sa .bname, html body .sa .dpct { font: 400 16px var(--label); }
+html body .sa .dpct { fill: var(--ink); }
+html body .sa .fnote, html body .sa .dsub, html body .sa .dlab, html body .sa .dfoot-s { font: 400 14px var(--label); }
+html body .sa .dsub, html body .sa .dlab { letter-spacing: .26em; text-transform: uppercase; }
+html body #map text, html body #imap text { font-weight: 400; }
+@media (max-width: 700px) {   /* the story drawing is shown at about half size on a phone, so its text is drawn twice as big */
+  html body .sa .cap { font-size: 48px; }
+  html body .sa .city, html body .sa .dname, html body .sa .dfoot { font-size: 40px; }
+  html body .sa .cap-s, html body .sa .unit, html body .sa .bname, html body .sa .dpct { font-size: 30px; }
+  html body .sa .fnote, html body .sa .dsub, html body .sa .dlab, html body .sa .dfoot-s { font-size: 25px; }
+}
+/* ---------- colour code: "the frog's pot" (Gina, Oct 6; see brand.md) ----------
+   worst week = magenta (--event, nothing else) · harmful = flame orange · unusual = water lavender → deep violet
+   reaction = pot indigo, carried by size · used to it = frog green. The tone quadrants (riso set) and the red split are unchanged. */
+html:root { --harm-1: #f2b04a; --harm-2: #e07a1f; --harm-3: #a8410f; --harm-ink: #a8410f;
+  --unusual-1: #c9bde3; --unusual-2: #7764a1; --unusual-3: #3c2a78; --unusual-ink: #4b3a8c;
+  --react: #0d036a; --used: #2f6e4a; --select: var(--ink); }
+@media (prefers-color-scheme: dark) { html:root:not([data-theme="light"]) { --harm-1: #a8742e; --harm-2: #ff9a3d; --harm-3: #ffc66b; --harm-ink: #ffb257;
+  --unusual-1: #5a4a90; --unusual-2: #a493dc; --unusual-3: #dcd2ff; --unusual-ink: #c4b6f2; --react: #c9c2ff; --used: #6cc28a; } }
+html:root[data-theme="dark"] { --harm-1: #a8742e; --harm-2: #ff9a3d; --harm-3: #ffc66b; --harm-ink: #ffb257;
+  --unusual-1: #5a4a90; --unusual-2: #a493dc; --unusual-3: #dcd2ff; --unusual-ink: #c4b6f2; --react: #c9c2ff; --used: #6cc28a; }
+/* the same-air story: Bakersfield (used to it) green, Indianapolis (not used to it) ink */
+html body .sa { --bak: var(--used); --ind: var(--ink); --talk: var(--react); }
+html body .sa .cap tspan[font-weight="700"] { fill: var(--used); }   /* "used to" */
+/* skip-to buttons under the title */
+html body nav.skip { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 10px 12px; padding: 18px 16px 34px; max-width: 980px; margin: 0 auto; }
+html body nav.skip .skip-l { font: 400 var(--t-comment) var(--label); letter-spacing: .26em; text-transform: uppercase; color: var(--ink-2); width: 100%; text-align: center; }
+html body nav.skip button { font: 400 var(--t-text) var(--label); color: var(--ink); background: transparent; border: 1.5px solid var(--ink); padding: 8px 16px; cursor: pointer; border-radius: 0; }
+html body nav.skip button:hover:not([disabled]) { background: var(--ink); color: var(--ground); }
+html body nav.skip button[disabled] { cursor: default; border-style: dashed; color: var(--ink-2); opacity: .75; }
+html body nav.skip button i { font-style: normal; font-size: var(--t-comment); letter-spacing: .14em; text-transform: uppercase; margin-left: 6px; }
+/* the skip-to bar stays at the top of the window while scrolling (Gina, Oct 6): one row, label inline; pinned frames
+   and sticky panels sit below it (--skip-h is set from its real height) */
+:root { --skip-h: 54px; }
+html { scroll-padding-top: var(--skip-h); }
+html body nav.skip { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 45; flex-wrap: nowrap; max-width: none; width: 100vw; margin: 0 0 0 calc(50% - 50vw); box-sizing: border-box;
+  padding: 8px 16px; gap: 10px; background: var(--ground); border-bottom: 1px solid var(--rule); }
+html body nav.skip .skip-l { width: auto; margin-right: 6px; white-space: nowrap; }
+html body nav.skip button { padding: 6px 14px; white-space: nowrap; flex: none; }
+@media (max-width: 760px) {   /* narrow: one row that scrolls sideways instead of wrapping into a tall bar */
+  html body nav.skip { justify-content: flex-start; overflow-x: auto; scrollbar-width: none; }
+  html body nav.skip::-webkit-scrollbar { display: none; }
+  html body nav.skip .skip-l { display: none; }
+  html body nav.skip button { flex: none; } }
+html body .sa .pin { top: var(--skip-h); height: calc(100vh - var(--skip-h)); height: calc(100dvh - var(--skip-h)); }
+html body .sticky { top: calc(env(safe-area-inset-top, 0px) + var(--skip-h) + 24px); }
+html body .imap-plate .stage.cc-open > figure { top: calc(env(safe-area-inset-top, 0px) + var(--skip-h) + 12px); }
+html body .ht .side .ctl.site { top: calc(env(safe-area-inset-top, 0px) + var(--skip-h) + 16px); }
+html body .sa-close div.sd-pairs { height: calc(100vh - var(--skip-h)); height: calc(100svh - var(--skip-h)); }
+html body section.say-plate { min-height: calc(100vh - var(--skip-h)); min-height: calc(100svh - var(--skip-h)); }
+/* scope list under "We followed nine U.S. cities" */
+html body .say-plate { min-height: 100vh; min-height: 100svh; padding-block: 48px; gap: 40px; align-content: center; }
+html body .scope { display: grid; gap: 18px; max-width: 46rem; }
+html body .scope-h { margin: 0; font: 400 var(--t-h2) var(--label); }
+html body .scope-l { margin: 0; padding-left: .3em; list-style: none; display: grid; gap: 14px; font: 400 var(--t-h2)/1.25 var(--label); }
+html body .scope-l b.n { display: inline-block; min-width: 1.3em; }   /* the number is part of the line, so it comes in with it */
+html body .scope-l b { font-weight: 700; }
+html body .scope-l sup, html body .scope-n sup { font-size: .55em; }
+html body .rd-inline { width: .9em; height: .9em; vertical-align: -.08em; margin-left: .15em; }
+html body .scope-n { margin: 0; font: 400 var(--t-comment)/1.5 var(--label); color: var(--ink-2); max-width: 44ch; }
+html body .scope .scope-n:first-of-type { margin-top: 18px; }
+html body em.fw { font-style: inherit; }
+/* "see the numbers" spans the same width as the other plates' rules; the closing line sits after it */
+html body .sa .after { max-width: none; padding-inline: 0; width: var(--plate-w, min(1080px, calc(100% - 40px))); margin-inline: auto; }
+html body .sa .after details, html body .sa .after .foot { max-width: none; }
+html body .sa-close { display: grid; justify-items: center; gap: 34vh; padding: 22vh 20px 26vh; text-align: center; }
+html body .sa-close .h { margin: 0; max-width: 30ch; font: 400 var(--t-h2-story)/1.28 var(--label); text-wrap: balance; color: var(--ink); }
+html body .sa-close b { font-weight: 700; }
+html body .sa-close .sd-hyp { display: grid; gap: 22px; justify-items: center; }
+html body .sa-close .sd-boxes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; width: min(100%, 1040px); margin-top: -18vh; }
+html body .sa-close .sd-box { border: 1.5px solid var(--ink); padding: 22px 22px 26px; display: grid; gap: 10px; align-content: start; text-align: left; }
+html body .sa-close .sd-k { margin: 0; font: 400 var(--t-comment) var(--label); letter-spacing: .26em; text-transform: uppercase; color: var(--ink-2); }
+html body .sa-close .sd-t { margin: 0; font: 400 var(--t-sub)/1.35 var(--label); color: var(--ink); }
+html body .sa-close .w { display: inline-block; }
+@media (max-width: 760px) { html body .sa-close { gap: 26vh; } html body .sa-close .sd-boxes { grid-template-columns: minmax(0, 1fr); margin-top: -12vh; } }
+/* colour code in prose (brand.md): harmful = flame orange, abnormal / unusual = violet */
+html body .c-harm, html body .c-harm .w, html body .c-harm .fw { color: var(--harm-ink); }
+html body .c-unus, html body .c-unus .w, html body .c-unus .fw { color: var(--unusual-2); }   /* --unusual-ink sits too close to the indigo text */
+/* on the indigo question box the light steps read better; in dark mode the box turns cream, so the deep steps return */
+html body .ask-box .c-harm { color: var(--harm-1); } html body .ask-box .c-unus { color: var(--unusual-1); }
+@media (prefers-color-scheme: dark) { html:not([data-theme="light"]) body .ask-box .c-harm { color: #a8410f; } html:not([data-theme="light"]) body .ask-box .c-unus { color: #7764a1; } }
+html[data-theme="dark"] body .ask-box .c-harm { color: #a8410f; } html[data-theme="dark"] body .ask-box .c-unus { color: #7764a1; }
