@@ -1,4 +1,5 @@
 <meta charset="utf-8">
+<meta name="color-scheme" content="light">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Boiling Frog</title>
 <meta name="description" content="When the air turns bad, do people react to harm or to the unusual? A scrolling study of nine U.S. cities.">
@@ -8,7 +9,7 @@
 <style>
 /* Layout: a printed science textbook in the concept deck's inks. Plates run top to bottom; two plates are
    scrollytelling (a sticky figure beside steps that drive it). Chartreuse stock, indigo linework,
-   magenta reserved for the worst-air week. Dark theme = the same book printed in reverse on indigo. */
+   magenta reserved for the worst-air week. Light only, no dark theme. */
 :root {
   --ground: #f8ebcb;        /* cream stock, from Dish's sketch */
   --ground-2: #f0dfb6;      /* plate inset, a shade deeper */
@@ -30,20 +31,6 @@
   --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
   /* air-talk groupings (added by Gina + Claude): magenta stays reserved for the worst week */
   --t-alarm: #c8501f; --t-adjust: #1a0f6b; --t-endure: #2f6e4a; --t-norm: #7f8a2c;
-}
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --ground: #160d4c; --ground-2: #1e1460; --ink: #f8ebcb; --ink-2: #d9cfb0; --rule: #3e3580;
-    --event: #ff5e8e; --event-ink: #ff8aad; --green: #173b29; --on-green: #f8ebcb;
-    --q-ground: #f8ebcb; --on-q: #1a0f6b; --grain-blend: screen; --paper-op: .06; --paper-filter: invert(1); color-scheme: dark;
-    --t-alarm: #ff8f5e; --t-adjust: #e6e47a; --t-endure: #5fcf93; --t-norm: #a9b5ff;
-  }
-}
-:root[data-theme="dark"] {
-  --ground: #160d4c; --ground-2: #1e1460; --ink: #f8ebcb; --ink-2: #d9cfb0; --rule: #3e3580;
-  --event: #ff5e8e; --event-ink: #ff8aad; --green: #173b29; --on-green: #f8ebcb;
-  --q-ground: #f8ebcb; --on-q: #1a0f6b; --grain-blend: screen; --paper-op: .06; --paper-filter: invert(1); color-scheme: dark;
-    --t-alarm: #ff8f5e; --t-adjust: #e6e47a; --t-endure: #5fcf93; --t-norm: #a9b5ff;
 }
 * { box-sizing: border-box; }
 body { background: var(--ground); color: var(--ink); font-family: var(--display); font-size: 17px; line-height: 1.6; }
@@ -81,16 +68,12 @@ svg .num { font-family: var(--mono); }
 .side-hero svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; z-index: 1; }   /* over the title, so bubbles drift across it */
 .side-hero .ttl { position: absolute; left: 0; right: 0; top: 21%; text-align: center; pointer-events: none; padding: 0 16px; }
 .side-hero h1 { font-family: var(--script); font-weight: 400; color: var(--event); margin: 0; line-height: 1; letter-spacing: 0; font-size: clamp(60px, 13vw, 180px); }
-@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .side-hero .potimg { filter: url(#potline); } }
-:root[data-theme="dark"] .side-hero .potimg { filter: url(#potline); }   /* the indigo pot needs a cream edge on the indigo ground */
 .side-hero .sub { font-family: var(--hero); font-style: italic; font-size: clamp(15px, 2vw, 22px); margin-top: .1em; }
 /* Outro: Dish's pot full of frogs, bobbing, eyes on the reader's cursor. Decoration only, no data. */
 .outro { width: 100vw; margin-left: calc(50% - 50vw); padding-block: 56px 24px; display: grid; justify-items: center; gap: 4px; border-bottom: 0; }
 .outro svg { display: block; width: min(100%, 1100px); height: auto; padding-inline: 16px; }
 .outro .bye { font-family: var(--script); color: var(--event); font-size: clamp(44px, 8vw, 96px); line-height: 1; margin: 0; }
 .outro .credit { font-family: var(--hero); font-style: italic; font-size: clamp(14px, 1.6vw, 18px); color: var(--ink-2); text-align: center; padding-inline: 16px; }
-@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .outro .potimg { filter: url(#potline); } }
-:root[data-theme="dark"] .outro .potimg { filter: url(#potline); }
 .stamp { justify-self: start; font-family: var(--label); font-weight: 700; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--event-ink); border: 1.5px solid var(--event-ink); padding: 5px 10px; transform: rotate(-1.5deg); }
 .stamp.full { color: var(--ink); border-color: var(--ink); }
 
@@ -114,8 +97,6 @@ svg .num { font-family: var(--mono); }
 .ask-figs { display: flex; align-items: flex-end; margin-top: calc(var(--fh) * -.45 - 14px); margin-left: clamp(10px, 1.6vw, 26px); position: relative; pointer-events: none; }
 .ask-figs img { display: block; height: var(--fh); width: auto; max-width: none; }
 .ask-figs img + img { height: calc(var(--fh) * .895); margin-left: calc(var(--fh) * -.02); }   /* same drawing scale as the pointing figure */
-@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .ask-figs img { filter: drop-shadow(1.5px 0 0 #f8ebcb) drop-shadow(-1.5px 0 0 #f8ebcb) drop-shadow(0 1.5px 0 #f8ebcb) drop-shadow(0 -1.5px 0 #f8ebcb); } }
-:root[data-theme="dark"] .ask-figs img { filter: drop-shadow(1.5px 0 0 #f8ebcb) drop-shadow(-1.5px 0 0 #f8ebcb) drop-shadow(0 1.5px 0 #f8ebcb) drop-shadow(0 -1.5px 0 #f8ebcb); }   /* black figures need a cream edge on the indigo ground */
 /* Plate IV: one sentence, set large */
 .say-plate { min-height: 70svh; align-content: center; }
 .say { font-family: var(--display); font-size: clamp(30px, 4.6vw, 60px); line-height: 1.12; max-width: 22ch; text-wrap: balance; }
@@ -317,8 +298,6 @@ td.mono { font-family: var(--mono); font-size: 12.5px; }
 
 /* ---------- city panel under the Plate V map (added by Gina + Claude) ---------- */
 :root{--cp-norm:#2f4fc4;--cp-mid:#d9771a}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--cp-norm:#8fa8ff;--cp-mid:#ffa24d}}
-:root[data-theme="dark"]{--cp-norm:#8fa8ff;--cp-mid:#ffa24d}
 .map-plate{position:relative}
 #cp-wire{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible;z-index:3}
 #imap .mcity[data-slug=bakersfield],#imap .mcity[data-slug=detroit],#imap .mcity[data-slug=eugene],#imap .mcity[data-slug=sanjose]{cursor:pointer}
@@ -381,8 +360,6 @@ td.mono { font-family: var(--mono); font-size: 12.5px; }
 
 /* ---------- "Same air": Bakersfield vs. Indianapolis scroll story (from the Same Air, Different Normal artifact), scoped under .sa ---------- */
 .sa{--bak:#e0592a;--ind:#1a0f6b;--talk:#cbbfa6;width:100vw;margin-left:calc(50% - 50vw);font-family:var(--label);border-bottom:1px solid var(--rule)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .sa{--bak:#ff8f5e;--ind:#f8ebcb;--talk:#5a5294}}
-:root[data-theme="dark"] .sa{--bak:#ff8f5e;--ind:#f8ebcb;--talk:#5a5294}
 .sa .opener{max-width:1100px;margin:0 auto;padding-inline:16px;padding-block:24px 0;text-align:center;display:grid;gap:2px;justify-items:center}
 .sa .opener h1{font:400 clamp(3.6rem,10vw,7rem)/1 var(--script);color:var(--event);margin:0}
 .sa .opener p{margin:0;max-width:none;font-family:var(--display);font-style:italic;font-size:clamp(15px,1.8vw,20px)}
@@ -439,8 +416,6 @@ td.mono { font-family: var(--mono); font-size: 12.5px; }
 .thr-plate .logos { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: clamp(24px, 5vw, 64px); }
 .thr-plate .logo { display: block; height: clamp(54px, 7vw, 104px); width: auto; max-width: 100%; }
 .thr-plate .logo.epa { height: clamp(42px, 5.4vw, 80px); }   /* as in Dish's mockup: the EPA mark a little shorter */
-@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .thr-plate .logo { background: #f8ebcb; padding: 10px 14px; box-sizing: content-box; } }
-:root[data-theme="dark"] .thr-plate .logo { background: #f8ebcb; padding: 10px 14px; box-sizing: content-box; }   /* the blue marks sit on a cream card on the indigo ground */
 .drift-plate { min-height: 100svh; grid-template-rows: 1fr auto 1fr auto 1fr; justify-items: center; text-align: center; gap: 0; }
 .drift-plate .line { font-family: var(--label); font-size: clamp(19px, 2vw, 26px); letter-spacing: -.01em; line-height: 1.35; max-width: 34ch; }
 .drift-plate .line b { font-weight: 700; display: block; }   /* its own line, as in Dish's mockup */
@@ -454,8 +429,6 @@ td.mono { font-family: var(--mono); font-size: 12.5px; }
 .air-warm { z-index: 52; background: #d9a868; mix-blend-mode: multiply; opacity: 0; }
 .air-haze { z-index: 53; background: var(--ground); opacity: 0; }
 #air { z-index: 55; width: 100vw; height: 100vh; }
-@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .air-warm { background: #ff9a3c; mix-blend-mode: soft-light; } }
-:root[data-theme="dark"] .air-warm { background: #ff9a3c; mix-blend-mode: soft-light; }
 .air-ctl { position: fixed; left: calc(env(safe-area-inset-left, 0px) + 12px); bottom: calc(env(safe-area-inset-bottom, 0px) + 12px); z-index: 70;
   font-family: var(--label); font-size: 12px; display: grid; gap: 6px; justify-items: start; opacity: .28; transition: opacity .2s; }
 .air-ctl:hover, .air-ctl:focus-within, .air-ctl.open { opacity: 1; }
