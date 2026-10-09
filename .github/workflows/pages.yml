@@ -3,7 +3,7 @@ name: Deploy Boiling Frog site
 on:
   push:
     branches: [main]
-    paths: ["viz/pm25-scrolly/**", ".github/workflows/pages.yml"]
+    paths: ["viz/boiling-frog-site/**", ".github/workflows/pages.yml"]
   workflow_dispatch:
 
 permissions:
@@ -26,6 +26,6 @@ jobs:
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: viz/pm25-scrolly
+          path: viz/boiling-frog-site
       - id: deployment
         uses: actions/deploy-pages@v4
