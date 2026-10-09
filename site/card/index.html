@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Boiling Frog City Cards</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Jost:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Reddit+Sans:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="card.css">
+
+</head>
+<body>
+<div class="wrap">
+  <div class="runhead sc"><span>MDE Studio · Boiling Frog</span><span>City cards · mockup</span></div>
+  <div class="pick" id="pick" aria-label="Choose a city"></div>
+
+  <article class="card" id="card" aria-live="polite">
+    <div class="strip">
+      <div class="seg" id="thr" aria-label="Threshold for the whole card"><button data-v="epa">EPA (35.5 µg/m³)</button><button data-v="who">WHO (15 µg/m³)</button></div>
+      <svg id="tl" role="img" aria-label="Days above the chosen line, 2019 to 2026, with the worst week shaded"></svg>
+    </div>
+
+    <div class="head">
+      <svg id="st" role="img" aria-label="State outline with the city"></svg>
+      <div><div class="nmrow"><h1 id="nm"></h1><span class="pill hot" id="c-wk" title="the city's worst air week"></span></div>
+        <div class="chips">
+          <div class="chip"><span>Avg PM2.5</span><b id="c-pm"></b></div>
+          <div class="chip"><span>Event</span><b id="c-ev"></b></div>
+        </div></div>
+    </div>
+
+    <section class="about"><h2 class="sc tag" id="ab-h"></h2><dl id="ab"></dl></section>
+
+    <div class="tabs" role="tablist" aria-label="Card sections">
+      <button role="tab" id="t-air" aria-controls="p-air" data-t="air">air quality</button>
+      <button role="tab" id="t-resp" aria-controls="p-resp" data-t="resp">response</button>
+      <button role="tab" id="t-sent" aria-controls="p-sent" data-t="sent">sentiment</button>
+    </div>
+
+    <section class="pane" role="tabpanel" id="p-air" aria-labelledby="t-air">
+      <div class="top">
+        <div class="ttl"><div class="t"><b id="a-pm"></b> µg/m³</div><div class="s">average PM2.5 over the worst week (7 days)</div></div>
+        <div class="pills"><span class="pill used" id="a-used"></span><span class="pill unusual" id="a-norm"></span><span class="pill harm" id="a-thr"></span></div>
+      </div>
+      <div class="viz"><svg id="air" role="img" aria-label="Every week of PM2.5, 2019 to 2025: stacked into one year, or unwound into a spiral"></svg></div>
+      <div class="slide"><span>all years (2019–2025), stacked</span><input type="range" id="unw" min="0" max="1" step="0.01" value="0" aria-label="Unwind the stacked years into a spiral"><span>one loop per year</span></div>
+      <div class="key" id="a-key"></div>
+      <details class="how"><summary>How it's calculated</summary><ul id="a-how"></ul></details>
+    </section>
+
+    <section class="pane" role="tabpanel" id="p-resp" aria-labelledby="t-resp" hidden>
+      <div class="top">
+        <div class="ttl"><div class="t" id="r-big"></div><div class="s">than in a normal week</div></div>
+        <div class="pills"><span class="pill react" id="r-lvl"></span></div>
+      </div>
+      <p class="lead" id="r-t"></p>
+      <div class="viz"><svg id="baro" role="img"></svg></div>
+      <details class="how"><summary>How it's calculated</summary><ul>
+        <li>Air talk = posts and comments in the city's subreddit that mention the air (smoke, haze, AQI, masks, purifiers and similar), as a share of everything posted.</li>
+        <li>The jump (×) = the worst week's share ÷ the city's share in a normal week.</li>
+        <li>Levels: low under 5×, medium 5–15×, high 15× and up.</li>
+        <li>Source: Reddit, via the Arctic Shift archive.</li></ul></details>
+    </section>
+
+    <section class="pane" role="tabpanel" id="p-sent" aria-labelledby="t-sent" hidden>
+      <div class="ttl"><div class="t" id="s-share"></div><div class="s" id="s-sub"></div></div>
+      <div class="legend" id="legend" aria-label="Show quotes for a group"></div>
+      <p class="hint">click a group to see what people were saying</p>
+      <div class="sgrid" id="sgrid">
+        <div><div class="viz"><svg id="talk" role="img" aria-label="Talk disk: the city's air talk split into four tone groups"></svg></div><p class="dlead" id="dlead"></p></div>
+        <aside class="quotes" id="quotes" hidden aria-live="polite"></aside>
+      </div>
+    </section>
+  </article>
+</div>
+
+<script src="../js/lib/d3-7.9.0.min.js"></script>
+<script src="../data/cards.js"></script>
+<script src="../data/quotes.js"></script>
+<script src="../data/states.js"></script>
+<script src="card.js"></script>
+<script src="embed.js"></script>
+</body>
+</html>

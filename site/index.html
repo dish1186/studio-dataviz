@@ -1,0 +1,434 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><link rel="stylesheet" href="css/00-host-reset.css"></head><body>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Boiling Frog</title>
+<meta name="description" content="When the air turns bad, do people react to harm or to the unusual? A scrolling study of nine U.S. cities.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,400&family=Reddit+Sans:wght@400;500;600&family=Jost:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Pinyon+Script&family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&display=swap">
+<link rel="stylesheet" href="css/01-layout.css">
+
+<div class="book">
+
+  <!-- I. Title -->
+  <header class="title">
+    <div class="side-hero" id="side-hero">
+      <div class="ttl"><h1>boiling frog</h1><div class="sub">an investigation of human thresholds</div></div>
+      <svg id="scene" viewBox="0 0 1390 1250" preserveAspectRatio="xMidYMax meet" role="img"
+           aria-label="Illustration: a frog sits calmly in an indigo pot of lavender water while puffy bubbles and steam curl up out of the pot. Decorative; it carries no data.">
+        <defs>
+          <!-- grainy stipple, like a risograph print: noise thresholded into a dot mask -->
+          <filter id="grain" x="-10%" y="-10%" width="120%" height="120%">
+            <feTurbulence type="fractalNoise" baseFrequency="1.1" numOctaves="1" seed="3" result="n"/>
+            <feColorMatrix in="n" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 9 -3.6" result="dots"/>
+            <feComposite in="SourceGraphic" in2="dots" operator="in"/>
+          </filter>
+        </defs>
+        <g id="steam" filter="url(#grain)"></g>
+        <g id="pot" transform="translate(0,40)">
+          <!-- Dish's pot (water painted out), Claude's frog (Dish preferred it), water drawn in code so it can wave -->
+          <filter id="potline" x="-5%" y="-5%" width="110%" height="110%"><feMorphology in="SourceAlpha" operator="dilate" radius="5" result="d"/><feFlood flood-color="#f8ebcb"/><feComposite in2="d" operator="in" result="o"/><feMerge><feMergeNode in="o"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+          <mask id="wm" maskUnits="userSpaceOnUse" x="0" y="0" width="1390" height="2000"><image href="img/side/water-mask.png" width="1390" height="2000"/></mask>
+          <clipPath id="eyes"><circle cx="615" cy="588" r="27"/><circle cx="822" cy="588" r="27"/></clipPath>
+          <image class="potimg" href="img/side/pot-empty.webp" width="1390" height="2000"/>
+          <path id="water" fill="var(--water)" mask="url(#wm)"/>
+          <g id="surface" mask="url(#wm)"></g>
+          <g id="frog">
+            <!-- one solid silhouette, so the pot can't show through between the arms and the chin -->
+            <path fill="var(--frog)" d="M576,600 C566,548 632,524 662,560 C705,566 760,566 792,556 C820,526 868,544 860,600 L868,668 C898,718 930,762 946,808 L950,880 L480,880 L484,830 C508,762 546,702 576,660 Z"/>
+            <path fill="#fbeac7" d="M572,880 L572,800 C576,712 646,640 718,638 C806,640 852,706 852,800 L852,880 Z"/>
+            <path fill="none" stroke="var(--frog)" stroke-width="6" stroke-linecap="round" d="M590,724 C626,676 676,656 718,656 C762,656 812,676 846,722"/>
+            <circle cx="615" cy="588" r="27" fill="#fbeac7"/><circle cx="822" cy="588" r="27" fill="#fbeac7"/>
+            <g clip-path="url(#eyes)">
+              <g id="pupils"><ellipse cx="615" cy="588" rx="17" ry="21" fill="#000"/><ellipse cx="822" cy="588" rx="17" ry="21" fill="#000"/></g>
+              <rect class="lid" x="586" y="560" width="60" height="0" fill="var(--frog)"/>
+              <rect class="lid" x="793" y="560" width="60" height="0" fill="var(--frog)"/>
+            </g>
+          </g>
+          <image href="img/side/pot-front.webp" width="1390" height="2000"/>
+        </g>
+      </svg>
+    </div>
+  </header>
+
+  <!-- Skip-to buttons (Gina, Oct 6): jump to a section; the two marked "soon" are sections still to come -->
+  <nav class="skip" aria-label="Skip to a section">
+    <span class="skip-l">skip to</span>
+    <button type="button" data-go="intro">introduction</button>
+    <button type="button" data-go="scope">scope</button>
+    <button type="button" data-go="case">case study</button>
+    <button type="button" data-go="details">study details</button>
+    <button type="button" data-go="viz">city explorer</button>
+    <button type="button" data-go="results">results</button>
+  </nav>
+
+  <!-- II. Definition: Dish's threshold image, redrawn so the figure can walk -->
+  <section class="plate door-plate" aria-label="A working definition">
+    <svg id="doors" viewBox="0 0 2000 600" role="img" aria-label="Illustration: four magenta doorways stand in a green field. A small figure walks past them and stops in the light of the last door, its long shadow stretching across the floor. Decorative; it carries no data.">
+      <defs>
+        <filter id="speck" x="0" y="0" width="100%" height="100%">
+          <feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="1" seed="7" result="n"/>
+          <feColorMatrix in="n" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 5 -1.6" result="dots"/>
+          <feComposite in="SourceGraphic" in2="dots" operator="in"/>
+        </filter>
+      </defs>
+      <g id="beams" filter="url(#speck)"></g>
+      <g id="shadow"></g>
+      <g id="door-set"></g>
+      <g id="walker"><circle cx="13" cy="-132" r="8.5"/><path d="M2,-118 C2,-126 24,-126 24,-118 L26,-44 L21,0 L5,0 L0,-44 Z"/></g>
+    </svg>
+    <div class="door-def">
+      <div class="hw">threshold</div>
+      <p class="gl">a <b>range of conditions</b> where a <b>decision</b> is made; a <b>tolerance</b></p>
+    </div>
+  </section>
+
+  <!-- Who sets a threshold (Dish's mockup) -->
+  <section class="plate thr-plate" aria-label="Where thresholds come from">
+    <p class="line">Thresholds come from others,</p>
+    <div class="logos">
+      <img class="logo" src="img/logo-who.png" alt="World Health Organization">
+      <img class="logo epa" src="img/logo-epa.png" alt="U.S. Environmental Protection Agency (EPA)">
+    </div>
+    <p class="line">or they come from ourselves.</p>
+    <!-- DATA · these Reddit posts are excerpts, typed in. Sources (data/processed/reddit/spectrum_01_air_items/):
+         "I wouldn't run outside when the AQI is over 150." pittsburgh_2026-07-13_air_items.csv, item oyhy3nt
+         "…no choice but to open windows…" seattle_2020-09-07_air_items.csv, item g4rihme
+         "It's 74 per my phone right now…" pittsburgh_2026-07-13_air_items.csv, item oyfzo86 -->
+    <div class="posts" id="posts" aria-label="What people on local Reddit said" aria-live="polite">
+      <div class="post on"><span class="who">Reddit user &middot; Pittsburgh</span><p>I wouldn&rsquo;t run outside when the AQI is over 150.</p></div>
+      <div class="post"><span class="who">Reddit user &middot; Seattle</span><p>&hellip;no choice but to open windows and let the smoke in to keep from overheating.</p></div>
+      <div class="post"><span class="who">Reddit user &middot; Pittsburgh</span><p>It&rsquo;s 74 per my phone right now, which as a not-super-sensitive person I&rsquo;m ok with</p></div>
+    </div>
+  </section>
+
+  <!-- How our own thresholds drift (Dish's mockup) -->
+  <section class="plate drift-plate" aria-label="When thresholds drift">
+    <p class="line lead">What happens when the changes to the world around us are so subtle and incremental <b>that our own thresholds transform&hellip;</b></p>
+    <p class="q">and we no longer react?</p>
+  </section>
+
+  <!-- III. The question -->
+  <section class="plate ask-plate" aria-label="The question">
+    <p class="ask-lead">which makes us ask:</p>
+    <div class="ask-box"><p class="big">how do we react to what's <span class="c-harm">harmful</span> vs. what's <span class="c-unus">abnormal</span>?</p></div>
+    <div class="ask-figs" aria-hidden="true"><img src="img/fig-point.png" alt=""><img src="img/fig-stand.png" alt=""></div>
+  </section>
+
+  <!-- IV. What we did -->
+  <section class="plate say-plate" aria-label="What we did">
+    <div class="say-wrap">
+    <p class="say say-sans" data-rise><span class="rise">We followed nine U.S. cities</span> <span class="rise">through their worst week of air,</span> <span class="rise">and studied their responses</span> <span class="rise">&mdash; through what they talked about on Reddit.</span></p>
+    <svg class="reddit-mark" viewBox="0 0 40 40" role="img" aria-label="Reddit">
+      <circle cx="20" cy="20" r="20" fill="#ff4500"/>
+      <g fill="#fff"><circle cx="10.6" cy="19.2" r="2.7"/><circle cx="29.4" cy="19.2" r="2.7"/><ellipse cx="20" cy="23.6" rx="11" ry="7.6"/><circle cx="28" cy="10" r="2.3"/></g>
+      <path d="M20 16 L22 9.2 L26.6 10.2" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="16" cy="22.4" r="1.7" fill="#ff4500"/><circle cx="24" cy="22.4" r="1.7" fill="#ff4500"/>
+      <path d="M15.6 26.4 Q20 29.4 24.4 26.4" fill="none" stroke="#ff4500" stroke-width="1.3" stroke-linecap="round"/>
+    </svg>
+    </div>
+    <!-- Scope (Gina, Oct 6): what we measured. Each line rises and its words fill in as you scroll. -->
+    <div class="scope" data-rise>
+      <p class="scope-h rise">we looked at:</p>
+      <ol class="scope-l">
+        <li class="rise"><b class="n">1.</b> <b>Air quality</b> (daily PM2.5<sup>*</sup>)</li>
+        <li class="rise"><b class="n">2.</b> <b>Response</b> density <svg class="rd-inline" viewBox="0 0 40 40" role="img" aria-label="Reddit"><circle cx="20" cy="20" r="20" fill="#ff4500"/><g fill="#fff"><circle cx="10.6" cy="19.2" r="2.7"/><circle cx="29.4" cy="19.2" r="2.7"/><ellipse cx="20" cy="23.6" rx="11" ry="7.6"/><circle cx="28" cy="10" r="2.3"/></g><path d="M20 16 L22 9.2 L26.6 10.2" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="16" cy="22.4" r="1.7" fill="#ff4500"/><circle cx="24" cy="22.4" r="1.7" fill="#ff4500"/><path d="M15.6 26.4 Q20 29.4 24.4 26.4" fill="none" stroke="#ff4500" stroke-width="1.3" stroke-linecap="round"/></svg></li>
+        <li class="rise"><b class="n">3.</b> <b>Sentiment</b> of responses</li>
+      </ol>
+      <p class="scope-n rise"><sup>*</sup>PM2.5: the most harmful particulate when it comes to air pollution.</p>
+      <p class="scope-n rise"><sup>*</sup>Daily resolution: one value per day.</p>
+    </div>
+  </section>
+
+  <!-- V. Map -->
+  <section class="plate map-plate" aria-label="The nine cities">
+    <h2 class="map-h"><span>Meet the cities with some of</span> <span>the worst short-term air pollution in America</span></h2>
+    <p>All nine made the American Lung Association&rsquo;s annual &lsquo;Worst 25&rsquo; list, and their worst weeks were selected for this study.</p>
+    <figure class="figbox">
+      <svg id="map" role="img" aria-label="Map of the nine study cities. Each dot is sized by the city's worst-week PM2.5."></svg>
+      <div class="legend" id="legend"></div>
+    </figure>
+    <details class="fig-cap fig-more">
+      <summary><b>Fig. 1</b>How the map is calculated</summary>
+      <dl>
+        <dt>The cities</dt><dd>From the American Lung Association&rsquo;s <i>State of the Air 2026</i> list of the 25 U.S. cities with the worst short-term particle pollution, kept where both air monitor and Reddit data were available.</dd>
+        <dt>Dot size</dt><dd>The city&rsquo;s worst week: the Monday&ndash;Sunday week with the highest average PM2.5, 2019&ndash;2026 (July 4th and New Year&rsquo;s weeks left out). A bigger dot means more PM2.5; the dot&rsquo;s area grows with the number.</dd>
+        <dt>&ldquo;Bad&rdquo; days a year (on hover)</dt><dd>Each day&rsquo;s PM2.5 is the average across the city&rsquo;s reference monitors. We counted the days from 2019 to 2025 when that average was above 15&nbsp;&micro;g/m&sup3;, the World Health Organization&rsquo;s 24-hour guideline, divided by the number of days that had a reading, and multiplied by 365. Bakersfield works out to about 112 such days a year; Seattle to about 14.</dd>
+        <dt>Data</dt><dd>PM2.5 from OpenAQ reference monitors.</dd>
+      </dl>
+    </details>
+  </section>
+
+  <!-- Same air: Bakersfield vs. Indianapolis (Dish: after "Meet some of the worst polluted cities") -->
+  <section class="sa" aria-label="Same air, different normal">
+    <div class="opener">
+      <div class="cue">scroll</div>
+    </div>
+
+    <!-- CALCULATION · numbers typed into the story text below (checked 2026-10-07 against data/pm25.js and the corrected tone counts):
+         "over 3x the WHO recommendation": worst-week PM2.5 / 15 = 55.47 / 15 = 3.7 (Bakersfield), 55.09 / 15 = 3.7 (Indianapolis)
+         "60% higher than EPA standards": 55.47 / 35 = 1.58 and 55.09 / 35 = 1.57, i.e. about 58%, rounded to 60%
+             (the page uses EPA 35 here; the data steps count days at 35.5 and above)
+         "4.4× indianapolis's normal, 2.9× bakersfield's": ratio = pm / pm_normal = 55.09 / 12.45 = 4.42 and 55.47 / 18.85 = 2.94
+         the disks' "4.8× / 9.5× more air talk": rise = share_event / share_normal, computed upstream from unrounded shares = 4.809 and 9.529 -->
+    <section class="story" id="sa-story">
+      <div class="pin">
+        <div class="heads">
+          <div class="hd" id="sa-hb"><p class="h">and because of that,<br><b>they respond differently.</b></p><p class="s">changes in air-related reddit post and comment density during each city's worst air week</p></div>
+          <div class="hd" id="sa-he"><p class="h">even when the danger is the same.</p></div>
+          <div class="hd" id="sa-ht"><p class="h">let's take a look at two cities</p></div>
+          <div class="hd" id="sa-h2"><p class="h">in its worst week, bakersfield and indianapolis had the same level of unhealthy air</p><p class="s">(over 3x the WHO recommendation and 60% higher than EPA standards)*</p></div>
+          <div class="hd" id="sa-h3"><p class="h">but they reacted <b>way</b> differently</p><p class="s">talk about the air on local reddit, compared with a normal week</p></div>
+          <div class="hd" id="sa-hw"><p class="h"><b>why?</b></p></div>
+          <div class="hd" id="sa-h4"><p class="h">their perception of <b>“normal”</b> is different.</p><p class="s">that week's air was 4.4× indianapolis's normal, but only 2.9× bakersfield's normal</p></div>
+          <div class="hd" id="sa-hf"><p class="h">bakersfield is <em>familiar</em> with poor air quality, and reacts less</p></div>
+          <div class="hd" id="sa-hx"><p class="h">we hope to explore how environments drive our responses, and what that means for our future</p></div>
+          <div class="hd" id="sa-hi"><p class="h">for indianapolis, poor air quality isn't normal — and they react more</p></div>
+          <div class="hd" id="sa-h5"><p class="h">and they <b>talked</b> about it differently</p><p class="s">tone of air talk</p></div>
+        </div>
+        <div class="stage">
+          <svg id="sa-svg" viewBox="0 0 1000 680" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Bakersfield and Indianapolis: the same pollution level, a different sense of normal, a different reaction">
+            <g id="sa-world">
+            <g id="sa-scene1">
+              <text class="cap" x="410" y="160" id="sa-cap1">some of these cities<tspan x="410" dy="1.15em">are <tspan font-weight="700">used to</tspan></tspan><tspan x="410" dy="1.15em">air pollution.</tspan></text>
+              <text class="cap" x="410" y="524" id="sa-cap2">some aren't.</text>
+            </g>
+            <line class="base" id="sa-base" x1="200" x2="840" y1="340" y2="340"></line>
+            <g id="sa-lolli"></g>
+            <g id="sa-bars"></g>
+            <g id="sa-states"></g>
+            <text class="fnote" id="sa-fnote" x="520" y="440" text-anchor="middle" opacity="0">*WHO recommends daily levels at &lt;15 µg/m³, with the EPA's standards at 35 µg/m³</text>
+            <rect id="sa-bak" x="140" y="90" width="220" height="220" rx="110"></rect>
+            <rect id="sa-ind" x="140" y="400" width="220" height="220" rx="110"></rect>
+            <g id="sa-labels"></g>
+            </g>
+            <g id="sa-disks"></g>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <section class="after">
+      <details>
+        <summary>see the numbers</summary>
+        <!-- CALCULATION · "see the numbers": ≈55 = pm (55.47, 55.09); 2.9× / 4.4× = ratio (2.94, 4.42); 4.8× / 9.5× = rise (4.809, 9.529);
+             tone % = corrected counts (spectrum_07_corrected/city_shares.csv): Bakersfield A 13.73, J 5.45, E+N 31.69 of 50.87 = 27 / 11 / 62%;
+             Indianapolis A 45.55, J 19.54, E+N 34.22 of 99.31 = 46 / 20 / 34% (34.5 shown as 34 so the three add to 100) -->
+        <div class="tbl"><table>
+          <thead><tr><th>measure</th><th class="n">bakersfield</th><th class="n">indianapolis</th></tr></thead>
+          <tbody>
+            <tr><td>worst week</td><td class="n">Dec 2–8, 2024</td><td class="n">Jun 26–Jul 2, 2023</td></tr>
+            <tr><td>cause</td><td class="n">winter inversion</td><td class="n">wildfire smoke</td></tr>
+            <tr><td>pm2.5, weekly average (µg/m³)</td><td class="n">≈55</td><td class="n">≈55</td></tr>
+            <tr><td>× a normal week's pm2.5</td><td class="n">2.9×</td><td class="n">4.4×</td></tr>
+            <tr><td>× a normal week's air talk</td><td class="n">4.8×</td><td class="n">9.5×</td></tr>
+            <tr><td>air talk by tone: alarm / adjusting / living with it</td><td class="n">27 / 11 / 62%</td><td class="n">46 / 20 / 34%</td></tr>
+          </tbody>
+        </table></div>
+      </details>
+      <p class="foot">Details: PM2.5 from OpenAQ reference monitors; air talk from local Reddit (r/[city name]) via the Arctic Shift archive.</p>
+    </section>
+    <!-- Study details (Gina, Oct 6): replaces the closing line. Each block rises word by word as it scrolls in, like the story headings. -->
+    <section class="sa-close" aria-label="Study details">
+      <!-- The nine cities as dots, then into their pairs (Dish's mockup, Oct 6): two slides in one pinned frame. Indigo = used to
+           bad air (Fairbanks, Bakersfield, Fresno), green = not. Dots for cities in more than one pair split as the pairs form. -->
+      <div class="sd-pairs" id="sd-pairs">
+        <div class="sdp-heads">
+          <p class="h sdp-h" id="sdp-h1">We continued this analysis for<br><b>seven additional cities.</b></p>
+          <p class="h sdp-h" id="sdp-h2">We matched them up in pairs and compared how <b class="c-unus">abnormal</b> <b>and</b> <b class="c-harm">harmful</b> the air was during their worst week, and how that shaped their responses to it.</p>
+        </div>
+        <svg id="sdp-svg" viewBox="0 0 600 640" preserveAspectRatio="xMidYMid meet" role="img"
+             aria-label="Nine cities as dots: Fairbanks, Bakersfield and Fresno are used to bad air; the other six are not. They form nine pairs. Matched: Fairbanks and Detroit, Bakersfield and Indianapolis, Fresno and Pittsburgh. Crossed: Bakersfield and San Jose, Indianapolis and San Jose, Fresno and Seattle, Pittsburgh and Seattle, Bakersfield and Seattle, Indianapolis and Seattle."></svg>
+      </div>
+      <div class="sd-b sd-hyp">
+        <p class="h">our hypothesis?</p>
+        <p class="h">that people would react more to <b class="c-unus">abnormal</b> air events (above their &ldquo;normal&rdquo;) than to <b class="c-harm">harmful</b> ones.</p>
+      </div>
+      <div class="sd-boxes">
+        <div class="sd-b sd-box"><p class="sd-k">positive</p><p class="sd-t">Reddit rise correlates with the <b class="c-unus">ratio to normal</b> PM2.5.</p></div>
+        <div class="sd-b sd-box"><p class="sd-k">negative</p><p class="sd-t">Reddit rise correlates with <b class="c-harm">absolute</b> PM2.5.</p></div>
+        <div class="sd-b sd-box"><p class="sd-k">inconclusive</p><p class="sd-t">Reddit rise correlates with <b>both</b>, or with <b>neither</b>.</p></div>
+      </div>
+    </section>
+  </section>
+
+  <!-- VII. Pairs -->
+  <!-- VII. Pairs plate: moved to its own artifact for now ("Boiling Frog Pairs Plate"); its code below stays, inactive. -->
+
+  <!-- Interactive map of the pairs (Dish: after the pairs plate) -->
+  <section class="plate map-plate imap-plate" aria-label="City explorer">
+    <h2 class="map-h"><span>Explore each city's air quality</span> <span>response profile</span></h2>
+    <p class="cp-hint" id="cp-hint"><svg width="22" height="22" aria-hidden="true"><circle cx="11" cy="11" r="9" fill="none" stroke="var(--ink)" stroke-width="2"/><circle cx="11" cy="11" r="4" fill="var(--harm-2)"/></svg>Click any city on the map to open its card: its worst week of air, how much it talked about it, and how.</p>
+    <details class="map-tune">
+    <summary>map settings</summary>
+    <div class="ctl" aria-label="Pair map controls">
+      <div class="cg"><span class="lab">City dots</span>
+        <div class="row" data-ch="dots"><button data-o="plain">Plain</button><button data-o="size">Sized by worst-week PM2.5</button><button data-o="both">Normal → worst</button></div></div>
+      <div class="cg" hidden><span class="lab">Pairs</span>
+        <div class="row" data-ch="pairs"><button data-o="off">Hide</button><button data-o="all">All</button><button data-o="matched">Matched</button><button data-o="crossed">Crossed</button></div></div>
+      <div class="cg" hidden><span class="lab">Arc height</span>
+        <div class="row" style="align-items:center;gap:8px"><input type="range" id="ilift" min="0" max="90" step="5" aria-label="Arc height" style="width:130px;accent-color:var(--ink)"><output id="ilift-o" class="mono" style="font-size:12px"></output></div></div>
+      <div class="cg"><span class="lab">City labels</span>
+        <div class="row" data-ch="labels"><button data-o="on">On</button><button data-o="off">Off</button></div></div>
+    </div>
+    </details>
+    <div class="stage">
+      <figure class="figbox">
+        <svg id="imap" role="img" aria-label="Map of the nine study cities, with lines for the head-to-head pairs when shown."></svg>
+        <div class="legend" id="ilegend"></div>
+      </figure>
+      <aside class="cc-panel" id="cc-panel" hidden aria-label="City card"><div class="cc-bar"><span id="cc-name">city card</span><button type="button" id="cc-x">close ×</button></div>
+        <iframe id="cc-frame" title="City card"></iframe></aside>
+    </div>
+    <p class="fig-cap"><b>Fig. 2</b>Dot size is the city's worst-week PM2.5. Hover a city for its numbers; click it to open its card.</p>
+  </section>
+
+  <!-- VIII. Conclusion -->
+  <section class="plate" aria-label="Conclusion">
+    <p class="verdict" data-verdict>Across all nine cities, reaction followed how <span class="c-unus">unusual</span> the air was, not how <span class="c-harm">harmful</span>.</p>
+    <p>Cities used to bad air reacted less overall (rank correlation <span class="mono" data-v="rho.bad_days|2"></span> between reaction and unhealthy days a year). Relativity seems to set the threshold, even when the air is more dangerous.<sup>1</sup></p>
+    <aside class="plist" id="iplist" aria-label="Pair results"></aside>
+  </section>
+
+  <!-- How they talked: tone of each city's air talk, the hand-coded quotes, and their words (Dish: after the conclusion plate) -->
+  <div class="ht" id="how-talked">
+  <section class="plate" aria-labelledby="h-dens">
+    <div class="plate-head"><span class="t">How people talked</span></div>
+    <h2 id="h-dens">Each city's response,<br><span class="nw">from reacting to learning to live with it.</span></h2>
+    <p class="lede">Each hill is one city's air comments in its worst-air week. The higher and deeper the color, the more comments sat there. The dot marks each city's peak.</p>
+    <div class="rows-wrap"><svg id="d-svg" role="img" aria-label="Density of air comments by tone group for nine cities"></svg></div>
+    <p class="fig-cap">Cities are ordered by bad-air days a year. All nine share one scale. The red line splits reacting (Alarm, Adjusting) from living with it (Enduring, Normalizing). <span id="src-note"></span></p>
+  </section>
+
+  <section class="plate" aria-labelledby="h-q">
+    <div class="plate-head"><span class="t">What people said</span></div>
+    <h2 id="h-q">The comments, from alarm to normalizing</h2>
+    <p class="lede">Quotes lean toward their tone; the closer to Alarm, the more they tremble. Hover any quote to read it.</p>
+    <div class="side">
+    <div class="ctl site" role="group" aria-label="Adjust this plate"><div class="grp"><label class="gh" for="q-ord">Order</label><span class="dd"><select id="q-ord"><option value="bad">Most bad-air days</option><option value="rise">Most extra talk</option><option value="pm">Worst PM2.5</option><option value="ratio">Most unusual week</option><option value="alarm">Most alarm</option><option value="react">Most reacting</option><option value="living">Most living with it</option><option value="peak">Peak, left to right</option><option value="n">Most comments</option><option value="az">A–Z</option><option value="pairs">In pairs</option></select></span></div><div class="grp"><label class="gh" for="q-city">City</label><span class="dd"><select id="q-city"><option value="all">All cities</option><option value="bakersfield">Bakersfield</option><option value="fairbanks">Fairbanks</option><option value="fresno">Fresno</option><option value="detroit">Detroit</option><option value="seattle">Seattle</option><option value="indianapolis">Indianapolis</option><option value="sanjose">San Jose</option><option value="eugene">Eugene</option><option value="pittsburgh">Pittsburgh</option></select></span></div><div class="grp"><span class="gh">Layout &amp; motion</span><div class="sl"><label for="q-sp">Spread</label><input type="range" id="q-sp" data-k="sp" min="0.5" max="3" step="0.1" value="2.2"><output id="o-q-sp">2.2</output></div><div class="sl"><label for="q-gap">City gap</label><input type="range" id="q-gap" data-k="gap" min="40" max="220" step="5" value="135"><output id="o-q-gap">135</output></div><div class="sl"><label for="q-dr">Drift</label><input type="range" id="q-dr" data-k="dr" min="0" max="4" step="0.1" value="0.3"><output id="o-q-dr">0.3</output></div><div class="sl"><label for="q-tr">Tremble</label><input type="range" id="q-tr" data-k="tr" min="0" max="4" step="0.1" value="0.5"><output id="o-q-tr">0.5</output></div><div class="sl"><label for="q-spd">Speed</label><input type="range" id="q-spd" data-k="spd" min="0.2" max="3" step="0.1" value="0.5"><output id="o-q-spd">0.5</output></div></div></div>
+    <div class="main"><div class="q-wrap" id="q-wrap"><svg id="q-svg" aria-hidden="true"></svg><div class="q-card" id="q-card" hidden><p class="q-t"></p><span class="q-m"></span></div></div><div class="key2" id="q-key"></div></div>
+    </div>
+    <p class="q-note">Reflects sample of hand-audited and labelled Reddit content from each city</p>
+    <details class="q-list"><summary id="q-sum">Read all the audited quotes</summary><div id="q-list"></div></details>
+  </section>
+
+  <section class="plate" aria-labelledby="h-w">
+    <div class="plate-head"><span class="t">The words people used</span></div>
+    <h2 id="h-w">What each city kept saying</h2>
+    <p class="lede">The same comments, broken into their most-used words. Sort them into topics to see what each tone talks about.</p>
+    <div class="side">
+    <div class="ctl site" role="group" aria-label="Adjust this plate"><div class="grp"><label class="gh" for="w-ord">Order</label><span class="dd"><select id="w-ord"><option value="bad">Most bad-air days</option><option value="rise">Most extra talk</option><option value="pm">Worst PM2.5</option><option value="ratio">Most unusual week</option><option value="alarm">Most alarm</option><option value="react">Most reacting</option><option value="living">Most living with it</option><option value="peak">Peak, left to right</option><option value="n">Most comments</option><option value="az">A–Z</option><option value="pairs">In pairs</option></select></span></div><div class="grp"><label class="gh" for="w-city">City</label><span class="dd"><select id="w-city"><option value="all">All cities</option><option value="bakersfield">Bakersfield</option><option value="fairbanks">Fairbanks</option><option value="fresno">Fresno</option><option value="detroit">Detroit</option><option value="seattle">Seattle</option><option value="indianapolis">Indianapolis</option><option value="sanjose">San Jose</option><option value="eugene">Eugene</option><option value="pittsburgh">Pittsburgh</option></select></span></div><div class="grp"><span class="gh">Words</span><label class="swt"><span>Cloud</span><input type="checkbox" id="w-sw" role="switch" aria-label="Sort words into categories"><i aria-hidden="true"></i><span>Categories</span></label><span class="gh" id="w-th" hidden>Topic</span><div class="segslide" id="w-topic" role="radiogroup" aria-labelledby="w-th"><b class="thumb" aria-hidden="true"></b><button role="radio" aria-checked="true">All words</button><button role="radio" aria-checked="false">Body &amp; health</button><button role="radio" aria-checked="false">Protection</button><button role="radio" aria-checked="false">Visibility</button></div><div class="sl"><label for="w-wn">Per group</label><input type="range" id="w-wn" data-k="wn" min="3" max="30" step="1" value="11"><output id="o-w-wn">11</output></div><div class="sl"><label for="w-wsz">Word size</label><input type="range" id="w-wsz" data-k="wsz" min="0.5" max="2.5" step="0.1" value="1"><output id="o-w-wsz">1</output></div></div><div class="grp"><span class="gh">Layout &amp; motion</span><div class="sl"><label for="w-sp">Spread</label><input type="range" id="w-sp" data-k="sp" min="0.5" max="3" step="0.1" value="1.6"><output id="o-w-sp">1.6</output></div><div class="sl"><label for="w-gap">City gap</label><input type="range" id="w-gap" data-k="gap" min="40" max="220" step="5" value="120"><output id="o-w-gap">120</output></div><div class="sl"><label for="w-dr">Drift</label><input type="range" id="w-dr" data-k="dr" min="0" max="4" step="0.1" value="0.3"><output id="o-w-dr">0.3</output></div><div class="sl"><label for="w-tr">Tremble</label><input type="range" id="w-tr" data-k="tr" min="0" max="4" step="0.1" value="0.5"><output id="o-w-tr">0.5</output></div><div class="sl"><label for="w-spd">Speed</label><input type="range" id="w-spd" data-k="spd" min="0.2" max="3" step="0.1" value="0.5"><output id="o-w-spd">0.5</output></div></div></div>
+    <div class="main"><div class="q-wrap" id="w-wrap"><svg id="w-svg" aria-hidden="true"></svg><div class="q-card" id="w-card" hidden><p class="q-t"></p><span class="q-m"></span></div></div><div class="key2" id="w-key"></div></div>
+    </div>
+  </section>
+
+  <section class="plate" aria-labelledby="h-c">
+    <div class="plate-head"><span class="t">Every word, once</span></div>
+    <h2 id="h-c">The words they chose</h2>
+    <p class="lede">Each word appears once, sized by how often it was used across the comments we coded. Its colour is the tone that used it most.</p>
+    <div class="side">
+    <div class="ctl site" role="group" aria-label="Adjust this plate"><div class="grp"><label class="gh" for="c-ord">Order</label><span class="dd"><select id="c-ord"><option value="bad">Most bad-air days</option><option value="rise">Most extra talk</option><option value="pm">Worst PM2.5</option><option value="ratio">Most unusual week</option><option value="alarm">Most alarm</option><option value="react">Most reacting</option><option value="living">Most living with it</option><option value="peak">Peak, left to right</option><option value="n">Most comments</option><option value="az">A–Z</option><option value="pairs">In pairs</option></select></span></div><div class="grp"><label class="gh" for="c-city">City</label><span class="dd"><select id="c-city"><option value="all">All cities</option><option value="bakersfield">Bakersfield</option><option value="fairbanks">Fairbanks</option><option value="fresno">Fresno</option><option value="detroit">Detroit</option><option value="seattle">Seattle</option><option value="indianapolis">Indianapolis</option><option value="sanjose">San Jose</option><option value="eugene">Eugene</option><option value="pittsburgh">Pittsburgh</option></select></span></div><div class="grp"><span class="gh" id="c-th">Topic</span><div class="segslide" id="c-topic" role="radiogroup" aria-labelledby="c-th"><b class="thumb" aria-hidden="true"></b><button role="radio" aria-checked="true">All words</button><button role="radio" aria-checked="false">Body &amp; health</button><button role="radio" aria-checked="false">Protection</button><button role="radio" aria-checked="false">Visibility</button></div></div><div class="grp"><span class="gh">Word cloud</span><div class="sl"><label for="c-cn">Words</label><input type="range" id="c-cn" data-k="cn" min="30" max="300" step="10" value="150"><output id="o-c-cn">150</output></div><div class="sl"><label for="c-csz">Size</label><input type="range" id="c-csz" data-k="csz" min="0.5" max="1.6" step="0.05" value="1"><output id="o-c-csz">1</output></div></div></div>
+    <div class="main"><div class="q-wrap" id="c-wrap"><svg id="c-svg" aria-hidden="true"></svg><div class="q-card" id="c-card" hidden><p class="q-t"></p><span class="q-m"></span></div></div><div class="key2" id="c-key"></div></div>
+    </div>
+  </section>
+  <div class="notes">
+    <p class="fig-cap"><b>Note.</b> The quote, word and word-cloud sentiment analysis use only the 337 hand-coded comments. Quotes are verbatim, with no usernames, links or user mentions.</p>
+  </div>
+  </div>
+
+  <!-- IX. So what: "who decides what is safe?", Fig. 3 and "When danger gets familiar…" taken out (Gina, Oct 6) -->
+
+  <!-- Outro: the pot again, full of frogs -->
+  <section class="plate outro" aria-label="The end">
+    <svg id="outro" viewBox="0 470 1390 760" role="img" aria-label="Illustration: Dish's indigo pot, now crowded with fourteen frogs bobbing in lavender water, all watching you. Decorative; it carries no data.">
+      <defs>
+        <mask id="owm" maskUnits="userSpaceOnUse" x="0" y="0" width="1390" height="2000"><image href="img/side/water-mask.png" width="1390" height="2000"/></mask>
+      </defs>
+      <g id="o-steam" filter="url(#grain)"></g>
+      <image class="potimg" href="img/side/pot-empty.webp" width="1390" height="2000"/>
+      <path id="o-water" fill="var(--water)" mask="url(#owm)"/>
+      <g id="o-frogs"></g>
+      <image href="img/side/pot-front.webp" width="1390" height="2000"/>
+    </svg>
+    <p class="bye">thank you</p>
+    <p class="credit">Dish Chowdhury and Gina Hollenbach · MDE Studio, October 2026</p>
+  </section>
+
+  <!-- X. Notes (collapsed, at the very end) -->
+  <section class="plate notes" aria-label="Notes and numbers">
+    <details class="notes-dd">
+    <summary>notes, sources and the numbers</summary>
+    <ol>
+      <li>With this few cities the result is a pattern, not proof. The two air measures also move together across these cities (rank correlation <span data-v="rho.measures|2"></span>), so they are only partly separated. San Jose and Eugene had large nearby fires with evacuations; about 15% of their worst-week posts mention fire, so some of their air talk may be fire news. Seattle's smoke came from distant fires, and about <span data-v="seattle.fire_event|0"></span>% of its worst-week posts mention fire.</li>
+      <li>WHO global air quality guidelines (2021), 24-hour PM2.5: 15 µg/m³. U.S. EPA 24-hour PM2.5 standard: 35 µg/m³. A weekly average is compared with a daily limit here only as a rough guide.</li>
+      <li>American Lung Association, <i>State of the Air</i> 2026 (short-term particle pollution list). Bakersfield's worst week was a winter inversion, not smoke, so people may have seen or smelled less of it than a smoke week.</li>
+      <li>A city's normal PM2.5 is the median weekly average for the same calendar month, 2019–2025, leaving out the worst week (a week counts toward the month its Thursday falls in and needs at least 5 days with readings). Normal air talk uses the normal weeks that pass the study's usability rules.</li>
+      <li>Fairbanks's subreddit is small (<span data-v="fairbanks.items"></span> posts and comments in its worst week), so its share moves a lot with each post.</li>
+      <li data-note-run></li>
+      <li>Detroit's worst week is missing comments from Sunday 8 pm to midnight (about 3% of a week's comments); its posts are complete.</li>
+      <li>Tone groups (alarm, adjusting, living with it) start from Claude's draft sorting of each air post and comment. Gina and Dish hand-checked 436 of them; the drafts matched their agreed label about two times in three. So every checked item uses their agreed label, and every other item is spread across the groups by how often each of Claude's labels turned out right in that check (one table for all nine cities). With that correction, Bakersfield's air talk is 62% living with it (range 61–64%) and Indianapolis's 34% (31–38%). Comparing tone across the pairs is exploratory: it was not part of the pre-set test. 26 of Bakersfield's 51 air posts and comments come from one thread.</li>
+      <li>Reddit quotes are shown word for word, without usernames.</li>
+    </ol>
+    <p class="src">Data: OpenAQ reference monitors (PM2.5); Arctic Shift archive of Reddit (posts and comments, usernames removed). Worst week = the Monday–Sunday week with the highest average PM2.5, 2019–2026, excluding July 4th and New Year's weeks. City facts: U.S. Census Bureau, 2020 Census; <a href="https://en.wikipedia.org/wiki/Indianapolis">Indianapolis</a>; <a href="https://www.lung.org/research/sota/key-findings">ALA State of the Air, key findings</a>. Plate II illustration redrawn from Dish's threshold image. MDE Studio, October 2026.</p>
+    <div class="tbl"><table id="tbl"></table></div>
+  </details>
+  </section>
+
+</div>
+<div class="tip" id="tip" hidden></div>
+<div class="mtip" id="mtip" hidden></div>
+<div class="air-warm" id="air-warm" aria-hidden="true"></div>
+<div class="air-haze" id="air-haze" aria-hidden="true"></div>
+<canvas id="air" aria-hidden="true"></canvas>
+<div class="air-ctl" id="air-ctl">
+  <div class="pane" id="air-pane" hidden>
+    <span class="t">Air layer</span>
+    <button id="air-p" data-air="particles">Particles</button>
+    <button id="air-w" data-air="warm">Warm drift</button>
+    <button id="air-h" data-air="haze">Haze</button>
+  </div>
+  <button id="air-open" aria-expanded="false" aria-controls="air-pane" title="Air layer"><span class="sr" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Air layer controls</span></button>
+</div>
+
+<link rel="stylesheet" href="css/02-type-roles.css">
+<script src="js/skip-to.js"></script>
+<script src="js/map-dots.js"></script>
+<script src="js/lib/d3-7.9.0.min.js"></script>
+<script src="data/pm25.js"></script>
+<script src="data/states.js"></script>
+<script src="data/tone-counts.js"></script>
+<script src="js/plates-shared.js"></script>
+
+<script src="js/hero.js"></script>
+
+<script src="js/door-walk.js"></script>
+
+<script src="js/map-plate.js"></script>
+<script src="js/pairs-map.js"></script>
+<script src="js/lib/gsap-3.12.5.min.js"></script>
+<script src="js/lib/ScrollTrigger-3.12.5.min.js"></script>
+<script src="js/scope.js"></script>
+<script src="js/story-same-air.js"></script>
+<script src="js/see-numbers-rule.js"></script>
+<link rel="stylesheet" href="css/03-pairs-dots.css">
+<script src="js/pairs-dots.js"></script>
+<script src="js/study-details.js"></script>
+<script src="js/city-cards.js"></script>
+
+<script src="js/outro.js"></script>
+<script src="js/air-layer.js"></script>
+<script src="js/reddit-posts.js"></script>
+
+<!-- How they talked (from the "How They Talked" artifact 3zQfoi1wcBms2zDjYTS8bk): four plates after the conclusion.
+     Its styles are scoped under .ht and its script runs in its own function, so nothing here touches the rest of the page. -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,300;1,500&display=swap">
+<link rel="stylesheet" href="css/04-how-they-talked.css">
+<link rel="stylesheet" href="css/05-how-they-talked-brand.css">
+
+
+<!-- DATA · the 337 hand-coded comments (window.HAND_CODED, used by js/how-they-talked.js as QUOTES), built by
+     scripts/site/01_hand_coded_comments.py: the hand-checked items minus agreed label X, text from spectrum_01_air_items. See that script. -->
+<script src="data/hand-coded-comments.js"></script>
+<script src="js/how-they-talked.js"></script>
+
+</body></html>

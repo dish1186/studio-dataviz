@@ -32,6 +32,87 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Doc · how the tone labels were made, checked and corrected (docs/tone-labels-method.md) · 2026-10-09 · Gina + Claude
+- **What:** one document for the whole tone chain: finding air talk, choosing what to label (all items, or 400 per big week), Claude labelling by reading against Dish's codebook (with a blind 10% re-label and Rule 8), the shares, Gina and Dish's blind hand check of 436 items against bars set beforehand, and the correction with its table, a worked example and the before/after results.
+- **Why:** the steps were spread across a brief, the codebook, both logs, script headers and the Air Talk Check page.
+- **Script:** none (documentation, written by Claude). Every number was checked against its source file (`results.md`, `sample_summary.csv`, `agreement.csv`, `confusion_matrix.csv`, `city_shares.csv`, this log and Dish's).
+- **Open, noted in the doc:** the hand-check sampling script `spectrum_06_validation_sample.py` is not in the repo; the exact instructions given to the Claude labelling helpers were not saved beyond the brief and codebook.
+
+---
+
+### Site · Step 5: city facts and results for the site, rebuilt with the existing builder (pm25.js) · 2026-10-07 09:15 EDT · Gina + Claude
+- **What:** runs `viz/pm25-scrolly/build.py --full` (the result of record, `analysis_01`) and writes its output to `site/data/pm25.js` with a source header. `build.py` gained an `--out` option for this; without it, it behaves as before.
+- **Why:** the page's `data.js` was a copy downloaded from the artifact. Now it comes from the repo's own builder.
+- **Input:** `data/processed/openaq/step08_pm_normals/pm_normals.csv`, `data/processed/reddit/analysis_01/` (`cities.csv`, `pairs.csv`, `weekly.csv`, `results.md`), `data/processed/openaq/step05_averages/pm25_fairbanks_daily.csv`, `docs/experiment-design-pm25.md` (event dates and causes).
+- **Script:** `scripts/site/05_pm25.py` (runs `viz/pm25-scrolly/build.py --full --out …`)
+- **Values in → out:** 9 cities, 9 pairs, ρ and verdict. **Identical to the published file** except the "built" date (2026-10-04 → 2026-10-07).
+- **Output:** `site/data/pm25.js`
+- **Judgment calls / open:** `days_over_15` (the map tooltip's "about N bad days a year") was added to the published data by Dish outside the repo, and no repo file reproduces it (64 candidate definitions tried: days over 15 µg/m³ a year, median or mean, 2016–2025 or 2019–2025, city average or highest site, > or ≥). It is **copied** from the snapshot (`d689e08:site/data.js`) and labelled COPIED in the file header. **To ask Dish** how it was made.
+
+### Site · Step 4: city card quotes, saved as a script and rebuilt (quotes.js) · 2026-10-07 09:15 EDT · Gina + Claude
+- **What:** up to 3 quotes per city and tone group for the city cards. The code is the one that built them in chat on 2026-10-06, recovered from the session and saved as a script.
+- **Why:** the card quotes were built in chat with no script in the repo.
+- **Input:** `data/processed/reddit/spectrum_03_outputs/spectrum_labels_<city>_<week>_claude_draft.csv` (text and Claude's band), `data/processed/reddit/spectrum_07_corrected/hand_check_items.csv` (agreed bands).
+- **Script:** `scripts/site/04_card_quotes.py`
+- **Values in → out:** all worst-week labelled items → 102 quotes (86 hand-checked, 16 Claude draft). **Identical to the published file.**
+- **Output:** `site/data/quotes.js`
+- **Judgment calls:** links dropped and "u/name" replaced with "someone"; 50–230 characters; no swear words or insults (word list in the script); at most 40% capitals; hand-checked first, then closest to 140 characters, 3 per group. **Claude's choices, approved by Gina 2026-10-07.**
+
+### Site · Step 3: city card data, saved as a script and rebuilt (cards.js) · 2026-10-07 09:15 EDT · Gina + Claude
+- **What:** per city: facts copied from `pm25.js`, corrected tone counts and their 95% range, the 5 most-matched air keywords, and daily PM2.5 from 2019-01-01 to 2026-09-25. The code is the one that built it in chat on 2026-10-06, recovered and saved as a script; it now reads `site/data/pm25.js` instead of a downloaded copy.
+- **Why:** the card data was built in chat with no script in the repo.
+- **Input:** `site/data/pm25.js`, `data/processed/reddit/spectrum_07_corrected/city_shares.csv` (method = corrected), `data/processed/openaq/step05_averages/pm25_<city>_daily.csv` (`ref_mean`), `data/processed/reddit/spectrum_01_air_items/<city>_<week>_air_items.csv` (`matched_terms`).
+- **Script:** `scripts/site/03_city_cards.py`
+- **Values in → out:** 9 cities × 2,825 days. **Identical to the published file.**
+- **Output:** `site/data/cards.js`
+- **Judgment calls:** keywords leave out "the air" and "air quality" (every city has them). **Claude's choice, approved by Gina 2026-10-07.**
+
+### Site · Step 2: comment counts per tone group, out of the code into a data file (tone-counts.js) · 2026-10-07 09:15 EDT · Gina + Claude
+- **What:** one file with every tone count the page uses: corrected counts (`city_shares.csv`, corrected), Claude draft counts per labelled item and weighted to the full week, counts in each city's biggest thread, and worst-week air items per city. Replaces `CORR`, `SPEC`, `C` and the story's `DATA`, which were typed into the code.
+- **Why:** typed-in numbers can't be audited or re-run.
+- **Input:** `data/processed/reddit/spectrum_07_corrected/city_shares.csv`, `spectrum_03_outputs/*_claude_draft.csv`, `spectrum_02_labels/*_to_label.csv` (weights), `spectrum_01_air_items/*_air_items.csv`.
+- **Script:** `scripts/site/02_tone_counts.py`
+- **Values in → out:** 9 cities × 5 measures. **Every value identical to the typed-in ones.** (First run counted air items after sampling, 400 for Eugene, Seattle and Pittsburgh; corrected to the full-week count before sampling, 1,171 / 1,213 / 1,143, which is what the code had. Not shown on the page.)
+- **Output:** `site/data/tone-counts.js`
+- **Judgment calls:** biggest thread = the thread with the most labelled items, counted with the sampling weights. **Claude's choice, approved by Gina 2026-10-07.**
+
+### Site · Step 1: the 337 hand-coded comments, out of the page into a data file (hand-coded-comments.js) · 2026-10-07 09:15 EDT · Gina + Claude
+- **What:** the comments for the comment, word and word-cloud plates: every item in the hand check except agreed label X, with its agreed group and its text. Replaces the inline `<script id="qdata">` block.
+- **Why:** the 337 comments had no link to their source.
+- **Input:** `data/processed/reddit/spectrum_07_corrected/hand_check_items.csv` (436 items, `agreed_band`), `data/processed/reddit/spectrum_01_air_items/<city>_<week>_air_items.csv` (`full_text`).
+- **Script:** `scripts/site/01_hand_coded_comments.py`
+- **Values in → out:** 436 → 337 (99 with agreed label X removed). 3 texts over 1,500 characters cut to 1,500 + "…" (iqtblf, g4kcn71, g2c8djm), as on the page. Order: city, group, id. **Identical to the published block.**
+- **Output:** `site/data/hand-coded-comments.js`
+- **Judgment calls / open:** 12 quotes carry `f = 1` (drawn larger as "interesting"). **Gina and Dish flagged them** (Gina, 2026-10-07). The list is in no repo file yet, so it is **copied** from the snapshot and labelled COPIED; to do: save it as a raw file. Re-run 2026-10-07 to update that note in the file header; the data did not change.
+- **Page check (all five steps):** the page now reads these five files. Against the snapshot: pixel-identical at 45 positions with reduced motion, city card identical, no script errors; with full motion only animation timing differs.
+
+---
+
+### Reddit · tone, Step 1: Claude's draft tone labels corrected with Gina and Dish's hand check (spectrum_07) · 2026-10-05 20:07 EDT · Gina + Claude
+- **What:** every air post and comment in the nine worst weeks is counted with a corrected tone label:
+  - **checked items (436):** Gina and Dish's agreed label. That's the label they both chose (245), or the one they settled on in Reconcile (191).
+  - **unchecked items (1,725):** spread over the five groups by how often each Claude label turned out to be each agreed label in the hand check (a "correction table", pooled over all nine cities).
+  - Sampled weeks (Eugene, Seattle, Pittsburgh) are weighted back to the full week; "not about the air" is left out of shares (same rules as spectrum_03/05).
+- **Why:** in the Air Talk Check (Oct 4), Claude's label matched the agreed label on 67% of items (κ 0.57), below the bar set before the check. Using only the ~50 checked items per city would throw away most of the data. **Decided by Gina 2026-10-05:** keep the Oct 4 agreed labels as final (no relabelling) and use this correction.
+- **Input:**
+  - `data/raw/reddit/air_talk_check/air_talk_check_codes_2026-10-05.csv` (new): export of the Air Talk Check page's database (https://claude.ai/artifact/CTiUZAAjnXS2QfmYwor28i), taken 2026-10-05; identical to Claude's Oct 4 23:09 copy. One row per card: both coders' bands and "unsure" flags, notes (none were written), reconciled band. User IDs dropped.
+  - `data/processed/reddit/spectrum_03_outputs/*_claude_draft.csv` (Claude's bands), `spectrum_02_labels/*_to_label.csv` (weights), `analysis_01/cities.csv` and `pairs.csv`.
+- **Script:** `scripts/reddit/spectrum_07_corrected_shares.py`
+- **Rows in → out:** 2,161 air items (436 checked) → 9 cities × 2 methods; nothing removed. Every checked card matched an item and a weight; every disagreement had a reconciled label; no "Ambiguous".
+- **Results:**
+  - Gina vs Dish: 56% agreement, κ 0.44. Claude vs agreed: 67%, κ 0.57.
+  - Living with it, draft → corrected (95% range): Bakersfield 61% → 62% (61–64) · Indianapolis 11% → 34% (31–38) · San Jose 7% → 24% (21–28) · Pittsburgh 14% → 31% (27–35) · Fresno 19% → 35% (31–38) · Seattle 12% → 28% (24–32) · Detroit 8% → 27% (24–31) · Fairbanks 14% → 16% (fully checked) · Eugene 6% → 24% (21–28).
+  - **EXPLORATORY** (tone was not part of the pre-set pair test): the more unusual city lives with it less in 6 of 9 pairs (draft) → 8 of 9 (corrected). The used-to-it city lives with it more in 6 of 6 mixed pairs (draft) → 5 of 6 (corrected; Fairbanks vs Detroit flips).
+- **Output:** `data/processed/reddit/spectrum_07_corrected/`: `hand_check_items.csv`, `confusion_matrix.csv`, `agreement.csv`, `item_probabilities.csv`, `city_shares.csv`, `pairs_tone.csv`, `summary.md`. Codes only, no text.
+- **Judgment calls:**
+  1. One correction table pooled over all nine cities, not one per city (too few checked items per city). **Claude's choice, approved by Gina.** It assumes Claude makes the same kinds of mistakes in every city.
+  2. 95% ranges: bootstrap of the 436 checked items, 2,000 rounds, seed 7. They cover the hand check only, not the sampling of the three big weeks. **Claude's choice, approved by Gina.**
+  3. "Used to it" = median days a year at or above 35.5 µg/m³ (2019–2025) of 8 or more, the default on Dish's Boiling Frog Pots page. **Claude's choice, approved by Gina.**
+  4. User IDs left out of the raw export; notes kept (all empty). **Claude's choice, approved by Gina.**
+- **Method agreed by Dish** (2026-10-05, relayed by Gina). Next: replace the draft shares on the Boiling Frog page with the corrected ones.
+
+---
+
 ### Doc · Gina's response added to Dish's air-spectrum handoff · 2026-10-04 09:49 EDT · Gina + Claude
 - **What:** added a section "gina-response 10/4/2026" at the bottom of `docs/handoff-gina-air-spectrum.md`. Dish's text above it is unchanged.
 - **Proposal in the response:**

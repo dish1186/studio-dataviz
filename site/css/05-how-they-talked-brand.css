@@ -1,0 +1,22 @@
+/* Moved unchanged from index.html (snapshot d689e08), line 2295. */
+/* "How they talked" plates (Dish): heading, subheading and the control sidebar on the brand.md type roles (Gina, Oct 6).
+   The words and quotes inside the charts and the hover cards keep their own sizes. */
+html body .ht .plate-head, html body .ht .plate-head .t { font: 400 var(--t-comment) var(--label); letter-spacing: .26em; text-transform: uppercase; }
+html body .ht .plate h2 { font: 400 var(--t-h1)/1.15 var(--label); letter-spacing: 0; max-width: 26ch; text-wrap: balance; }
+html body .ht .plate h2 b { font-weight: 700; }
+html body .ht .plate .lede { font: 400 var(--t-sub)/1.35 var(--label); max-width: 46ch; }
+html body .ht .side { grid-template-columns: 290px minmax(0, 1fr); }
+html body .ht .ctl, html body .ht .ctl label, html body .ht .ctl span:not(.thumb), html body .ht .ctl button, html body .ht .ctl .tg,
+html body .ht .ctl .seg button, html body .ht .ctl .dd select, html body .ht .ctl details.fine summary, html body .ht .gh {
+  font-family: var(--label); font-size: var(--t-comment); font-weight: 400; }
+html body .ht .gh, html body .ht .ctl details.fine summary { letter-spacing: .2em; text-transform: uppercase; color: var(--ink-2); }
+html body .ht .ctl .sl output, html body .ht .ctl output { font-family: var(--mono); font-size: var(--t-comment); }
+html body .ht .side .sl { grid-template-columns: 96px minmax(0, 1fr) 40px; }
+html body .ht .ctl [aria-pressed="true"], html body .ht .ctl .on { font-weight: 400; }
+html body .ht .src-tg { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+html body .ht .src-tg .gh { margin-right: 6px; }
+html body .ht .src-tg button { font: 400 var(--t-comment) var(--label); color: var(--ink); background: transparent; border: 1.3px solid var(--ink); padding: 5px 12px; cursor: pointer; border-radius: 0; }
+html body .ht .src-tg button[aria-pressed="true"] { background: var(--ink); color: var(--ground); }
+html body .ht .q-note { margin: 4px 0 2px; font-family: var(--label); font-size: 11.5px; letter-spacing: .3em; text-transform: uppercase; color: var(--ink-2); max-width: none; }   /* same look as the "read all…" line below it */
+html body .ht .plate h2#h-dens { max-width: none; }
+@media (min-width: 640px) { html body .ht h2 .nw { white-space: nowrap; } }   /* keep "from reacting … live with it." on one line where it fits */
