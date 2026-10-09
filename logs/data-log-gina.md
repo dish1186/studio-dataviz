@@ -32,6 +32,14 @@ Step · dataset · date and time · who ran it | What (plain language) | Why | I
 
 ---
 
+### Doc · how the tone labels were made, checked and corrected (docs/tone-labels-method.md) · 2026-10-09 · Gina + Claude
+- **What:** one document for the whole tone chain: finding air talk, choosing what to label (all items, or 400 per big week), Claude labelling by reading against Dish's codebook (with a blind 10% re-label and Rule 8), the shares, Gina and Dish's blind hand check of 436 items against bars set beforehand, and the correction with its table, a worked example and the before/after results.
+- **Why:** the steps were spread across a brief, the codebook, both logs, script headers and the Air Talk Check page.
+- **Script:** none (documentation, written by Claude). Every number was checked against its source file (`results.md`, `sample_summary.csv`, `agreement.csv`, `confusion_matrix.csv`, `city_shares.csv`, this log and Dish's).
+- **Open, noted in the doc:** the hand-check sampling script `spectrum_06_validation_sample.py` is not in the repo; the exact instructions given to the Claude labelling helpers were not saved beyond the brief and codebook.
+
+---
+
 ### Site · Step 5: city facts and results for the site, rebuilt with the existing builder (pm25.js) · 2026-10-07 09:15 EDT · Gina + Claude
 - **What:** runs `viz/pm25-scrolly/build.py --full` (the result of record, `analysis_01`) and writes its output to `site/data/pm25.js` with a source header. `build.py` gained an `--out` option for this; without it, it behaves as before.
 - **Why:** the page's `data.js` was a copy downloaded from the artifact. Now it comes from the repo's own builder.
