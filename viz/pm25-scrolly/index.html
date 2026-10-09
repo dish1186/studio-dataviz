@@ -4,47 +4,51 @@
 <meta name="description" content="When the air turns bad, do people react to harm or to the unusual? A scrolling study of nine U.S. cities.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Jost:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Pinyon+Script&family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Reddit+Sans:wght@400;500;600&family=Jost:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Pinyon+Script&family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&display=swap">
 <style>
 /* Layout: a printed science textbook in the concept deck's inks. Plates run top to bottom; two plates are
    scrollytelling (a sticky figure beside steps that drive it). Chartreuse stock, indigo linework,
    magenta reserved for the worst-air week. Dark theme = the same book printed in reverse on indigo. */
 :root {
-  --ground: #e2e05c;        /* deck chartreuse stock */
-  --ground-2: #d8d652;      /* plate inset, a shade deeper */
+  --ground: #f8ebcb;        /* cream stock, from Dish's sketch */
+  --ground-2: #f0dfb6;      /* plate inset, a shade deeper */
   --ink: #1a0f6b;           /* indigo: text, linework, normal weeks */
   --ink-2: #463d88;         /* secondary text */
-  --rule: #a3a146;          /* hairlines and grid */
+  --rule: #cdb88a;          /* hairlines and grid */
   --event: #c4285c;         /* magenta: the worst-air week, only */
   --event-ink: #9e1745;     /* magenta for small text */
   --green: #2f6e4a;         /* deck green, definition plate */
-  --on-green: #eceaa0;
+  --on-green: #f8ebcb;
   --q-ground: #1a0f6b;      /* indigo question block */
-  --on-q: #e2e05c;
-  --grain-blend: multiply; --paper-op: .8; --paper-filter: none;
-  --water: #8fb8ae;         /* the pot's water (artwork colour, same in both themes) */
+  --on-q: #f8ebcb;
+  --grain-blend: multiply; --paper-op: .16; --paper-filter: none;
+  --pot: #0d036a; --water: #7764a1; --frog: #4f9a51;   /* Plate I artwork, from Dish's sketch */
   --script: "Pinyon Script", "Snell Roundhand", cursive;   /* hero title only */
   --hero: "Old Standard TT", "Century Schoolbook", Georgia, serif;   /* hero subtitle and caption */
   --display: "Libre Caslon Text", "Iowan Old Style", Georgia, serif;
   --label: "Jost", "Futura", "Century Gothic", "Avenir Next", sans-serif;
   --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+  /* air-talk groupings (added by Gina + Claude): magenta stays reserved for the worst week */
+  --t-alarm: #c8501f; --t-adjust: #1a0f6b; --t-endure: #2f6e4a; --t-norm: #7f8a2c;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --ground: #160d4c; --ground-2: #1e1460; --ink: #e6e47a; --ink-2: #c3c172; --rule: #3e3580;
-    --event: #ff5e8e; --event-ink: #ff8aad; --green: #173b29; --on-green: #e6e47a;
-    --q-ground: #e2e05c; --on-q: #1a0f6b; --grain-blend: screen; --paper-op: .22; --paper-filter: invert(1); color-scheme: dark;
+    --ground: #160d4c; --ground-2: #1e1460; --ink: #f8ebcb; --ink-2: #d9cfb0; --rule: #3e3580;
+    --event: #ff5e8e; --event-ink: #ff8aad; --green: #173b29; --on-green: #f8ebcb;
+    --q-ground: #f8ebcb; --on-q: #1a0f6b; --grain-blend: screen; --paper-op: .06; --paper-filter: invert(1); color-scheme: dark;
+    --t-alarm: #ff8f5e; --t-adjust: #e6e47a; --t-endure: #5fcf93; --t-norm: #a9b5ff;
   }
 }
 :root[data-theme="dark"] {
-  --ground: #160d4c; --ground-2: #1e1460; --ink: #e6e47a; --ink-2: #c3c172; --rule: #3e3580;
-  --event: #ff5e8e; --event-ink: #ff8aad; --green: #173b29; --on-green: #e6e47a;
-  --q-ground: #e2e05c; --on-q: #1a0f6b; --grain-blend: screen; --paper-op: .22; --paper-filter: invert(1); color-scheme: dark;
+  --ground: #160d4c; --ground-2: #1e1460; --ink: #f8ebcb; --ink-2: #d9cfb0; --rule: #3e3580;
+  --event: #ff5e8e; --event-ink: #ff8aad; --green: #173b29; --on-green: #f8ebcb;
+  --q-ground: #f8ebcb; --on-q: #1a0f6b; --grain-blend: screen; --paper-op: .06; --paper-filter: invert(1); color-scheme: dark;
+    --t-alarm: #ff8f5e; --t-adjust: #e6e47a; --t-endure: #5fcf93; --t-norm: #a9b5ff;
 }
 * { box-sizing: border-box; }
 body { background: var(--ground); color: var(--ink); font-family: var(--display); font-size: 17px; line-height: 1.6; }
 body::before { content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 50; opacity: var(--paper-op);
-  mix-blend-mode: var(--grain-blend); filter: var(--paper-filter); background: url("img/paper.jpg") 0 0 / 720px auto repeat; }
+  mix-blend-mode: var(--grain-blend); filter: var(--paper-filter); background: url("img/paper.jpg") 0 0 / 1440px auto repeat; }   /* lighter and larger, so the repeat is hard to spot */
 body { overflow-x: clip; }
 .book { max-width: 1120px; margin: 0 auto; padding-inline: 20px; padding-block: 18px 64px; }
 .runhead { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; font-family: var(--label); font-size: 12px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; border-bottom: 1.5px solid var(--ink); padding-bottom: 8px; }
@@ -71,20 +75,125 @@ svg .num { font-family: var(--mono); }
 /* title plate */
 .title { padding-block: 0 64px; display: grid; gap: 22px; border-bottom: 1px solid var(--rule); }
 .title .lede { margin-top: 8px; }
-/* Plate I hero: looking down into a pot of slowly heating water (full bleed). Decoration only, no data. */
-.pot-hero { position: relative; width: 100vw; margin-left: calc(50% - 50vw); height: calc(100svh - 40px); min-height: 520px; overflow: hidden; }
-.pot-hero svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
-.pot-hero .over { position: absolute; inset: 0; display: grid; place-content: center; text-align: center; pointer-events: none; padding: 0 16px; }
-.pot-hero h1 { font-family: var(--script); font-weight: 400; color: var(--event); margin: 0; line-height: 1; letter-spacing: 0;
-  font-size: clamp(60px, 14vw, 190px); text-shadow: 0 0 6px var(--water), 0 0 14px var(--water), 0 0 28px var(--water); }
-.pot-hero .sub { font-family: var(--hero); font-style: italic; font-size: clamp(15px, 2vw, 22px); color: #1a0f6b; margin-top: .2em;
-  text-shadow: 0 0 6px var(--water), 0 0 12px var(--water); }
-.pot-hero .fig { position: absolute; left: 20px; right: 20px; bottom: 12px; margin: 0; font-family: var(--hero); font-size: 14px; color: var(--ink-2); }
-.pot-hero .fig b { color: var(--ink); }
+/* Plate I hero: Dish's sketch, a side view of an indigo pot with the frog peeking over the rim (full bleed).
+   Bubble clouds curl up over the title as the water heats with scroll. Decoration only, no data. */
+.side-hero { position: relative; width: 100vw; margin-left: calc(50% - 50vw); height: calc(100svh - 40px); min-height: 520px; overflow: hidden; }
+.side-hero svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; z-index: 1; }   /* over the title, so bubbles drift across it */
+.side-hero .ttl { position: absolute; left: 0; right: 0; top: 21%; text-align: center; pointer-events: none; padding: 0 16px; }
+.side-hero h1 { font-family: var(--script); font-weight: 400; color: var(--event); margin: 0; line-height: 1; letter-spacing: 0; font-size: clamp(60px, 13vw, 180px); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .side-hero .potimg { filter: url(#potline); } }
+:root[data-theme="dark"] .side-hero .potimg { filter: url(#potline); }   /* the indigo pot needs a cream edge on the indigo ground */
+.side-hero .sub { font-family: var(--hero); font-style: italic; font-size: clamp(15px, 2vw, 22px); margin-top: .1em; }
+/* Outro: Dish's pot full of frogs, bobbing, eyes on the reader's cursor. Decoration only, no data. */
+.outro { width: 100vw; margin-left: calc(50% - 50vw); padding-block: 56px 24px; display: grid; justify-items: center; gap: 4px; border-bottom: 0; }
+.outro svg { display: block; width: min(100%, 1100px); height: auto; padding-inline: 16px; }
+.outro .bye { font-family: var(--script); color: var(--event); font-size: clamp(44px, 8vw, 96px); line-height: 1; margin: 0; }
+.outro .credit { font-family: var(--hero); font-style: italic; font-size: clamp(14px, 1.6vw, 18px); color: var(--ink-2); text-align: center; padding-inline: 16px; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .outro .potimg { filter: url(#potline); } }
+:root[data-theme="dark"] .outro .potimg { filter: url(#potline); }
 .stamp { justify-self: start; font-family: var(--label); font-weight: 700; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--event-ink); border: 1.5px solid var(--event-ink); padding: 5px 10px; transform: rotate(-1.5deg); }
 .stamp.full { color: var(--ink); border-color: var(--ink); }
 
 /* definition plate */
+/* Plate II: Dish's threshold image (deep green, magenta doors, light on the floor). Fixed artwork colours in both themes. */
+.door-plate { background: #03764f; color: #0b0f14; box-shadow: 0 0 0 100vmax #03764f; clip-path: inset(0 -100vmax); border-bottom: 0; padding-block: 48px 72px; gap: 18px; }
+.door-plate .plate-head .no, .door-plate .plate-head .t { color: #f8ebcb; }
+.door-plate svg { display: block; width: calc(100% + 40px); margin-inline: -20px; height: auto; }
+#walker { fill: #210515; }
+.door-def { justify-self: end; text-align: right; font-family: var(--label); display: grid; gap: 14px; }
+.door-def .hw { font-size: clamp(22px, 2.6vw, 34px); font-weight: 500; }
+.door-def .gl { font-size: clamp(18px, 2.3vw, 30px); font-weight: 400; line-height: 1.3; max-width: 34ch; }
+.door-def b { font-weight: 700; }
+/* Plate III: the question, a full-screen indigo pause */
+/* The question (Dish's mockup): a lead-in line, the question in an inset indigo box, and Dish's two figures standing in front of it.
+   The figures overlap the bottom of the box by 45% of their height; --fh sets their size. */
+.ask-plate { --fh: clamp(230px, 44vh, 500px); min-height: 92svh; align-content: end; gap: 14px; padding-block: 12vh 0; }
+.ask-lead { font-family: var(--label); font-weight: 500; font-size: clamp(18px, 1.9vw, 24px); letter-spacing: -.01em; }
+.ask-box { background: var(--q-ground); color: var(--on-q); padding: clamp(18px, 2.4vw, 30px) clamp(18px, 2vw, 28px) calc(var(--fh) * .45 + 16px); }
+.ask-box .big { font-family: var(--label); font-weight: 500; font-size: clamp(42px, 7.2vw, 104px); line-height: 1.02; letter-spacing: -.02em; max-width: 13ch; margin: 0; }
+.ask-figs { display: flex; align-items: flex-end; margin-top: calc(var(--fh) * -.45 - 14px); margin-left: clamp(10px, 1.6vw, 26px); position: relative; pointer-events: none; }
+.ask-figs img { display: block; height: var(--fh); width: auto; max-width: none; }
+.ask-figs img + img { height: calc(var(--fh) * .895); margin-left: calc(var(--fh) * -.02); }   /* same drawing scale as the pointing figure */
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .ask-figs img { filter: drop-shadow(1.5px 0 0 #f8ebcb) drop-shadow(-1.5px 0 0 #f8ebcb) drop-shadow(0 1.5px 0 #f8ebcb) drop-shadow(0 -1.5px 0 #f8ebcb); } }
+:root[data-theme="dark"] .ask-figs img { filter: drop-shadow(1.5px 0 0 #f8ebcb) drop-shadow(-1.5px 0 0 #f8ebcb) drop-shadow(0 1.5px 0 #f8ebcb) drop-shadow(0 -1.5px 0 #f8ebcb); }   /* black figures need a cream edge on the indigo ground */
+/* Plate IV: one sentence, set large */
+.say-plate { min-height: 70svh; align-content: center; }
+.say { font-family: var(--display); font-size: clamp(30px, 4.6vw, 60px); line-height: 1.12; max-width: 22ch; text-wrap: balance; }
+/* Plate IV in the reference's sans, one phrase per line on wide screens (lines rewrap on phones); Reddit mark below */
+.say.say-sans { font-family: var(--label); font-weight: 400; font-size: clamp(24px, 3.3vw, 46px); line-height: 1.28; letter-spacing: -.015em; max-width: none; }
+.say.say-sans span { display: block; }
+.say-wrap { --rm: clamp(36px, 4.2vw, 59px); position: relative; width: fit-content; max-width: 100%; padding-top: calc(var(--rm) * .55); }
+.reddit-mark { position: absolute; top: 0; right: 0; width: var(--rm); height: auto; border-radius: 50%; background: #fff; box-shadow: 0 0 0 2px #fff; transform: translate(35%, -10%) rotate(14deg); }
+@media (max-width: 560px) { .reddit-mark { transform: rotate(14deg); } }
+/* Plate V: map of the nine cities and their pairs (from the map plate artifact, scoped here) */
+.map-plate h2.map-h { max-width: none; }
+.map-plate h2.map-h span { display: block; }
+.fig-more summary { cursor: pointer; list-style: none; display: inline-flex; align-items: baseline; gap: 2px; }
+.fig-more summary::-webkit-details-marker { display: none; }
+.fig-more summary::after { content: "▾"; font-size: 11px; margin-left: 6px; }
+.fig-more[open] summary::after { content: "▴"; }
+.fig-more dl { margin: 10px 0 0; display: grid; grid-template-columns: 11em minmax(0, 1fr); gap: 8px 16px; }
+.fig-more dt { font-weight: 600; color: var(--ink); }
+.fig-more dd { margin: 0; }
+@media (max-width: 460px) { .map-plate .figbox .legend > span { gap: 3px; font-size: 11.5px; } }
+@media (max-width: 560px) { .fig-more dl { grid-template-columns: minmax(0, 1fr); gap: 2px; } .fig-more dd { margin-bottom: 8px; } }
+.map-plate .ctl { display: flex; flex-wrap: wrap; gap: 12px 26px; align-items: flex-end; font-family: var(--label); font-size: 13px; border-top: 1.5px solid var(--ink); border-bottom: 1px solid var(--rule); padding-block: 12px; }
+.map-plate .cg { display: grid; gap: 5px; }
+.map-plate .lab { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; font-weight: 700; color: var(--ink-2); }
+.map-plate .row { display: flex; flex-wrap: wrap; gap: 4px; }
+.map-plate .ctl button { font: inherit; font-size: 12.5px; font-weight: 500; color: var(--ink); background: transparent; border: 1.5px solid var(--ink); padding: 3px 9px; cursor: pointer; line-height: 1.35; }
+.map-plate .ctl button[aria-pressed="true"] { background: var(--ink); color: var(--ground); }
+.map-plate .stage { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 22px; align-items: start; }
+.map-plate .figbox { margin: 0; display: grid; gap: 8px; }
+#map { display: block; width: 100%; height: auto; overflow: visible; }
+#map text { font-family: var(--label); }
+#map .mpair { cursor: pointer; outline: none; } #map .mcity { outline: none; }
+#map .dim { opacity: .18; }
+#imap { display: block; width: 100%; height: auto; overflow: visible; }
+#imap text { font-family: var(--label); }
+#imap .mpair { cursor: pointer; outline: none; } #imap .mcity { outline: none; }
+#imap .dim { opacity: .18; }
+.map-plate .legend { display: flex; flex-wrap: wrap; gap: 8px 22px; font-family: var(--label); font-size: 13px; border-top: 1px solid var(--rule); padding-top: 8px; align-items: center; }
+.map-plate .legend > span { display: inline-flex; align-items: center; gap: 7px; white-space: nowrap; flex-wrap: nowrap; }
+.plist { display: grid; gap: 10px; font-family: var(--label); font-size: 13.5px; min-width: 0; }
+.plist .ptally { font-family: var(--display); font-size: 20px; font-weight: 700; line-height: 1.25; }
+.plist .ptally b { color: var(--event-ink); font-size: 34px; }
+.plist h3 { margin: 6px 0 0; font-size: 11.5px; color: var(--ink-2); }
+.pi { display: block; padding: 6px 8px; border: 1.5px solid transparent; }
+.pi summary { display: grid; grid-template-columns: 30px minmax(0, 1fr) auto; gap: 8px; align-items: center; cursor: pointer; list-style: none; }
+.pi summary::-webkit-details-marker { display: none; }
+.pi summary .res::after { content: " ▾"; font-size: 10px; letter-spacing: 0; color: var(--ink-2); }
+.pi[open] summary .res::after { content: " ▴"; }
+.pi .why { margin: 6px 0 2px 38px; }
+.pi:hover, .pi.on { border-color: var(--ink); }
+.pi .nm { font-weight: 600; }
+.pi .why { font-size: 12px; color: var(--ink-2); line-height: 1.35; }
+.pi .res { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; text-align: right; }
+.pi .res.no { color: var(--event-ink); }
+.mtip { position: absolute; z-index: 60; pointer-events: none; background: var(--ink); color: var(--ground); font-family: var(--label); font-size: 13px; line-height: 1.45; padding: 9px 11px 10px; width: 280px; max-width: calc(100vw - 16px); display: grid; gap: 4px; }
+.mtip .tn { font-family: var(--display); font-weight: 700; font-size: 17px; line-height: 1.15; }
+.mtip .k { font-size: 11px; letter-spacing: .08em; text-transform: uppercase; opacity: .8; }
+.mtip table { border-collapse: collapse; font-family: var(--mono); font-size: 12px; width: 100%; min-width: 0; }
+.mtip td, .mtip th { padding: 2px 4px; text-align: right; border: 0; color: inherit; }
+.mtip th { font-family: var(--label); font-size: 10.5px; letter-spacing: .06em; text-transform: uppercase; font-weight: 600; opacity: .8; }
+.mtip td:first-child, .mtip th:first-child { text-align: left; font-family: var(--label); }
+@media (max-width: 900px) { .map-plate .stage { grid-template-columns: minmax(0, 1fr); } }
+.map-tune { border-top: 1.5px solid var(--ink); padding-top: 10px; }
+.map-tune > summary { cursor: pointer; list-style: none; font-family: var(--label); font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-2); display: inline-flex; gap: 8px; align-items: center; }
+.map-tune > summary::-webkit-details-marker { display: none; }
+.map-tune > summary::after { content: "▾"; font-size: 11px; }
+.map-tune[open] > summary::after { content: "▴"; }
+.map-tune .ctl { border-top: 0; margin-top: 6px; }
+/* pairs map: the map takes the full width; the pair list sits underneath it, matched and crossed side by side */
+.imap-plate .stage { grid-template-columns: minmax(0, 1fr); }
+#iplist { grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: 10px 32px; align-items: start; }
+#iplist .ptally { grid-column: 1 / -1; }   /* the pair results sit in the conclusion, under its paragraph */
+#iplist .pgrp { display: grid; gap: 6px; align-content: start; }
+/* the pair's "distance from normal" chart inside its dropdown (from the Boiling Frog Pairs artifact): air talk up, how unusual down, log scale */
+.pi .pchart { display: block; width: 100%; max-width: 360px; height: auto; margin: 10px 0 4px 38px; overflow: visible; }
+.pi .pchart text { font-family: var(--label); }
+.pi .pchart .num { font-family: var(--mono); }
+@media (max-width: 460px) { .pi .pchart { margin-left: 0; } }
 .def-plate { background: var(--green); color: var(--on-green); box-shadow: 0 0 0 100vmax var(--green); clip-path: inset(0 -100vmax); border-bottom: 0; }
 .def-plate .plate-head .no, .def-plate .plate-head .t { color: var(--on-green); }
 .def-grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 40px; align-items: center; }
@@ -149,6 +258,21 @@ svg .num { font-family: var(--mono); }
 .br .b.lead { background: var(--event); }
 .br .v { font-family: var(--mono); font-size: 12.5px; text-align: right; }
 .pair .pend { font-family: var(--label); font-size: 13px; font-style: italic; color: var(--ink-2); }
+/* air-talk groupings under each pair (added by Gina + Claude) */
+.talk-ctl { border: 1.5px solid var(--ink); padding: 12px 14px; display: grid; gap: 8px; font-family: var(--label); font-size: 13px; }
+.talk-ctl .ttl { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; font-weight: 700; }
+.talk-ctl .row { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.talk-ctl .lab { font-size: 11.5px; letter-spacing: .08em; text-transform: uppercase; font-weight: 600; color: var(--ink-2); min-width: 8.5em; }
+.talk-ctl button { font: inherit; font-size: 12.5px; font-weight: 500; color: var(--ink); background: transparent; border: 1.5px solid var(--ink); padding: 3px 9px; cursor: pointer; }
+.talk-ctl button[aria-pressed="true"] { background: var(--ink); color: var(--ground); }
+.talk-key { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 12.5px; }
+.talk-key i { display: inline-block; width: 11px; height: 11px; margin-right: 6px; vertical-align: -1px; }
+.talk-ctl .cav { font-size: 12px; color: var(--ink-2); max-width: 90ch; }
+.talk { display: grid; gap: 4px; border-top: 1px dashed var(--rule); padding-top: 8px; }
+.talk .tb { display: flex; height: 11px; gap: 2px; }
+.talk .tb span { height: 100%; }
+.talk .v { color: var(--ink-2); }
+@media (max-width: 460px) { .talk-ctl .lab { min-width: 100%; } }
 
 /* conclusion + so what */
 .verdict { font-family: var(--display); font-weight: 700; font-size: clamp(30px, 4.6vw, 52px); line-height: 1.1; max-width: 22ch; text-wrap: balance; }
@@ -161,6 +285,12 @@ svg .num { font-family: var(--mono); }
 .qs { display: grid; gap: 10px; font-family: var(--label); font-size: clamp(18px, 2.2vw, 22px); font-weight: 500; }
 
 /* notes */
+.notes { border-bottom: 0; border-top: 1px solid var(--rule); padding-block: 28px 40px; }
+.notes-dd > summary { cursor: pointer; list-style: none; font-family: var(--label); font-size: 13px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; display: inline-flex; gap: 8px; align-items: center; }
+.notes-dd > summary::-webkit-details-marker { display: none; }
+.notes-dd > summary::after { content: "▾"; font-size: 11px; color: var(--ink-2); }
+.notes-dd[open] > summary::after { content: "▴"; }
+.notes-dd[open] { display: grid; gap: 22px; }
 .notes ol { margin: 0; padding-left: 22px; display: grid; gap: 8px; font-size: 14.5px; max-width: 78ch; }
 .notes .src { font-size: 14px; max-width: 78ch; color: var(--ink-2); }
 .notes a { color: var(--ink); }
@@ -184,144 +314,406 @@ td.mono { font-family: var(--mono); font-size: 12.5px; }
 }
 @media (max-width: 460px) { .grid9 { grid-template-columns: minmax(0, 1fr); } .specimen dl { grid-template-columns: minmax(0, 1fr); gap: 2px; } .specimen dd { margin-bottom: 8px; } }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+
+/* ---------- city panel under the Plate V map (added by Gina + Claude) ---------- */
+:root{--cp-norm:#2f4fc4;--cp-mid:#d9771a}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--cp-norm:#8fa8ff;--cp-mid:#ffa24d}}
+:root[data-theme="dark"]{--cp-norm:#8fa8ff;--cp-mid:#ffa24d}
+.map-plate{position:relative}
+#cp-wire{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible;z-index:3}
+#imap .mcity[data-slug=bakersfield],#imap .mcity[data-slug=detroit],#imap .mcity[data-slug=eugene],#imap .mcity[data-slug=sanjose]{cursor:pointer}
+#imap .cp-pulse{transform-box:fill-box;transform-origin:center;animation:cpPulse 2.2s ease-out infinite}
+@keyframes cpPulse{0%{transform:scale(1);opacity:.75}100%{transform:scale(2.2);opacity:0}}
+@media (prefers-reduced-motion:reduce){#imap .cp-pulse{animation:none;opacity:.4}}
+.cp-hint{font-family:var(--label);font-size:14px;color:var(--ink-2);display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.cp-panel{border:1.5px solid var(--ink);background:var(--ground-2);display:grid;font-family:var(--label);min-width:0;position:relative;z-index:4}
+.cp-sec{padding:14px 18px;border-bottom:1px solid var(--rule);display:grid;gap:8px;min-width:0;align-content:start}
+.cp-disks{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr))}
+.cp-disks>.cp-sec{border-bottom:0;border-top:1px solid var(--rule)}
+.cp-ph{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:11.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2)}
+.cp-x{font:inherit;font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);background:transparent;border:1.5px solid var(--ink);padding:2px 9px;cursor:pointer}
+.cp-head{display:grid;grid-template-columns:132px minmax(0,1fr);gap:16px;align-items:center}
+.cp-head svg{width:132px;height:auto;display:block}
+.cp-cname{font-family:var(--display);font-size:clamp(28px,3.4vw,40px);font-weight:700;line-height:1;margin:0;text-transform:none;letter-spacing:0}
+.cp-cname span{font-family:var(--label);font-size:15px;font-weight:600;letter-spacing:.1em;margin-left:6px;color:var(--ink-2)}
+.cp-sub{font-size:13.5px;color:var(--ink-2);margin-top:6px}
+.cp-char{display:grid;grid-template-columns:6.5em minmax(0,1fr);gap:4px 12px;font-size:14px;line-height:1.45;margin:4px 0 0}
+.cp-char dt{font-size:11px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;color:var(--ink-2);padding-top:2px}
+.cp-char dd{margin:0}
+.cp-filler{font-style:italic;color:var(--ink-2)}
+.cp-tl svg{width:100%;height:auto;display:block}
+.cp-cap{font-size:12px;color:var(--ink-2);line-height:1.45;margin:0;max-width:none}
+.cp-disk h4{margin:0;font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.cp-ds{font-size:13px;color:var(--ink-2);margin:-4px 0 0;max-width:none}
+.cp-art{width:100%;max-width:470px;height:auto;display:block;margin:0 auto;cursor:pointer;overflow:visible}
+.cp-det{border:1.5px solid var(--ink);padding:10px 12px;font-size:13.5px;line-height:1.5;display:grid;gap:6px;background:var(--ground)}
+.cp-det p{max-width:none}
+.cp-det .g{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:8px}
+.cp-det .k{font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2)}
+.cp-det .n{font-size:20px;font-family:var(--mono)}
+.cp-tune{border:1px dashed var(--ink-2);padding:6px 10px}
+.cp-tune summary{cursor:pointer;font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase}
+.cp-ctl{display:grid;gap:7px;padding-top:8px;font-size:12px}
+.cp-ctl .gh{font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;color:var(--ink-2);margin-top:4px}
+.cp-ctl .crow{display:flex;flex-wrap:wrap;gap:4px;align-items:center}
+.cp-ctl .crow[hidden]{display:none!important}
+.cp-ctl .cl{min-width:7.2em;color:var(--ink-2)}
+.cp-ctl .seg{display:flex;flex-wrap:wrap;gap:3px}
+.cp-ctl .seg button,.cp-ctl .tg{font:inherit;font-size:11.5px;color:var(--ink);background:transparent;border:1.3px solid var(--ink);padding:2px 7px;cursor:pointer;border-radius:0}
+.cp-ctl .seg button[aria-pressed=true],.cp-ctl .tg[aria-pressed=true]{background:var(--ink);color:var(--ground-2)}
+.cp-ctl input[type=range]{flex:1;min-width:90px;accent-color:var(--event)}
+.cp-ctl output{font-family:var(--mono);font-size:11px;min-width:30px;text-align:right}
+.cp-expand{justify-self:center;font:inherit;font-size:12.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);background:transparent;border:1.5px solid var(--ink);padding:5px 12px;cursor:pointer}
+.cp-airwrap{position:relative}
+#hud{position:absolute;top:0;left:0;z-index:2;background:var(--ground-2);border:1px solid var(--rule);padding:6px 9px;font-size:12px;line-height:1.4;max-width:min(300px,62%);display:grid;gap:3px;pointer-events:none}
+#hud .h1{font-weight:600}
+#hud .h2{font-family:var(--mono);font-size:12px;color:var(--ink-2);display:flex;align-items:center;gap:8px}
+#hud .badge{display:inline-grid;place-items:center;min-width:42px;height:42px;padding:0 5px;border-radius:999px;color:#fff;font-family:var(--mono);font-size:15px;font-weight:600;line-height:1;flex:none}
+#hud .hint{color:var(--ink-2);font-style:italic}
+#hud .cp-key{display:grid;gap:2px;border-top:1px solid var(--rule);padding-top:5px;margin-top:2px;font-size:12px;pointer-events:auto}
+#hud .cp-key details summary{display:flex;align-items:center;gap:6px;cursor:pointer;list-style:none}
+#hud .cp-key details summary::-webkit-details-marker{display:none}
+#hud .cp-key details summary::after{content:"▾";font-size:10px;color:var(--ink-2);margin-left:2px}
+#hud .cp-key details[open] summary::after{content:"▴"}
+#hud .cp-key p.how{margin-top:-2px;font-style:italic}
+#hud .cp-key p{margin:2px 0 4px 22px;font-size:11.5px;line-height:1.35;color:var(--ink-2);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;max-width:none}
+@media (max-width:460px){.cp-head{grid-template-columns:90px minmax(0,1fr)}.cp-head svg{width:90px}.cp-char{grid-template-columns:minmax(0,1fr)}.cp-sec{padding:12px 12px}}
+
+/* ---------- "Same air": Bakersfield vs. Indianapolis scroll story (from the Same Air, Different Normal artifact), scoped under .sa ---------- */
+.sa{--bak:#e0592a;--ind:#1a0f6b;--talk:#cbbfa6;width:100vw;margin-left:calc(50% - 50vw);font-family:var(--label);border-bottom:1px solid var(--rule)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .sa{--bak:#ff8f5e;--ind:#f8ebcb;--talk:#5a5294}}
+:root[data-theme="dark"] .sa{--bak:#ff8f5e;--ind:#f8ebcb;--talk:#5a5294}
+.sa .opener{max-width:1100px;margin:0 auto;padding-inline:16px;padding-block:24px 0;text-align:center;display:grid;gap:2px;justify-items:center}
+.sa .opener h1{font:400 clamp(3.6rem,10vw,7rem)/1 var(--script);color:var(--event);margin:0}
+.sa .opener p{margin:0;max-width:none;font-family:var(--display);font-style:italic;font-size:clamp(15px,1.8vw,20px)}
+.sa .opener .cue{margin-top:0;font-size:12px;letter-spacing:.16em;color:var(--ink-2);text-transform:uppercase;font-weight:500}
+.sa .story{position:relative;height:1750vh}
+.sa .pin{position:sticky;top:0;height:100vh;height:100dvh;display:grid;grid-template-rows:auto minmax(0,1fr);padding:calc(env(safe-area-inset-top,0px) + 5vh) 16px 3vh;overflow:hidden}
+.sa .heads{position:relative;min-height:6.6rem;max-width:960px;width:100%;margin:0 auto}
+.sa .hd{position:absolute;inset:0 0 auto 0;text-align:center;display:grid;gap:8px;opacity:0}
+.sa .hd .h{font:400 clamp(1.3rem,2.7vw,2.05rem)/1.2 var(--label);margin:0;max-width:none;text-wrap:balance}
+.sa .hd .h b{font-weight:700}
+.sa .hd .s{font-size:clamp(.88rem,1.25vw,1rem);color:var(--ink-2);margin:0 auto;max-width:36rem;text-wrap:balance}
+.sa .w{display:inline-block;will-change:transform,filter,opacity}
+.sa #sa-hx{top:32vh}   /* the closing line sits mid-screen, so the pin's last screen doesn't leave it stranded at the top */
+.sa .stage{position:relative;width:100%;max-width:1100px;margin:0 auto;min-height:0}
+.sa .stage svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.sa svg text{font-family:var(--label);fill:var(--ink)}
+.sa .cap{font-size:38px;font-weight:400}
+.sa .cap-s{font-size:21px;fill:var(--ink-2)}
+.sa .big{font:500 30px var(--mono);font-variant-numeric:tabular-nums}
+.sa .unit{font-size:18px;fill:var(--ink-2)}
+.sa .city{font-size:22px;font-weight:500;paint-order:stroke;stroke:var(--ground);stroke-width:10px;stroke-linejoin:round}
+.sa .dname{font-size:24px;font-weight:700}
+.sa .dsub{font-size:17px;fill:var(--ink-2)}
+.sa .dlab{font-size:15px;font-weight:700}
+.sa .dpct{font:500 14px var(--mono)}
+.sa .dfoot{font:500 22px var(--mono)}
+.sa .dfoot-s{font-size:15px;fill:var(--ink-2)}
+.sa .stem{stroke:var(--rule);stroke-width:2}
+.sa .bname{font-size:21px;font-weight:500}
+.sa .fnote{font-size:15px;fill:var(--ink-2)}
+.sa .bval{font:600 16px var(--mono);fill:var(--ground)}
+.sa .base{stroke:var(--rule);stroke-width:2}
+.sa .after{max-width:46rem;margin:0 auto;padding-inline:16px;padding-block:24px 56px;display:grid;gap:22px}
+.sa .after h2{font:400 clamp(2.8rem,6.4vw,4.4rem)/1 var(--script);color:var(--event);margin:0;max-width:none}
+.sa .after p{margin:0;max-width:none;font-family:var(--display);font-size:18px;line-height:1.6}
+.sa details{border-top:1.5px solid var(--ink);padding-top:12px}
+.sa summary{cursor:pointer;font-weight:500;letter-spacing:.04em}
+.sa summary:focus-visible{outline:2px solid var(--event);outline-offset:3px}
+.sa .tbl{overflow-x:auto;margin-top:10px;border:0}
+.sa table{border-collapse:collapse;width:100%;min-width:0;font-size:.93rem}
+.sa th,.sa td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--rule)}
+.sa th{font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2)}
+.sa th.n,.sa td.n{text-align:right;font-family:var(--mono);font-variant-numeric:tabular-nums}
+.sa .after .foot{font-family:var(--label);font-size:.84rem;color:var(--ink-2);line-height:1.5}
+@media (max-width:700px){
+  .sa .cap{font-size:48px}.sa .cap-s{font-size:30px}.sa .big{font-size:40px}.sa .unit{font-size:26px}.sa .city{font-size:32px}
+  .sa .bname{font-size:30px}.sa .fnote{font-size:21px}.sa .bval{font-size:23px}.sa .dname{font-size:34px}.sa .dsub{font-size:24px}.sa .dlab{font-size:22px}.sa .dpct{font-size:20px}.sa .dfoot{font-size:30px}.sa .dfoot-s{font-size:22px}
+  .sa .heads{min-height:8.6rem}
+}
+
+/* Two pauses after the threshold plate (Dish's mockup): who sets a threshold, then how ours drift. Text only, centred. */
+.thr-plate { min-height: 90svh; align-content: center; justify-items: center; text-align: center; gap: clamp(48px, 9vh, 110px); }
+.thr-plate .line { font-family: var(--label); font-size: clamp(19px, 2vw, 26px); letter-spacing: -.01em; max-width: 34ch; }
+.thr-plate .logos { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: clamp(24px, 5vw, 64px); }
+.thr-plate .logo { display: block; height: clamp(54px, 7vw, 104px); width: auto; max-width: 100%; }
+.thr-plate .logo.epa { height: clamp(42px, 5.4vw, 80px); }   /* as in Dish's mockup: the EPA mark a little shorter */
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .thr-plate .logo { background: #f8ebcb; padding: 10px 14px; box-sizing: content-box; } }
+:root[data-theme="dark"] .thr-plate .logo { background: #f8ebcb; padding: 10px 14px; box-sizing: content-box; }   /* the blue marks sit on a cream card on the indigo ground */
+.drift-plate { min-height: 100svh; grid-template-rows: 1fr auto 1fr auto 1fr; justify-items: center; text-align: center; gap: 0; }
+.drift-plate .line { font-family: var(--label); font-size: clamp(19px, 2vw, 26px); letter-spacing: -.01em; line-height: 1.35; max-width: 34ch; }
+.drift-plate .line b { font-weight: 700; display: block; }   /* its own line, as in Dish's mockup */
+.drift-plate .line, .thr-plate .line { font-weight: 500; }
+.drift-plate .q { grid-row: 4; font-family: var(--label); font-weight: 700; font-size: clamp(19px, 2vw, 26px); letter-spacing: -.01em; }
+.drift-plate .lead { grid-row: 2; }
+
+/* ---------- The boiling-frog air layer (Dish): reddish-orange specks that thicken too slowly to notice as you scroll,
+   an optional warm drift and haze, and a snap back to clean air at "So what?". Decoration only; carries no data. ---------- */
+.air-warm, .air-haze, #air { position: fixed; inset: 0; pointer-events: none; }
+.air-warm { z-index: 52; background: #d9a868; mix-blend-mode: multiply; opacity: 0; }
+.air-haze { z-index: 53; background: var(--ground); opacity: 0; }
+#air { z-index: 55; width: 100vw; height: 100vh; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .air-warm { background: #ff9a3c; mix-blend-mode: soft-light; } }
+:root[data-theme="dark"] .air-warm { background: #ff9a3c; mix-blend-mode: soft-light; }
+.air-ctl { position: fixed; left: calc(env(safe-area-inset-left, 0px) + 12px); bottom: calc(env(safe-area-inset-bottom, 0px) + 12px); z-index: 70;
+  font-family: var(--label); font-size: 12px; display: grid; gap: 6px; justify-items: start; opacity: .28; transition: opacity .2s; }
+.air-ctl:hover, .air-ctl:focus-within, .air-ctl.open { opacity: 1; }
+.air-ctl > button { width: 26px; height: 26px; border-radius: 50%; border: 1.5px solid var(--ink); background: var(--ground); display: grid; place-items: center; padding: 0; }
+.air-ctl > button::after { content: ""; width: 8px; height: 8px; background: #e0592a; }
+.air-ctl .pane[hidden] { display: none; }
+.air-ctl .pane { display: grid; gap: 4px; background: var(--ground); border: 1.5px solid var(--ink); padding: 8px 10px; }
+.air-ctl .pane button { font: inherit; font-size: 12px; color: var(--ink); background: transparent; border: 1.5px solid var(--ink); padding: 2px 8px; text-align: left; }
+.air-ctl .pane button[aria-pressed="true"] { background: var(--ink); color: var(--ground); }
+.air-ctl .pane .t { font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; font-weight: 700; color: var(--ink-2); }
+
+/* People's own thresholds: three Reddit comments under "or they come from ourselves.", shown like posts. One at a time;
+   every few seconds the current one slides up out of its window and the next rises in place. Verbatim by Dish's decision
+   (2026-10-05); no usernames. Pauses while hovered or focused; with reduced motion all three simply stack. */
+.posts { position: relative; width: min(100%, 34rem); overflow: hidden; text-align: left; transition: height .3s; }
+.post { position: absolute; left: 0; top: 0; width: 100%; display: grid; gap: 8px; font-family: "Reddit Sans", var(--label);
+  transform: translateY(100%); opacity: 0; transition: transform .6s cubic-bezier(.65, 0, .35, 1), opacity .6s; }
+.post.on { transform: none; opacity: 1; }
+.post.out { transform: translateY(-100%); opacity: 0; }
+.post .who { display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 500; color: var(--ink-2); }
+.post .who::before { content: ""; width: 18px; height: 18px; border-radius: 50%; background: #e0592a; flex: none; }   /* the avatar dot, in the air-speck colour */
+.post p { margin: 0; max-width: none; font-size: clamp(19px, 1.9vw, 24px); line-height: 1.35; font-weight: 400; color: var(--ink); }
+.posts.still { overflow: visible; display: grid; gap: 28px; height: auto !important; }
+.posts.still .post { position: static; transform: none; opacity: 1; transition: none; }
 </style>
 
 <div class="book">
-  <div class="runhead"><span>MDE Studio · Project 2 · Air and attention</span><span class="red" data-stamp-short>Early results</span></div>
 
   <!-- I. Title -->
   <header class="title">
-    <div class="pot-hero" id="pot-hero">
-      <svg id="pot" role="img" aria-label="Illustration: looking down into a round pot of water. Two green frogs, a brown frog and three tadpoles swim laps while bubbles rise and the water slowly comes to a boil, spilling bubbles over the rim. Decorative; it carries no data."></svg>
-      <div class="over"><h1>boiling frog</h1><div class="sub">an investigation of human thresholds</div></div>
-      <p class="fig"><b>Fig. I.</b> Frogs in a pot of water warming slowly, seen from above.</p>
+    <div class="side-hero" id="side-hero">
+      <div class="ttl"><h1>boiling frog</h1><div class="sub">an investigation of human thresholds</div></div>
+      <svg id="scene" viewBox="0 0 1390 1250" preserveAspectRatio="xMidYMax meet" role="img"
+           aria-label="Illustration: a frog sits calmly in an indigo pot of lavender water while puffy bubbles and steam curl up out of the pot. Decorative; it carries no data.">
+        <defs>
+          <!-- grainy stipple, like a risograph print: noise thresholded into a dot mask -->
+          <filter id="grain" x="-10%" y="-10%" width="120%" height="120%">
+            <feTurbulence type="fractalNoise" baseFrequency="1.1" numOctaves="1" seed="3" result="n"/>
+            <feColorMatrix in="n" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 9 -3.6" result="dots"/>
+            <feComposite in="SourceGraphic" in2="dots" operator="in"/>
+          </filter>
+        </defs>
+        <g id="steam" filter="url(#grain)"></g>
+        <g id="pot" transform="translate(0,40)">
+          <!-- Dish's pot (water painted out), Claude's frog (Dish preferred it), water drawn in code so it can wave -->
+          <filter id="potline" x="-5%" y="-5%" width="110%" height="110%"><feMorphology in="SourceAlpha" operator="dilate" radius="5" result="d"/><feFlood flood-color="#f8ebcb"/><feComposite in2="d" operator="in" result="o"/><feMerge><feMergeNode in="o"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+          <mask id="wm" maskUnits="userSpaceOnUse" x="0" y="0" width="1390" height="2000"><image href="img/side/water-mask.png" width="1390" height="2000"/></mask>
+          <clipPath id="eyes"><circle cx="615" cy="588" r="27"/><circle cx="822" cy="588" r="27"/></clipPath>
+          <image class="potimg" href="img/side/pot-empty.webp" width="1390" height="2000"/>
+          <path id="water" fill="var(--water)" mask="url(#wm)"/>
+          <g id="surface" mask="url(#wm)"></g>
+          <g id="frog">
+            <!-- one solid silhouette, so the pot can't show through between the arms and the chin -->
+            <path fill="var(--frog)" d="M576,600 C566,548 632,524 662,560 C705,566 760,566 792,556 C820,526 868,544 860,600 L868,668 C898,718 930,762 946,808 L950,880 L480,880 L484,830 C508,762 546,702 576,660 Z"/>
+            <path fill="#fbeac7" d="M572,880 L572,800 C576,712 646,640 718,638 C806,640 852,706 852,800 L852,880 Z"/>
+            <path fill="none" stroke="var(--frog)" stroke-width="6" stroke-linecap="round" d="M590,724 C626,676 676,656 718,656 C762,656 812,676 846,722"/>
+            <circle cx="615" cy="588" r="27" fill="#fbeac7"/><circle cx="822" cy="588" r="27" fill="#fbeac7"/>
+            <g clip-path="url(#eyes)">
+              <g id="pupils"><ellipse cx="615" cy="588" rx="17" ry="21" fill="#000"/><ellipse cx="822" cy="588" rx="17" ry="21" fill="#000"/></g>
+              <rect class="lid" x="586" y="560" width="60" height="0" fill="var(--frog)"/>
+              <rect class="lid" x="793" y="560" width="60" height="0" fill="var(--frog)"/>
+            </g>
+          </g>
+          <image href="img/side/pot-front.webp" width="1390" height="2000"/>
+        </g>
+      </svg>
     </div>
-    <p class="lede">When the air turns bad, do people react to air that is <em class="k">harmful</em>, or to air that is <em class="k">unusual</em> for where they live? We followed nine U.S. cities through their worst week of air and counted how much each city's Reddit community talked about it.</p>
-    <div class="stamp" data-stamp>Early results · 7 of 9 cities</div>
   </header>
 
-  <!-- II. Definition -->
-  <section class="plate def-plate" aria-labelledby="p2">
-    <div class="plate-head"><span class="no">Plate II</span><span class="t" id="p2">A working definition</span></div>
-    <div class="def-grid">
-      <div class="entry">
-        <div class="hw">threshold</div>
-        <div class="pos">noun</div>
-        <div class="gloss">a range of conditions where a decision is made; a tolerance.</div>
-        <p class="fig-cap" style="color:var(--on-green)">Below it, people go on as normal. Above it, they can't, and they change what they do: they close windows, buy filters, stay inside, or talk about it.</p>
-      </div>
-      <div><svg id="fig-threshold" viewBox="0 0 420 300" role="img" aria-label="Diagram: a vertical scale of conditions with a band marking the threshold, where going on as normal gives way to reacting."></svg>
-        <p class="fig-cap" style="color:var(--on-green)"><b>Fig. 1</b>The threshold is a band, not a line. Where it sits can move.</p></div>
-    </div>
-    <div class="question"><span class="small">which makes us ask:</span><span class="big">how do we react to what's harmful vs. what's abnormal?</span></div>
-  </section>
-
-  <!-- III. Two cities -->
-  <section class="plate" aria-labelledby="p3">
-    <div class="plate-head"><span class="no">Plate III</span><span class="t" id="p3">Two cities, one level of air</span></div>
-    <h2>Bakersfield and Indianapolis each had a week that averaged 55 µg/m³.</h2>
-    <p>Fine particles (PM2.5) are measured in micrograms per cubic meter of air. The EPA counts a day above 35.5 as unhealthy. The two cities reached the same level for very different reasons.</p>
-    <div class="specimens">
-      <article class="specimen">
-        <div class="nm">Bakersfield<span>CA</span></div>
-        <dl>
-          <dt>Where</dt><dd>Southern San Joaquin Valley; the seat of Kern County</dd>
-          <dt>People</dt><dd><span class="mono">403,455</span> (2020 census)</dd>
-          <dt>Known for</dt><dd>Oil fields and farming</dd>
-          <dt>Air it lives with</dt><dd><span class="mono" data-v="bakersfield.bad_days"></span> days a year above the EPA line. Ranked the worst U.S. city for short-term particle pollution in 2025.<sup>1</sup></dd>
-          <dt>Its worst week</dt><dd><span data-v="bakersfield.dates"></span>. <span data-v="bakersfield.cause"></span></dd>
-        </dl>
-      </article>
-      <article class="specimen">
-        <div class="nm">Indianapolis<span>IN</span></div>
-        <dl>
-          <dt>Where</dt><dd>Central Indiana; the state capital</dd>
-          <dt>People</dt><dd><span class="mono">887,642</span> (2020 census)</dd>
-          <dt>Known for</dt><dd>"Crossroads of America": a highway and freight hub</dd>
-          <dt>Air it lives with</dt><dd><span class="mono" data-v="indianapolis.bad_days"></span> day a year above the EPA line.</dd>
-          <dt>Its worst week</dt><dd><span data-v="indianapolis.dates"></span>. <span data-v="indianapolis.cause"></span></dd>
-        </dl>
-      </article>
-    </div>
-    <p class="fig-cap">City descriptions are context for the reader. They are not part of the test.</p>
-  </section>
-
-  <!-- IV. Scrolly: same air, different reaction -->
-  <section class="plate" aria-labelledby="p4">
-    <div class="plate-head"><span class="no">Plate IV</span><span class="t" id="p4">Same air, different reaction</span></div>
-    <div class="scrolly" id="scrolly-two">
-      <div class="steps">
-        <div class="step" data-step="0"><span class="tag">How harmful</span><p>Both weeks averaged about 55 µg/m³, far above the EPA's line of 35.5. Judged by harm alone, the two weeks were the same.</p></div>
-        <div class="step" data-step="1"><span class="tag">How unusual</span><p>Now set each week against the city's own normal for that month. A typical December week in Bakersfield is already <span class="mono" data-v="bakersfield.pm_normal|0"></span> µg/m³. A typical June week in Indianapolis is <span class="mono" data-v="indianapolis.pm_normal|0"></span>. The same level was <em class="k"><span data-v="bakersfield.ratio|1"></span>× normal</em> in Bakersfield and <em class="k"><span data-v="indianapolis.ratio|1"></span>× normal</em> in Indianapolis.</p></div>
-        <div class="step" data-step="2"><span class="tag">How much people talked</span><p>Air talk is the share of a city subreddit's posts and comments that mention smoke, haze, air quality and similar words. In Bakersfield it rose <em class="k"><span data-v="bakersfield.rise|1"></span>×</em> over a normal week, and <span data-v="bakersfield.higher"></span> ordinary Decembers were higher still. In Indianapolis it rose <em class="k"><span data-v="indianapolis.rise|1"></span>×</em>, more than in every normal June week.</p></div>
-        <div class="step" data-step="3"><span class="tag">Together</span><p>The air was equally harmful in both cities but more out of place in Indianapolis, and Indianapolis talked about it about twice as much. This was one of the pairs we chose from air data alone, before reading any posts.</p></div>
-      </div>
-      <div class="sticky">
-        <div class="figbox"><svg id="fig-two" role="img" aria-label="Bakersfield and Indianapolis compared on harm, unusualness and air talk."></svg></div>
-        <p class="fig-cap"><b>Fig. 2</b>Rings are normal weeks in the same month, 2019–2025; the magenta dot is the worst week. Tick = the city's normal.<sup>2</sup></p>
-      </div>
+  <!-- II. Definition: Dish's threshold image, redrawn so the figure can walk -->
+  <section class="plate door-plate" aria-label="A working definition">
+    <svg id="doors" viewBox="0 0 2000 600" role="img" aria-label="Illustration: four magenta doorways stand in a green field. A small figure walks past them and stops in the light of the last door, its long shadow stretching across the floor. Decorative; it carries no data.">
+      <defs>
+        <filter id="speck" x="0" y="0" width="100%" height="100%">
+          <feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="1" seed="7" result="n"/>
+          <feColorMatrix in="n" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 5 -1.6" result="dots"/>
+          <feComposite in="SourceGraphic" in2="dots" operator="in"/>
+        </filter>
+      </defs>
+      <g id="beams" filter="url(#speck)"></g>
+      <g id="shadow"></g>
+      <g id="door-set"></g>
+      <g id="walker"><circle cx="13" cy="-132" r="8.5"/><path d="M2,-118 C2,-126 24,-126 24,-118 L26,-44 L21,0 L5,0 L0,-44 Z"/></g>
+    </svg>
+    <div class="door-def">
+      <div class="hw">threshold</div>
+      <p class="gl">a <b>range of conditions</b> where a <b>decision</b> is made; a <b>tolerance</b></p>
     </div>
   </section>
 
-  <!-- V. Nine cities -->
-  <section class="plate" aria-labelledby="p5">
-    <div class="plate-head"><span class="no">Plate V</span><span class="t" id="p5">Nine cities, one scale</span></div>
-    <h2>Every city talked more about the air in its worst week. How much more varied a lot.</h2>
-    <p>Each panel is one city, drawn on the same scale. The ring is the city's normal air for that month. The magenta dot is its worst week. <b>How high the dot sits</b> shows how harmful the air was. <b>How long the line is</b> shows how unusual it was. The large number is the reaction: how many times more air talk than a normal week. Panels run from the biggest reaction to the smallest.</p>
-    <div class="key">
-      <span><svg width="16" height="16" aria-hidden="true"><circle cx="8" cy="8" r="5" fill="var(--ground)" stroke="var(--ink)" stroke-width="2"/></svg>Normal for that month</span>
-      <span><svg width="16" height="16" aria-hidden="true"><circle cx="8" cy="8" r="6" fill="var(--event)"/></svg>Worst week</span>
-      <span><svg width="26" height="10" aria-hidden="true"><line x1="0" y1="5" x2="26" y2="5" stroke="var(--ink)" stroke-dasharray="3 3"/></svg>EPA unhealthy line, 35.5</span>
-      <span><svg width="18" height="16" aria-hidden="true"><rect x="1" y="1" width="16" height="14" fill="none" stroke="var(--ink)" stroke-dasharray="3 2"/></svg>Reddit data still being collected</span>
+  <!-- Who sets a threshold (Dish's mockup) -->
+  <section class="plate thr-plate" aria-label="Where thresholds come from">
+    <p class="line">Thresholds come from others,</p>
+    <div class="logos">
+      <img class="logo" src="img/logo-who.png" alt="World Health Organization">
+      <img class="logo epa" src="img/logo-epa.png" alt="U.S. Environmental Protection Agency (EPA)">
     </div>
-    <div class="grid9" id="grid9"></div>
-    <p class="fig-cap"><b>Fig. 3</b>PM2.5 on a log scale, 3 to 300 µg/m³, so equal line lengths mean equal ratios. Hover or tab to a panel for details.</p>
+    <p class="line">or they come from ourselves.</p>
+    <div class="posts" id="posts" aria-label="What people on local Reddit said" aria-live="polite">
+      <div class="post on"><span class="who">Reddit user &middot; Pittsburgh</span><p>I wouldn&rsquo;t run outside when the AQI is over 150.</p></div>
+      <div class="post"><span class="who">Reddit user &middot; Seattle</span><p>&hellip;no choice but to open windows and let the smoke in to keep from overheating.</p></div>
+      <div class="post"><span class="who">Reddit user &middot; Pittsburgh</span><p>It&rsquo;s 74 per my phone right now, which as a not-super-sensitive person I&rsquo;m ok with</p></div>
+    </div>
   </section>
 
-  <!-- VI. The test -->
-  <section class="plate" aria-labelledby="p6">
-    <div class="plate-head"><span class="no">Plate VI</span><span class="t" id="p6">What tracks the reaction?</span></div>
-    <h2>Reactions lined up with how unusual the air was, not with how harmful it was.</h2>
-    <p>Rank the cities by reaction. That order matches the order of how unusual their air was (rank correlation <span class="mono" data-v="rho.ratio|2"></span>) far better than the order of how harmful it was (<span class="mono" data-v="rho.abs|2"></span>). San Jose had the mildest air of all and one of the largest reactions; Eugene had by far the worst air and a smaller one.<sup>3</sup></p>
-    <div class="two">
-      <div class="figbox"><div class="fh"><h3>Reaction vs. how unusual</h3><span class="rho">ρ = <span data-v="rho.ratio|2"></span></span></div><svg id="sc-ratio" role="img" aria-label="Scatter of reaction against how unusual the air was."></svg></div>
-      <div class="figbox"><div class="fh"><h3>Reaction vs. how harmful</h3><span class="rho">ρ = <span data-v="rho.abs|2"></span></span></div><svg id="sc-abs" role="img" aria-label="Scatter of reaction against how harmful the air was."></svg></div>
+  <!-- How our own thresholds drift (Dish's mockup) -->
+  <section class="plate drift-plate" aria-label="When thresholds drift">
+    <p class="line lead">What happens when the changes to the world around us are so subtle and incremental <b>that our own thresholds transform&hellip;</b></p>
+    <p class="q">and we no longer react?</p>
+  </section>
+
+  <!-- III. The question -->
+  <section class="plate ask-plate" aria-label="The question">
+    <p class="ask-lead">which makes us ask:</p>
+    <div class="ask-box"><p class="big">how do we react to what's harmful vs. what's abnormal?</p></div>
+    <div class="ask-figs" aria-hidden="true"><img src="img/fig-point.png" alt=""><img src="img/fig-stand.png" alt=""></div>
+  </section>
+
+  <!-- IV. What we did -->
+  <section class="plate say-plate" aria-label="What we did">
+    <div class="say-wrap">
+    <p class="say say-sans"><span>We followed nine U.S. cities</span> <span>through their worst week of air,</span> <span>and studied their responses</span> <span>&mdash; through what they talked about on Reddit.</span></p>
+    <svg class="reddit-mark" viewBox="0 0 40 40" role="img" aria-label="Reddit">
+      <circle cx="20" cy="20" r="20" fill="#ff4500"/>
+      <g fill="#fff"><circle cx="10.6" cy="19.2" r="2.7"/><circle cx="29.4" cy="19.2" r="2.7"/><ellipse cx="20" cy="23.6" rx="11" ry="7.6"/><circle cx="28" cy="10" r="2.3"/></g>
+      <path d="M20 16 L22 9.2 L26.6 10.2" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="16" cy="22.4" r="1.7" fill="#ff4500"/><circle cx="24" cy="22.4" r="1.7" fill="#ff4500"/>
+      <path d="M15.6 26.4 Q20 29.4 24.4 26.4" fill="none" stroke="#ff4500" stroke-width="1.3" stroke-linecap="round"/>
+    </svg>
     </div>
-    <p class="fig-cap"><b>Fig. 4</b>Each dot is one city. Both horizontal axes are log scales. ρ is Spearman's rank correlation, from −1 to 1.</p>
-    <div class="sidebar">
-      <div style="display:grid;gap:10px">
-        <h3>Sidebar · Fairbanks</h3>
-        <p>Fairbanks sees about <span class="mono" data-v="fairbanks.bad_days"></span> unhealthy days a year, most of them in summer wildfire seasons, and smoke comes in bursts. A typical June week is clean, about <span class="mono" data-v="fairbanks.pm_normal|0"></span> µg/m³. Measured against that normal, the 2022 fire week was <em class="k"><span data-v="fairbanks.ratio|0"></span>× normal</em>, and air talk rose <em class="k"><span data-v="fairbanks.rise|0"></span>×</em>. The comparison has to be with the right month.<sup>4</sup></p>
+  </section>
+
+  <!-- V. Map -->
+  <section class="plate map-plate" aria-label="The nine cities">
+    <h2 class="map-h"><span>Meet the cities with some of</span> <span>the worst short-term air pollution in America</span></h2>
+    <p>All nine made the American Lung Association&rsquo;s annual &lsquo;Worst 25&rsquo; list, and their worst weeks were selected for this study.</p>
+    <figure class="figbox">
+      <svg id="map" role="img" aria-label="Map of the nine study cities. Each dot is sized by the city's worst-week PM2.5."></svg>
+      <div class="legend" id="legend"></div>
+    </figure>
+    <details class="fig-cap fig-more">
+      <summary><b>Fig. 1</b>How the map is calculated</summary>
+      <dl>
+        <dt>The cities</dt><dd>From the American Lung Association&rsquo;s <i>State of the Air 2026</i> list of the 25 U.S. cities with the worst short-term particle pollution, kept where both air monitor and Reddit data were available.</dd>
+        <dt>Dot size</dt><dd>The city&rsquo;s worst week: the Monday&ndash;Sunday week with the highest average PM2.5, 2019&ndash;2026 (July 4th and New Year&rsquo;s weeks left out). A bigger dot means more PM2.5; the dot&rsquo;s area grows with the number.</dd>
+        <dt>&ldquo;Bad&rdquo; days a year (on hover)</dt><dd>Each day&rsquo;s PM2.5 is the average across the city&rsquo;s reference monitors. We counted the days from 2019 to 2025 when that average was above 15&nbsp;&micro;g/m&sup3;, the World Health Organization&rsquo;s 24-hour guideline, divided by the number of days that had a reading, and multiplied by 365. Bakersfield works out to about 112 such days a year; Seattle to about 14.</dd>
+        <dt>Data</dt><dd>PM2.5 from OpenAQ reference monitors.</dd>
+      </dl>
+    </details>
+  </section>
+
+  <!-- Same air: Bakersfield vs. Indianapolis (Dish: after "Meet some of the worst polluted cities") -->
+  <section class="sa" aria-label="Same air, different normal">
+    <div class="opener">
+      <div class="cue">scroll</div>
+    </div>
+
+    <section class="story" id="sa-story">
+      <div class="pin">
+        <div class="heads">
+          <div class="hd" id="sa-hb"><p class="h">and because of that,<br><b>they respond differently.</b></p><p class="s">changes in air-related reddit post and comment density during each city's worst air week</p></div>
+          <div class="hd" id="sa-he"><p class="h">even when the danger is the same.</p></div>
+          <div class="hd" id="sa-ht"><p class="h">let's take a look at two cities</p></div>
+          <div class="hd" id="sa-h2"><p class="h">in its worst week, bakersfield and indianapolis had the same level of unhealthy air</p><p class="s">(over 3x the WHO recommendation and 60% higher than EPA standards)*</p></div>
+          <div class="hd" id="sa-h3"><p class="h">but they reacted <b>way</b> differently</p><p class="s">talk about the air on local reddit, compared with a normal week</p></div>
+          <div class="hd" id="sa-hw"><p class="h"><b>why?</b></p></div>
+          <div class="hd" id="sa-h4"><p class="h">their perception of <b>“normal”</b> is different.</p><p class="s">that week's air was 4.4× indianapolis's normal, but only 2.9× bakersfield's normal</p></div>
+          <div class="hd" id="sa-hf"><p class="h">bakersfield is <em>familiar</em> with poor air quality, and reacts less</p></div>
+          <div class="hd" id="sa-hx"><p class="h">we hope to explore how environments drive our responses, and what that means for our future</p></div>
+          <div class="hd" id="sa-hi"><p class="h">for indianapolis, poor air quality isn't normal — and they react more</p></div>
+          <div class="hd" id="sa-h5"><p class="h">and they <b>talked</b> about it differently</p><p class="s">air comments sorted by tone. each ring is ¼× more air talk than normal, and the magenta outline is that week's mix</p></div>
+        </div>
+        <div class="stage">
+          <svg id="sa-svg" viewBox="0 0 1000 680" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Bakersfield and Indianapolis: the same pollution level, a different sense of normal, a different reaction">
+            <g id="sa-world">
+            <g id="sa-scene1">
+              <text class="cap" x="410" y="160" id="sa-cap1">some of these cities<tspan x="410" dy="1.15em">are <tspan font-weight="700">used to</tspan></tspan><tspan x="410" dy="1.15em">air pollution.</tspan></text>
+              <text class="cap" x="410" y="524" id="sa-cap2">some aren't.</text>
+            </g>
+            <line class="base" id="sa-base" x1="200" x2="840" y1="340" y2="340"></line>
+            <g id="sa-lolli"></g>
+            <g id="sa-bars"></g>
+            <g id="sa-states"></g>
+            <text class="fnote" id="sa-fnote" x="520" y="440" text-anchor="middle" opacity="0">*WHO recommends daily levels at &lt;15 µg/m³, with the EPA's standards at 35 µg/m³</text>
+            <rect id="sa-bak" x="140" y="90" width="220" height="220" rx="110"></rect>
+            <rect id="sa-ind" x="140" y="400" width="220" height="220" rx="110"></rect>
+            <g id="sa-labels"></g>
+            </g>
+            <g id="sa-disks"></g>
+          </svg>
+        </div>
       </div>
-      <div class="figbox"><svg id="fig-fair" role="img" aria-label="Fairbanks by month: typical daily PM2.5 and unhealthy days per year, 2019 to 2025."></svg>
-        <p class="fig-cap"><b>Fig. 5</b>Fairbanks, 2019–2025. Bars: typical day (median) in each month. Numbers: unhealthy days per year in that month, on average.</p></div>
-    </div>
+    </section>
+
+    <section class="after">
+      <details>
+        <summary>see the numbers</summary>
+        <div class="tbl"><table>
+          <thead><tr><th>measure</th><th class="n">bakersfield</th><th class="n">indianapolis</th></tr></thead>
+          <tbody>
+            <tr><td>worst week</td><td class="n">Dec 2–8, 2024</td><td class="n">Jun 26–Jul 2, 2023</td></tr>
+            <tr><td>cause</td><td class="n">winter inversion</td><td class="n">wildfire smoke</td></tr>
+            <tr><td>pm2.5, weekly average (µg/m³)</td><td class="n">≈55</td><td class="n">≈55</td></tr>
+            <tr><td>× a normal week's pm2.5</td><td class="n">2.9×</td><td class="n">4.4×</td></tr>
+            <tr><td>× a normal week's air talk</td><td class="n">4.8×</td><td class="n">9.5×</td></tr>
+            <tr><td>air comments: alarm / adjusting / living with it</td><td class="n">15 / 5 / 31</td><td class="n">61 / 22 / 10</td></tr>
+          </tbody>
+        </table></div>
+      </details>
+      <p class="foot">Details: PM2.5 from OpenAQ reference monitors; air talk from local Reddit (r/[city name]) via the Arctic Shift archive.</p>
+    </section>
   </section>
 
   <!-- VII. Pairs -->
-  <section class="plate" aria-labelledby="p7">
-    <div class="plate-head"><span class="no">Plate VII</span><span class="t" id="p7">Head-to-head pairs</span></div>
-    <h2>Pairs chosen from air data alone, before any posts were read</h2>
-    <p>In a <b>matched</b> pair, the air was about as harmful in both cities but more unusual in one. In a <b>crossed</b> pair, one city had worse air while the other had more unusual air. If unusualness drives the reaction, the city with the more unusual week should react more.</p>
-    <div class="tally"><span class="n" data-tally></span><p data-tally-text></p></div>
-    <div class="pairs" id="pairs"></div>
+  <!-- VII. Pairs plate: moved to its own artifact for now ("Boiling Frog Pairs Plate"); its code below stays, inactive. -->
+
+  <!-- Interactive map of the pairs (Dish: after the pairs plate) -->
+  <section class="plate map-plate imap-plate" aria-label="The pairs on the map">
+    <p class="cp-hint" id="cp-hint"><svg width="22" height="22" aria-hidden="true"><circle cx="11" cy="11" r="9" fill="none" stroke="var(--event)" stroke-width="2"/><circle cx="11" cy="11" r="4" fill="var(--event)"/></svg>Click a pulsing city (Bakersfield, Detroit, Eugene or San Jose) to learn more about its responses to normal or abnormal harm.</p>
+    <details class="map-tune">
+    <summary>map settings</summary>
+    <div class="ctl" aria-label="Pair map controls">
+      <div class="cg"><span class="lab">City dots</span>
+        <div class="row" data-ch="dots"><button data-o="plain">Plain</button><button data-o="size">Sized by worst-week PM2.5</button><button data-o="both">Normal → worst</button></div></div>
+      <div class="cg"><span class="lab">Pairs</span>
+        <div class="row" data-ch="pairs"><button data-o="off">Hide</button><button data-o="all">All</button><button data-o="matched">Matched</button><button data-o="crossed">Crossed</button></div></div>
+      <div class="cg"><span class="lab">Who reacted more</span>
+        <div class="row" data-ch="arrow"><button data-o="on">Arrowheads</button><button data-o="off">Off</button></div></div>
+      <div class="cg"><span class="lab">Arc height</span>
+        <div class="row" style="align-items:center;gap:8px"><input type="range" id="ilift" min="0" max="90" step="5" aria-label="Arc height" style="width:130px;accent-color:var(--ink)"><output id="ilift-o" class="mono" style="font-size:12px"></output></div></div>
+      <div class="cg"><span class="lab">City labels</span>
+        <div class="row" data-ch="labels"><button data-o="on">On</button><button data-o="off">Off</button></div></div>
+    </div>
+    </details>
+    <div class="stage">
+      <figure class="figbox">
+        <svg id="imap" role="img" aria-label="Map of the nine study cities, with lines for the head-to-head pairs when shown."></svg>
+        <div class="legend" id="ilegend"></div>
+      </figure>
+    </div>
+    <p class="fig-cap"><b>Fig. 2</b>An arrowhead points at the city that reacted more; pairs share cities (Seattle is in four), so they are not nine separate tests. Hover a city, a line or a pair for its numbers.</p>
+    <aside class="cp-panel" id="cp-panel" hidden aria-live="polite"></aside>
+    <svg id="cp-wire" aria-hidden="true"></svg>
   </section>
 
   <!-- VIII. Conclusion -->
-  <section class="plate" aria-labelledby="p8">
-    <div class="plate-head"><span class="no">Plate VIII</span><span class="t" id="p8">Conclusion</span></div>
-    <p class="verdict" data-verdict>In these seven cities, reaction followed how unusual the air was, not how harmful.</p>
-    <p>Cities used to bad air reacted less overall (rank correlation <span class="mono" data-v="rho.bad_days|2"></span> between reaction and unhealthy days a year). Relativity seems to set the threshold, even when the air is more dangerous.</p>
-    <div class="stamp" data-stamp>Early results · 7 of 9 cities</div>
+  <section class="plate" aria-label="Conclusion">
+    <p class="verdict" data-verdict>Across all nine cities, reaction followed how unusual the air was, not how harmful.</p>
+    <p>Cities used to bad air reacted less overall (rank correlation <span class="mono" data-v="rho.bad_days|2"></span> between reaction and unhealthy days a year). Relativity seems to set the threshold, even when the air is more dangerous.<sup>1</sup></p>
+    <aside class="plist" id="iplist" aria-label="Pair results"></aside>
   </section>
 
   <!-- IX. So what -->
-  <section class="plate sowhat" aria-labelledby="p9">
-    <div class="plate-head"><span class="no">Plate IX</span><span class="t" id="p9">So what?</span></div>
+  <section class="plate sowhat" aria-label="So what?">
     <div class="big-q" id="p9q">who decides what is safe?</div>
-    <p class="lede">The World Health Organization's guideline for a day of PM2.5 is 15 µg/m³. The U.S. EPA's daily standard is 35. A typical December week in Bakersfield already sits above the WHO line. There, that level is simply normal.<sup>5</sup></p>
+    <p class="lede">The World Health Organization's guideline for a day of PM2.5 is 15 µg/m³. The U.S. EPA's daily standard is 35. A typical December week in Bakersfield already sits above the WHO line. There, that level is simply normal.<sup>2</sup></p>
     <div class="figbox"><svg id="fig-safe" role="img" aria-label="A ruler of PM2.5 with the WHO and EPA daily limits, and each city's normal week and worst week."></svg></div>
-    <p class="fig-cap"><b>Fig. 6</b>Normal week (ring) and worst week (dot) for the two cities, against the WHO and EPA daily limits.</p>
+    <p class="fig-cap"><b>Fig. 3</b>Normal week (ring) and worst week (dot) for the two cities, against the WHO and EPA daily limits.</p>
     <p class="verdict" style="max-width:26ch">When danger gets familiar, our action thresholds move up.</p>
     <div class="qs">
       <span>How have we normalized danger?</span>
@@ -330,26 +722,61 @@ td.mono { font-family: var(--mono); font-size: 12.5px; }
     </div>
   </section>
 
-  <!-- X. Notes -->
-  <section class="plate notes" aria-labelledby="p10">
-    <div class="plate-head"><span class="no">Plate X</span><span class="t" id="p10">Notes and numbers</span></div>
-    <ol>
-      <li>American Lung Association, <i>State of the Air</i> 2025. Bakersfield's worst week was a winter inversion, not smoke, so people may have seen or smelled less of it than a smoke week.</li>
-      <li>Air talk counts normal weeks that pass the study's usability rules; PM2.5 rings show every normal week with monitor data. The normal is the median week of the same calendar month, 2019–2025.</li>
-      <li>With this few cities the result is a pattern, not proof. The two air measures also move together across these cities (rank correlation <span data-v="rho.measures|2"></span>), so they are only partly separated. San Jose and Eugene had large nearby fires with evacuations; about 15% of their worst-week posts mention fire, so some of their air talk may be fire news. Seattle's smoke came from distant fires, and about <span data-v="seattle.fire_event|0"></span>% of its worst-week posts mention fire.</li>
-      <li>Fairbanks's subreddit is small (<span data-v="fairbanks.items"></span> posts and comments in its worst week), so its share moves a lot with each post. Fig. 5 uses daily averages from reference monitors.</li>
-      <li>WHO global air quality guidelines (2021), 24-hour PM2.5: 15 µg/m³. U.S. EPA 24-hour PM2.5 standard: 35 µg/m³. A weekly average is compared with a daily limit here only as a rough guide.</li>
-      <li data-note-run></li>
-      <li>Detroit's worst week is missing comments from Sunday 8 pm to midnight; its posts are complete.</li>
-    </ol>
-    <p class="src">Data: OpenAQ reference monitors (PM2.5); Arctic Shift archive of Reddit (posts and comments, usernames removed). Worst week = the Monday–Sunday week with the highest average PM2.5, 2019–2026, excluding July 4th and New Year's weeks. City facts: U.S. Census Bureau, 2020 Census; <a href="https://en.wikipedia.org/wiki/Indianapolis">Indianapolis</a>; <a href="https://www.lung.org/research/sota/key-findings">ALA State of the Air, key findings</a>. MDE Studio, October 2026.</p>
-    <div class="tbl"><table id="tbl"></table></div>
+  <!-- Outro: the pot again, full of frogs -->
+  <section class="plate outro" aria-label="The end">
+    <svg id="outro" viewBox="0 470 1390 760" role="img" aria-label="Illustration: Dish's indigo pot, now crowded with fourteen frogs bobbing in lavender water, all watching you. Decorative; it carries no data.">
+      <defs>
+        <mask id="owm" maskUnits="userSpaceOnUse" x="0" y="0" width="1390" height="2000"><image href="img/side/water-mask.png" width="1390" height="2000"/></mask>
+      </defs>
+      <g id="o-steam" filter="url(#grain)"></g>
+      <image class="potimg" href="img/side/pot-empty.webp" width="1390" height="2000"/>
+      <path id="o-water" fill="var(--water)" mask="url(#owm)"/>
+      <g id="o-frogs"></g>
+      <image href="img/side/pot-front.webp" width="1390" height="2000"/>
+    </svg>
+    <p class="bye">thank you</p>
+    <p class="credit">Dish Chowdhury and Gina Hollenbach · MDE Studio, October 2026</p>
   </section>
+
+  <!-- X. Notes (collapsed, at the very end) -->
+  <section class="plate notes" aria-label="Notes and numbers">
+    <details class="notes-dd">
+    <summary>notes, sources and the numbers</summary>
+    <ol>
+      <li>With this few cities the result is a pattern, not proof. The two air measures also move together across these cities (rank correlation <span data-v="rho.measures|2"></span>), so they are only partly separated. San Jose and Eugene had large nearby fires with evacuations; about 15% of their worst-week posts mention fire, so some of their air talk may be fire news. Seattle's smoke came from distant fires, and about <span data-v="seattle.fire_event|0"></span>% of its worst-week posts mention fire.</li>
+      <li>WHO global air quality guidelines (2021), 24-hour PM2.5: 15 µg/m³. U.S. EPA 24-hour PM2.5 standard: 35 µg/m³. A weekly average is compared with a daily limit here only as a rough guide.</li>
+      <li>American Lung Association, <i>State of the Air</i> 2026 (short-term particle pollution list). Bakersfield's worst week was a winter inversion, not smoke, so people may have seen or smelled less of it than a smoke week.</li>
+      <li>A city's normal PM2.5 is the median weekly average for the same calendar month, 2019–2025, leaving out the worst week (a week counts toward the month its Thursday falls in and needs at least 5 days with readings). Normal air talk uses the normal weeks that pass the study's usability rules.</li>
+      <li>Fairbanks's subreddit is small (<span data-v="fairbanks.items"></span> posts and comments in its worst week), so its share moves a lot with each post.</li>
+      <li data-note-run></li>
+      <li>Detroit's worst week is missing comments from Sunday 8 pm to midnight (about 3% of a week's comments); its posts are complete.</li>
+      <li>Tone groups (alarm, adjusting, living with it) come from Claude's draft sorting of each air post and comment. Gina and Dish hand-checked 436 of them; the drafts matched their agreed label about two times in three, so read the splits as a guide. 26 of Bakersfield's 51 air comments come from one thread; without it, its split is about 60% alarm, 20% adjusting, 20% living with it.</li>
+      <li>Reddit quotes are shown word for word, without usernames.</li>
+    </ol>
+    <p class="src">Data: OpenAQ reference monitors (PM2.5); Arctic Shift archive of Reddit (posts and comments, usernames removed). Worst week = the Monday–Sunday week with the highest average PM2.5, 2019–2026, excluding July 4th and New Year's weeks. City facts: U.S. Census Bureau, 2020 Census; <a href="https://en.wikipedia.org/wiki/Indianapolis">Indianapolis</a>; <a href="https://www.lung.org/research/sota/key-findings">ALA State of the Air, key findings</a>. Plate II illustration redrawn from Dish's threshold image. MDE Studio, October 2026.</p>
+    <div class="tbl"><table id="tbl"></table></div>
+  </details>
+  </section>
+
 </div>
 <div class="tip" id="tip" hidden></div>
+<div class="mtip" id="mtip" hidden></div>
+<div class="air-warm" id="air-warm" aria-hidden="true"></div>
+<div class="air-haze" id="air-haze" aria-hidden="true"></div>
+<canvas id="air" aria-hidden="true"></canvas>
+<div class="air-ctl" id="air-ctl">
+  <div class="pane" id="air-pane" hidden>
+    <span class="t">Air layer</span>
+    <button id="air-p" data-air="particles">Particles</button>
+    <button id="air-w" data-air="warm">Warm drift</button>
+    <button id="air-h" data-air="haze">Haze</button>
+  </div>
+  <button id="air-open" aria-expanded="false" aria-controls="air-pane" title="Air layer"><span class="sr" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Air layer controls</span></button>
+</div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
 <script src="data.js"></script>
+<script src="states.js"></script>
 <script>
 const D = window.PM25;
 const C = Object.fromEntries(D.cities.map(c => [c.slug, c]));
@@ -362,7 +789,7 @@ const NUMW = ["no", "one", "two", "three", "four", "five", "six", "seven", "eigh
 function bindText() {
   const stampTxt = D.run === "interim" ? `Early results · ${D.n_ready} of ${D.n_total} cities` : `All ${D.n_total} cities`;
   document.querySelectorAll("[data-stamp]").forEach(e => { e.textContent = stampTxt; e.classList.toggle("full", D.run !== "interim"); });
-  document.querySelector("[data-stamp-short]").textContent = D.run === "interim" ? `Early results · ${D.n_ready} of ${D.n_total} cities` : "Full results";
+  const short = document.querySelector("[data-stamp-short]"); if (short) short.textContent = D.run === "interim" ? `Early results · ${D.n_ready} of ${D.n_total} cities` : "Full results";
   const higher = c => { const [a, b] = (c.beat || "0 of 0").split(" of ").map(Number); return b - a; };
   document.querySelectorAll("[data-v]").forEach(e => {
     const [path, dig] = e.dataset.v.split("|"); const [k, field] = path.split(".");
@@ -372,9 +799,10 @@ function bindText() {
     else v = C[k][field];
     e.textContent = dig != null && typeof v === "number" ? f(v, +dig) : (typeof v === "number" ? v.toLocaleString("en-US") : v);
   });
+  if (D.cities.every(c => c.ready)) document.querySelector("[data-pending-key]")?.remove();   // nothing pending: drop that key entry
   const nWord = NUMW[D.n_ready] ?? D.n_ready;
   if (D.verdict !== "Pos") document.querySelector("[data-verdict]").textContent = `Across ${nWord} cities the main test came out ${D.verdict === "Neg" ? "the other way: reaction followed harm" : "mixed"}.`;
-  else document.querySelector("[data-verdict]").textContent = `In ${D.run === "interim" ? "these " + nWord : "all " + nWord} cities, reaction followed how unusual the air was, not how harmful.`;
+  else document.querySelector("[data-verdict]").textContent = `Across ${D.run === "interim" ? "these " + nWord : "all " + nWord} cities, reaction followed how unusual the air was, not how harmful.`;
   document.querySelector("[data-note-run]").textContent = D.run === "interim"
     ? `Early results from ${D.n_ready} of ${D.n_total} cities (${D.cities.filter(c => !c.ready).map(c => c.name).join(", ")} still being collected). The final result uses all ${D.n_total} cities and the same method, fixed before any worst-week posts were read.`
     : `All ${D.n_total} cities, same method as the early results, fixed before any worst-week posts were read.`;
@@ -398,169 +826,7 @@ function attachTip(sel, html) {
 }
 const W = el => Math.max(280, el.parentElement.clientWidth - 32);
 
-/* ---------- Fig 1: threshold band ---------- */
-function drawThreshold() {
-  const svg = d3.select("#fig-threshold"); svg.selectAll("*").remove();
-  const col = "var(--on-green)";
-  svg.append("line").attr("x1", 60).attr("x2", 60).attr("y1", 20).attr("y2", 280).attr("stroke", col).attr("stroke-width", 1.5);
-  for (let i = 0; i <= 13; i++) { const y = 280 - i * 20; svg.append("line").attr("x1", 60).attr("x2", i % 5 ? 68 : 76).attr("y1", y).attr("y2", y).attr("stroke", col); }
-  svg.append("rect").attr("x", 52).attr("y", 112).attr("width", 16).attr("height", 52).attr("fill", "var(--event)");
-  const call = (y, t1, t2) => {
-    svg.append("line").attr("x1", 80).attr("x2", 150).attr("y1", y).attr("y2", y).attr("stroke", col).attr("stroke-dasharray", "2 3");
-    svg.append("text").attr("x", 158).attr("y", y - 2).attr("fill", col).attr("font-size", 15).attr("font-weight", 600).text(t1);
-    svg.append("text").attr("x", 158).attr("y", y + 16).attr("fill", col).attr("font-size", 13).text(t2);
-  };
-  call(52, "can no longer go on as normal", "people react");
-  call(138, "the threshold", "where a decision is made");
-  call(232, "go on as normal", "the air people are used to");
-  svg.append("text").attr("x", 46).attr("y", 26).attr("text-anchor", "end").attr("font-size", 12).attr("fill", col).text("worse");
-  svg.append("text").attr("x", 46).attr("y", 282).attr("text-anchor", "end").attr("font-size", 12).attr("fill", col).text("better");
-}
-
-/* ---------- Fig 2: two-city scrolly ---------- */
-let twoStep = 0;
-function drawTwo() {
-  const svg = d3.select("#fig-two"); svg.selectAll("*").remove();
-  const w = W(svg.node()), narrow = w < 470, L = narrow ? 92 : 112, R = narrow ? 52 : 64, rowH = 150, H = rowH * 3 + 10;
-  svg.attr("viewBox", `0 0 ${w} ${H}`);
-  const two = ["bakersfield", "indianapolis"].map(k => C[k]);
-  const xPM = d3.scaleLinear([0, 60], [L, w - R]);
-  const maxShare = d3.max(two, c => d3.max(D.weekly[c.slug].filter(x => x.usable && x.share != null), x => x.share));
-  const xS = d3.scaleLinear([0, Math.ceil(maxShare * 1.1 * 2) / 2], [L, w - R]);
-  const rows = [
-    { key: "harm", title: "How harmful", unit: "PM2.5, µg/m³", x: xPM },
-    { key: "unusual", title: "How unusual", unit: "each week vs. the city's normal", x: xPM },
-    { key: "talk", title: "How much people talked", unit: "air talk, % of posts", x: xS }];
-  rows.forEach((row, ri) => {
-    const g = svg.append("g").attr("class", "row").attr("data-row", ri).attr("transform", `translate(0,${ri * rowH})`)
-      .style("transition", "opacity .45s").style("opacity", ri <= twoStep || twoStep === 3 ? 1 : .22);
-    g.append("text").attr("x", 0).attr("y", 16).attr("font-size", 12).attr("font-weight", 700).attr("letter-spacing", ".1em").attr("fill", "var(--ink)")
-      .call(t => { t.append("tspan").text(row.title.toUpperCase()); t.append("tspan").attr("font-weight", 500).attr("letter-spacing", "0").attr("fill", "var(--ink-2)").text("  ·  " + row.unit); });
-    const x = row.x, ticks = row.key === "talk" ? x.ticks(4) : [0, 15, 30, 45, 60];
-    ticks.forEach(t => {
-      g.append("line").attr("x1", x(t)).attr("x2", x(t)).attr("y1", 30).attr("y2", 118).attr("stroke", "var(--rule)");
-      g.append("text").attr("class", "num").attr("x", x(t)).attr("y", 134).attr("text-anchor", "middle").attr("font-size", 11).attr("fill", "var(--ink-2)").text(row.key === "talk" ? t + "%" : t);
-    });
-    if (row.key !== "talk") {
-      g.append("line").attr("x1", x(35.5)).attr("x2", x(35.5)).attr("y1", 26).attr("y2", 118).attr("stroke", "var(--ink)").attr("stroke-dasharray", "3 3");
-      if (ri === 0) g.append("text").attr("x", x(35.5) + 4).attr("y", 30).attr("font-size", 11).attr("fill", "var(--ink-2)").text("EPA 35.5");
-    }
-    two.forEach((c, ci) => {
-      const y = 56 + ci * 42;
-      g.append("text").attr("x", 0).attr("y", y + 4).attr("font-size", narrow ? 13 : 14).attr("font-weight", 600).attr("fill", "var(--ink)").text(c.name);
-      if (row.key === "harm") {
-        g.append("rect").attr("x", x(0)).attr("y", y - 8).attr("width", x(c.pm) - x(0)).attr("height", 16).attr("fill", "var(--ink)");
-        g.append("text").attr("class", "num").attr("x", x(c.pm) + 6).attr("y", y + 4).attr("font-size", 13).attr("fill", "var(--ink)").text(f(c.pm, 1));
-        return;
-      }
-      const wk = D.weekly[c.slug].filter(d => d.type === "normal" && (row.key === "unusual" ? d.pm != null : d.usable && d.share != null));
-      const val = d => row.key === "unusual" ? d.pm : d.share;
-      g.selectAll(null).data(wk).join("circle").attr("cx", d => x(val(d))).attr("cy", (d, i) => y + ((i * 7) % 15) - 7).attr("r", 4)
-        .attr("fill", "var(--ground-2)").attr("stroke", "var(--ink)").attr("stroke-width", 1.3);
-      const norm = row.key === "unusual" ? c.pm_normal : c.share_normal;
-      g.append("line").attr("x1", x(norm)).attr("x2", x(norm)).attr("y1", y - 14).attr("y2", y + 14).attr("stroke", "var(--ink)").attr("stroke-width", 2.5);
-      const ev = row.key === "unusual" ? c.pm : c.share_event;
-      g.append("line").attr("x1", x(norm)).attr("x2", x(ev)).attr("y1", y).attr("y2", y).attr("stroke", "var(--event)").attr("stroke-width", 2);
-      g.append("circle").attr("cx", x(ev)).attr("cy", y).attr("r", 6.5).attr("fill", "var(--event)").attr("stroke", "var(--ground-2)").attr("stroke-width", 2);
-      g.append("text").attr("class", "num").attr("x", w - R + 8).attr("y", y + 5).attr("font-size", 14).attr("font-weight", 500).attr("fill", "var(--event-ink)")
-        .text(f(row.key === "unusual" ? c.ratio : c.rise, 1) + "×");
-    });
-  });
-}
-function setTwoStep(s) {
-  twoStep = s;
-  d3.select("#fig-two").selectAll(".row").style("opacity", function () { const r = +this.dataset.row; return r <= s || s === 3 ? (r === s || s === 3 ? 1 : .55) : .22; });
-  document.querySelectorAll("#scrolly-two .step").forEach(e => e.classList.toggle("on", +e.dataset.step === s));
-}
-function initScrolly() {
-  const steps = document.querySelectorAll("#scrolly-two .step");
-  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) setTwoStep(+e.target.dataset.step); }), { rootMargin: "-45% 0px -45% 0px" });
-  steps.forEach(s => io.observe(s));
-  setTwoStep(0);
-}
-
-/* ---------- Fig 3: nine-city grid ---------- */
-function drawGrid() {
-  const box = document.getElementById("grid9"); box.innerHTML = "";
-  const order = [...READY].sort((a, b) => b.rise - a.rise).concat(D.cities.filter(c => !c.ready));
-  const y = d3.scaleLog([3, 300], [176, 44]);
-  order.forEach(c => {
-    const cell = document.createElement("div"); cell.className = "cell" + (c.ready ? "" : " pending"); box.appendChild(cell);
-    const svg = d3.select(cell).append("svg").attr("viewBox", "0 0 230 230").attr("role", "img").attr("aria-label", `${c.name}: ${f(c.pm, 0)} µg/m³, ${f(c.ratio, 1)} times normal, ` + (c.ready ? `${f(c.rise, 0)} times more air talk` : "reaction pending"));
-    svg.append("text").attr("x", 14).attr("y", 24).attr("font-size", 13).attr("font-weight", 700).attr("letter-spacing", ".1em").attr("fill", "var(--ink)").text(c.name.toUpperCase());
-    svg.append("line").attr("x1", 40).attr("x2", 40).attr("y1", 40).attr("y2", 178).attr("stroke", "var(--ink)").attr("stroke-width", .8);
-    [3, 10, 30, 100, 300].forEach(t => {
-      svg.append("line").attr("x1", 36).attr("x2", 40).attr("y1", y(t)).attr("y2", y(t)).attr("stroke", "var(--ink)").attr("stroke-width", .8);
-      svg.append("text").attr("class", "num").attr("x", 33).attr("y", y(t) + 3.5).attr("text-anchor", "end").attr("font-size", 9.5).attr("fill", "var(--ink-2)").text(t);
-    });
-    svg.append("line").attr("x1", 36).attr("x2", 216).attr("y1", y(35.5)).attr("y2", y(35.5)).attr("stroke", "var(--ink)").attr("stroke-dasharray", "2 3").attr("stroke-width", .9);
-    svg.append("line").attr("x1", 62).attr("x2", 62).attr("y1", y(c.pm_normal)).attr("y2", y(c.pm)).attr("stroke", "var(--event)").attr("stroke-width", 3.5);
-    svg.append("circle").attr("cx", 62).attr("cy", y(c.pm_normal)).attr("r", 5.5).attr("fill", "var(--ground)").attr("stroke", "var(--ink)").attr("stroke-width", 2);
-    svg.append("circle").attr("cx", 62).attr("cy", y(c.pm)).attr("r", 6).attr("fill", "var(--event)");
-    svg.append("text").attr("class", "num").attr("x", 73).attr("y", (y(c.pm) + y(c.pm_normal)) / 2 + 4).attr("font-size", 12).attr("fill", "var(--ink)").text(f(c.ratio, c.ratio >= 10 ? 0 : 1) + "×");
-    if (c.ready) {
-      svg.append("text").attr("x", 216).attr("y", 118).attr("text-anchor", "end").attr("font-family", "var(--display)").attr("font-weight", 700).attr("font-size", 40).attr("fill", "var(--event-ink)").text(f(c.rise, 0) + "×");
-      svg.append("text").attr("x", 216).attr("y", 136).attr("text-anchor", "end").attr("font-size", 11.5).attr("fill", "var(--ink)").text("more air talk");
-    } else {
-      svg.append("text").attr("x", 216).attr("y", 116).attr("text-anchor", "end").attr("font-size", 12.5).attr("font-weight", 600).attr("fill", "var(--ink)").text("reaction pending");
-    }
-    svg.append("text").attr("x", 14).attr("y", 214).attr("font-size", 10.5).attr("letter-spacing", ".06em").attr("fill", "var(--ink-2)").text(c.dates.toUpperCase());
-    attachTip(d3.select(cell).datum(c), cityTip);
-  });
-}
-
-/* ---------- Fig 4: scatters ---------- */
-function drawScatter(id, key, dom, ticks, label) {
-  const svg = d3.select(id); svg.selectAll("*").remove();
-  const w = W(svg.node()), h = Math.round(Math.min(330, Math.max(260, w * .72))), m = { l: 44, r: 18, t: 30, b: 48 };
-  svg.attr("viewBox", `0 0 ${w} ${h}`);
-  const x = d3.scaleLog(dom, [m.l, w - m.r]);
-  const yMax = Math.ceil(d3.max(READY, c => c.rise) / 10) * 10;
-  const y = d3.scaleLinear([0, yMax], [h - m.b, m.t]);
-  y.ticks(4).forEach(t => {
-    svg.append("line").attr("x1", m.l).attr("x2", w - m.r).attr("y1", y(t)).attr("y2", y(t)).attr("stroke", "var(--rule)");
-    svg.append("text").attr("class", "num").attr("x", m.l - 8).attr("y", y(t) + 4).attr("text-anchor", "end").attr("font-size", 11).attr("fill", "var(--ink-2)").text(t + "×");
-  });
-  svg.append("line").attr("x1", m.l).attr("x2", w - m.r).attr("y1", h - m.b).attr("y2", h - m.b).attr("stroke", "var(--ink)");
-  ticks.forEach(t => {
-    svg.append("line").attr("x1", x(t)).attr("x2", x(t)).attr("y1", h - m.b).attr("y2", h - m.b + 5).attr("stroke", "var(--ink)");
-    svg.append("text").attr("class", "num").attr("x", x(t)).attr("y", h - m.b + 18).attr("text-anchor", "middle").attr("font-size", 11).attr("fill", "var(--ink-2)").text(t + (key === "ratio" ? "×" : ""));
-  });
-  svg.append("text").attr("x", (m.l + w - m.r) / 2).attr("y", h - 8).attr("text-anchor", "middle").attr("font-size", 12).attr("fill", "var(--ink)").text(label);
-  svg.append("text").attr("x", m.l - 8).attr("y", 12).attr("text-anchor", "start").attr("dx", -36).attr("font-size", 11).attr("fill", "var(--ink-2)").text("reaction");
-  const placed = [];
-  READY.forEach(c => {
-    const cx = x(c[key]), cy = y(c.rise), right = cx > w - 110;
-    let ty = cy + 4; for (const p of placed) if (Math.abs(p.x - cx) < 90 && Math.abs(p.y - ty) < 14) ty = p.y + (ty <= p.y ? -14 : 14);
-    placed.push({ x: cx, y: ty });
-    svg.append("text").attr("x", right ? cx - 11 : cx + 11).attr("y", ty).attr("text-anchor", right ? "end" : "start").attr("font-size", 12.5).attr("fill", "var(--ink)").text(c.name);
-  });
-  attachTip(svg.selectAll("circle.pt").data(READY).join("circle").attr("class", "pt").attr("cx", c => x(c[key])).attr("cy", c => y(c.rise)).attr("r", 6.5)
-    .attr("fill", "var(--event)").attr("stroke", "var(--ground-2)").attr("stroke-width", 2), cityTip);
-}
-
-/* ---------- Fig 5: Fairbanks months ---------- */
-function drawFair() {
-  const svg = d3.select("#fig-fair"); svg.selectAll("*").remove();
-  const w = W(svg.node()), h = 210, m = { l: 34, r: 8, t: 30, b: 50 };
-  svg.attr("viewBox", `0 0 ${w} ${h}`);
-  const ms = D.fairbanks_months, x = d3.scaleBand(ms.map(d => d.m), [m.l, w - m.r]).padding(.28);
-  const y = d3.scaleLinear([0, 20], [h - m.b, m.t]);
-  [0, 10, 20].forEach(t => {
-    svg.append("line").attr("x1", m.l).attr("x2", w - m.r).attr("y1", y(t)).attr("y2", y(t)).attr("stroke", "var(--rule)");
-    svg.append("text").attr("class", "num").attr("x", m.l - 6).attr("y", y(t) + 4).attr("text-anchor", "end").attr("font-size", 10.5).attr("fill", "var(--ink-2)").text(t);
-  });
-  const MN = "JFMAMJJASOND";
-  ms.forEach(d => {
-    const june = d.m === 6;
-    svg.append("rect").attr("x", x(d.m)).attr("y", y(d.median)).attr("width", x.bandwidth()).attr("height", y(0) - y(d.median)).attr("fill", june ? "var(--event)" : "var(--ink)");
-    svg.append("text").attr("x", x(d.m) + x.bandwidth() / 2).attr("y", h - m.b + 16).attr("text-anchor", "middle").attr("font-size", 11.5).attr("font-weight", june ? 700 : 500).attr("fill", june ? "var(--event-ink)" : "var(--ink)").text(MN[d.m - 1]);
-    svg.append("text").attr("class", "num").attr("x", x(d.m) + x.bandwidth() / 2).attr("y", h - 10).attr("text-anchor", "middle").attr("font-size", 10.5).attr("fill", d.bad_per_yr >= 1 ? "var(--event-ink)" : "var(--ink-2)").text(d.bad_per_yr ? f(d.bad_per_yr, 1) : "0");
-  });
-  svg.append("text").attr("x", m.l).attr("y", 14).attr("font-size", 11).attr("fill", "var(--ink-2)").text("typical day, µg/m³");
-}
-
-/* ---------- Fig 6: safe ruler ---------- */
+/* ---------- Fig 2: safe ruler ---------- */
 function drawSafe() {
   const svg = d3.select("#fig-safe"); svg.selectAll("*").remove();
   const w = W(svg.node()), narrow = w < 480, L = narrow ? 92 : 120, R = 20, h = 170;
@@ -597,13 +863,16 @@ function drawPairs() {
   const sorted = [...done, ...D.pairs.filter(p => !done.includes(p))];
   document.getElementById("pairs").innerHTML = sorted.map(p => {
     const ok = done.includes(p), A = C[p.worse], B = C[p.other];
-    const res = ok ? (p.outcome === "as Pos predicts" ? `went the "unusual" way` : p.outcome.includes("Neg") ? `went the "harmful" way` : p.outcome) : "waiting";
+    // plain-language result; "barely" when the two reactions are within 5% (display only)
+    const close = ok && Math.abs(p.rise_worse - p.rise_other) / Math.max(p.rise_worse, p.rise_other) < .05;
+    const res = ok ? (p.outcome === "as Pos predicts" ? `${close ? "barely " : ""}went the "unusual" way` : p.outcome.includes("Neg") ? `went the "harmful" way` : `went against "unusual"`) : "waiting";
     const miss = [A, B].filter(c => !c.ready).map(c => c.name).join(" and ");
     return `<article class="pair${ok ? "" : " wait"}"><div class="top"><span>${p.type} pair</span><span class="res">${res}</span></div>
       <div class="vs">${A.name} vs. ${B.name}</div>
       ${bar("How harmful · <i>µg/m³</i>", p.worse, p.other, p.pm_worse, p.pm_other, "", 0)}
       ${bar("How unusual · <i>× normal</i>", p.worse, p.other, p.ratio_worse, p.ratio_other, "×", 1)}
-      ${ok ? bar("Reaction · <i>× more air talk</i>", p.worse, p.other, p.rise_worse, p.rise_other, "×", 1) : `<div class="pend">Waiting for ${miss}'s Reddit data</div>`}</article>`;
+      ${ok ? bar("Reaction · <i>× more air talk</i>", p.worse, p.other, p.rise_worse, p.rise_other, "×", 1) : `<div class="pend">Waiting for ${miss}'s Reddit data</div>`}
+      <div class="talk m" data-talk="${p.worse},${p.other}"></div></article>`;
   }).join("");
 }
 
@@ -614,228 +883,822 @@ function drawTable() {
       (c.ready ? `<td class="mono">${f(c.share_normal, 2)}%</td><td class="mono">${f(c.share_event, 2)}%</td><td class="mono">${f(c.rise, 1)}×</td><td>${c.beat}</td>` : `<td colspan="4" class="l">Reddit data still being collected</td>`) + `</tr>`).join("") + `</tbody>`;
 }
 
-function drawAll() {
-  drawThreshold(); drawTwo(); setTwoStep(twoStep); drawGrid();
-  drawScatter("#sc-ratio", "ratio", [2.5, 50], [3, 5, 10, 20, 40], "How unusual · times the city's normal");
-  drawScatter("#sc-abs", "pm", [30, 320], [30, 50, 100, 200, 300], "How harmful · PM2.5, µg/m³");
-  drawFair(); drawSafe();
+function drawAll() { drawSafe(); }
+/* ---------- air-talk groupings under each pair (added by Gina + Claude) ---------- */
+// Comment counts per tone group (A Alarm, J Adjusting, E Enduring, N Normalizing; not-about-the-air left out).
+// Source: data/processed/reddit/spectrum_03_outputs (Claude draft labels) + spectrum_02_labels weights; big = the city's biggest thread.
+const SPEC = {
+  eugene: { read: { A: 144, J: 160, E: 5, N: 13 }, est: { A: 423.3, J: 470.4, E: 13.8, N: 38.7 }, big: { A: 17.6, J: 29.4, E: 0, N: 0 } },
+  fairbanks: { read: { A: 13, J: 17, E: 0, N: 5 }, est: { A: 13, J: 17, E: 0, N: 5 }, big: { A: 4, J: 7, E: 0, N: 2 } },
+  detroit: { read: { A: 138, J: 87, E: 5, N: 14 }, est: { A: 138, J: 87, E: 5, N: 14 }, big: { A: 38, J: 40, E: 2, N: 4 } },
+  seattle: { read: { A: 104, J: 139, E: 13, N: 20 }, est: { A: 316.8, J: 422.9, E: 40.3, N: 60.3 }, big: { A: 0, J: 0, E: 0, N: 0 } },
+  fresno: { read: { A: 22, J: 7, E: 5, N: 2 }, est: { A: 22, J: 7, E: 5, N: 2 }, big: { A: 0, J: 0, E: 0, N: 0 } },
+  pittsburgh: { read: { A: 143, J: 113, E: 10, N: 33 }, est: { A: 408.8, J: 320.8, E: 28.3, N: 94.5 }, big: { A: 14.4, J: 25.9, E: 0, N: 2.9 } },
+  sanjose: { read: { A: 128, J: 138, E: 6, N: 14 }, est: { A: 128, J: 138, E: 6, N: 14 }, big: { A: 6, J: 13, E: 0, N: 0 } },
+  indianapolis: { read: { A: 61, J: 22, E: 1, N: 9 }, est: { A: 61, J: 22, E: 1, N: 9 }, big: { A: 19, J: 3, E: 0, N: 2 } },
+  bakersfield: { read: { A: 15, J: 5, E: 22, N: 9 }, est: { A: 15, J: 5, E: 22, N: 9 }, big: { A: 0, J: 0, E: 18, N: 8 } },
+};
+const TG = {
+  two: [["Reacting", "AJ", "--t-alarm", "Alarm + Adjusting"], ["Living with it", "EN", "--t-endure", "Enduring + Normalizing"]],
+  three: [["Alarm", "A", "--t-alarm"], ["Adjusting", "J", "--t-adjust"], ["Living with it", "EN", "--t-endure", "Enduring + Normalizing"]],
+  four: [["Alarm", "A", "--t-alarm"], ["Adjusting", "J", "--t-adjust"], ["Enduring", "E", "--t-endure"], ["Normalizing", "N", "--t-norm"]],
+  jliving: [["Reacting", "A", "--t-alarm", "Alarm"], ["Living with it", "JEN", "--t-endure", "Adjusting + Enduring + Normalizing"]],
+};
+const talkSt = { g: "two", c: "read", big: false };
+function talkCount(slug, b) { const s = SPEC[slug]; let v = s[talkSt.c][b]; if (talkSt.big && slug === "bakersfield") v -= s.big[b]; return Math.max(0, v); }
+function drawTalk() {
+  const G = TG[talkSt.g];
+  document.getElementById("talk-key").innerHTML = G.map(g => `<span><i style="background:var(${g[2]})"></i>${g[0]}${g[3] ? ` <span class="v">(${g[3]})</span>` : ""}</span>`).join("");
+  document.querySelectorAll("[data-talk]").forEach(box => {
+    const rows = box.dataset.talk.split(",").map(slug => {
+      const v = G.map(g => [...g[1]].reduce((s, b) => s + talkCount(slug, b), 0)), t = v.reduce((a, b) => a + b, 0);
+      const segs = v.map((x, i) => x > 0 ? `<span title="${G[i][0]}: ${Math.round(100 * x / t)}% (${Math.round(x)} comments)" style="width:${(100 * x / t).toFixed(1)}%;background:var(${G[i][2]})"></span>` : "").join("");
+      const lead = v.map((x, i) => [x, i]).sort((a, b) => b[0] - a[0])[0];
+      const note = talkSt.big && slug === "bakersfield" ? "*" : "";
+      return `<div class="br"><span>${C[slug].name}${note}</span><span class="tb" role="img" aria-label="${C[slug].name}: ${G.map((g, i) => `${g[0]} ${Math.round(100 * v[i] / t)}%`).join(", ")}">${segs}</span><span class="v">${Math.round(t)}</span></div>
+        <div class="br" style="margin-top:-2px"><span></span><span style="font-size:11.5px;color:var(--ink-2)">${Math.round(100 * lead[0] / t)}% ${G[lead[1]][0].toLowerCase()}</span><span></span></div>`;
+    }).join("");
+    box.innerHTML = `<span class="mh">How they talked · <i>share of air comments, draft labels</i></span>${rows}` +
+      (talkSt.big && box.dataset.talk.includes("bakersfield") ? `<span style="font-family:var(--label);font-size:11.5px;color:var(--ink-2)">* without its biggest thread</span>` : "");
+  });
+  document.querySelectorAll("[data-tg]").forEach(b => b.setAttribute("aria-pressed", b.dataset.tg === talkSt.g));
+  document.querySelectorAll("[data-tc]").forEach(b => b.setAttribute("aria-pressed", b.dataset.tc === talkSt.c));
+  document.getElementById("tbig").setAttribute("aria-pressed", talkSt.big);
 }
-bindText(); drawPairs(); drawTable(); drawAll(); initScrolly();
+document.querySelectorAll("[data-tg]").forEach(b => b.addEventListener("click", () => { talkSt.g = b.dataset.tg; drawTalk(); }));
+document.querySelectorAll("[data-tc]").forEach(b => b.addEventListener("click", () => { talkSt.c = b.dataset.tc; drawTalk(); }));
+document.getElementById("tbig")?.addEventListener("click", () => { talkSt.big = !talkSt.big; drawTalk(); });
+
+bindText(); if (document.getElementById("pairs")) { drawPairs(); drawTalk(); } drawTable(); drawAll();
 let lastW = document.querySelector(".book").clientWidth, rt;
 new ResizeObserver(() => { const w = document.querySelector(".book").clientWidth; if (w === lastW) return; lastW = w; clearTimeout(rt); rt = setTimeout(drawAll, 90); }).observe(document.querySelector(".book"));
 </script>
 
 <script>
-// Plate I hero: frogs (FLORA-animated from Dish's cutouts) swim laps in a pot that heats as you scroll.
-// Bubbles, ripples and steam are decoration only; nothing here reads data.js.
+// Plate I hero: Dish's pot (img/side/) and Claude's frog. Bubbles, water and blinking are decoration only;
+// nothing here reads data.js.
 (() => {
 const NS = "http://www.w3.org/2000/svg";
-const svg = document.getElementById("pot"), hero = document.getElementById("pot-hero");
+const hero = document.getElementById("side-hero"), svg = document.getElementById("scene");
+const steamG = document.getElementById("steam"), water = document.getElementById("water"), surface = document.getElementById("surface");
+const frog = document.getElementById("frog"), pupils = [document.getElementById("pupils")], lids = [...frog.querySelectorAll(".lid")];
+water.setAttribute("d", "M0,0");
 const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
-const el = (tag, attrs = {}, parent) => { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); parent && parent.appendChild(e); return e; };
-
-// Swimmers: your cutouts, all facing right (+x). len = body length as a share of the pot's rx.
-// Frogs kick with FLORA-animated frames (one stroke per clip); the tadpoles' tails sway in code.
-const frames = (dir, n) => Array.from({ length: n }, (_, i) => `img/${dir}/${String(i).padStart(2, "0")}.webp`);
-const ART = {
-  green: { frames: frames("swim-green", 60), ar: 640 / 355, bend: 1.15, strips: 12 },
-  brown: { frames: frames("swim-brown", 60), ar: 640 / 262, bend: 1.15, strips: 12, kicks: 2 },
-  tad:   { frames: ["img/tadpole.webp"], ar: 819 / 176, bend: 1, strips: 8, sway: true },
-};
-// FLORA-animated boiling bubbles and steam (60-frame loops, played at 12 fps)
-const BOIL = frames("boil", 60), BOIL_AR = 560 / 385, STEAM = frames("steam", 60);
-[...Object.values(ART).flatMap(a => a.frames), ...BOIL, ...STEAM].forEach(src => { const im = new Image(); im.src = src; });
-const SWIM = [
-  { a: "green", len: .62, k: .55, th: 0.2 },
-  { a: "brown", len: .52, k: .62, th: 2.4 },
-  { a: "green", len: .40, k: .32, th: 4.1 },
-  { a: "tad", len: .27, k: .80, th: 1.2 },
-  { a: "tad", len: .22, k: .74, th: 3.5 },
-  { a: "tad", len: .24, k: .22, th: 5.3 },
-];
-
-let W, H, cx, cy, rx, ry, layers, swimmers, bubbles = [], ripples = [], wisps = [], patches = [];
-function build() {
-  W = hero.clientWidth; H = hero.clientHeight;
-  if (W < 120 || H < 120) return false;           // hidden or not laid out yet: wait for a real size
-  svg.setAttribute("viewBox", `0 0 ${W} ${H}`);
-  cx = W / 2; cy = H * .53;
-  rx = Math.min(W / 2 - Math.max(40, W * .05), 780);
-  ry = Math.min(H * .38, rx * (W > H ? .64 : 1));
-  const rim = Math.max(12, rx * .035);
-  svg.innerHTML = "";
-  const defs = el("defs", {}, svg);
-  el("ellipse", { cx, cy, rx, ry }, el("clipPath", { id: "water" }, defs));
-  const rg = el("radialGradient", { id: "heat", cx: .5, cy: .5, r: .6 }, defs);
-  el("stop", { offset: 0, "stop-color": "#eb9a3e", "stop-opacity": .8 }, rg);
-  el("stop", { offset: .7, "stop-color": "#e8b05a", "stop-opacity": .4 }, rg);
-  el("stop", { offset: 1, "stop-color": "#e3a04a", "stop-opacity": 0 }, rg);
-  const depth = el("radialGradient", { id: "depth", cx: .5, cy: .45, r: .55 }, defs);
-  el("stop", { offset: .6, "stop-color": "#8fb8ae" }, depth); el("stop", { offset: 1, "stop-color": "#6f9d92" }, depth);
-  const ds = el("filter", { id: "lift", x: "-20%", y: "-20%", width: "140%", height: "140%" }, defs);
-  el("feDropShadow", { dx: rx * .012, dy: rx * .02, stdDeviation: rx * .012, "flood-color": "#1d4a44", "flood-opacity": .35 }, ds);
-
-  const root = el("g", {}, svg);
-  el("ellipse", { cx: cx + rim * .6, cy: cy + rim * 1.2, rx: rx + rim, ry: ry + rim, fill: "#000", opacity: .14 }, root);  // pot shadow on the page
-  for (const s of [-1, 1]) el("rect", { x: cx + s * (rx + rim * .4) - (s < 0 ? rim * 3.4 : 0), y: cy - rim * 2, width: rim * 3.4, height: rim * 4, rx: rim, fill: "var(--ink)" }, root);
-  el("ellipse", { cx, cy, rx, ry, fill: "url(#depth)" }, root);
-  const water = el("g", { "clip-path": "url(#water)" }, root);
-  const heat = el("ellipse", { cx, cy, rx, ry, fill: "url(#heat)", opacity: .05 }, water);
-  const rip = el("g", { fill: "none", stroke: "#fff" }, water);
-  const fr = el("g", { filter: "url(#lift)" }, water);
-  const boil = el("g", {}, water);
-  const rimG = el("g", {}, root);
-  el("ellipse", { cx, cy, rx: rx + rim / 2, ry: ry + rim / 2, fill: "none", stroke: "var(--ink)", "stroke-width": rim }, rimG);
-  el("ellipse", { cx, cy, rx: rx - rim * .15, ry: ry - rim * .15, fill: "none", stroke: "#fff", "stroke-opacity": .55, "stroke-width": Math.max(1.5, rim * .12) }, rimG);
-  const bub = el("g", {}, svg);      // on top of everything, so bubbles can boil over the rim
-  const steam = el("g", {}, svg);
-  layers = { root, rim: rimG, heat, rip, fr, boil, bub, steam };
-
-  swimmers = SWIM.map((s, i) => {
-    const art = ART[s.a], L = s.len * rx, h = L / art.ar, n = art.strips, sw = L / n;
-    const strips = [];
-    for (let j = 0; j < n; j++) {
-      const u = -L * .55 + (j + .5) * sw;                 // strip centre along the body (head at +x)
-      const cp = el("clipPath", { id: `sw${i}-${j}` }, defs);
-      el("rect", { x: -sw / 2 - 1.5, y: -h, width: sw + 3, height: h * 2 }, cp);
-      const g = el("g", {}, fr);
-      const img = el("image", { href: art.frames[0], x: -L * .55 - u, y: -h / 2, width: L, height: h, "clip-path": `url(#sw${i}-${j})` }, g);
-      strips.push({ g, img, u });
-    }
-    return { ...s, art, L, strips, o: i * 1.7, ph: Math.random(), fi: 0, wt: Math.random() * 6 };
-  });
-  bubbles = []; ripples = []; wisps = []; patches = [];
-  return true;
-}
-
-function inPot(kmax = .92) { const a = Math.random() * Math.PI * 2, k = Math.sqrt(Math.random()) * kmax; return [cx + Math.cos(a) * rx * k, cy + Math.sin(a) * ry * k]; }
-function addBubble(h) {
-  const [x, y] = inPot(), R = rx * (.012 + Math.random() ** 2 * .04) * (1 + h);
-  const c = el("circle", { cx: x, cy: y, r: 0, fill: "rgba(200,232,222,.55)", stroke: "#fff", "stroke-width": Math.max(.8, R * .055) }, layers.bub);
-  bubbles.push({ c, x, y, R, age: 0, life: .8 + Math.random() * 2.2, state: "grow", vx: 0, vy: 0, op: 1 });
-}
-function addRipple(x, y, R) {
-  const e = el("ellipse", { cx: x, cy: y, rx: R, ry: R * ry / rx, "stroke-width": 1 }, layers.rip);
-  ripples.push({ e, R, age: 0 });
-}
-function addWisp(h) {
-  const [x, y] = inPot(.7), S = rx * (.16 + Math.random() * .12);
-  const p = el("image", { href: STEAM[0], x: -S / 2, y: -S, width: S, height: S, opacity: 0 }, layers.steam);
-  wisps.push({ p, x, y, age: 0, life: 3 + Math.random() * 2.5, vx: (Math.random() - .5) * 16, vy: -(25 + 45 * h), f0: Math.random() * 60, fi: -1 });
-}
-// boil patch = FLORA bubble loop laid flat on the water (squashed to the pot's perspective)
-function addPatch(h) {
-  const [x, y] = inPot(.7), S = rx * (.28 + Math.random() * .22) * (1 + .4 * h);
-  const g = el("g", { transform: `translate(${x},${y}) scale(1,${(ry / rx).toFixed(3)}) rotate(${Math.random() * 360})`, opacity: 0 }, layers.boil);
-  const img = el("image", { href: BOIL[0], x: -S / 2, y: -S / BOIL_AR / 2, width: S, height: S / BOIL_AR }, g);
-  patches.push({ g, img, age: 0, life: 3 + Math.random() * 4, f0: Math.random() * 60, fi: -1 });
-}
-
-function pose(s, k, fi, h) {
-  const sp = Math.hypot(rx * k * Math.sin(s.th), ry * k * Math.cos(s.th)) || 1;   // lane speed per radian
-  const st = s.strips, n = st.length, sw = s.L / n;
-  // each slice takes the lane's direction a little ahead/behind (bend > 1 exaggerates the curve),
-  // then slices are chained edge to edge so the body never gaps
-  const ang = st.map(q => { const a = s.th + q.u * s.art.bend / sp; return Math.atan2(ry * Math.cos(a), -rx * Math.sin(a)); });
-  for (let m = 1; m < n; m++) { while (ang[m] - ang[m - 1] > Math.PI) ang[m] -= 2 * Math.PI; while (ang[m] - ang[m - 1] < -Math.PI) ang[m] += 2 * Math.PI; }
-  const pos = new Array(n), c = st.reduce((b, q, m) => Math.abs(q.u) < Math.abs(st[b].u) ? m : b, 0);
-  pos[c] = [cx + rx * k * Math.cos(s.th), cy + ry * k * Math.sin(s.th)];
-  for (let m = c + 1; m < n; m++) { const a = (ang[m] + ang[m - 1]) / 2; pos[m] = [pos[m - 1][0] + Math.cos(a) * sw, pos[m - 1][1] + Math.sin(a) * sw]; }
-  for (let m = c - 1; m >= 0; m--) { const a = (ang[m] + ang[m + 1]) / 2; pos[m] = [pos[m + 1][0] - Math.cos(a) * sw, pos[m + 1][1] - Math.sin(a) * sw]; }
-  for (let m = 0; m < n; m++) {
-    const q = st[m], tail = Math.max(0, (s.L * .45 - q.u) / s.L);      // 0 at the head, ~1 at the tail
-    const amp = s.art.sway ? s.L * (.05 + .05 * h) * tail ** 1.5 : s.L * (.008 + .012 * h) * tail;
-    const off = Math.sin(s.wt - tail * Math.PI * 1.6 + s.o) * amp;
-    const px = pos[m][0] - Math.sin(ang[m]) * off, py = pos[m][1] + Math.cos(ang[m]) * off;
-    q.g.setAttribute("transform", `translate(${px.toFixed(2)},${py.toFixed(2)}) rotate(${(ang[m] * 180 / Math.PI).toFixed(2)})`);
-    if (fi !== s.fi || !q.set) { q.img.setAttribute("href", s.art.frames[fi]); q.set = 1; }
+const el = (t, a, p) => { const e = document.createElementNS(NS, t); for (const k in a) e.setAttribute(k, a[k]); p && p.appendChild(e); return e; };
+const OFF = 40;
+const fit = () => svg.setAttribute("preserveAspectRatio", hero.clientWidth < hero.clientHeight * .9 ? "xMidYMid meet" : "xMidYMax meet");
+fit(); new ResizeObserver(fit).observe(hero);                                   // pot translate
+const lipY = u => 742 - u * 32 - Math.sin(u * Math.PI) * 55;   // top edge of Dish's water, x 315–1182
+function waterPath(t, h) {                                    // wavy top edge; the mask keeps it inside the pot
+  const pts = [];
+  for (let i = 0; i <= 30; i++) {
+    const u = i / 30, x = 300 + u * 890, amp = 5 + 11 * h;
+    pts.push([x, lipY(Math.min(1, Math.max(0, (x - 315) / 867))) + 6 + Math.sin(u * 11 + t * (1.5 + 3 * h)) * amp + Math.sin(u * 23 - t * 2.2) * amp * .35]);
   }
-  s.fi = fi;
+  return "M" + pts.map(p => p.map(v => v.toFixed(1)).join(",")).join(" L") + " L1190,900 L300,900 Z";
 }
 
-let H_ = 0, t0 = performance.now(), last = t0;
+// bubble clouds: puffs of 3–6 circles that rise in a curl, grow, and fade
+const PALE = ["#ffffff", "#f1ecfa", "#e3daf3", "#d6cbee"];
+let puffs = [], pops = [];
+function addPuff(h) {
+  const u = .12 + Math.random() * .76, x = 315 + u * 867, y = lipY(u) + OFF - 10;
+  const g = el("g", {}, steamG), n = 3 + Math.floor(Math.random() * 4), R = 18 + Math.random() * 22;
+  for (let i = 0; i < n; i++) el("circle", { cx: (Math.random() - .5) * R * 2.2, cy: (Math.random() - .5) * R * 1.4, r: R * (.55 + Math.random() * .6), fill: PALE[Math.floor(Math.random() * PALE.length)] }, g);
+  puffs.push({ g, x0: x, y, age: 0, life: 5 + Math.random() * 4, vy: 70 + 110 * h, curl: (Math.random() < .5 ? -1 : 1) * (60 + Math.random() * 90), ph: Math.random() * 6 });
+}
+function addPop(h) {
+  const u = .1 + Math.random() * .8, x = 315 + u * 867, y = lipY(u) + 8 + Math.random() * 30;
+  const c = el("circle", { cx: x, cy: y, r: 0, fill: "none", stroke: "#fff", "stroke-width": 3, opacity: .9 }, surface);
+  pops.push({ c, R: 6 + Math.random() * (10 + 12 * h), age: 0, life: .5 + Math.random() * .6 });
+}
+
+// eyes follow the cursor (pupils move within the eye)
+let look = [0, 0], lookT = [0, 0];
+addEventListener("pointermove", e => {
+  const r = svg.getBoundingClientRect(), s = Math.min(r.width / 1390, r.height / 1250);   // "meet" scale
+  const top = r.top + (svg.getAttribute("preserveAspectRatio").includes("YMid") ? (r.height - 1250 * s) / 2 : r.height - 1250 * s);
+  const ex = r.left + (r.width - 1390 * s) / 2 + 718 * s, ey = top + (588 + OFF) * s;
+  const dx = e.clientX - ex, dy = e.clientY - ey, d = Math.hypot(dx, dy) || 1, m = Math.min(1, d / 300);
+  lookT = [dx / d * 6 * m, dy / d * 5 * m];
+});
+
+let H_ = 0, t0 = performance.now(), last = t0, nextBlink = 2;
 function frame(now) {
   const dt = Math.max(0, Math.min(.05, (now - last) / 1000)), t = (now - t0) / 1000; last = now;
   const r = hero.getBoundingClientRect();
-  if (swimmers && r.height > 1 && r.bottom > 0) {
-    const target = Math.max(0, Math.min(1, -r.top / (r.height * .75)), Math.min(.3, t / 45));   // scroll heat or a slow simmer, kept within 0–1
-    H_ += (target - H_) * Math.min(1, dt * 2.5);
-    const h = H_;
-    layers.heat.setAttribute("opacity", .05 + .8 * h);
-    // a full boil rattles the pot
-    const j = Math.max(0, h - .7) * rx * .012;
-    layers.rim.setAttribute("transform", j ? `translate(${(Math.random() - .5) * j},${(Math.random() - .5) * j})` : "");
+  if (r.height > 1 && r.bottom > 0) {
+    const target = Math.max(0, Math.min(1, -r.top / (r.height * .7)), Math.min(.3, t / 45));
+    H_ += (target - H_) * Math.min(1, dt * 2.5); const h = H_;
+    water.setAttribute("d", waterPath(t, h));
+    // frog: calm bob, sinks a little as it heats (the point: it doesn't notice)
+    frog.setAttribute("transform", `translate(0,${(-21 + Math.sin(t * 1.3) * 5 + 26 * h).toFixed(2)})`);   // never rises above where Dish drew it
+    look = [look[0] + (lookT[0] - look[0]) * Math.min(1, dt * 8), look[1] + (lookT[1] - look[1]) * Math.min(1, dt * 8)];
+    pupils.forEach(p => p.setAttribute("transform", `translate(${look[0].toFixed(2)},${look[1].toFixed(2)})`));
+    nextBlink -= dt;
+    const b = nextBlink < 0 ? Math.max(0, 1 - Math.abs(nextBlink + .09) / .09) : 0;   // ~0.18 s blink
+    lids.forEach(l => l.setAttribute("height", (b * 58).toFixed(1)));
+    if (nextBlink < -.18) nextBlink = 2.5 + Math.random() * 3;
 
-    for (const s of swimmers) {
-      // one stroke every ~6 s when calm, ~2 s at a boil; the clip plays during the stroke, then the frog glides
-      s.ph = (s.ph + dt * (.16 + .4 * h)) % 1;
-      const kf = .5 - .15 * h, inKick = s.ph < kf;
-      const kick = inKick ? 1 + .9 * Math.sin(Math.PI * (s.art.kicks || 1) * s.ph / kf) ** 2 : 1;
-      const k = s.k + .03 * Math.sin(t * .25 + s.o);
-      const v = rx * (.04 + .2 * h) * kick;
-      s.th += v / (Math.hypot(rx * Math.sin(s.th), ry * Math.cos(s.th)) * k + 1) * dt;
-      s.wt += dt * (s.art.sway ? 5 + 6 * h : 1.2 + 2 * h);
-      const fr = s.art.frames, fi = inKick && fr.length > 1 ? Math.floor(s.ph / kf * fr.length) : 0;
-      pose(s, k, fi, h);
-    }
-
-    if (patches.length < 1 + Math.round(9 * h) && Math.random() < dt * (.6 + 3 * h)) addPatch(h);
-    patches = patches.filter(q => {
-      q.age += dt; const f = q.age / q.life, fi = Math.floor(q.f0 + q.age * 12) % 60;
-      if (fi !== q.fi) { q.fi = fi; q.img.setAttribute("href", BOIL[fi]); }
-      q.g.setAttribute("opacity", (Math.min(1, f * 4, (1 - f) * 4) * (.55 + .4 * h)).toFixed(3));
-      if (f >= 1) { q.g.remove(); return false; } return true;
+    if (Math.random() < dt * (.8 + 7 * h)) addPuff(h);
+    puffs = puffs.filter(p => {
+      p.age += dt; const f = p.age / p.life;
+      p.y -= p.vy * dt;
+      const x = p.x0 + Math.sin(p.ph + p.age * .9) * p.curl * Math.min(1, f * 2);
+      const s = .35 + 1.3 * f;
+      p.g.setAttribute("transform", `translate(${x.toFixed(1)},${p.y.toFixed(1)}) scale(${s.toFixed(3)})`);
+      p.g.setAttribute("opacity", (Math.min(1, f * 6) * (1 - f) * (.55 + .4 * h)).toFixed(3));
+      if (f >= 1 || p.y < -200) { p.g.remove(); return false; } return true;
     });
-    if (Math.random() < dt * (1 + 14 * h)) addBubble(h);
-    bubbles = bubbles.filter(b => {
-      b.age += dt;
-      if (b.state === "grow") {
-        const f = Math.min(1, b.age / b.life);
-        b.c.setAttribute("r", b.R * Math.sqrt(f));
-        if (f >= 1) {
-          if (h > .25 && Math.random() < .08 + .4 * h) { b.state = "escape"; b.age = 0; b.vy = -(rx * .15 + Math.random() * rx * .25) * (1 + h); b.vx = (Math.random() - .5) * 30; }
-          else { b.state = "pop"; b.age = 0; addRipple(b.x, b.y, b.R); }
-        }
-      } else if (b.state === "pop") {
-        const f = b.age / .25;
-        b.c.setAttribute("r", b.R * (1 + .7 * f)); b.c.setAttribute("opacity", 1 - f);
-        if (f >= 1) { b.c.remove(); return false; }
-      } else {                                   // boiled over: float up the page
-        b.x += (b.vx + Math.sin(b.age * 4 + b.R) * 25) * dt; b.y += b.vy * dt;
-        b.c.setAttribute("cx", b.x); b.c.setAttribute("cy", b.y);
-        if (b.y < -b.R * 2) { b.c.remove(); return false; }
-      }
-      return true;
-    });
-    ripples = ripples.filter(p => {
-      p.age += dt; const f = p.age / 1.2;
-      p.e.setAttribute("rx", p.R * (1 + 3 * f)); p.e.setAttribute("ry", p.R * (1 + 3 * f) * ry / rx); p.e.setAttribute("opacity", .7 * (1 - f));
-      if (f >= 1) { p.e.remove(); return false; } return true;
-    });
-    if (Math.random() < dt * (.4 + 4 * h)) addWisp(h);
-    wisps = wisps.filter(w => {
-      w.age += dt; const f = w.age / w.life;
-      w.x += w.vx * dt; w.y += w.vy * dt;
-      const fi = Math.floor(w.f0 + w.age * 12) % 60;
-      if (fi !== w.fi) { w.fi = fi; w.p.setAttribute("href", STEAM[fi]); }
-      w.p.setAttribute("transform", `translate(${w.x.toFixed(1)},${w.y.toFixed(1)}) scale(${(1 + .6 * f).toFixed(3)})`);
-      w.p.setAttribute("opacity", (Math.sin(Math.PI * f) * (.45 + .45 * h)).toFixed(3));
-      if (f >= 1) { w.p.remove(); return false; } return true;
+    if (Math.random() < dt * (1 + 14 * h)) addPop(h);
+    pops = pops.filter(p => {
+      p.age += dt; const f = p.age / p.life;
+      p.c.setAttribute("r", (p.R * Math.sqrt(f)).toFixed(1)); p.c.setAttribute("opacity", (.9 * (1 - f * f)).toFixed(3));
+      if (f >= 1) { p.c.remove(); return false; } return true;
     });
   }
   requestAnimationFrame(frame);
 }
-
-function still() {                              // reduced motion: one still frame, frogs placed, a few bubbles, mild warmth
-  for (let k = 0; k < 12; k++) addBubble(.3);
-  bubbles.forEach(b => b.c.setAttribute("r", b.R));
-  swimmers.forEach(s => pose(s, s.k, 0, .3));
-  layers.heat.setAttribute("opacity", .35);
-}
-const make = () => { if (build() && reduce) still(); };
-make();
-let lastSize = hero.clientWidth + "x" + hero.clientHeight;                              // rebuild when the hero's size really changes (also covers a page that loaded hidden)
-new ResizeObserver(() => { const k = hero.clientWidth + "x" + hero.clientHeight; if (k === lastSize) return; lastSize = k; clearTimeout(make.t); make.t = setTimeout(make, 150); }).observe(hero);
-if (!reduce) requestAnimationFrame(frame);
+if (reduce) { for (let i = 0; i < 6; i++) { addPuff(.3); } puffs.forEach((p, i) => { p.y -= 120 + i * 90; p.g.setAttribute("transform", `translate(${p.x0},${p.y}) scale(.9)`); p.g.setAttribute("opacity", .7); }); }
+else requestAnimationFrame(frame);
 })();
 </script>
+
+<script>
+// Plate II: the figure walks past the doors as you scroll and stops in the light of the last one.
+// Door geometry is traced from Dish's image (2000 px wide). Decoration only; nothing here reads data.js.
+(() => {
+const NS = "http://www.w3.org/2000/svg", plate = document.querySelector(".door-plate");
+const el = (t, a, p) => { const e = document.createElementNS(NS, t); for (const k in a) e.setAttribute(k, a[k]); p && p.appendChild(e); return e; };
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+// each door: left edge x, top and bottom y; right edge x, top and bottom y (a slightly tilted quad)
+const D = [[62, 140, 385, 184, 117, 355], [486, 128, 368, 608, 100, 338], [910, 122, 368, 1032, 100, 338], [1255, 113, 330, 1358, 95, 310]]
+  .map(([x, yt, yb, xr, ytr, ybr]) => ({ x, yt, yb, xr, ytr, ybr }));
+const set = document.getElementById("door-set"), beams = document.getElementById("beams"), shadowG = document.getElementById("shadow"), walker = document.getElementById("walker");
+const beamEls = D.map(d => {
+  el("polygon", { points: `${d.x},${d.yt} ${d.xr},${d.ytr} ${d.xr},${d.ybr} ${d.x},${d.yb}`, fill: "var(--event)" }, set);
+  el("polygon", { points: `${d.x},${d.yb - 62} ${d.xr},${d.ybr - 2} ${d.xr},${d.ybr} ${d.x},${d.yb}`, fill: "#ef9581" }, set);   // light on the doorway floor
+  return el("polygon", { fill: "#eab198", opacity: 0 }, beams);
+});
+const shadow = el("polygon", { fill: "#3e484e", opacity: 0 }, shadowG);
+const ss = t => t * t * (3 - 2 * t);
+let pos = 0, t0 = performance.now();
+function draw(p, t) {
+  // walk door to door, pausing at each (first and last quarter of every leg)
+  const f = Math.min(3, p * 3), k = Math.min(2, Math.floor(f)), u = f - k, e = ss(Math.min(1, Math.max(0, (u - .25) / .5)));
+  const a = D[k], b = D[Math.min(3, k + 1)], moving = e > 0 && e < 1;
+  const fx = a.x - 4 + (b.x - a.x) * e, fy = a.yb - 2 + (b.yb - a.yb) * e;
+  pos = k + e;
+  walker.setAttribute("transform", `translate(${fx.toFixed(1)},${(fy + (moving ? -Math.abs(Math.sin(t * 9)) * 3 : 0)).toFixed(1)})`);
+  D.forEach((d, i) => {                          // the door the figure stands at throws its light out across the floor
+    const w = Math.max(0, 1 - Math.abs(pos - i) * 1.6), L = (i === 3 ? 760 : 520) * ss(w);
+    beamEls[i].setAttribute("points", `${d.x},${d.yb} ${d.xr},${d.ybr} ${d.xr + L * 1.08},${d.ybr + L * 1.08 * .32} ${d.x + L},${d.yb + L * .4}`);
+    beamEls[i].setAttribute("opacity", (w > 0 ? .95 : 0).toFixed(2));
+  });
+  const near = Math.round(pos), wn = Math.max(0, 1 - Math.abs(pos - near) * 1.6), L = (near === 3 ? 760 : 520) * ss(wn) * .86;
+  shadow.setAttribute("points", `${fx + 5},${fy} ${fx + 22},${fy - 3} ${fx + 22 + L},${fy - 3 + L * .3} ${fx + 4 + L},${fy + L * .345 + 8}`);   // falls inside the light, as in Dish's image
+  shadow.setAttribute("opacity", (wn * .85).toFixed(2));
+}
+function progress() {
+  const r = plate.getBoundingClientRect(), vh = innerHeight;
+  if (!vh) return 0;                                                  // a 0-height viewport gives NaN, which would throw in draw() and stop the loop
+  return Math.min(1, Math.max(0, (vh * .8 - r.top) / (vh * .7)));   // starts as the plate rises into view, done by the time it reaches the top
+}
+if (reduce) draw(1, 0);
+else (function loop(now) { if (plate.getBoundingClientRect().height > 1) draw(progress(), (now - t0) / 1000); requestAnimationFrame(loop); })(t0);
+})();
+</script>
+
+<script>
+// Plate V: the nine cities on a map, fixed view (dots sized by worst-week PM2.5; no pairs, no controls).
+// Adapted from the map plate artifact; numbers come from data.js (lat/lon are the only additions: city-centre coordinates).
+(() => {
+const D = window.PM25, LL = { bakersfield: [35.37, -119.02], fairbanks: [64.84, -147.72], fresno: [36.74, -119.79], eugene: [44.05, -123.09],
+  sanjose: [37.34, -121.89], indianapolis: [39.77, -86.16], seattle: [47.61, -122.33], detroit: [42.33, -83.05], pittsburgh: [40.44, -79.99] };
+const CITIES = D.cities.map(c => ({ ...c, lat: LL[c.slug][0], lon: LL[c.slug][1] }));
+
+const W = 975, H = 610, svg = d3.select("#map").attr("viewBox", `0 0 ${W} ${H}`);
+US_STATES.features.forEach(ft => { const g = ft.geometry, polys = g.type === "Polygon" ? [g.coordinates] : g.coordinates;
+  polys.forEach(p => { if (d3.geoArea({ type: "Polygon", coordinates: p }) > 2 * Math.PI) p.forEach(r => r.reverse()); }); });
+const proj = d3.geoAlbersUsa().fitExtent([[20, 20], [W - 20, H - 20]], US_STATES), path = d3.geoPath(proj);
+svg.append("g").selectAll("path").data(US_STATES.features).join("path").attr("d", path)
+  .attr("fill", "var(--ground)").attr("stroke", "var(--ink)").attr("stroke-width", .55).attr("stroke-linejoin", "round");
+{ const ak = US_STATES.features.find(d => d.properties.n === "AK"), b = path.bounds(ak);
+  svg.append("rect").attr("x", b[0][0] - 8).attr("y", b[0][1] - 8).attr("width", b[1][0] - b[0][0] + 16).attr("height", b[1][1] - b[0][1] + 16)
+    .attr("fill", "none").attr("stroke", "var(--ink)").attr("stroke-dasharray", "3 3").attr("stroke-width", .8);
+  svg.append("text").attr("x", b[0][0] - 6).attr("y", b[1][1] + 22).attr("font-size", 11).attr("fill", "var(--ink-2)").text("Alaska, shown smaller"); }
+CITIES.forEach(c => { [c.x, c.y] = proj([c.lon, c.lat]); });
+const LBL = { seattle: [10, -8, "start"], eugene: [-10, 4, "end"], sanjose: [-10, 4, "end"], fresno: [10, -4, "start"], bakersfield: [10, 12, "start"],
+  fairbanks: [10, 4, "start"], indianapolis: [-10, 14, "end"], detroit: [8, -8, "start"], pittsburgh: [10, 12, "start"] };
+const rPM = v => 3 + 17 * Math.sqrt(v / 300);        // dot area ∝ PM2.5 (µg/m³)
+const bad = c => `about ${c.days_over_15} "bad" days a year`;
+
+const tip = document.getElementById("mtip");
+function showTip(ev, html) { tip.innerHTML = html; tip.hidden = false; const tw = tip.offsetWidth, vw = document.documentElement.clientWidth;
+  let left = ev.pageX + 16; if (left + tw > vw - 8) left = ev.pageX - tw - 16; tip.style.left = Math.max(8, left) + "px"; tip.style.top = (ev.pageY + 14) + "px"; }
+const hideTip = () => { tip.hidden = true; };
+const cityTip = c => `<div class="tn">${c.name}, ${c.state}</div><div>${bad(c)[0].toUpperCase() + bad(c).slice(1)}</div><div style="font-size:12px;opacity:.85">days above 15 µg/m³, 2019–2025</div>`;
+
+const gCities = svg.append("g");
+CITIES.forEach(c => {
+  const g = gCities.append("g").attr("class", "mcity").attr("data-slug", c.slug).attr("tabindex", 0).attr("role", "img")
+    .attr("aria-label", `${c.name}, ${c.state}: ${bad(c)} above 15 µg/m³`);
+  g.append("circle").attr("cx", c.x).attr("cy", c.y).attr("r", 14).attr("fill", "transparent");
+  g.append("circle").attr("cx", c.x).attr("cy", c.y).attr("r", rPM(c.pm)).attr("fill", "var(--event)").attr("fill-opacity", .78).attr("stroke", "var(--ground-2)").attr("stroke-width", 1.2);
+  const [dx, dy, an] = LBL[c.slug], push = Math.max(0, rPM(c.pm) - 6) * Math.sign(dx);
+  const t = g.append("text").attr("x", c.x + dx + push).attr("y", c.y + dy).attr("text-anchor", an).attr("font-size", 14.5).attr("font-weight", 700).attr("fill", "var(--ink)").text(c.name);
+  t.clone(true).lower().attr("stroke", "var(--ground-2)").attr("stroke-width", 4).attr("stroke-linejoin", "round").attr("fill", "none");
+  g.on("pointermove", ev => showTip(ev, cityTip(c))).on("pointerleave", hideTip)
+   .on("focus", function () { const r = this.getBoundingClientRect(); showTip({ pageX: r.right + scrollX, pageY: r.top + scrollY }, cityTip(c)); }).on("blur", hideTip);
+});
+const ring = v => `<svg width="${2 * rPM(v) + 4}" height="${2 * rPM(v) + 4}" aria-hidden="true"><circle cx="${rPM(v) + 2}" cy="${rPM(v) + 2}" r="${rPM(v)}" fill="var(--event)" fill-opacity=".78"/></svg>`;
+document.getElementById("legend").innerHTML = `<span>Worst-week PM2.5 ${ring(35)}35 ${ring(100)}100 ${ring(280)}280 µg/m³</span>`;
+addEventListener("scroll", hideTip, { passive: true });
+})();
+</script>
+<script>
+// Interactive pairs map (after the pairs plate). Adapted from the map plate artifact; cities, numbers and pair
+// results now come from data.js (lat/lon are the only additions: city-centre coordinates).
+(() => {
+const D = window.PM25, LL = { bakersfield: [35.37, -119.02], fairbanks: [64.84, -147.72], fresno: [36.74, -119.79], eugene: [44.05, -123.09],
+  sanjose: [37.34, -121.89], indianapolis: [39.77, -86.16], seattle: [47.61, -122.33], detroit: [42.33, -83.05], pittsburgh: [40.44, -79.99] };
+const CITIES = D.cities.map(c => ({ ...c, lat: LL[c.slug][0], lon: LL[c.slug][1] }));
+const C = Object.fromEntries(CITIES.map(c => [c.slug, c]));
+const PAIRS = D.pairs.filter(p => p.rise_worse != null && p.rise_other != null).map((p, i) => ({ type: p.type, a: p.worse, b: p.other, ok: p.outcome === "as Pos predicts", i }));
+PAIRS.forEach(p => { p.unusual = C[p.a].ratio > C[p.b].ratio ? p.a : p.b; p.more = C[p.a].rise > C[p.b].rise ? p.a : p.b; });
+const COL = { matched: "var(--event)", crossed: "var(--green)" };
+const st = { dots: "size", pairs: "all", arrow: "on", labels: "on", lift: 45, hl: null };
+try { Object.assign(st, JSON.parse(localStorage.getItem("bf-imap") || "{}"), { hl: null }); } catch (e) {}
+const f = (v, d = 1) => v == null ? "–" : Number(v).toFixed(d), fx = v => f(v, v >= 10 ? 0 : 1) + "×";
+
+const W = 975, H = 610, svg = d3.select("#imap").attr("viewBox", `0 0 ${W} ${H}`);
+US_STATES.features.forEach(ft => { const g = ft.geometry, polys = g.type === "Polygon" ? [g.coordinates] : g.coordinates;
+  polys.forEach(p => { if (d3.geoArea({ type: "Polygon", coordinates: p }) > 2 * Math.PI) p.forEach(r => r.reverse()); }); });
+const proj = d3.geoAlbersUsa().fitExtent([[20, 20], [W - 20, H - 20]], US_STATES), path = d3.geoPath(proj);
+svg.append("g").selectAll("path").data(US_STATES.features).join("path").attr("d", path)
+  .attr("fill", "var(--ground)").attr("stroke", "var(--ink)").attr("stroke-width", .55).attr("stroke-linejoin", "round");
+{ const ak = US_STATES.features.find(d => d.properties.n === "AK"), b = path.bounds(ak);
+  svg.append("rect").attr("x", b[0][0] - 8).attr("y", b[0][1] - 8).attr("width", b[1][0] - b[0][0] + 16).attr("height", b[1][1] - b[0][1] + 16)
+    .attr("fill", "none").attr("stroke", "var(--ink)").attr("stroke-dasharray", "3 3").attr("stroke-width", .8);
+  svg.append("text").attr("x", b[0][0] - 6).attr("y", b[1][1] + 22).attr("font-size", 11).attr("fill", "var(--ink-2)").text("Alaska, shown smaller"); }
+CITIES.forEach(c => { [c.x, c.y] = proj([c.lon, c.lat]); });
+const defs = svg.append("defs");
+["matched", "crossed"].forEach(t => defs.append("marker").attr("id", "marr-" + t).attr("viewBox", "0 0 10 10").attr("refX", 9).attr("refY", 5)
+  .attr("markerWidth", 7).attr("markerHeight", 7).attr("orient", "auto-start-reverse").append("path").attr("d", "M0,0L10,5L0,10Z").attr("fill", COL[t]));
+const gPairs = svg.append("g"), gCities = svg.append("g");
+const LBL = { seattle: [10, -8, "start"], eugene: [-10, 4, "end"], sanjose: [-10, 4, "end"], fresno: [10, -4, "start"], bakersfield: [10, 12, "start"],
+  fairbanks: [10, 4, "start"], indianapolis: [-10, 14, "end"], detroit: [8, -8, "start"], pittsburgh: [10, 12, "start"] };
+const rPM = v => 3 + 17 * Math.sqrt(v / 300);        // dot area ∝ PM2.5 (µg/m³)
+const BEND = [1, .9, 1.1, 1.25, .8, 1, .75, 1.2, .95];
+function arc(p) {
+  const s = C[p.more === p.a ? p.b : p.a], t = C[p.more];
+  const dx = t.x - s.x, dy = t.y - s.y, len = Math.hypot(dx, dy), k = BEND[p.i % BEND.length] * st.lift / 100;
+  let nx = -dy / len, ny = dx / len; if (ny > 0) { nx = -nx; ny = -ny; }
+  const mx = (s.x + t.x) / 2 + nx * len * k, my = (s.y + t.y) / 2 + ny * len * k, gap = 9 + (st.dots === "plain" ? 0 : rPM(t.pm) - 5);
+  const dd = Math.hypot(t.x - mx, t.y - my), ex = t.x - (t.x - mx) / dd * gap, ey = t.y - (t.y - my) / dd * gap;
+  return `M${s.x},${s.y}Q${mx},${my} ${ex},${ey}`;
+}
+const visible = p => st.pairs === "all" || st.pairs === p.type;
+function pairTip(p) {
+  const A = C[p.a], B = C[p.b], row = (lab, va, vb, fm) => `<tr><td>${lab}</td><td>${fm(va)}</td><td>${fm(vb)}</td></tr>`;
+  return `<span class="k">${p.type} pair</span><div class="tn">${A.name} vs. ${B.name}</div>
+    <table><tr><th></th><th>${A.name}</th><th>${B.name}</th></tr>${row("PM2.5", A.pm, B.pm, v => f(v, 0))}${row("× normal", A.ratio, B.ratio, fx)}${row("Air talk", A.rise, B.rise, fx)}</table>
+    <div>${C[p.unusual].name} had the more unusual week; ${C[p.more].name} reacted more. <b>${p.ok ? "As predicted." : "Against the prediction."}</b></div>`;
+}
+function cityTip(c) {
+  const n = PAIRS.filter(p => p.a === c.slug || p.b === c.slug).length;
+  return `<div class="tn">${c.name}, ${c.state}</div><div style="font-size:12px;opacity:.85">${c.dates} · ${c.cause}</div>
+    <div>PM2.5 ${f(c.pm, 0)} µg/m³ (normal ${f(c.pm_normal, 0)}) · ${fx(c.ratio)} its normal · air talk ${fx(c.rise)}</div><div class="k">In ${n} pair${n === 1 ? "" : "s"}</div>`;
+}
+const tip = document.getElementById("mtip");
+function showTip(ev, html) { tip.innerHTML = html; tip.hidden = false; const tw = tip.offsetWidth, vw = document.documentElement.clientWidth;
+  let left = ev.pageX + 16; if (left + tw > vw - 8) left = ev.pageX - tw - 16; tip.style.left = Math.max(8, left) + "px"; tip.style.top = (ev.pageY + 14) + "px"; }
+const hideTip = () => { tip.hidden = true; };
+function draw() {
+  gPairs.selectAll("*").remove(); gCities.selectAll("*").remove();
+  if (st.pairs !== "off") PAIRS.filter(visible).forEach(p => {
+    const g = gPairs.append("g").attr("class", "mpair").attr("data-i", p.i).attr("tabindex", 0).attr("role", "img")
+      .attr("aria-label", `${p.type} pair: ${C[p.a].name} and ${C[p.b].name}. ${C[p.more].name} reacted more, ${p.ok ? "as predicted" : "against the prediction"}.`);
+    const d = arc(p);
+    g.append("path").attr("d", d).attr("fill", "none").attr("stroke", "transparent").attr("stroke-width", 14);
+    const ln = g.append("path").attr("d", d).attr("fill", "none").attr("stroke", COL[p.type]).attr("stroke-width", 2.6).attr("stroke-linecap", "round")
+      .attr("stroke-dasharray", p.type === "crossed" ? "7 5" : null).attr("marker-end", st.arrow === "on" ? `url(#marr-${p.type})` : null);
+    if (!p.ok) { const node = ln.node(), mid = node.getPointAtLength(node.getTotalLength() / 2);
+      g.append("circle").attr("cx", mid.x).attr("cy", mid.y).attr("r", 8).attr("fill", "var(--ground-2)").attr("stroke", COL[p.type]).attr("stroke-width", 1.6);
+      g.append("text").attr("x", mid.x).attr("y", mid.y + 4).attr("text-anchor", "middle").attr("font-size", 11).attr("font-weight", 700).attr("fill", COL[p.type]).text("✕"); }
+    g.on("pointermove", ev => { setHl(p.i); showTip(ev, pairTip(p)); }).on("pointerleave", () => { setHl(null); hideTip(); })
+     .on("focus", () => setHl(p.i)).on("blur", () => setHl(null));
+  });
+  CITIES.forEach(c => {
+    const g = gCities.append("g").attr("class", "mcity").attr("data-slug", c.slug).attr("tabindex", 0).attr("role", "img")
+      .attr("aria-label", `${c.name}, ${c.state}: worst week ${f(c.pm, 0)} µg/m³, ${fx(c.ratio)} its normal`);
+    g.append("circle").attr("cx", c.x).attr("cy", c.y).attr("r", 14).attr("fill", "transparent");
+    if (st.dots === "plain") g.append("circle").attr("cx", c.x).attr("cy", c.y).attr("r", 5.5).attr("fill", "var(--ink)").attr("stroke", "var(--ground-2)").attr("stroke-width", 2);
+    else {
+      g.append("circle").attr("cx", c.x).attr("cy", c.y).attr("r", rPM(c.pm)).attr("fill", "var(--event)").attr("fill-opacity", .78).attr("stroke", "var(--ground-2)").attr("stroke-width", 1.2);
+      if (st.dots === "both") g.append("circle").attr("cx", c.x).attr("cy", c.y).attr("r", rPM(c.pm_normal)).attr("fill", "var(--ground)").attr("stroke", "var(--ink)").attr("stroke-width", 1.8);
+    }
+    if (st.labels === "on") { const [dx, dy, an] = LBL[c.slug], push = st.dots === "plain" ? 0 : Math.max(0, rPM(c.pm) - 6) * Math.sign(dx);
+      const t = g.append("text").attr("x", c.x + dx + push).attr("y", c.y + dy).attr("text-anchor", an).attr("font-size", 14.5).attr("font-weight", 700).attr("fill", "var(--ink)").text(c.name);
+      t.clone(true).lower().attr("stroke", "var(--ground-2)").attr("stroke-width", 4).attr("stroke-linejoin", "round").attr("fill", "none"); }
+    g.on("pointermove", ev => showTip(ev, cityTip(c))).on("pointerleave", hideTip);
+  });
+  drawLegend(); drawList(); sync();
+  try { const { hl, ...keep } = st; localStorage.setItem("bf-imap", JSON.stringify(keep)); } catch (e) {}
+}
+function setHl(i) {
+  st.hl = i; gPairs.selectAll(".mpair").classed("dim", function () { return i != null && +this.dataset.i !== i; });
+  const p = i != null ? PAIRS.find(q => q.i === i) : null;
+  gCities.selectAll(".mcity").classed("dim", function () { return p && this.dataset.slug !== p.a && this.dataset.slug !== p.b; });
+  document.querySelectorAll(".pi").forEach(e => e.classList.toggle("on", +e.dataset.i === i));
+}
+function drawLegend() {
+  const sw = (t, dash) => `<svg width="34" height="10" aria-hidden="true"><line x1="1" y1="5" x2="33" y2="5" stroke="${COL[t]}" stroke-width="2.6" ${dash ? 'stroke-dasharray="7 5"' : ""}/></svg>`;
+  const ring = v => `<svg width="${2 * rPM(v) + 4}" height="${2 * rPM(v) + 4}" aria-hidden="true"><circle cx="${rPM(v) + 2}" cy="${rPM(v) + 2}" r="${rPM(v)}" fill="var(--event)" fill-opacity=".78"/></svg>`;
+  let h = st.dots === "plain" ? `<span><svg width="12" height="12" aria-hidden="true"><circle cx="6" cy="6" r="5" fill="var(--ink)"/></svg>Study city</span>`
+    : `<span>Worst-week PM2.5 ${ring(35)}35 ${ring(100)}100 ${ring(280)}280 µg/m³</span>` + (st.dots === "both" ? `<span><svg width="14" height="14" aria-hidden="true"><circle cx="7" cy="7" r="5.5" fill="var(--ground)" stroke="var(--ink)" stroke-width="1.8"/></svg>Inner ring: the city's normal</span>` : "");
+  if (st.pairs !== "off") h += `<span>${sw("matched")}Matched pair</span><span>${sw("crossed", true)}Crossed pair</span>` + (st.arrow === "on" ? `<span>▶ points at the city that reacted more</span>` : "") + `<span>✕ went against the prediction</span>`;
+  document.getElementById("ilegend").innerHTML = h;
+}
+function drawList() {
+  const box = document.getElementById("iplist");
+  if (st.pairs === "off") { box.innerHTML = `<p class="fig-cap">Show the pairs to see which cities were tested against each other.</p>`; return; }
+  const sw = t => `<svg width="30" height="10" aria-hidden="true"><line x1="1" y1="5" x2="29" y2="5" stroke="${COL[t]}" stroke-width="2.6" ${t === "crossed" ? 'stroke-dasharray="6 4"' : ""}/></svg>`;
+  const vis = PAIRS.filter(visible), ok = vis.filter(p => p.ok).length;
+  let h = `<div class="ptally"><b>${ok} of ${vis.length}</b> ${st.pairs === "all" ? "" : st.pairs + " "}pairs went the way the study predicted</div>`;
+  ["matched", "crossed"].filter(t => st.pairs === "all" || st.pairs === t).forEach(t => {
+    h += `<div class="pgrp"><h3>${t === "matched" ? "Matched · about equally harmful air" : "Crossed · one worse, one more unusual"}</h3>`;
+    PAIRS.filter(p => p.type === t).forEach(p => {
+      h += `<details class="pi" data-i="${p.i}"><summary>${sw(t)}<span class="nm">${C[p.a].name} vs. ${C[p.b].name}</span>
+        <span class="res ${p.ok ? "" : "no"}">${p.ok ? "As predicted" : "Against"}</span></summary>
+        <div class="why">More unusual: ${C[p.unusual].name} (${fx(C[p.unusual].ratio)}). Reacted more: ${C[p.more].name} (${fx(C[p.more].rise)}).</div>
+        <svg class="pchart" role="img" aria-label="${C[p.a].name} vs ${C[p.b].name}: ${[C[p.a], C[p.b]].map(c => `${c.name} ${fx(c.ratio)} unusual, ${fx(c.rise)} air talk`).join("; ")}. ${p.ok ? "As predicted" : "Against prediction"}."></svg></details>`;
+    });
+    h += `</div>`;
+  });
+  box.innerHTML = h;
+  box.querySelectorAll(".pi").forEach(e => e.addEventListener("toggle", () => { if (e.open) pairChart(e.querySelector(".pchart"), PAIRS.find(q => q.i === +e.dataset.i)); }));
+  box.querySelectorAll(".pi").forEach(e => { e.addEventListener("mouseenter", () => setHl(+e.dataset.i)); e.addEventListener("mouseleave", () => setHl(null));
+    e.addEventListener("focusin", () => setHl(+e.dataset.i)); e.addEventListener("focusout", () => setHl(null)); });
+}
+// "Distance from normal" for one pair, as in the Boiling Frog Pairs artifact: the line is each city's normal week;
+// the indigo dot sits above it by the air-talk jump, the magenta dot below it by how unusual the air was (log scale, 1× to 50×).
+function pairChart(el, p) {
+  const svg = d3.select(el); svg.selectAll("*").remove();
+  const W = 320, half = 78, sp = 26 + 78, H = 26 + 78 * 2 + 64, d = d3.scaleLog([1, 50], [0, half]), r = 7.5, cs = [C[p.a], C[p.b]];
+  svg.attr("viewBox", `0 0 ${W} ${H}`);
+  svg.append("text").attr("x", 10).attr("y", 16).attr("font-size", 10.5).attr("font-weight", 700).attr("letter-spacing", ".08em").attr("fill", "var(--ink)").text("↑ TALK");
+  svg.append("text").attr("x", 10).attr("y", sp + half + 14).attr("font-size", 10.5).attr("font-weight", 700).attr("letter-spacing", ".08em").attr("fill", "var(--event-ink)").text("↓ UNUSUAL");
+  const xs = [W / 2 - 34, W / 2 + 34];
+  const nA = svg.append("text").attr("x", 10).attr("y", sp + 5).attr("font-family", "var(--display)").attr("font-weight", 700).attr("font-size", 16).attr("fill", "var(--ink)").text(cs[0].name);
+  const nB = svg.append("text").attr("x", W - 10).attr("y", sp + 5).attr("text-anchor", "end").attr("font-family", "var(--display)").attr("font-weight", 700).attr("font-size", 16).attr("fill", "var(--ink)").text(cs[1].name);
+  const ba = nA.node().getBBox(), bb = nB.node().getBBox();
+  svg.insert("line", "text").attr("x1", ba.x + ba.width + 6).attr("x2", bb.x - 6).attr("y1", sp).attr("y2", sp).attr("stroke", "var(--ink)").attr("stroke-width", 1.5);
+  cs.forEach((c, i) => svg.append("text").attr("class", "num").attr("x", i ? W - 10 : 10).attr("y", sp - 13).attr("text-anchor", i ? "end" : "start").attr("font-size", 11).attr("fill", "var(--ink-2)").text(`PM2.5 ${f(c.pm, 0)} µg/m³`));
+  svg.append("line").attr("x1", xs[0]).attr("y1", sp - d(cs[0].rise)).attr("x2", xs[1]).attr("y2", sp - d(cs[1].rise)).attr("stroke", "var(--ink)").attr("stroke-width", 1.4).attr("stroke-dasharray", "4 4");
+  svg.append("line").attr("x1", xs[0]).attr("y1", sp + d(cs[0].ratio)).attr("x2", xs[1]).attr("y2", sp + d(cs[1].ratio)).attr("stroke", "var(--event-ink)").attr("stroke-width", 1.4).attr("stroke-dasharray", "4 4");
+  cs.forEach((c, i) => {
+    const x = xs[i], uy = sp - d(c.rise), dy = sp + d(c.ratio), side = i ? 1 : -1, tx = x + side * (r + 5), an = i ? "start" : "end";
+    svg.append("line").attr("x1", x).attr("x2", x).attr("y1", sp).attr("y2", uy).attr("stroke", "var(--ink)").attr("stroke-width", 2);
+    svg.append("line").attr("x1", x).attr("x2", x).attr("y1", sp).attr("y2", dy).attr("stroke", "var(--event)").attr("stroke-width", 2);
+    svg.append("circle").attr("cx", x).attr("cy", uy).attr("r", r).attr("fill", "var(--ink)").attr("stroke", "var(--ground)").attr("stroke-width", 1.5);
+    svg.append("circle").attr("cx", x).attr("cy", dy).attr("r", r).attr("fill", "var(--event)").attr("stroke", "var(--ground)").attr("stroke-width", 1.5);
+    svg.append("text").attr("class", "num").attr("x", tx).attr("y", uy + 4).attr("text-anchor", an).attr("font-size", 11).attr("fill", "var(--ink)").text(fx(c.rise));
+    svg.append("text").attr("class", "num").attr("x", tx).attr("y", dy + 4).attr("text-anchor", an).attr("font-size", 11).attr("fill", "var(--event-ink)").text(fx(c.ratio));
+  });
+  svg.append("text").attr("x", W / 2).attr("y", H - 24).attr("text-anchor", "middle").attr("font-size", 13).attr("font-weight", 700)
+    .attr("fill", p.ok ? "var(--ink)" : "var(--event-ink)").text(p.ok ? "✓ As predicted" : "✗ Against prediction");
+  svg.append("text").attr("x", W / 2).attr("y", H - 7).attr("text-anchor", "middle").attr("font-size", 11.5).attr("fill", "var(--ink-2)")
+    .text(p.ok ? "More unusual city talked more" : "Less unusual city talked more");
+}
+function sync() {
+  document.getElementById("ilift").value = st.lift; document.getElementById("ilift-o").textContent = st.lift ? st.lift + "%" : "flat";
+  document.querySelectorAll(".imap-plate [data-ch]").forEach(row => row.querySelectorAll("button").forEach(b => b.setAttribute("aria-pressed", String(st[row.dataset.ch] === b.dataset.o))));
+}
+document.getElementById("ilift").addEventListener("input", e => { st.lift = +e.target.value; draw(); });
+document.querySelectorAll(".imap-plate [data-ch]").forEach(row => row.addEventListener("click", e => { const b = e.target.closest("button"); if (!b) return; st[row.dataset.ch] = b.dataset.o; draw(); }));
+document.addEventListener("pointermove", e => { if (!e.target.closest("#imap .mpair, #imap .mcity, #map .mcity")) hideTip(); });   // the Plate V map shares this tooltip
+addEventListener("scroll", hideTip, { passive: true });
+draw();
+})();
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+// "Same air": Bakersfield vs. Indianapolis, scrubbed by scroll (from the Same Air, Different Normal artifact K2uKZiFc28iTnctQkJN4UT).
+// Display only; numbers are typed in from data.js and the tone counts.
+(function(){
+  const NS="http://www.w3.org/2000/svg";
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const $=id=>document.getElementById('sa-'+id);   // ids are prefixed sa- inside Boiling Frog
+  function el(tag,attrs,parent,text){const e=document.createElementNS(NS,tag);for(const k in attrs)e.setAttribute(k,attrs[k]);parent.appendChild(e);if(text!=null)e.textContent=text;return e}
+  // Phone and wide layouts differ, so the story is rebuilt from its starting markup whenever the window crosses 700px.
+  const SVG0=$('svg').innerHTML, HEADS0=document.querySelector('.sa .heads').innerHTML, PHONE=matchMedia('(max-width:700px)');
+  let built=null, first=true;
+  function build(){
+  if(built){built.st.kill();built.tl.kill();$('svg').innerHTML=SVG0;document.querySelector('.sa .heads').innerHTML=HEADS0;$('svg').setAttribute('viewBox','0 0 1000 680')}
+  $('bak').style.fill='var(--bak)'; $('ind').style.fill='var(--ind)';
+  // phones: a taller canvas, the chart centred in it, and the two talk disks stacked
+  const MOBILE=PHONE.matches, WY=MOBILE?300:0;
+  if(MOBILE){$('svg').setAttribute('viewBox','0 0 1000 1300');$('world').setAttribute('transform',`translate(0,${WY})`)}
+
+  /* ---------- lollipop geometry ---------- */
+  const BASE=340, CB=400, CI=640, DOT=44;
+  const upHarm=v=>BASE-v/55*150;       // 55 µg/m³ -> 150 above the line
+  const upNorm=v=>BASE-v/5*210;        // × normal pm2.5, 5× -> 210
+  const down=v=>BASE+v/10*290;         // × normal air talk, 10× -> 290
+  const gL=$('lolli'), gLab=$('labels');
+  const stem=(x)=>el('line',{x1:x,x2:x,y1:BASE,y2:BASE,class:'stem'},gL);
+  const stemTB=stem(CB), stemTI=stem(CI), stemDB=stem(CB), stemDI=stem(CI);
+  const dB=el('circle',{cx:CB,cy:BASE,r:0},gL), dI=el('circle',{cx:CI,cy:BASE,r:0},gL);
+  dB.style.fill=dI.style.fill='var(--talk)';
+  const cityB=el('text',{x:CB,y:BASE+38,'text-anchor':'middle',class:'city',opacity:0},gLab,'bakersfield');
+  const cityI=el('text',{x:CI,y:BASE+38,'text-anchor':'middle',class:'city',opacity:0},gLab,'indianapolis');
+  function pair(x,y,anchor,num,unit){const g=el('g',{opacity:0},gLab);const n=el('text',{x,y:y+4,'text-anchor':anchor,class:'big'},g,num);el('text',{x,y:y+30,'text-anchor':anchor,class:'unit'},g,unit);return {g,n}}
+  const LB=CB-DOT/2-16, LI=CI+DOT/2+16;
+  const harmB=pair(LB,upHarm(55),'end','55','µg/m³'), harmI=pair(LI,upHarm(55),'start','55','µg/m³');
+  const talkB=pair(LB,down(4.8),'end','4.8×','air talk'), talkI=pair(LI,down(9.5),'start','9.5×','air talk');
+  const normB=pair(LB,upNorm(2.9),'end','2.9×','vs. normal'), normI=pair(LI,upNorm(4.4),'start','4.4×','vs. normal');
+  const base=$('base'); base.style.strokeDasharray='640'; base.style.strokeDashoffset='640';
+
+  /* ---------- talk disks (geometry from the Talk Disks artifact, default settings) ---------- */
+  const GROUPS=["alarm","adjusting","living with it"], GVAR=["--t-alarm","--t-adjust","--t-endure"];
+  const DATA={bakersfield:{name:"bakersfield",sub:"dec 2–8, 2024",ratio:4.8,cnt:[15,5,31],posts:2,comments:49},indianapolis:{name:"indianapolis",sub:"jun 26–jul 2, 2023",ratio:9.5,cnt:[61,22,10],posts:4,comments:89}};   // air posts / comments with a tone label (spectrum_01 kind × spectrum_03 band)
+  const P={per:4,op:.6,w:.7,sp:1,tw:14,dr:18,pin:.42,stc:1.05}, DC=220, DR=128, DS=MOBILE?1:.92;
+  const pt=(c,r,a)=>[c+r*Math.cos(a),c+r*Math.sin(a)];
+  function blob(c,rs,an,pinch){const Q=[],n=rs.length;for(let i=0;i<n;i++){const j=(i+1)%n,am=an[i]+((an[j]-an[i]+4*Math.PI)%(2*Math.PI))/2;Q.push(pt(c,rs[i],an[i]));Q.push(pt(c,Math.min(rs[i],rs[j])*pinch+6,am))}
+    const m=Q.length;let d=`M${Q[0][0].toFixed(1)},${Q[0][1].toFixed(1)}`;for(let i=0;i<m;i++){const p0=Q[(i-1+m)%m],p1=Q[i],p2=Q[(i+1)%m],p3=Q[(i+2)%m];d+=` C${(p1[0]+(p2[0]-p0[0])/6).toFixed(1)},${(p1[1]+(p2[1]-p0[1])/6).toFixed(1)} ${(p2[0]-(p3[0]-p1[0])/6).toFixed(1)},${(p2[1]-(p3[1]-p1[1])/6).toFixed(1)} ${p2[0].toFixed(1)},${p2[1].toFixed(1)}`}return d+"Z"}
+  function buildDisk(key,cx,cy){
+    const d=DATA[key],c=DC,R=DR,t=d.cnt.reduce((a,b)=>a+b,0),sh=d.cnt.map(x=>x/t),n=3;
+    const outer=el('g',{transform:`translate(${cx-c*DS},${cy-c*DS}) scale(${DS})`},$('disks'));
+    const frame=el('g',{opacity:0},outer);
+    const step=2*Math.PI/n,an=[...Array(n)].map((_,i)=>-Math.PI/2+i*step);
+    const ring=el('circle',{cx:c,cy:c,r:R*.62,fill:'none','stroke-width':.8,'stroke-dasharray':'2 3'},frame);ring.style.stroke='var(--ink)';
+    an.forEach(a=>{const [x,y]=pt(c,R+58,a);const l=el('line',{x1:c,y1:c,x2:x,y2:y,'stroke-width':.8},frame);l.style.stroke='var(--ink)'});
+    const L=Math.max(1,Math.round(d.ratio*P.per)),tgt=sh.map(x=>R*(.18+P.stc*x)),b0=sh.map(()=>R*.16);
+    let lx=0,ly=0;sh.forEach((x,i)=>{lx+=x*Math.cos(an[i]);ly+=x*Math.sin(an[i])});
+    const layers=[];
+    for(let k=0;k<=L;k++){const f=Math.pow(k/L,P.sp),e=f*f*(3-2*f),rs=b0.map((b,i)=>b+(tgt[i]-b)*e),last=k===L;
+      const p=el('path',{d:blob(c,rs,an,P.pin),fill:'none','stroke-width':last?P.w*2.6:P.w,opacity:0,
+        transform:`translate(${(lx*P.dr*(1-e)).toFixed(1)},${(ly*P.dr*(1-e)).toFixed(1)}) rotate(${((1-e)*-P.tw).toFixed(1)},${c},${c})`},outer);
+      p.style.stroke=last?'var(--event)':'var(--ink)';p.dataset.op=last?1:Math.min(1,P.op*(.3+.7*f));layers.push(p)}
+    const labs=el('g',{opacity:0},outer);
+    an.forEach((a,i)=>{const [x,y]=pt(c,R+74,a),up=Math.sin(a)<-.5;
+      const tl=el('text',{x,y:y+(up?-4:8),'text-anchor':'middle',class:'dlab'},labs,GROUPS[i]);tl.style.fill=`var(${GVAR[i]})`;
+      el('text',{x,y:y+(up?12:26),'text-anchor':'middle',class:'dpct'},labs,Math.round(sh[i]*100)+'%')});
+    const head=el('g',{opacity:0},outer);
+    el('text',{x:c,y:-74,'text-anchor':'middle',class:'dname'},head,d.name);
+    el('text',{x:c,y:-50,'text-anchor':'middle',class:'dsub'},head,d.sub);
+    const foot=el('g',{opacity:0},outer);
+    el('text',{x:c,y:c*2+34,'text-anchor':'middle',class:'dfoot'},foot,d.ratio+'× air talk');
+    el('text',{x:c,y:c*2+58,'text-anchor':'middle',class:'dfoot-s'},foot,`${d.posts} posts · ${d.comments} comments`);
+    return {frame,layers,labs,head,foot};
+  }
+  const DPOS=MOBILE?[[500,320],[500,990]]:[[270,330],[730,330]];
+  const diskB=buildDisk('bakersfield',...DPOS[0]), diskI=buildDisk('indianapolis',...DPOS[1]);
+
+  /* ---------- "they respond differently": air-talk jump for all nine cities, smallest to largest (from data.js) ---------- */
+  const BX0=MOBILE?370:340, BX1=MOBILE?950:870, BY0=MOBILE?60:132, BST=MOBILE?62:52, BH=MOBILE?34:26;
+  const CITIES9=(window.PM25?window.PM25.cities:[]).filter(c=>c.rise!=null).sort((a,b)=>a.rise-b.rise);
+  const rmax=Math.max(...CITIES9.map(c=>c.rise),1);
+  const bars=CITIES9.map((c,i)=>{const y=BY0+i*BST,w=(BX1-BX0)*c.rise/rmax;
+    const g=el('g',{opacity:0},$('bars'));
+    el('text',{x:MOBILE?20:150,y:y+BH/2+7,class:'bname'},g,`${c.name}, ${c.state}`);
+    const r=el('rect',{x:BX0,y,width:0,height:BH,rx:BH/2.6},g);r.style.fill='var(--ind)';
+    const v=el('text',{x:BX0+w-12,y:y+BH/2+6,'text-anchor':'end',class:'bval',opacity:0},g,(c.rise>=10?c.rise.toFixed(0):c.rise.toFixed(1))+'×');
+    return {g,r,v,w}});
+
+  /* ---------- "let's take a look at two cities": little state outlines, each with its city dot (US_STATES from states.js) ---------- */
+  function drawState(code,box,ll,label){
+    const ft=(window.US_STATES?US_STATES.features:[]).find(f=>f.properties.n===code); if(!ft||typeof d3==='undefined')return null;
+    const pr=d3.geoMercator().fitExtent(box,ft), g=el('g',{opacity:0},$('states'));
+    const pa=el('path',{d:d3.geoPath(pr)(ft),fill:'none','stroke-width':2,'stroke-linejoin':'round'},g); pa.style.stroke='var(--ink)';
+    const [x,y]=pr([ll[1],ll[0]]);
+    el('text',{x:(box[0][0]+box[1][0])/2,y:box[1][1]+44,'text-anchor':'middle',class:'city'},g,label);
+    return {g,x,y};
+  }
+  const SB=MOBILE?[[[150,90],[450,520]],[[590,150],[830,460]]]:[[[250,120],[450,440]],[[600,170],[740,400]]];
+  const stB=drawState('CA',SB[0],[35.37,-119.02],'bakersfield, ca'), stI=drawState('IN',SB[1],[39.77,-86.16],'indianapolis, in');
+  const SDOT=MOBILE?34:24;
+
+  /* ---------- headline word splitting ---------- */
+  document.querySelectorAll('.sa .hd .h').forEach(h=>{
+    const walk=n=>{[...n.childNodes].forEach(c=>{if(c.nodeType===3){const f=document.createDocumentFragment();c.textContent.split(/(\s+)/).forEach(t=>{if(!t)return;if(/^\s+$/.test(t))f.appendChild(document.createTextNode(t));else{const s=document.createElement('span');s.className='w';s.textContent=t;f.appendChild(s)}});c.replaceWith(f)}else walk(c)})};walk(h)});
+  const words=id=>$(id).querySelectorAll('.w'), sub=id=>$(id).querySelector('.s');
+
+  if(typeof gsap==='undefined')return;   // library blocked: frame 1 stays readable
+  gsap.registerPlugin(ScrollTrigger);
+
+  /* ---------- on-load pop, from a visible resting state ---------- */
+  if(!reduce&&first){
+    gsap.from('#sa-bak',{scale:.84,transformOrigin:'50% 50%',duration:1,ease:'elastic.out(1,.5)'});
+    gsap.from('#sa-cap1',{x:-16,duration:.8,ease:'power3.out'});
+  }
+
+  /* ---------- the scrubbed timeline ---------- */
+  const tl=gsap.timeline({defaults:{ease:'power3.inOut',duration:1}});
+  const hdIn=(id,at)=>{tl.set('#sa-'+id,{opacity:1},at);
+    tl.fromTo(words(id),{opacity:0,y:24,filter:'blur(8px)'},{opacity:1,y:0,filter:'blur(0px)',stagger:.045,duration:.6,ease:'power3.out'},at);
+    tl.fromTo(sub(id),{opacity:0,y:10},{opacity:1,y:0,duration:.5,ease:'power2.out'},at+.3)};
+  const hdOut=(id,at)=>{tl.to(words(id),{opacity:0,y:-18,filter:'blur(6px)',stagger:.02,duration:.4,ease:'power2.in'},at);
+    tl.to(sub(id),{opacity:0,duration:.3},at);tl.set('#sa-'+id,{opacity:0},at+.6)};
+  const count=(node,from,to,dec,suffix,at,dur)=>{const o={v:from};tl.to(o,{v:to,duration:dur||1,ease:'power2.out',onUpdate:()=>node.textContent=o.v.toFixed(dec)+suffix},at)};
+
+  // frame 0: "some of these cities are used to air pollution." then "some aren't." rises up with its ball to meet it
+  tl.fromTo(['#sa-ind','#sa-cap2'],{y:300,opacity:0},{y:0,opacity:1,duration:1.1,ease:'power3.out',stagger:.08},.2);
+
+  // "and because of that, they respond differently": both captions and balls step aside for the nine-city bars
+  tl.to(['#sa-cap1','#sa-cap2'],{opacity:0,x:40,filter:'blur(6px)',stagger:.05,duration:.5,ease:'power2.in'},1.8);
+  tl.to(['#sa-bak','#sa-ind'],{opacity:0,scale:.6,transformOrigin:'50% 50%',duration:.5,ease:'power2.in'},1.85);
+  hdIn('hb',2.1);
+  bars.forEach((b,i)=>{tl.set(b.g,{opacity:1},2.3);
+    tl.to(b.r,{attr:{width:b.w},duration:.7,ease:'expo.out'},2.3+i*.09);
+    tl.to(b.v,{opacity:1,duration:.3},2.7+i*.09)});
+  tl.to({},{duration:.6},3.6);   // hold
+  hdOut('hb',4.3);
+  tl.to(bars.map(b=>b.g),{opacity:0,duration:.4,stagger:.02},4.3);
+
+  // "even when the danger is the same." on its own
+  hdIn('he',4.8); hdOut('he',6.0);
+
+  // "let's take a look at two cities": state outlines; each city's ball drops in as the dot in its state
+  hdIn('ht',6.4);
+  [[stB,'#sa-bak'],[stI,'#sa-ind']].forEach(([st,id],i)=>{ if(!st)return;
+    tl.to(st.g,{opacity:1,duration:.6},6.6+i*.15);
+    tl.set(id,{scale:1,attr:{x:st.x-SDOT/2,y:st.y-SDOT/2,width:SDOT,height:SDOT,rx:SDOT/2}},6.5);
+    tl.to(id,{opacity:1,duration:.4,ease:'power2.out'},6.9+i*.15)});
+  if(!stB||!stI) tl.to(['#sa-bak','#sa-ind'],{opacity:1,scale:1,duration:.5},6.9);
+  hdOut('ht',8.2);
+  tl.to([stB&&stB.g,stI&&stI.g].filter(Boolean),{opacity:0,duration:.5},8.3);
+
+  // "in its worst week, ... the same level of unhealthy air": the dots rise onto lollipops at equal height
+  let t=9;
+  tl.to(base,{strokeDashoffset:0,duration:1,ease:'expo.inOut'},t+.3);
+  tl.to('#sa-bak',{attr:{x:CB-DOT/2,y:upHarm(55)-DOT/2,width:DOT,height:DOT,rx:DOT/2},duration:1.3,ease:'expo.inOut'},t+.15);
+  tl.to('#sa-ind',{attr:{x:CI-DOT/2,y:upHarm(55)-DOT/2,width:DOT,height:DOT,rx:DOT/2},duration:1.3,ease:'expo.inOut'},t+.25);
+  tl.to([stemTB,stemTI],{attr:{y2:upHarm(55)},duration:.8,ease:'power3.out'},t+1.1);
+  tl.to([cityB,cityI],{opacity:1,duration:.4},t+1);
+  tl.to([harmB.g,harmI.g],{opacity:1,duration:.4},t+1.3);
+  count(harmB.n,0,55,0,'',t+1.3,.7); count(harmI.n,0,55,0,'',t+1.3,.7);
+  hdIn('h2',t+.9);
+  tl.to('#sa-fnote',{opacity:1,duration:.5},t+1.4);
+
+  // "but they reacted way differently": grey dots drop below the line
+  t=11.6;
+  hdOut('h2',t); tl.to('#sa-fnote',{opacity:0,duration:.3},t); hdIn('h3',t+.5);
+  tl.to([dB,dI],{attr:{r:DOT/2},duration:.4,ease:'back.out(2)'},t+.4);
+  tl.to([dB,stemDB],{attr:{cy:down(4.8),y2:down(4.8)},duration:1,ease:'expo.out'},t+.7);
+  tl.to([dI,stemDI],{attr:{cy:down(9.5),y2:down(9.5)},duration:1.4,ease:'expo.out'},t+.8);
+  tl.to([talkB.g,talkI.g],{opacity:1,duration:.4},t+1.2);
+  count(talkB.n,1,4.8,1,'×',t+1.2,.8); count(talkI.n,1,9.5,1,'×',t+1.2,1.1);
+  // highlight the jump: a dashed guide at bakersfield's level, and the extra drop to 9.5× marked beside indianapolis's stem
+  const jx=CI-DOT/2-16, jy0=down(4.8), jy1=down(9.5);
+  const jump=el('g',{opacity:0},gLab);
+  const guide=el('line',{x1:CB+DOT/2+6,x2:CI,y1:jy0,y2:jy0,'stroke-width':1.5,'stroke-dasharray':'5 5'},jump); guide.style.stroke='var(--ink-2)';
+  const seg=el('path',{d:`M${jx-6},${jy0} H${jx} V${jy1} H${jx-6}`,fill:'none','stroke-width':3,'stroke-linecap':'round','stroke-linejoin':'round'},jump); seg.style.stroke='var(--event)';
+  const jt=el('text',{x:jx-14,y:(jy0+jy1)/2+6,'text-anchor':'end',class:'unit'},jump,'about 2× more'); jt.style.fill='var(--event)';
+  tl.to(jump,{opacity:1,duration:.5},t+2.1);
+
+  // "and they talked about it differently": the chart clears, each dot flies to a disk centre and blooms into rings
+  t=14;
+  hdOut('h3',t); hdIn('h5',t+.6);
+  tl.to([harmB.g,harmI.g,talkB.g,talkI.g,cityB,cityI,jump],{opacity:0,duration:.4},t);
+  tl.to([dB,dI],{attr:{r:0},duration:.4,ease:'power2.in'},t+.1);
+  tl.to([stemTB,stemTI,stemDB,stemDI],{opacity:0,duration:.4},t+.1);
+  tl.to(base,{strokeDashoffset:640,duration:.7,ease:'expo.in'},t+.1);
+  const seed=DR*.16*DS*2;
+  tl.to('#sa-bak',{attr:{x:DPOS[0][0]-seed/2,y:DPOS[0][1]-WY-seed/2,width:seed,height:seed,rx:seed/2},duration:1,ease:'expo.inOut'},t+.4);
+  tl.to('#sa-ind',{attr:{x:DPOS[1][0]-seed/2,y:DPOS[1][1]-WY-seed/2,width:seed,height:seed,rx:seed/2},duration:1,ease:'expo.inOut'},t+.45);
+  [diskB,diskI].forEach((d,i)=>{
+    tl.to([d.frame,d.head],{opacity:1,duration:.5},t+1.1);
+    tl.to(d.layers,{opacity:(j,e)=>+e.dataset.op,duration:.25,stagger:.05,ease:'none'},t+1.3);
+  });
+  tl.to(['#sa-bak','#sa-ind'],{opacity:0,duration:.6},t+1.6);
+  const endB=t+1.3+diskB.layers.length*.05, endI=t+1.3+diskI.layers.length*.05;
+  tl.to([diskB.labs,diskB.foot],{opacity:1,duration:.4},endB);
+  tl.to([diskI.labs,diskI.foot],{opacity:1,duration:.4},endI);
+
+  // "why?" on its own while the disks clear
+  t=Math.max(endB,endI)+1.4;
+  hdOut('h5',t); hdIn('hw',t+.5);
+  [diskB,diskI].forEach(d=>tl.to([d.frame,d.head,d.labs,d.foot,...d.layers],{opacity:0,duration:.5},t));
+  hdOut('hw',t+1.9);
+
+  // "their perception of normal is different": the chart comes back, and the top dots are re-measured against each city's own normal
+  t+=2.3;
+  hdIn('h4',t+.4);
+  tl.to(base,{strokeDashoffset:0,duration:.8,ease:'expo.inOut'},t+.3);
+  tl.to([stemTB,stemTI,stemDB,stemDI],{opacity:1,duration:.4},t+.5);
+  tl.to([dB,dI],{attr:{r:DOT/2},duration:.4,ease:'back.out(2)'},t+.6);
+  tl.to([cityB,cityI,talkB.g,talkI.g],{opacity:1,duration:.4},t+.7);
+  tl.to('#sa-bak',{opacity:1,attr:{x:CB-DOT/2,y:upNorm(2.9)-DOT/2,width:DOT,height:DOT,rx:DOT/2},duration:1.1,ease:'expo.inOut'},t+.4);
+  tl.to('#sa-ind',{opacity:1,attr:{x:CI-DOT/2,y:upNorm(4.4)-DOT/2,width:DOT,height:DOT,rx:DOT/2},duration:1.1,ease:'expo.inOut'},t+.46);
+  tl.to(stemTB,{attr:{y2:upNorm(2.9)},duration:1.1,ease:'expo.inOut'},t+.4);
+  tl.to(stemTI,{attr:{y2:upNorm(4.4)},duration:1.1,ease:'expo.inOut'},t+.46);
+  tl.to([normB.g,normI.g],{opacity:1,duration:.4},t+1.4);
+  count(normB.n,1,2.9,1,'×',t+1.4,.7); count(normI.n,1,4.4,1,'×',t+1.4,.7);
+
+  // focus on each city in turn: grey out the other one
+  const sideB=['#sa-bak',stemTB,stemDB,dB,normB.g,talkB.g,cityB], sideI=['#sa-ind',stemTI,stemDI,dI,normI.g,talkI.g,cityI];
+  t+=2.8;
+  hdOut('h4',t); hdIn('hf',t+.5);
+  tl.to(sideI,{opacity:.16,duration:.6,ease:'power2.inOut'},t+.3);
+  t+=2.4;
+  hdOut('hf',t); hdIn('hi',t+.5);
+  tl.to(sideI,{opacity:1,duration:.6,ease:'power2.inOut'},t+.3);
+  tl.to(sideB,{opacity:.16,duration:.6,ease:'power2.inOut'},t+.3);
+
+  // closing line on its own: the chart clears
+  t+=2.4;
+  hdOut('hi',t); tl.to('#sa-world',{opacity:0,duration:.6},t+.1); hdIn('hx',t+.6);
+  tl.to({},{duration:.6}); // hold the last frame
+
+  const st=ScrollTrigger.create({trigger:'#sa-story',start:'top top',end:'bottom bottom',scrub:reduce?true:0.8,animation:tl});
+  built={st,tl}; first=false;
+  }
+  build();
+  PHONE.addEventListener('change',()=>{build();ScrollTrigger.refresh()});
+})();
+</script>
+<script src="city-panel-data.js"></script>
+<script src="city-panel.js"></script>
+
+<script>
+// Outro: fourteen frogs in Dish's pot, placed after her sketch. Each bobs on its own rhythm, blinks now and then,
+// and turns its eyes toward the cursor. Same vector frog as Plate I. Decoration only; nothing here reads data.js.
+(() => {
+const NS = "http://www.w3.org/2000/svg", svg = document.getElementById("outro"), sec = svg.closest(".outro");
+const el = (t, a, p) => { const e = document.createElementNS(NS, t); for (const k in a) e.setAttribute(k, a[k]); p && p.appendChild(e); return e; };
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const S = .41;                                                 // frog scale (eye spacing in the sketch ≈ 84 px)
+// [centre between the eyes x, eyes y], back rows first so front frogs overlap them
+const SPOTS = [[828, 588], [1018, 598], [578, 620], [708, 628], [905, 630], [452, 652], [630, 653], [1050, 652], [808, 665],
+               [695, 697], [488, 707], [918, 707], [770, 718], [585, 742]];
+const BODY = `<path fill="var(--frog)" d="M576,600 C566,548 632,524 662,560 C705,566 760,566 792,556 C820,526 868,544 860,600 L868,668 C898,718 930,762 946,808 L950,880 L480,880 L484,830 C508,762 546,702 576,660 Z"/>
+  <path fill="#fbeac7" d="M572,880 L572,800 C576,712 646,640 718,638 C806,640 852,706 852,800 L852,880 Z"/>
+  <path fill="none" stroke="var(--frog)" stroke-width="6" stroke-linecap="round" d="M590,724 C626,676 676,656 718,656 C762,656 812,676 846,722"/>
+  <circle cx="615" cy="588" r="27" fill="#fbeac7"/><circle cx="822" cy="588" r="27" fill="#fbeac7"/>`;
+const host = document.getElementById("o-frogs"), defs = svg.querySelector("defs");
+const frogs = SPOTS.map(([cx, ey], i) => {
+  const cp = el("clipPath", { id: "ofc" + i }, defs);
+  el("rect", { x: 0, y: 0, width: 1390, height: ey + 110 }, cp);   // the frog sits in the water: a flat cut, as in the sketch
+  const outer = el("g", { "clip-path": `url(#ofc${i})` }, host);
+  const bob = el("g", {}, outer);
+  const g = el("g", { transform: `translate(${(cx - 718.5 * S).toFixed(1)},${(ey - 588 * S).toFixed(1)}) scale(${S})` }, bob);
+  g.innerHTML = BODY;
+  const pup = el("g", {}, g);
+  el("ellipse", { cx: 615, cy: 588, rx: 17, ry: 21, fill: "#000" }, pup); el("ellipse", { cx: 822, cy: 588, rx: 17, ry: 21, fill: "#000" }, pup);
+  const lids = [el("rect", { x: 586, y: 560, width: 60, height: 0, fill: "var(--frog)" }, g), el("rect", { x: 793, y: 560, width: 60, height: 0, fill: "var(--frog)" }, g)];
+  return { cx, ey, bob, pup, lids, ph: Math.random() * 6.3, sp: 1.1 + Math.random() * .9, amp: 4 + Math.random() * 4,
+           look: [0, 0], lookT: [0, 0], blink: 1 + Math.random() * 5 };
+});
+
+// eyes: each frog looks from its own position toward the cursor
+let cursor = null;
+addEventListener("pointermove", e => { cursor = [e.clientX, e.clientY]; if (reduce) aim(true); });
+function aim(snap) {
+  if (!cursor) return;
+  const m = svg.getScreenCTM(); if (!m) return;
+  const p = new DOMPoint(cursor[0], cursor[1]).matrixTransform(m.inverse());
+  frogs.forEach(f => {
+    const dx = p.x - f.cx, dy = p.y - f.ey, d = Math.hypot(dx, dy) || 1, k = Math.min(1, d / 260);
+    f.lookT = [dx / d * 8 * k, dy / d * 7 * k];
+    if (snap) { f.look = f.lookT.slice(); f.pup.setAttribute("transform", `translate(${f.look[0].toFixed(2)},${f.look[1].toFixed(2)})`); }
+  });
+}
+
+// calm water, a few soft puffs, like the opening
+const water = document.getElementById("o-water"), steam = document.getElementById("o-steam");
+const lipY = u => 742 - u * 32 - Math.sin(u * Math.PI) * 55;
+function waterPath(t) {
+  const pts = [];
+  for (let i = 0; i <= 30; i++) { const u = i / 30, x = 300 + u * 890;
+    pts.push([x, lipY(Math.min(1, Math.max(0, (x - 315) / 867))) + 6 + Math.sin(u * 11 + t * 1.6) * 6 + Math.sin(u * 23 - t * 2.2) * 2]); }
+  return "M" + pts.map(q => q.map(v => v.toFixed(1)).join(",")).join(" L") + " L1190,900 L300,900 Z";
+}
+const PALE = ["#ffffff", "#f1ecfa", "#e3daf3", "#d6cbee"];
+let puffs = [];
+function addPuff() {
+  const u = .12 + Math.random() * .76, x = 315 + u * 867, y = lipY(u) - 30, R = 14 + Math.random() * 16;
+  const g = el("g", {}, steam), n = 3 + Math.floor(Math.random() * 3);
+  for (let i = 0; i < n; i++) el("circle", { cx: (Math.random() - .5) * R * 2.2, cy: (Math.random() - .5) * R * 1.4, r: R * (.55 + Math.random() * .6), fill: PALE[i % 4] }, g);
+  puffs.push({ g, x0: x, y, age: 0, life: 5 + Math.random() * 3, vy: 60 + Math.random() * 30, curl: (Math.random() < .5 ? -1 : 1) * (40 + Math.random() * 60), ph: Math.random() * 6 });
+}
+
+water.setAttribute("d", waterPath(0));
+if (reduce) return;
+let t0 = performance.now(), last = t0;
+(function frame(now) {
+  const dt = Math.max(0, Math.min(.05, (now - last) / 1000)), t = (now - t0) / 1000; last = now;
+  const r = sec.getBoundingClientRect();
+  if (r.height > 1 && r.bottom > 0 && r.top < innerHeight) {
+    water.setAttribute("d", waterPath(t));
+    aim(false);
+    frogs.forEach(f => {
+      f.bob.setAttribute("transform", `translate(0,${(Math.sin(t * f.sp + f.ph) * f.amp).toFixed(2)})`);
+      f.look = [f.look[0] + (f.lookT[0] - f.look[0]) * Math.min(1, dt * 8), f.look[1] + (f.lookT[1] - f.look[1]) * Math.min(1, dt * 8)];
+      f.pup.setAttribute("transform", `translate(${f.look[0].toFixed(2)},${f.look[1].toFixed(2)})`);
+      f.blink -= dt;
+      const b = f.blink < 0 ? Math.max(0, 1 - Math.abs(f.blink + .09) / .09) : 0;
+      f.lids.forEach(l => l.setAttribute("height", (b * 58).toFixed(1)));
+      if (f.blink < -.18) f.blink = 2 + Math.random() * 5;
+    });
+    if (Math.random() < dt * .9) addPuff();
+    puffs = puffs.filter(p => {
+      p.age += dt; const f = p.age / p.life; p.y -= p.vy * dt;
+      p.g.setAttribute("transform", `translate(${(p.x0 + Math.sin(p.ph + p.age * .9) * p.curl * Math.min(1, f * 2)).toFixed(1)},${p.y.toFixed(1)}) scale(${(.35 + 1.1 * f).toFixed(3)})`);
+      p.g.setAttribute("opacity", (Math.min(1, f * 6) * (1 - f) * .6).toFixed(3));
+      if (f >= 1) { p.g.remove(); return false; } return true;
+    });
+  }
+  requestAnimationFrame(frame);
+})(t0);
+})();
+</script>
+<script>
+// The boiling-frog air layer. Specks start sparse and thicken with scroll progress, too slowly to notice from one
+// screen to the next; at the "So what?" plate everything snaps to clean air, then returns after it. Decoration only.
+(() => {
+const cv = document.getElementById("air"), ctx = cv.getContext("2d"), warm = document.getElementById("air-warm"), haze = document.getElementById("air-haze");
+const sowhat = document.querySelector(".sowhat"), reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const st = { particles: true, warm: true, haze: false };
+try { Object.assign(st, JSON.parse(localStorage.getItem("bf-air") || "{}")); } catch (e) {}
+st.particles = false;   // dust specks off for now (Gina, Oct 5); the presenter control can still switch them on for a session
+const COLS = ["#d4502a", "#e0592a", "#c8401f", "#ea6b3b", "#b93a1c"];
+const START = 8, END = 950;           // specks per million screen pixels, top of the page → just before "So what?"
+const MAX_WARM = .2, MAX_HAZE = .16;
+let W = 0, H = 0, dpr = 1, pool = [];
+function resize() {
+  const oW = W, oH = H;
+  dpr = Math.min(2, devicePixelRatio || 1); W = innerWidth; H = innerHeight;
+  if (oW && oH) pool.forEach(q => { q.x *= W / oW; q.y *= H / oH; });   // a wider window spreads the specks, never leaves a bare strip
+  cv.width = W * dpr; cv.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  const need = Math.ceil(END * W * H / 1e6);
+  while (pool.length < need) pool.push({ x: Math.random() * W, y: Math.random() * H, vx: 0, vy: 0,
+    s: Math.random() < .8 ? 1.5 + Math.random() * 1.5 : 3 + Math.random() * 1.5, c: COLS[Math.floor(Math.random() * COLS.length)],
+    a: .35 + Math.random() * .45, f: 0 });
+}
+resize(); addEventListener("resize", resize);
+// progress: 0 at the top, 1 just before "So what?" arrives; mostly a fourth power, so most of the page adds very little
+function progress() {
+  const end = Math.max(1, sowhat.getBoundingClientRect().top + scrollY - H * .6);
+  const p = Math.min(1, Math.max(0, scrollY / end)); return .06 * p + .94 * p * p * p * p;
+}
+function clean() { const r = sowhat.getBoundingClientRect(); return r.top < H * .55 && r.bottom > H * .45; }   // "So what?" fills the screen
+let k = 1, last = performance.now();
+function frame(now) {
+  const dt = Math.min(.05, (now - last) / 1000); last = now;
+  const p = progress(), target = clean() ? 0 : 1;
+  k += (target - k) * Math.min(1, dt * (target ? 1.2 : 14));       // snap off fast, come back slowly
+  warm.style.opacity = st.warm ? (p * MAX_WARM * k).toFixed(3) : 0;
+  haze.style.opacity = st.haze ? (p * MAX_HAZE * k).toFixed(3) : 0;
+  haze.style.backdropFilter = st.haze && p > .6 && k > .5 ? `blur(${((p - .6) * 1.5).toFixed(2)}px)` : "none";
+  ctx.clearRect(0, 0, W, H);
+  if (st.particles && k > .01) {
+    const n = Math.min(pool.length, Math.round((START + (END - START) * p) * W * H / 1e6));
+    for (let i = 0; i < pool.length; i++) {
+      const q = pool[i]; q.f += ((i < n ? 1 : 0) - q.f) * Math.min(1, dt * 1.5);   // new specks fade in, extra ones fade out
+      if (q.f < .01) continue;
+      if (!reduce) {                                                  // slow random drift, a slight lift like warm air
+        q.vx += (Math.random() - .5) * 14 * dt; q.vy += ((Math.random() - .5) * 14 - 1.2) * dt;
+        q.vx *= .985; q.vy *= .985; q.x += q.vx * dt * 6; q.y += q.vy * dt * 6;
+        if (q.x < -5) q.x = W + 5; else if (q.x > W + 5) q.x = -5;
+        if (q.y < -5) q.y = H + 5; else if (q.y > H + 5) q.y = -5;
+      }
+      ctx.globalAlpha = q.a * q.f * k; ctx.fillStyle = q.c; ctx.fillRect(q.x, q.y, q.s, q.s);
+    }
+    ctx.globalAlpha = 1;
+  }
+  requestAnimationFrame(frame);
+}
+requestAnimationFrame(frame);
+// presenter control: a faint dot in the corner; open it to switch each effect on or off
+const pane = document.getElementById("air-pane"), open = document.getElementById("air-open"), box = document.getElementById("air-ctl");
+const sync = () => { document.querySelectorAll("[data-air]").forEach(b => b.setAttribute("aria-pressed", String(!!st[b.dataset.air])));
+  try { localStorage.setItem("bf-air", JSON.stringify(st)); } catch (e) {} };
+open.addEventListener("click", () => { pane.hidden = !pane.hidden; open.setAttribute("aria-expanded", String(!pane.hidden)); box.classList.toggle("open", !pane.hidden); });
+document.querySelectorAll("[data-air]").forEach(b => b.addEventListener("click", () => { st[b.dataset.air] = !st[b.dataset.air]; sync(); }));
+sync();
+})();
+</script>
+<script>
+// Reddit posts under "or they come from ourselves.": one at a time, swapping every 4.5 s while the section is on screen.
+(() => {
+const box = document.getElementById("posts"), posts = [...box.querySelectorAll(".post")];
+if (matchMedia("(prefers-reduced-motion: reduce)").matches) { box.classList.add("still"); posts.forEach(p => p.classList.add("on")); return; }
+const fit = () => { box.style.height = Math.max(...posts.map(p => p.offsetHeight)) + "px"; };   // the window fits the longest post
+fit(); addEventListener("resize", fit); document.fonts?.ready.then(fit);
+let i = 0, timer = null, seen = false, paused = false;
+function next() {
+  const cur = posts[i], nx = posts[(i + 1) % posts.length];
+  nx.style.transition = "none"; nx.classList.remove("out", "on"); void nx.offsetHeight; nx.style.transition = "";   // park it just below the window
+  cur.classList.remove("on"); cur.classList.add("out"); nx.classList.add("on");
+  i = (i + 1) % posts.length;
+}
+const run = () => { clearInterval(timer); timer = seen && !paused ? setInterval(next, 4500) : null; };
+new IntersectionObserver(es => { seen = es[0].isIntersecting; run(); }, { threshold: .6 }).observe(box);
+["mouseenter", "focusin"].forEach(e => box.addEventListener(e, () => { paused = true; run(); }));
+["mouseleave", "focusout"].forEach(e => box.addEventListener(e, () => { paused = false; run(); }));
+})();
+</script>
+

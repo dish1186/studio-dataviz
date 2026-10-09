@@ -31,6 +31,13 @@ for line in open("docs/experiment-design-pm25.md", encoding="utf-8"):
 pm = {r["city"]: r for r in rows("data/processed/openaq/step08_pm_normals/pm_normals.csv") if not r["dropped"]}
 res = {r["city"]: r for r in rows(f"{RUN_DIR}/cities.csv")}
 
+# Days a year above 15 µg/m³ (WHO daily guideline), 2019-2025, for the map hover (display only).
+# Share of measured days above 15, scaled to 365, because some years have gaps (2021 especially).
+def days_over_15(slug):
+    v = [float(r["ref_mean"]) for r in rows(f"data/processed/openaq/step05_averages/pm25_{slug}_daily.csv")
+         if "2019-01-01" <= r["date"] <= "2025-12-31" and r["ref_mean"]]
+    return round(sum(x > 15 for x in v) / len(v) * 365)
+
 cities = []
 for slug in ORDER:
     p, r = pm[slug], res.get(slug)
@@ -39,7 +46,7 @@ for slug in ORDER:
          "week_start": p["event_week_start"], "week_end": p["event_week_end"],
          "dates": causes[slug]["dates"], "cause": causes[slug]["cause"],
          "pm": num(p["event_week_pm25"]), "pm_normal": num(p["pm25_normal"]), "ratio": num(p["ratio_to_normal"]),
-         "bad_days": int(float(p["median_days_ge_35_5_2019_2025"])), "ready": ready}
+         "bad_days": int(float(p["median_days_ge_35_5_2019_2025"])), "days_over_15": days_over_15(slug), "ready": ready}
     if ready:
         c.update({"share_event": num(r["event_share_pct"]), "share_normal": num(r["normal_share_pct"]),
                   "rise": num(r["rise_ratio"]), "rise_pp": num(r["rise_pp"]), "beat": r["percentile_higher_than"],

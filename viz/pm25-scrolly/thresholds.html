@@ -1,0 +1,303 @@
+<meta charset="utf-8">
+<title>Who Draws the Line</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Jost:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one plate from the Boiling Frog deck. A shared log ruler of PM2.5, one row per authority, a draggable "one day" line, and four verdict cards. */
+:root {
+  --ground: #f8ebcb;        /* cream stock */
+  --ground-2: #f0dfb6;      /* plate inset */
+  --ink: #1a0f6b;           /* indigo */
+  --ink-2: #463d88;
+  --rule: #cdb88a;
+  --q-ground: #1a0f6b; --on-q: #f8ebcb;
+  --tier-1: .13; --tier-2: .30; --tier-3: .55;   /* ink density for each step past a daily line */
+  --grain-blend: multiply; --paper-op: .16; --paper-filter: none;
+  --display: "Libre Caslon Text", "Iowan Old Style", Georgia, serif;
+  --label: "Jost", "Futura", "Century Gothic", "Avenir Next", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ground: #160d4c; --ground-2: #1e1460; --ink: #f8ebcb; --ink-2: #d9cfb0; --rule: #3e3580;
+    --q-ground: #f8ebcb; --on-q: #1a0f6b; --tier-1: .14; --tier-2: .30; --tier-3: .52;
+    --grain-blend: screen; --paper-op: .06; --paper-filter: invert(1); color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --ground: #160d4c; --ground-2: #1e1460; --ink: #f8ebcb; --ink-2: #d9cfb0; --rule: #3e3580;
+  --q-ground: #f8ebcb; --on-q: #1a0f6b; --tier-1: .14; --tier-2: .30; --tier-3: .52;
+  --grain-blend: screen; --paper-op: .06; --paper-filter: invert(1); color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--ground); color: var(--ink); font-family: var(--display); font-size: 17px; line-height: 1.6; overflow-x: clip; }
+body::before { content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 50; opacity: var(--paper-op);
+  mix-blend-mode: var(--grain-blend); filter: var(--paper-filter); background: url("img/paper.jpg") 0 0 / 1440px auto repeat; }
+.book { max-width: 1120px; margin: 0 auto; padding-inline: 20px; padding-block: 18px 64px; }
+.runhead { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; font-family: var(--label); font-size: 12px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; border-bottom: 1.5px solid var(--ink); padding-bottom: 8px; }
+.plate { padding-block: 56px; border-bottom: 1px solid var(--rule); display: grid; gap: 26px; }
+.plate-head { font-family: var(--label); text-transform: uppercase; letter-spacing: .12em; font-size: 13px; font-weight: 700; }
+h1 { margin: 0; font-family: var(--display); font-weight: 700; font-size: clamp(32px, 5vw, 56px); line-height: 1.08; max-width: 20ch; text-wrap: balance; }
+h3 { margin: 0; font-family: var(--label); font-size: 13px; letter-spacing: .12em; text-transform: uppercase; font-weight: 700; }
+p { margin: 0; max-width: 64ch; }
+.lede { font-size: 20px; line-height: 1.5; max-width: 54ch; }
+.mono { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+.fig-cap { font-family: var(--label); font-size: 13px; line-height: 1.45; color: var(--ink-2); max-width: 74ch; }
+.fig-cap b { color: var(--ink); font-weight: 700; letter-spacing: .06em; text-transform: uppercase; font-size: 12px; margin-right: 4px; }
+:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+
+.figbox { border: 1.5px solid var(--ink); background: var(--ground-2); padding: 14px 16px 12px; min-width: 0; display: grid; gap: 10px; }
+.keyrow { display: flex; flex-wrap: wrap; gap: 6px 22px; font-family: var(--label); font-size: 13px; align-items: center; border-bottom: 1px solid var(--rule); padding-bottom: 9px; }
+.keyrow > span { display: inline-flex; align-items: center; gap: 7px; white-space: nowrap; }
+.keyrow svg { display: block; }
+#ruler { display: block; width: 100%; height: auto; overflow: visible; touch-action: pan-y; cursor: ew-resize; user-select: none; }
+#ruler text { font-family: var(--label); }
+#ruler text:not([fill]) { fill: var(--ink); }
+#ruler .num { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+.slide { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 14px; align-items: center; font-family: var(--label); font-size: 13px; border-top: 1px solid var(--rule); padding-top: 10px; }
+.slide label { font-weight: 700; letter-spacing: .1em; text-transform: uppercase; font-size: 11px; color: var(--ink-2); }
+.slide input { width: 100%; accent-color: var(--ink); }
+.slide output { font-family: var(--mono); font-size: 14px; min-width: 9ch; text-align: right; }
+.presets { display: flex; flex-wrap: wrap; gap: 4px; }
+.presets button { font: inherit; font-family: var(--label); font-size: 12.5px; font-weight: 500; color: var(--ink); background: transparent; border: 1.5px solid var(--ink); padding: 3px 9px; cursor: pointer; line-height: 1.35; }
+.presets button[aria-pressed="true"] { background: var(--ink); color: var(--ground); }
+
+/* the four verdicts for the chosen day */
+.day { background: var(--q-ground); color: var(--on-q); box-shadow: 0 0 0 100vmax var(--q-ground); clip-path: inset(0 -100vmax); border-bottom: 0; gap: 22px; }
+.day .big { font-family: var(--label); font-weight: 500; font-size: clamp(30px, 4.6vw, 56px); line-height: 1.04; letter-spacing: -.02em; max-width: 22ch; text-wrap: balance; }
+.verdicts { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; border-top: 1.5px solid var(--on-q); }
+.v { padding: 14px 16px 6px 0; display: grid; gap: 8px; align-content: start; min-width: 0; }
+.v + .v { padding-left: 16px; border-left: 1px solid color-mix(in srgb, var(--on-q) 35%, transparent); }
+.v h3 { color: var(--on-q); }
+.v .swatch { width: 100%; height: 12px; border: 1.5px solid var(--on-q); position: relative; }
+.v .swatch i { position: absolute; inset: 0; background: var(--on-q); opacity: 0; transition: opacity .25s; }
+.v .says { font-family: var(--display); font-size: 19px; line-height: 1.3; font-weight: 700; }
+.v .why { font-family: var(--label); font-size: 13.5px; line-height: 1.45; opacity: .85; }
+
+.notes ol { margin: 0; padding-left: 22px; display: grid; gap: 8px; font-size: 14.5px; max-width: 78ch; }
+.tbl { overflow-x: auto; border: 1.5px solid var(--ink); }
+table { border-collapse: collapse; width: 100%; min-width: 680px; font-family: var(--label); font-size: 13.5px; }
+th, td { padding: 7px 10px; border-bottom: 1px solid var(--rule); text-align: left; vertical-align: top; }
+th { font-size: 11.5px; letter-spacing: .08em; text-transform: uppercase; font-weight: 700; color: var(--ink-2); }
+td.n { font-family: var(--mono); font-size: 12.5px; text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+th.n { text-align: right; }
+tr:last-child td { border-bottom: 0; }
+.src { font-size: 14px; color: var(--ink-2); max-width: 78ch; }
+
+@media (max-width: 820px) { .verdicts { grid-template-columns: repeat(2, minmax(0, 1fr)); } .v:nth-child(3) { border-left: 0; padding-left: 0; } .v:nth-child(n+3) { border-top: 1px solid color-mix(in srgb, var(--on-q) 35%, transparent); } }
+@media (max-width: 480px) { .verdicts { grid-template-columns: minmax(0, 1fr); } .v + .v { border-left: 0; padding-left: 0; border-top: 1px solid color-mix(in srgb, var(--on-q) 35%, transparent); } .slide { grid-template-columns: minmax(0, 1fr) auto; } .slide label { grid-column: 1 / -1; } }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+
+<div class="book">
+  <div class="runhead"><span>The Boiling Frog · MDE Studio</span><span>PM2.5 thresholds</span></div>
+
+  <section class="plate" aria-label="Who draws the line">
+    <div class="plate-head">Who draws the line</div>
+    <h1>The same air gets four different verdicts</h1>
+    <p class="lede">Four authorities set limits for fine particles. The WHO's daily line sits at 15&nbsp;µg/m³. China doesn't call a day polluted until 60. Drag the line to pick a day and see what each one calls it.</p>
+
+    <div class="figbox">
+      <div class="keyrow" aria-hidden="true">
+        <span><svg width="14" height="14"><circle cx="7" cy="7" r="5" fill="var(--ink)"/></svg>24-hour limit</span>
+        <span><svg width="16" height="16"><circle cx="8" cy="8" r="5.5" fill="var(--ground-2)" stroke="var(--ink)" stroke-width="2"/></svg>Annual-average limit</span>
+        <span><svg width="58" height="12"><rect x="0" y="1" width="18" height="10" fill="var(--ink)" style="opacity:var(--tier-1)"/><rect x="20" y="1" width="18" height="10" fill="var(--ink)" style="opacity:var(--tier-2)"/><rect x="40" y="1" width="18" height="10" fill="var(--ink)" style="opacity:var(--tier-3)"/></svg>Each step past a daily line</span>
+      </div>
+      <svg id="ruler" role="img" aria-label="Log-scale ruler of PM2.5 from 2 to 400 micrograms per cubic metre. WHO: daily 15, annual 5. European Union: annual 25 now, annual 10 and daily 25 from 2030. US EPA: daily AQI steps at 35.5, 55.5 and 225.5. China: daily IAQI steps at 60, 115 and 250."></svg>
+      <div class="slide">
+        <label for="pm">One day at</label>
+        <input id="pm" type="range" min="0" max="1000" step="1" aria-describedby="pmv">
+        <output id="pmv" for="pm"></output>
+      </div>
+      <div class="presets" role="group" aria-label="Jump to a day">
+        <button type="button" data-v="12">12</button>
+        <button type="button" data-v="20">20</button>
+        <button type="button" data-v="50">50</button>
+        <button type="button" data-v="90">90</button>
+        <button type="button" data-v="150">150</button>
+        <button type="button" data-v="300">300</button>
+      </div>
+    </div>
+    <p class="fig-cap"><b>Fig.</b>Every limit from the four authorities on one log scale of PM2.5 (µg/m³). Rings are yearly averages, so read them against a year of air, not against the day line.</p>
+  </section>
+
+  <section class="plate day" aria-label="Verdicts for the chosen day" aria-live="polite">
+    <div class="big" id="dayline"></div>
+    <div class="verdicts" id="verdicts"></div>
+  </section>
+
+  <section class="plate notes" aria-label="The limits as written">
+    <h3>The limits as written</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Authority</th><th class="n">PM2.5 (µg/m³)</th><th>Averaging</th><th>What it means</th></tr></thead>
+      <tbody>
+        <tr><td>WHO</td><td class="n">15</td><td>24-hour</td><td>Health-based guideline; above this is not the recommended level of exposure</td></tr>
+        <tr><td>WHO</td><td class="n">5</td><td>Annual</td><td>Long-term health-based guideline</td></tr>
+        <tr><td>US EPA</td><td class="n">35.5</td><td>24-hour</td><td>AQI enters “Unhealthy for Sensitive Groups”</td></tr>
+        <tr><td>US EPA</td><td class="n">55.5</td><td>24-hour</td><td>AQI enters “Unhealthy” for the general population</td></tr>
+        <tr><td>US EPA</td><td class="n">225.5</td><td>24-hour</td><td>AQI enters “Hazardous”</td></tr>
+        <tr><td>China MEE</td><td class="n">60</td><td>24-hour</td><td>IAQI reaches 101; “light pollution” begins</td></tr>
+        <tr><td>China MEE</td><td class="n">115</td><td>24-hour</td><td>IAQI reaches 151; “moderate pollution” begins</td></tr>
+        <tr><td>China MEE</td><td class="n">250</td><td>24-hour</td><td>IAQI reaches 301; “severe pollution” begins</td></tr>
+        <tr><td>European Commission, current limit</td><td class="n">25</td><td>Annual</td><td>Current EU limit value, applies through the transition period</td></tr>
+        <tr><td>European Commission, 2030</td><td class="n">10</td><td>Annual</td><td>EU limit to be met by January 1, 2030</td></tr>
+        <tr><td>European Commission, 2030 daily</td><td class="n">25</td><td>24-hour</td><td>Not to be exceeded more than 18 times per calendar year</td></tr>
+      </tbody>
+    </table></div>
+    <ol>
+      <li>The day line is checked only against 24-hour limits. Annual limits apply to a year's average, and one bad day alone can't break them.</li>
+      <li>EPA and China values are the points where the air quality index changes category. The table lists only the steps named here; both indexes have lower steps too.</li>
+    </ol>
+    <p class="src">Sources: WHO global air quality guidelines (2021); U.S. EPA Air Quality Index for PM2.5 (2024 revision); China Ministry of Ecology and Environment, HJ 633-2012 technical regulation on the AQI; EU Ambient Air Quality Directive (EU) 2024/2881. MDE Studio, October 2026.</p>
+  </section>
+</div>
+
+<script>
+// The four authorities. Each daily list is the step where the next category begins; "tier" names what that step is called.
+const ROWS = [
+  { key: "who", name: "WHO", sub: "World Health Org.",
+    daily: [{ v: 15, tier: "above guideline" }],
+    annual: [{ v: 5, note: "annual" }] },
+  { key: "eu", name: "EU", sub: "European Commission",
+    daily: [{ v: 25, tier: "exceedance day (2030)" }],
+    annual: [{ v: 10, note: "annual, 2030" }, { v: 25, note: "annual, now", lvl: 1 }] },
+  { key: "epa", name: "US EPA", sub: "Air Quality Index",
+    daily: [{ v: 35.5, tier: "sensitive groups" }, { v: 55.5, tier: "unhealthy", lvl: 1, up: 1 }, { v: 225.5, tier: "hazardous" }] },
+  { key: "cn", name: "China MEE", sub: "Individual AQI",
+    daily: [{ v: 60, tier: "light" }, { v: 115, tier: "moderate", lvl: 1 }, { v: 250, tier: "severe" }] }
+];
+const LO = 2, HI = 400, TICKS = [2, 5, 10, 15, 25, 50, 100, 250, 400];
+const NS = "http://www.w3.org/2000/svg";
+const svg = document.getElementById("ruler"), input = document.getElementById("pm"), out = document.getElementById("pmv");
+let day = 50, geo = null;
+
+const fmt = v => v >= 100 ? Math.round(v).toString() : (Math.round(v * 10) / 10).toString();
+const el = (tag, attrs, parent, text) => {
+  const n = document.createElementNS(NS, tag);
+  for (const k in attrs) n.setAttribute(k, attrs[k]);
+  if (text != null) n.textContent = text;
+  (parent || svg).appendChild(n); return n;
+};
+
+function draw() {
+  svg.replaceChildren();
+  const w = Math.max(300, svg.parentElement.clientWidth - 32), wide = w >= 640;
+  const L = wide ? 150 : 4, R = 14, top = 34, rowH = wide ? 92 : 78, h = top + ROWS.length * rowH + 26;
+  const lx = Math.log(LO), span = Math.log(HI) - lx;
+  const x = v => L + (Math.log(v) - lx) / span * (w - L - R);
+  const inv = px => Math.exp(lx + Math.min(1, Math.max(0, (px - L) / (w - L - R))) * span);
+  geo = { x, inv, w, L, R };
+  svg.setAttribute("viewBox", `0 0 ${w} ${h}`);
+
+  // grid and scale
+  TICKS.forEach(t => {
+    if (!wide && (t === 15 || t === 400)) return;
+    el("line", { x1: x(t), x2: x(t), y1: top - 6, y2: h - 22, stroke: "var(--rule)", "stroke-width": 1 });
+    el("text", { class: "num", x: x(t), y: h - 6, "text-anchor": "middle", "font-size": 11, fill: "var(--ink-2)" }, null, t);
+  });
+  if (wide) el("text", { x: 0, y: h - 6, "font-size": 11, "font-weight": 500, fill: "var(--ink-2)" }, null, "µg/m³, log scale");
+
+  ROWS.forEach((r, i) => {
+    const ry = top + i * rowH, y = ry + (wide ? 34 : 40), g = el("g", {});
+    if (wide) {
+      el("text", { x: 0, y: y + 4, "font-size": 13, "font-weight": 700, "letter-spacing": ".1em" }, g, r.name.toUpperCase());
+      el("text", { x: 0, y: y + 21, "font-size": 12, fill: "var(--ink-2)" }, g, r.sub);
+    } else {
+      el("text", { x: 0, y: ry + 10, "font-size": 12, "font-weight": 700, "letter-spacing": ".1em" }, g, r.name.toUpperCase());
+    }
+    // ink deepens with each step past a daily line
+    r.daily.forEach((d, j) => {
+      const end = r.daily[j + 1] ? r.daily[j + 1].v : HI;
+      el("rect", { x: x(d.v), y: y - 7, width: x(end) - x(d.v), height: 14, fill: "var(--ink)", style: `opacity:var(--tier-${Math.min(3, j + 1 + (r.daily.length === 1 ? 1 : 0))})` }, g);
+    });
+    el("line", { x1: L, x2: w - R, y1: y, y2: y, stroke: "var(--ink)", "stroke-width": 1.5 }, g);
+
+    const label = (v, txt, up, annual) => {
+      const t = el("text", { class: "num", x: x(v), y: y - 13 - (up && !wide ? 12 : 0), "text-anchor": "middle", "font-size": wide ? 12 : 10.5, "font-weight": 500 }, g, txt);
+      if (annual) el("tspan", { "font-family": "var(--label)", "font-size": wide ? 10.5 : 9.5, fill: "var(--ink-2)" }, t, "/yr");
+    };
+    const note = (v, txt, lvl, anchorStart) => {
+      if (!wide) return;
+      let px = anchorStart ? x(v) + 4 : x(v), anchor = anchorStart ? "start" : "middle";
+      if (px + txt.length * 6.2 > w - R) { px = w - R; anchor = "end"; }
+      el("text", { x: px, y: y + 24 + (lvl || 0) * 14, "text-anchor": anchor, "font-size": 11.5, fill: "var(--ink-2)" }, g, txt);
+    };
+    (r.annual || []).forEach(a => {
+      el("circle", { cx: x(a.v), cy: y, r: a.v === 25 ? 9 : 6, fill: a.v === 25 ? "none" : "var(--ground-2)", stroke: "var(--ink)", "stroke-width": 2 }, g);
+      if (!r.daily.some(d => d.v === a.v)) label(a.v, a.v, false, true);
+      note(a.v, a.note, a.lvl, a.v === 25);
+    });
+    r.daily.forEach(d => {
+      el("circle", { cx: x(d.v), cy: y, r: 5, fill: "var(--ink)", stroke: "var(--ground-2)", "stroke-width": 1.5 }, g);
+      label(d.v, d.v, d.up, false);
+      note(d.v, d.tier, d.lvl, true);
+    });
+  });
+
+  // the day line
+  const cur = el("g", { id: "cur", "pointer-events": "none" });
+  el("line", { id: "cl", y1: top - 10, y2: h - 22, stroke: "var(--ink)", "stroke-width": 2 }, cur);
+  el("rect", { id: "cb", y: 2, height: 20, fill: "var(--ink)" }, cur);
+  el("text", { id: "ct", class: "num", y: 16, "text-anchor": "middle", "font-size": 12, "font-weight": 500, fill: "var(--ground-2)" }, cur);
+  place();
+}
+
+function place() {
+  if (!geo) return;
+  const px = geo.x(day), t = svg.querySelector("#ct"), b = svg.querySelector("#cb");
+  svg.querySelector("#cl").setAttribute("x1", px); svg.querySelector("#cl").setAttribute("x2", px);
+  t.textContent = fmt(day) + " µg/m³";
+  const tw = t.getComputedTextLength() + 14, bx = Math.max(0, Math.min(geo.w - tw, px - tw / 2));
+  b.setAttribute("x", bx); b.setAttribute("width", tw); t.setAttribute("x", bx + tw / 2);
+}
+
+// verdicts: each authority's 24-hour reading of the chosen day
+function verdict(r, v) {
+  if (r.key === "who") return v >= 15
+    ? { lvl: 2, says: "Above the daily guideline", why: `${fmt(v / 15)}× the 15 µg/m³ the WHO recommends for a day.` }
+    : { lvl: 0, says: "Within the daily guideline", why: "Under 15 µg/m³ for the day." };
+  if (r.key === "eu") return v > 25
+    ? { lvl: 2, says: "An exceedance day", why: "Over 25. From 2030 a place may have no more than 18 of these a year." }
+    : { lvl: 0, says: "Under the 2030 daily limit", why: "At or under 25 µg/m³ for the day." };
+  if (r.key === "epa") {
+    if (v >= 225.5) return { lvl: 3, says: "Hazardous", why: "AQI category from 225.5 µg/m³." };
+    if (v >= 55.5) return { lvl: 2, says: "Unhealthy", why: "For everyone. Starts at 55.5 µg/m³." };
+    if (v >= 35.5) return { lvl: 1, says: "Unhealthy for sensitive groups", why: "Starts at 35.5 µg/m³." };
+    return { lvl: 0, says: "Not yet “unhealthy” for anyone", why: "Below 35.5, the first warning step." };
+  }
+  if (v >= 250) return { lvl: 3, says: "Severe pollution", why: "IAQI above 300, from 250 µg/m³." };
+  if (v >= 115) return { lvl: 2, says: "Moderate pollution", why: "IAQI above 150, from 115 µg/m³." };
+  if (v >= 60) return { lvl: 1, says: "Light pollution", why: "IAQI above 100, from 60 µg/m³." };
+  return { lvl: 0, says: "Not counted as polluted", why: "Below 60, where “light pollution” begins." };
+}
+const box = document.getElementById("verdicts");
+ROWS.forEach(r => box.insertAdjacentHTML("beforeend",
+  `<div class="v" data-k="${r.key}"><h3>${r.name}</h3><div class="swatch"><i></i></div><div class="says"></div><div class="why"></div></div>`));
+
+function update() {
+  place();
+  out.value = out.textContent = fmt(day) + " µg/m³";
+  input.value = Math.round((Math.log(day) - Math.log(LO)) / (Math.log(HI) - Math.log(LO)) * 1000);
+  input.setAttribute("aria-valuetext", fmt(day) + " micrograms per cubic metre");
+  const vs = ROWS.map(r => verdict(r, day)), flagged = vs.filter(v => v.lvl > 0).length;
+  document.getElementById("dayline").textContent =
+    `A day at ${fmt(day)} µg/m³: ${flagged === 0 ? "no one" : flagged === 4 ? "all four" : flagged + " of 4"} raise a flag.`;
+  ROWS.forEach((r, i) => {
+    const c = box.querySelector(`[data-k="${r.key}"]`), v = vs[i];
+    c.querySelector(".says").textContent = v.says; c.querySelector(".why").textContent = v.why;
+    c.querySelector(".swatch i").style.opacity = v.lvl ? `var(--tier-${v.lvl})` : 0;
+  });
+  document.querySelectorAll(".presets button").forEach(b => b.setAttribute("aria-pressed", String(+b.dataset.v === Math.round(day))));
+}
+
+input.addEventListener("input", () => { day = Math.exp(Math.log(LO) + input.value / 1000 * (Math.log(HI) - Math.log(LO))); day = day >= 100 ? Math.round(day) : Math.round(day * 2) / 2; update(); });
+document.querySelectorAll(".presets button").forEach(b => b.addEventListener("click", () => { day = +b.dataset.v; update(); }));
+const fromPointer = e => { const r = svg.getBoundingClientRect(); const px = (e.clientX - r.left) * geo.w / r.width; const v = geo.inv(px); day = v >= 100 ? Math.round(v) : Math.round(v * 2) / 2; update(); };
+svg.addEventListener("pointerdown", e => { svg.setPointerCapture(e.pointerId); fromPointer(e); });
+svg.addEventListener("pointermove", e => { if (svg.hasPointerCapture(e.pointerId)) fromPointer(e); });
+
+draw(); update();
+let rt; addEventListener("resize", () => { clearTimeout(rt); rt = setTimeout(() => { draw(); }, 120); });
+document.fonts && document.fonts.ready.then(() => place());
+</script>
